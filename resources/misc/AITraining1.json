@@ -1,0 +1,5724 @@
+{
+    "moveDecide": {
+        "neutral": {
+            "actions": [
+                {
+                    "name": "SN",
+                    "value": 1
+                },
+                {
+                    "name": "SL",
+                    "value": 1
+                },
+                {
+                    "name": "NL",
+                    "value": 1
+                },
+                {
+                    "name": "ML",
+                    "value": 1
+                },
+                {
+                    "name": "MN",
+                    "value": 1
+                },
+                {
+                    "name": "MR",
+                    "value": 1
+                },
+                {
+                    "name": "NR",
+                    "value": 1
+                },
+                {
+                    "name": "SR",
+                    "value": 1
+                }
+            ]
+        },
+        "block": {
+            "actions": [
+                {
+                    "name": "SN",
+                    "value": 90
+                },
+                {
+                    "name": "SL",
+                    "value": 94
+                },
+                {
+                    "name": "NL",
+                    "value": 92
+                },
+                {
+                    "name": "ML",
+                    "value": 93
+                },
+                {
+                    "name": "MN",
+                    "value": 86
+                },
+                {
+                    "name": "MR",
+                    "value": 89
+                },
+                {
+                    "name": "NR",
+                    "value": 92
+                },
+                {
+                    "name": "SR",
+                    "value": 90
+                }
+            ]
+        }
+    },
+    "decisionTree": {
+        "neutral": {
+            "far": {
+                "back": {
+                    "actions": [
+                        {
+                            "name": "neutral",
+                            "value": 500
+                        },
+                        {
+                            "name": "NL",
+                            "value": 1
+                        },
+                        {
+                            "name": "SL",
+                            "value": 5
+                        },
+                        {
+                            "name": "RL",
+                            "value": 1
+                        },
+                        {
+                            "name": "LL",
+                            "value": 1
+                        },
+                        {
+                            "name": "ML",
+                            "value": 1
+                        },
+                        {
+                            "name": "NS",
+                            "value": 1
+                        },
+                        {
+                            "name": "SS",
+                            "value": 1
+                        },
+                        {
+                            "name": "RS",
+                            "value": 1
+                        },
+                        {
+                            "name": "LS",
+                            "value": 1
+                        },
+                        {
+                            "name": "MS",
+                            "value": 1
+                        },
+                        {
+                            "name": "NPL",
+                            "value": 4
+                        },
+                        {
+                            "name": "SPL",
+                            "value": 2
+                        },
+                        {
+                            "name": "RPL",
+                            "value": 1
+                        },
+                        {
+                            "name": "LPL",
+                            "value": 1
+                        },
+                        {
+                            "name": "MPL",
+                            "value": 1
+                        },
+                        {
+                            "name": "NPS",
+                            "value": 1
+                        },
+                        {
+                            "name": "SPS",
+                            "value": 4
+                        },
+                        {
+                            "name": "RPS",
+                            "value": 1
+                        },
+                        {
+                            "name": "LPS",
+                            "value": 1
+                        },
+                        {
+                            "name": "MPS",
+                            "value": 1
+                        },
+                        {
+                            "name": "NN",
+                            "value": 5
+                        },
+                        {
+                            "name": "SN",
+                            "value": 1
+                        },
+                        {
+                            "name": "RN",
+                            "value": 5
+                        },
+                        {
+                            "name": "LN",
+                            "value": 1
+                        },
+                        {
+                            "name": "MN",
+                            "value": 16
+                        },
+                        {
+                            "name": "dash",
+                            "value": 1
+                        },
+                        {
+                            "name": "powerDash",
+                            "value": 1
+                        }
+                    ]
+                },
+                "front": {
+                    "actions": [
+                        {
+                            "name": "neutral",
+                            "value": 500
+                        },
+                        {
+                            "name": "NL",
+                            "value": 1
+                        },
+                        {
+                            "name": "SL",
+                            "value": 4
+                        },
+                        {
+                            "name": "RL",
+                            "value": 1
+                        },
+                        {
+                            "name": "LL",
+                            "value": 1
+                        },
+                        {
+                            "name": "ML",
+                            "value": 1
+                        },
+                        {
+                            "name": "NS",
+                            "value": 1
+                        },
+                        {
+                            "name": "SS",
+                            "value": 1
+                        },
+                        {
+                            "name": "RS",
+                            "value": 1
+                        },
+                        {
+                            "name": "LS",
+                            "value": 1
+                        },
+                        {
+                            "name": "MS",
+                            "value": 1
+                        },
+                        {
+                            "name": "NPL",
+                            "value": 1
+                        },
+                        {
+                            "name": "SPL",
+                            "value": 1
+                        },
+                        {
+                            "name": "RPL",
+                            "value": 1
+                        },
+                        {
+                            "name": "LPL",
+                            "value": 1
+                        },
+                        {
+                            "name": "MPL",
+                            "value": 1
+                        },
+                        {
+                            "name": "NPS",
+                            "value": 1
+                        },
+                        {
+                            "name": "SPS",
+                            "value": 1
+                        },
+                        {
+                            "name": "RPS",
+                            "value": 1
+                        },
+                        {
+                            "name": "LPS",
+                            "value": 1
+                        },
+                        {
+                            "name": "MPS",
+                            "value": 1
+                        },
+                        {
+                            "name": "NN",
+                            "value": 1
+                        },
+                        {
+                            "name": "SN",
+                            "value": 1
+                        },
+                        {
+                            "name": "RN",
+                            "value": 1
+                        },
+                        {
+                            "name": "LN",
+                            "value": 1
+                        },
+                        {
+                            "name": "MN",
+                            "value": 1
+                        },
+                        {
+                            "name": "dash",
+                            "value": 1
+                        },
+                        {
+                            "name": "powerDash",
+                            "value": 1
+                        }
+                    ]
+                },
+                "right": {
+                    "actions": [
+                        {
+                            "name": "neutral",
+                            "value": 500
+                        },
+                        {
+                            "name": "NL",
+                            "value": 1
+                        },
+                        {
+                            "name": "SL",
+                            "value": 3
+                        },
+                        {
+                            "name": "RL",
+                            "value": 1
+                        },
+                        {
+                            "name": "LL",
+                            "value": 1
+                        },
+                        {
+                            "name": "ML",
+                            "value": 13
+                        },
+                        {
+                            "name": "NS",
+                            "value": 1
+                        },
+                        {
+                            "name": "SS",
+                            "value": 1
+                        },
+                        {
+                            "name": "RS",
+                            "value": 6
+                        },
+                        {
+                            "name": "LS",
+                            "value": 10
+                        },
+                        {
+                            "name": "MS",
+                            "value": 1
+                        },
+                        {
+                            "name": "NPL",
+                            "value": 1
+                        },
+                        {
+                            "name": "SPL",
+                            "value": 1
+                        },
+                        {
+                            "name": "RPL",
+                            "value": 1
+                        },
+                        {
+                            "name": "LPL",
+                            "value": 4
+                        },
+                        {
+                            "name": "MPL",
+                            "value": 1
+                        },
+                        {
+                            "name": "NPS",
+                            "value": 3
+                        },
+                        {
+                            "name": "SPS",
+                            "value": 1
+                        },
+                        {
+                            "name": "RPS",
+                            "value": 1
+                        },
+                        {
+                            "name": "LPS",
+                            "value": 1
+                        },
+                        {
+                            "name": "MPS",
+                            "value": 1
+                        },
+                        {
+                            "name": "NN",
+                            "value": 1
+                        },
+                        {
+                            "name": "SN",
+                            "value": 5
+                        },
+                        {
+                            "name": "RN",
+                            "value": 1
+                        },
+                        {
+                            "name": "LN",
+                            "value": 1
+                        },
+                        {
+                            "name": "MN",
+                            "value": 1
+                        },
+                        {
+                            "name": "dash",
+                            "value": 1
+                        },
+                        {
+                            "name": "powerDash",
+                            "value": 1
+                        }
+                    ]
+                },
+                "left": {
+                    "actions": [
+                        {
+                            "name": "neutral",
+                            "value": 500
+                        },
+                        {
+                            "name": "NL",
+                            "value": 1
+                        },
+                        {
+                            "name": "SL",
+                            "value": 1
+                        },
+                        {
+                            "name": "RL",
+                            "value": 1
+                        },
+                        {
+                            "name": "LL",
+                            "value": 1
+                        },
+                        {
+                            "name": "ML",
+                            "value": 1
+                        },
+                        {
+                            "name": "NS",
+                            "value": 1
+                        },
+                        {
+                            "name": "SS",
+                            "value": 1
+                        },
+                        {
+                            "name": "RS",
+                            "value": 1
+                        },
+                        {
+                            "name": "LS",
+                            "value": 5
+                        },
+                        {
+                            "name": "MS",
+                            "value": 1
+                        },
+                        {
+                            "name": "NPL",
+                            "value": 1
+                        },
+                        {
+                            "name": "SPL",
+                            "value": 1
+                        },
+                        {
+                            "name": "RPL",
+                            "value": 6
+                        },
+                        {
+                            "name": "LPL",
+                            "value": 1
+                        },
+                        {
+                            "name": "MPL",
+                            "value": 1
+                        },
+                        {
+                            "name": "NPS",
+                            "value": 1
+                        },
+                        {
+                            "name": "SPS",
+                            "value": 1
+                        },
+                        {
+                            "name": "RPS",
+                            "value": 1
+                        },
+                        {
+                            "name": "LPS",
+                            "value": 1
+                        },
+                        {
+                            "name": "MPS",
+                            "value": 1
+                        },
+                        {
+                            "name": "NN",
+                            "value": 1
+                        },
+                        {
+                            "name": "SN",
+                            "value": 1
+                        },
+                        {
+                            "name": "RN",
+                            "value": 1
+                        },
+                        {
+                            "name": "LN",
+                            "value": 1
+                        },
+                        {
+                            "name": "MN",
+                            "value": 6
+                        },
+                        {
+                            "name": "dash",
+                            "value": 1
+                        },
+                        {
+                            "name": "powerDash",
+                            "value": 1
+                        }
+                    ]
+                }
+            },
+            "near50": {
+                "back": {
+                    "actions": [
+                        {
+                            "name": "neutral",
+                            "value": 500
+                        },
+                        {
+                            "name": "NL",
+                            "value": 3
+                        },
+                        {
+                            "name": "SL",
+                            "value": 2
+                        },
+                        {
+                            "name": "RL",
+                            "value": 5
+                        },
+                        {
+                            "name": "LL",
+                            "value": 11
+                        },
+                        {
+                            "name": "ML",
+                            "value": 2
+                        },
+                        {
+                            "name": "NS",
+                            "value": 3
+                        },
+                        {
+                            "name": "SS",
+                            "value": 5
+                        },
+                        {
+                            "name": "RS",
+                            "value": 2
+                        },
+                        {
+                            "name": "LS",
+                            "value": 11
+                        },
+                        {
+                            "name": "MS",
+                            "value": 2
+                        },
+                        {
+                            "name": "NPL",
+                            "value": 2
+                        },
+                        {
+                            "name": "SPL",
+                            "value": 2
+                        },
+                        {
+                            "name": "RPL",
+                            "value": 2
+                        },
+                        {
+                            "name": "LPL",
+                            "value": 4
+                        },
+                        {
+                            "name": "MPL",
+                            "value": 5
+                        },
+                        {
+                            "name": "NPS",
+                            "value": 5
+                        },
+                        {
+                            "name": "SPS",
+                            "value": 1
+                        },
+                        {
+                            "name": "RPS",
+                            "value": 2
+                        },
+                        {
+                            "name": "LPS",
+                            "value": 3
+                        },
+                        {
+                            "name": "MPS",
+                            "value": 2
+                        },
+                        {
+                            "name": "NN",
+                            "value": 1
+                        },
+                        {
+                            "name": "SN",
+                            "value": 2
+                        },
+                        {
+                            "name": "RN",
+                            "value": 1
+                        },
+                        {
+                            "name": "LN",
+                            "value": 5
+                        },
+                        {
+                            "name": "MN",
+                            "value": 1
+                        },
+                        {
+                            "name": "dash",
+                            "value": 2
+                        },
+                        {
+                            "name": "powerDash",
+                            "value": 2
+                        }
+                    ]
+                },
+                "front": {
+                    "actions": [
+                        {
+                            "name": "neutral",
+                            "value": 500
+                        },
+                        {
+                            "name": "NL",
+                            "value": 3
+                        },
+                        {
+                            "name": "SL",
+                            "value": 1
+                        },
+                        {
+                            "name": "RL",
+                            "value": 2
+                        },
+                        {
+                            "name": "LL",
+                            "value": 2
+                        },
+                        {
+                            "name": "ML",
+                            "value": 16
+                        },
+                        {
+                            "name": "NS",
+                            "value": 1
+                        },
+                        {
+                            "name": "SS",
+                            "value": 2
+                        },
+                        {
+                            "name": "RS",
+                            "value": 1
+                        },
+                        {
+                            "name": "LS",
+                            "value": 1
+                        },
+                        {
+                            "name": "MS",
+                            "value": 3
+                        },
+                        {
+                            "name": "NPL",
+                            "value": 1
+                        },
+                        {
+                            "name": "SPL",
+                            "value": 2
+                        },
+                        {
+                            "name": "RPL",
+                            "value": 1
+                        },
+                        {
+                            "name": "LPL",
+                            "value": 8
+                        },
+                        {
+                            "name": "MPL",
+                            "value": 1
+                        },
+                        {
+                            "name": "NPS",
+                            "value": 1
+                        },
+                        {
+                            "name": "SPS",
+                            "value": 2
+                        },
+                        {
+                            "name": "RPS",
+                            "value": 13
+                        },
+                        {
+                            "name": "LPS",
+                            "value": 12
+                        },
+                        {
+                            "name": "MPS",
+                            "value": 2
+                        },
+                        {
+                            "name": "NN",
+                            "value": 1
+                        },
+                        {
+                            "name": "SN",
+                            "value": 21
+                        },
+                        {
+                            "name": "RN",
+                            "value": 2
+                        },
+                        {
+                            "name": "LN",
+                            "value": 4
+                        },
+                        {
+                            "name": "MN",
+                            "value": 6
+                        },
+                        {
+                            "name": "dash",
+                            "value": 1
+                        },
+                        {
+                            "name": "powerDash",
+                            "value": 1
+                        }
+                    ]
+                },
+                "right": {
+                    "actions": [
+                        {
+                            "name": "neutral",
+                            "value": 500
+                        },
+                        {
+                            "name": "NL",
+                            "value": 5
+                        },
+                        {
+                            "name": "SL",
+                            "value": 5
+                        },
+                        {
+                            "name": "RL",
+                            "value": 2
+                        },
+                        {
+                            "name": "LL",
+                            "value": 2
+                        },
+                        {
+                            "name": "ML",
+                            "value": 20
+                        },
+                        {
+                            "name": "NS",
+                            "value": 13
+                        },
+                        {
+                            "name": "SS",
+                            "value": 1
+                        },
+                        {
+                            "name": "RS",
+                            "value": 5
+                        },
+                        {
+                            "name": "LS",
+                            "value": 5
+                        },
+                        {
+                            "name": "MS",
+                            "value": 2
+                        },
+                        {
+                            "name": "NPL",
+                            "value": 2
+                        },
+                        {
+                            "name": "SPL",
+                            "value": 5
+                        },
+                        {
+                            "name": "RPL",
+                            "value": 2
+                        },
+                        {
+                            "name": "LPL",
+                            "value": 2
+                        },
+                        {
+                            "name": "MPL",
+                            "value": 2
+                        },
+                        {
+                            "name": "NPS",
+                            "value": 6
+                        },
+                        {
+                            "name": "SPS",
+                            "value": 5
+                        },
+                        {
+                            "name": "RPS",
+                            "value": 2
+                        },
+                        {
+                            "name": "LPS",
+                            "value": 5
+                        },
+                        {
+                            "name": "MPS",
+                            "value": 5
+                        },
+                        {
+                            "name": "NN",
+                            "value": 3
+                        },
+                        {
+                            "name": "SN",
+                            "value": 1
+                        },
+                        {
+                            "name": "RN",
+                            "value": 9
+                        },
+                        {
+                            "name": "LN",
+                            "value": 1
+                        },
+                        {
+                            "name": "MN",
+                            "value": 5
+                        },
+                        {
+                            "name": "dash",
+                            "value": 1
+                        },
+                        {
+                            "name": "powerDash",
+                            "value": 5
+                        }
+                    ]
+                },
+                "left": {
+                    "actions": [
+                        {
+                            "name": "neutral",
+                            "value": 500
+                        },
+                        {
+                            "name": "NL",
+                            "value": 4
+                        },
+                        {
+                            "name": "SL",
+                            "value": 2
+                        },
+                        {
+                            "name": "RL",
+                            "value": 5
+                        },
+                        {
+                            "name": "LL",
+                            "value": 1
+                        },
+                        {
+                            "name": "ML",
+                            "value": 2
+                        },
+                        {
+                            "name": "NS",
+                            "value": 5
+                        },
+                        {
+                            "name": "SS",
+                            "value": 2
+                        },
+                        {
+                            "name": "RS",
+                            "value": 5
+                        },
+                        {
+                            "name": "LS",
+                            "value": 4
+                        },
+                        {
+                            "name": "MS",
+                            "value": 5
+                        },
+                        {
+                            "name": "NPL",
+                            "value": 5
+                        },
+                        {
+                            "name": "SPL",
+                            "value": 5
+                        },
+                        {
+                            "name": "RPL",
+                            "value": 2
+                        },
+                        {
+                            "name": "LPL",
+                            "value": 2
+                        },
+                        {
+                            "name": "MPL",
+                            "value": 5
+                        },
+                        {
+                            "name": "NPS",
+                            "value": 8
+                        },
+                        {
+                            "name": "SPS",
+                            "value": 5
+                        },
+                        {
+                            "name": "RPS",
+                            "value": 5
+                        },
+                        {
+                            "name": "LPS",
+                            "value": 5
+                        },
+                        {
+                            "name": "MPS",
+                            "value": 2
+                        },
+                        {
+                            "name": "NN",
+                            "value": 11
+                        },
+                        {
+                            "name": "SN",
+                            "value": 1
+                        },
+                        {
+                            "name": "RN",
+                            "value": 3
+                        },
+                        {
+                            "name": "LN",
+                            "value": 5
+                        },
+                        {
+                            "name": "MN",
+                            "value": 2
+                        },
+                        {
+                            "name": "dash",
+                            "value": 2
+                        },
+                        {
+                            "name": "powerDash",
+                            "value": 14
+                        }
+                    ]
+                }
+            },
+            "near60": {
+                "back": {
+                    "actions": [
+                        {
+                            "name": "neutral",
+                            "value": 500
+                        },
+                        {
+                            "name": "NL",
+                            "value": 8
+                        },
+                        {
+                            "name": "SL",
+                            "value": 1
+                        },
+                        {
+                            "name": "RL",
+                            "value": 2
+                        },
+                        {
+                            "name": "LL",
+                            "value": 5
+                        },
+                        {
+                            "name": "ML",
+                            "value": 4
+                        },
+                        {
+                            "name": "NS",
+                            "value": 2
+                        },
+                        {
+                            "name": "SS",
+                            "value": 2
+                        },
+                        {
+                            "name": "RS",
+                            "value": 2
+                        },
+                        {
+                            "name": "LS",
+                            "value": 1
+                        },
+                        {
+                            "name": "MS",
+                            "value": 1
+                        },
+                        {
+                            "name": "NPL",
+                            "value": 5
+                        },
+                        {
+                            "name": "SPL",
+                            "value": 2
+                        },
+                        {
+                            "name": "RPL",
+                            "value": 5
+                        },
+                        {
+                            "name": "LPL",
+                            "value": 1
+                        },
+                        {
+                            "name": "MPL",
+                            "value": 1
+                        },
+                        {
+                            "name": "NPS",
+                            "value": 9
+                        },
+                        {
+                            "name": "SPS",
+                            "value": 2
+                        },
+                        {
+                            "name": "RPS",
+                            "value": 2
+                        },
+                        {
+                            "name": "LPS",
+                            "value": 1
+                        },
+                        {
+                            "name": "MPS",
+                            "value": 2
+                        },
+                        {
+                            "name": "NN",
+                            "value": 5
+                        },
+                        {
+                            "name": "SN",
+                            "value": 2
+                        },
+                        {
+                            "name": "RN",
+                            "value": 1
+                        },
+                        {
+                            "name": "LN",
+                            "value": 2
+                        },
+                        {
+                            "name": "MN",
+                            "value": 2
+                        },
+                        {
+                            "name": "dash",
+                            "value": 6
+                        },
+                        {
+                            "name": "powerDash",
+                            "value": 1
+                        }
+                    ]
+                },
+                "front": {
+                    "actions": [
+                        {
+                            "name": "neutral",
+                            "value": 500
+                        },
+                        {
+                            "name": "NL",
+                            "value": 1
+                        },
+                        {
+                            "name": "SL",
+                            "value": 1
+                        },
+                        {
+                            "name": "RL",
+                            "value": 1
+                        },
+                        {
+                            "name": "LL",
+                            "value": 1
+                        },
+                        {
+                            "name": "ML",
+                            "value": 1
+                        },
+                        {
+                            "name": "NS",
+                            "value": 1
+                        },
+                        {
+                            "name": "SS",
+                            "value": 1
+                        },
+                        {
+                            "name": "RS",
+                            "value": 1
+                        },
+                        {
+                            "name": "LS",
+                            "value": 5
+                        },
+                        {
+                            "name": "MS",
+                            "value": 1
+                        },
+                        {
+                            "name": "NPL",
+                            "value": 1
+                        },
+                        {
+                            "name": "SPL",
+                            "value": 1
+                        },
+                        {
+                            "name": "RPL",
+                            "value": 1
+                        },
+                        {
+                            "name": "LPL",
+                            "value": 1
+                        },
+                        {
+                            "name": "MPL",
+                            "value": 2
+                        },
+                        {
+                            "name": "NPS",
+                            "value": 1
+                        },
+                        {
+                            "name": "SPS",
+                            "value": 1
+                        },
+                        {
+                            "name": "RPS",
+                            "value": 1
+                        },
+                        {
+                            "name": "LPS",
+                            "value": 1
+                        },
+                        {
+                            "name": "MPS",
+                            "value": 1
+                        },
+                        {
+                            "name": "NN",
+                            "value": 2
+                        },
+                        {
+                            "name": "SN",
+                            "value": 79
+                        },
+                        {
+                            "name": "RN",
+                            "value": 8
+                        },
+                        {
+                            "name": "LN",
+                            "value": 5
+                        },
+                        {
+                            "name": "MN",
+                            "value": 5
+                        },
+                        {
+                            "name": "dash",
+                            "value": 1
+                        },
+                        {
+                            "name": "powerDash",
+                            "value": 1
+                        }
+                    ]
+                },
+                "right": {
+                    "actions": [
+                        {
+                            "name": "neutral",
+                            "value": 500
+                        },
+                        {
+                            "name": "NL",
+                            "value": 5
+                        },
+                        {
+                            "name": "SL",
+                            "value": 2
+                        },
+                        {
+                            "name": "RL",
+                            "value": 2
+                        },
+                        {
+                            "name": "LL",
+                            "value": 2
+                        },
+                        {
+                            "name": "ML",
+                            "value": 2
+                        },
+                        {
+                            "name": "NS",
+                            "value": 2
+                        },
+                        {
+                            "name": "SS",
+                            "value": 2
+                        },
+                        {
+                            "name": "RS",
+                            "value": 1
+                        },
+                        {
+                            "name": "LS",
+                            "value": 1
+                        },
+                        {
+                            "name": "MS",
+                            "value": 22
+                        },
+                        {
+                            "name": "NPL",
+                            "value": 2
+                        },
+                        {
+                            "name": "SPL",
+                            "value": 1
+                        },
+                        {
+                            "name": "RPL",
+                            "value": 2
+                        },
+                        {
+                            "name": "LPL",
+                            "value": 5
+                        },
+                        {
+                            "name": "MPL",
+                            "value": 5
+                        },
+                        {
+                            "name": "NPS",
+                            "value": 2
+                        },
+                        {
+                            "name": "SPS",
+                            "value": 6
+                        },
+                        {
+                            "name": "RPS",
+                            "value": 13
+                        },
+                        {
+                            "name": "LPS",
+                            "value": 2
+                        },
+                        {
+                            "name": "MPS",
+                            "value": 2
+                        },
+                        {
+                            "name": "NN",
+                            "value": 2
+                        },
+                        {
+                            "name": "SN",
+                            "value": 16
+                        },
+                        {
+                            "name": "RN",
+                            "value": 1
+                        },
+                        {
+                            "name": "LN",
+                            "value": 2
+                        },
+                        {
+                            "name": "MN",
+                            "value": 20
+                        },
+                        {
+                            "name": "dash",
+                            "value": 2
+                        },
+                        {
+                            "name": "powerDash",
+                            "value": 1
+                        }
+                    ]
+                },
+                "left": {
+                    "actions": [
+                        {
+                            "name": "neutral",
+                            "value": 500
+                        },
+                        {
+                            "name": "NL",
+                            "value": 14
+                        },
+                        {
+                            "name": "SL",
+                            "value": 5
+                        },
+                        {
+                            "name": "RL",
+                            "value": 4
+                        },
+                        {
+                            "name": "LL",
+                            "value": 2
+                        },
+                        {
+                            "name": "ML",
+                            "value": 4
+                        },
+                        {
+                            "name": "NS",
+                            "value": 4
+                        },
+                        {
+                            "name": "SS",
+                            "value": 3
+                        },
+                        {
+                            "name": "RS",
+                            "value": 2
+                        },
+                        {
+                            "name": "LS",
+                            "value": 1
+                        },
+                        {
+                            "name": "MS",
+                            "value": 2
+                        },
+                        {
+                            "name": "NPL",
+                            "value": 9
+                        },
+                        {
+                            "name": "SPL",
+                            "value": 2
+                        },
+                        {
+                            "name": "RPL",
+                            "value": 5
+                        },
+                        {
+                            "name": "LPL",
+                            "value": 5
+                        },
+                        {
+                            "name": "MPL",
+                            "value": 6
+                        },
+                        {
+                            "name": "NPS",
+                            "value": 8
+                        },
+                        {
+                            "name": "SPS",
+                            "value": 2
+                        },
+                        {
+                            "name": "RPS",
+                            "value": 5
+                        },
+                        {
+                            "name": "LPS",
+                            "value": 15
+                        },
+                        {
+                            "name": "MPS",
+                            "value": 7
+                        },
+                        {
+                            "name": "NN",
+                            "value": 18
+                        },
+                        {
+                            "name": "SN",
+                            "value": 1
+                        },
+                        {
+                            "name": "RN",
+                            "value": 16
+                        },
+                        {
+                            "name": "LN",
+                            "value": 2
+                        },
+                        {
+                            "name": "MN",
+                            "value": 23
+                        },
+                        {
+                            "name": "dash",
+                            "value": 1
+                        },
+                        {
+                            "name": "powerDash",
+                            "value": 6
+                        }
+                    ]
+                }
+            },
+            "near70": {
+                "back": {
+                    "actions": [
+                        {
+                            "name": "neutral",
+                            "value": 500
+                        },
+                        {
+                            "name": "NL",
+                            "value": 1
+                        },
+                        {
+                            "name": "SL",
+                            "value": 1
+                        },
+                        {
+                            "name": "RL",
+                            "value": 2
+                        },
+                        {
+                            "name": "LL",
+                            "value": 1
+                        },
+                        {
+                            "name": "ML",
+                            "value": 1
+                        },
+                        {
+                            "name": "NS",
+                            "value": 1
+                        },
+                        {
+                            "name": "SS",
+                            "value": 5
+                        },
+                        {
+                            "name": "RS",
+                            "value": 2
+                        },
+                        {
+                            "name": "LS",
+                            "value": 1
+                        },
+                        {
+                            "name": "MS",
+                            "value": 1
+                        },
+                        {
+                            "name": "NPL",
+                            "value": 2
+                        },
+                        {
+                            "name": "SPL",
+                            "value": 1
+                        },
+                        {
+                            "name": "RPL",
+                            "value": 2
+                        },
+                        {
+                            "name": "LPL",
+                            "value": 10
+                        },
+                        {
+                            "name": "MPL",
+                            "value": 2
+                        },
+                        {
+                            "name": "NPS",
+                            "value": 1
+                        },
+                        {
+                            "name": "SPS",
+                            "value": 1
+                        },
+                        {
+                            "name": "RPS",
+                            "value": 3
+                        },
+                        {
+                            "name": "LPS",
+                            "value": 14
+                        },
+                        {
+                            "name": "MPS",
+                            "value": 2
+                        },
+                        {
+                            "name": "NN",
+                            "value": 1
+                        },
+                        {
+                            "name": "SN",
+                            "value": 7
+                        },
+                        {
+                            "name": "RN",
+                            "value": 1
+                        },
+                        {
+                            "name": "LN",
+                            "value": 3
+                        },
+                        {
+                            "name": "MN",
+                            "value": 1
+                        },
+                        {
+                            "name": "dash",
+                            "value": 2
+                        },
+                        {
+                            "name": "powerDash",
+                            "value": 1
+                        }
+                    ]
+                },
+                "front": {
+                    "actions": [
+                        {
+                            "name": "neutral",
+                            "value": 500
+                        },
+                        {
+                            "name": "NL",
+                            "value": 12
+                        },
+                        {
+                            "name": "SL",
+                            "value": 1
+                        },
+                        {
+                            "name": "RL",
+                            "value": 1
+                        },
+                        {
+                            "name": "LL",
+                            "value": 8
+                        },
+                        {
+                            "name": "ML",
+                            "value": 1
+                        },
+                        {
+                            "name": "NS",
+                            "value": 1
+                        },
+                        {
+                            "name": "SS",
+                            "value": 1
+                        },
+                        {
+                            "name": "RS",
+                            "value": 1
+                        },
+                        {
+                            "name": "LS",
+                            "value": 1
+                        },
+                        {
+                            "name": "MS",
+                            "value": 2
+                        },
+                        {
+                            "name": "NPL",
+                            "value": 1
+                        },
+                        {
+                            "name": "SPL",
+                            "value": 1
+                        },
+                        {
+                            "name": "RPL",
+                            "value": 3
+                        },
+                        {
+                            "name": "LPL",
+                            "value": 1
+                        },
+                        {
+                            "name": "MPL",
+                            "value": 1
+                        },
+                        {
+                            "name": "NPS",
+                            "value": 1
+                        },
+                        {
+                            "name": "SPS",
+                            "value": 2
+                        },
+                        {
+                            "name": "RPS",
+                            "value": 1
+                        },
+                        {
+                            "name": "LPS",
+                            "value": 1
+                        },
+                        {
+                            "name": "MPS",
+                            "value": 1
+                        },
+                        {
+                            "name": "NN",
+                            "value": 1
+                        },
+                        {
+                            "name": "SN",
+                            "value": 1
+                        },
+                        {
+                            "name": "RN",
+                            "value": 1
+                        },
+                        {
+                            "name": "LN",
+                            "value": 2
+                        },
+                        {
+                            "name": "MN",
+                            "value": 1
+                        },
+                        {
+                            "name": "dash",
+                            "value": 8
+                        },
+                        {
+                            "name": "powerDash",
+                            "value": 7
+                        }
+                    ]
+                },
+                "right": {
+                    "actions": [
+                        {
+                            "name": "neutral",
+                            "value": 500
+                        },
+                        {
+                            "name": "NL",
+                            "value": 1
+                        },
+                        {
+                            "name": "SL",
+                            "value": 1
+                        },
+                        {
+                            "name": "RL",
+                            "value": 1
+                        },
+                        {
+                            "name": "LL",
+                            "value": 1
+                        },
+                        {
+                            "name": "ML",
+                            "value": 2
+                        },
+                        {
+                            "name": "NS",
+                            "value": 3
+                        },
+                        {
+                            "name": "SS",
+                            "value": 1
+                        },
+                        {
+                            "name": "RS",
+                            "value": 1
+                        },
+                        {
+                            "name": "LS",
+                            "value": 1
+                        },
+                        {
+                            "name": "MS",
+                            "value": 1
+                        },
+                        {
+                            "name": "NPL",
+                            "value": 10
+                        },
+                        {
+                            "name": "SPL",
+                            "value": 1
+                        },
+                        {
+                            "name": "RPL",
+                            "value": 17
+                        },
+                        {
+                            "name": "LPL",
+                            "value": 1
+                        },
+                        {
+                            "name": "MPL",
+                            "value": 2
+                        },
+                        {
+                            "name": "NPS",
+                            "value": 11
+                        },
+                        {
+                            "name": "SPS",
+                            "value": 24
+                        },
+                        {
+                            "name": "RPS",
+                            "value": 1
+                        },
+                        {
+                            "name": "LPS",
+                            "value": 1
+                        },
+                        {
+                            "name": "MPS",
+                            "value": 1
+                        },
+                        {
+                            "name": "NN",
+                            "value": 1
+                        },
+                        {
+                            "name": "SN",
+                            "value": 77
+                        },
+                        {
+                            "name": "RN",
+                            "value": 2
+                        },
+                        {
+                            "name": "LN",
+                            "value": 2
+                        },
+                        {
+                            "name": "MN",
+                            "value": 1
+                        },
+                        {
+                            "name": "dash",
+                            "value": 6
+                        },
+                        {
+                            "name": "powerDash",
+                            "value": 1
+                        }
+                    ]
+                },
+                "left": {
+                    "actions": [
+                        {
+                            "name": "neutral",
+                            "value": 500
+                        },
+                        {
+                            "name": "NL",
+                            "value": 1
+                        },
+                        {
+                            "name": "SL",
+                            "value": 1
+                        },
+                        {
+                            "name": "RL",
+                            "value": 1
+                        },
+                        {
+                            "name": "LL",
+                            "value": 8
+                        },
+                        {
+                            "name": "ML",
+                            "value": 17
+                        },
+                        {
+                            "name": "NS",
+                            "value": 5
+                        },
+                        {
+                            "name": "SS",
+                            "value": 1
+                        },
+                        {
+                            "name": "RS",
+                            "value": 3
+                        },
+                        {
+                            "name": "LS",
+                            "value": 2
+                        },
+                        {
+                            "name": "MS",
+                            "value": 32
+                        },
+                        {
+                            "name": "NPL",
+                            "value": 1
+                        },
+                        {
+                            "name": "SPL",
+                            "value": 8
+                        },
+                        {
+                            "name": "RPL",
+                            "value": 13
+                        },
+                        {
+                            "name": "LPL",
+                            "value": 1
+                        },
+                        {
+                            "name": "MPL",
+                            "value": 1
+                        },
+                        {
+                            "name": "NPS",
+                            "value": 4
+                        },
+                        {
+                            "name": "SPS",
+                            "value": 9
+                        },
+                        {
+                            "name": "RPS",
+                            "value": 7
+                        },
+                        {
+                            "name": "LPS",
+                            "value": 1
+                        },
+                        {
+                            "name": "MPS",
+                            "value": 1
+                        },
+                        {
+                            "name": "NN",
+                            "value": 2
+                        },
+                        {
+                            "name": "SN",
+                            "value": 8
+                        },
+                        {
+                            "name": "RN",
+                            "value": 1
+                        },
+                        {
+                            "name": "LN",
+                            "value": 4
+                        },
+                        {
+                            "name": "MN",
+                            "value": 1
+                        },
+                        {
+                            "name": "dash",
+                            "value": 18
+                        },
+                        {
+                            "name": "powerDash",
+                            "value": 1
+                        }
+                    ]
+                }
+            },
+            "near80": {
+                "back": {
+                    "actions": [
+                        {
+                            "name": "neutral",
+                            "value": 500
+                        },
+                        {
+                            "name": "NL",
+                            "value": 8
+                        },
+                        {
+                            "name": "SL",
+                            "value": 1
+                        },
+                        {
+                            "name": "RL",
+                            "value": 4
+                        },
+                        {
+                            "name": "LL",
+                            "value": 1
+                        },
+                        {
+                            "name": "ML",
+                            "value": 2
+                        },
+                        {
+                            "name": "NS",
+                            "value": 2
+                        },
+                        {
+                            "name": "SS",
+                            "value": 1
+                        },
+                        {
+                            "name": "RS",
+                            "value": 2
+                        },
+                        {
+                            "name": "LS",
+                            "value": 5
+                        },
+                        {
+                            "name": "MS",
+                            "value": 1
+                        },
+                        {
+                            "name": "NPL",
+                            "value": 3
+                        },
+                        {
+                            "name": "SPL",
+                            "value": 2
+                        },
+                        {
+                            "name": "RPL",
+                            "value": 13
+                        },
+                        {
+                            "name": "LPL",
+                            "value": 5
+                        },
+                        {
+                            "name": "MPL",
+                            "value": 3
+                        },
+                        {
+                            "name": "NPS",
+                            "value": 1
+                        },
+                        {
+                            "name": "SPS",
+                            "value": 1
+                        },
+                        {
+                            "name": "RPS",
+                            "value": 2
+                        },
+                        {
+                            "name": "LPS",
+                            "value": 14
+                        },
+                        {
+                            "name": "MPS",
+                            "value": 9
+                        },
+                        {
+                            "name": "NN",
+                            "value": 1
+                        },
+                        {
+                            "name": "SN",
+                            "value": 2
+                        },
+                        {
+                            "name": "RN",
+                            "value": 2
+                        },
+                        {
+                            "name": "LN",
+                            "value": 1
+                        },
+                        {
+                            "name": "MN",
+                            "value": 13
+                        },
+                        {
+                            "name": "dash",
+                            "value": 19
+                        },
+                        {
+                            "name": "powerDash",
+                            "value": 1
+                        }
+                    ]
+                },
+                "front": {
+                    "actions": [
+                        {
+                            "name": "neutral",
+                            "value": 500
+                        },
+                        {
+                            "name": "NL",
+                            "value": 8
+                        },
+                        {
+                            "name": "SL",
+                            "value": 1
+                        },
+                        {
+                            "name": "RL",
+                            "value": 1
+                        },
+                        {
+                            "name": "LL",
+                            "value": 1
+                        },
+                        {
+                            "name": "ML",
+                            "value": 1
+                        },
+                        {
+                            "name": "NS",
+                            "value": 1
+                        },
+                        {
+                            "name": "SS",
+                            "value": 1
+                        },
+                        {
+                            "name": "RS",
+                            "value": 5
+                        },
+                        {
+                            "name": "LS",
+                            "value": 1
+                        },
+                        {
+                            "name": "MS",
+                            "value": 5
+                        },
+                        {
+                            "name": "NPL",
+                            "value": 1
+                        },
+                        {
+                            "name": "SPL",
+                            "value": 2
+                        },
+                        {
+                            "name": "RPL",
+                            "value": 4
+                        },
+                        {
+                            "name": "LPL",
+                            "value": 1
+                        },
+                        {
+                            "name": "MPL",
+                            "value": 1
+                        },
+                        {
+                            "name": "NPS",
+                            "value": 1
+                        },
+                        {
+                            "name": "SPS",
+                            "value": 1
+                        },
+                        {
+                            "name": "RPS",
+                            "value": 1
+                        },
+                        {
+                            "name": "LPS",
+                            "value": 1
+                        },
+                        {
+                            "name": "MPS",
+                            "value": 1
+                        },
+                        {
+                            "name": "NN",
+                            "value": 1
+                        },
+                        {
+                            "name": "SN",
+                            "value": 11
+                        },
+                        {
+                            "name": "RN",
+                            "value": 1
+                        },
+                        {
+                            "name": "LN",
+                            "value": 1
+                        },
+                        {
+                            "name": "MN",
+                            "value": 1
+                        },
+                        {
+                            "name": "dash",
+                            "value": 1
+                        },
+                        {
+                            "name": "powerDash",
+                            "value": 1
+                        }
+                    ]
+                },
+                "right": {
+                    "actions": [
+                        {
+                            "name": "neutral",
+                            "value": 500
+                        },
+                        {
+                            "name": "NL",
+                            "value": 1
+                        },
+                        {
+                            "name": "SL",
+                            "value": 14
+                        },
+                        {
+                            "name": "RL",
+                            "value": 1
+                        },
+                        {
+                            "name": "LL",
+                            "value": 1
+                        },
+                        {
+                            "name": "ML",
+                            "value": 1
+                        },
+                        {
+                            "name": "NS",
+                            "value": 1
+                        },
+                        {
+                            "name": "SS",
+                            "value": 1
+                        },
+                        {
+                            "name": "RS",
+                            "value": 11
+                        },
+                        {
+                            "name": "LS",
+                            "value": 1
+                        },
+                        {
+                            "name": "MS",
+                            "value": 1
+                        },
+                        {
+                            "name": "NPL",
+                            "value": 1
+                        },
+                        {
+                            "name": "SPL",
+                            "value": 1
+                        },
+                        {
+                            "name": "RPL",
+                            "value": 1
+                        },
+                        {
+                            "name": "LPL",
+                            "value": 1
+                        },
+                        {
+                            "name": "MPL",
+                            "value": 1
+                        },
+                        {
+                            "name": "NPS",
+                            "value": 1
+                        },
+                        {
+                            "name": "SPS",
+                            "value": 2
+                        },
+                        {
+                            "name": "RPS",
+                            "value": 1
+                        },
+                        {
+                            "name": "LPS",
+                            "value": 1
+                        },
+                        {
+                            "name": "MPS",
+                            "value": 1
+                        },
+                        {
+                            "name": "NN",
+                            "value": 1
+                        },
+                        {
+                            "name": "SN",
+                            "value": 1
+                        },
+                        {
+                            "name": "RN",
+                            "value": 15
+                        },
+                        {
+                            "name": "LN",
+                            "value": 9
+                        },
+                        {
+                            "name": "MN",
+                            "value": 1
+                        },
+                        {
+                            "name": "dash",
+                            "value": 1
+                        },
+                        {
+                            "name": "powerDash",
+                            "value": 8
+                        }
+                    ]
+                },
+                "left": {
+                    "actions": [
+                        {
+                            "name": "neutral",
+                            "value": 500
+                        },
+                        {
+                            "name": "NL",
+                            "value": 3
+                        },
+                        {
+                            "name": "SL",
+                            "value": 4
+                        },
+                        {
+                            "name": "RL",
+                            "value": 1
+                        },
+                        {
+                            "name": "LL",
+                            "value": 1
+                        },
+                        {
+                            "name": "ML",
+                            "value": 1
+                        },
+                        {
+                            "name": "NS",
+                            "value": 1
+                        },
+                        {
+                            "name": "SS",
+                            "value": 1
+                        },
+                        {
+                            "name": "RS",
+                            "value": 1
+                        },
+                        {
+                            "name": "LS",
+                            "value": 1
+                        },
+                        {
+                            "name": "MS",
+                            "value": 1
+                        },
+                        {
+                            "name": "NPL",
+                            "value": 1
+                        },
+                        {
+                            "name": "SPL",
+                            "value": 4
+                        },
+                        {
+                            "name": "RPL",
+                            "value": 36
+                        },
+                        {
+                            "name": "LPL",
+                            "value": 1
+                        },
+                        {
+                            "name": "MPL",
+                            "value": 1
+                        },
+                        {
+                            "name": "NPS",
+                            "value": 1
+                        },
+                        {
+                            "name": "SPS",
+                            "value": 1
+                        },
+                        {
+                            "name": "RPS",
+                            "value": 1
+                        },
+                        {
+                            "name": "LPS",
+                            "value": 1
+                        },
+                        {
+                            "name": "MPS",
+                            "value": 1
+                        },
+                        {
+                            "name": "NN",
+                            "value": 1
+                        },
+                        {
+                            "name": "SN",
+                            "value": 1
+                        },
+                        {
+                            "name": "RN",
+                            "value": 1
+                        },
+                        {
+                            "name": "LN",
+                            "value": 1
+                        },
+                        {
+                            "name": "MN",
+                            "value": 1
+                        },
+                        {
+                            "name": "dash",
+                            "value": 1
+                        },
+                        {
+                            "name": "powerDash",
+                            "value": 1
+                        }
+                    ]
+                }
+            },
+            "near90": {
+                "back": {
+                    "actions": [
+                        {
+                            "name": "neutral",
+                            "value": 500
+                        },
+                        {
+                            "name": "NL",
+                            "value": 11
+                        },
+                        {
+                            "name": "SL",
+                            "value": 5
+                        },
+                        {
+                            "name": "RL",
+                            "value": 5
+                        },
+                        {
+                            "name": "LL",
+                            "value": 3
+                        },
+                        {
+                            "name": "ML",
+                            "value": 5
+                        },
+                        {
+                            "name": "NS",
+                            "value": 1
+                        },
+                        {
+                            "name": "SS",
+                            "value": 1
+                        },
+                        {
+                            "name": "RS",
+                            "value": 3
+                        },
+                        {
+                            "name": "LS",
+                            "value": 3
+                        },
+                        {
+                            "name": "MS",
+                            "value": 6
+                        },
+                        {
+                            "name": "NPL",
+                            "value": 3
+                        },
+                        {
+                            "name": "SPL",
+                            "value": 2
+                        },
+                        {
+                            "name": "RPL",
+                            "value": 5
+                        },
+                        {
+                            "name": "LPL",
+                            "value": 2
+                        },
+                        {
+                            "name": "MPL",
+                            "value": 13
+                        },
+                        {
+                            "name": "NPS",
+                            "value": 2
+                        },
+                        {
+                            "name": "SPS",
+                            "value": 5
+                        },
+                        {
+                            "name": "RPS",
+                            "value": 11
+                        },
+                        {
+                            "name": "LPS",
+                            "value": 5
+                        },
+                        {
+                            "name": "MPS",
+                            "value": 4
+                        },
+                        {
+                            "name": "NN",
+                            "value": 5
+                        },
+                        {
+                            "name": "SN",
+                            "value": 5
+                        },
+                        {
+                            "name": "RN",
+                            "value": 2
+                        },
+                        {
+                            "name": "LN",
+                            "value": 5
+                        },
+                        {
+                            "name": "MN",
+                            "value": 17
+                        },
+                        {
+                            "name": "dash",
+                            "value": 3
+                        },
+                        {
+                            "name": "powerDash",
+                            "value": 2
+                        }
+                    ]
+                },
+                "front": {
+                    "actions": [
+                        {
+                            "name": "neutral",
+                            "value": 500
+                        },
+                        {
+                            "name": "NL",
+                            "value": 1
+                        },
+                        {
+                            "name": "SL",
+                            "value": 1
+                        },
+                        {
+                            "name": "RL",
+                            "value": 2
+                        },
+                        {
+                            "name": "LL",
+                            "value": 1
+                        },
+                        {
+                            "name": "ML",
+                            "value": 69
+                        },
+                        {
+                            "name": "NS",
+                            "value": 1
+                        },
+                        {
+                            "name": "SS",
+                            "value": 1
+                        },
+                        {
+                            "name": "RS",
+                            "value": 1
+                        },
+                        {
+                            "name": "LS",
+                            "value": 1
+                        },
+                        {
+                            "name": "MS",
+                            "value": 3
+                        },
+                        {
+                            "name": "NPL",
+                            "value": 1
+                        },
+                        {
+                            "name": "SPL",
+                            "value": 3
+                        },
+                        {
+                            "name": "RPL",
+                            "value": 1
+                        },
+                        {
+                            "name": "LPL",
+                            "value": 1
+                        },
+                        {
+                            "name": "MPL",
+                            "value": 1
+                        },
+                        {
+                            "name": "NPS",
+                            "value": 1
+                        },
+                        {
+                            "name": "SPS",
+                            "value": 1
+                        },
+                        {
+                            "name": "RPS",
+                            "value": 1
+                        },
+                        {
+                            "name": "LPS",
+                            "value": 1
+                        },
+                        {
+                            "name": "MPS",
+                            "value": 1
+                        },
+                        {
+                            "name": "NN",
+                            "value": 1
+                        },
+                        {
+                            "name": "SN",
+                            "value": 2
+                        },
+                        {
+                            "name": "RN",
+                            "value": 1
+                        },
+                        {
+                            "name": "LN",
+                            "value": 1
+                        },
+                        {
+                            "name": "MN",
+                            "value": 1
+                        },
+                        {
+                            "name": "dash",
+                            "value": 1
+                        },
+                        {
+                            "name": "powerDash",
+                            "value": 1
+                        }
+                    ]
+                },
+                "right": {
+                    "actions": [
+                        {
+                            "name": "neutral",
+                            "value": 500
+                        },
+                        {
+                            "name": "NL",
+                            "value": 1
+                        },
+                        {
+                            "name": "SL",
+                            "value": 1
+                        },
+                        {
+                            "name": "RL",
+                            "value": 1
+                        },
+                        {
+                            "name": "LL",
+                            "value": 1
+                        },
+                        {
+                            "name": "ML",
+                            "value": 1
+                        },
+                        {
+                            "name": "NS",
+                            "value": 9
+                        },
+                        {
+                            "name": "SS",
+                            "value": 3
+                        },
+                        {
+                            "name": "RS",
+                            "value": 1
+                        },
+                        {
+                            "name": "LS",
+                            "value": 1
+                        },
+                        {
+                            "name": "MS",
+                            "value": 1
+                        },
+                        {
+                            "name": "NPL",
+                            "value": 1
+                        },
+                        {
+                            "name": "SPL",
+                            "value": 1
+                        },
+                        {
+                            "name": "RPL",
+                            "value": 1
+                        },
+                        {
+                            "name": "LPL",
+                            "value": 1
+                        },
+                        {
+                            "name": "MPL",
+                            "value": 1
+                        },
+                        {
+                            "name": "NPS",
+                            "value": 1
+                        },
+                        {
+                            "name": "SPS",
+                            "value": 1
+                        },
+                        {
+                            "name": "RPS",
+                            "value": 1
+                        },
+                        {
+                            "name": "LPS",
+                            "value": 1
+                        },
+                        {
+                            "name": "MPS",
+                            "value": 1
+                        },
+                        {
+                            "name": "NN",
+                            "value": 1
+                        },
+                        {
+                            "name": "SN",
+                            "value": 1
+                        },
+                        {
+                            "name": "RN",
+                            "value": 1
+                        },
+                        {
+                            "name": "LN",
+                            "value": 1
+                        },
+                        {
+                            "name": "MN",
+                            "value": 1
+                        },
+                        {
+                            "name": "dash",
+                            "value": 1
+                        },
+                        {
+                            "name": "powerDash",
+                            "value": 1
+                        }
+                    ]
+                },
+                "left": {
+                    "actions": [
+                        {
+                            "name": "neutral",
+                            "value": 500
+                        },
+                        {
+                            "name": "NL",
+                            "value": 34
+                        },
+                        {
+                            "name": "SL",
+                            "value": 1
+                        },
+                        {
+                            "name": "RL",
+                            "value": 7
+                        },
+                        {
+                            "name": "LL",
+                            "value": 1
+                        },
+                        {
+                            "name": "ML",
+                            "value": 1
+                        },
+                        {
+                            "name": "NS",
+                            "value": 4
+                        },
+                        {
+                            "name": "SS",
+                            "value": 1
+                        },
+                        {
+                            "name": "RS",
+                            "value": 2
+                        },
+                        {
+                            "name": "LS",
+                            "value": 1
+                        },
+                        {
+                            "name": "MS",
+                            "value": 1
+                        },
+                        {
+                            "name": "NPL",
+                            "value": 1
+                        },
+                        {
+                            "name": "SPL",
+                            "value": 42
+                        },
+                        {
+                            "name": "RPL",
+                            "value": 1
+                        },
+                        {
+                            "name": "LPL",
+                            "value": 5
+                        },
+                        {
+                            "name": "MPL",
+                            "value": 14
+                        },
+                        {
+                            "name": "NPS",
+                            "value": 85
+                        },
+                        {
+                            "name": "SPS",
+                            "value": 12
+                        },
+                        {
+                            "name": "RPS",
+                            "value": 63
+                        },
+                        {
+                            "name": "LPS",
+                            "value": 1
+                        },
+                        {
+                            "name": "MPS",
+                            "value": 1
+                        },
+                        {
+                            "name": "NN",
+                            "value": 1
+                        },
+                        {
+                            "name": "SN",
+                            "value": 79
+                        },
+                        {
+                            "name": "RN",
+                            "value": 35
+                        },
+                        {
+                            "name": "LN",
+                            "value": 4
+                        },
+                        {
+                            "name": "MN",
+                            "value": 1
+                        },
+                        {
+                            "name": "dash",
+                            "value": 11
+                        },
+                        {
+                            "name": "powerDash",
+                            "value": 1
+                        }
+                    ]
+                }
+            },
+            "near100": {
+                "back": {
+                    "actions": [
+                        {
+                            "name": "neutral",
+                            "value": 500
+                        },
+                        {
+                            "name": "NL",
+                            "value": 12
+                        },
+                        {
+                            "name": "SL",
+                            "value": 7
+                        },
+                        {
+                            "name": "RL",
+                            "value": 2
+                        },
+                        {
+                            "name": "LL",
+                            "value": 5
+                        },
+                        {
+                            "name": "ML",
+                            "value": 5
+                        },
+                        {
+                            "name": "NS",
+                            "value": 3
+                        },
+                        {
+                            "name": "SS",
+                            "value": 2
+                        },
+                        {
+                            "name": "RS",
+                            "value": 2
+                        },
+                        {
+                            "name": "LS",
+                            "value": 5
+                        },
+                        {
+                            "name": "MS",
+                            "value": 2
+                        },
+                        {
+                            "name": "NPL",
+                            "value": 1
+                        },
+                        {
+                            "name": "SPL",
+                            "value": 1
+                        },
+                        {
+                            "name": "RPL",
+                            "value": 2
+                        },
+                        {
+                            "name": "LPL",
+                            "value": 1
+                        },
+                        {
+                            "name": "MPL",
+                            "value": 2
+                        },
+                        {
+                            "name": "NPS",
+                            "value": 5
+                        },
+                        {
+                            "name": "SPS",
+                            "value": 11
+                        },
+                        {
+                            "name": "RPS",
+                            "value": 4
+                        },
+                        {
+                            "name": "LPS",
+                            "value": 2
+                        },
+                        {
+                            "name": "MPS",
+                            "value": 1
+                        },
+                        {
+                            "name": "NN",
+                            "value": 1
+                        },
+                        {
+                            "name": "SN",
+                            "value": 3
+                        },
+                        {
+                            "name": "RN",
+                            "value": 2
+                        },
+                        {
+                            "name": "LN",
+                            "value": 5
+                        },
+                        {
+                            "name": "MN",
+                            "value": 5
+                        },
+                        {
+                            "name": "dash",
+                            "value": 2
+                        },
+                        {
+                            "name": "powerDash",
+                            "value": 1
+                        }
+                    ]
+                },
+                "front": {
+                    "actions": [
+                        {
+                            "name": "neutral",
+                            "value": 500
+                        },
+                        {
+                            "name": "NL",
+                            "value": 1
+                        },
+                        {
+                            "name": "SL",
+                            "value": 1
+                        },
+                        {
+                            "name": "RL",
+                            "value": 1
+                        },
+                        {
+                            "name": "LL",
+                            "value": 5
+                        },
+                        {
+                            "name": "ML",
+                            "value": 1
+                        },
+                        {
+                            "name": "NS",
+                            "value": 1
+                        },
+                        {
+                            "name": "SS",
+                            "value": 1
+                        },
+                        {
+                            "name": "RS",
+                            "value": 1
+                        },
+                        {
+                            "name": "LS",
+                            "value": 5
+                        },
+                        {
+                            "name": "MS",
+                            "value": 1
+                        },
+                        {
+                            "name": "NPL",
+                            "value": 1
+                        },
+                        {
+                            "name": "SPL",
+                            "value": 1
+                        },
+                        {
+                            "name": "RPL",
+                            "value": 1
+                        },
+                        {
+                            "name": "LPL",
+                            "value": 8
+                        },
+                        {
+                            "name": "MPL",
+                            "value": 1
+                        },
+                        {
+                            "name": "NPS",
+                            "value": 1
+                        },
+                        {
+                            "name": "SPS",
+                            "value": 1
+                        },
+                        {
+                            "name": "RPS",
+                            "value": 1
+                        },
+                        {
+                            "name": "LPS",
+                            "value": 1
+                        },
+                        {
+                            "name": "MPS",
+                            "value": 1
+                        },
+                        {
+                            "name": "NN",
+                            "value": 1
+                        },
+                        {
+                            "name": "SN",
+                            "value": 1
+                        },
+                        {
+                            "name": "RN",
+                            "value": 1
+                        },
+                        {
+                            "name": "LN",
+                            "value": 1
+                        },
+                        {
+                            "name": "MN",
+                            "value": 1
+                        },
+                        {
+                            "name": "dash",
+                            "value": 1
+                        },
+                        {
+                            "name": "powerDash",
+                            "value": 11
+                        }
+                    ]
+                },
+                "right": {
+                    "actions": [
+                        {
+                            "name": "neutral",
+                            "value": 500
+                        },
+                        {
+                            "name": "NL",
+                            "value": 1
+                        },
+                        {
+                            "name": "SL",
+                            "value": 1
+                        },
+                        {
+                            "name": "RL",
+                            "value": 1
+                        },
+                        {
+                            "name": "LL",
+                            "value": 1
+                        },
+                        {
+                            "name": "ML",
+                            "value": 1
+                        },
+                        {
+                            "name": "NS",
+                            "value": 1
+                        },
+                        {
+                            "name": "SS",
+                            "value": 1
+                        },
+                        {
+                            "name": "RS",
+                            "value": 19
+                        },
+                        {
+                            "name": "LS",
+                            "value": 1
+                        },
+                        {
+                            "name": "MS",
+                            "value": 1
+                        },
+                        {
+                            "name": "NPL",
+                            "value": 1
+                        },
+                        {
+                            "name": "SPL",
+                            "value": 1
+                        },
+                        {
+                            "name": "RPL",
+                            "value": 1
+                        },
+                        {
+                            "name": "LPL",
+                            "value": 1
+                        },
+                        {
+                            "name": "MPL",
+                            "value": 1
+                        },
+                        {
+                            "name": "NPS",
+                            "value": 1
+                        },
+                        {
+                            "name": "SPS",
+                            "value": 1
+                        },
+                        {
+                            "name": "RPS",
+                            "value": 1
+                        },
+                        {
+                            "name": "LPS",
+                            "value": 1
+                        },
+                        {
+                            "name": "MPS",
+                            "value": 9
+                        },
+                        {
+                            "name": "NN",
+                            "value": 1
+                        },
+                        {
+                            "name": "SN",
+                            "value": 1
+                        },
+                        {
+                            "name": "RN",
+                            "value": 12
+                        },
+                        {
+                            "name": "LN",
+                            "value": 1
+                        },
+                        {
+                            "name": "MN",
+                            "value": 1
+                        },
+                        {
+                            "name": "dash",
+                            "value": 1
+                        },
+                        {
+                            "name": "powerDash",
+                            "value": 1
+                        }
+                    ]
+                },
+                "left": {
+                    "actions": [
+                        {
+                            "name": "neutral",
+                            "value": 500
+                        },
+                        {
+                            "name": "NL",
+                            "value": 1
+                        },
+                        {
+                            "name": "SL",
+                            "value": 1
+                        },
+                        {
+                            "name": "RL",
+                            "value": 5
+                        },
+                        {
+                            "name": "LL",
+                            "value": 2
+                        },
+                        {
+                            "name": "ML",
+                            "value": 1
+                        },
+                        {
+                            "name": "NS",
+                            "value": 4
+                        },
+                        {
+                            "name": "SS",
+                            "value": 1
+                        },
+                        {
+                            "name": "RS",
+                            "value": 3
+                        },
+                        {
+                            "name": "LS",
+                            "value": 1
+                        },
+                        {
+                            "name": "MS",
+                            "value": 26
+                        },
+                        {
+                            "name": "NPL",
+                            "value": 1
+                        },
+                        {
+                            "name": "SPL",
+                            "value": 1
+                        },
+                        {
+                            "name": "RPL",
+                            "value": 16
+                        },
+                        {
+                            "name": "LPL",
+                            "value": 14
+                        },
+                        {
+                            "name": "MPL",
+                            "value": 5
+                        },
+                        {
+                            "name": "NPS",
+                            "value": 1
+                        },
+                        {
+                            "name": "SPS",
+                            "value": 6
+                        },
+                        {
+                            "name": "RPS",
+                            "value": 1
+                        },
+                        {
+                            "name": "LPS",
+                            "value": 36
+                        },
+                        {
+                            "name": "MPS",
+                            "value": 1
+                        },
+                        {
+                            "name": "NN",
+                            "value": 1
+                        },
+                        {
+                            "name": "SN",
+                            "value": 32
+                        },
+                        {
+                            "name": "RN",
+                            "value": 1
+                        },
+                        {
+                            "name": "LN",
+                            "value": 2
+                        },
+                        {
+                            "name": "MN",
+                            "value": 1
+                        },
+                        {
+                            "name": "dash",
+                            "value": 1
+                        },
+                        {
+                            "name": "powerDash",
+                            "value": 27
+                        }
+                    ]
+                }
+            },
+            "near110": {
+                "back": {
+                    "actions": [
+                        {
+                            "name": "neutral",
+                            "value": 500
+                        },
+                        {
+                            "name": "NL",
+                            "value": 3
+                        },
+                        {
+                            "name": "SL",
+                            "value": 4
+                        },
+                        {
+                            "name": "RL",
+                            "value": 5
+                        },
+                        {
+                            "name": "LL",
+                            "value": 1
+                        },
+                        {
+                            "name": "ML",
+                            "value": 1
+                        },
+                        {
+                            "name": "NS",
+                            "value": 5
+                        },
+                        {
+                            "name": "SS",
+                            "value": 3
+                        },
+                        {
+                            "name": "RS",
+                            "value": 5
+                        },
+                        {
+                            "name": "LS",
+                            "value": 1
+                        },
+                        {
+                            "name": "MS",
+                            "value": 2
+                        },
+                        {
+                            "name": "NPL",
+                            "value": 2
+                        },
+                        {
+                            "name": "SPL",
+                            "value": 5
+                        },
+                        {
+                            "name": "RPL",
+                            "value": 1
+                        },
+                        {
+                            "name": "LPL",
+                            "value": 2
+                        },
+                        {
+                            "name": "MPL",
+                            "value": 1
+                        },
+                        {
+                            "name": "NPS",
+                            "value": 4
+                        },
+                        {
+                            "name": "SPS",
+                            "value": 4
+                        },
+                        {
+                            "name": "RPS",
+                            "value": 5
+                        },
+                        {
+                            "name": "LPS",
+                            "value": 1
+                        },
+                        {
+                            "name": "MPS",
+                            "value": 12
+                        },
+                        {
+                            "name": "NN",
+                            "value": 2
+                        },
+                        {
+                            "name": "SN",
+                            "value": 1
+                        },
+                        {
+                            "name": "RN",
+                            "value": 2
+                        },
+                        {
+                            "name": "LN",
+                            "value": 5
+                        },
+                        {
+                            "name": "MN",
+                            "value": 5
+                        },
+                        {
+                            "name": "dash",
+                            "value": 19
+                        },
+                        {
+                            "name": "powerDash",
+                            "value": 1
+                        }
+                    ]
+                },
+                "front": {
+                    "actions": [
+                        {
+                            "name": "neutral",
+                            "value": 500
+                        },
+                        {
+                            "name": "NL",
+                            "value": 1
+                        },
+                        {
+                            "name": "SL",
+                            "value": 1
+                        },
+                        {
+                            "name": "RL",
+                            "value": 1
+                        },
+                        {
+                            "name": "LL",
+                            "value": 1
+                        },
+                        {
+                            "name": "ML",
+                            "value": 11
+                        },
+                        {
+                            "name": "NS",
+                            "value": 1
+                        },
+                        {
+                            "name": "SS",
+                            "value": 1
+                        },
+                        {
+                            "name": "RS",
+                            "value": 5
+                        },
+                        {
+                            "name": "LS",
+                            "value": 1
+                        },
+                        {
+                            "name": "MS",
+                            "value": 1
+                        },
+                        {
+                            "name": "NPL",
+                            "value": 2
+                        },
+                        {
+                            "name": "SPL",
+                            "value": 1
+                        },
+                        {
+                            "name": "RPL",
+                            "value": 1
+                        },
+                        {
+                            "name": "LPL",
+                            "value": 1
+                        },
+                        {
+                            "name": "MPL",
+                            "value": 1
+                        },
+                        {
+                            "name": "NPS",
+                            "value": 1
+                        },
+                        {
+                            "name": "SPS",
+                            "value": 1
+                        },
+                        {
+                            "name": "RPS",
+                            "value": 1
+                        },
+                        {
+                            "name": "LPS",
+                            "value": 1
+                        },
+                        {
+                            "name": "MPS",
+                            "value": 1
+                        },
+                        {
+                            "name": "NN",
+                            "value": 4
+                        },
+                        {
+                            "name": "SN",
+                            "value": 1
+                        },
+                        {
+                            "name": "RN",
+                            "value": 1
+                        },
+                        {
+                            "name": "LN",
+                            "value": 1
+                        },
+                        {
+                            "name": "MN",
+                            "value": 1
+                        },
+                        {
+                            "name": "dash",
+                            "value": 1
+                        },
+                        {
+                            "name": "powerDash",
+                            "value": 1
+                        }
+                    ]
+                },
+                "right": {
+                    "actions": [
+                        {
+                            "name": "neutral",
+                            "value": 500
+                        },
+                        {
+                            "name": "NL",
+                            "value": 7
+                        },
+                        {
+                            "name": "SL",
+                            "value": 1
+                        },
+                        {
+                            "name": "RL",
+                            "value": 1
+                        },
+                        {
+                            "name": "LL",
+                            "value": 1
+                        },
+                        {
+                            "name": "ML",
+                            "value": 1
+                        },
+                        {
+                            "name": "NS",
+                            "value": 11
+                        },
+                        {
+                            "name": "SS",
+                            "value": 1
+                        },
+                        {
+                            "name": "RS",
+                            "value": 2
+                        },
+                        {
+                            "name": "LS",
+                            "value": 1
+                        },
+                        {
+                            "name": "MS",
+                            "value": 1
+                        },
+                        {
+                            "name": "NPL",
+                            "value": 12
+                        },
+                        {
+                            "name": "SPL",
+                            "value": 1
+                        },
+                        {
+                            "name": "RPL",
+                            "value": 1
+                        },
+                        {
+                            "name": "LPL",
+                            "value": 1
+                        },
+                        {
+                            "name": "MPL",
+                            "value": 1
+                        },
+                        {
+                            "name": "NPS",
+                            "value": 1
+                        },
+                        {
+                            "name": "SPS",
+                            "value": 1
+                        },
+                        {
+                            "name": "RPS",
+                            "value": 13
+                        },
+                        {
+                            "name": "LPS",
+                            "value": 6
+                        },
+                        {
+                            "name": "MPS",
+                            "value": 1
+                        },
+                        {
+                            "name": "NN",
+                            "value": 1
+                        },
+                        {
+                            "name": "SN",
+                            "value": 1
+                        },
+                        {
+                            "name": "RN",
+                            "value": 1
+                        },
+                        {
+                            "name": "LN",
+                            "value": 1
+                        },
+                        {
+                            "name": "MN",
+                            "value": 1
+                        },
+                        {
+                            "name": "dash",
+                            "value": 2
+                        },
+                        {
+                            "name": "powerDash",
+                            "value": 6
+                        }
+                    ]
+                },
+                "left": {
+                    "actions": [
+                        {
+                            "name": "neutral",
+                            "value": 500
+                        },
+                        {
+                            "name": "NL",
+                            "value": 1
+                        },
+                        {
+                            "name": "SL",
+                            "value": 4
+                        },
+                        {
+                            "name": "RL",
+                            "value": 1
+                        },
+                        {
+                            "name": "LL",
+                            "value": 17
+                        },
+                        {
+                            "name": "ML",
+                            "value": 9
+                        },
+                        {
+                            "name": "NS",
+                            "value": 1
+                        },
+                        {
+                            "name": "SS",
+                            "value": 1
+                        },
+                        {
+                            "name": "RS",
+                            "value": 2
+                        },
+                        {
+                            "name": "LS",
+                            "value": 1
+                        },
+                        {
+                            "name": "MS",
+                            "value": 1
+                        },
+                        {
+                            "name": "NPL",
+                            "value": 1
+                        },
+                        {
+                            "name": "SPL",
+                            "value": 11
+                        },
+                        {
+                            "name": "RPL",
+                            "value": 24
+                        },
+                        {
+                            "name": "LPL",
+                            "value": 1
+                        },
+                        {
+                            "name": "MPL",
+                            "value": 1
+                        },
+                        {
+                            "name": "NPS",
+                            "value": 3
+                        },
+                        {
+                            "name": "SPS",
+                            "value": 1
+                        },
+                        {
+                            "name": "RPS",
+                            "value": 4
+                        },
+                        {
+                            "name": "LPS",
+                            "value": 40
+                        },
+                        {
+                            "name": "MPS",
+                            "value": 1
+                        },
+                        {
+                            "name": "NN",
+                            "value": 1
+                        },
+                        {
+                            "name": "SN",
+                            "value": 1
+                        },
+                        {
+                            "name": "RN",
+                            "value": 1
+                        },
+                        {
+                            "name": "LN",
+                            "value": 6
+                        },
+                        {
+                            "name": "MN",
+                            "value": 1
+                        },
+                        {
+                            "name": "dash",
+                            "value": 2
+                        },
+                        {
+                            "name": "powerDash",
+                            "value": 1
+                        }
+                    ]
+                }
+            },
+            "near120": {
+                "back": {
+                    "actions": [
+                        {
+                            "name": "neutral",
+                            "value": 500
+                        },
+                        {
+                            "name": "NL",
+                            "value": 5
+                        },
+                        {
+                            "name": "SL",
+                            "value": 1
+                        },
+                        {
+                            "name": "RL",
+                            "value": 2
+                        },
+                        {
+                            "name": "LL",
+                            "value": 2
+                        },
+                        {
+                            "name": "ML",
+                            "value": 5
+                        },
+                        {
+                            "name": "NS",
+                            "value": 3
+                        },
+                        {
+                            "name": "SS",
+                            "value": 5
+                        },
+                        {
+                            "name": "RS",
+                            "value": 5
+                        },
+                        {
+                            "name": "LS",
+                            "value": 1
+                        },
+                        {
+                            "name": "MS",
+                            "value": 3
+                        },
+                        {
+                            "name": "NPL",
+                            "value": 14
+                        },
+                        {
+                            "name": "SPL",
+                            "value": 2
+                        },
+                        {
+                            "name": "RPL",
+                            "value": 5
+                        },
+                        {
+                            "name": "LPL",
+                            "value": 5
+                        },
+                        {
+                            "name": "MPL",
+                            "value": 3
+                        },
+                        {
+                            "name": "NPS",
+                            "value": 2
+                        },
+                        {
+                            "name": "SPS",
+                            "value": 5
+                        },
+                        {
+                            "name": "RPS",
+                            "value": 13
+                        },
+                        {
+                            "name": "LPS",
+                            "value": 1
+                        },
+                        {
+                            "name": "MPS",
+                            "value": 12
+                        },
+                        {
+                            "name": "NN",
+                            "value": 4
+                        },
+                        {
+                            "name": "SN",
+                            "value": 5
+                        },
+                        {
+                            "name": "RN",
+                            "value": 3
+                        },
+                        {
+                            "name": "LN",
+                            "value": 2
+                        },
+                        {
+                            "name": "MN",
+                            "value": 9
+                        },
+                        {
+                            "name": "dash",
+                            "value": 3
+                        },
+                        {
+                            "name": "powerDash",
+                            "value": 1
+                        }
+                    ]
+                },
+                "front": {
+                    "actions": [
+                        {
+                            "name": "neutral",
+                            "value": 500
+                        },
+                        {
+                            "name": "NL",
+                            "value": 1
+                        },
+                        {
+                            "name": "SL",
+                            "value": 1
+                        },
+                        {
+                            "name": "RL",
+                            "value": 1
+                        },
+                        {
+                            "name": "LL",
+                            "value": 1
+                        },
+                        {
+                            "name": "ML",
+                            "value": 1
+                        },
+                        {
+                            "name": "NS",
+                            "value": 1
+                        },
+                        {
+                            "name": "SS",
+                            "value": 2
+                        },
+                        {
+                            "name": "RS",
+                            "value": 1
+                        },
+                        {
+                            "name": "LS",
+                            "value": 1
+                        },
+                        {
+                            "name": "MS",
+                            "value": 1
+                        },
+                        {
+                            "name": "NPL",
+                            "value": 1
+                        },
+                        {
+                            "name": "SPL",
+                            "value": 1
+                        },
+                        {
+                            "name": "RPL",
+                            "value": 1
+                        },
+                        {
+                            "name": "LPL",
+                            "value": 5
+                        },
+                        {
+                            "name": "MPL",
+                            "value": 1
+                        },
+                        {
+                            "name": "NPS",
+                            "value": 1
+                        },
+                        {
+                            "name": "SPS",
+                            "value": 1
+                        },
+                        {
+                            "name": "RPS",
+                            "value": 1
+                        },
+                        {
+                            "name": "LPS",
+                            "value": 1
+                        },
+                        {
+                            "name": "MPS",
+                            "value": 1
+                        },
+                        {
+                            "name": "NN",
+                            "value": 1
+                        },
+                        {
+                            "name": "SN",
+                            "value": 1
+                        },
+                        {
+                            "name": "RN",
+                            "value": 1
+                        },
+                        {
+                            "name": "LN",
+                            "value": 1
+                        },
+                        {
+                            "name": "MN",
+                            "value": 1
+                        },
+                        {
+                            "name": "dash",
+                            "value": 1
+                        },
+                        {
+                            "name": "powerDash",
+                            "value": 1
+                        }
+                    ]
+                },
+                "right": {
+                    "actions": [
+                        {
+                            "name": "neutral",
+                            "value": 500
+                        },
+                        {
+                            "name": "NL",
+                            "value": 1
+                        },
+                        {
+                            "name": "SL",
+                            "value": 1
+                        },
+                        {
+                            "name": "RL",
+                            "value": 20
+                        },
+                        {
+                            "name": "LL",
+                            "value": 1
+                        },
+                        {
+                            "name": "ML",
+                            "value": 1
+                        },
+                        {
+                            "name": "NS",
+                            "value": 38
+                        },
+                        {
+                            "name": "SS",
+                            "value": 1
+                        },
+                        {
+                            "name": "RS",
+                            "value": 1
+                        },
+                        {
+                            "name": "LS",
+                            "value": 1
+                        },
+                        {
+                            "name": "MS",
+                            "value": 1
+                        },
+                        {
+                            "name": "NPL",
+                            "value": 1
+                        },
+                        {
+                            "name": "SPL",
+                            "value": 1
+                        },
+                        {
+                            "name": "RPL",
+                            "value": 1
+                        },
+                        {
+                            "name": "LPL",
+                            "value": 16
+                        },
+                        {
+                            "name": "MPL",
+                            "value": 1
+                        },
+                        {
+                            "name": "NPS",
+                            "value": 1
+                        },
+                        {
+                            "name": "SPS",
+                            "value": 1
+                        },
+                        {
+                            "name": "RPS",
+                            "value": 8
+                        },
+                        {
+                            "name": "LPS",
+                            "value": 8
+                        },
+                        {
+                            "name": "MPS",
+                            "value": 1
+                        },
+                        {
+                            "name": "NN",
+                            "value": 14
+                        },
+                        {
+                            "name": "SN",
+                            "value": 8
+                        },
+                        {
+                            "name": "RN",
+                            "value": 1
+                        },
+                        {
+                            "name": "LN",
+                            "value": 1
+                        },
+                        {
+                            "name": "MN",
+                            "value": 1
+                        },
+                        {
+                            "name": "dash",
+                            "value": 1
+                        },
+                        {
+                            "name": "powerDash",
+                            "value": 1
+                        }
+                    ]
+                },
+                "left": {
+                    "actions": [
+                        {
+                            "name": "neutral",
+                            "value": 500
+                        },
+                        {
+                            "name": "NL",
+                            "value": 3
+                        },
+                        {
+                            "name": "SL",
+                            "value": 4
+                        },
+                        {
+                            "name": "RL",
+                            "value": 1
+                        },
+                        {
+                            "name": "LL",
+                            "value": 1
+                        },
+                        {
+                            "name": "ML",
+                            "value": 1
+                        },
+                        {
+                            "name": "NS",
+                            "value": 1
+                        },
+                        {
+                            "name": "SS",
+                            "value": 5
+                        },
+                        {
+                            "name": "RS",
+                            "value": 22
+                        },
+                        {
+                            "name": "LS",
+                            "value": 5
+                        },
+                        {
+                            "name": "MS",
+                            "value": 1
+                        },
+                        {
+                            "name": "NPL",
+                            "value": 2
+                        },
+                        {
+                            "name": "SPL",
+                            "value": 9
+                        },
+                        {
+                            "name": "RPL",
+                            "value": 1
+                        },
+                        {
+                            "name": "LPL",
+                            "value": 15
+                        },
+                        {
+                            "name": "MPL",
+                            "value": 15
+                        },
+                        {
+                            "name": "NPS",
+                            "value": 1
+                        },
+                        {
+                            "name": "SPS",
+                            "value": 2
+                        },
+                        {
+                            "name": "RPS",
+                            "value": 1
+                        },
+                        {
+                            "name": "LPS",
+                            "value": 1
+                        },
+                        {
+                            "name": "MPS",
+                            "value": 16
+                        },
+                        {
+                            "name": "NN",
+                            "value": 1
+                        },
+                        {
+                            "name": "SN",
+                            "value": 1
+                        },
+                        {
+                            "name": "RN",
+                            "value": 2
+                        },
+                        {
+                            "name": "LN",
+                            "value": 2
+                        },
+                        {
+                            "name": "MN",
+                            "value": 30
+                        },
+                        {
+                            "name": "dash",
+                            "value": 1
+                        },
+                        {
+                            "name": "powerDash",
+                            "value": 25
+                        }
+                    ]
+                }
+            },
+            "near130": {
+                "back": {
+                    "actions": [
+                        {
+                            "name": "neutral",
+                            "value": 500
+                        },
+                        {
+                            "name": "NL",
+                            "value": 3
+                        },
+                        {
+                            "name": "SL",
+                            "value": 1
+                        },
+                        {
+                            "name": "RL",
+                            "value": 9
+                        },
+                        {
+                            "name": "LL",
+                            "value": 2
+                        },
+                        {
+                            "name": "ML",
+                            "value": 2
+                        },
+                        {
+                            "name": "NS",
+                            "value": 4
+                        },
+                        {
+                            "name": "SS",
+                            "value": 1
+                        },
+                        {
+                            "name": "RS",
+                            "value": 5
+                        },
+                        {
+                            "name": "LS",
+                            "value": 5
+                        },
+                        {
+                            "name": "MS",
+                            "value": 5
+                        },
+                        {
+                            "name": "NPL",
+                            "value": 11
+                        },
+                        {
+                            "name": "SPL",
+                            "value": 3
+                        },
+                        {
+                            "name": "RPL",
+                            "value": 12
+                        },
+                        {
+                            "name": "LPL",
+                            "value": 4
+                        },
+                        {
+                            "name": "MPL",
+                            "value": 5
+                        },
+                        {
+                            "name": "NPS",
+                            "value": 2
+                        },
+                        {
+                            "name": "SPS",
+                            "value": 5
+                        },
+                        {
+                            "name": "RPS",
+                            "value": 4
+                        },
+                        {
+                            "name": "LPS",
+                            "value": 5
+                        },
+                        {
+                            "name": "MPS",
+                            "value": 3
+                        },
+                        {
+                            "name": "NN",
+                            "value": 12
+                        },
+                        {
+                            "name": "SN",
+                            "value": 1
+                        },
+                        {
+                            "name": "RN",
+                            "value": 3
+                        },
+                        {
+                            "name": "LN",
+                            "value": 5
+                        },
+                        {
+                            "name": "MN",
+                            "value": 4
+                        },
+                        {
+                            "name": "dash",
+                            "value": 5
+                        },
+                        {
+                            "name": "powerDash",
+                            "value": 1
+                        }
+                    ]
+                },
+                "front": {
+                    "actions": [
+                        {
+                            "name": "neutral",
+                            "value": 500
+                        },
+                        {
+                            "name": "NL",
+                            "value": 4
+                        },
+                        {
+                            "name": "SL",
+                            "value": 1
+                        },
+                        {
+                            "name": "RL",
+                            "value": 1
+                        },
+                        {
+                            "name": "LL",
+                            "value": 1
+                        },
+                        {
+                            "name": "ML",
+                            "value": 1
+                        },
+                        {
+                            "name": "NS",
+                            "value": 1
+                        },
+                        {
+                            "name": "SS",
+                            "value": 48
+                        },
+                        {
+                            "name": "RS",
+                            "value": 4
+                        },
+                        {
+                            "name": "LS",
+                            "value": 1
+                        },
+                        {
+                            "name": "MS",
+                            "value": 1
+                        },
+                        {
+                            "name": "NPL",
+                            "value": 1
+                        },
+                        {
+                            "name": "SPL",
+                            "value": 14
+                        },
+                        {
+                            "name": "RPL",
+                            "value": 1
+                        },
+                        {
+                            "name": "LPL",
+                            "value": 1
+                        },
+                        {
+                            "name": "MPL",
+                            "value": 1
+                        },
+                        {
+                            "name": "NPS",
+                            "value": 1
+                        },
+                        {
+                            "name": "SPS",
+                            "value": 1
+                        },
+                        {
+                            "name": "RPS",
+                            "value": 1
+                        },
+                        {
+                            "name": "LPS",
+                            "value": 1
+                        },
+                        {
+                            "name": "MPS",
+                            "value": 1
+                        },
+                        {
+                            "name": "NN",
+                            "value": 1
+                        },
+                        {
+                            "name": "SN",
+                            "value": 1
+                        },
+                        {
+                            "name": "RN",
+                            "value": 1
+                        },
+                        {
+                            "name": "LN",
+                            "value": 1
+                        },
+                        {
+                            "name": "MN",
+                            "value": 1
+                        },
+                        {
+                            "name": "dash",
+                            "value": 1
+                        },
+                        {
+                            "name": "powerDash",
+                            "value": 35
+                        }
+                    ]
+                },
+                "right": {
+                    "actions": [
+                        {
+                            "name": "neutral",
+                            "value": 500
+                        },
+                        {
+                            "name": "NL",
+                            "value": 1
+                        },
+                        {
+                            "name": "SL",
+                            "value": 27
+                        },
+                        {
+                            "name": "RL",
+                            "value": 1
+                        },
+                        {
+                            "name": "LL",
+                            "value": 24
+                        },
+                        {
+                            "name": "ML",
+                            "value": 64
+                        },
+                        {
+                            "name": "NS",
+                            "value": 4
+                        },
+                        {
+                            "name": "SS",
+                            "value": 1
+                        },
+                        {
+                            "name": "RS",
+                            "value": 5
+                        },
+                        {
+                            "name": "LS",
+                            "value": 2
+                        },
+                        {
+                            "name": "MS",
+                            "value": 22
+                        },
+                        {
+                            "name": "NPL",
+                            "value": 44
+                        },
+                        {
+                            "name": "SPL",
+                            "value": 1
+                        },
+                        {
+                            "name": "RPL",
+                            "value": 8
+                        },
+                        {
+                            "name": "LPL",
+                            "value": 4
+                        },
+                        {
+                            "name": "MPL",
+                            "value": 4
+                        },
+                        {
+                            "name": "NPS",
+                            "value": 84
+                        },
+                        {
+                            "name": "SPS",
+                            "value": 6
+                        },
+                        {
+                            "name": "RPS",
+                            "value": 22
+                        },
+                        {
+                            "name": "LPS",
+                            "value": 31
+                        },
+                        {
+                            "name": "MPS",
+                            "value": 13
+                        },
+                        {
+                            "name": "NN",
+                            "value": 2
+                        },
+                        {
+                            "name": "SN",
+                            "value": 4
+                        },
+                        {
+                            "name": "RN",
+                            "value": 25
+                        },
+                        {
+                            "name": "LN",
+                            "value": 2
+                        },
+                        {
+                            "name": "MN",
+                            "value": 93
+                        },
+                        {
+                            "name": "dash",
+                            "value": 1
+                        },
+                        {
+                            "name": "powerDash",
+                            "value": 68
+                        }
+                    ]
+                },
+                "left": {
+                    "actions": [
+                        {
+                            "name": "neutral",
+                            "value": 500
+                        },
+                        {
+                            "name": "NL",
+                            "value": 1
+                        },
+                        {
+                            "name": "SL",
+                            "value": 23
+                        },
+                        {
+                            "name": "RL",
+                            "value": 2
+                        },
+                        {
+                            "name": "LL",
+                            "value": 5
+                        },
+                        {
+                            "name": "ML",
+                            "value": 3
+                        },
+                        {
+                            "name": "NS",
+                            "value": 1
+                        },
+                        {
+                            "name": "SS",
+                            "value": 1
+                        },
+                        {
+                            "name": "RS",
+                            "value": 11
+                        },
+                        {
+                            "name": "LS",
+                            "value": 1
+                        },
+                        {
+                            "name": "MS",
+                            "value": 1
+                        },
+                        {
+                            "name": "NPL",
+                            "value": 1
+                        },
+                        {
+                            "name": "SPL",
+                            "value": 3
+                        },
+                        {
+                            "name": "RPL",
+                            "value": 1
+                        },
+                        {
+                            "name": "LPL",
+                            "value": 2
+                        },
+                        {
+                            "name": "MPL",
+                            "value": 3
+                        },
+                        {
+                            "name": "NPS",
+                            "value": 13
+                        },
+                        {
+                            "name": "SPS",
+                            "value": 1
+                        },
+                        {
+                            "name": "RPS",
+                            "value": 1
+                        },
+                        {
+                            "name": "LPS",
+                            "value": 1
+                        },
+                        {
+                            "name": "MPS",
+                            "value": 1
+                        },
+                        {
+                            "name": "NN",
+                            "value": 2
+                        },
+                        {
+                            "name": "SN",
+                            "value": 1
+                        },
+                        {
+                            "name": "RN",
+                            "value": 5
+                        },
+                        {
+                            "name": "LN",
+                            "value": 20
+                        },
+                        {
+                            "name": "MN",
+                            "value": 9
+                        },
+                        {
+                            "name": "dash",
+                            "value": 3
+                        },
+                        {
+                            "name": "powerDash",
+                            "value": 1
+                        }
+                    ]
+                }
+            },
+            "close": {
+                "back": {
+                    "actions": [
+                        {
+                            "name": "neutral",
+                            "value": 500
+                        },
+                        {
+                            "name": "NL",
+                            "value": 1
+                        },
+                        {
+                            "name": "SL",
+                            "value": 1
+                        },
+                        {
+                            "name": "RL",
+                            "value": 1
+                        },
+                        {
+                            "name": "LL",
+                            "value": 1
+                        },
+                        {
+                            "name": "ML",
+                            "value": 1
+                        },
+                        {
+                            "name": "NS",
+                            "value": 8
+                        },
+                        {
+                            "name": "SS",
+                            "value": 1
+                        },
+                        {
+                            "name": "RS",
+                            "value": 1
+                        },
+                        {
+                            "name": "LS",
+                            "value": 3
+                        },
+                        {
+                            "name": "MS",
+                            "value": 6
+                        },
+                        {
+                            "name": "NPL",
+                            "value": 1
+                        },
+                        {
+                            "name": "SPL",
+                            "value": 1
+                        },
+                        {
+                            "name": "RPL",
+                            "value": 1
+                        },
+                        {
+                            "name": "LPL",
+                            "value": 1
+                        },
+                        {
+                            "name": "MPL",
+                            "value": 6
+                        },
+                        {
+                            "name": "NPS",
+                            "value": 2
+                        },
+                        {
+                            "name": "SPS",
+                            "value": 1
+                        },
+                        {
+                            "name": "RPS",
+                            "value": 1
+                        },
+                        {
+                            "name": "LPS",
+                            "value": 1
+                        },
+                        {
+                            "name": "MPS",
+                            "value": 7
+                        },
+                        {
+                            "name": "NN",
+                            "value": 1
+                        },
+                        {
+                            "name": "SN",
+                            "value": 1
+                        },
+                        {
+                            "name": "RN",
+                            "value": 1
+                        },
+                        {
+                            "name": "LN",
+                            "value": 1
+                        },
+                        {
+                            "name": "MN",
+                            "value": 1
+                        },
+                        {
+                            "name": "dash",
+                            "value": 1
+                        },
+                        {
+                            "name": "powerDash",
+                            "value": 1
+                        }
+                    ]
+                },
+                "front": {
+                    "actions": [
+                        {
+                            "name": "neutral",
+                            "value": 500
+                        },
+                        {
+                            "name": "NL",
+                            "value": 1
+                        },
+                        {
+                            "name": "SL",
+                            "value": 12
+                        },
+                        {
+                            "name": "RL",
+                            "value": 1
+                        },
+                        {
+                            "name": "LL",
+                            "value": 1
+                        },
+                        {
+                            "name": "ML",
+                            "value": 1
+                        },
+                        {
+                            "name": "NS",
+                            "value": 1
+                        },
+                        {
+                            "name": "SS",
+                            "value": 1
+                        },
+                        {
+                            "name": "RS",
+                            "value": 1
+                        },
+                        {
+                            "name": "LS",
+                            "value": 1
+                        },
+                        {
+                            "name": "MS",
+                            "value": 1
+                        },
+                        {
+                            "name": "NPL",
+                            "value": 1
+                        },
+                        {
+                            "name": "SPL",
+                            "value": 1
+                        },
+                        {
+                            "name": "RPL",
+                            "value": 1
+                        },
+                        {
+                            "name": "LPL",
+                            "value": 1
+                        },
+                        {
+                            "name": "MPL",
+                            "value": 1
+                        },
+                        {
+                            "name": "NPS",
+                            "value": 1
+                        },
+                        {
+                            "name": "SPS",
+                            "value": 1
+                        },
+                        {
+                            "name": "RPS",
+                            "value": 1
+                        },
+                        {
+                            "name": "LPS",
+                            "value": 2
+                        },
+                        {
+                            "name": "MPS",
+                            "value": 1
+                        },
+                        {
+                            "name": "NN",
+                            "value": 1
+                        },
+                        {
+                            "name": "SN",
+                            "value": 1
+                        },
+                        {
+                            "name": "RN",
+                            "value": 1
+                        },
+                        {
+                            "name": "LN",
+                            "value": 1
+                        },
+                        {
+                            "name": "MN",
+                            "value": 1
+                        },
+                        {
+                            "name": "dash",
+                            "value": 1
+                        },
+                        {
+                            "name": "powerDash",
+                            "value": 1
+                        }
+                    ]
+                },
+                "right": {
+                    "actions": [
+                        {
+                            "name": "neutral",
+                            "value": 500
+                        },
+                        {
+                            "name": "NL",
+                            "value": 2
+                        },
+                        {
+                            "name": "SL",
+                            "value": 1
+                        },
+                        {
+                            "name": "RL",
+                            "value": 1
+                        },
+                        {
+                            "name": "LL",
+                            "value": 1
+                        },
+                        {
+                            "name": "ML",
+                            "value": 1
+                        },
+                        {
+                            "name": "NS",
+                            "value": 1
+                        },
+                        {
+                            "name": "SS",
+                            "value": 1
+                        },
+                        {
+                            "name": "RS",
+                            "value": 2
+                        },
+                        {
+                            "name": "LS",
+                            "value": 1
+                        },
+                        {
+                            "name": "MS",
+                            "value": 1
+                        },
+                        {
+                            "name": "NPL",
+                            "value": 2
+                        },
+                        {
+                            "name": "SPL",
+                            "value": 1
+                        },
+                        {
+                            "name": "RPL",
+                            "value": 1
+                        },
+                        {
+                            "name": "LPL",
+                            "value": 1
+                        },
+                        {
+                            "name": "MPL",
+                            "value": 2
+                        },
+                        {
+                            "name": "NPS",
+                            "value": 1
+                        },
+                        {
+                            "name": "SPS",
+                            "value": 1
+                        },
+                        {
+                            "name": "RPS",
+                            "value": 3
+                        },
+                        {
+                            "name": "LPS",
+                            "value": 2
+                        },
+                        {
+                            "name": "MPS",
+                            "value": 1
+                        },
+                        {
+                            "name": "NN",
+                            "value": 1
+                        },
+                        {
+                            "name": "SN",
+                            "value": 2
+                        },
+                        {
+                            "name": "RN",
+                            "value": 4
+                        },
+                        {
+                            "name": "LN",
+                            "value": 1
+                        },
+                        {
+                            "name": "MN",
+                            "value": 6
+                        },
+                        {
+                            "name": "dash",
+                            "value": 1
+                        },
+                        {
+                            "name": "powerDash",
+                            "value": 1
+                        }
+                    ]
+                },
+                "left": {
+                    "actions": [
+                        {
+                            "name": "neutral",
+                            "value": 500
+                        },
+                        {
+                            "name": "NL",
+                            "value": 2
+                        },
+                        {
+                            "name": "SL",
+                            "value": 1
+                        },
+                        {
+                            "name": "RL",
+                            "value": 1
+                        },
+                        {
+                            "name": "LL",
+                            "value": 1
+                        },
+                        {
+                            "name": "ML",
+                            "value": 1
+                        },
+                        {
+                            "name": "NS",
+                            "value": 2
+                        },
+                        {
+                            "name": "SS",
+                            "value": 1
+                        },
+                        {
+                            "name": "RS",
+                            "value": 1
+                        },
+                        {
+                            "name": "LS",
+                            "value": 1
+                        },
+                        {
+                            "name": "MS",
+                            "value": 1
+                        },
+                        {
+                            "name": "NPL",
+                            "value": 1
+                        },
+                        {
+                            "name": "SPL",
+                            "value": 1
+                        },
+                        {
+                            "name": "RPL",
+                            "value": 4
+                        },
+                        {
+                            "name": "LPL",
+                            "value": 1
+                        },
+                        {
+                            "name": "MPL",
+                            "value": 1
+                        },
+                        {
+                            "name": "NPS",
+                            "value": 1
+                        },
+                        {
+                            "name": "SPS",
+                            "value": 1
+                        },
+                        {
+                            "name": "RPS",
+                            "value": 1
+                        },
+                        {
+                            "name": "LPS",
+                            "value": 1
+                        },
+                        {
+                            "name": "MPS",
+                            "value": 2
+                        },
+                        {
+                            "name": "NN",
+                            "value": 1
+                        },
+                        {
+                            "name": "SN",
+                            "value": 11
+                        },
+                        {
+                            "name": "RN",
+                            "value": 2
+                        },
+                        {
+                            "name": "LN",
+                            "value": 3
+                        },
+                        {
+                            "name": "MN",
+                            "value": 1
+                        },
+                        {
+                            "name": "dash",
+                            "value": 4
+                        },
+                        {
+                            "name": "powerDash",
+                            "value": 1
+                        }
+                    ]
+                }
+            }
+        },
+        "block": {
+            "back": {
+                "actions": [
+                    {
+                        "name": "neutral",
+                        "value": 500
+                    },
+                    {
+                        "name": "MN",
+                        "value": 1
+                    }
+                ]
+            },
+            "front": {
+                "actions": [
+                    {
+                        "name": "neutral",
+                        "value": 500
+                    },
+                    {
+                        "name": "MN",
+                        "value": 100
+                    }
+                ]
+            }
+        },
+        "hit": {
+            "all": {
+                "actions": [
+                    {
+                        "name": "neutral",
+                        "value": 500
+                    },
+                    {
+                        "name": "powerDash",
+                        "value": 1
+                    }
+                ]
+            }
+        },
+        "comboing": {
+            "back": {
+                "actions": [
+                    {
+                        "name": "neutral",
+                        "value": 500
+                    },
+                    {
+                        "name": "NL",
+                        "value": 3
+                    },
+                    {
+                        "name": "SL",
+                        "value": 1
+                    },
+                    {
+                        "name": "RL",
+                        "value": 2
+                    },
+                    {
+                        "name": "LL",
+                        "value": 5
+                    },
+                    {
+                        "name": "ML",
+                        "value": 2
+                    },
+                    {
+                        "name": "NS",
+                        "value": 5
+                    },
+                    {
+                        "name": "SS",
+                        "value": 2
+                    },
+                    {
+                        "name": "RS",
+                        "value": 5
+                    },
+                    {
+                        "name": "LS",
+                        "value": 5
+                    },
+                    {
+                        "name": "MS",
+                        "value": 2
+                    },
+                    {
+                        "name": "NPL",
+                        "value": 9
+                    },
+                    {
+                        "name": "SPL",
+                        "value": 3
+                    },
+                    {
+                        "name": "RPL",
+                        "value": 5
+                    },
+                    {
+                        "name": "LPL",
+                        "value": 5
+                    },
+                    {
+                        "name": "MPL",
+                        "value": 5
+                    },
+                    {
+                        "name": "NPS",
+                        "value": 4
+                    },
+                    {
+                        "name": "SPS",
+                        "value": 2
+                    },
+                    {
+                        "name": "RPS",
+                        "value": 5
+                    },
+                    {
+                        "name": "LPS",
+                        "value": 4
+                    },
+                    {
+                        "name": "MPS",
+                        "value": 1
+                    },
+                    {
+                        "name": "NN",
+                        "value": 31
+                    },
+                    {
+                        "name": "SN",
+                        "value": 2
+                    },
+                    {
+                        "name": "RN",
+                        "value": 5
+                    },
+                    {
+                        "name": "LN",
+                        "value": 5
+                    },
+                    {
+                        "name": "MN",
+                        "value": 17
+                    },
+                    {
+                        "name": "dash",
+                        "value": 13
+                    },
+                    {
+                        "name": "powerDash",
+                        "value": 1
+                    }
+                ]
+            },
+            "front": {
+                "actions": [
+                    {
+                        "name": "neutral",
+                        "value": 500
+                    },
+                    {
+                        "name": "NL",
+                        "value": 1
+                    },
+                    {
+                        "name": "SL",
+                        "value": 100
+                    },
+                    {
+                        "name": "RL",
+                        "value": 100
+                    },
+                    {
+                        "name": "LL",
+                        "value": 93
+                    },
+                    {
+                        "name": "ML",
+                        "value": 100
+                    },
+                    {
+                        "name": "NS",
+                        "value": 100
+                    },
+                    {
+                        "name": "SS",
+                        "value": 91
+                    },
+                    {
+                        "name": "RS",
+                        "value": 100
+                    },
+                    {
+                        "name": "LS",
+                        "value": 99
+                    },
+                    {
+                        "name": "MS",
+                        "value": 1
+                    },
+                    {
+                        "name": "NPL",
+                        "value": 2
+                    },
+                    {
+                        "name": "SPL",
+                        "value": 100
+                    },
+                    {
+                        "name": "RPL",
+                        "value": 97
+                    },
+                    {
+                        "name": "LPL",
+                        "value": 1
+                    },
+                    {
+                        "name": "MPL",
+                        "value": 65
+                    },
+                    {
+                        "name": "NPS",
+                        "value": 100
+                    },
+                    {
+                        "name": "SPS",
+                        "value": 13
+                    },
+                    {
+                        "name": "RPS",
+                        "value": 100
+                    },
+                    {
+                        "name": "LPS",
+                        "value": 2
+                    },
+                    {
+                        "name": "MPS",
+                        "value": 3
+                    },
+                    {
+                        "name": "NN",
+                        "value": 94
+                    },
+                    {
+                        "name": "SN",
+                        "value": 44
+                    },
+                    {
+                        "name": "RN",
+                        "value": 96
+                    },
+                    {
+                        "name": "LN",
+                        "value": 1
+                    },
+                    {
+                        "name": "MN",
+                        "value": 100
+                    },
+                    {
+                        "name": "dash",
+                        "value": 1
+                    },
+                    {
+                        "name": "powerDash",
+                        "value": 100
+                    }
+                ]
+            },
+            "right": {
+                "actions": [
+                    {
+                        "name": "neutral",
+                        "value": 500
+                    },
+                    {
+                        "name": "NL",
+                        "value": 29
+                    },
+                    {
+                        "name": "SL",
+                        "value": 33
+                    },
+                    {
+                        "name": "RL",
+                        "value": 30
+                    },
+                    {
+                        "name": "LL",
+                        "value": 1
+                    },
+                    {
+                        "name": "ML",
+                        "value": 97
+                    },
+                    {
+                        "name": "NS",
+                        "value": 2
+                    },
+                    {
+                        "name": "SS",
+                        "value": 13
+                    },
+                    {
+                        "name": "RS",
+                        "value": 37
+                    },
+                    {
+                        "name": "LS",
+                        "value": 11
+                    },
+                    {
+                        "name": "MS",
+                        "value": 1
+                    },
+                    {
+                        "name": "NPL",
+                        "value": 100
+                    },
+                    {
+                        "name": "SPL",
+                        "value": 97
+                    },
+                    {
+                        "name": "RPL",
+                        "value": 24
+                    },
+                    {
+                        "name": "LPL",
+                        "value": 5
+                    },
+                    {
+                        "name": "MPL",
+                        "value": 37
+                    },
+                    {
+                        "name": "NPS",
+                        "value": 7
+                    },
+                    {
+                        "name": "SPS",
+                        "value": 5
+                    },
+                    {
+                        "name": "RPS",
+                        "value": 27
+                    },
+                    {
+                        "name": "LPS",
+                        "value": 5
+                    },
+                    {
+                        "name": "MPS",
+                        "value": 4
+                    },
+                    {
+                        "name": "NN",
+                        "value": 98
+                    },
+                    {
+                        "name": "SN",
+                        "value": 2
+                    },
+                    {
+                        "name": "RN",
+                        "value": 5
+                    },
+                    {
+                        "name": "LN",
+                        "value": 2
+                    },
+                    {
+                        "name": "MN",
+                        "value": 100
+                    },
+                    {
+                        "name": "dash",
+                        "value": 19
+                    },
+                    {
+                        "name": "powerDash",
+                        "value": 80
+                    }
+                ]
+            },
+            "left": {
+                "actions": [
+                    {
+                        "name": "neutral",
+                        "value": 500
+                    },
+                    {
+                        "name": "NL",
+                        "value": 4
+                    },
+                    {
+                        "name": "SL",
+                        "value": 25
+                    },
+                    {
+                        "name": "RL",
+                        "value": 2
+                    },
+                    {
+                        "name": "LL",
+                        "value": 5
+                    },
+                    {
+                        "name": "ML",
+                        "value": 3
+                    },
+                    {
+                        "name": "NS",
+                        "value": 3
+                    },
+                    {
+                        "name": "SS",
+                        "value": 6
+                    },
+                    {
+                        "name": "RS",
+                        "value": 2
+                    },
+                    {
+                        "name": "LS",
+                        "value": 35
+                    },
+                    {
+                        "name": "MS",
+                        "value": 21
+                    },
+                    {
+                        "name": "NPL",
+                        "value": 30
+                    },
+                    {
+                        "name": "SPL",
+                        "value": 19
+                    },
+                    {
+                        "name": "RPL",
+                        "value": 1
+                    },
+                    {
+                        "name": "LPL",
+                        "value": 12
+                    },
+                    {
+                        "name": "MPL",
+                        "value": 11
+                    },
+                    {
+                        "name": "NPS",
+                        "value": 17
+                    },
+                    {
+                        "name": "SPS",
+                        "value": 2
+                    },
+                    {
+                        "name": "RPS",
+                        "value": 2
+                    },
+                    {
+                        "name": "LPS",
+                        "value": 44
+                    },
+                    {
+                        "name": "MPS",
+                        "value": 62
+                    },
+                    {
+                        "name": "NN",
+                        "value": 75
+                    },
+                    {
+                        "name": "SN",
+                        "value": 5
+                    },
+                    {
+                        "name": "RN",
+                        "value": 29
+                    },
+                    {
+                        "name": "LN",
+                        "value": 3
+                    },
+                    {
+                        "name": "MN",
+                        "value": 100
+                    },
+                    {
+                        "name": "dash",
+                        "value": 2
+                    },
+                    {
+                        "name": "powerDash",
+                        "value": 66
+                    }
+                ]
+            }
+        },
+        "dashing": {
+            "actions": [
+                {
+                    "name": "neutral",
+                    "value": 500
+                },
+                {
+                    "name": "dash",
+                    "value": 5
+                }
+            ]
+        }
+    }
+}

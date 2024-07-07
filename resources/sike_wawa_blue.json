@@ -1,0 +1,214 @@
+{ "frames": {
+   "sike_wawa_blue 0.aseprite": {
+    "frame": { "x": 0, "y": 0, "w": 304, "h": 224 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 304, "h": 224 },
+    "sourceSize": { "w": 304, "h": 224 },
+    "duration": 67
+   },
+   "sike_wawa_blue 1.aseprite": {
+    "frame": { "x": 304, "y": 0, "w": 304, "h": 224 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 304, "h": 224 },
+    "sourceSize": { "w": 304, "h": 224 },
+    "duration": 67
+   },
+   "sike_wawa_blue 2.aseprite": {
+    "frame": { "x": 608, "y": 0, "w": 304, "h": 224 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 304, "h": 224 },
+    "sourceSize": { "w": 304, "h": 224 },
+    "duration": 67
+   },
+   "sike_wawa_blue 3.aseprite": {
+    "frame": { "x": 912, "y": 0, "w": 304, "h": 224 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 304, "h": 224 },
+    "sourceSize": { "w": 304, "h": 224 },
+    "duration": 67
+   },
+   "sike_wawa_blue 4.aseprite": {
+    "frame": { "x": 1216, "y": 0, "w": 304, "h": 224 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 304, "h": 224 },
+    "sourceSize": { "w": 304, "h": 224 },
+    "duration": 67
+   },
+   "sike_wawa_blue 5.aseprite": {
+    "frame": { "x": 0, "y": 224, "w": 304, "h": 224 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 304, "h": 224 },
+    "sourceSize": { "w": 304, "h": 224 },
+    "duration": 67
+   },
+   "sike_wawa_blue 6.aseprite": {
+    "frame": { "x": 304, "y": 224, "w": 304, "h": 224 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 304, "h": 224 },
+    "sourceSize": { "w": 304, "h": 224 },
+    "duration": 67
+   },
+   "sike_wawa_blue 7.aseprite": {
+    "frame": { "x": 608, "y": 224, "w": 304, "h": 224 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 304, "h": 224 },
+    "sourceSize": { "w": 304, "h": 224 },
+    "duration": 67
+   },
+   "sike_wawa_blue 8.aseprite": {
+    "frame": { "x": 912, "y": 224, "w": 304, "h": 224 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 304, "h": 224 },
+    "sourceSize": { "w": 304, "h": 224 },
+    "duration": 67
+   },
+   "sike_wawa_blue 9.aseprite": {
+    "frame": { "x": 1216, "y": 224, "w": 304, "h": 224 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 304, "h": 224 },
+    "sourceSize": { "w": 304, "h": 224 },
+    "duration": 67
+   },
+   "sike_wawa_blue 10.aseprite": {
+    "frame": { "x": 0, "y": 448, "w": 304, "h": 224 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 304, "h": 224 },
+    "sourceSize": { "w": 304, "h": 224 },
+    "duration": 67
+   },
+   "sike_wawa_blue 11.aseprite": {
+    "frame": { "x": 304, "y": 448, "w": 304, "h": 224 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 304, "h": 224 },
+    "sourceSize": { "w": 304, "h": 224 },
+    "duration": 67
+   },
+   "sike_wawa_blue 12.aseprite": {
+    "frame": { "x": 608, "y": 448, "w": 304, "h": 224 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 304, "h": 224 },
+    "sourceSize": { "w": 304, "h": 224 },
+    "duration": 67
+   },
+   "sike_wawa_blue 13.aseprite": {
+    "frame": { "x": 912, "y": 448, "w": 304, "h": 224 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 304, "h": 224 },
+    "sourceSize": { "w": 304, "h": 224 },
+    "duration": 67
+   },
+   "sike_wawa_blue 14.aseprite": {
+    "frame": { "x": 1216, "y": 448, "w": 304, "h": 224 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 304, "h": 224 },
+    "sourceSize": { "w": 304, "h": 224 },
+    "duration": 67
+   },
+   "sike_wawa_blue 15.aseprite": {
+    "frame": { "x": 0, "y": 672, "w": 304, "h": 224 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 304, "h": 224 },
+    "sourceSize": { "w": 304, "h": 224 },
+    "duration": 67
+   },
+   "sike_wawa_blue 16.aseprite": {
+    "frame": { "x": 304, "y": 672, "w": 304, "h": 224 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 304, "h": 224 },
+    "sourceSize": { "w": 304, "h": 224 },
+    "duration": 67
+   },
+   "sike_wawa_blue 17.aseprite": {
+    "frame": { "x": 608, "y": 672, "w": 304, "h": 224 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 304, "h": 224 },
+    "sourceSize": { "w": 304, "h": 224 },
+    "duration": 67
+   },
+   "sike_wawa_blue 18.aseprite": {
+    "frame": { "x": 912, "y": 672, "w": 304, "h": 224 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 304, "h": 224 },
+    "sourceSize": { "w": 304, "h": 224 },
+    "duration": 67
+   },
+   "sike_wawa_blue 19.aseprite": {
+    "frame": { "x": 1216, "y": 672, "w": 304, "h": 224 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 304, "h": 224 },
+    "sourceSize": { "w": 304, "h": 224 },
+    "duration": 67
+   },
+   "sike_wawa_blue 20.aseprite": {
+    "frame": { "x": 0, "y": 896, "w": 304, "h": 224 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 304, "h": 224 },
+    "sourceSize": { "w": 304, "h": 224 },
+    "duration": 67
+   },
+   "sike_wawa_blue 21.aseprite": {
+    "frame": { "x": 304, "y": 896, "w": 304, "h": 224 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 304, "h": 224 },
+    "sourceSize": { "w": 304, "h": 224 },
+    "duration": 67
+   }
+ },
+ "meta": {
+  "app": "https://www.aseprite.org/",
+  "version": "1.3.2-x64",
+  "image": "sike_wawa_blue.png",
+  "format": "I8",
+  "size": { "w": 1520, "h": 1120 },
+  "scale": "1",
+  "frameTags": [
+   { "name": "0", "from": 0, "to": 0, "direction": "forward", "color": "#000000ff" },
+   { "name": "1", "from": 1, "to": 1, "direction": "forward", "color": "#000000ff" },
+   { "name": "2", "from": 2, "to": 2, "direction": "forward", "color": "#000000ff" },
+   { "name": "3", "from": 3, "to": 3, "direction": "forward", "color": "#000000ff" },
+   { "name": "4", "from": 4, "to": 4, "direction": "forward", "color": "#000000ff" },
+   { "name": "5", "from": 5, "to": 5, "direction": "forward", "color": "#000000ff" },
+   { "name": "6", "from": 6, "to": 6, "direction": "forward", "color": "#000000ff" },
+   { "name": "7", "from": 7, "to": 7, "direction": "forward", "color": "#000000ff" },
+   { "name": "8", "from": 8, "to": 8, "direction": "forward", "color": "#000000ff" },
+   { "name": "9", "from": 9, "to": 9, "direction": "forward", "color": "#000000ff" },
+   { "name": "10", "from": 10, "to": 10, "direction": "forward", "color": "#000000ff" },
+   { "name": "11", "from": 11, "to": 11, "direction": "forward", "color": "#000000ff" },
+   { "name": "12", "from": 12, "to": 12, "direction": "forward", "color": "#000000ff" },
+   { "name": "13", "from": 13, "to": 13, "direction": "forward", "color": "#000000ff" },
+   { "name": "14", "from": 14, "to": 14, "direction": "forward", "color": "#000000ff" },
+   { "name": "15", "from": 15, "to": 15, "direction": "forward", "color": "#000000ff" },
+   { "name": "16", "from": 16, "to": 21, "direction": "forward", "color": "#000000ff" }
+  ],
+  "layers": [
+   { "name": "Base", "opacity": 255, "blendMode": "normal" },
+   { "name": "Meter", "opacity": 255, "blendMode": "normal" },
+   { "name": "Outline", "opacity": 255, "blendMode": "normal" },
+   { "name": "Lightning", "opacity": 255, "blendMode": "normal" }
+  ],
+  "slices": [
+  ]
+ }
+}

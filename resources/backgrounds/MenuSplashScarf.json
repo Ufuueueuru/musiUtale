@@ -1,0 +1,83 @@
+{ "frames": {
+   "MenuSplashScarf 0.aseprite": {
+    "frame": { "x": 0, "y": 0, "w": 464, "h": 336 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 464, "h": 336 },
+    "sourceSize": { "w": 464, "h": 336 },
+    "duration": 133
+   },
+   "MenuSplashScarf 1.aseprite": {
+    "frame": { "x": 464, "y": 0, "w": 464, "h": 336 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 464, "h": 336 },
+    "sourceSize": { "w": 464, "h": 336 },
+    "duration": 133
+   },
+   "MenuSplashScarf 2.aseprite": {
+    "frame": { "x": 0, "y": 336, "w": 464, "h": 336 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 464, "h": 336 },
+    "sourceSize": { "w": 464, "h": 336 },
+    "duration": 133
+   },
+   "MenuSplashScarf 3.aseprite": {
+    "frame": { "x": 464, "y": 336, "w": 464, "h": 336 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 464, "h": 336 },
+    "sourceSize": { "w": 464, "h": 336 },
+    "duration": 133
+   },
+   "MenuSplashScarf 4.aseprite": {
+    "frame": { "x": 0, "y": 672, "w": 464, "h": 336 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 464, "h": 336 },
+    "sourceSize": { "w": 464, "h": 336 },
+    "duration": 133
+   },
+   "MenuSplashScarf 5.aseprite": {
+    "frame": { "x": 464, "y": 672, "w": 464, "h": 336 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 464, "h": 336 },
+    "sourceSize": { "w": 464, "h": 336 },
+    "duration": 133
+   },
+   "MenuSplashScarf 6.aseprite": {
+    "frame": { "x": 0, "y": 1008, "w": 464, "h": 336 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 464, "h": 336 },
+    "sourceSize": { "w": 464, "h": 336 },
+    "duration": 133
+   },
+   "MenuSplashScarf 7.aseprite": {
+    "frame": { "x": 464, "y": 1008, "w": 464, "h": 336 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 464, "h": 336 },
+    "sourceSize": { "w": 464, "h": 336 },
+    "duration": 133
+   }
+ },
+ "meta": {
+  "app": "https://www.aseprite.org/",
+  "version": "1.3.6-x64",
+  "image": "MenuSplashScarf.png",
+  "format": "RGBA8888",
+  "size": { "w": 928, "h": 1344 },
+  "scale": "1",
+  "frameTags": [
+   { "name": "Main", "from": 0, "to": 7, "direction": "forward", "color": "#000000ff" }
+  ],
+  "layers": [
+   { "name": "Scarf", "opacity": 255, "blendMode": "normal" }
+  ],
+  "slices": [
+  ]
+ }
+}

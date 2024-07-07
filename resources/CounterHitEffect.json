@@ -1,0 +1,85 @@
+{ "frames": {
+   "CounterHitEffect 0.aseprite": {
+    "frame": { "x": 0, "y": 0, "w": 256, "h": 128 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 256, "h": 128 },
+    "sourceSize": { "w": 256, "h": 128 },
+    "duration": 67
+   },
+   "CounterHitEffect 1.aseprite": {
+    "frame": { "x": 256, "y": 0, "w": 256, "h": 128 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 256, "h": 128 },
+    "sourceSize": { "w": 256, "h": 128 },
+    "duration": 67
+   },
+   "CounterHitEffect 2.aseprite": {
+    "frame": { "x": 0, "y": 128, "w": 256, "h": 128 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 256, "h": 128 },
+    "sourceSize": { "w": 256, "h": 128 },
+    "duration": 67
+   },
+   "CounterHitEffect 3.aseprite": {
+    "frame": { "x": 256, "y": 128, "w": 256, "h": 128 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 256, "h": 128 },
+    "sourceSize": { "w": 256, "h": 128 },
+    "duration": 67
+   },
+   "CounterHitEffect 4.aseprite": {
+    "frame": { "x": 0, "y": 256, "w": 256, "h": 128 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 256, "h": 128 },
+    "sourceSize": { "w": 256, "h": 128 },
+    "duration": 67
+   },
+   "CounterHitEffect 5.aseprite": {
+    "frame": { "x": 256, "y": 256, "w": 256, "h": 128 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 256, "h": 128 },
+    "sourceSize": { "w": 256, "h": 128 },
+    "duration": 67
+   },
+   "CounterHitEffect 6.aseprite": {
+    "frame": { "x": 0, "y": 384, "w": 256, "h": 128 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 256, "h": 128 },
+    "sourceSize": { "w": 256, "h": 128 },
+    "duration": 67
+   },
+   "CounterHitEffect 7.aseprite": {
+    "frame": { "x": 256, "y": 384, "w": 256, "h": 128 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 256, "h": 128 },
+    "sourceSize": { "w": 256, "h": 128 },
+    "duration": 67
+   }
+ },
+ "meta": {
+  "app": "https://www.aseprite.org/",
+  "version": "1.3.2-x64",
+  "image": "CounterHitEffect.png",
+  "format": "RGBA8888",
+  "size": { "w": 512, "h": 512 },
+  "scale": "1",
+  "frameTags": [
+   { "name": "Main", "from": 0, "to": 7, "direction": "forward", "color": "#000000ff" }
+  ],
+  "layers": [
+   { "name": "Purple", "opacity": 255, "blendMode": "overlay" },
+   { "name": "Yellow", "opacity": 255, "blendMode": "overlay" },
+   { "name": "Red", "opacity": 255, "blendMode": "overlay" }
+  ],
+  "slices": [
+  ]
+ }
+}

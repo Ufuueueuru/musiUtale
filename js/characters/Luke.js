@@ -1,0 +1,1604 @@
+﻿class Luke extends Player {
+	constructor() {
+		super([
+			new Circle(0, 0, 65),
+			new ICircle(30, 35, 25),
+			new ICircle(30, -35, 25)
+		]);
+
+		this.hurtboxes["dash attack"] = [
+			[new Circle(0, 0, 65),
+			new ICircle(30, 35, 25),
+			new ICircle(27, -45, 25)],
+			[new Circle(0, 0, 65),
+			new ICircle(30, 35, 25),
+			new ICircle(15, -52, 25)],
+			[new Circle(2, 0, 65),
+			new ICircle(-30, 30, 25),
+			new ICircle(44, 0, 25)],
+			[new Circle(9, 0, 65),
+			new ICircle(-3, 40, 25),
+			new ICircle(-3, -40, 25)],
+			[new Circle(6, 6, 65),
+			new ICircle(-37, -16, 25),
+			new ICircle(43, -25, 25)],
+			[new Circle(-4, 7, 65),
+			new ICircle(-29, -35, 25),
+			new ICircle(46, -10, 25)],
+			[new Circle(-3, 6, 65),
+			new ICircle(-11, -44, 25),
+			new ICircle(46, 0, 25)],
+			[new Circle(-3, 3, 65),
+			new ICircle(9, -44, 25),
+			new ICircle(46, 9, 25)],
+			[new Circle(-3, 0, 65),
+			new ICircle(22, -42, 25),
+			new ICircle(42, 19, 25)],
+			[new Circle(-2, 0, 66),
+			new ICircle(35, -31, 25),
+			new ICircle(38, 29, 25)],
+			[new Circle(0, 0, 66),
+			new ICircle(34, -32, 25),
+			new ICircle(28, 40, 25)]
+		];
+
+		this.hurtboxes["NL"] = [
+			[new Circle(0, 0, 65),
+			new ICircle(29, 41, 25),
+			new ICircle(21, -39, 25),
+			new ICircle(42, -34, 25)],
+			[new Circle(0, 0, 68),
+			new ICircle(29, 41, 25),
+			new ICircle(55, -20, 22),
+			new ICircle(75, -13, 20)],
+			[new Circle(5, 0, 70),
+			new ICircle(29, 41, 25),
+			new ICircle(55, -19, 21),
+			new ICircle(75, -11, 20)],
+			[new Circle(5, 0, 69),
+			new ICircle(29, 41, 25),
+			new ICircle(52, -20, 22),
+			new ICircle(71, -13, 19)],
+			[new Circle(3, 1, 68),
+			new ICircle(29, 41, 25),
+			new ICircle(48, -25, 22),
+			new ICircle(65, -17, 17)],
+			[new Circle(3, 1, 66),
+			new ICircle(29, 41, 25),
+			new ICircle(41, -30, 21),
+			new ICircle(58, -24, 17)],
+			[new Circle(2, 0, 65),
+			new ICircle(29, 41, 25),
+			new ICircle(35, -34, 21),
+			new ICircle(55, -30, 17)],
+			[new Circle(1, 0, 63),
+			new ICircle(29, 41, 25),
+			new ICircle(18, -39, 20),
+			new ICircle(39, -35, 20)]
+		];
+
+		this.hurtboxes["ML"] = [
+			[new Circle(5, 4, 67),
+			new ICircle(38, -28, 25),
+			new ICircle(-20, -34, 25)],
+			[new Circle(2, -1, 63),
+			new ICircle(30, 36, 25),
+			new ICircle(44, -25, 25)],
+			[new Circle(4, -1, 64),
+			new ICircle(21, 45, 25),
+			new ICircle(52, -15, 25)],
+			[new Circle(4, -1, 64),
+			new ICircle(21, 45, 25),
+			new ICircle(52, -15, 25)],
+			[new Circle(4, -1, 64),
+			new ICircle(21, 45, 25),
+			new ICircle(50, -18, 25)],
+			[new Circle(4, -1, 64),
+			new ICircle(21, 45, 25),
+			new ICircle(41, -28, 25)],
+			[new Circle(4, -1, 64),
+			new ICircle(31, 39, 25),
+			new ICircle(43, -27, 25)],
+			[new Circle(4, -1, 64),
+			new ICircle(33, 37, 25),
+			new ICircle(48, -21, 25)],
+			[new Circle(4, -1, 64),
+			new ICircle(35, 35, 25),
+			new ICircle(32, -31, 25)],
+			[new Circle(4, -1, 64),
+			new ICircle(35, 35, 25),
+			new ICircle(20, -44, 25)],
+			[new Circle(2, -1, 64),
+			new ICircle(32, 37, 25),
+			new ICircle(26, -41, 25)]
+		];
+
+		this.hurtboxes["NN"] = [
+			[new Circle(0, 0, 65),
+			new ICircle(50, 18, 25),
+			new ICircle(23, -35, 25)],
+			[new Circle(0, 0, 65),
+			new ICircle(18, -36, 25),
+			new ICircle(49, -3, 25)],
+			[new Circle(0, 0, 66),
+			new ICircle(50, -12, 25),
+			new ICircle(19, -36, 25)],
+			[new Circle(0, 0, 66),
+			new ICircle(19, -37, 24),
+			new ICircle(50, -12, 25)]
+		];
+		this.hurtboxes["NNF"] = [
+			[new Circle(-1, 0, 60),
+			new ICircle(48, 11, 25),
+			new ICircle(17, -36, 25)],
+			[new Circle(-1, 0, 60),
+			new ICircle(43, 7, 25),
+			new ICircle(16, -38, 25)],
+			[new Circle(-3, 0, 63),
+			new ICircle(15, -40, 23),
+			new ICircle(42, 12, 24)],
+			[new Circle(-3, 0, 63),
+			new ICircle(15, -40, 23),
+			new ICircle(38, 19, 24)],
+			[new Circle(-1, 0, 64),
+			new ICircle(22, -40, 22),
+			new ICircle(36, 28, 24)],
+			[new Circle(1, 0, 64),
+			new ICircle(26, -38, 21),
+			new ICircle(33, 35, 24)]
+		];
+
+		this.headNoun = "󱤑";//jan
+		this.name = "󱤑󱦐󱦗󱦅󱥱󱤘󱤃󱦑";//jan Luke
+
+		this.collideRadius = 42;
+
+		this.sheet = Spritesheet.copy(assetManager.spritesheets.janLukeSheet);
+
+		this.states.ML = State.copyState(State.ML).addTag("no collide");
+		this.states.SPL = State.copyState(State.SPL).addTag("rotateable");
+		this.states.NN = State.copyState(State.NN).addTag("rotateable");
+		this.states.NN_ACTIONS = ["NL", "dash", "power dash"];
+		this.states.NNF = State.copyState(State.NN).setName("NNF");
+
+		this.states.MISFIRE = new State("misfire");
+		this.states.MISFIRE_ACTIONS = ["power dash"];
+
+		this.selectScreenSizeOffset = 25;
+
+		this.movementSpeed = 1.5;
+		this.forwardSpeedBoost = 2.5;
+
+		this.turnSpeed = 0.005;
+
+		this.OOBBlockFrame = 2;
+
+		this.dash.turnSpeedBoost = 0.01;
+
+		this.maxBullets = 6;
+		this.bullets = this.maxBullets;
+		
+	}
+
+	setAttacks() {
+		super.setAttacks();//Keep this if you don't define every one of the attacks
+
+		this.DASH_ATTACK = JanLukeDashAttack;
+
+		this.NL = JanLukeNL;
+		this.SL = JanLukeSL;
+		this.RL = JanLukeRL;
+		this.LL = JanLukeLL;
+		this.ML = JanLukeML;
+
+		//this.NS = JanLukeNS;
+		//this.SS = JanLukeSS;
+		this.RS = JanLukeRS;
+		this.LS = JanLukeLS;
+		//this.MS = JanLukeMS;
+
+		this.NPL = JanLukeNPL;
+		this.SPL = JanLukeSPL;
+		this.RPL = JanLukeRPL;
+		this.LPL = JanLukeLPL;
+		//this.MPL = JanLukeMPL;
+
+		this.NPS = JanLukeNPS;
+		//this.SPS = JanLukeSPS;
+		this.RPS = JanLukeRPS;
+		this.LPS = JanLukeLPS;
+		this.MPS = JanLukeMPS;
+
+		this.NN = JanLukeNN;
+		this.SN = JanLukeSN;
+		this.RN = JanLukeRN;
+		//this.LN = JanLukeLN;
+		this.MN = JanLukeMN;
+	}
+
+	generalLogic() {
+		if (this.bullets <= 0 && (State.stateIsTag(this.currentState, "poka lili") || this.currentState.name === "NN") && this.frameDataRef.getFromStartupF() === 1) {
+			this.forceChangeState(this.states.MISFIRE, this.states.MISFIRE_ACTIONS);
+			this.sheet.setAnimation("Misfire");
+			this.playSound(assetManager.sounds.e);
+			this.actionLag = 15;
+		}
+		if (this.currentState.name === "misfire") {
+			this.attackEndable();
+		}
+		if (this.currentState.name === "NNF") {
+			this.attackEndable();
+		}
+	}
+
+	/**
+	 * @override
+	 * @param {Graphics} g
+	 */
+	draw(g) {
+		g.push();
+		g.translate(this.x, this.y);
+		g.rotate(this.dir.value - PI / 2);
+
+		//g.image(assetManager.images.janTP, -80, -80, 160, 160);
+
+		//this.sheet.draw(g, round(frameCount / 4) % 15, -80, -80, 160, 160);
+
+		let rumbleX = 0;
+		let rumbleY = 0;
+		if (this.stunFrames > 0 && this.hitStun > 0 && this.currentState.name !== "block") {
+			rumbleX = random(-3, 3);
+			rumbleY = random(-3, 3);
+		}
+
+		this.sheet.draw(g, -110 + rumbleX, -80 + rumbleY, 220, 220);
+
+		g.pop();
+
+		//this.drawArrow(g);
+
+		if (debug.displayHurtboxes) {
+			let red = 200;
+			let green = 210;
+			let blue = 220;
+			if (this.iFrames > 0 && this.invTo.includes("attack")) {
+				red = 40;
+				green = 0
+				blue = 255;
+			}
+			if (this.iFrames > 0 && this.invTo.includes("grab")) {
+				red = 255;
+				green = 200;
+				blue = 0;
+			}
+
+			this.debugDraw(g, red, green, blue);
+		}
+	}
+
+	drawExtraHUD(g, i, x, y) {
+		let leftX = 512 * 0.12 + 512 * 0.76 * i - 34;
+
+		g.push();
+		g.translate(x, y);
+		
+		for (let i = 0; i < this.maxBullets; i++) {
+			let offsetX = 0;
+			let offsetY = 0;
+			if (this.bullets <= 0) {
+				offsetX = random(-1, 1);
+				offsetY = random(-1, 1);
+			}
+
+			if (this.bullets > i) {
+				g.image(assetManager.images.bulletFull, leftX + 11 * i + offsetX, 65 + offsetY, 12, 12);
+			} else {
+				g.image(assetManager.images.bulletEmpty, leftX + 11 * i + offsetX, 65 + offsetY, 12, 12);
+			}
+		}
+
+		g.pop();
+	}
+
+	charSpecificReset() {
+		this.bullets = this.maxBullets;
+	}
+
+	runSheets() {
+		if (this.stunFrames <= 0) {
+			this.sheet.run();
+		}
+	}
+
+    static addAssets() {
+		assetManager.addSpritesheet("resources/jan_Luke.png", "janLukeSheet", "//");
+
+		assetManager.addSpritesheet("resources/GunEffect.png", "gunEffect", "//");
+
+		assetManager.addSpritesheet("resources/LinjaLuka.png", "linjaLuka", "//");
+
+		assetManager.addSpritesheet("resources/sike_pakala.png", "sikePakala", "//");
+
+		assetManager.addImage("resources/bulletEmpty.png", "bulletEmpty");
+
+		assetManager.addImage("resources/bulletFull.png", "bulletFull");
+
+		assetManager.addSound("resources/sfx/sina_seme.wav", "sinaSeme", {
+			volume: 0.8
+		});
+
+		assetManager.addSound("resources/sfx/e.wav", "e", {
+			volume: 0.8
+		});
+
+		assetManager.addSound("resources/sfx/reload.wav", "reload", {
+			volume: 0.8
+		});
+
+		assetManager.addSound("resources/sfx/Revolver Gun Shot.wav", "gunShot", {
+			volume: 0.8
+		});
+
+		assetManager.addSound("resources/sfx/Revolver Release Hammer.wav", "gunCock", {
+			volume: 0.8
+		});
+
+		assetManager.addSound("resources/sfx/linjaLuka.wav", "linjaLuka");
+
+		assetManager.addSound("resources/sfx/kalamaLinja.wav", "kalamaLinja");
+    }
+}
+
+class JanLukeDashAttack extends Attack {
+	constructor(player, circles = [], props = []) {
+		super(player, circles, props);
+		this.name = "dash attack";
+	}
+
+	static createAttack(player) {
+		let cancelOptions = [];
+
+		let sweet1 = new PriorityCircle(20, -65, 40, 0).setCircleVelocity(15);
+		let sour1 = new PriorityCircle(30, 50, 40, 1).setCircleVelocity(11);
+		let circles = [sweet1, sour1];
+
+		let sweet = new AttackProperties().setDamage(40).setProration(1).setCancelOptions(cancelOptions).setAngleValue(player.dir.value).setLaunch(10, 4, 0.2).setHitStun(29, 15).setStunFrames(12).setNormalizeHitStun();
+		let sour = new AttackProperties().setDamage(30).setProration(1).setCancelOptions(cancelOptions).setAngleValue(player.dir.value).setLaunch(10, 4, 0.2).setHitStun(29, 15).setStunFrames(12).setNormalizeHitStun();
+		let prop = [sweet, sour];
+
+		sweet.setHitSound(assetManager.sounds["8BitHit"]);
+		//sweet.setBlockSound(assetManager.sounds["8BitHit"]);
+
+		return new this(player, circles, prop).setClashPriority(5).setStartupF(10).setActiveF(5).setEndF(27);
+	}
+
+	static startAttack(player, attack, bufferInfo) {
+		player.startMomentumMultiply(0);
+		player.startMomentumMultiplyDash(1.3);
+	}
+
+	draw(g) {
+		if (this.currentlyActive()) {
+			if (debug.displayHitboxes)
+				this.debugDraw(g);
+		}
+	}
+
+	logic() {
+		
+	}
+}
+
+class JanLukeNL extends Attack {
+	constructor(player, circles = [], props = []) {
+		super(player, circles, props);
+		this.name = "NL";
+	}
+
+	static createAttack(player) {
+		let cancelOptions = ["NL", "NPL", "MN"];
+
+		let sweet1 = new PriorityCircle(30, -35, 40, 0).setVelocity(1, 0.4);
+		let sweet2 = new PriorityCircle(50, -25, 30, 0).setVelocity(1, 0.4);
+		let sweet3 = new PriorityCircle(70, -15, 30, 0).setVelocity(1, 0.4);
+		let circles = [sweet1, sweet2, sweet3];
+
+		let sweet = new AttackProperties().setDamage(30).setProration(0.5).setCancelOptions(cancelOptions).setAngleValue(player.dir.value).setLaunch(2, 4, 1.1).setHitStun(20, 20).setStunFrames(12);
+		let prop = [sweet];
+
+		sweet.setHitSound(assetManager.sounds["8BitHit"]);
+		//sweet.setBlockSound(assetManager.sounds["8BitHit"]);
+
+		return new this(player, circles, prop).setClashPriority(4).setStartupF(6).setActiveF(2).setEndF(20).setRotateable();
+	}
+
+	static startAttack(player, attack, bufferInfo) {
+		player.startMomentumMultiply(0);
+		player.startMomentumMultiplyDash(1);
+	}
+
+	draw(g) {
+		if (this.currentlyActive()) {
+			if (debug.displayHitboxes)
+				this.debugDraw(g);
+		}
+	}
+
+	logic() {
+		this.player.turnSpeedModifier = 0.02;
+	}
+}
+
+class JanLukeSL extends Attack {
+	constructor(player, circles = [], props = []) {
+		super(player, circles, props);
+		this.name = "SL";
+	}
+
+	static createAttack(player) {
+		let cancelOptions = ["NL", "NPL", "RPL", "LPL", "MN"];
+
+		let sourHitCancelOptions = ["NPS"];
+
+		let sweet1 = new PriorityCircle(30, -35, 40, 0).setVelocity(1, 0.5);
+		let sweet2 = new PriorityCircle(50, -25, 30, 0).setVelocity(1, 0.5);
+		let sweet3 = new PriorityCircle(70, -15, 30, 0).setVelocity(1, 0.5);
+		let sour1 = new PriorityCircle(30, 35, 0, 1).setVelocity(1, -0.5);
+		let sour2 = new PriorityCircle(50, 30, 0, 1).setVelocity(1, -0.5);
+		let sour3 = new PriorityCircle(70, 15, 0, 1).setVelocity(1, -0.5);
+		let circles = [sweet1, sweet2, sweet3, sour1, sour2, sour3];
+
+		let sweet = new AttackProperties().setDamage(35).setProration(-0.1).setCancelOptions(cancelOptions).setAngleValue(player.dir.value).setLaunch(3, 2, 0.7).setHitStun(28, 20).setStunFrames(12, 12);
+		let sour = new AttackProperties().setDamage(20).setProration(-1.5).setCancelOptions(cancelOptions, sourHitCancelOptions).setAngleValue(player.dir.value).setLaunch(3, 2, 0.7).setHitStun(20, 20).setStunFrames(12, 12);
+		let prop = [sweet, sour];
+
+		//sweet.setHitSound(assetManager.sounds["8BitHit"]);
+		//sweet.setBlockSound(assetManager.sounds["8BitHit"]);
+
+		return new this(player, circles, prop).setClashPriority(4).setStartupF(8).setActiveF(8).setEndF(20).setMulti(2, 4, 3);
+	}
+
+	static startAttack(player, attack, bufferInfo) {
+		player.startMomentumMultiply(0);
+		player.startMomentumMultiplyDash(0.8);
+	}
+
+	draw(g) {
+		if (this.currentlyActive()) {
+			if (debug.displayHitboxes)
+				this.debugDraw(g);
+		}
+	}
+
+	logic() {
+		if (this.getFromStartupF() === 4) {
+			this.player.dx += this.dir.getX() * 4;
+			this.player.dy += this.dir.getY() * 4;
+		}
+		if (this.getFromEndF() === 1) {
+			this.player.dx /= 2;
+			this.player.dy /= 2;
+		}
+		if (this.getActiveF() === 5) {
+			for (let i = 0; i < this.circles.length; i++) {
+				if (i < 3) {
+					this.circles[i].diameter = 0;
+				} else {
+					this.circles[i].diameter = 40;
+				}
+			}
+			this.resetMain();
+		}
+	}
+}
+
+class JanLukeRL extends Attack {
+	constructor(player, circles = [], props = []) {
+		super(player, circles, props);
+		this.name = "RL";
+	}
+
+	static createAttack(player) {
+		let cancelOptions = ["NL", "SL", "NPL", "LPL", "MN"];
+
+		let sweet1 = new PriorityCircle(40, 50, 40, 0).setVelocity(1, 1);
+		let sweet2 = new PriorityCircle(0, 60, 40, 0).setVelocity(1, 1);
+		let sweet3 = new PriorityCircle(-40, 45, 40, 0).setVelocity(1, 1);
+		let circles = [sweet1, sweet2, sweet3];
+
+		let sweet = new AttackProperties().setDamage(15).setProration(0.5).setCancelOptions(cancelOptions).setAngleValue(player.dir.value + PI / 3).setLaunch(2, 4, 1.1).setHitStun(18, 15).setStunFrames(12).setCancelWait(5);
+		let prop = [sweet];
+
+		//sweet.setHitSound(assetManager.sounds["8BitHit"]);
+		//sweet.setBlockSound(assetManager.sounds["8BitHit"]);
+
+		return new this(player, circles, prop).setClashPriority(4).setStartupF(8).setActiveF(2).setEndF(17);
+	}
+
+	static startAttack(player, attack, bufferInfo) {
+		player.startMomentumMultiply(0);
+		player.startMomentumMultiplyDash(1);
+	}
+
+	draw(g) {
+		if (this.currentlyActive()) {
+			if (debug.displayHitboxes)
+				this.debugDraw(g);
+		}
+	}
+
+	logic() {
+		if (this.getStartupF() === 1) {
+			this.player.dir.changeValue(PI / 2);
+		}
+	}
+}
+
+class JanLukeLL extends Attack {
+	constructor(player, circles = [], props = []) {
+		super(player, circles, props);
+		this.name = "LL";
+	}
+
+	static createAttack(player) {
+		let cancelOptions = ["NL", "SL", "NPL", "RPL", "MN"];
+
+		let sweet1 = new PriorityCircle(40, -50, 40, 0).setVelocity(1, -1);
+		let sweet2 = new PriorityCircle(0, -60, 40, 0).setVelocity(1, -1);
+		let sweet3 = new PriorityCircle(-40, -45, 40, 0).setVelocity(1, -1);
+		let circles = [sweet1, sweet2, sweet3];
+
+		let sweet = new AttackProperties().setDamage(20).setProration(0.3).setCancelOptions(cancelOptions).setAngleValue(player.dir.value - PI / 3).setLaunch(2, 4, 1.1).setHitStun(20, 15).setStunFrames(12).setCancelWait(5);
+		let prop = [sweet];
+
+		//sweet.setHitSound(assetManager.sounds["8BitHit"]);
+		//sweet.setBlockSound(assetManager.sounds["8BitHit"]);
+
+		return new this(player, circles, prop).setClashPriority(4).setStartupF(8).setActiveF(2).setEndF(17);
+	}
+
+	static startAttack(player, attack, bufferInfo) {
+		player.startMomentumMultiply(0);
+		player.startMomentumMultiplyDash(1);
+	}
+
+	draw(g) {
+		if (this.currentlyActive()) {
+			if (debug.displayHitboxes)
+				this.debugDraw(g);
+		}
+	}
+
+	logic() {
+		if (this.getStartupF() === 1) {
+			this.player.dir.changeValue(-PI / 2);
+		}
+	}
+}
+
+class JanLukeML extends Attack {
+	constructor(player, circles = [], props = []) {
+		super(player, circles, props);
+		this.name = "ML";
+	}
+
+	static createAttack(player) {
+		let cancelOptions = ["ML", "MN"];
+
+		let sweet1 = new PriorityCircle(-80, 0, 65, 0).setSubVelocity(-3.5, 0);
+		let sour1 = new PriorityCircle(-40, 20, 35, 1).setSubVelocity(-3.5, 0);
+		let circles = [sweet1, sour1];
+
+		let sweet = new AttackProperties().setDamage(30).setProration(-0.5).setCancelOptions(cancelOptions).setAngleValue(player.dir.value).setLaunch(6, 0.1, 0.8).setHitStun(34, 19).setStunFrames(12).setAngleTypes("direct", "direct");
+		let sour = new AttackProperties().setDamage(25).setProration(-0.5).setCancelOptions(cancelOptions).setAngleValue(player.dir.value).setLaunch(6, 0.1, 0.8).setHitStun(34, 19).setStunFrames(12).setAngleTypes("direct", "direct");
+		let prop = [sweet, sour];
+
+		//sweet.setHitSound(assetManager.sounds["8BitHit"]);
+		//sweet.setBlockSound(assetManager.sounds["8BitHit"]);
+
+		return new this(player, circles, prop).setClashPriority(1).setStartupF(9).setActiveF(6).setEndF(26);
+	}
+
+	static startAttack(player, attack, bufferInfo) {
+		player.startMomentumMultiply(0);
+		player.startMomentumMultiplyDash(1);
+
+		player.dx += player.dir.getX() * 12;
+		player.dy += player.dir.getY() * 12;
+
+		player.dir.changeValue(-PI);
+	}
+
+	draw(g) {
+		if (this.currentlyActive()) {
+			if (debug.displayHitboxes)
+				this.debugDraw(g);
+		}
+	}
+
+	logic() {
+		this.player.dx *= 0.9;
+		this.player.dy *= 0.9;
+	}
+}
+
+class JanLukeRS extends Attack {
+	constructor(player, circles = [], props = []) {
+		super(player, circles, props);
+		this.name = "RS";
+
+		this.moveAngle = new Angle(player.dir.value);
+		this.secondAttack = false;
+	}
+
+	static createAttack(player) {
+		let cancelOptions = ["MN"];
+
+		let sweet1 = new PriorityCircle(60, 40, 35, 0).setVelocity(0.1, -0.1);
+		let sweet2 = new PriorityCircle(30, 40, 40, 0).setVelocity(0.1, -0.1);
+		let sweet3 = new PriorityCircle(70, 0, 40, 0).setVelocity(0.1, -0.1);
+		let sweet4 = new PriorityCircle(40, 0, 40, 0).setVelocity(0.1, -0.1);
+		let sweet5 = new PriorityCircle(70, -25, 35, 0).setVelocity(0.1, -0.1);
+		let sweet6 = new PriorityCircle(40, -25, 40, 0).setVelocity(0.1, -0.1);
+		let circles = [sweet1, sweet2, sweet3, sweet4, sweet5, sweet6];
+
+		let sweet = new AttackProperties().setDamage(40).setProration(-0.4).setCancelOptions(cancelOptions).setAngleValue(player.dir.value).setLaunch(2, 0.1, 0.8).setHitStun(43, 11).setStunFrames(12);
+		let prop = [sweet];
+
+		//sweet.setHitSound(assetManager.sounds["8BitHit"]);
+		//sweet.setBlockSound(assetManager.sounds["8BitHit"]);
+
+		return new this(player, circles, prop).setClashPriority(1).setStartupF(28).setActiveF(3).setEndF(26);
+	}
+
+	static startAttack(player, attack, bufferInfo) {
+		player.startMomentumMultiply(0);
+		player.startMomentumMultiplyDash(0);
+
+		attack.moveAngle.changeValue(PI / 2.5);
+	}
+
+	draw(g) {
+		if (this.currentlyActive()) {
+			if (debug.displayHitboxes)
+				this.debugDraw(g);
+		}
+	}
+
+	logic() {
+		this.player.dx *= 0.9;
+		this.player.dy *= 0.9;
+		if (this.getStartupF() > 11 && this.getFromStartupF() > 4 && this.player.controls.clicked("suli")) {
+			this.secondAttack = true;
+		}
+		if (this.getStartupF() === 11 && !this.secondAttack) {
+			this.setActiveF(0);
+			this.setEndF(7);
+			this.player.actionLag = 7;
+		}
+		if (this.getStartupF() === 10) {
+			this.moveAngle.changeValue(-PI / 1.8);
+		}
+		if (this.getStartupF() > 10) {
+			let speed = (sqrt(this.getStartupF() * 3) - 5) * 2.7;
+			this.player.dx = this.moveAngle.getX() * speed;
+			this.player.dy = this.moveAngle.getY() * speed;
+			this.moveAngle.changeValue(-PI / 100 * this.getFromStartupF() / 10);
+			this.player.dir.changeValue(-PI / 10 * (3 + this.getStartupF() - 10) / 12);
+		} else if (this.getStartupF() > 0 && this.secondAttack) {
+			let speed = (sqrt(this.getStartupF() * 6)) * 2;
+			this.player.dx = this.moveAngle.getX() * speed;
+			this.player.dy = this.moveAngle.getY() * speed;
+			this.player.dir.changeValue(-PI / 50);
+		}
+	}
+}
+
+class JanLukeLS extends Attack {
+	constructor(player, circles = [], props = []) {
+		super(player, circles, props);
+		this.name = "LS";
+
+		this.moveAngle = new Angle(player.dir.value);
+	}
+
+	static createAttack(player) {
+		let cancelOptions = ["MN"];
+
+		let sweet1 = new PriorityCircle(60, -40, 35, 0).setVelocity(0, 0.1);
+		let sweet2 = new PriorityCircle(30, -40, 40, 0).setVelocity(0, 0.1);
+		let sweet3 = new PriorityCircle(70, 0, 40, 0).setVelocity(0, 0.1);
+		let sweet4 = new PriorityCircle(40, 0, 40, 0).setVelocity(0, 0.1);
+		let sweet5 = new PriorityCircle(70, 25, 35, 0).setVelocity(0, 0.1);
+		let sweet6 = new PriorityCircle(40, 25, 40, 0).setVelocity(0, 0.1);
+		let circles = [sweet1, sweet2, sweet3, sweet4, sweet5, sweet6];
+
+		let sweet = new AttackProperties().setDamage(50).setProration(-0.6).setCancelOptions(cancelOptions).setAngleValue(player.dir.value).setLaunch(2, 0.1, 0.8).setHitStun(51, 11).setStunFrames(12);
+		let prop = [sweet];
+
+		//sweet.setHitSound(assetManager.sounds["8BitHit"]);
+		//sweet.setBlockSound(assetManager.sounds["8BitHit"]);
+
+		return new this(player, circles, prop).setClashPriority(1).setStartupF(28).setActiveF(3).setEndF(26);
+	}
+
+	static startAttack(player, attack, bufferInfo) {
+		player.startMomentumMultiply(0);
+		player.startMomentumMultiplyDash(0);
+
+		attack.moveAngle.changeValue(-PI / 2.5);
+	}
+
+	draw(g) {
+		if (this.currentlyActive()) {
+			if (debug.displayHitboxes)
+				this.debugDraw(g);
+		}
+	}
+
+	logic() {
+		this.player.dx *= 0.9;
+		this.player.dy *= 0.9;
+		if (this.getStartupF() === 10) {
+			this.moveAngle.changeValue(PI / 1.8);
+		}
+		if (this.getStartupF() > 10) {
+			let speed = (sqrt(this.getStartupF() * 3) - 5) * 2.7;
+			this.player.dx = this.moveAngle.getX() * speed;
+			this.player.dy = this.moveAngle.getY() * speed;
+			this.moveAngle.changeValue(PI / 100 * this.getFromStartupF() / 10);
+			this.player.dir.changeValue(PI / 10 * (3 + this.getStartupF() - 10) / 18);
+		} else if (this.getStartupF() > 0) {
+			let speed = (sqrt(this.getStartupF() * 6)) * 2;
+			this.player.dx = this.moveAngle.getX() * speed;
+			this.player.dy = this.moveAngle.getY() * speed;
+			this.player.dir.changeValue(PI / 13);
+		}
+	}
+}
+
+class JanLukeNPL extends Attack {
+	constructor(player, circles = [], props = []) {
+		super(player, circles, props);
+		this.name = "NPL";
+	}
+
+	static createAttack(player) {
+		let cancelOptions = ["SPL", "NPS", "MN"];
+
+		let sweet1 = new PriorityCircle(30, 0, 20, 0).setVelocity(0.1, 0);
+		let sweet2 = new PriorityCircle(50, 0, 20, 0).setVelocity(0.1, 0);
+		let sweet3 = new PriorityCircle(70, 0, 20, 0).setVelocity(0.1, 0);
+		let sweet4 = new PriorityCircle(90, 0, 20, 0).setVelocity(0.1, 0);
+		let sweet5 = new PriorityCircle(110, 0, 20, 0).setVelocity(0.1, 0);
+		let sweet6 = new PriorityCircle(130, 0, 20, 0).setVelocity(0.1, 0);
+		let sweet7 = new PriorityCircle(150, 0, 20, 0).setVelocity(0.1, 0);
+		let circles = [sweet1, sweet2, sweet3, sweet4, sweet5, sweet6, sweet7];
+
+		let sweet = new AttackProperties().setDamage(35).setProration(0.2).setCancelOptions(cancelOptions).setAngleValue(player.dir.value).setLaunch(4, 0.1, 1.1).setHitStun(28, 12).setStunFrames(13);
+		let prop = [sweet];
+
+		//sweet.setHitSound(assetManager.sounds["8BitHit"]);
+		//sweet.setBlockSound(assetManager.sounds["8BitHit"]);
+
+		return new this(player, circles, prop).setClashPriority(false).setStartupF(11).setActiveF(2).setEndF(26).setRotateable();
+	}
+
+	static startAttack(player, attack, bufferInfo) {
+		player.startMomentumMultiply(0);
+		player.startMomentumMultiplyDash(0.5);
+	}
+
+	draw(g) {
+		if (this.currentlyActive()) {
+			//if (debug.displayHitboxes)
+				this.debugDraw(g);
+		}
+	}
+
+	logic() {
+		if (this.getStartupF() === 1) {
+			this.properties[0].playSound(this.world, assetManager.sounds.gunShot);
+			this.player.dx -= this.dir.getX() * 4;
+			this.player.dy -= this.dir.getY() * 4;
+			this.player.bullets--;
+		}
+		this.player.dx *= 0.94;
+		this.player.dy *= 0.94;
+	}
+}
+
+class JanLukeSPL extends Attack {
+	constructor(player, circles = [], props = []) {
+		super(player, circles, props);
+		this.name = "SPL";
+	}
+
+	static createAttack(player) {
+		let cancelOptions = [];
+
+		let sweet1 = new PriorityCircle(30, 0, 25, 0).setVelocity(0.1, 0);
+		let sweet2 = new PriorityCircle(60, 0, 25, 0).setVelocity(0.1, 0);
+		let sweet3 = new PriorityCircle(90, 0, 25, 0).setVelocity(0.1, 0);
+		let sweet4 = new PriorityCircle(120, 0, 25, 0).setVelocity(0.1, 0);
+		let sweet5 = new PriorityCircle(150, 0, 25, 0).setVelocity(0.1, 0);
+		let sweet6 = new PriorityCircle(180, 0, 25, 0).setVelocity(0.1, 0);
+		let sweet7 = new PriorityCircle(210, 0, 25, 0).setVelocity(0.1, 0);
+		let circles = [sweet1, sweet2, sweet3, sweet4, sweet5, sweet6, sweet7];
+
+		let sweet = new AttackProperties().setDamage(40).setProration(0.7).setCancelOptions(cancelOptions).setAngleValue(player.dir.value).setLaunch(4, 0.1, 2).setHitStun(28, 12).setStunFrames(13);
+		let prop = [sweet];
+
+		//sweet.setHitSound(assetManager.sounds["8BitHit"]);
+		//sweet.setBlockSound(assetManager.sounds["8BitHit"]);
+
+		return new this(player, circles, prop).setClashPriority(false).setStartupF(27).setActiveF(2).setEndF(7).setRotateable();
+	}
+
+	static startAttack(player, attack, bufferInfo) {
+		player.startMomentumMultiply(0);
+		player.startMomentumMultiplyDash(0.5);
+	}
+
+	draw(g) {
+		if (this.currentlyActive()) {
+			//if (debug.displayHitboxes)
+				this.debugDraw(g);
+		}
+	}
+
+	logic() {
+		if (this.getStartupF() === 1) {
+			this.properties[0].playSound(this.world, assetManager.sounds.gunShot);
+			this.player.dx -= this.dir.getX() * 5;
+			this.player.dy -= this.dir.getY() * 5;
+			this.player.bullets--;
+		}
+		this.player.dx *= 0.94;
+		this.player.dy *= 0.94;
+	}
+}
+
+class JanLukeRPL extends Attack {
+	constructor(player, circles = [], props = []) {
+		super(player, circles, props);
+		this.name = "RPL";
+	}
+
+	static createAttack(player) {
+		let cancelOptions = ["NPS", "MN"];
+
+		let sweet1 = new PriorityCircle(30, 0, 20, 0).setVelocity(0.1, 0);
+		let sweet2 = new PriorityCircle(50, 0, 20, 0).setVelocity(0.1, 0);
+		let sweet3 = new PriorityCircle(70, 0, 20, 0).setVelocity(0.1, 0);
+		let sweet4 = new PriorityCircle(90, 0, 20, 0).setVelocity(0.1, 0);
+		let sweet5 = new PriorityCircle(110, 0, 20, 0).setVelocity(0.1, 0);
+		let sweet6 = new PriorityCircle(130, 0, 20, 0).setVelocity(0.1, 0);
+		let circles = [sweet1, sweet2, sweet3, sweet4, sweet5, sweet6];
+
+		let sweet = new AttackProperties().setDamage(25).setProration(0.8).setCancelOptions(cancelOptions).setAngleValue(player.dir.value).setLaunch(4, 0.1, 1.1).setHitStun(28, 10).setStunFrames(13);
+		let prop = [sweet];
+
+		//sweet.setHitSound(assetManager.sounds["8BitHit"]);
+		//sweet.setBlockSound(assetManager.sounds["8BitHit"]);
+
+		return new this(player, circles, prop).setClashPriority(false).setStartupF(14).setActiveF(2).setEndF(27).setRotateable();
+	}
+
+	static startAttack(player, attack, bufferInfo) {
+		player.startMomentumMultiply(0);
+		player.startMomentumMultiplyDash(0.5);
+	}
+
+	draw(g) {
+		if (this.currentlyActive()) {
+			//if (debug.displayHitboxes)
+				this.debugDraw(g);
+		}
+	}
+
+	logic() {
+		if (this.getStartupF() === 1) {
+			this.properties[0].playSound(this.world, assetManager.sounds.gunShot);
+			this.player.dx -= this.dir.getX() * 3;
+			this.player.dy -= this.dir.getY() * 3;
+			this.properties[0].setAngleValue(this.player.dir.value);
+			this.player.bullets--;
+		}
+		this.player.dx *= 0.94;
+		this.player.dy *= 0.94;
+
+		if (this.player.targetPlayer && this.getStartupF() > 0) {
+			let playersAngle = new Angle().setFromPoint(this.player.targetPlayer.x - this.player.x, this.player.targetPlayer.y - this.player.y);
+
+			let compare = Angle.compare(this.player.dir, playersAngle);
+			//if (compare < -0.2) {
+				//this.player.dir.value -= 0.11;
+			//}
+			if (compare > 0.2) {
+				this.player.dir.value += 0.11;
+			}
+		}
+	}
+}
+
+class JanLukeLPL extends Attack {
+	constructor(player, circles = [], props = []) {
+		super(player, circles, props);
+		this.name = "LPL";
+	}
+
+	static createAttack(player) {
+		let cancelOptions = ["NPS", "MN"];
+
+		let sweet1 = new PriorityCircle(30, 0, 20, 0).setVelocity(0.1, 0);
+		let sweet2 = new PriorityCircle(50, 0, 20, 0).setVelocity(0.1, 0);
+		let sweet3 = new PriorityCircle(70, 0, 20, 0).setVelocity(0.1, 0);
+		let sweet4 = new PriorityCircle(90, 0, 20, 0).setVelocity(0.1, 0);
+		let sweet5 = new PriorityCircle(110, 0, 20, 0).setVelocity(0.1, 0);
+		let sweet6 = new PriorityCircle(130, 0, 20, 0).setVelocity(0.1, 0);
+		let circles = [sweet1, sweet2, sweet3, sweet4, sweet5, sweet6];
+
+		let sweet = new AttackProperties().setDamage(35).setProration(0.6).setCancelOptions(cancelOptions).setAngleValue(player.dir.value).setLaunch(4, 0.1, 1.1).setHitStun(28, 10).setStunFrames(13);
+		let prop = [sweet];
+
+		//sweet.setHitSound(assetManager.sounds["8BitHit"]);
+		//sweet.setBlockSound(assetManager.sounds["8BitHit"]);
+
+		return new this(player, circles, prop).setClashPriority(false).setStartupF(17).setActiveF(2).setEndF(27).setRotateable();
+	}
+
+	static startAttack(player, attack, bufferInfo) {
+		player.startMomentumMultiply(0);
+		player.startMomentumMultiplyDash(0.5);
+	}
+
+	draw(g) {
+		if (this.currentlyActive()) {
+			//if (debug.displayHitboxes)
+				this.debugDraw(g);
+		}
+	}
+
+	logic() {
+		if (this.getStartupF() === 1) {
+			this.properties[0].playSound(this.world, assetManager.sounds.gunShot);
+			this.player.dx -= this.dir.getX() * 3;
+			this.player.dy -= this.dir.getY() * 3;
+			this.properties[0].setAngleValue(this.player.dir.value);
+			this.player.bullets--;
+		}
+		this.player.dx *= 0.94;
+		this.player.dy *= 0.94;
+
+		if (this.player.targetPlayer && this.getStartupF() > 0) {
+			let playersAngle = new Angle().setFromPoint(this.player.targetPlayer.x - this.player.x, this.player.targetPlayer.y - this.player.y);
+
+			let compare = Angle.compare(this.player.dir, playersAngle);
+			if (compare < -0.2) {
+				this.player.dir.value -= 0.093;
+			}
+			//if (compare > 0.2) {
+				//this.player.dir.value += 0.093;
+			//}
+		}
+	}
+}
+
+class JanLukeNPS extends Attack {
+	constructor(player, circles = [], props = []) {
+		super(player, circles, props);
+		this.name = "NPS";
+
+		this.sheet = Spritesheet.copy(assetManager.spritesheets.linjaLuka);
+		this.targetAngle = new Angle();
+
+		this.combo = false;
+	}
+
+	static createAttack(player) {
+		let cancelOptions = [];
+
+		let sweet1 = new PriorityCircle(60, 0, 10, 0).setVelocity(18, 0);
+		let sweet2 = new PriorityCircle(40, 0, 10, 0).setVelocity(18, 0);
+		let circles = [sweet1, sweet2];
+
+		let sweet = new AttackProperties().setDamage(0).setCancelOptions(cancelOptions).setAngleValue(player.dir.value).setLaunch(0, 0.1).setHitStun(30).setStunFrames(24).setCommandGrab().setNoComboCounter();
+		let prop = [sweet];
+
+		sweet.setHitSound(assetManager.sounds.linjaLuka);
+		//sweet.setBlockSound(assetManager.sounds.fanTP);
+
+		return new this(player, circles, prop).setClashPriority(6).setStartupF(24).setActiveF(24).setEndF(21).setRotateable();
+	}
+
+	static startAttack(player, attack, bufferInfo) {
+		player.startMomentumMultiply(0);
+		player.startMomentumMultiplyDash(0);
+
+		if (player.targetPlayer) {
+			let futureFrames = constrain(dist(player.x, player.y, player.targetPlayer.x, player.targetPlayer.y) / 2, 10, 40);
+			if (player.targetPlayer.hitStun > 0)
+				futureFrames = max(10, futureFrames - 15);
+			let vel = dist(0, 0, player.targetPlayer.dx, player.targetPlayer.dy);
+			let velMult = (vel > 0 ? min(vel, 5) / vel : 0);
+			attack.targetAngle.setFromPoint(player.targetPlayer.x - player.x + player.targetPlayer.dx * futureFrames * velMult, player.targetPlayer.y - player.y + player.targetPlayer.dy * futureFrames * velMult);
+			if (player.targetPlayer.hitStun >= 24) {
+				attack.combo = true;
+			}
+		}
+	}
+
+	draw(g) {
+		g.push();
+		g.translate(this.x, this.y);
+		g.rotate(this.dir.value);
+
+		this.sheet.draw(g, 78, -12, 426, 24);
+
+		g.pop();
+
+		if (this.currentlyActive()) {
+			if (debug.displayHitboxes)
+				this.debugDraw(g);
+		}
+	}
+
+	logic() {
+		if (this.getStartupF() <= 0 && (!this.hitPlayerBool || this.getEndF() > 4))
+			this.sheet.run();
+
+		if (this.getStartupF() > 0) {
+			if (Angle.compare(this.player.dir, this.targetAngle) > 0.05) {
+				this.player.dir.changeValue(0.08);
+			}
+			if (Angle.compare(this.player.dir, this.targetAngle) < -0.05) {
+				this.player.dir.changeValue(-0.08);
+			}
+		}
+		if (this.getStartupF() === 1) {
+			this.properties[0].playSound(this.world, assetManager.sounds.kamalaLinja, 2);
+			//assetManager.sounds.kalamaLinja.play();
+		}
+		if (this.getActiveF() === 1) {
+			this.sheet.setAnimation("Finish");
+			this.properties[0].playSound(this.world, assetManager.sounds.kamalaLinja, 2);
+			//assetManager.sounds.kalamaLinja.play();
+		}
+
+		if (!this.hitPlayerBool && this.getEndF() === 18) {
+			this.player.sheet.setFrameRelative(10);
+		}
+		if (this.player.targetPlayer && this.player.targetPlayer.hitStun <= 0) {
+			this.combo = false;
+		}
+
+		if (this.hitPlayerBool) {
+			if (this.player.targetPlayer) {
+				this.player.targetPlayer.x = this.player.x + this.player.dir.getX() * (this.getEndF() * 18 + 30 + this.player.targetPlayer.collideRadius);
+				this.player.targetPlayer.y = this.player.y + this.player.dir.getY() * (this.getEndF() * 18 + 30 + this.player.targetPlayer.collideRadius);
+			}
+			if (this.getEndF() === 1) {
+				let cancelOptions = [];
+
+				let sweet1 = new PriorityCircle(50, 0, 100, 0);
+				let circles = [sweet1];
+
+				let sweet = new AttackProperties().setDamage(this.combo ? 45 : 65, 30).setProration(-1).setCancelOptions(cancelOptions).setAngleValue(this.player.dir.value).setLaunch(this.combo ? 0.5 : 5, this.combo ? 0.5 : 5).setHitStun(this.combo ? 32 : 26).setStunFrames(15);
+				let prop = [sweet];
+
+				//sweet.setHitSound(assetManager.sounds.fanTP);
+				//sweet.setBlockSound(assetManager.sounds.fanTP);
+
+				let attack = new Attack(this.player, circles, prop).setClashPriority(false).setStartupF(0).setActiveF(1).setEndF(22);
+
+				this.player.addCurrentAttack(attack);
+				attack.rotateTo(this.player.dir);
+				this.world.addAttack(attack);
+
+				this.player.setActionLag(attack);
+
+				this.player.sheet.setFrameRelative(11);
+			}
+		}
+	}
+
+	hitConfirmSetFrames() {
+		let frames = max(2, 27 - this.getActiveF());
+		this.player.actionLag = frames;
+		this.setEndF(frames);
+		this.setActiveF(0);
+		let currentFrame = this.sheet.currentFrame;
+		this.sheet.setAnimation("Finish");
+		this.sheet.currentFrame = 15 - currentFrame;
+		//this.player.hurtboxStateFrame = 40;
+		this.player.sheet.setFrameRelative(6);
+		this.player.iFrames = frames;
+		this.player.invTo = ["attack", "grab"];
+	}
+}
+
+class JanLukeRPS extends Attack {
+	constructor(player, circles = [], props = []) {
+		super(player, circles, props);
+		this.name = "RPS";
+
+		this.timer = -1;
+
+		this.held = true;
+
+		this.wait = 6;
+		this.activationDuration = 2;
+		this.explosionDiameter = 140;
+		this.detectionRadius = 50;
+
+		this.sheet = Spritesheet.copy(assetManager.spritesheets.sikePakala);
+	}
+
+	static createAttack(player) {
+		let cancelOptions = [];
+
+		let sweet1 = new PriorityCircle(50, 0, 0, 0);
+		let circles = [sweet1];
+
+		let sweet = new AttackProperties().setDamage(15).setProration(0.5).setCancelOptions(cancelOptions).setAngleValue(player.dir.value).setLaunch(2).setHitStun(21, 20).setStunFrames(5).setAngleTypes("direct", "direct");
+		let prop = [sweet];
+
+		return new this(player, circles, prop).setClashPriority(6).setStartupF(25).setActiveF(400).setEndF(10).setProjectile().setFollow(false).setVelocity(13, 15);
+	}
+
+	static startAttack(player, attack, bufferInfo) {
+		player.startMomentumMultiply(0);
+		player.startMomentumMultiplyDash(0.5);
+	}
+
+	draw(g) {
+		if (debug.displayHitboxes)
+			this.debugDraw(g);
+		g.noStroke();
+		let size = this.explosionDiameter * 1.25 - 10;
+		this.sheet.draw(g, this.circleX(0) - size / 2, this.circleY(0) - size / 2, size, size);
+		//g.fill(0, 0, 15, 150);
+		//g.ellipse(this.circleX(0), this.circleY(0), 35, 35);
+		if (this.currentlyActive()) {
+			g.fill(240, 0, 15, 15);
+			g.ellipse(this.circleX(0), this.circleY(0), this.detectionRadius * 2, this.detectionRadius * 2);
+		}
+	}
+
+	logic() {
+		this.sheet.run();
+
+		if (!this.player.controls.held("pokaSuli")) {
+			this.held = false;
+		}
+
+		if (this.getFromStartupF() === 6 && this.held) {
+			this.wait = 10;
+			this.activationDuration = 6;
+			this.explosionDiameter = 190;
+			this.detectionRadius = 80;
+			this.dx /= 4;
+			this.dy /= 4;
+			this.setEndF(20);
+			this.player.actionLag = this.getEndF() + this.getStartupF();
+		}
+		if (this.getStartupF() === 1) {
+			this.dx = 0;
+			this.dy = 0;
+		}
+		if (this.timer > 0)
+			this.timer--;
+		if (this.player.targetPlayer) {
+			if (this.timer === -1 && this.currentlyActive() && dist(this.circleX(0), this.circleY(0), this.player.targetPlayer.x, this.player.targetPlayer.y) < this.player.targetPlayer.collideRadius + this.detectionRadius) {
+				this.timer = this.wait;
+				this.setEndF(0);
+				this.sheet.setAnimation("Explode");
+				if (this.explosionDiameter > 170)
+					this.sheet.setAnimation("ExplodeBig");
+			}
+		}
+		if (this.timer === 0) {
+			this.properties[0].playSound(this.world, assetManager.sounds.explosion);
+			this.circles[0].diameter = this.explosionDiameter;
+			this.resetMain();
+			this.setActiveF(this.activationDuration);
+			this.timer = -2;
+		}
+		if (!this.currentlyActive()) {
+			this.x += this.dx;
+			this.y += this.dy;
+		}
+		if (this.getActiveF() === 1) {
+			this.sheet.setAnimation("End");
+		}
+		this.dx *= 0.9;
+		this.dy *= 0.9;
+	}
+
+	hitConfirmSetFrames() {
+		if (this.player.targetPlayer) {
+			this.player.targetPlayer.slowWalkFrames = 300;
+			this.player.targetPlayer.slowWalk = 0.7;
+		}
+	}
+}
+
+class JanLukeLPS extends Attack {
+	constructor(player, circles = [], props = []) {
+		super(player, circles, props);
+		this.name = "LPS";
+
+		this.timer = -1;
+
+		this.held = true;
+
+		this.wait = 6;
+		this.activationDuration = 2;
+		this.explosionDiameter = 140;
+		this.detectionRadius = 50;
+
+		this.sheet = Spritesheet.copy(assetManager.spritesheets.sikePakala);
+	}
+
+	static createAttack(player) {
+		let cancelOptions = [];
+
+		let sweet1 = new PriorityCircle(50, 0, 0, 0);
+		let circles = [sweet1];
+
+		let sweet = new AttackProperties().setDamage(15).setProration(0.5).setCancelOptions(cancelOptions).setAngleValue(player.dir.value).setLaunch(2).setHitStun(21, 20).setStunFrames(5).setAngleTypes("direct", "direct");
+		let prop = [sweet];
+
+		return new this(player, circles, prop).setClashPriority(6).setStartupF(25).setActiveF(400).setEndF(10).setProjectile().setFollow(false).setVelocity(13, -15);
+	}
+
+	static startAttack(player, attack, bufferInfo) {
+		player.startMomentumMultiply(0);
+		player.startMomentumMultiplyDash(0.5);
+	}
+
+	draw(g) {
+		if (debug.displayHitboxes)
+			this.debugDraw(g);
+		g.noStroke();
+		let size = this.explosionDiameter * 1.25 - 10;
+		this.sheet.draw(g, this.circleX(0) - size / 2, this.circleY(0) - size / 2, size, size);
+		//g.fill(0, 0, 15, 150);
+		//g.ellipse(this.circleX(0), this.circleY(0), 35, 35);
+		if (this.currentlyActive()) {
+			g.fill(240, 0, 15, 15);
+			g.ellipse(this.circleX(0), this.circleY(0), this.detectionRadius * 2, this.detectionRadius * 2);
+		}
+	}
+
+	logic() {
+		this.sheet.run();
+
+		if (!this.player.controls.held("pokaSuli")) {
+			this.held = false;
+		}
+
+		if (this.getFromStartupF() === 6 && this.held) {
+			this.wait = 10;
+			this.activationDuration = 6;
+			this.explosionDiameter = 190;
+			this.detectionRadius = 80;
+			this.dx /= 4;
+			this.dy /= 4;
+			this.setEndF(20);
+			this.player.actionLag = this.getEndF() + this.getStartupF();
+		}
+		if (this.getStartupF() === 1) {
+			this.dx = 0;
+			this.dy = 0;
+		}
+		if (this.timer > 0)
+			this.timer--;
+		if (this.player.targetPlayer) {
+			if (this.timer === -1 && this.currentlyActive() && dist(this.circleX(0), this.circleY(0), this.player.targetPlayer.x, this.player.targetPlayer.y) < this.player.targetPlayer.collideRadius + this.detectionRadius) {
+				this.timer = this.wait;
+				this.setEndF(0);
+				this.sheet.setAnimation("Explode");
+				if (this.explosionDiameter > 170)
+					this.sheet.setAnimation("ExplodeBig");
+			}
+		}
+		if (this.timer === 0) {
+			this.properties[0].playSound(this.world, assetManager.sounds.explosion);
+			this.circles[0].diameter = this.explosionDiameter;
+			this.resetMain();
+			this.setActiveF(this.activationDuration);
+			this.timer = -2;
+		}
+		if (!this.currentlyActive()) {
+			this.x += this.dx;
+			this.y += this.dy;
+		}
+		if (this.getActiveF() === 1) {
+			this.sheet.setAnimation("End");
+		}
+		this.dx *= 0.9;
+		this.dy *= 0.9;
+	}
+
+	hitConfirmSetFrames() {
+		if (this.player.targetPlayer) {
+			this.player.targetPlayer.slowWalkFrames = 300;
+			this.player.targetPlayer.slowWalk = 0.7;
+		}
+	}
+}
+
+class JanLukeMPS extends Attack {
+	constructor(player, circles = [], props = []) {
+		super(player, circles, props);
+		this.name = "MPS";
+	}
+
+	static createAttack(player) {
+		let cancelOptions = [];
+		let hitCancelOptions = ["NN", "dash"];
+
+		let sour1 = new PriorityCircle(40, 40, 70, 0).setVelocity(0.1, -0.05);
+		let sour2 = new PriorityCircle(-40, 40, 70, 0).setVelocity(0.1, -0.05);
+		let sweet1 = new PriorityCircle(40, -40, 80, 1).setVelocity(0.1, 0.05);
+		let sweet2 = new PriorityCircle(-40, -40, 80, 1).setVelocity(0.1, 0.05);
+		let circles = [sour1, sour2, sweet1, sweet2];
+
+		let sour = new AttackProperties().setDamage(30).setCancelOptions(cancelOptions, hitCancelOptions).setAngleValue(player.dir.value).setLaunch(10, 3, -0.1).setHitStun(27, 7).setStunFrames(15).setCancelWait(3);
+		let sweet = new AttackProperties().setDamage(30).setCancelOptions(cancelOptions, hitCancelOptions).setAngleValue(player.dir.value + PI).setLaunch(14, -3, 0.1).setHitStun(30, 7).setStunFrames(15);
+		let prop = [sour, sweet];
+
+		return new this(player, circles, prop).setClashPriority(0).setStartupF(17).setActiveF(6).setEndF(30);
+	}
+
+	static startAttack(player, attack, bufferInfo) {
+		player.startMomentumMultiply(0);
+		player.startMomentumMultiplyDash(0);
+		player.invTo = ["grab"];
+		player.iFrames = 20;
+	}
+
+	draw(g) {
+		if (this.currentlyActive()) {
+			if (debug.displayHitboxes)
+				this.debugDraw(g);
+		}
+	}
+
+	logic() {
+		
+	}
+}
+
+class JanLukeNN extends Attack {
+	constructor(player, circles = [], props = []) {
+		super(player, circles, props);
+		this.name = "NN";
+
+		this.held = true;
+
+		this.voiceLine = true;
+
+		this.sheet = Spritesheet.copy(assetManager.spritesheets.gunEffect);
+	}
+
+	static createAttack(player) {
+		let cancelOptions = ["NN"];
+
+		let circles = [];
+		for (let x = 40; x <= 525; x += 25) {
+			circles.push(new PriorityCircle(x, 0, 30, 0).setVelocity(1, 0));
+		}
+
+		let sweet = new AttackProperties().setDamage(125).setProration(1).setCancelOptions(cancelOptions).setAngleValue(player.dir.value).setLaunch(8, 0).setHitStun(40).setStunFrames(15).setBlockBreak();
+		let prop = [sweet];
+
+		sweet.setHitSound(undefined);
+		//sweet.setBlockSound(assetManager.sounds["8BitHit"]);
+
+		return new this(player, circles, prop).setClashPriority(false).setStartupF(60).setActiveF(1).setEndF(20).setRotateable();
+	}
+
+	static startAttack(player, attack, bufferInfo) {
+		player.startMomentumMultiply(0);
+		player.startMomentumMultiplyDash(1.4);
+	}
+
+	draw(g) {
+		if (this.getStartupF() <= 0 && this.getFromEndF() < 7) {
+			g.push();
+			g.translate(this.x, this.y);
+			g.rotate(this.dir.value);
+
+			this.sheet.draw(g, 70, -16, 512, 32);
+
+			g.pop();
+		}
+		if (this.currentlyActive()) {
+			if (debug.displayHitboxes)
+				this.debugDraw(g);
+		}
+	}
+
+	logic() {
+		if (this.getStartupF() === 1) {
+			this.player.bullets--;
+		}
+		if (this.getFromStartupF() === 1 && this.voiceLine) {
+			this.voiceLine = false;
+			this.properties[0].playSound(this.world, assetManager.sounds.sinaSeme, 1);
+			//assetManager.sounds.sinaSeme.play();
+		}
+
+		if (this.getFromStartupF() === 16)
+			this.player.addAction("NPS");
+		if (this.getStartupF() === 16) {
+			this.player.removeAction("NL");
+			this.player.removeAction("NPS");
+			this.player.removeAction("dash");
+		}
+		if (this.getStartupF() <= 0 && this.getFromEndF() < 7)
+			this.sheet.run();
+		this.properties[0].setAngleValue(this.player.dir.value);
+		if (!this.player.controls.pressed("nasa"))
+			this.held = false;
+		if (this.getStartupF() === 16) {
+			this.properties[0].playSound(this.world, assetManager.sounds.gunCock);
+		}
+		if (this.getStartupF() === 2 && this.held) {
+			this.setStartupF(14);
+			this.player.setActionLag(this);
+			this.held = false;
+		}
+		if (this.getStartupF() === 1) {
+			this.player.sheet.setAnimation("NNF");//This is the animation for the actual swing
+			//this.player.sheet.currentSubFrames += this.player.sheet.frameRate;
+			this.player.setStateIgnore(this.player.states.NNF);
+			this.player.dx -= this.player.dir.getX() * 5;
+			this.player.dy -= this.player.dir.getY() * 5;
+			this.properties[0].playSound(this.world, assetManager.sounds.gunShot);
+		}
+		if (this.getStartupF() <= 0) {
+			this.player.dx *= 0.92;
+			this.player.dy *= 0.92;
+		}
+
+		this.player.turnSpeedModifier = min(this.getFromStartupF() / 400 * 3, 0.3);
+	}
+}
+
+class JanLukeSN extends Attack {
+	constructor(player, circles = [], props = []) {
+		super(player, circles, props);
+		this.name = "SN";
+	}
+
+	static createAttack(player) {
+		let cancelOptions = [];
+
+		let sour1 = new PriorityCircle(50, 0, 30, 0);
+		let sour2 = new PriorityCircle(45, -30, 30, 0);
+		let sour3 = new PriorityCircle(45, 30, 30, 0);
+		let circles = [sour1, sour2, sour3];
+
+		let sour = new AttackProperties().setDamage(35).setGrab(50).setCancelOptions(cancelOptions).setAngleValue(player.dir.value).setLaunch(8, 0.1).setHitStun(31).setStunFrames(4).setWallPushback(300);
+		let prop = [sour];
+
+		return new this(player, circles, prop).setClashPriority(6).setStartupF(6).setActiveF(6).setEndF(22).setRotateable();
+	}
+
+	static startAttack(player, attack, bufferInfo) {
+		player.startMomentumMultiply(0);
+		player.startMomentumMultiplyDash(0);
+	}
+
+	draw(g) {
+		if (this.currentlyActive()) {
+			if (debug.displayHitboxes)
+				this.debugDraw(g);
+		}
+	}
+
+	logic() {
+		if (this.player.targetPlayer && this.getStartupF() > 0) {
+			let playersAngle = new Angle().setFromPoint(this.player.targetPlayer.x - this.player.x, this.player.targetPlayer.y - this.player.y);
+
+			let compare = Angle.compare(this.player.dir, playersAngle);
+			if (compare < -0.3) {
+				this.player.dir.value -= 0.15;
+			}
+			if (compare > 0.3) {
+				this.player.dir.value += 0.15;
+			}
+		}
+	}
+}
+
+class JanLukeRN extends Attack {
+	constructor(player, circles = [], props = []) {
+		super(player, circles, props);
+		this.name = "RN";
+	}
+
+	static createAttack(player) {
+		let circles = [];
+
+		let prop = [];
+
+		return new this(player, circles, prop).setStartupF(30);
+	}
+
+	static startAttack(player, attack, bufferInfo) {
+		player.dx = 0;
+		player.dy = 0;
+		player.playSound(assetManager.sounds.reload);
+	}
+
+	draw(g) { }
+
+	applyModifiers() {
+		this.player.counterHittable = true;
+	}
+
+	logic() {
+		this.player.dx *= 0.5;
+		this.player.dy *= 0.5;
+		if (this.getStartupF() === 9) {
+			this.player.bullets = this.player.maxBullets;
+		}
+	}
+}
+
+class JanLukeMN extends Attack {
+	constructor(player, circles = [], props = []) {
+		super(player, circles, props);
+		this.name = "MN";
+
+		this.cancelledFrame = 10;
+	}
+
+	static createAttack(player) {
+		let circles = [];
+
+		let prop = [];
+
+		return new this(player, circles, prop).setStartupF(39);
+	}
+
+	static startAttack(player, attack, bufferInfo) {
+		if (player.currentState.name === "block") {
+			attack.cancelledFrame = 4;
+			player.sheet.setAnimation("MNF");
+		}
+
+		player.dx = 0;
+		player.dy = 0;
+	}
+
+	draw(g) {
+		if (this.currentlyActive()) {
+			if (debug.displayHitboxes)
+				this.debugDraw(g);
+		}
+	}
+
+	applyModifiers() {
+		this.player.counterHittable = true;
+	}
+
+	logic() {
+		this.player.dx *= 0.5;
+		this.player.dy *= 0.5;
+		if (this.getFromStartupF() === this.cancelledFrame) {
+			this.player.invTo = ["attack"];
+			this.player.iFrames = 18;
+		}
+		if (this.getFromStartupF() === this.cancelledFrame + 13) {
+			this.player.addAction("dash", "MPS");
+		}
+	}
+}
+
+characters.push(Luke);

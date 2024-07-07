@@ -1,0 +1,3461 @@
+{ "frames": {
+   "kijetesantakalu_Ka 0.aseprite": {
+    "frame": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 67
+   },
+   "kijetesantakalu_Ka 1.aseprite": {
+    "frame": { "x": 512, "y": 0, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 67
+   },
+   "kijetesantakalu_Ka 2.aseprite": {
+    "frame": { "x": 1024, "y": 0, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 67
+   },
+   "kijetesantakalu_Ka 3.aseprite": {
+    "frame": { "x": 1536, "y": 0, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 67
+   },
+   "kijetesantakalu_Ka 4.aseprite": {
+    "frame": { "x": 2048, "y": 0, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 67
+   },
+   "kijetesantakalu_Ka 5.aseprite": {
+    "frame": { "x": 2560, "y": 0, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 67
+   },
+   "kijetesantakalu_Ka 6.aseprite": {
+    "frame": { "x": 3072, "y": 0, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 67
+   },
+   "kijetesantakalu_Ka 7.aseprite": {
+    "frame": { "x": 3584, "y": 0, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 67
+   },
+   "kijetesantakalu_Ka 8.aseprite": {
+    "frame": { "x": 4096, "y": 0, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 67
+   },
+   "kijetesantakalu_Ka 9.aseprite": {
+    "frame": { "x": 4608, "y": 0, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 67
+   },
+   "kijetesantakalu_Ka 10.aseprite": {
+    "frame": { "x": 5120, "y": 0, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 67
+   },
+   "kijetesantakalu_Ka 11.aseprite": {
+    "frame": { "x": 5632, "y": 0, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 67
+   },
+   "kijetesantakalu_Ka 12.aseprite": {
+    "frame": { "x": 6144, "y": 0, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 67
+   },
+   "kijetesantakalu_Ka 13.aseprite": {
+    "frame": { "x": 6656, "y": 0, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 67
+   },
+   "kijetesantakalu_Ka 14.aseprite": {
+    "frame": { "x": 7168, "y": 0, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 67
+   },
+   "kijetesantakalu_Ka 15.aseprite": {
+    "frame": { "x": 7680, "y": 0, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 67
+   },
+   "kijetesantakalu_Ka 16.aseprite": {
+    "frame": { "x": 8192, "y": 0, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 67
+   },
+   "kijetesantakalu_Ka 17.aseprite": {
+    "frame": { "x": 0, "y": 512, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 67
+   },
+   "kijetesantakalu_Ka 18.aseprite": {
+    "frame": { "x": 512, "y": 512, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 67
+   },
+   "kijetesantakalu_Ka 19.aseprite": {
+    "frame": { "x": 1024, "y": 512, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 67
+   },
+   "kijetesantakalu_Ka 20.aseprite": {
+    "frame": { "x": 1536, "y": 512, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 67
+   },
+   "kijetesantakalu_Ka 21.aseprite": {
+    "frame": { "x": 2048, "y": 512, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 67
+   },
+   "kijetesantakalu_Ka 22.aseprite": {
+    "frame": { "x": 2560, "y": 512, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 67
+   },
+   "kijetesantakalu_Ka 23.aseprite": {
+    "frame": { "x": 3072, "y": 512, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 67
+   },
+   "kijetesantakalu_Ka 24.aseprite": {
+    "frame": { "x": 3584, "y": 512, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 67
+   },
+   "kijetesantakalu_Ka 25.aseprite": {
+    "frame": { "x": 4096, "y": 512, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 67
+   },
+   "kijetesantakalu_Ka 26.aseprite": {
+    "frame": { "x": 4608, "y": 512, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 67
+   },
+   "kijetesantakalu_Ka 27.aseprite": {
+    "frame": { "x": 5120, "y": 512, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 67
+   },
+   "kijetesantakalu_Ka 28.aseprite": {
+    "frame": { "x": 5632, "y": 512, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 67
+   },
+   "kijetesantakalu_Ka 29.aseprite": {
+    "frame": { "x": 6144, "y": 512, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 67
+   },
+   "kijetesantakalu_Ka 30.aseprite": {
+    "frame": { "x": 6656, "y": 512, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 67
+   },
+   "kijetesantakalu_Ka 31.aseprite": {
+    "frame": { "x": 7168, "y": 512, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 67
+   },
+   "kijetesantakalu_Ka 32.aseprite": {
+    "frame": { "x": 7680, "y": 512, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 67
+   },
+   "kijetesantakalu_Ka 33.aseprite": {
+    "frame": { "x": 8192, "y": 512, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 67
+   },
+   "kijetesantakalu_Ka 34.aseprite": {
+    "frame": { "x": 0, "y": 1024, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 67
+   },
+   "kijetesantakalu_Ka 35.aseprite": {
+    "frame": { "x": 512, "y": 1024, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 67
+   },
+   "kijetesantakalu_Ka 36.aseprite": {
+    "frame": { "x": 1024, "y": 1024, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 67
+   },
+   "kijetesantakalu_Ka 37.aseprite": {
+    "frame": { "x": 1536, "y": 1024, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 67
+   },
+   "kijetesantakalu_Ka 38.aseprite": {
+    "frame": { "x": 2048, "y": 1024, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 67
+   },
+   "kijetesantakalu_Ka 39.aseprite": {
+    "frame": { "x": 2560, "y": 1024, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 67
+   },
+   "kijetesantakalu_Ka 40.aseprite": {
+    "frame": { "x": 3072, "y": 1024, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 67
+   },
+   "kijetesantakalu_Ka 41.aseprite": {
+    "frame": { "x": 3584, "y": 1024, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 67
+   },
+   "kijetesantakalu_Ka 42.aseprite": {
+    "frame": { "x": 4096, "y": 1024, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 67
+   },
+   "kijetesantakalu_Ka 43.aseprite": {
+    "frame": { "x": 4608, "y": 1024, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 67
+   },
+   "kijetesantakalu_Ka 44.aseprite": {
+    "frame": { "x": 5120, "y": 1024, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 67
+   },
+   "kijetesantakalu_Ka 45.aseprite": {
+    "frame": { "x": 5632, "y": 1024, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 67
+   },
+   "kijetesantakalu_Ka 46.aseprite": {
+    "frame": { "x": 6144, "y": 1024, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 67
+   },
+   "kijetesantakalu_Ka 47.aseprite": {
+    "frame": { "x": 6656, "y": 1024, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 67
+   },
+   "kijetesantakalu_Ka 48.aseprite": {
+    "frame": { "x": 7168, "y": 1024, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 67
+   },
+   "kijetesantakalu_Ka 49.aseprite": {
+    "frame": { "x": 7680, "y": 1024, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 67
+   },
+   "kijetesantakalu_Ka 50.aseprite": {
+    "frame": { "x": 8192, "y": 1024, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 67
+   },
+   "kijetesantakalu_Ka 51.aseprite": {
+    "frame": { "x": 0, "y": 1536, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 67
+   },
+   "kijetesantakalu_Ka 52.aseprite": {
+    "frame": { "x": 512, "y": 1536, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 67
+   },
+   "kijetesantakalu_Ka 53.aseprite": {
+    "frame": { "x": 1024, "y": 1536, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 67
+   },
+   "kijetesantakalu_Ka 54.aseprite": {
+    "frame": { "x": 1536, "y": 1536, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 67
+   },
+   "kijetesantakalu_Ka 55.aseprite": {
+    "frame": { "x": 2048, "y": 1536, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 67
+   },
+   "kijetesantakalu_Ka 56.aseprite": {
+    "frame": { "x": 2560, "y": 1536, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 67
+   },
+   "kijetesantakalu_Ka 57.aseprite": {
+    "frame": { "x": 3072, "y": 1536, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 67
+   },
+   "kijetesantakalu_Ka 58.aseprite": {
+    "frame": { "x": 3584, "y": 1536, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 67
+   },
+   "kijetesantakalu_Ka 59.aseprite": {
+    "frame": { "x": 4096, "y": 1536, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 67
+   },
+   "kijetesantakalu_Ka 60.aseprite": {
+    "frame": { "x": 4608, "y": 1536, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 67
+   },
+   "kijetesantakalu_Ka 61.aseprite": {
+    "frame": { "x": 5120, "y": 1536, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 67
+   },
+   "kijetesantakalu_Ka 62.aseprite": {
+    "frame": { "x": 5632, "y": 1536, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 67
+   },
+   "kijetesantakalu_Ka 63.aseprite": {
+    "frame": { "x": 6144, "y": 1536, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 67
+   },
+   "kijetesantakalu_Ka 64.aseprite": {
+    "frame": { "x": 6656, "y": 1536, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 67
+   },
+   "kijetesantakalu_Ka 65.aseprite": {
+    "frame": { "x": 7168, "y": 1536, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 67
+   },
+   "kijetesantakalu_Ka 66.aseprite": {
+    "frame": { "x": 7680, "y": 1536, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 67
+   },
+   "kijetesantakalu_Ka 67.aseprite": {
+    "frame": { "x": 8192, "y": 1536, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 67
+   },
+   "kijetesantakalu_Ka 68.aseprite": {
+    "frame": { "x": 0, "y": 2048, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 67
+   },
+   "kijetesantakalu_Ka 69.aseprite": {
+    "frame": { "x": 512, "y": 2048, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 67
+   },
+   "kijetesantakalu_Ka 70.aseprite": {
+    "frame": { "x": 1024, "y": 2048, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 67
+   },
+   "kijetesantakalu_Ka 71.aseprite": {
+    "frame": { "x": 1536, "y": 2048, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 67
+   },
+   "kijetesantakalu_Ka 72.aseprite": {
+    "frame": { "x": 2048, "y": 2048, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 67
+   },
+   "kijetesantakalu_Ka 73.aseprite": {
+    "frame": { "x": 2560, "y": 2048, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 67
+   },
+   "kijetesantakalu_Ka 74.aseprite": {
+    "frame": { "x": 3072, "y": 2048, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 67
+   },
+   "kijetesantakalu_Ka 75.aseprite": {
+    "frame": { "x": 3584, "y": 2048, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 67
+   },
+   "kijetesantakalu_Ka 76.aseprite": {
+    "frame": { "x": 4096, "y": 2048, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 67
+   },
+   "kijetesantakalu_Ka 77.aseprite": {
+    "frame": { "x": 4608, "y": 2048, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 67
+   },
+   "kijetesantakalu_Ka 78.aseprite": {
+    "frame": { "x": 5120, "y": 2048, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 67
+   },
+   "kijetesantakalu_Ka 79.aseprite": {
+    "frame": { "x": 5632, "y": 2048, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 67
+   },
+   "kijetesantakalu_Ka 80.aseprite": {
+    "frame": { "x": 6144, "y": 2048, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 67
+   },
+   "kijetesantakalu_Ka 81.aseprite": {
+    "frame": { "x": 6656, "y": 2048, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 67
+   },
+   "kijetesantakalu_Ka 82.aseprite": {
+    "frame": { "x": 7168, "y": 2048, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 67
+   },
+   "kijetesantakalu_Ka 83.aseprite": {
+    "frame": { "x": 7680, "y": 2048, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 67
+   },
+   "kijetesantakalu_Ka 84.aseprite": {
+    "frame": { "x": 8192, "y": 2048, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 67
+   },
+   "kijetesantakalu_Ka 85.aseprite": {
+    "frame": { "x": 0, "y": 2560, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 67
+   },
+   "kijetesantakalu_Ka 86.aseprite": {
+    "frame": { "x": 512, "y": 2560, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 67
+   },
+   "kijetesantakalu_Ka 87.aseprite": {
+    "frame": { "x": 1024, "y": 2560, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 67
+   },
+   "kijetesantakalu_Ka 88.aseprite": {
+    "frame": { "x": 1536, "y": 2560, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 67
+   },
+   "kijetesantakalu_Ka 89.aseprite": {
+    "frame": { "x": 2048, "y": 2560, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 67
+   },
+   "kijetesantakalu_Ka 90.aseprite": {
+    "frame": { "x": 2560, "y": 2560, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 67
+   },
+   "kijetesantakalu_Ka 91.aseprite": {
+    "frame": { "x": 3072, "y": 2560, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 67
+   },
+   "kijetesantakalu_Ka 92.aseprite": {
+    "frame": { "x": 3584, "y": 2560, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 67
+   },
+   "kijetesantakalu_Ka 93.aseprite": {
+    "frame": { "x": 4096, "y": 2560, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 67
+   },
+   "kijetesantakalu_Ka 94.aseprite": {
+    "frame": { "x": 4608, "y": 2560, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 67
+   },
+   "kijetesantakalu_Ka 95.aseprite": {
+    "frame": { "x": 5120, "y": 2560, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 67
+   },
+   "kijetesantakalu_Ka 96.aseprite": {
+    "frame": { "x": 5632, "y": 2560, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 67
+   },
+   "kijetesantakalu_Ka 97.aseprite": {
+    "frame": { "x": 6144, "y": 2560, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 67
+   },
+   "kijetesantakalu_Ka 98.aseprite": {
+    "frame": { "x": 6656, "y": 2560, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 67
+   },
+   "kijetesantakalu_Ka 99.aseprite": {
+    "frame": { "x": 7168, "y": 2560, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 67
+   },
+   "kijetesantakalu_Ka 100.aseprite": {
+    "frame": { "x": 7680, "y": 2560, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 67
+   },
+   "kijetesantakalu_Ka 101.aseprite": {
+    "frame": { "x": 8192, "y": 2560, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 67
+   },
+   "kijetesantakalu_Ka 102.aseprite": {
+    "frame": { "x": 0, "y": 3072, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 67
+   },
+   "kijetesantakalu_Ka 103.aseprite": {
+    "frame": { "x": 512, "y": 3072, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 67
+   },
+   "kijetesantakalu_Ka 104.aseprite": {
+    "frame": { "x": 1024, "y": 3072, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 67
+   },
+   "kijetesantakalu_Ka 105.aseprite": {
+    "frame": { "x": 1536, "y": 3072, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 67
+   },
+   "kijetesantakalu_Ka 106.aseprite": {
+    "frame": { "x": 2048, "y": 3072, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 67
+   },
+   "kijetesantakalu_Ka 107.aseprite": {
+    "frame": { "x": 2560, "y": 3072, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 67
+   },
+   "kijetesantakalu_Ka 108.aseprite": {
+    "frame": { "x": 3072, "y": 3072, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 67
+   },
+   "kijetesantakalu_Ka 109.aseprite": {
+    "frame": { "x": 3584, "y": 3072, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 67
+   },
+   "kijetesantakalu_Ka 110.aseprite": {
+    "frame": { "x": 4096, "y": 3072, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 67
+   },
+   "kijetesantakalu_Ka 111.aseprite": {
+    "frame": { "x": 4608, "y": 3072, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 67
+   },
+   "kijetesantakalu_Ka 112.aseprite": {
+    "frame": { "x": 5120, "y": 3072, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 67
+   },
+   "kijetesantakalu_Ka 113.aseprite": {
+    "frame": { "x": 5632, "y": 3072, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 67
+   },
+   "kijetesantakalu_Ka 114.aseprite": {
+    "frame": { "x": 6144, "y": 3072, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 67
+   },
+   "kijetesantakalu_Ka 115.aseprite": {
+    "frame": { "x": 6656, "y": 3072, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 67
+   },
+   "kijetesantakalu_Ka 116.aseprite": {
+    "frame": { "x": 7168, "y": 3072, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 67
+   },
+   "kijetesantakalu_Ka 117.aseprite": {
+    "frame": { "x": 7680, "y": 3072, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 67
+   },
+   "kijetesantakalu_Ka 118.aseprite": {
+    "frame": { "x": 8192, "y": 3072, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 67
+   },
+   "kijetesantakalu_Ka 119.aseprite": {
+    "frame": { "x": 0, "y": 3584, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 67
+   },
+   "kijetesantakalu_Ka 120.aseprite": {
+    "frame": { "x": 512, "y": 3584, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 67
+   },
+   "kijetesantakalu_Ka 121.aseprite": {
+    "frame": { "x": 1024, "y": 3584, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 67
+   },
+   "kijetesantakalu_Ka 122.aseprite": {
+    "frame": { "x": 1536, "y": 3584, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 67
+   },
+   "kijetesantakalu_Ka 123.aseprite": {
+    "frame": { "x": 2048, "y": 3584, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 67
+   },
+   "kijetesantakalu_Ka 124.aseprite": {
+    "frame": { "x": 2560, "y": 3584, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 67
+   },
+   "kijetesantakalu_Ka 125.aseprite": {
+    "frame": { "x": 3072, "y": 3584, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 67
+   },
+   "kijetesantakalu_Ka 126.aseprite": {
+    "frame": { "x": 3584, "y": 3584, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 67
+   },
+   "kijetesantakalu_Ka 127.aseprite": {
+    "frame": { "x": 4096, "y": 3584, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 67
+   },
+   "kijetesantakalu_Ka 128.aseprite": {
+    "frame": { "x": 4608, "y": 3584, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 67
+   },
+   "kijetesantakalu_Ka 129.aseprite": {
+    "frame": { "x": 5120, "y": 3584, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 67
+   },
+   "kijetesantakalu_Ka 130.aseprite": {
+    "frame": { "x": 5632, "y": 3584, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 67
+   },
+   "kijetesantakalu_Ka 131.aseprite": {
+    "frame": { "x": 6144, "y": 3584, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 67
+   },
+   "kijetesantakalu_Ka 132.aseprite": {
+    "frame": { "x": 6656, "y": 3584, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 67
+   },
+   "kijetesantakalu_Ka 133.aseprite": {
+    "frame": { "x": 7168, "y": 3584, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 67
+   },
+   "kijetesantakalu_Ka 134.aseprite": {
+    "frame": { "x": 7680, "y": 3584, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 67
+   },
+   "kijetesantakalu_Ka 135.aseprite": {
+    "frame": { "x": 8192, "y": 3584, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 67
+   },
+   "kijetesantakalu_Ka 136.aseprite": {
+    "frame": { "x": 0, "y": 4096, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 67
+   },
+   "kijetesantakalu_Ka 137.aseprite": {
+    "frame": { "x": 512, "y": 4096, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 67
+   },
+   "kijetesantakalu_Ka 138.aseprite": {
+    "frame": { "x": 1024, "y": 4096, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 67
+   },
+   "kijetesantakalu_Ka 139.aseprite": {
+    "frame": { "x": 1536, "y": 4096, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 67
+   },
+   "kijetesantakalu_Ka 140.aseprite": {
+    "frame": { "x": 2048, "y": 4096, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 67
+   },
+   "kijetesantakalu_Ka 141.aseprite": {
+    "frame": { "x": 2560, "y": 4096, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 67
+   },
+   "kijetesantakalu_Ka 142.aseprite": {
+    "frame": { "x": 3072, "y": 4096, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 67
+   },
+   "kijetesantakalu_Ka 143.aseprite": {
+    "frame": { "x": 3584, "y": 4096, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 67
+   },
+   "kijetesantakalu_Ka 144.aseprite": {
+    "frame": { "x": 4096, "y": 4096, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 67
+   },
+   "kijetesantakalu_Ka 145.aseprite": {
+    "frame": { "x": 4608, "y": 4096, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 67
+   },
+   "kijetesantakalu_Ka 146.aseprite": {
+    "frame": { "x": 5120, "y": 4096, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 67
+   },
+   "kijetesantakalu_Ka 147.aseprite": {
+    "frame": { "x": 5632, "y": 4096, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 67
+   },
+   "kijetesantakalu_Ka 148.aseprite": {
+    "frame": { "x": 6144, "y": 4096, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 67
+   },
+   "kijetesantakalu_Ka 149.aseprite": {
+    "frame": { "x": 6656, "y": 4096, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 67
+   },
+   "kijetesantakalu_Ka 150.aseprite": {
+    "frame": { "x": 7168, "y": 4096, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 67
+   },
+   "kijetesantakalu_Ka 151.aseprite": {
+    "frame": { "x": 7680, "y": 4096, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 67
+   },
+   "kijetesantakalu_Ka 152.aseprite": {
+    "frame": { "x": 8192, "y": 4096, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 67
+   },
+   "kijetesantakalu_Ka 153.aseprite": {
+    "frame": { "x": 0, "y": 4608, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 67
+   },
+   "kijetesantakalu_Ka 154.aseprite": {
+    "frame": { "x": 512, "y": 4608, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 67
+   },
+   "kijetesantakalu_Ka 155.aseprite": {
+    "frame": { "x": 1024, "y": 4608, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 67
+   },
+   "kijetesantakalu_Ka 156.aseprite": {
+    "frame": { "x": 1536, "y": 4608, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 67
+   },
+   "kijetesantakalu_Ka 157.aseprite": {
+    "frame": { "x": 2048, "y": 4608, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 67
+   },
+   "kijetesantakalu_Ka 158.aseprite": {
+    "frame": { "x": 2560, "y": 4608, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 67
+   },
+   "kijetesantakalu_Ka 159.aseprite": {
+    "frame": { "x": 3072, "y": 4608, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 67
+   },
+   "kijetesantakalu_Ka 160.aseprite": {
+    "frame": { "x": 3584, "y": 4608, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 67
+   },
+   "kijetesantakalu_Ka 161.aseprite": {
+    "frame": { "x": 4096, "y": 4608, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 67
+   },
+   "kijetesantakalu_Ka 162.aseprite": {
+    "frame": { "x": 4608, "y": 4608, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 67
+   },
+   "kijetesantakalu_Ka 163.aseprite": {
+    "frame": { "x": 5120, "y": 4608, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 67
+   },
+   "kijetesantakalu_Ka 164.aseprite": {
+    "frame": { "x": 5632, "y": 4608, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 67
+   },
+   "kijetesantakalu_Ka 165.aseprite": {
+    "frame": { "x": 6144, "y": 4608, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 67
+   },
+   "kijetesantakalu_Ka 166.aseprite": {
+    "frame": { "x": 6656, "y": 4608, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 67
+   },
+   "kijetesantakalu_Ka 167.aseprite": {
+    "frame": { "x": 7168, "y": 4608, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 67
+   },
+   "kijetesantakalu_Ka 168.aseprite": {
+    "frame": { "x": 7680, "y": 4608, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 67
+   },
+   "kijetesantakalu_Ka 169.aseprite": {
+    "frame": { "x": 8192, "y": 4608, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 67
+   },
+   "kijetesantakalu_Ka 170.aseprite": {
+    "frame": { "x": 0, "y": 5120, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 67
+   },
+   "kijetesantakalu_Ka 171.aseprite": {
+    "frame": { "x": 512, "y": 5120, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 67
+   },
+   "kijetesantakalu_Ka 172.aseprite": {
+    "frame": { "x": 1024, "y": 5120, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 67
+   },
+   "kijetesantakalu_Ka 173.aseprite": {
+    "frame": { "x": 1536, "y": 5120, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 67
+   },
+   "kijetesantakalu_Ka 174.aseprite": {
+    "frame": { "x": 2048, "y": 5120, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 67
+   },
+   "kijetesantakalu_Ka 175.aseprite": {
+    "frame": { "x": 2560, "y": 5120, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 67
+   },
+   "kijetesantakalu_Ka 176.aseprite": {
+    "frame": { "x": 3072, "y": 5120, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 67
+   },
+   "kijetesantakalu_Ka 177.aseprite": {
+    "frame": { "x": 3584, "y": 5120, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 67
+   },
+   "kijetesantakalu_Ka 178.aseprite": {
+    "frame": { "x": 4096, "y": 5120, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 67
+   },
+   "kijetesantakalu_Ka 179.aseprite": {
+    "frame": { "x": 4608, "y": 5120, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 67
+   },
+   "kijetesantakalu_Ka 180.aseprite": {
+    "frame": { "x": 5120, "y": 5120, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 67
+   },
+   "kijetesantakalu_Ka 181.aseprite": {
+    "frame": { "x": 5632, "y": 5120, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 67
+   },
+   "kijetesantakalu_Ka 182.aseprite": {
+    "frame": { "x": 6144, "y": 5120, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 67
+   },
+   "kijetesantakalu_Ka 183.aseprite": {
+    "frame": { "x": 6656, "y": 5120, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 67
+   },
+   "kijetesantakalu_Ka 184.aseprite": {
+    "frame": { "x": 7168, "y": 5120, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 67
+   },
+   "kijetesantakalu_Ka 185.aseprite": {
+    "frame": { "x": 7680, "y": 5120, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 67
+   },
+   "kijetesantakalu_Ka 186.aseprite": {
+    "frame": { "x": 8192, "y": 5120, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 67
+   },
+   "kijetesantakalu_Ka 187.aseprite": {
+    "frame": { "x": 0, "y": 5632, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 67
+   },
+   "kijetesantakalu_Ka 188.aseprite": {
+    "frame": { "x": 512, "y": 5632, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 67
+   },
+   "kijetesantakalu_Ka 189.aseprite": {
+    "frame": { "x": 1024, "y": 5632, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 67
+   },
+   "kijetesantakalu_Ka 190.aseprite": {
+    "frame": { "x": 1536, "y": 5632, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 67
+   },
+   "kijetesantakalu_Ka 191.aseprite": {
+    "frame": { "x": 2048, "y": 5632, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 67
+   },
+   "kijetesantakalu_Ka 192.aseprite": {
+    "frame": { "x": 2560, "y": 5632, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 67
+   },
+   "kijetesantakalu_Ka 193.aseprite": {
+    "frame": { "x": 3072, "y": 5632, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 67
+   },
+   "kijetesantakalu_Ka 194.aseprite": {
+    "frame": { "x": 3584, "y": 5632, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 67
+   },
+   "kijetesantakalu_Ka 195.aseprite": {
+    "frame": { "x": 4096, "y": 5632, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 67
+   },
+   "kijetesantakalu_Ka 196.aseprite": {
+    "frame": { "x": 4608, "y": 5632, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 67
+   },
+   "kijetesantakalu_Ka 197.aseprite": {
+    "frame": { "x": 5120, "y": 5632, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 67
+   },
+   "kijetesantakalu_Ka 198.aseprite": {
+    "frame": { "x": 5632, "y": 5632, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 67
+   },
+   "kijetesantakalu_Ka 199.aseprite": {
+    "frame": { "x": 6144, "y": 5632, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 67
+   },
+   "kijetesantakalu_Ka 200.aseprite": {
+    "frame": { "x": 6656, "y": 5632, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 67
+   },
+   "kijetesantakalu_Ka 201.aseprite": {
+    "frame": { "x": 7168, "y": 5632, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 67
+   },
+   "kijetesantakalu_Ka 202.aseprite": {
+    "frame": { "x": 7680, "y": 5632, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 67
+   },
+   "kijetesantakalu_Ka 203.aseprite": {
+    "frame": { "x": 8192, "y": 5632, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 67
+   },
+   "kijetesantakalu_Ka 204.aseprite": {
+    "frame": { "x": 0, "y": 6144, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 67
+   },
+   "kijetesantakalu_Ka 205.aseprite": {
+    "frame": { "x": 512, "y": 6144, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 67
+   },
+   "kijetesantakalu_Ka 206.aseprite": {
+    "frame": { "x": 1024, "y": 6144, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 67
+   },
+   "kijetesantakalu_Ka 207.aseprite": {
+    "frame": { "x": 1536, "y": 6144, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 67
+   },
+   "kijetesantakalu_Ka 208.aseprite": {
+    "frame": { "x": 2048, "y": 6144, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 67
+   },
+   "kijetesantakalu_Ka 209.aseprite": {
+    "frame": { "x": 2560, "y": 6144, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 67
+   },
+   "kijetesantakalu_Ka 210.aseprite": {
+    "frame": { "x": 3072, "y": 6144, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 67
+   },
+   "kijetesantakalu_Ka 211.aseprite": {
+    "frame": { "x": 3584, "y": 6144, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 67
+   },
+   "kijetesantakalu_Ka 212.aseprite": {
+    "frame": { "x": 4096, "y": 6144, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 67
+   },
+   "kijetesantakalu_Ka 213.aseprite": {
+    "frame": { "x": 4608, "y": 6144, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 67
+   },
+   "kijetesantakalu_Ka 214.aseprite": {
+    "frame": { "x": 5120, "y": 6144, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 67
+   },
+   "kijetesantakalu_Ka 215.aseprite": {
+    "frame": { "x": 5632, "y": 6144, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 67
+   },
+   "kijetesantakalu_Ka 216.aseprite": {
+    "frame": { "x": 6144, "y": 6144, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 67
+   },
+   "kijetesantakalu_Ka 217.aseprite": {
+    "frame": { "x": 6656, "y": 6144, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 67
+   },
+   "kijetesantakalu_Ka 218.aseprite": {
+    "frame": { "x": 7168, "y": 6144, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 67
+   },
+   "kijetesantakalu_Ka 219.aseprite": {
+    "frame": { "x": 7680, "y": 6144, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 67
+   },
+   "kijetesantakalu_Ka 220.aseprite": {
+    "frame": { "x": 8192, "y": 6144, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 67
+   },
+   "kijetesantakalu_Ka 221.aseprite": {
+    "frame": { "x": 0, "y": 6656, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 67
+   },
+   "kijetesantakalu_Ka 222.aseprite": {
+    "frame": { "x": 512, "y": 6656, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 67
+   },
+   "kijetesantakalu_Ka 223.aseprite": {
+    "frame": { "x": 1024, "y": 6656, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 67
+   },
+   "kijetesantakalu_Ka 224.aseprite": {
+    "frame": { "x": 1536, "y": 6656, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 67
+   },
+   "kijetesantakalu_Ka 225.aseprite": {
+    "frame": { "x": 2048, "y": 6656, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 67
+   },
+   "kijetesantakalu_Ka 226.aseprite": {
+    "frame": { "x": 2560, "y": 6656, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 67
+   },
+   "kijetesantakalu_Ka 227.aseprite": {
+    "frame": { "x": 3072, "y": 6656, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 67
+   },
+   "kijetesantakalu_Ka 228.aseprite": {
+    "frame": { "x": 3584, "y": 6656, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 67
+   },
+   "kijetesantakalu_Ka 229.aseprite": {
+    "frame": { "x": 4096, "y": 6656, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 67
+   },
+   "kijetesantakalu_Ka 230.aseprite": {
+    "frame": { "x": 4608, "y": 6656, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 67
+   },
+   "kijetesantakalu_Ka 231.aseprite": {
+    "frame": { "x": 5120, "y": 6656, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 67
+   },
+   "kijetesantakalu_Ka 232.aseprite": {
+    "frame": { "x": 5632, "y": 6656, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 67
+   },
+   "kijetesantakalu_Ka 233.aseprite": {
+    "frame": { "x": 6144, "y": 6656, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 67
+   },
+   "kijetesantakalu_Ka 234.aseprite": {
+    "frame": { "x": 6656, "y": 6656, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 67
+   },
+   "kijetesantakalu_Ka 235.aseprite": {
+    "frame": { "x": 7168, "y": 6656, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 67
+   },
+   "kijetesantakalu_Ka 236.aseprite": {
+    "frame": { "x": 7680, "y": 6656, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 67
+   },
+   "kijetesantakalu_Ka 237.aseprite": {
+    "frame": { "x": 8192, "y": 6656, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 67
+   },
+   "kijetesantakalu_Ka 238.aseprite": {
+    "frame": { "x": 0, "y": 7168, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 67
+   },
+   "kijetesantakalu_Ka 239.aseprite": {
+    "frame": { "x": 512, "y": 7168, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 67
+   },
+   "kijetesantakalu_Ka 240.aseprite": {
+    "frame": { "x": 1024, "y": 7168, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 67
+   },
+   "kijetesantakalu_Ka 241.aseprite": {
+    "frame": { "x": 1536, "y": 7168, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 67
+   },
+   "kijetesantakalu_Ka 242.aseprite": {
+    "frame": { "x": 2048, "y": 7168, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 67
+   },
+   "kijetesantakalu_Ka 243.aseprite": {
+    "frame": { "x": 2560, "y": 7168, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 67
+   },
+   "kijetesantakalu_Ka 244.aseprite": {
+    "frame": { "x": 3072, "y": 7168, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 67
+   },
+   "kijetesantakalu_Ka 245.aseprite": {
+    "frame": { "x": 3584, "y": 7168, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 67
+   },
+   "kijetesantakalu_Ka 246.aseprite": {
+    "frame": { "x": 4096, "y": 7168, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 67
+   },
+   "kijetesantakalu_Ka 247.aseprite": {
+    "frame": { "x": 4608, "y": 7168, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 67
+   },
+   "kijetesantakalu_Ka 248.aseprite": {
+    "frame": { "x": 5120, "y": 7168, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 67
+   },
+   "kijetesantakalu_Ka 249.aseprite": {
+    "frame": { "x": 5632, "y": 7168, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 67
+   },
+   "kijetesantakalu_Ka 250.aseprite": {
+    "frame": { "x": 6144, "y": 7168, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 67
+   },
+   "kijetesantakalu_Ka 251.aseprite": {
+    "frame": { "x": 6656, "y": 7168, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 67
+   },
+   "kijetesantakalu_Ka 252.aseprite": {
+    "frame": { "x": 7168, "y": 7168, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 67
+   },
+   "kijetesantakalu_Ka 253.aseprite": {
+    "frame": { "x": 7680, "y": 7168, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 67
+   },
+   "kijetesantakalu_Ka 254.aseprite": {
+    "frame": { "x": 8192, "y": 7168, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 67
+   },
+   "kijetesantakalu_Ka 255.aseprite": {
+    "frame": { "x": 0, "y": 7680, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 67
+   },
+   "kijetesantakalu_Ka 256.aseprite": {
+    "frame": { "x": 512, "y": 7680, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 67
+   },
+   "kijetesantakalu_Ka 257.aseprite": {
+    "frame": { "x": 1024, "y": 7680, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 67
+   },
+   "kijetesantakalu_Ka 258.aseprite": {
+    "frame": { "x": 1536, "y": 7680, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 67
+   },
+   "kijetesantakalu_Ka 259.aseprite": {
+    "frame": { "x": 2048, "y": 7680, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 67
+   },
+   "kijetesantakalu_Ka 260.aseprite": {
+    "frame": { "x": 2560, "y": 7680, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 67
+   },
+   "kijetesantakalu_Ka 261.aseprite": {
+    "frame": { "x": 3072, "y": 7680, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 67
+   },
+   "kijetesantakalu_Ka 262.aseprite": {
+    "frame": { "x": 3584, "y": 7680, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 67
+   },
+   "kijetesantakalu_Ka 263.aseprite": {
+    "frame": { "x": 4096, "y": 7680, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 67
+   },
+   "kijetesantakalu_Ka 264.aseprite": {
+    "frame": { "x": 4608, "y": 7680, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 67
+   },
+   "kijetesantakalu_Ka 265.aseprite": {
+    "frame": { "x": 5120, "y": 7680, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 67
+   },
+   "kijetesantakalu_Ka 266.aseprite": {
+    "frame": { "x": 5632, "y": 7680, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 67
+   },
+   "kijetesantakalu_Ka 267.aseprite": {
+    "frame": { "x": 6144, "y": 7680, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 67
+   },
+   "kijetesantakalu_Ka 268.aseprite": {
+    "frame": { "x": 6656, "y": 7680, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 67
+   },
+   "kijetesantakalu_Ka 269.aseprite": {
+    "frame": { "x": 7168, "y": 7680, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 67
+   },
+   "kijetesantakalu_Ka 270.aseprite": {
+    "frame": { "x": 7680, "y": 7680, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 67
+   },
+   "kijetesantakalu_Ka 271.aseprite": {
+    "frame": { "x": 8192, "y": 7680, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 67
+   },
+   "kijetesantakalu_Ka 272.aseprite": {
+    "frame": { "x": 0, "y": 8192, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 67
+   },
+   "kijetesantakalu_Ka 273.aseprite": {
+    "frame": { "x": 512, "y": 8192, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 67
+   },
+   "kijetesantakalu_Ka 274.aseprite": {
+    "frame": { "x": 1024, "y": 8192, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 67
+   },
+   "kijetesantakalu_Ka 275.aseprite": {
+    "frame": { "x": 1536, "y": 8192, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 67
+   },
+   "kijetesantakalu_Ka 276.aseprite": {
+    "frame": { "x": 2048, "y": 8192, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 67
+   },
+   "kijetesantakalu_Ka 277.aseprite": {
+    "frame": { "x": 2560, "y": 8192, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 67
+   },
+   "kijetesantakalu_Ka 278.aseprite": {
+    "frame": { "x": 3072, "y": 8192, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 67
+   },
+   "kijetesantakalu_Ka 279.aseprite": {
+    "frame": { "x": 3584, "y": 8192, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 67
+   },
+   "kijetesantakalu_Ka 280.aseprite": {
+    "frame": { "x": 4096, "y": 8192, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 67
+   },
+   "kijetesantakalu_Ka 281.aseprite": {
+    "frame": { "x": 4608, "y": 8192, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 67
+   },
+   "kijetesantakalu_Ka 282.aseprite": {
+    "frame": { "x": 5120, "y": 8192, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 67
+   },
+   "kijetesantakalu_Ka 283.aseprite": {
+    "frame": { "x": 5632, "y": 8192, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 67
+   },
+   "kijetesantakalu_Ka 284.aseprite": {
+    "frame": { "x": 6144, "y": 8192, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 67
+   },
+   "kijetesantakalu_Ka 285.aseprite": {
+    "frame": { "x": 6656, "y": 8192, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 67
+   },
+   "kijetesantakalu_Ka 286.aseprite": {
+    "frame": { "x": 7168, "y": 8192, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 67
+   },
+   "kijetesantakalu_Ka 287.aseprite": {
+    "frame": { "x": 7680, "y": 8192, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 67
+   },
+   "kijetesantakalu_Ka 288.aseprite": {
+    "frame": { "x": 8192, "y": 8192, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 67
+   },
+   "kijetesantakalu_Ka 289.aseprite": {
+    "frame": { "x": 0, "y": 8704, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 67
+   },
+   "kijetesantakalu_Ka 290.aseprite": {
+    "frame": { "x": 512, "y": 8704, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 67
+   },
+   "kijetesantakalu_Ka 291.aseprite": {
+    "frame": { "x": 1024, "y": 8704, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 67
+   },
+   "kijetesantakalu_Ka 292.aseprite": {
+    "frame": { "x": 1536, "y": 8704, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 67
+   },
+   "kijetesantakalu_Ka 293.aseprite": {
+    "frame": { "x": 2048, "y": 8704, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 67
+   },
+   "kijetesantakalu_Ka 294.aseprite": {
+    "frame": { "x": 2560, "y": 8704, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 67
+   },
+   "kijetesantakalu_Ka 295.aseprite": {
+    "frame": { "x": 3072, "y": 8704, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 67
+   },
+   "kijetesantakalu_Ka 296.aseprite": {
+    "frame": { "x": 3584, "y": 8704, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 67
+   },
+   "kijetesantakalu_Ka 297.aseprite": {
+    "frame": { "x": 4096, "y": 8704, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 67
+   },
+   "kijetesantakalu_Ka 298.aseprite": {
+    "frame": { "x": 4608, "y": 8704, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 67
+   },
+   "kijetesantakalu_Ka 299.aseprite": {
+    "frame": { "x": 5120, "y": 8704, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 67
+   },
+   "kijetesantakalu_Ka 300.aseprite": {
+    "frame": { "x": 5632, "y": 8704, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 67
+   },
+   "kijetesantakalu_Ka 301.aseprite": {
+    "frame": { "x": 6144, "y": 8704, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 67
+   },
+   "kijetesantakalu_Ka 302.aseprite": {
+    "frame": { "x": 6656, "y": 8704, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 67
+   },
+   "kijetesantakalu_Ka 303.aseprite": {
+    "frame": { "x": 7168, "y": 8704, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 67
+   },
+   "kijetesantakalu_Ka 304.aseprite": {
+    "frame": { "x": 7680, "y": 8704, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 67
+   },
+   "kijetesantakalu_Ka 305.aseprite": {
+    "frame": { "x": 8192, "y": 8704, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 67
+   },
+   "kijetesantakalu_Ka 306.aseprite": {
+    "frame": { "x": 0, "y": 9216, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 67
+   },
+   "kijetesantakalu_Ka 307.aseprite": {
+    "frame": { "x": 512, "y": 9216, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 67
+   },
+   "kijetesantakalu_Ka 308.aseprite": {
+    "frame": { "x": 1024, "y": 9216, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 67
+   },
+   "kijetesantakalu_Ka 309.aseprite": {
+    "frame": { "x": 1536, "y": 9216, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 67
+   },
+   "kijetesantakalu_Ka 310.aseprite": {
+    "frame": { "x": 2048, "y": 9216, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 67
+   },
+   "kijetesantakalu_Ka 311.aseprite": {
+    "frame": { "x": 2560, "y": 9216, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 67
+   },
+   "kijetesantakalu_Ka 312.aseprite": {
+    "frame": { "x": 3072, "y": 9216, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 67
+   },
+   "kijetesantakalu_Ka 313.aseprite": {
+    "frame": { "x": 3584, "y": 9216, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 67
+   },
+   "kijetesantakalu_Ka 314.aseprite": {
+    "frame": { "x": 4096, "y": 9216, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 67
+   },
+   "kijetesantakalu_Ka 315.aseprite": {
+    "frame": { "x": 4608, "y": 9216, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 67
+   },
+   "kijetesantakalu_Ka 316.aseprite": {
+    "frame": { "x": 5120, "y": 9216, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 67
+   },
+   "kijetesantakalu_Ka 317.aseprite": {
+    "frame": { "x": 5632, "y": 9216, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 67
+   },
+   "kijetesantakalu_Ka 318.aseprite": {
+    "frame": { "x": 6144, "y": 9216, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 67
+   },
+   "kijetesantakalu_Ka 319.aseprite": {
+    "frame": { "x": 6656, "y": 9216, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 67
+   },
+   "kijetesantakalu_Ka 320.aseprite": {
+    "frame": { "x": 7168, "y": 9216, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 67
+   },
+   "kijetesantakalu_Ka 321.aseprite": {
+    "frame": { "x": 7680, "y": 9216, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 67
+   },
+   "kijetesantakalu_Ka 322.aseprite": {
+    "frame": { "x": 8192, "y": 9216, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 67
+   },
+   "kijetesantakalu_Ka 323.aseprite": {
+    "frame": { "x": 0, "y": 9728, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 67
+   },
+   "kijetesantakalu_Ka 324.aseprite": {
+    "frame": { "x": 512, "y": 9728, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 67
+   },
+   "kijetesantakalu_Ka 325.aseprite": {
+    "frame": { "x": 1024, "y": 9728, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 67
+   },
+   "kijetesantakalu_Ka 326.aseprite": {
+    "frame": { "x": 1536, "y": 9728, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 67
+   },
+   "kijetesantakalu_Ka 327.aseprite": {
+    "frame": { "x": 2048, "y": 9728, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 67
+   },
+   "kijetesantakalu_Ka 328.aseprite": {
+    "frame": { "x": 2560, "y": 9728, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 67
+   },
+   "kijetesantakalu_Ka 329.aseprite": {
+    "frame": { "x": 3072, "y": 9728, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 67
+   },
+   "kijetesantakalu_Ka 330.aseprite": {
+    "frame": { "x": 3584, "y": 9728, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 67
+   },
+   "kijetesantakalu_Ka 331.aseprite": {
+    "frame": { "x": 4096, "y": 9728, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 67
+   },
+   "kijetesantakalu_Ka 332.aseprite": {
+    "frame": { "x": 4608, "y": 9728, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 67
+   },
+   "kijetesantakalu_Ka 333.aseprite": {
+    "frame": { "x": 5120, "y": 9728, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 67
+   },
+   "kijetesantakalu_Ka 334.aseprite": {
+    "frame": { "x": 5632, "y": 9728, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 67
+   },
+   "kijetesantakalu_Ka 335.aseprite": {
+    "frame": { "x": 6144, "y": 9728, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 67
+   },
+   "kijetesantakalu_Ka 336.aseprite": {
+    "frame": { "x": 6656, "y": 9728, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 67
+   },
+   "kijetesantakalu_Ka 337.aseprite": {
+    "frame": { "x": 7168, "y": 9728, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 67
+   },
+   "kijetesantakalu_Ka 338.aseprite": {
+    "frame": { "x": 7680, "y": 9728, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 67
+   },
+   "kijetesantakalu_Ka 339.aseprite": {
+    "frame": { "x": 8192, "y": 9728, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 67
+   },
+   "kijetesantakalu_Ka 340.aseprite": {
+    "frame": { "x": 0, "y": 10240, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 67
+   },
+   "kijetesantakalu_Ka 341.aseprite": {
+    "frame": { "x": 512, "y": 10240, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 67
+   },
+   "kijetesantakalu_Ka 342.aseprite": {
+    "frame": { "x": 1024, "y": 10240, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 67
+   },
+   "kijetesantakalu_Ka 343.aseprite": {
+    "frame": { "x": 1536, "y": 10240, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 67
+   },
+   "kijetesantakalu_Ka 344.aseprite": {
+    "frame": { "x": 2048, "y": 10240, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 67
+   },
+   "kijetesantakalu_Ka 345.aseprite": {
+    "frame": { "x": 2560, "y": 10240, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 67
+   },
+   "kijetesantakalu_Ka 346.aseprite": {
+    "frame": { "x": 3072, "y": 10240, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 67
+   },
+   "kijetesantakalu_Ka 347.aseprite": {
+    "frame": { "x": 3584, "y": 10240, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 67
+   },
+   "kijetesantakalu_Ka 348.aseprite": {
+    "frame": { "x": 4096, "y": 10240, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 67
+   },
+   "kijetesantakalu_Ka 349.aseprite": {
+    "frame": { "x": 4608, "y": 10240, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 67
+   },
+   "kijetesantakalu_Ka 350.aseprite": {
+    "frame": { "x": 5120, "y": 10240, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 67
+   },
+   "kijetesantakalu_Ka 351.aseprite": {
+    "frame": { "x": 5632, "y": 10240, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 67
+   },
+   "kijetesantakalu_Ka 352.aseprite": {
+    "frame": { "x": 6144, "y": 10240, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 67
+   },
+   "kijetesantakalu_Ka 353.aseprite": {
+    "frame": { "x": 6656, "y": 10240, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 67
+   },
+   "kijetesantakalu_Ka 354.aseprite": {
+    "frame": { "x": 7168, "y": 10240, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 67
+   },
+   "kijetesantakalu_Ka 355.aseprite": {
+    "frame": { "x": 7680, "y": 10240, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 67
+   },
+   "kijetesantakalu_Ka 356.aseprite": {
+    "frame": { "x": 8192, "y": 10240, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 67
+   },
+   "kijetesantakalu_Ka 357.aseprite": {
+    "frame": { "x": 0, "y": 10752, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 67
+   },
+   "kijetesantakalu_Ka 358.aseprite": {
+    "frame": { "x": 512, "y": 10752, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 67
+   },
+   "kijetesantakalu_Ka 359.aseprite": {
+    "frame": { "x": 1024, "y": 10752, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 67
+   },
+   "kijetesantakalu_Ka 360.aseprite": {
+    "frame": { "x": 1536, "y": 10752, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 67
+   },
+   "kijetesantakalu_Ka 361.aseprite": {
+    "frame": { "x": 2048, "y": 10752, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 67
+   },
+   "kijetesantakalu_Ka 362.aseprite": {
+    "frame": { "x": 2560, "y": 10752, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 67
+   },
+   "kijetesantakalu_Ka 363.aseprite": {
+    "frame": { "x": 3072, "y": 10752, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 67
+   },
+   "kijetesantakalu_Ka 364.aseprite": {
+    "frame": { "x": 3584, "y": 10752, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 67
+   },
+   "kijetesantakalu_Ka 365.aseprite": {
+    "frame": { "x": 4096, "y": 10752, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 67
+   },
+   "kijetesantakalu_Ka 366.aseprite": {
+    "frame": { "x": 4608, "y": 10752, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 67
+   },
+   "kijetesantakalu_Ka 367.aseprite": {
+    "frame": { "x": 5120, "y": 10752, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 67
+   },
+   "kijetesantakalu_Ka 368.aseprite": {
+    "frame": { "x": 5632, "y": 10752, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 67
+   },
+   "kijetesantakalu_Ka 369.aseprite": {
+    "frame": { "x": 6144, "y": 10752, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 67
+   },
+   "kijetesantakalu_Ka 370.aseprite": {
+    "frame": { "x": 6656, "y": 10752, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 67
+   },
+   "kijetesantakalu_Ka 371.aseprite": {
+    "frame": { "x": 7168, "y": 10752, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 67
+   },
+   "kijetesantakalu_Ka 372.aseprite": {
+    "frame": { "x": 7680, "y": 10752, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 67
+   },
+   "kijetesantakalu_Ka 373.aseprite": {
+    "frame": { "x": 8192, "y": 10752, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 67
+   },
+   "kijetesantakalu_Ka 374.aseprite": {
+    "frame": { "x": 0, "y": 11264, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 67
+   },
+   "kijetesantakalu_Ka 375.aseprite": {
+    "frame": { "x": 512, "y": 11264, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 67
+   },
+   "kijetesantakalu_Ka 376.aseprite": {
+    "frame": { "x": 1024, "y": 11264, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 67
+   },
+   "kijetesantakalu_Ka 377.aseprite": {
+    "frame": { "x": 1536, "y": 11264, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 67
+   },
+   "kijetesantakalu_Ka 378.aseprite": {
+    "frame": { "x": 2048, "y": 11264, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 67
+   },
+   "kijetesantakalu_Ka 379.aseprite": {
+    "frame": { "x": 2560, "y": 11264, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 67
+   },
+   "kijetesantakalu_Ka 380.aseprite": {
+    "frame": { "x": 3072, "y": 11264, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 67
+   },
+   "kijetesantakalu_Ka 381.aseprite": {
+    "frame": { "x": 3584, "y": 11264, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 67
+   },
+   "kijetesantakalu_Ka 382.aseprite": {
+    "frame": { "x": 4096, "y": 11264, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 67
+   },
+   "kijetesantakalu_Ka 383.aseprite": {
+    "frame": { "x": 4608, "y": 11264, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 67
+   },
+   "kijetesantakalu_Ka 384.aseprite": {
+    "frame": { "x": 5120, "y": 11264, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 67
+   },
+   "kijetesantakalu_Ka 385.aseprite": {
+    "frame": { "x": 5632, "y": 11264, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 67
+   },
+   "kijetesantakalu_Ka 386.aseprite": {
+    "frame": { "x": 6144, "y": 11264, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 67
+   },
+   "kijetesantakalu_Ka 387.aseprite": {
+    "frame": { "x": 6656, "y": 11264, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 67
+   },
+   "kijetesantakalu_Ka 388.aseprite": {
+    "frame": { "x": 7168, "y": 11264, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 67
+   },
+   "kijetesantakalu_Ka 389.aseprite": {
+    "frame": { "x": 7680, "y": 11264, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 67
+   },
+   "kijetesantakalu_Ka 390.aseprite": {
+    "frame": { "x": 8192, "y": 11264, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 67
+   },
+   "kijetesantakalu_Ka 391.aseprite": {
+    "frame": { "x": 0, "y": 11776, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 67
+   },
+   "kijetesantakalu_Ka 392.aseprite": {
+    "frame": { "x": 512, "y": 11776, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 67
+   },
+   "kijetesantakalu_Ka 393.aseprite": {
+    "frame": { "x": 1024, "y": 11776, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 67
+   },
+   "kijetesantakalu_Ka 394.aseprite": {
+    "frame": { "x": 1536, "y": 11776, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 67
+   },
+   "kijetesantakalu_Ka 395.aseprite": {
+    "frame": { "x": 2048, "y": 11776, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 67
+   },
+   "kijetesantakalu_Ka 396.aseprite": {
+    "frame": { "x": 2560, "y": 11776, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 67
+   },
+   "kijetesantakalu_Ka 397.aseprite": {
+    "frame": { "x": 3072, "y": 11776, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 67
+   },
+   "kijetesantakalu_Ka 398.aseprite": {
+    "frame": { "x": 3584, "y": 11776, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 67
+   },
+   "kijetesantakalu_Ka 399.aseprite": {
+    "frame": { "x": 4096, "y": 11776, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 67
+   },
+   "kijetesantakalu_Ka 400.aseprite": {
+    "frame": { "x": 4608, "y": 11776, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 67
+   },
+   "kijetesantakalu_Ka 401.aseprite": {
+    "frame": { "x": 5120, "y": 11776, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 67
+   },
+   "kijetesantakalu_Ka 402.aseprite": {
+    "frame": { "x": 5632, "y": 11776, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 67
+   },
+   "kijetesantakalu_Ka 403.aseprite": {
+    "frame": { "x": 6144, "y": 11776, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 67
+   },
+   "kijetesantakalu_Ka 404.aseprite": {
+    "frame": { "x": 6656, "y": 11776, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 67
+   },
+   "kijetesantakalu_Ka 405.aseprite": {
+    "frame": { "x": 7168, "y": 11776, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 67
+   },
+   "kijetesantakalu_Ka 406.aseprite": {
+    "frame": { "x": 7680, "y": 11776, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 67
+   },
+   "kijetesantakalu_Ka 407.aseprite": {
+    "frame": { "x": 8192, "y": 11776, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 67
+   },
+   "kijetesantakalu_Ka 408.aseprite": {
+    "frame": { "x": 0, "y": 12288, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 67
+   },
+   "kijetesantakalu_Ka 409.aseprite": {
+    "frame": { "x": 512, "y": 12288, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 67
+   },
+   "kijetesantakalu_Ka 410.aseprite": {
+    "frame": { "x": 1024, "y": 12288, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 67
+   },
+   "kijetesantakalu_Ka 411.aseprite": {
+    "frame": { "x": 1536, "y": 12288, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 67
+   },
+   "kijetesantakalu_Ka 412.aseprite": {
+    "frame": { "x": 2048, "y": 12288, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 67
+   },
+   "kijetesantakalu_Ka 413.aseprite": {
+    "frame": { "x": 2560, "y": 12288, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 67
+   },
+   "kijetesantakalu_Ka 414.aseprite": {
+    "frame": { "x": 3072, "y": 12288, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 67
+   },
+   "kijetesantakalu_Ka 415.aseprite": {
+    "frame": { "x": 3584, "y": 12288, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 67
+   },
+   "kijetesantakalu_Ka 416.aseprite": {
+    "frame": { "x": 4096, "y": 12288, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 67
+   },
+   "kijetesantakalu_Ka 417.aseprite": {
+    "frame": { "x": 4608, "y": 12288, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 67
+   },
+   "kijetesantakalu_Ka 418.aseprite": {
+    "frame": { "x": 5120, "y": 12288, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 67
+   },
+   "kijetesantakalu_Ka 419.aseprite": {
+    "frame": { "x": 5632, "y": 12288, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 67
+   },
+   "kijetesantakalu_Ka 420.aseprite": {
+    "frame": { "x": 6144, "y": 12288, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 67
+   },
+   "kijetesantakalu_Ka 421.aseprite": {
+    "frame": { "x": 6656, "y": 12288, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 67
+   },
+   "kijetesantakalu_Ka 422.aseprite": {
+    "frame": { "x": 7168, "y": 12288, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 67
+   },
+   "kijetesantakalu_Ka 423.aseprite": {
+    "frame": { "x": 7680, "y": 12288, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 67
+   }
+ },
+ "meta": {
+  "app": "https://www.aseprite.org/",
+  "version": "1.3.7-x64",
+  "image": "kijetesantakalu_Ka.png",
+  "format": "RGBA8888",
+  "size": { "w": 8704, "h": 12800 },
+  "scale": "1",
+  "frameTags": [
+   { "name": "Idle", "from": 0, "to": 14, "direction": "forward", "color": "#000000ff" },
+   { "name": "Walk", "from": 15, "to": 24, "direction": "forward", "color": "#000000ff" },
+   { "name": "Dash", "from": 25, "to": 31, "direction": "forward", "color": "#000000ff" },
+   { "name": "Dash Cancel", "from": 32, "to": 36, "direction": "forward", "color": "#000000ff" },
+   { "name": "dash attack", "from": 37, "to": 52, "direction": "forward", "color": "#000000ff" },
+   { "name": "NL", "from": 53, "to": 58, "direction": "forward", "color": "#000000ff" },
+   { "name": "SL", "from": 59, "to": 66, "direction": "forward", "color": "#000000ff" },
+   { "name": "RL", "from": 67, "to": 73, "direction": "forward", "color": "#000000ff" },
+   { "name": "LL", "from": 74, "to": 80, "direction": "forward", "color": "#000000ff" },
+   { "name": "ML", "from": 81, "to": 88, "direction": "forward", "color": "#000000ff" },
+   { "name": "NS", "from": 89, "to": 98, "direction": "forward", "color": "#000000ff" },
+   { "name": "SS", "from": 99, "to": 109, "direction": "forward", "color": "#000000ff" },
+   { "name": "SSF", "from": 110, "to": 120, "direction": "forward", "color": "#000000ff" },
+   { "name": "RS", "from": 121, "to": 131, "direction": "forward", "color": "#000000ff" },
+   { "name": "LS", "from": 132, "to": 142, "direction": "forward", "color": "#000000ff" },
+   { "name": "MS", "from": 143, "to": 157, "direction": "forward", "color": "#000000ff" },
+   { "name": "NPL", "from": 158, "to": 170, "direction": "forward", "color": "#000000ff" },
+   { "name": "SPL", "from": 171, "to": 183, "direction": "forward", "color": "#000000ff" },
+   { "name": "RPL", "from": 184, "to": 196, "direction": "forward", "color": "#000000ff" },
+   { "name": "LPL", "from": 197, "to": 209, "direction": "forward", "color": "#000000ff" },
+   { "name": "MPL", "from": 210, "to": 223, "direction": "forward", "color": "#000000ff" },
+   { "name": "NPS", "from": 224, "to": 233, "direction": "forward", "color": "#000000ff" },
+   { "name": "SPS", "from": 234, "to": 244, "direction": "forward", "color": "#000000ff" },
+   { "name": "RPS", "from": 245, "to": 260, "direction": "forward", "color": "#000000ff" },
+   { "name": "LPS", "from": 261, "to": 276, "direction": "forward", "color": "#000000ff" },
+   { "name": "MPS", "from": 277, "to": 290, "direction": "forward", "color": "#000000ff" },
+   { "name": "NN", "from": 291, "to": 296, "direction": "forward", "color": "#000000ff" },
+   { "name": "SN", "from": 297, "to": 306, "direction": "forward", "color": "#000000ff" },
+   { "name": "RN", "from": 307, "to": 317, "direction": "forward", "color": "#000000ff" },
+   { "name": "LN", "from": 318, "to": 322, "direction": "forward", "color": "#000000ff" },
+   { "name": "MN", "from": 323, "to": 330, "direction": "forward", "color": "#000000ff" },
+   { "name": "MNF", "from": 331, "to": 335, "direction": "forward", "color": "#000000ff" },
+   { "name": "Grab", "from": 336, "to": 348, "direction": "forward", "color": "#000000ff" },
+   { "name": "Grabbed", "from": 349, "to": 358, "direction": "forward", "color": "#000000ff" },
+   { "name": "LipuSuli", "from": 359, "to": 373, "direction": "forward", "color": "#000000ff" },
+   { "name": "LipuLili", "from": 374, "to": 381, "direction": "forward", "color": "#000000ff" },
+   { "name": "Right Roll", "from": 382, "to": 387, "direction": "forward", "color": "#000000ff" },
+   { "name": "Left Roll", "from": 388, "to": 393, "direction": "forward", "color": "#000000ff" },
+   { "name": "Neutral Roll", "from": 394, "to": 397, "direction": "forward", "color": "#000000ff" },
+   { "name": "Hurt", "from": 398, "to": 401, "direction": "forward", "color": "#000000ff" },
+   { "name": "Block", "from": 402, "to": 405, "direction": "forward", "color": "#000000ff" },
+   { "name": "Parry", "from": 406, "to": 409, "direction": "forward", "color": "#000000ff" },
+   { "name": "Dead", "from": 410, "to": 423, "direction": "forward", "color": "#000000ff" }
+  ],
+  "layers": [
+   { "name": "Color", "opacity": 255, "blendMode": "normal" },
+   { "name": "Tail", "opacity": 255, "blendMode": "normal" },
+   { "name": "Hands", "opacity": 255, "blendMode": "normal" },
+   { "name": "Head" },
+   { "name": "Body", "group": "Head", "opacity": 255, "blendMode": "normal" },
+   { "name": "Dark Outline", "group": "Head", "opacity": 255, "blendMode": "normal" },
+   { "name": "Eyes", "group": "Head", "opacity": 255, "blendMode": "normal" },
+   { "name": "Ears", "group": "Head", "opacity": 255, "blendMode": "normal" },
+   { "name": "Aura", "opacity": 255, "blendMode": "normal" }
+  ],
+  "slices": [
+  ]
+ }
+}
