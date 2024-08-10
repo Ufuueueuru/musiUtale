@@ -69,7 +69,7 @@ class VSNetplayScreen extends Screen {
         /** @type {Object} The received inputs (a serialized Controls object) */
         this.data = undefined;
         
-        this.rollbackFrames = 10;//10
+        this.rollbackFrames = 15;//10
 
         this.maxDistressWait = 3;
         this.distressWait = 0;
