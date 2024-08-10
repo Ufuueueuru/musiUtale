@@ -11,7 +11,7 @@
 		]);
 
 		this.hurtboxes["hitstun"] = [
-			[new Circle(24, 0, 52),
+			[new Circle(10, 0, 80),
 			new Circle(18, -21, 38),
 			new Circle(18, 19, 38),
 			new ICircle(1, 49, 28),

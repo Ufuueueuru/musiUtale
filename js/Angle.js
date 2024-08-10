@@ -26,11 +26,11 @@ class Angle {
 	}
 
 	getX() {
-		return cos(this.value);
+		return Math.cos(this.value);
 	}
 
 	getY() {
-		return sin(this.value);
+		return Math.sin(this.value);
     }
 
 	/**

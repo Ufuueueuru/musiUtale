@@ -114,11 +114,14 @@ class Spritesheet {
 		let tg = this.image.get(x, y, this.width, this.height);
 		this.images[i] = tg;
 
+		if (graphicsSettings.spriteResolutionMult !== 1)
+			this.images[i].resize(Math.round(this.width * graphicsSettings.spriteResolutionMult), 0);
+
 		loaded.amount++;
 
 		if (assetManager && loaded.amount >= loaded.total) {
 			assetManager._splitLoaded++;
-			//this.image = null;
+			this.image = null;
 		}
 	}
 

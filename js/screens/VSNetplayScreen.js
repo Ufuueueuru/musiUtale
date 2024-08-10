@@ -174,9 +174,9 @@ class VSNetplayScreen extends Screen {
             let frame = receivedData.frameCount - this.farPast[0].gameState.frameCount;
             if (this.farPast[frame]) {
                 if (receivedData.rollback - this.totalAverageRollback/this.averageRollbackFrames.length > 1) {
-                    lostFrames += (receivedData.rollback - this.totalAverageRollback / this.averageRollbackFrames.length - 1) / 60;
+                    lostFrames += (receivedData.rollback - this.totalAverageRollback / this.averageRollbackFrames.length - 1) / 45;
                     if (debug.displayLostFrames)
-                        print((receivedData.rollback - this.totalAverageRollback / this.averageRollbackFrames.length - 1) / 60);
+                        print((receivedData.rollback - this.totalAverageRollback / this.averageRollbackFrames.length - 1) / 45);
                 }
             }
         }

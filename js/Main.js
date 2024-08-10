@@ -57,7 +57,8 @@ let currentLanguage = "tp";//en or tp
 let dataOnFunction = (incomingData) => { };
 
 let graphicsSettings = {
-	resolutionMult: 1
+	resolutionMult: 1,
+	spriteResolutionMult: 1
 }
 
 function preload() {
