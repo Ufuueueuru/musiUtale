@@ -18,9 +18,9 @@ class PlayersManager {
         this.chosenControls = [null, new NetplayControls()];
     }
 
-    openScreen() {
+    openScreen(buffer = 4) {
         this.overrideScreen = true;
-        this.overrideBuffer = 15;
+        this.overrideBuffer = buffer;
     }
 
     reset() {

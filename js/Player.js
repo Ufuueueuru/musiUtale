@@ -106,7 +106,9 @@ class Player extends Hitcircle {
 		/** @type {number} How many frames you can cancel into back special while in blockstun */
 		this.OOBBlockFrame = 8;
 		/** @type {number} Decreases blockstun received when neutral blocking */
-		this.neutralBlockBuff = 2;
+		this.neutralBlockBuff = 8;
+		/** @type {number} Decreases blockstun received when parrying */
+		this.parryFrameBuff = 16;
 
 		/** @type {Object} */
 		this.dash = {};
@@ -147,9 +149,10 @@ class Player extends Hitcircle {
 		this.powerDash = {};
 		this.powerDash.frames = 20;
 		this.powerDash.speed = 8;
-		this.powerDash.iFrames = 14;
+		this.powerDash.iFrames = 18;
 		this.powerDash.turnSpeedBoost = 0.3;
 		this.powerDash.addHitstunFrames = 15;
+		this.powerDash.proration = 1;
 
 		//Init States
 		this.states = {};
@@ -359,7 +362,7 @@ class Player extends Hitcircle {
 		/** @type {number} How much damage you take from being strongly flattened */
 		this.lipuHeavyDamage = 65;
 		/** @type {number} How fast lipu meter goes down over time */
-		this.lipuTickRate = 0.05;
+		this.lipuTickRate = 0.04;
 		/** @type {number} How many frames the lipu suli lasts */
 		this.lipuSuliFrames = 60;
 		/** @type {number} How many frames the lipu lili lasts */
@@ -983,7 +986,7 @@ class Player extends Hitcircle {
 	 * @param {number} combo
 	 */
 	damageHealth(num, combo, chip = false, scaling = 4) {
-		if (num === 0)
+		if (num === 0 || this.health <= 0)
 			return 0;
 
 		let damage = Player.comboScale(num, combo, scaling) * this.defense;
@@ -1016,7 +1019,7 @@ class Player extends Hitcircle {
 	 * @param {number} combo
 	 */
 	damageHealthAbs(num, combo, chip = false, scaling = 4) {
-		if (num === 0)
+		if (num === 0 || this.health <= 0)
 			return 0;
 
 		let damage = num;
@@ -1132,6 +1135,8 @@ class Player extends Hitcircle {
 
 		this.iFrames = frames;
 		this.invTo = ["attack", "grab"];
+
+		this.stunFrames = 20;
 
 		this.damageHealth(damage, this.combo);
 	}
@@ -1273,15 +1278,26 @@ class Player extends Hitcircle {
 	}
 	walkLogic() {
 		if (this.currentState.name === "walk") {
-			let xBoost = cos(this.controls.angle(0).value) * this.forwardSpeedBoost * (1 - Angle.distance(this.controls.angle(0), this.dir) / PI);
-			let yBoost = sin(this.controls.angle(0).value) * this.forwardSpeedBoost * (1 - Angle.distance(this.controls.angle(0), this.dir) / PI);
-
-			this.dx = this.slowWalk * (cos(this.controls.angle(0).value) * this.movementSpeed + xBoost);
-			this.dy = this.slowWalk * (sin(this.controls.angle(0).value) * this.movementSpeed + yBoost);
+			this.walkMovement(1, true, true);
 
 			this.dash.combos = this.dash.maxCombos;
 
 			this.sheet.requestAnimationChange("Walk");
+		}
+	}
+
+	walkMovement(mult = 1, set = false, bool = false) {
+		if (bool || this.controls.joystickPressed(0)) {
+			let xBoost = cos(this.controls.angle(0).value) * this.forwardSpeedBoost * (1 - Angle.distance(this.controls.angle(0), this.dir) / PI);
+			let yBoost = sin(this.controls.angle(0).value) * this.forwardSpeedBoost * (1 - Angle.distance(this.controls.angle(0), this.dir) / PI);
+
+			if (set) {
+				this.dx = this.slowWalk * (cos(this.controls.angle(0).value) * this.movementSpeed + xBoost) * mult;
+				this.dy = this.slowWalk * (sin(this.controls.angle(0).value) * this.movementSpeed + yBoost) * mult;
+			} else {
+				this.x += this.slowWalk * (cos(this.controls.angle(0).value) * this.movementSpeed + xBoost) * mult;
+				this.y += this.slowWalk * (sin(this.controls.angle(0).value) * this.movementSpeed + yBoost) * mult;
+			}
 		}
 	}
 
@@ -1307,7 +1323,7 @@ class Player extends Hitcircle {
 	}
 
 	startPowerDash() {
-		if ((this.controls.clicked("dash") && this.controls.pressed("nasa")) || this.controls.clicked("powerDash")) {
+		if (((this.controls.clicked("dash") && this.controls.pressed("nasa")) || this.controls.clicked("powerDash")) && this.world.resetCounter <= 0) {
 			let tempAngle = this.dir.value;
 			if (this.controls.joystickPressed(0)) {
 				tempAngle = this.controls.angle(0).value;
@@ -1351,7 +1367,7 @@ class Player extends Hitcircle {
 					} else {
 						this.world.ps.createParticle("powerDashEffect", this, this.x, this.y, 200, 200, this.dir, true);
 
-						this.playSound(assetManager.sounds.powerDash);
+						this.playSound(assetManager.sounds.powerDash, 2);
 					}
 					if (this.currentState.name === "dash") {
 						this.dx /= 3;
@@ -1366,7 +1382,8 @@ class Player extends Hitcircle {
 					this.dx += cos(slice.direction.value) * (this.powerDash.speed);
 					this.dy += sin(slice.direction.value) * (this.powerDash.speed);
 
-					slice.useMeter(this, 6);
+					if (this.world.resetCounter <= 0)
+						slice.useMeter(this, 6);
 
 					this.sheet.setAnimation("Power Dash");
 
@@ -1378,7 +1395,7 @@ class Player extends Hitcircle {
 						this.targetPlayer.stunFrames = 8;
 
 						if (this.targetPlayer.hitStun > 0) {
-							this.targetPlayer.comboProration = min(this.targetPlayer.comboProration, -this.targetPlayer.combo + 3);
+							this.targetPlayer.comboProration = min(this.targetPlayer.comboProration, -this.targetPlayer.combo + this.powerDash.proration);
 
 							this.targetPlayer.hitStun += this.powerDash.addHitstunFrames;
 							this.targetPlayer.actionLag += this.powerDash.addHitstunFrames;
@@ -2307,33 +2324,35 @@ class Player extends Hitcircle {
 
 	grabLogic() {
 		if (this.currentState.name === "grab") {
-			this.attackEndable();
+			if (this.targetPlayer?.currentState.name === "MN") {
+				this.endAttacks();
+			}
 
 			this.turnSpeedModifier = 0.5;
 
 			if (this.actionLag === 39) {
-				this.addAction("dash", "lili", "suli", "poka lili", "poka suli", "block");
+				this.addAction("dash", "lili", "suli", "poka lili", "poka suli");
             }
 
-			if (this.actionLag === 10) {
+			if (this.actionLag === 10 && this.targetPlayer?.currentState.name === "grabbed") {
 				this.actions = [];
 				if (this.targetPlayer) {
 					this.targetPlayer.iFrames = 0;
 				}
 			}
+			this.attackEndable();
         }
 	}
 
 	grabbedLogic() {
 		if (this.currentState.name === "grabbed") {
-			if (this.targetPlayer.currentState.name === "dash" || this.targetPlayer.currentState.name === "power dash")
+			if (this.targetPlayer?.currentState.name === "dash" || this.targetPlayer?.currentState.name === "power dash")
 				this.actionLag = 0;
 
-			this.attackEndable();
 			this.turnSpeedModifier = 0.5;
 
 			if (this.actionLag === 40) {
-				this.addAction("oob", "block");
+				this.addAction("oob");
             }
 
 			if (this.actionLag === 33) {
@@ -2344,6 +2363,7 @@ class Player extends Hitcircle {
 				this.actions = [];
 				this.iFrames = 0;
             }
+			this.attackEndable();
 		}
 	}
 
@@ -2382,7 +2402,7 @@ class Player extends Hitcircle {
 			this.startPowerDash();
 		}
 
-		if (this.canAttack && this.stunFrames <= 10) {
+		if (this.canAttack && this.stunFrames <= 10 && this.cancelWait <= 10) {
 			this.startDashAttack();
 
 			if (!this.buffer.contains(this.states.DASH_ATTACK) || !this.currentState.name === "dash" || !this.buffer.contains(this.states.DASH)) {
@@ -2586,7 +2606,7 @@ class Player extends Hitcircle {
 		if (this.blockLeniencyFrames > 0) {
 			this.blockLeniencyFrames--;
 		}
-		if (this.nanpaLipu > 0 && this.currentState.name !== "hitstun")
+		if (this.currentState.name !== "hitstun")
 			this.nanpaLipu = max(0, this.nanpaLipu - this.lipuTickRate);
 		if (this.actionLag > 0) {
 			this.actionLag--;

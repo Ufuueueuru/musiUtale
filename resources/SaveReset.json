@@ -11,7 +11,7 @@
       [ "frameAdvance", "Space" ],
       [ "select", "KeyR" ],
       [ "back", "KeyT" ],
-      [ "start", "Enter" ]
+      [ "start", "Escape" ]
     ],
     "arrows": [ [ "KeyD", "KeyW", "KeyA", "KeyS" ] ],
     "deadzones": [ 0.25 ]
@@ -26,9 +26,9 @@
       [ "suli", "Quote" ],
       [ "nasa", "KeyL" ],
       [ "frameAdvance", "Space" ],
-      [ "select", "BracketLeft" ],
+      [ "select", "Enter" ],
       [ "back", "KeyP" ],
-      [ "start", "Enter" ]
+      [ "start", "Escape" ]
     ],
     "arrows": [ [ "ArrowRight", "ArrowUp", "ArrowLeft", "ArrowDown" ] ],
     "deadzones": [ 0.25 ]
@@ -51,5 +51,6 @@
     "deadzones": [ 0.35 ]
   },
   "graphicsSettings": { "resolutionMult": 1 },
-  "version": "0.0.1"
+  "currentLanguage": "tp",
+  "version": "0.0.2"
 }

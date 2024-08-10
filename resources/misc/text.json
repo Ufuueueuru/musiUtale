@@ -1,0 +1,66 @@
+﻿{
+  "mainMenuFight": {
+    "en": {
+      "text": "Fight"
+    },
+    "tp": {
+      "text": "󱥱"
+    }
+  },
+  "mainMenuControls": {
+    "en": {
+      "text": "Controls"
+    },
+    "tp": {
+      "text": "󱤤󱤎"
+    }
+  },
+  "mainMenuTraining": {
+    "en": {
+      "text": "Training"
+    },
+    "tp": {
+      "text": "󱤖󱥵"
+    }
+  },
+  "mainMenuOnline": {
+    "en": {
+      "text": "Online"
+    },
+    "tp": {
+      "text": "󱥱󱤬󱤝"
+    }
+  },
+  "mainMenuClose": {
+    "en": {
+      "text": "Exit"
+    },
+    "tp": {
+      "text": "󱥐"
+    }
+  },
+  "copiedToClipboard": {
+    "en": {
+      "text": "Copied to clipboard"
+    },
+    "tp": {
+      "text": "󱤽󱥞󱤧󱤬󱤪󱤥󱤡\n󱥄󱥌󱤉󱥆󱤙󱤿[ctrl+v]"
+    }
+  },
+  "clipboardPasted": {
+    "en": {
+      "text": "Pasted from clipboard"
+    },
+    "tp": {
+      "text": "󱤴󱤖󱥡󱤉󱤽󱥧󱤪󱤥"
+    }
+  },
+  "netplayStartFight": {
+    "en": {
+      "text": "Start fight"
+    },
+    "tp": {
+      "text": "󱥇󱥱"
+    }
+  }
+}

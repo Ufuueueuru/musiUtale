@@ -604,7 +604,7 @@ class World {
         if (this.winScreen) {
             for (let i in controls) {
                 if (!controls[i].computer && !controls[i].netplay) {
-                    if (controls[i].clickedAbsolute("select")) {
+                    if (controls[i].clickedAbsolute("select") || debug.skipWinScreen) {
                         this.player1Score = 0;
                         this.player2Score = 0;
                         this.winScreen = false;
@@ -650,7 +650,6 @@ class World {
             timeout = true;
             for (let i in this.players) {
                 this.players[i].damageHealthAbs(this.players[i].timerPunishHealth, 0);
-                this.players[i].removeAction("power dash");
             }
         }
         if (this.resetCounter === 1) {

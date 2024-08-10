@@ -194,14 +194,14 @@ class NetplayScreen extends Screen {
                 this.theirID = this.theirID.substring(0, 50);
             this.setIDButton.text = "󱤽󱤝:\n" + this.theirID;
             this.clipboard.displayFrames = 540;
-            this.clipboard.text = "󱤴󱤖󱥡󱤉󱤽󱥧󱤪󱤥";//mi kama sona e nanpa tan lipu len
+            this.clipboard.text = gt("clipboardPasted");//mi kama sona e nanpa tan lipu len
         });
     }
 
     copyToClipboard() {
         navigator.clipboard.writeText(this.myID).then(() => {
             this.clipboard.displayFrames = 540;
-            this.clipboard.text = "󱤽󱥞󱤧󱤬󱤪󱤥󱤡\n󱥄󱥌󱤉󱥆󱤙󱤿[ctrl+v]";//nanpa sina li lon lipu len la \n o pana e ona kepeken [ctrl + v]
+            this.clipboard.text = gt("copiedToClipboard");//nanpa sina li lon lipu len la \n o pana e ona kepeken [ctrl + v]
         });
     }
 
@@ -246,6 +246,20 @@ class NetplayScreen extends Screen {
                 currentScreen.connection.send({ you: incomingData.my, my: !!currentScreen.world });
         };*/
         dataOnFunction = (incomingData) => {
+            if (incomingData.wantResponse) {
+                currentScreen.connection.send({ frameCount: incomingData.frameCount, response: true });
+            }
+            if (incomingData.response) {
+                for (let i = currentScreen.timeStamps.length - 1; i >= 0; i--) {
+                    if (currentScreen.timeStamps[i].frameCount === incomingData.frameCount) {
+                        currentScreen.pings.push(Date.now() - currentScreen.timeStamps[i].time);
+                        if (currentScreen.pings.length > 5)
+                            currentScreen.pings.splice(0, 1);
+                        currentScreen.timeStamps.splice(i, 1);
+                        break;
+                    }
+                }
+            }
             if (incomingData.needFrame) {
                 let success = false;
                 //print("n:" + incomingData.needFrame);
@@ -314,7 +328,7 @@ class NetplayScreen extends Screen {
         this.getIDButton = new MenuItem(46, 130, assetManager.images.buttonPressed, assetManager.images.buttonUnpressed, undefined, "󱤽󱥞󱤧󱤖...", () => { this.copyToClipboard(); }).setTextSize(10);//nanpa sina li kama...
         this.setIDButton = new MenuItem(246, 130, assetManager.images.buttonPressed, assetManager.images.buttonUnpressed, undefined, "󱤽󱤝:", () => { this.setFromClipboard(); }).setTextSize(10);//nanpa kon:
         this.keyboardButton = new MenuItem(246, 180, keyboardPressedImage, keyboardUnpressedImage, undefined, "", () => { this.activateKeyboard(); });
-        this.startButton = new MenuItem(146, 240, assetManager.images.buttonPressed, assetManager.images.buttonUnpressed, undefined, "󱥇󱥱", () => { if (this.theirID !== "" && this.myID !== "") this.establishConnection(); });//open utala
+        this.startButton = new MenuItem(146, 240, assetManager.images.buttonPressed, assetManager.images.buttonUnpressed, undefined, gt("netplayStartFight"), () => { if (this.theirID !== "" && this.myID !== "") this.establishConnection(); });//open utala
 
         this.getIDButton.addMoves(new MenuMove(this.setIDButton, Angle.RIGHT));
         this.getIDButton.addMoves(new MenuMove(this.startButton, Angle.DOWN));

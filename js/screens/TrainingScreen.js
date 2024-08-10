@@ -22,7 +22,7 @@ class TrainingScreen extends VSScreen {
             staticSikeWawa: true,//Should the sike wawa meter be stuck how it is?
             meters: [16, -16, 16, -16, 16, -16, 16, -16],
             staticNanpaLipu: true,//Should the lipu meter be stuck?
-            lipuMeters: [0, 0],
+            lipuMeters: [65, 65],
             resetFunctions: {
                 always: () => { return true; },
                 neutral: () => {

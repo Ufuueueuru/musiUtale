@@ -165,10 +165,14 @@ class ComputerControlsTree extends Controls {
                 decision = {name: "neutral"};
             }
             if (this.player.canChangeState(this.player.getStateFromString(decision.name))) {
-                this.pressAction(decision.name);
+                this.clickAction(decision.name);
                 this.feedbackTimers.push(new FeedbackTimer(decision, this.player));
             } else if (decision.name === "dash") {
-                this.pressButton("dash");
+                if (this.makingDecision > 0) {
+                    this.pressAction("dash");
+                } else {
+                    this.clickAction("dash");
+                }
                 this.releaseButton("nasa");
             }
             if (decision.name === "neutral") {
@@ -275,19 +279,69 @@ class ComputerControlsTree extends Controls {
         this.pressButton(actionName);//If the cancel option is a general button rather than a specific attack
     }
 
+    clickAction(actionName) {
+        switch (actionName.substring(0, 1)) {
+            case "N":
+                this.neutralJoystick(0);
+                break;
+            case "S":
+                this.pressJoystick(0, this.player.sinpin);
+                break;
+            case "R":
+                this.pressJoystick(0, this.player.right);
+                break;
+            case "L":
+                this.pressJoystick(0, this.player.left);
+                break;
+            case "M":
+                this.pressJoystick(0, this.player.monsi);
+                break;
+        }
+        switch (actionName.substring(1)) {
+            case "L":
+                this.clickButton("lili");
+                break;
+            case "S":
+                this.clickButton("suli");
+                break;
+            case "PL":
+                this.clickButton("pokaLili");
+                break;
+            case "PS":
+                this.clickButton("pokaSuli");
+                break;
+            case "N":
+                this.clickButton("nasa");
+                break;
+        }
+        this.clickButton(actionName);//If the cancel option is a general button rather than a specific attack
+    }
+
     releaseButton(i) {
         this.buttons[i].pressed = false;
         this.buttons[i].clicked = false;
         this.buttons[i].clickedInGame = 0;
     }
 
-    pressButton(i) {
+    clickButton(i) {
         if (this.buttons[i]) {
             if (!this.buttons[i].pressed) {
                 this.buttons[i].clicked = true;
                 if (this.buttons[i].clickedInGame !== 1)
                     this.buttons[i].clickedInGame = 2;
             }
+            this.buttons[i].pressed = true;
+            this.buttons[i].heldFrames++;
+        }
+    }
+
+    pressButton(i) {
+        if (this.buttons[i]) {
+            /*if (!this.buttons[i].pressed) {
+                this.buttons[i].clicked = true;
+                if (this.buttons[i].clickedInGame !== 1)
+                    this.buttons[i].clickedInGame = 2;
+            }*/
             this.buttons[i].pressed = true;
             this.buttons[i].heldFrames++;
         }
@@ -453,7 +507,7 @@ class FeedbackTimer {
                 + ceil((this.initialHealthEnemy - this.player.targetPlayer.health) / 10);
         }
         if (this.player.health === this.initialHealth && this.initialHealthEnemy === this.player.targetPlayer.health) {
-            if (this.decision.name !== "neutral") {
+            if (this.decision.name !== "neutral" && this.decision.name !== "dash") {
                 this.decision.value -= 3;
             } else {
                 this.decision.value += 6;

@@ -96,7 +96,7 @@
     "duration": 67
    },
    "jan_Luke 12.aseprite": {
-    "frame": { "x": 0, "y": 512, "w": 512, "h": 512 },
+    "frame": { "x": 6144, "y": 0, "w": 512, "h": 512 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
@@ -104,7 +104,7 @@
     "duration": 67
    },
    "jan_Luke 13.aseprite": {
-    "frame": { "x": 512, "y": 512, "w": 512, "h": 512 },
+    "frame": { "x": 6656, "y": 0, "w": 512, "h": 512 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
@@ -112,7 +112,7 @@
     "duration": 67
    },
    "jan_Luke 14.aseprite": {
-    "frame": { "x": 1024, "y": 512, "w": 512, "h": 512 },
+    "frame": { "x": 7168, "y": 0, "w": 512, "h": 512 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
@@ -120,7 +120,7 @@
     "duration": 67
    },
    "jan_Luke 15.aseprite": {
-    "frame": { "x": 1536, "y": 512, "w": 512, "h": 512 },
+    "frame": { "x": 7680, "y": 0, "w": 512, "h": 512 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
@@ -128,7 +128,7 @@
     "duration": 67
    },
    "jan_Luke 16.aseprite": {
-    "frame": { "x": 2048, "y": 512, "w": 512, "h": 512 },
+    "frame": { "x": 8192, "y": 0, "w": 512, "h": 512 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
@@ -136,7 +136,7 @@
     "duration": 67
    },
    "jan_Luke 17.aseprite": {
-    "frame": { "x": 2560, "y": 512, "w": 512, "h": 512 },
+    "frame": { "x": 8704, "y": 0, "w": 512, "h": 512 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
@@ -144,7 +144,7 @@
     "duration": 67
    },
    "jan_Luke 18.aseprite": {
-    "frame": { "x": 3072, "y": 512, "w": 512, "h": 512 },
+    "frame": { "x": 0, "y": 512, "w": 512, "h": 512 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
@@ -152,7 +152,7 @@
     "duration": 67
    },
    "jan_Luke 19.aseprite": {
-    "frame": { "x": 3584, "y": 512, "w": 512, "h": 512 },
+    "frame": { "x": 512, "y": 512, "w": 512, "h": 512 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
@@ -160,7 +160,7 @@
     "duration": 67
    },
    "jan_Luke 20.aseprite": {
-    "frame": { "x": 4096, "y": 512, "w": 512, "h": 512 },
+    "frame": { "x": 1024, "y": 512, "w": 512, "h": 512 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
@@ -168,7 +168,7 @@
     "duration": 67
    },
    "jan_Luke 21.aseprite": {
-    "frame": { "x": 4608, "y": 512, "w": 512, "h": 512 },
+    "frame": { "x": 1536, "y": 512, "w": 512, "h": 512 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
@@ -176,7 +176,7 @@
     "duration": 67
    },
    "jan_Luke 22.aseprite": {
-    "frame": { "x": 5120, "y": 512, "w": 512, "h": 512 },
+    "frame": { "x": 2048, "y": 512, "w": 512, "h": 512 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
@@ -184,7 +184,7 @@
     "duration": 67
    },
    "jan_Luke 23.aseprite": {
-    "frame": { "x": 5632, "y": 512, "w": 512, "h": 512 },
+    "frame": { "x": 2560, "y": 512, "w": 512, "h": 512 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
@@ -192,7 +192,7 @@
     "duration": 67
    },
    "jan_Luke 24.aseprite": {
-    "frame": { "x": 0, "y": 1024, "w": 512, "h": 512 },
+    "frame": { "x": 3072, "y": 512, "w": 512, "h": 512 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
@@ -200,7 +200,7 @@
     "duration": 67
    },
    "jan_Luke 25.aseprite": {
-    "frame": { "x": 512, "y": 1024, "w": 512, "h": 512 },
+    "frame": { "x": 3584, "y": 512, "w": 512, "h": 512 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
@@ -208,7 +208,7 @@
     "duration": 67
    },
    "jan_Luke 26.aseprite": {
-    "frame": { "x": 1024, "y": 1024, "w": 512, "h": 512 },
+    "frame": { "x": 4096, "y": 512, "w": 512, "h": 512 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
@@ -216,7 +216,7 @@
     "duration": 67
    },
    "jan_Luke 27.aseprite": {
-    "frame": { "x": 1536, "y": 1024, "w": 512, "h": 512 },
+    "frame": { "x": 4608, "y": 512, "w": 512, "h": 512 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
@@ -224,7 +224,7 @@
     "duration": 67
    },
    "jan_Luke 28.aseprite": {
-    "frame": { "x": 2048, "y": 1024, "w": 512, "h": 512 },
+    "frame": { "x": 5120, "y": 512, "w": 512, "h": 512 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
@@ -232,7 +232,7 @@
     "duration": 67
    },
    "jan_Luke 29.aseprite": {
-    "frame": { "x": 2560, "y": 1024, "w": 512, "h": 512 },
+    "frame": { "x": 5632, "y": 512, "w": 512, "h": 512 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
@@ -240,7 +240,7 @@
     "duration": 67
    },
    "jan_Luke 30.aseprite": {
-    "frame": { "x": 3072, "y": 1024, "w": 512, "h": 512 },
+    "frame": { "x": 6144, "y": 512, "w": 512, "h": 512 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
@@ -248,7 +248,7 @@
     "duration": 67
    },
    "jan_Luke 31.aseprite": {
-    "frame": { "x": 3584, "y": 1024, "w": 512, "h": 512 },
+    "frame": { "x": 6656, "y": 512, "w": 512, "h": 512 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
@@ -256,7 +256,7 @@
     "duration": 67
    },
    "jan_Luke 32.aseprite": {
-    "frame": { "x": 4096, "y": 1024, "w": 512, "h": 512 },
+    "frame": { "x": 7168, "y": 512, "w": 512, "h": 512 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
@@ -264,7 +264,7 @@
     "duration": 67
    },
    "jan_Luke 33.aseprite": {
-    "frame": { "x": 4608, "y": 1024, "w": 512, "h": 512 },
+    "frame": { "x": 7680, "y": 512, "w": 512, "h": 512 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
@@ -272,7 +272,7 @@
     "duration": 67
    },
    "jan_Luke 34.aseprite": {
-    "frame": { "x": 5120, "y": 1024, "w": 512, "h": 512 },
+    "frame": { "x": 8192, "y": 512, "w": 512, "h": 512 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
@@ -280,7 +280,7 @@
     "duration": 67
    },
    "jan_Luke 35.aseprite": {
-    "frame": { "x": 5632, "y": 1024, "w": 512, "h": 512 },
+    "frame": { "x": 8704, "y": 512, "w": 512, "h": 512 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
@@ -288,7 +288,7 @@
     "duration": 67
    },
    "jan_Luke 36.aseprite": {
-    "frame": { "x": 0, "y": 1536, "w": 512, "h": 512 },
+    "frame": { "x": 0, "y": 1024, "w": 512, "h": 512 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
@@ -296,7 +296,7 @@
     "duration": 67
    },
    "jan_Luke 37.aseprite": {
-    "frame": { "x": 512, "y": 1536, "w": 512, "h": 512 },
+    "frame": { "x": 512, "y": 1024, "w": 512, "h": 512 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
@@ -304,7 +304,7 @@
     "duration": 67
    },
    "jan_Luke 38.aseprite": {
-    "frame": { "x": 1024, "y": 1536, "w": 512, "h": 512 },
+    "frame": { "x": 1024, "y": 1024, "w": 512, "h": 512 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
@@ -312,7 +312,7 @@
     "duration": 67
    },
    "jan_Luke 39.aseprite": {
-    "frame": { "x": 1536, "y": 1536, "w": 512, "h": 512 },
+    "frame": { "x": 1536, "y": 1024, "w": 512, "h": 512 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
@@ -320,7 +320,7 @@
     "duration": 67
    },
    "jan_Luke 40.aseprite": {
-    "frame": { "x": 2048, "y": 1536, "w": 512, "h": 512 },
+    "frame": { "x": 2048, "y": 1024, "w": 512, "h": 512 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
@@ -328,7 +328,7 @@
     "duration": 67
    },
    "jan_Luke 41.aseprite": {
-    "frame": { "x": 2560, "y": 1536, "w": 512, "h": 512 },
+    "frame": { "x": 2560, "y": 1024, "w": 512, "h": 512 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
@@ -336,7 +336,7 @@
     "duration": 67
    },
    "jan_Luke 42.aseprite": {
-    "frame": { "x": 3072, "y": 1536, "w": 512, "h": 512 },
+    "frame": { "x": 3072, "y": 1024, "w": 512, "h": 512 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
@@ -344,7 +344,7 @@
     "duration": 67
    },
    "jan_Luke 43.aseprite": {
-    "frame": { "x": 3584, "y": 1536, "w": 512, "h": 512 },
+    "frame": { "x": 3584, "y": 1024, "w": 512, "h": 512 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
@@ -352,7 +352,7 @@
     "duration": 67
    },
    "jan_Luke 44.aseprite": {
-    "frame": { "x": 4096, "y": 1536, "w": 512, "h": 512 },
+    "frame": { "x": 4096, "y": 1024, "w": 512, "h": 512 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
@@ -360,7 +360,7 @@
     "duration": 67
    },
    "jan_Luke 45.aseprite": {
-    "frame": { "x": 4608, "y": 1536, "w": 512, "h": 512 },
+    "frame": { "x": 4608, "y": 1024, "w": 512, "h": 512 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
@@ -368,7 +368,7 @@
     "duration": 67
    },
    "jan_Luke 46.aseprite": {
-    "frame": { "x": 5120, "y": 1536, "w": 512, "h": 512 },
+    "frame": { "x": 5120, "y": 1024, "w": 512, "h": 512 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
@@ -376,7 +376,7 @@
     "duration": 67
    },
    "jan_Luke 47.aseprite": {
-    "frame": { "x": 5632, "y": 1536, "w": 512, "h": 512 },
+    "frame": { "x": 5632, "y": 1024, "w": 512, "h": 512 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
@@ -384,7 +384,7 @@
     "duration": 67
    },
    "jan_Luke 48.aseprite": {
-    "frame": { "x": 0, "y": 2048, "w": 512, "h": 512 },
+    "frame": { "x": 6144, "y": 1024, "w": 512, "h": 512 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
@@ -392,7 +392,7 @@
     "duration": 67
    },
    "jan_Luke 49.aseprite": {
-    "frame": { "x": 512, "y": 2048, "w": 512, "h": 512 },
+    "frame": { "x": 6656, "y": 1024, "w": 512, "h": 512 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
@@ -400,7 +400,7 @@
     "duration": 67
    },
    "jan_Luke 50.aseprite": {
-    "frame": { "x": 1024, "y": 2048, "w": 512, "h": 512 },
+    "frame": { "x": 7168, "y": 1024, "w": 512, "h": 512 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
@@ -408,7 +408,7 @@
     "duration": 67
    },
    "jan_Luke 51.aseprite": {
-    "frame": { "x": 1536, "y": 2048, "w": 512, "h": 512 },
+    "frame": { "x": 7680, "y": 1024, "w": 512, "h": 512 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
@@ -416,7 +416,7 @@
     "duration": 67
    },
    "jan_Luke 52.aseprite": {
-    "frame": { "x": 2048, "y": 2048, "w": 512, "h": 512 },
+    "frame": { "x": 8192, "y": 1024, "w": 512, "h": 512 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
@@ -424,7 +424,7 @@
     "duration": 67
    },
    "jan_Luke 53.aseprite": {
-    "frame": { "x": 2560, "y": 2048, "w": 512, "h": 512 },
+    "frame": { "x": 8704, "y": 1024, "w": 512, "h": 512 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
@@ -432,7 +432,7 @@
     "duration": 67
    },
    "jan_Luke 54.aseprite": {
-    "frame": { "x": 3072, "y": 2048, "w": 512, "h": 512 },
+    "frame": { "x": 0, "y": 1536, "w": 512, "h": 512 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
@@ -440,7 +440,7 @@
     "duration": 67
    },
    "jan_Luke 55.aseprite": {
-    "frame": { "x": 3584, "y": 2048, "w": 512, "h": 512 },
+    "frame": { "x": 512, "y": 1536, "w": 512, "h": 512 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
@@ -448,7 +448,7 @@
     "duration": 67
    },
    "jan_Luke 56.aseprite": {
-    "frame": { "x": 4096, "y": 2048, "w": 512, "h": 512 },
+    "frame": { "x": 1024, "y": 1536, "w": 512, "h": 512 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
@@ -456,7 +456,7 @@
     "duration": 67
    },
    "jan_Luke 57.aseprite": {
-    "frame": { "x": 4608, "y": 2048, "w": 512, "h": 512 },
+    "frame": { "x": 1536, "y": 1536, "w": 512, "h": 512 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
@@ -464,7 +464,7 @@
     "duration": 67
    },
    "jan_Luke 58.aseprite": {
-    "frame": { "x": 5120, "y": 2048, "w": 512, "h": 512 },
+    "frame": { "x": 2048, "y": 1536, "w": 512, "h": 512 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
@@ -472,7 +472,7 @@
     "duration": 67
    },
    "jan_Luke 59.aseprite": {
-    "frame": { "x": 5632, "y": 2048, "w": 512, "h": 512 },
+    "frame": { "x": 2560, "y": 1536, "w": 512, "h": 512 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
@@ -480,7 +480,7 @@
     "duration": 67
    },
    "jan_Luke 60.aseprite": {
-    "frame": { "x": 0, "y": 2560, "w": 512, "h": 512 },
+    "frame": { "x": 3072, "y": 1536, "w": 512, "h": 512 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
@@ -488,7 +488,7 @@
     "duration": 67
    },
    "jan_Luke 61.aseprite": {
-    "frame": { "x": 512, "y": 2560, "w": 512, "h": 512 },
+    "frame": { "x": 3584, "y": 1536, "w": 512, "h": 512 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
@@ -496,7 +496,7 @@
     "duration": 67
    },
    "jan_Luke 62.aseprite": {
-    "frame": { "x": 1024, "y": 2560, "w": 512, "h": 512 },
+    "frame": { "x": 4096, "y": 1536, "w": 512, "h": 512 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
@@ -504,7 +504,7 @@
     "duration": 67
    },
    "jan_Luke 63.aseprite": {
-    "frame": { "x": 1536, "y": 2560, "w": 512, "h": 512 },
+    "frame": { "x": 4608, "y": 1536, "w": 512, "h": 512 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
@@ -512,7 +512,7 @@
     "duration": 67
    },
    "jan_Luke 64.aseprite": {
-    "frame": { "x": 2048, "y": 2560, "w": 512, "h": 512 },
+    "frame": { "x": 5120, "y": 1536, "w": 512, "h": 512 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
@@ -520,7 +520,7 @@
     "duration": 67
    },
    "jan_Luke 65.aseprite": {
-    "frame": { "x": 2560, "y": 2560, "w": 512, "h": 512 },
+    "frame": { "x": 5632, "y": 1536, "w": 512, "h": 512 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
@@ -528,7 +528,7 @@
     "duration": 67
    },
    "jan_Luke 66.aseprite": {
-    "frame": { "x": 3072, "y": 2560, "w": 512, "h": 512 },
+    "frame": { "x": 6144, "y": 1536, "w": 512, "h": 512 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
@@ -536,7 +536,7 @@
     "duration": 67
    },
    "jan_Luke 67.aseprite": {
-    "frame": { "x": 3584, "y": 2560, "w": 512, "h": 512 },
+    "frame": { "x": 6656, "y": 1536, "w": 512, "h": 512 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
@@ -544,7 +544,7 @@
     "duration": 67
    },
    "jan_Luke 68.aseprite": {
-    "frame": { "x": 4096, "y": 2560, "w": 512, "h": 512 },
+    "frame": { "x": 7168, "y": 1536, "w": 512, "h": 512 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
@@ -552,7 +552,7 @@
     "duration": 67
    },
    "jan_Luke 69.aseprite": {
-    "frame": { "x": 4608, "y": 2560, "w": 512, "h": 512 },
+    "frame": { "x": 7680, "y": 1536, "w": 512, "h": 512 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
@@ -560,7 +560,7 @@
     "duration": 67
    },
    "jan_Luke 70.aseprite": {
-    "frame": { "x": 5120, "y": 2560, "w": 512, "h": 512 },
+    "frame": { "x": 8192, "y": 1536, "w": 512, "h": 512 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
@@ -568,7 +568,7 @@
     "duration": 67
    },
    "jan_Luke 71.aseprite": {
-    "frame": { "x": 5632, "y": 2560, "w": 512, "h": 512 },
+    "frame": { "x": 8704, "y": 1536, "w": 512, "h": 512 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
@@ -576,7 +576,7 @@
     "duration": 67
    },
    "jan_Luke 72.aseprite": {
-    "frame": { "x": 0, "y": 3072, "w": 512, "h": 512 },
+    "frame": { "x": 0, "y": 2048, "w": 512, "h": 512 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
@@ -584,7 +584,7 @@
     "duration": 67
    },
    "jan_Luke 73.aseprite": {
-    "frame": { "x": 512, "y": 3072, "w": 512, "h": 512 },
+    "frame": { "x": 512, "y": 2048, "w": 512, "h": 512 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
@@ -592,7 +592,7 @@
     "duration": 67
    },
    "jan_Luke 74.aseprite": {
-    "frame": { "x": 1024, "y": 3072, "w": 512, "h": 512 },
+    "frame": { "x": 1024, "y": 2048, "w": 512, "h": 512 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
@@ -600,7 +600,7 @@
     "duration": 67
    },
    "jan_Luke 75.aseprite": {
-    "frame": { "x": 1536, "y": 3072, "w": 512, "h": 512 },
+    "frame": { "x": 1536, "y": 2048, "w": 512, "h": 512 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
@@ -608,7 +608,7 @@
     "duration": 67
    },
    "jan_Luke 76.aseprite": {
-    "frame": { "x": 2048, "y": 3072, "w": 512, "h": 512 },
+    "frame": { "x": 2048, "y": 2048, "w": 512, "h": 512 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
@@ -616,7 +616,7 @@
     "duration": 67
    },
    "jan_Luke 77.aseprite": {
-    "frame": { "x": 2560, "y": 3072, "w": 512, "h": 512 },
+    "frame": { "x": 2560, "y": 2048, "w": 512, "h": 512 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
@@ -624,7 +624,7 @@
     "duration": 67
    },
    "jan_Luke 78.aseprite": {
-    "frame": { "x": 3072, "y": 3072, "w": 512, "h": 512 },
+    "frame": { "x": 3072, "y": 2048, "w": 512, "h": 512 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
@@ -632,7 +632,7 @@
     "duration": 67
    },
    "jan_Luke 79.aseprite": {
-    "frame": { "x": 3584, "y": 3072, "w": 512, "h": 512 },
+    "frame": { "x": 3584, "y": 2048, "w": 512, "h": 512 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
@@ -640,7 +640,7 @@
     "duration": 67
    },
    "jan_Luke 80.aseprite": {
-    "frame": { "x": 4096, "y": 3072, "w": 512, "h": 512 },
+    "frame": { "x": 4096, "y": 2048, "w": 512, "h": 512 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
@@ -648,7 +648,7 @@
     "duration": 67
    },
    "jan_Luke 81.aseprite": {
-    "frame": { "x": 4608, "y": 3072, "w": 512, "h": 512 },
+    "frame": { "x": 4608, "y": 2048, "w": 512, "h": 512 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
@@ -656,7 +656,7 @@
     "duration": 67
    },
    "jan_Luke 82.aseprite": {
-    "frame": { "x": 5120, "y": 3072, "w": 512, "h": 512 },
+    "frame": { "x": 5120, "y": 2048, "w": 512, "h": 512 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
@@ -664,7 +664,7 @@
     "duration": 67
    },
    "jan_Luke 83.aseprite": {
-    "frame": { "x": 5632, "y": 3072, "w": 512, "h": 512 },
+    "frame": { "x": 5632, "y": 2048, "w": 512, "h": 512 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
@@ -672,7 +672,7 @@
     "duration": 67
    },
    "jan_Luke 84.aseprite": {
-    "frame": { "x": 0, "y": 3584, "w": 512, "h": 512 },
+    "frame": { "x": 6144, "y": 2048, "w": 512, "h": 512 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
@@ -680,7 +680,7 @@
     "duration": 67
    },
    "jan_Luke 85.aseprite": {
-    "frame": { "x": 512, "y": 3584, "w": 512, "h": 512 },
+    "frame": { "x": 6656, "y": 2048, "w": 512, "h": 512 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
@@ -688,7 +688,7 @@
     "duration": 67
    },
    "jan_Luke 86.aseprite": {
-    "frame": { "x": 1024, "y": 3584, "w": 512, "h": 512 },
+    "frame": { "x": 7168, "y": 2048, "w": 512, "h": 512 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
@@ -696,7 +696,7 @@
     "duration": 67
    },
    "jan_Luke 87.aseprite": {
-    "frame": { "x": 1536, "y": 3584, "w": 512, "h": 512 },
+    "frame": { "x": 7680, "y": 2048, "w": 512, "h": 512 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
@@ -704,7 +704,7 @@
     "duration": 67
    },
    "jan_Luke 88.aseprite": {
-    "frame": { "x": 2048, "y": 3584, "w": 512, "h": 512 },
+    "frame": { "x": 8192, "y": 2048, "w": 512, "h": 512 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
@@ -712,7 +712,7 @@
     "duration": 67
    },
    "jan_Luke 89.aseprite": {
-    "frame": { "x": 2560, "y": 3584, "w": 512, "h": 512 },
+    "frame": { "x": 8704, "y": 2048, "w": 512, "h": 512 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
@@ -720,7 +720,7 @@
     "duration": 67
    },
    "jan_Luke 90.aseprite": {
-    "frame": { "x": 3072, "y": 3584, "w": 512, "h": 512 },
+    "frame": { "x": 0, "y": 2560, "w": 512, "h": 512 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
@@ -728,7 +728,7 @@
     "duration": 67
    },
    "jan_Luke 91.aseprite": {
-    "frame": { "x": 3584, "y": 3584, "w": 512, "h": 512 },
+    "frame": { "x": 512, "y": 2560, "w": 512, "h": 512 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
@@ -736,7 +736,7 @@
     "duration": 67
    },
    "jan_Luke 92.aseprite": {
-    "frame": { "x": 4096, "y": 3584, "w": 512, "h": 512 },
+    "frame": { "x": 1024, "y": 2560, "w": 512, "h": 512 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
@@ -744,7 +744,7 @@
     "duration": 67
    },
    "jan_Luke 93.aseprite": {
-    "frame": { "x": 4608, "y": 3584, "w": 512, "h": 512 },
+    "frame": { "x": 1536, "y": 2560, "w": 512, "h": 512 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
@@ -752,7 +752,7 @@
     "duration": 67
    },
    "jan_Luke 94.aseprite": {
-    "frame": { "x": 5120, "y": 3584, "w": 512, "h": 512 },
+    "frame": { "x": 2048, "y": 2560, "w": 512, "h": 512 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
@@ -760,7 +760,7 @@
     "duration": 67
    },
    "jan_Luke 95.aseprite": {
-    "frame": { "x": 5632, "y": 3584, "w": 512, "h": 512 },
+    "frame": { "x": 2560, "y": 2560, "w": 512, "h": 512 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
@@ -768,7 +768,7 @@
     "duration": 67
    },
    "jan_Luke 96.aseprite": {
-    "frame": { "x": 0, "y": 4096, "w": 512, "h": 512 },
+    "frame": { "x": 3072, "y": 2560, "w": 512, "h": 512 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
@@ -776,7 +776,7 @@
     "duration": 67
    },
    "jan_Luke 97.aseprite": {
-    "frame": { "x": 512, "y": 4096, "w": 512, "h": 512 },
+    "frame": { "x": 3584, "y": 2560, "w": 512, "h": 512 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
@@ -784,7 +784,7 @@
     "duration": 67
    },
    "jan_Luke 98.aseprite": {
-    "frame": { "x": 1024, "y": 4096, "w": 512, "h": 512 },
+    "frame": { "x": 4096, "y": 2560, "w": 512, "h": 512 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
@@ -792,7 +792,7 @@
     "duration": 67
    },
    "jan_Luke 99.aseprite": {
-    "frame": { "x": 1536, "y": 4096, "w": 512, "h": 512 },
+    "frame": { "x": 4608, "y": 2560, "w": 512, "h": 512 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
@@ -800,7 +800,7 @@
     "duration": 67
    },
    "jan_Luke 100.aseprite": {
-    "frame": { "x": 2048, "y": 4096, "w": 512, "h": 512 },
+    "frame": { "x": 5120, "y": 2560, "w": 512, "h": 512 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
@@ -808,7 +808,7 @@
     "duration": 67
    },
    "jan_Luke 101.aseprite": {
-    "frame": { "x": 2560, "y": 4096, "w": 512, "h": 512 },
+    "frame": { "x": 5632, "y": 2560, "w": 512, "h": 512 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
@@ -816,7 +816,7 @@
     "duration": 67
    },
    "jan_Luke 102.aseprite": {
-    "frame": { "x": 3072, "y": 4096, "w": 512, "h": 512 },
+    "frame": { "x": 6144, "y": 2560, "w": 512, "h": 512 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
@@ -824,7 +824,7 @@
     "duration": 67
    },
    "jan_Luke 103.aseprite": {
-    "frame": { "x": 3584, "y": 4096, "w": 512, "h": 512 },
+    "frame": { "x": 6656, "y": 2560, "w": 512, "h": 512 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
@@ -832,7 +832,7 @@
     "duration": 67
    },
    "jan_Luke 104.aseprite": {
-    "frame": { "x": 4096, "y": 4096, "w": 512, "h": 512 },
+    "frame": { "x": 7168, "y": 2560, "w": 512, "h": 512 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
@@ -840,7 +840,7 @@
     "duration": 67
    },
    "jan_Luke 105.aseprite": {
-    "frame": { "x": 4608, "y": 4096, "w": 512, "h": 512 },
+    "frame": { "x": 7680, "y": 2560, "w": 512, "h": 512 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
@@ -848,7 +848,7 @@
     "duration": 67
    },
    "jan_Luke 106.aseprite": {
-    "frame": { "x": 5120, "y": 4096, "w": 512, "h": 512 },
+    "frame": { "x": 8192, "y": 2560, "w": 512, "h": 512 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
@@ -856,7 +856,7 @@
     "duration": 67
    },
    "jan_Luke 107.aseprite": {
-    "frame": { "x": 5632, "y": 4096, "w": 512, "h": 512 },
+    "frame": { "x": 8704, "y": 2560, "w": 512, "h": 512 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
@@ -864,7 +864,7 @@
     "duration": 67
    },
    "jan_Luke 108.aseprite": {
-    "frame": { "x": 0, "y": 4608, "w": 512, "h": 512 },
+    "frame": { "x": 0, "y": 3072, "w": 512, "h": 512 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
@@ -872,7 +872,7 @@
     "duration": 67
    },
    "jan_Luke 109.aseprite": {
-    "frame": { "x": 512, "y": 4608, "w": 512, "h": 512 },
+    "frame": { "x": 512, "y": 3072, "w": 512, "h": 512 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
@@ -880,7 +880,7 @@
     "duration": 67
    },
    "jan_Luke 110.aseprite": {
-    "frame": { "x": 1024, "y": 4608, "w": 512, "h": 512 },
+    "frame": { "x": 1024, "y": 3072, "w": 512, "h": 512 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
@@ -888,7 +888,7 @@
     "duration": 67
    },
    "jan_Luke 111.aseprite": {
-    "frame": { "x": 1536, "y": 4608, "w": 512, "h": 512 },
+    "frame": { "x": 1536, "y": 3072, "w": 512, "h": 512 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
@@ -896,7 +896,7 @@
     "duration": 67
    },
    "jan_Luke 112.aseprite": {
-    "frame": { "x": 2048, "y": 4608, "w": 512, "h": 512 },
+    "frame": { "x": 2048, "y": 3072, "w": 512, "h": 512 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
@@ -904,7 +904,7 @@
     "duration": 67
    },
    "jan_Luke 113.aseprite": {
-    "frame": { "x": 2560, "y": 4608, "w": 512, "h": 512 },
+    "frame": { "x": 2560, "y": 3072, "w": 512, "h": 512 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
@@ -912,7 +912,7 @@
     "duration": 67
    },
    "jan_Luke 114.aseprite": {
-    "frame": { "x": 3072, "y": 4608, "w": 512, "h": 512 },
+    "frame": { "x": 3072, "y": 3072, "w": 512, "h": 512 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
@@ -920,7 +920,7 @@
     "duration": 67
    },
    "jan_Luke 115.aseprite": {
-    "frame": { "x": 3584, "y": 4608, "w": 512, "h": 512 },
+    "frame": { "x": 3584, "y": 3072, "w": 512, "h": 512 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
@@ -928,7 +928,7 @@
     "duration": 67
    },
    "jan_Luke 116.aseprite": {
-    "frame": { "x": 4096, "y": 4608, "w": 512, "h": 512 },
+    "frame": { "x": 4096, "y": 3072, "w": 512, "h": 512 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
@@ -936,7 +936,7 @@
     "duration": 67
    },
    "jan_Luke 117.aseprite": {
-    "frame": { "x": 4608, "y": 4608, "w": 512, "h": 512 },
+    "frame": { "x": 4608, "y": 3072, "w": 512, "h": 512 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
@@ -944,7 +944,7 @@
     "duration": 67
    },
    "jan_Luke 118.aseprite": {
-    "frame": { "x": 5120, "y": 4608, "w": 512, "h": 512 },
+    "frame": { "x": 5120, "y": 3072, "w": 512, "h": 512 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
@@ -952,7 +952,7 @@
     "duration": 67
    },
    "jan_Luke 119.aseprite": {
-    "frame": { "x": 5632, "y": 4608, "w": 512, "h": 512 },
+    "frame": { "x": 5632, "y": 3072, "w": 512, "h": 512 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
@@ -960,7 +960,7 @@
     "duration": 67
    },
    "jan_Luke 120.aseprite": {
-    "frame": { "x": 0, "y": 5120, "w": 512, "h": 512 },
+    "frame": { "x": 6144, "y": 3072, "w": 512, "h": 512 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
@@ -968,7 +968,7 @@
     "duration": 67
    },
    "jan_Luke 121.aseprite": {
-    "frame": { "x": 512, "y": 5120, "w": 512, "h": 512 },
+    "frame": { "x": 6656, "y": 3072, "w": 512, "h": 512 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
@@ -976,7 +976,7 @@
     "duration": 67
    },
    "jan_Luke 122.aseprite": {
-    "frame": { "x": 1024, "y": 5120, "w": 512, "h": 512 },
+    "frame": { "x": 7168, "y": 3072, "w": 512, "h": 512 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
@@ -984,7 +984,7 @@
     "duration": 67
    },
    "jan_Luke 123.aseprite": {
-    "frame": { "x": 1536, "y": 5120, "w": 512, "h": 512 },
+    "frame": { "x": 7680, "y": 3072, "w": 512, "h": 512 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
@@ -992,7 +992,7 @@
     "duration": 67
    },
    "jan_Luke 124.aseprite": {
-    "frame": { "x": 2048, "y": 5120, "w": 512, "h": 512 },
+    "frame": { "x": 8192, "y": 3072, "w": 512, "h": 512 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
@@ -1000,7 +1000,7 @@
     "duration": 67
    },
    "jan_Luke 125.aseprite": {
-    "frame": { "x": 2560, "y": 5120, "w": 512, "h": 512 },
+    "frame": { "x": 8704, "y": 3072, "w": 512, "h": 512 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
@@ -1008,7 +1008,7 @@
     "duration": 67
    },
    "jan_Luke 126.aseprite": {
-    "frame": { "x": 3072, "y": 5120, "w": 512, "h": 512 },
+    "frame": { "x": 0, "y": 3584, "w": 512, "h": 512 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
@@ -1016,7 +1016,7 @@
     "duration": 67
    },
    "jan_Luke 127.aseprite": {
-    "frame": { "x": 3584, "y": 5120, "w": 512, "h": 512 },
+    "frame": { "x": 512, "y": 3584, "w": 512, "h": 512 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
@@ -1024,7 +1024,7 @@
     "duration": 67
    },
    "jan_Luke 128.aseprite": {
-    "frame": { "x": 4096, "y": 5120, "w": 512, "h": 512 },
+    "frame": { "x": 1024, "y": 3584, "w": 512, "h": 512 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
@@ -1032,7 +1032,7 @@
     "duration": 67
    },
    "jan_Luke 129.aseprite": {
-    "frame": { "x": 4608, "y": 5120, "w": 512, "h": 512 },
+    "frame": { "x": 1536, "y": 3584, "w": 512, "h": 512 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
@@ -1040,7 +1040,7 @@
     "duration": 67
    },
    "jan_Luke 130.aseprite": {
-    "frame": { "x": 5120, "y": 5120, "w": 512, "h": 512 },
+    "frame": { "x": 2048, "y": 3584, "w": 512, "h": 512 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
@@ -1048,7 +1048,7 @@
     "duration": 67
    },
    "jan_Luke 131.aseprite": {
-    "frame": { "x": 5632, "y": 5120, "w": 512, "h": 512 },
+    "frame": { "x": 2560, "y": 3584, "w": 512, "h": 512 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
@@ -1056,7 +1056,7 @@
     "duration": 67
    },
    "jan_Luke 132.aseprite": {
-    "frame": { "x": 0, "y": 5632, "w": 512, "h": 512 },
+    "frame": { "x": 3072, "y": 3584, "w": 512, "h": 512 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
@@ -1064,7 +1064,7 @@
     "duration": 67
    },
    "jan_Luke 133.aseprite": {
-    "frame": { "x": 512, "y": 5632, "w": 512, "h": 512 },
+    "frame": { "x": 3584, "y": 3584, "w": 512, "h": 512 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
@@ -1072,7 +1072,7 @@
     "duration": 67
    },
    "jan_Luke 134.aseprite": {
-    "frame": { "x": 1024, "y": 5632, "w": 512, "h": 512 },
+    "frame": { "x": 4096, "y": 3584, "w": 512, "h": 512 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
@@ -1080,7 +1080,7 @@
     "duration": 67
    },
    "jan_Luke 135.aseprite": {
-    "frame": { "x": 1536, "y": 5632, "w": 512, "h": 512 },
+    "frame": { "x": 4608, "y": 3584, "w": 512, "h": 512 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
@@ -1088,7 +1088,7 @@
     "duration": 67
    },
    "jan_Luke 136.aseprite": {
-    "frame": { "x": 2048, "y": 5632, "w": 512, "h": 512 },
+    "frame": { "x": 5120, "y": 3584, "w": 512, "h": 512 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
@@ -1096,7 +1096,7 @@
     "duration": 67
    },
    "jan_Luke 137.aseprite": {
-    "frame": { "x": 2560, "y": 5632, "w": 512, "h": 512 },
+    "frame": { "x": 5632, "y": 3584, "w": 512, "h": 512 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
@@ -1104,7 +1104,7 @@
     "duration": 67
    },
    "jan_Luke 138.aseprite": {
-    "frame": { "x": 3072, "y": 5632, "w": 512, "h": 512 },
+    "frame": { "x": 6144, "y": 3584, "w": 512, "h": 512 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
@@ -1112,7 +1112,7 @@
     "duration": 67
    },
    "jan_Luke 139.aseprite": {
-    "frame": { "x": 3584, "y": 5632, "w": 512, "h": 512 },
+    "frame": { "x": 6656, "y": 3584, "w": 512, "h": 512 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
@@ -1120,7 +1120,7 @@
     "duration": 67
    },
    "jan_Luke 140.aseprite": {
-    "frame": { "x": 4096, "y": 5632, "w": 512, "h": 512 },
+    "frame": { "x": 7168, "y": 3584, "w": 512, "h": 512 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
@@ -1128,7 +1128,7 @@
     "duration": 67
    },
    "jan_Luke 141.aseprite": {
-    "frame": { "x": 4608, "y": 5632, "w": 512, "h": 512 },
+    "frame": { "x": 7680, "y": 3584, "w": 512, "h": 512 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
@@ -1136,7 +1136,7 @@
     "duration": 67
    },
    "jan_Luke 142.aseprite": {
-    "frame": { "x": 5120, "y": 5632, "w": 512, "h": 512 },
+    "frame": { "x": 8192, "y": 3584, "w": 512, "h": 512 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
@@ -1144,7 +1144,7 @@
     "duration": 67
    },
    "jan_Luke 143.aseprite": {
-    "frame": { "x": 5632, "y": 5632, "w": 512, "h": 512 },
+    "frame": { "x": 8704, "y": 3584, "w": 512, "h": 512 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
@@ -1152,7 +1152,7 @@
     "duration": 67
    },
    "jan_Luke 144.aseprite": {
-    "frame": { "x": 0, "y": 6144, "w": 512, "h": 512 },
+    "frame": { "x": 0, "y": 4096, "w": 512, "h": 512 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
@@ -1160,7 +1160,7 @@
     "duration": 67
    },
    "jan_Luke 145.aseprite": {
-    "frame": { "x": 512, "y": 6144, "w": 512, "h": 512 },
+    "frame": { "x": 512, "y": 4096, "w": 512, "h": 512 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
@@ -1168,7 +1168,7 @@
     "duration": 67
    },
    "jan_Luke 146.aseprite": {
-    "frame": { "x": 1024, "y": 6144, "w": 512, "h": 512 },
+    "frame": { "x": 1024, "y": 4096, "w": 512, "h": 512 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
@@ -1176,7 +1176,7 @@
     "duration": 67
    },
    "jan_Luke 147.aseprite": {
-    "frame": { "x": 1536, "y": 6144, "w": 512, "h": 512 },
+    "frame": { "x": 1536, "y": 4096, "w": 512, "h": 512 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
@@ -1184,7 +1184,7 @@
     "duration": 67
    },
    "jan_Luke 148.aseprite": {
-    "frame": { "x": 2048, "y": 6144, "w": 512, "h": 512 },
+    "frame": { "x": 2048, "y": 4096, "w": 512, "h": 512 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
@@ -1192,7 +1192,7 @@
     "duration": 67
    },
    "jan_Luke 149.aseprite": {
-    "frame": { "x": 2560, "y": 6144, "w": 512, "h": 512 },
+    "frame": { "x": 2560, "y": 4096, "w": 512, "h": 512 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
@@ -1200,7 +1200,7 @@
     "duration": 67
    },
    "jan_Luke 150.aseprite": {
-    "frame": { "x": 3072, "y": 6144, "w": 512, "h": 512 },
+    "frame": { "x": 3072, "y": 4096, "w": 512, "h": 512 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
@@ -1208,7 +1208,7 @@
     "duration": 67
    },
    "jan_Luke 151.aseprite": {
-    "frame": { "x": 3584, "y": 6144, "w": 512, "h": 512 },
+    "frame": { "x": 3584, "y": 4096, "w": 512, "h": 512 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
@@ -1216,7 +1216,7 @@
     "duration": 67
    },
    "jan_Luke 152.aseprite": {
-    "frame": { "x": 4096, "y": 6144, "w": 512, "h": 512 },
+    "frame": { "x": 4096, "y": 4096, "w": 512, "h": 512 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
@@ -1224,7 +1224,7 @@
     "duration": 67
    },
    "jan_Luke 153.aseprite": {
-    "frame": { "x": 4608, "y": 6144, "w": 512, "h": 512 },
+    "frame": { "x": 4608, "y": 4096, "w": 512, "h": 512 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
@@ -1232,7 +1232,7 @@
     "duration": 67
    },
    "jan_Luke 154.aseprite": {
-    "frame": { "x": 5120, "y": 6144, "w": 512, "h": 512 },
+    "frame": { "x": 5120, "y": 4096, "w": 512, "h": 512 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
@@ -1240,7 +1240,7 @@
     "duration": 67
    },
    "jan_Luke 155.aseprite": {
-    "frame": { "x": 5632, "y": 6144, "w": 512, "h": 512 },
+    "frame": { "x": 5632, "y": 4096, "w": 512, "h": 512 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
@@ -1248,7 +1248,7 @@
     "duration": 67
    },
    "jan_Luke 156.aseprite": {
-    "frame": { "x": 0, "y": 6656, "w": 512, "h": 512 },
+    "frame": { "x": 6144, "y": 4096, "w": 512, "h": 512 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
@@ -1256,7 +1256,7 @@
     "duration": 67
    },
    "jan_Luke 157.aseprite": {
-    "frame": { "x": 512, "y": 6656, "w": 512, "h": 512 },
+    "frame": { "x": 6656, "y": 4096, "w": 512, "h": 512 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
@@ -1264,7 +1264,7 @@
     "duration": 67
    },
    "jan_Luke 158.aseprite": {
-    "frame": { "x": 1024, "y": 6656, "w": 512, "h": 512 },
+    "frame": { "x": 7168, "y": 4096, "w": 512, "h": 512 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
@@ -1272,7 +1272,7 @@
     "duration": 67
    },
    "jan_Luke 159.aseprite": {
-    "frame": { "x": 1536, "y": 6656, "w": 512, "h": 512 },
+    "frame": { "x": 7680, "y": 4096, "w": 512, "h": 512 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
@@ -1280,7 +1280,7 @@
     "duration": 67
    },
    "jan_Luke 160.aseprite": {
-    "frame": { "x": 2048, "y": 6656, "w": 512, "h": 512 },
+    "frame": { "x": 8192, "y": 4096, "w": 512, "h": 512 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
@@ -1288,7 +1288,7 @@
     "duration": 67
    },
    "jan_Luke 161.aseprite": {
-    "frame": { "x": 2560, "y": 6656, "w": 512, "h": 512 },
+    "frame": { "x": 8704, "y": 4096, "w": 512, "h": 512 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
@@ -1296,7 +1296,7 @@
     "duration": 67
    },
    "jan_Luke 162.aseprite": {
-    "frame": { "x": 3072, "y": 6656, "w": 512, "h": 512 },
+    "frame": { "x": 0, "y": 4608, "w": 512, "h": 512 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
@@ -1304,7 +1304,7 @@
     "duration": 67
    },
    "jan_Luke 163.aseprite": {
-    "frame": { "x": 3584, "y": 6656, "w": 512, "h": 512 },
+    "frame": { "x": 512, "y": 4608, "w": 512, "h": 512 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
@@ -1312,7 +1312,7 @@
     "duration": 67
    },
    "jan_Luke 164.aseprite": {
-    "frame": { "x": 4096, "y": 6656, "w": 512, "h": 512 },
+    "frame": { "x": 1024, "y": 4608, "w": 512, "h": 512 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
@@ -1320,7 +1320,7 @@
     "duration": 67
    },
    "jan_Luke 165.aseprite": {
-    "frame": { "x": 4608, "y": 6656, "w": 512, "h": 512 },
+    "frame": { "x": 1536, "y": 4608, "w": 512, "h": 512 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
@@ -1328,7 +1328,7 @@
     "duration": 67
    },
    "jan_Luke 166.aseprite": {
-    "frame": { "x": 5120, "y": 6656, "w": 512, "h": 512 },
+    "frame": { "x": 2048, "y": 4608, "w": 512, "h": 512 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
@@ -1336,7 +1336,7 @@
     "duration": 67
    },
    "jan_Luke 167.aseprite": {
-    "frame": { "x": 5632, "y": 6656, "w": 512, "h": 512 },
+    "frame": { "x": 2560, "y": 4608, "w": 512, "h": 512 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
@@ -1344,7 +1344,7 @@
     "duration": 67
    },
    "jan_Luke 168.aseprite": {
-    "frame": { "x": 0, "y": 7168, "w": 512, "h": 512 },
+    "frame": { "x": 3072, "y": 4608, "w": 512, "h": 512 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
@@ -1352,7 +1352,7 @@
     "duration": 67
    },
    "jan_Luke 169.aseprite": {
-    "frame": { "x": 512, "y": 7168, "w": 512, "h": 512 },
+    "frame": { "x": 3584, "y": 4608, "w": 512, "h": 512 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
@@ -1360,7 +1360,7 @@
     "duration": 67
    },
    "jan_Luke 170.aseprite": {
-    "frame": { "x": 1024, "y": 7168, "w": 512, "h": 512 },
+    "frame": { "x": 4096, "y": 4608, "w": 512, "h": 512 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
@@ -1368,7 +1368,7 @@
     "duration": 67
    },
    "jan_Luke 171.aseprite": {
-    "frame": { "x": 1536, "y": 7168, "w": 512, "h": 512 },
+    "frame": { "x": 4608, "y": 4608, "w": 512, "h": 512 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
@@ -1376,7 +1376,7 @@
     "duration": 67
    },
    "jan_Luke 172.aseprite": {
-    "frame": { "x": 2048, "y": 7168, "w": 512, "h": 512 },
+    "frame": { "x": 5120, "y": 4608, "w": 512, "h": 512 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
@@ -1384,7 +1384,7 @@
     "duration": 67
    },
    "jan_Luke 173.aseprite": {
-    "frame": { "x": 2560, "y": 7168, "w": 512, "h": 512 },
+    "frame": { "x": 5632, "y": 4608, "w": 512, "h": 512 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
@@ -1392,7 +1392,7 @@
     "duration": 67
    },
    "jan_Luke 174.aseprite": {
-    "frame": { "x": 3072, "y": 7168, "w": 512, "h": 512 },
+    "frame": { "x": 6144, "y": 4608, "w": 512, "h": 512 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
@@ -1400,7 +1400,7 @@
     "duration": 67
    },
    "jan_Luke 175.aseprite": {
-    "frame": { "x": 3584, "y": 7168, "w": 512, "h": 512 },
+    "frame": { "x": 6656, "y": 4608, "w": 512, "h": 512 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
@@ -1408,7 +1408,7 @@
     "duration": 67
    },
    "jan_Luke 176.aseprite": {
-    "frame": { "x": 4096, "y": 7168, "w": 512, "h": 512 },
+    "frame": { "x": 7168, "y": 4608, "w": 512, "h": 512 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
@@ -1416,7 +1416,7 @@
     "duration": 67
    },
    "jan_Luke 177.aseprite": {
-    "frame": { "x": 4608, "y": 7168, "w": 512, "h": 512 },
+    "frame": { "x": 7680, "y": 4608, "w": 512, "h": 512 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
@@ -1424,7 +1424,7 @@
     "duration": 67
    },
    "jan_Luke 178.aseprite": {
-    "frame": { "x": 5120, "y": 7168, "w": 512, "h": 512 },
+    "frame": { "x": 8192, "y": 4608, "w": 512, "h": 512 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
@@ -1432,7 +1432,7 @@
     "duration": 67
    },
    "jan_Luke 179.aseprite": {
-    "frame": { "x": 5632, "y": 7168, "w": 512, "h": 512 },
+    "frame": { "x": 8704, "y": 4608, "w": 512, "h": 512 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
@@ -1440,7 +1440,7 @@
     "duration": 67
    },
    "jan_Luke 180.aseprite": {
-    "frame": { "x": 0, "y": 7680, "w": 512, "h": 512 },
+    "frame": { "x": 0, "y": 5120, "w": 512, "h": 512 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
@@ -1448,7 +1448,7 @@
     "duration": 67
    },
    "jan_Luke 181.aseprite": {
-    "frame": { "x": 512, "y": 7680, "w": 512, "h": 512 },
+    "frame": { "x": 512, "y": 5120, "w": 512, "h": 512 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
@@ -1456,7 +1456,7 @@
     "duration": 67
    },
    "jan_Luke 182.aseprite": {
-    "frame": { "x": 1024, "y": 7680, "w": 512, "h": 512 },
+    "frame": { "x": 1024, "y": 5120, "w": 512, "h": 512 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
@@ -1464,7 +1464,7 @@
     "duration": 67
    },
    "jan_Luke 183.aseprite": {
-    "frame": { "x": 1536, "y": 7680, "w": 512, "h": 512 },
+    "frame": { "x": 1536, "y": 5120, "w": 512, "h": 512 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
@@ -1472,7 +1472,7 @@
     "duration": 67
    },
    "jan_Luke 184.aseprite": {
-    "frame": { "x": 2048, "y": 7680, "w": 512, "h": 512 },
+    "frame": { "x": 2048, "y": 5120, "w": 512, "h": 512 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
@@ -1480,7 +1480,7 @@
     "duration": 67
    },
    "jan_Luke 185.aseprite": {
-    "frame": { "x": 2560, "y": 7680, "w": 512, "h": 512 },
+    "frame": { "x": 2560, "y": 5120, "w": 512, "h": 512 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
@@ -1488,7 +1488,7 @@
     "duration": 67
    },
    "jan_Luke 186.aseprite": {
-    "frame": { "x": 3072, "y": 7680, "w": 512, "h": 512 },
+    "frame": { "x": 3072, "y": 5120, "w": 512, "h": 512 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
@@ -1496,7 +1496,7 @@
     "duration": 67
    },
    "jan_Luke 187.aseprite": {
-    "frame": { "x": 3584, "y": 7680, "w": 512, "h": 512 },
+    "frame": { "x": 3584, "y": 5120, "w": 512, "h": 512 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
@@ -1504,7 +1504,7 @@
     "duration": 67
    },
    "jan_Luke 188.aseprite": {
-    "frame": { "x": 4096, "y": 7680, "w": 512, "h": 512 },
+    "frame": { "x": 4096, "y": 5120, "w": 512, "h": 512 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
@@ -1512,7 +1512,7 @@
     "duration": 67
    },
    "jan_Luke 189.aseprite": {
-    "frame": { "x": 4608, "y": 7680, "w": 512, "h": 512 },
+    "frame": { "x": 4608, "y": 5120, "w": 512, "h": 512 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
@@ -1520,7 +1520,7 @@
     "duration": 67
    },
    "jan_Luke 190.aseprite": {
-    "frame": { "x": 5120, "y": 7680, "w": 512, "h": 512 },
+    "frame": { "x": 5120, "y": 5120, "w": 512, "h": 512 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
@@ -1528,7 +1528,7 @@
     "duration": 67
    },
    "jan_Luke 191.aseprite": {
-    "frame": { "x": 5632, "y": 7680, "w": 512, "h": 512 },
+    "frame": { "x": 5632, "y": 5120, "w": 512, "h": 512 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
@@ -1536,7 +1536,7 @@
     "duration": 67
    },
    "jan_Luke 192.aseprite": {
-    "frame": { "x": 0, "y": 8192, "w": 512, "h": 512 },
+    "frame": { "x": 6144, "y": 5120, "w": 512, "h": 512 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
@@ -1544,7 +1544,7 @@
     "duration": 67
    },
    "jan_Luke 193.aseprite": {
-    "frame": { "x": 512, "y": 8192, "w": 512, "h": 512 },
+    "frame": { "x": 6656, "y": 5120, "w": 512, "h": 512 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
@@ -1552,7 +1552,7 @@
     "duration": 67
    },
    "jan_Luke 194.aseprite": {
-    "frame": { "x": 1024, "y": 8192, "w": 512, "h": 512 },
+    "frame": { "x": 7168, "y": 5120, "w": 512, "h": 512 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
@@ -1560,7 +1560,7 @@
     "duration": 67
    },
    "jan_Luke 195.aseprite": {
-    "frame": { "x": 1536, "y": 8192, "w": 512, "h": 512 },
+    "frame": { "x": 7680, "y": 5120, "w": 512, "h": 512 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
@@ -1568,7 +1568,7 @@
     "duration": 67
    },
    "jan_Luke 196.aseprite": {
-    "frame": { "x": 2048, "y": 8192, "w": 512, "h": 512 },
+    "frame": { "x": 8192, "y": 5120, "w": 512, "h": 512 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
@@ -1576,7 +1576,7 @@
     "duration": 67
    },
    "jan_Luke 197.aseprite": {
-    "frame": { "x": 2560, "y": 8192, "w": 512, "h": 512 },
+    "frame": { "x": 8704, "y": 5120, "w": 512, "h": 512 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
@@ -1584,7 +1584,7 @@
     "duration": 67
    },
    "jan_Luke 198.aseprite": {
-    "frame": { "x": 3072, "y": 8192, "w": 512, "h": 512 },
+    "frame": { "x": 0, "y": 5632, "w": 512, "h": 512 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
@@ -1592,7 +1592,7 @@
     "duration": 67
    },
    "jan_Luke 199.aseprite": {
-    "frame": { "x": 3584, "y": 8192, "w": 512, "h": 512 },
+    "frame": { "x": 512, "y": 5632, "w": 512, "h": 512 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
@@ -1600,7 +1600,7 @@
     "duration": 67
    },
    "jan_Luke 200.aseprite": {
-    "frame": { "x": 4096, "y": 8192, "w": 512, "h": 512 },
+    "frame": { "x": 1024, "y": 5632, "w": 512, "h": 512 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
@@ -1608,7 +1608,7 @@
     "duration": 67
    },
    "jan_Luke 201.aseprite": {
-    "frame": { "x": 4608, "y": 8192, "w": 512, "h": 512 },
+    "frame": { "x": 1536, "y": 5632, "w": 512, "h": 512 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
@@ -1616,7 +1616,7 @@
     "duration": 67
    },
    "jan_Luke 202.aseprite": {
-    "frame": { "x": 5120, "y": 8192, "w": 512, "h": 512 },
+    "frame": { "x": 2048, "y": 5632, "w": 512, "h": 512 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
@@ -1624,7 +1624,7 @@
     "duration": 67
    },
    "jan_Luke 203.aseprite": {
-    "frame": { "x": 5632, "y": 8192, "w": 512, "h": 512 },
+    "frame": { "x": 2560, "y": 5632, "w": 512, "h": 512 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
@@ -1632,7 +1632,7 @@
     "duration": 67
    },
    "jan_Luke 204.aseprite": {
-    "frame": { "x": 0, "y": 8704, "w": 512, "h": 512 },
+    "frame": { "x": 3072, "y": 5632, "w": 512, "h": 512 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
@@ -1640,7 +1640,7 @@
     "duration": 67
    },
    "jan_Luke 205.aseprite": {
-    "frame": { "x": 512, "y": 8704, "w": 512, "h": 512 },
+    "frame": { "x": 3584, "y": 5632, "w": 512, "h": 512 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
@@ -1648,7 +1648,7 @@
     "duration": 67
    },
    "jan_Luke 206.aseprite": {
-    "frame": { "x": 1024, "y": 8704, "w": 512, "h": 512 },
+    "frame": { "x": 4096, "y": 5632, "w": 512, "h": 512 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
@@ -1656,7 +1656,7 @@
     "duration": 67
    },
    "jan_Luke 207.aseprite": {
-    "frame": { "x": 1536, "y": 8704, "w": 512, "h": 512 },
+    "frame": { "x": 4608, "y": 5632, "w": 512, "h": 512 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
@@ -1664,7 +1664,7 @@
     "duration": 67
    },
    "jan_Luke 208.aseprite": {
-    "frame": { "x": 2048, "y": 8704, "w": 512, "h": 512 },
+    "frame": { "x": 5120, "y": 5632, "w": 512, "h": 512 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
@@ -1672,7 +1672,7 @@
     "duration": 67
    },
    "jan_Luke 209.aseprite": {
-    "frame": { "x": 2560, "y": 8704, "w": 512, "h": 512 },
+    "frame": { "x": 5632, "y": 5632, "w": 512, "h": 512 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
@@ -1680,7 +1680,7 @@
     "duration": 67
    },
    "jan_Luke 210.aseprite": {
-    "frame": { "x": 3072, "y": 8704, "w": 512, "h": 512 },
+    "frame": { "x": 6144, "y": 5632, "w": 512, "h": 512 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
@@ -1688,7 +1688,7 @@
     "duration": 67
    },
    "jan_Luke 211.aseprite": {
-    "frame": { "x": 3584, "y": 8704, "w": 512, "h": 512 },
+    "frame": { "x": 6656, "y": 5632, "w": 512, "h": 512 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
@@ -1696,7 +1696,7 @@
     "duration": 67
    },
    "jan_Luke 212.aseprite": {
-    "frame": { "x": 4096, "y": 8704, "w": 512, "h": 512 },
+    "frame": { "x": 7168, "y": 5632, "w": 512, "h": 512 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
@@ -1704,7 +1704,7 @@
     "duration": 67
    },
    "jan_Luke 213.aseprite": {
-    "frame": { "x": 4608, "y": 8704, "w": 512, "h": 512 },
+    "frame": { "x": 7680, "y": 5632, "w": 512, "h": 512 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
@@ -1712,7 +1712,7 @@
     "duration": 67
    },
    "jan_Luke 214.aseprite": {
-    "frame": { "x": 5120, "y": 8704, "w": 512, "h": 512 },
+    "frame": { "x": 8192, "y": 5632, "w": 512, "h": 512 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
@@ -1720,7 +1720,7 @@
     "duration": 67
    },
    "jan_Luke 215.aseprite": {
-    "frame": { "x": 5632, "y": 8704, "w": 512, "h": 512 },
+    "frame": { "x": 8704, "y": 5632, "w": 512, "h": 512 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
@@ -1728,7 +1728,7 @@
     "duration": 67
    },
    "jan_Luke 216.aseprite": {
-    "frame": { "x": 0, "y": 9216, "w": 512, "h": 512 },
+    "frame": { "x": 0, "y": 6144, "w": 512, "h": 512 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
@@ -1736,7 +1736,7 @@
     "duration": 67
    },
    "jan_Luke 217.aseprite": {
-    "frame": { "x": 512, "y": 9216, "w": 512, "h": 512 },
+    "frame": { "x": 512, "y": 6144, "w": 512, "h": 512 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
@@ -1744,7 +1744,7 @@
     "duration": 67
    },
    "jan_Luke 218.aseprite": {
-    "frame": { "x": 1024, "y": 9216, "w": 512, "h": 512 },
+    "frame": { "x": 1024, "y": 6144, "w": 512, "h": 512 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
@@ -1752,7 +1752,7 @@
     "duration": 67
    },
    "jan_Luke 219.aseprite": {
-    "frame": { "x": 1536, "y": 9216, "w": 512, "h": 512 },
+    "frame": { "x": 1536, "y": 6144, "w": 512, "h": 512 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
@@ -1760,7 +1760,7 @@
     "duration": 67
    },
    "jan_Luke 220.aseprite": {
-    "frame": { "x": 2048, "y": 9216, "w": 512, "h": 512 },
+    "frame": { "x": 2048, "y": 6144, "w": 512, "h": 512 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
@@ -1768,7 +1768,7 @@
     "duration": 67
    },
    "jan_Luke 221.aseprite": {
-    "frame": { "x": 2560, "y": 9216, "w": 512, "h": 512 },
+    "frame": { "x": 2560, "y": 6144, "w": 512, "h": 512 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
@@ -1776,7 +1776,7 @@
     "duration": 67
    },
    "jan_Luke 222.aseprite": {
-    "frame": { "x": 3072, "y": 9216, "w": 512, "h": 512 },
+    "frame": { "x": 3072, "y": 6144, "w": 512, "h": 512 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
@@ -1784,7 +1784,7 @@
     "duration": 67
    },
    "jan_Luke 223.aseprite": {
-    "frame": { "x": 3584, "y": 9216, "w": 512, "h": 512 },
+    "frame": { "x": 3584, "y": 6144, "w": 512, "h": 512 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
@@ -1792,7 +1792,7 @@
     "duration": 67
    },
    "jan_Luke 224.aseprite": {
-    "frame": { "x": 4096, "y": 9216, "w": 512, "h": 512 },
+    "frame": { "x": 4096, "y": 6144, "w": 512, "h": 512 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
@@ -1800,7 +1800,7 @@
     "duration": 67
    },
    "jan_Luke 225.aseprite": {
-    "frame": { "x": 4608, "y": 9216, "w": 512, "h": 512 },
+    "frame": { "x": 4608, "y": 6144, "w": 512, "h": 512 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
@@ -1808,7 +1808,7 @@
     "duration": 67
    },
    "jan_Luke 226.aseprite": {
-    "frame": { "x": 5120, "y": 9216, "w": 512, "h": 512 },
+    "frame": { "x": 5120, "y": 6144, "w": 512, "h": 512 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
@@ -1816,7 +1816,7 @@
     "duration": 67
    },
    "jan_Luke 227.aseprite": {
-    "frame": { "x": 5632, "y": 9216, "w": 512, "h": 512 },
+    "frame": { "x": 5632, "y": 6144, "w": 512, "h": 512 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
@@ -1824,7 +1824,7 @@
     "duration": 67
    },
    "jan_Luke 228.aseprite": {
-    "frame": { "x": 0, "y": 9728, "w": 512, "h": 512 },
+    "frame": { "x": 6144, "y": 6144, "w": 512, "h": 512 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
@@ -1832,7 +1832,7 @@
     "duration": 67
    },
    "jan_Luke 229.aseprite": {
-    "frame": { "x": 512, "y": 9728, "w": 512, "h": 512 },
+    "frame": { "x": 6656, "y": 6144, "w": 512, "h": 512 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
@@ -1840,7 +1840,7 @@
     "duration": 67
    },
    "jan_Luke 230.aseprite": {
-    "frame": { "x": 1024, "y": 9728, "w": 512, "h": 512 },
+    "frame": { "x": 7168, "y": 6144, "w": 512, "h": 512 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
@@ -1848,7 +1848,7 @@
     "duration": 67
    },
    "jan_Luke 231.aseprite": {
-    "frame": { "x": 1536, "y": 9728, "w": 512, "h": 512 },
+    "frame": { "x": 7680, "y": 6144, "w": 512, "h": 512 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
@@ -1856,7 +1856,7 @@
     "duration": 67
    },
    "jan_Luke 232.aseprite": {
-    "frame": { "x": 2048, "y": 9728, "w": 512, "h": 512 },
+    "frame": { "x": 8192, "y": 6144, "w": 512, "h": 512 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
@@ -1864,7 +1864,7 @@
     "duration": 67
    },
    "jan_Luke 233.aseprite": {
-    "frame": { "x": 2560, "y": 9728, "w": 512, "h": 512 },
+    "frame": { "x": 8704, "y": 6144, "w": 512, "h": 512 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
@@ -1872,7 +1872,7 @@
     "duration": 67
    },
    "jan_Luke 234.aseprite": {
-    "frame": { "x": 3072, "y": 9728, "w": 512, "h": 512 },
+    "frame": { "x": 0, "y": 6656, "w": 512, "h": 512 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
@@ -1880,7 +1880,7 @@
     "duration": 67
    },
    "jan_Luke 235.aseprite": {
-    "frame": { "x": 3584, "y": 9728, "w": 512, "h": 512 },
+    "frame": { "x": 512, "y": 6656, "w": 512, "h": 512 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
@@ -1888,7 +1888,7 @@
     "duration": 67
    },
    "jan_Luke 236.aseprite": {
-    "frame": { "x": 4096, "y": 9728, "w": 512, "h": 512 },
+    "frame": { "x": 1024, "y": 6656, "w": 512, "h": 512 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
@@ -1896,7 +1896,7 @@
     "duration": 67
    },
    "jan_Luke 237.aseprite": {
-    "frame": { "x": 4608, "y": 9728, "w": 512, "h": 512 },
+    "frame": { "x": 1536, "y": 6656, "w": 512, "h": 512 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
@@ -1904,7 +1904,7 @@
     "duration": 67
    },
    "jan_Luke 238.aseprite": {
-    "frame": { "x": 5120, "y": 9728, "w": 512, "h": 512 },
+    "frame": { "x": 2048, "y": 6656, "w": 512, "h": 512 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
@@ -1912,7 +1912,7 @@
     "duration": 67
    },
    "jan_Luke 239.aseprite": {
-    "frame": { "x": 5632, "y": 9728, "w": 512, "h": 512 },
+    "frame": { "x": 2560, "y": 6656, "w": 512, "h": 512 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
@@ -1920,7 +1920,7 @@
     "duration": 67
    },
    "jan_Luke 240.aseprite": {
-    "frame": { "x": 0, "y": 10240, "w": 512, "h": 512 },
+    "frame": { "x": 3072, "y": 6656, "w": 512, "h": 512 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
@@ -1928,7 +1928,7 @@
     "duration": 67
    },
    "jan_Luke 241.aseprite": {
-    "frame": { "x": 512, "y": 10240, "w": 512, "h": 512 },
+    "frame": { "x": 3584, "y": 6656, "w": 512, "h": 512 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
@@ -1936,7 +1936,7 @@
     "duration": 67
    },
    "jan_Luke 242.aseprite": {
-    "frame": { "x": 1024, "y": 10240, "w": 512, "h": 512 },
+    "frame": { "x": 4096, "y": 6656, "w": 512, "h": 512 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
@@ -1944,7 +1944,7 @@
     "duration": 67
    },
    "jan_Luke 243.aseprite": {
-    "frame": { "x": 1536, "y": 10240, "w": 512, "h": 512 },
+    "frame": { "x": 4608, "y": 6656, "w": 512, "h": 512 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
@@ -1952,7 +1952,7 @@
     "duration": 67
    },
    "jan_Luke 244.aseprite": {
-    "frame": { "x": 2048, "y": 10240, "w": 512, "h": 512 },
+    "frame": { "x": 5120, "y": 6656, "w": 512, "h": 512 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
@@ -1960,7 +1960,7 @@
     "duration": 67
    },
    "jan_Luke 245.aseprite": {
-    "frame": { "x": 2560, "y": 10240, "w": 512, "h": 512 },
+    "frame": { "x": 5632, "y": 6656, "w": 512, "h": 512 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
@@ -1968,7 +1968,7 @@
     "duration": 67
    },
    "jan_Luke 246.aseprite": {
-    "frame": { "x": 3072, "y": 10240, "w": 512, "h": 512 },
+    "frame": { "x": 6144, "y": 6656, "w": 512, "h": 512 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
@@ -1976,7 +1976,7 @@
     "duration": 67
    },
    "jan_Luke 247.aseprite": {
-    "frame": { "x": 3584, "y": 10240, "w": 512, "h": 512 },
+    "frame": { "x": 6656, "y": 6656, "w": 512, "h": 512 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
@@ -1984,7 +1984,7 @@
     "duration": 67
    },
    "jan_Luke 248.aseprite": {
-    "frame": { "x": 4096, "y": 10240, "w": 512, "h": 512 },
+    "frame": { "x": 7168, "y": 6656, "w": 512, "h": 512 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
@@ -1992,7 +1992,7 @@
     "duration": 67
    },
    "jan_Luke 249.aseprite": {
-    "frame": { "x": 4608, "y": 10240, "w": 512, "h": 512 },
+    "frame": { "x": 7680, "y": 6656, "w": 512, "h": 512 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
@@ -2000,7 +2000,7 @@
     "duration": 67
    },
    "jan_Luke 250.aseprite": {
-    "frame": { "x": 5120, "y": 10240, "w": 512, "h": 512 },
+    "frame": { "x": 8192, "y": 6656, "w": 512, "h": 512 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
@@ -2008,7 +2008,7 @@
     "duration": 67
    },
    "jan_Luke 251.aseprite": {
-    "frame": { "x": 5632, "y": 10240, "w": 512, "h": 512 },
+    "frame": { "x": 8704, "y": 6656, "w": 512, "h": 512 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
@@ -2016,7 +2016,7 @@
     "duration": 67
    },
    "jan_Luke 252.aseprite": {
-    "frame": { "x": 0, "y": 10752, "w": 512, "h": 512 },
+    "frame": { "x": 0, "y": 7168, "w": 512, "h": 512 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
@@ -2024,7 +2024,7 @@
     "duration": 67
    },
    "jan_Luke 253.aseprite": {
-    "frame": { "x": 512, "y": 10752, "w": 512, "h": 512 },
+    "frame": { "x": 512, "y": 7168, "w": 512, "h": 512 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
@@ -2032,7 +2032,7 @@
     "duration": 67
    },
    "jan_Luke 254.aseprite": {
-    "frame": { "x": 1024, "y": 10752, "w": 512, "h": 512 },
+    "frame": { "x": 1024, "y": 7168, "w": 512, "h": 512 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
@@ -2040,7 +2040,7 @@
     "duration": 67
    },
    "jan_Luke 255.aseprite": {
-    "frame": { "x": 1536, "y": 10752, "w": 512, "h": 512 },
+    "frame": { "x": 1536, "y": 7168, "w": 512, "h": 512 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
@@ -2048,7 +2048,7 @@
     "duration": 67
    },
    "jan_Luke 256.aseprite": {
-    "frame": { "x": 2048, "y": 10752, "w": 512, "h": 512 },
+    "frame": { "x": 2048, "y": 7168, "w": 512, "h": 512 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
@@ -2056,7 +2056,7 @@
     "duration": 67
    },
    "jan_Luke 257.aseprite": {
-    "frame": { "x": 2560, "y": 10752, "w": 512, "h": 512 },
+    "frame": { "x": 2560, "y": 7168, "w": 512, "h": 512 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
@@ -2064,7 +2064,7 @@
     "duration": 67
    },
    "jan_Luke 258.aseprite": {
-    "frame": { "x": 3072, "y": 10752, "w": 512, "h": 512 },
+    "frame": { "x": 3072, "y": 7168, "w": 512, "h": 512 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
@@ -2072,7 +2072,7 @@
     "duration": 67
    },
    "jan_Luke 259.aseprite": {
-    "frame": { "x": 3584, "y": 10752, "w": 512, "h": 512 },
+    "frame": { "x": 3584, "y": 7168, "w": 512, "h": 512 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
@@ -2080,7 +2080,7 @@
     "duration": 67
    },
    "jan_Luke 260.aseprite": {
-    "frame": { "x": 4096, "y": 10752, "w": 512, "h": 512 },
+    "frame": { "x": 4096, "y": 7168, "w": 512, "h": 512 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
@@ -2088,7 +2088,7 @@
     "duration": 67
    },
    "jan_Luke 261.aseprite": {
-    "frame": { "x": 4608, "y": 10752, "w": 512, "h": 512 },
+    "frame": { "x": 4608, "y": 7168, "w": 512, "h": 512 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
@@ -2096,7 +2096,7 @@
     "duration": 67
    },
    "jan_Luke 262.aseprite": {
-    "frame": { "x": 5120, "y": 10752, "w": 512, "h": 512 },
+    "frame": { "x": 5120, "y": 7168, "w": 512, "h": 512 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
@@ -2104,7 +2104,7 @@
     "duration": 67
    },
    "jan_Luke 263.aseprite": {
-    "frame": { "x": 5632, "y": 10752, "w": 512, "h": 512 },
+    "frame": { "x": 5632, "y": 7168, "w": 512, "h": 512 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
@@ -2112,7 +2112,7 @@
     "duration": 67
    },
    "jan_Luke 264.aseprite": {
-    "frame": { "x": 0, "y": 11264, "w": 512, "h": 512 },
+    "frame": { "x": 6144, "y": 7168, "w": 512, "h": 512 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
@@ -2120,7 +2120,7 @@
     "duration": 67
    },
    "jan_Luke 265.aseprite": {
-    "frame": { "x": 512, "y": 11264, "w": 512, "h": 512 },
+    "frame": { "x": 6656, "y": 7168, "w": 512, "h": 512 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
@@ -2128,7 +2128,7 @@
     "duration": 67
    },
    "jan_Luke 266.aseprite": {
-    "frame": { "x": 1024, "y": 11264, "w": 512, "h": 512 },
+    "frame": { "x": 7168, "y": 7168, "w": 512, "h": 512 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
@@ -2136,7 +2136,7 @@
     "duration": 67
    },
    "jan_Luke 267.aseprite": {
-    "frame": { "x": 1536, "y": 11264, "w": 512, "h": 512 },
+    "frame": { "x": 7680, "y": 7168, "w": 512, "h": 512 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
@@ -2144,7 +2144,7 @@
     "duration": 67
    },
    "jan_Luke 268.aseprite": {
-    "frame": { "x": 2048, "y": 11264, "w": 512, "h": 512 },
+    "frame": { "x": 8192, "y": 7168, "w": 512, "h": 512 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
@@ -2152,7 +2152,7 @@
     "duration": 67
    },
    "jan_Luke 269.aseprite": {
-    "frame": { "x": 2560, "y": 11264, "w": 512, "h": 512 },
+    "frame": { "x": 8704, "y": 7168, "w": 512, "h": 512 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
@@ -2160,7 +2160,7 @@
     "duration": 67
    },
    "jan_Luke 270.aseprite": {
-    "frame": { "x": 3072, "y": 11264, "w": 512, "h": 512 },
+    "frame": { "x": 0, "y": 7680, "w": 512, "h": 512 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
@@ -2168,7 +2168,7 @@
     "duration": 67
    },
    "jan_Luke 271.aseprite": {
-    "frame": { "x": 3584, "y": 11264, "w": 512, "h": 512 },
+    "frame": { "x": 512, "y": 7680, "w": 512, "h": 512 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
@@ -2176,7 +2176,7 @@
     "duration": 67
    },
    "jan_Luke 272.aseprite": {
-    "frame": { "x": 4096, "y": 11264, "w": 512, "h": 512 },
+    "frame": { "x": 1024, "y": 7680, "w": 512, "h": 512 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
@@ -2184,7 +2184,7 @@
     "duration": 67
    },
    "jan_Luke 273.aseprite": {
-    "frame": { "x": 4608, "y": 11264, "w": 512, "h": 512 },
+    "frame": { "x": 1536, "y": 7680, "w": 512, "h": 512 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
@@ -2192,7 +2192,7 @@
     "duration": 67
    },
    "jan_Luke 274.aseprite": {
-    "frame": { "x": 5120, "y": 11264, "w": 512, "h": 512 },
+    "frame": { "x": 2048, "y": 7680, "w": 512, "h": 512 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
@@ -2200,7 +2200,7 @@
     "duration": 67
    },
    "jan_Luke 275.aseprite": {
-    "frame": { "x": 5632, "y": 11264, "w": 512, "h": 512 },
+    "frame": { "x": 2560, "y": 7680, "w": 512, "h": 512 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
@@ -2208,7 +2208,7 @@
     "duration": 67
    },
    "jan_Luke 276.aseprite": {
-    "frame": { "x": 0, "y": 11776, "w": 512, "h": 512 },
+    "frame": { "x": 3072, "y": 7680, "w": 512, "h": 512 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
@@ -2216,7 +2216,7 @@
     "duration": 67
    },
    "jan_Luke 277.aseprite": {
-    "frame": { "x": 512, "y": 11776, "w": 512, "h": 512 },
+    "frame": { "x": 3584, "y": 7680, "w": 512, "h": 512 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
@@ -2224,7 +2224,7 @@
     "duration": 67
    },
    "jan_Luke 278.aseprite": {
-    "frame": { "x": 1024, "y": 11776, "w": 512, "h": 512 },
+    "frame": { "x": 4096, "y": 7680, "w": 512, "h": 512 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
@@ -2232,7 +2232,7 @@
     "duration": 67
    },
    "jan_Luke 279.aseprite": {
-    "frame": { "x": 1536, "y": 11776, "w": 512, "h": 512 },
+    "frame": { "x": 4608, "y": 7680, "w": 512, "h": 512 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
@@ -2240,7 +2240,7 @@
     "duration": 67
    },
    "jan_Luke 280.aseprite": {
-    "frame": { "x": 2048, "y": 11776, "w": 512, "h": 512 },
+    "frame": { "x": 5120, "y": 7680, "w": 512, "h": 512 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
@@ -2248,7 +2248,7 @@
     "duration": 67
    },
    "jan_Luke 281.aseprite": {
-    "frame": { "x": 2560, "y": 11776, "w": 512, "h": 512 },
+    "frame": { "x": 5632, "y": 7680, "w": 512, "h": 512 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
@@ -2256,7 +2256,7 @@
     "duration": 67
    },
    "jan_Luke 282.aseprite": {
-    "frame": { "x": 3072, "y": 11776, "w": 512, "h": 512 },
+    "frame": { "x": 6144, "y": 7680, "w": 512, "h": 512 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
@@ -2264,7 +2264,7 @@
     "duration": 67
    },
    "jan_Luke 283.aseprite": {
-    "frame": { "x": 3584, "y": 11776, "w": 512, "h": 512 },
+    "frame": { "x": 6656, "y": 7680, "w": 512, "h": 512 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
@@ -2272,7 +2272,7 @@
     "duration": 67
    },
    "jan_Luke 284.aseprite": {
-    "frame": { "x": 4096, "y": 11776, "w": 512, "h": 512 },
+    "frame": { "x": 7168, "y": 7680, "w": 512, "h": 512 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
@@ -2280,7 +2280,7 @@
     "duration": 67
    },
    "jan_Luke 285.aseprite": {
-    "frame": { "x": 4608, "y": 11776, "w": 512, "h": 512 },
+    "frame": { "x": 7680, "y": 7680, "w": 512, "h": 512 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
@@ -2288,7 +2288,7 @@
     "duration": 67
    },
    "jan_Luke 286.aseprite": {
-    "frame": { "x": 5120, "y": 11776, "w": 512, "h": 512 },
+    "frame": { "x": 8192, "y": 7680, "w": 512, "h": 512 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
@@ -2296,7 +2296,7 @@
     "duration": 67
    },
    "jan_Luke 287.aseprite": {
-    "frame": { "x": 5632, "y": 11776, "w": 512, "h": 512 },
+    "frame": { "x": 8704, "y": 7680, "w": 512, "h": 512 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
@@ -2304,7 +2304,7 @@
     "duration": 67
    },
    "jan_Luke 288.aseprite": {
-    "frame": { "x": 0, "y": 12288, "w": 512, "h": 512 },
+    "frame": { "x": 0, "y": 8192, "w": 512, "h": 512 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
@@ -2312,7 +2312,7 @@
     "duration": 67
    },
    "jan_Luke 289.aseprite": {
-    "frame": { "x": 512, "y": 12288, "w": 512, "h": 512 },
+    "frame": { "x": 512, "y": 8192, "w": 512, "h": 512 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
@@ -2320,7 +2320,7 @@
     "duration": 67
    },
    "jan_Luke 290.aseprite": {
-    "frame": { "x": 1024, "y": 12288, "w": 512, "h": 512 },
+    "frame": { "x": 1024, "y": 8192, "w": 512, "h": 512 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
@@ -2328,7 +2328,7 @@
     "duration": 67
    },
    "jan_Luke 291.aseprite": {
-    "frame": { "x": 1536, "y": 12288, "w": 512, "h": 512 },
+    "frame": { "x": 1536, "y": 8192, "w": 512, "h": 512 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
@@ -2336,7 +2336,7 @@
     "duration": 67
    },
    "jan_Luke 292.aseprite": {
-    "frame": { "x": 2048, "y": 12288, "w": 512, "h": 512 },
+    "frame": { "x": 2048, "y": 8192, "w": 512, "h": 512 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
@@ -2344,7 +2344,7 @@
     "duration": 67
    },
    "jan_Luke 293.aseprite": {
-    "frame": { "x": 2560, "y": 12288, "w": 512, "h": 512 },
+    "frame": { "x": 2560, "y": 8192, "w": 512, "h": 512 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
@@ -2352,7 +2352,7 @@
     "duration": 67
    },
    "jan_Luke 294.aseprite": {
-    "frame": { "x": 3072, "y": 12288, "w": 512, "h": 512 },
+    "frame": { "x": 3072, "y": 8192, "w": 512, "h": 512 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
@@ -2360,7 +2360,7 @@
     "duration": 67
    },
    "jan_Luke 295.aseprite": {
-    "frame": { "x": 3584, "y": 12288, "w": 512, "h": 512 },
+    "frame": { "x": 3584, "y": 8192, "w": 512, "h": 512 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
@@ -2368,7 +2368,7 @@
     "duration": 67
    },
    "jan_Luke 296.aseprite": {
-    "frame": { "x": 4096, "y": 12288, "w": 512, "h": 512 },
+    "frame": { "x": 4096, "y": 8192, "w": 512, "h": 512 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
@@ -2376,7 +2376,7 @@
     "duration": 67
    },
    "jan_Luke 297.aseprite": {
-    "frame": { "x": 4608, "y": 12288, "w": 512, "h": 512 },
+    "frame": { "x": 4608, "y": 8192, "w": 512, "h": 512 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
@@ -2384,7 +2384,7 @@
     "duration": 67
    },
    "jan_Luke 298.aseprite": {
-    "frame": { "x": 5120, "y": 12288, "w": 512, "h": 512 },
+    "frame": { "x": 5120, "y": 8192, "w": 512, "h": 512 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
@@ -2392,7 +2392,7 @@
     "duration": 67
    },
    "jan_Luke 299.aseprite": {
-    "frame": { "x": 5632, "y": 12288, "w": 512, "h": 512 },
+    "frame": { "x": 5632, "y": 8192, "w": 512, "h": 512 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
@@ -2400,7 +2400,7 @@
     "duration": 67
    },
    "jan_Luke 300.aseprite": {
-    "frame": { "x": 0, "y": 12800, "w": 512, "h": 512 },
+    "frame": { "x": 6144, "y": 8192, "w": 512, "h": 512 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
@@ -2408,7 +2408,7 @@
     "duration": 67
    },
    "jan_Luke 301.aseprite": {
-    "frame": { "x": 512, "y": 12800, "w": 512, "h": 512 },
+    "frame": { "x": 6656, "y": 8192, "w": 512, "h": 512 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
@@ -2416,7 +2416,7 @@
     "duration": 67
    },
    "jan_Luke 302.aseprite": {
-    "frame": { "x": 1024, "y": 12800, "w": 512, "h": 512 },
+    "frame": { "x": 7168, "y": 8192, "w": 512, "h": 512 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
@@ -2424,7 +2424,7 @@
     "duration": 67
    },
    "jan_Luke 303.aseprite": {
-    "frame": { "x": 1536, "y": 12800, "w": 512, "h": 512 },
+    "frame": { "x": 7680, "y": 8192, "w": 512, "h": 512 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
@@ -2432,7 +2432,7 @@
     "duration": 67
    },
    "jan_Luke 304.aseprite": {
-    "frame": { "x": 2048, "y": 12800, "w": 512, "h": 512 },
+    "frame": { "x": 8192, "y": 8192, "w": 512, "h": 512 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
@@ -2440,7 +2440,7 @@
     "duration": 67
    },
    "jan_Luke 305.aseprite": {
-    "frame": { "x": 2560, "y": 12800, "w": 512, "h": 512 },
+    "frame": { "x": 8704, "y": 8192, "w": 512, "h": 512 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
@@ -2448,7 +2448,7 @@
     "duration": 67
    },
    "jan_Luke 306.aseprite": {
-    "frame": { "x": 3072, "y": 12800, "w": 512, "h": 512 },
+    "frame": { "x": 0, "y": 8704, "w": 512, "h": 512 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
@@ -2456,7 +2456,7 @@
     "duration": 67
    },
    "jan_Luke 307.aseprite": {
-    "frame": { "x": 3584, "y": 12800, "w": 512, "h": 512 },
+    "frame": { "x": 512, "y": 8704, "w": 512, "h": 512 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
@@ -2464,7 +2464,7 @@
     "duration": 67
    },
    "jan_Luke 308.aseprite": {
-    "frame": { "x": 4096, "y": 12800, "w": 512, "h": 512 },
+    "frame": { "x": 1024, "y": 8704, "w": 512, "h": 512 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
@@ -2472,7 +2472,7 @@
     "duration": 67
    },
    "jan_Luke 309.aseprite": {
-    "frame": { "x": 4608, "y": 12800, "w": 512, "h": 512 },
+    "frame": { "x": 1536, "y": 8704, "w": 512, "h": 512 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
@@ -2480,7 +2480,7 @@
     "duration": 67
    },
    "jan_Luke 310.aseprite": {
-    "frame": { "x": 5120, "y": 12800, "w": 512, "h": 512 },
+    "frame": { "x": 2048, "y": 8704, "w": 512, "h": 512 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
@@ -2488,7 +2488,7 @@
     "duration": 67
    },
    "jan_Luke 311.aseprite": {
-    "frame": { "x": 5632, "y": 12800, "w": 512, "h": 512 },
+    "frame": { "x": 2560, "y": 8704, "w": 512, "h": 512 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
@@ -2496,7 +2496,7 @@
     "duration": 67
    },
    "jan_Luke 312.aseprite": {
-    "frame": { "x": 0, "y": 13312, "w": 512, "h": 512 },
+    "frame": { "x": 3072, "y": 8704, "w": 512, "h": 512 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
@@ -2504,7 +2504,7 @@
     "duration": 67
    },
    "jan_Luke 313.aseprite": {
-    "frame": { "x": 512, "y": 13312, "w": 512, "h": 512 },
+    "frame": { "x": 3584, "y": 8704, "w": 512, "h": 512 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
@@ -2512,7 +2512,7 @@
     "duration": 67
    },
    "jan_Luke 314.aseprite": {
-    "frame": { "x": 1024, "y": 13312, "w": 512, "h": 512 },
+    "frame": { "x": 4096, "y": 8704, "w": 512, "h": 512 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
@@ -2520,7 +2520,7 @@
     "duration": 67
    },
    "jan_Luke 315.aseprite": {
-    "frame": { "x": 1536, "y": 13312, "w": 512, "h": 512 },
+    "frame": { "x": 4608, "y": 8704, "w": 512, "h": 512 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
@@ -2528,7 +2528,7 @@
     "duration": 67
    },
    "jan_Luke 316.aseprite": {
-    "frame": { "x": 2048, "y": 13312, "w": 512, "h": 512 },
+    "frame": { "x": 5120, "y": 8704, "w": 512, "h": 512 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
@@ -2536,7 +2536,7 @@
     "duration": 67
    },
    "jan_Luke 317.aseprite": {
-    "frame": { "x": 2560, "y": 13312, "w": 512, "h": 512 },
+    "frame": { "x": 5632, "y": 8704, "w": 512, "h": 512 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
@@ -2544,7 +2544,7 @@
     "duration": 67
    },
    "jan_Luke 318.aseprite": {
-    "frame": { "x": 3072, "y": 13312, "w": 512, "h": 512 },
+    "frame": { "x": 6144, "y": 8704, "w": 512, "h": 512 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
@@ -2552,7 +2552,7 @@
     "duration": 67
    },
    "jan_Luke 319.aseprite": {
-    "frame": { "x": 3584, "y": 13312, "w": 512, "h": 512 },
+    "frame": { "x": 6656, "y": 8704, "w": 512, "h": 512 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
@@ -2560,7 +2560,7 @@
     "duration": 67
    },
    "jan_Luke 320.aseprite": {
-    "frame": { "x": 4096, "y": 13312, "w": 512, "h": 512 },
+    "frame": { "x": 7168, "y": 8704, "w": 512, "h": 512 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
@@ -2568,7 +2568,7 @@
     "duration": 67
    },
    "jan_Luke 321.aseprite": {
-    "frame": { "x": 4608, "y": 13312, "w": 512, "h": 512 },
+    "frame": { "x": 7680, "y": 8704, "w": 512, "h": 512 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
@@ -2576,7 +2576,7 @@
     "duration": 67
    },
    "jan_Luke 322.aseprite": {
-    "frame": { "x": 5120, "y": 13312, "w": 512, "h": 512 },
+    "frame": { "x": 8192, "y": 8704, "w": 512, "h": 512 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
@@ -2584,7 +2584,7 @@
     "duration": 67
    },
    "jan_Luke 323.aseprite": {
-    "frame": { "x": 5632, "y": 13312, "w": 512, "h": 512 },
+    "frame": { "x": 8704, "y": 8704, "w": 512, "h": 512 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
@@ -2592,7 +2592,7 @@
     "duration": 67
    },
    "jan_Luke 324.aseprite": {
-    "frame": { "x": 0, "y": 13824, "w": 512, "h": 512 },
+    "frame": { "x": 0, "y": 9216, "w": 512, "h": 512 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
@@ -2600,7 +2600,7 @@
     "duration": 67
    },
    "jan_Luke 325.aseprite": {
-    "frame": { "x": 512, "y": 13824, "w": 512, "h": 512 },
+    "frame": { "x": 512, "y": 9216, "w": 512, "h": 512 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
@@ -2608,7 +2608,7 @@
     "duration": 67
    },
    "jan_Luke 326.aseprite": {
-    "frame": { "x": 1024, "y": 13824, "w": 512, "h": 512 },
+    "frame": { "x": 1024, "y": 9216, "w": 512, "h": 512 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
@@ -2616,7 +2616,7 @@
     "duration": 67
    },
    "jan_Luke 327.aseprite": {
-    "frame": { "x": 1536, "y": 13824, "w": 512, "h": 512 },
+    "frame": { "x": 1536, "y": 9216, "w": 512, "h": 512 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
@@ -2624,7 +2624,7 @@
     "duration": 67
    },
    "jan_Luke 328.aseprite": {
-    "frame": { "x": 2048, "y": 13824, "w": 512, "h": 512 },
+    "frame": { "x": 2048, "y": 9216, "w": 512, "h": 512 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
@@ -2632,7 +2632,7 @@
     "duration": 67
    },
    "jan_Luke 329.aseprite": {
-    "frame": { "x": 2560, "y": 13824, "w": 512, "h": 512 },
+    "frame": { "x": 2560, "y": 9216, "w": 512, "h": 512 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
@@ -2640,7 +2640,7 @@
     "duration": 67
    },
    "jan_Luke 330.aseprite": {
-    "frame": { "x": 3072, "y": 13824, "w": 512, "h": 512 },
+    "frame": { "x": 3072, "y": 9216, "w": 512, "h": 512 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
@@ -2648,7 +2648,7 @@
     "duration": 67
    },
    "jan_Luke 331.aseprite": {
-    "frame": { "x": 3584, "y": 13824, "w": 512, "h": 512 },
+    "frame": { "x": 3584, "y": 9216, "w": 512, "h": 512 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
@@ -2656,7 +2656,7 @@
     "duration": 67
    },
    "jan_Luke 332.aseprite": {
-    "frame": { "x": 4096, "y": 13824, "w": 512, "h": 512 },
+    "frame": { "x": 4096, "y": 9216, "w": 512, "h": 512 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
@@ -2664,7 +2664,7 @@
     "duration": 67
    },
    "jan_Luke 333.aseprite": {
-    "frame": { "x": 4608, "y": 13824, "w": 512, "h": 512 },
+    "frame": { "x": 4608, "y": 9216, "w": 512, "h": 512 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
@@ -2672,7 +2672,7 @@
     "duration": 67
    },
    "jan_Luke 334.aseprite": {
-    "frame": { "x": 5120, "y": 13824, "w": 512, "h": 512 },
+    "frame": { "x": 5120, "y": 9216, "w": 512, "h": 512 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
@@ -2680,7 +2680,7 @@
     "duration": 67
    },
    "jan_Luke 335.aseprite": {
-    "frame": { "x": 5632, "y": 13824, "w": 512, "h": 512 },
+    "frame": { "x": 5632, "y": 9216, "w": 512, "h": 512 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
@@ -2688,7 +2688,7 @@
     "duration": 67
    },
    "jan_Luke 336.aseprite": {
-    "frame": { "x": 0, "y": 14336, "w": 512, "h": 512 },
+    "frame": { "x": 6144, "y": 9216, "w": 512, "h": 512 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
@@ -2696,7 +2696,7 @@
     "duration": 67
    },
    "jan_Luke 337.aseprite": {
-    "frame": { "x": 512, "y": 14336, "w": 512, "h": 512 },
+    "frame": { "x": 6656, "y": 9216, "w": 512, "h": 512 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
@@ -2704,7 +2704,7 @@
     "duration": 67
    },
    "jan_Luke 338.aseprite": {
-    "frame": { "x": 1024, "y": 14336, "w": 512, "h": 512 },
+    "frame": { "x": 7168, "y": 9216, "w": 512, "h": 512 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
@@ -2712,7 +2712,7 @@
     "duration": 67
    },
    "jan_Luke 339.aseprite": {
-    "frame": { "x": 1536, "y": 14336, "w": 512, "h": 512 },
+    "frame": { "x": 7680, "y": 9216, "w": 512, "h": 512 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
@@ -2720,7 +2720,7 @@
     "duration": 67
    },
    "jan_Luke 340.aseprite": {
-    "frame": { "x": 2048, "y": 14336, "w": 512, "h": 512 },
+    "frame": { "x": 8192, "y": 9216, "w": 512, "h": 512 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
@@ -2728,7 +2728,7 @@
     "duration": 67
    },
    "jan_Luke 341.aseprite": {
-    "frame": { "x": 2560, "y": 14336, "w": 512, "h": 512 },
+    "frame": { "x": 8704, "y": 9216, "w": 512, "h": 512 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
@@ -2736,7 +2736,7 @@
     "duration": 67
    },
    "jan_Luke 342.aseprite": {
-    "frame": { "x": 3072, "y": 14336, "w": 512, "h": 512 },
+    "frame": { "x": 0, "y": 9728, "w": 512, "h": 512 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
@@ -2744,7 +2744,7 @@
     "duration": 67
    },
    "jan_Luke 343.aseprite": {
-    "frame": { "x": 3584, "y": 14336, "w": 512, "h": 512 },
+    "frame": { "x": 512, "y": 9728, "w": 512, "h": 512 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
@@ -2752,7 +2752,7 @@
     "duration": 67
    },
    "jan_Luke 344.aseprite": {
-    "frame": { "x": 4096, "y": 14336, "w": 512, "h": 512 },
+    "frame": { "x": 1024, "y": 9728, "w": 512, "h": 512 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
@@ -2760,7 +2760,695 @@
     "duration": 67
    },
    "jan_Luke 345.aseprite": {
-    "frame": { "x": 4608, "y": 14336, "w": 512, "h": 512 },
+    "frame": { "x": 1536, "y": 9728, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 67
+   },
+   "jan_Luke 346.aseprite": {
+    "frame": { "x": 2048, "y": 9728, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 67
+   },
+   "jan_Luke 347.aseprite": {
+    "frame": { "x": 2560, "y": 9728, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 67
+   },
+   "jan_Luke 348.aseprite": {
+    "frame": { "x": 3072, "y": 9728, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 67
+   },
+   "jan_Luke 349.aseprite": {
+    "frame": { "x": 3584, "y": 9728, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 67
+   },
+   "jan_Luke 350.aseprite": {
+    "frame": { "x": 4096, "y": 9728, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 67
+   },
+   "jan_Luke 351.aseprite": {
+    "frame": { "x": 4608, "y": 9728, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 67
+   },
+   "jan_Luke 352.aseprite": {
+    "frame": { "x": 5120, "y": 9728, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 67
+   },
+   "jan_Luke 353.aseprite": {
+    "frame": { "x": 5632, "y": 9728, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 67
+   },
+   "jan_Luke 354.aseprite": {
+    "frame": { "x": 6144, "y": 9728, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 67
+   },
+   "jan_Luke 355.aseprite": {
+    "frame": { "x": 6656, "y": 9728, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 67
+   },
+   "jan_Luke 356.aseprite": {
+    "frame": { "x": 7168, "y": 9728, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 67
+   },
+   "jan_Luke 357.aseprite": {
+    "frame": { "x": 7680, "y": 9728, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 67
+   },
+   "jan_Luke 358.aseprite": {
+    "frame": { "x": 8192, "y": 9728, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 67
+   },
+   "jan_Luke 359.aseprite": {
+    "frame": { "x": 8704, "y": 9728, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 67
+   },
+   "jan_Luke 360.aseprite": {
+    "frame": { "x": 0, "y": 10240, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 67
+   },
+   "jan_Luke 361.aseprite": {
+    "frame": { "x": 512, "y": 10240, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 67
+   },
+   "jan_Luke 362.aseprite": {
+    "frame": { "x": 1024, "y": 10240, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 67
+   },
+   "jan_Luke 363.aseprite": {
+    "frame": { "x": 1536, "y": 10240, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 67
+   },
+   "jan_Luke 364.aseprite": {
+    "frame": { "x": 2048, "y": 10240, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 67
+   },
+   "jan_Luke 365.aseprite": {
+    "frame": { "x": 2560, "y": 10240, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 67
+   },
+   "jan_Luke 366.aseprite": {
+    "frame": { "x": 3072, "y": 10240, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 67
+   },
+   "jan_Luke 367.aseprite": {
+    "frame": { "x": 3584, "y": 10240, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 67
+   },
+   "jan_Luke 368.aseprite": {
+    "frame": { "x": 4096, "y": 10240, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 67
+   },
+   "jan_Luke 369.aseprite": {
+    "frame": { "x": 4608, "y": 10240, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 67
+   },
+   "jan_Luke 370.aseprite": {
+    "frame": { "x": 5120, "y": 10240, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 67
+   },
+   "jan_Luke 371.aseprite": {
+    "frame": { "x": 5632, "y": 10240, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 67
+   },
+   "jan_Luke 372.aseprite": {
+    "frame": { "x": 6144, "y": 10240, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 67
+   },
+   "jan_Luke 373.aseprite": {
+    "frame": { "x": 6656, "y": 10240, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 67
+   },
+   "jan_Luke 374.aseprite": {
+    "frame": { "x": 7168, "y": 10240, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 67
+   },
+   "jan_Luke 375.aseprite": {
+    "frame": { "x": 7680, "y": 10240, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 67
+   },
+   "jan_Luke 376.aseprite": {
+    "frame": { "x": 8192, "y": 10240, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 67
+   },
+   "jan_Luke 377.aseprite": {
+    "frame": { "x": 8704, "y": 10240, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 67
+   },
+   "jan_Luke 378.aseprite": {
+    "frame": { "x": 0, "y": 10752, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 67
+   },
+   "jan_Luke 379.aseprite": {
+    "frame": { "x": 512, "y": 10752, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 67
+   },
+   "jan_Luke 380.aseprite": {
+    "frame": { "x": 1024, "y": 10752, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 67
+   },
+   "jan_Luke 381.aseprite": {
+    "frame": { "x": 1536, "y": 10752, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 67
+   },
+   "jan_Luke 382.aseprite": {
+    "frame": { "x": 2048, "y": 10752, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 67
+   },
+   "jan_Luke 383.aseprite": {
+    "frame": { "x": 2560, "y": 10752, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 67
+   },
+   "jan_Luke 384.aseprite": {
+    "frame": { "x": 3072, "y": 10752, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 67
+   },
+   "jan_Luke 385.aseprite": {
+    "frame": { "x": 3584, "y": 10752, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 67
+   },
+   "jan_Luke 386.aseprite": {
+    "frame": { "x": 4096, "y": 10752, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 67
+   },
+   "jan_Luke 387.aseprite": {
+    "frame": { "x": 4608, "y": 10752, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 67
+   },
+   "jan_Luke 388.aseprite": {
+    "frame": { "x": 5120, "y": 10752, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 67
+   },
+   "jan_Luke 389.aseprite": {
+    "frame": { "x": 5632, "y": 10752, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 67
+   },
+   "jan_Luke 390.aseprite": {
+    "frame": { "x": 6144, "y": 10752, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 67
+   },
+   "jan_Luke 391.aseprite": {
+    "frame": { "x": 6656, "y": 10752, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 67
+   },
+   "jan_Luke 392.aseprite": {
+    "frame": { "x": 7168, "y": 10752, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 67
+   },
+   "jan_Luke 393.aseprite": {
+    "frame": { "x": 7680, "y": 10752, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 67
+   },
+   "jan_Luke 394.aseprite": {
+    "frame": { "x": 8192, "y": 10752, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 67
+   },
+   "jan_Luke 395.aseprite": {
+    "frame": { "x": 8704, "y": 10752, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 67
+   },
+   "jan_Luke 396.aseprite": {
+    "frame": { "x": 0, "y": 11264, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 67
+   },
+   "jan_Luke 397.aseprite": {
+    "frame": { "x": 512, "y": 11264, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 67
+   },
+   "jan_Luke 398.aseprite": {
+    "frame": { "x": 1024, "y": 11264, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 67
+   },
+   "jan_Luke 399.aseprite": {
+    "frame": { "x": 1536, "y": 11264, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 67
+   },
+   "jan_Luke 400.aseprite": {
+    "frame": { "x": 2048, "y": 11264, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 67
+   },
+   "jan_Luke 401.aseprite": {
+    "frame": { "x": 2560, "y": 11264, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 67
+   },
+   "jan_Luke 402.aseprite": {
+    "frame": { "x": 3072, "y": 11264, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 67
+   },
+   "jan_Luke 403.aseprite": {
+    "frame": { "x": 3584, "y": 11264, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 67
+   },
+   "jan_Luke 404.aseprite": {
+    "frame": { "x": 4096, "y": 11264, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 67
+   },
+   "jan_Luke 405.aseprite": {
+    "frame": { "x": 4608, "y": 11264, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 67
+   },
+   "jan_Luke 406.aseprite": {
+    "frame": { "x": 5120, "y": 11264, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 67
+   },
+   "jan_Luke 407.aseprite": {
+    "frame": { "x": 5632, "y": 11264, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 67
+   },
+   "jan_Luke 408.aseprite": {
+    "frame": { "x": 6144, "y": 11264, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 67
+   },
+   "jan_Luke 409.aseprite": {
+    "frame": { "x": 6656, "y": 11264, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 67
+   },
+   "jan_Luke 410.aseprite": {
+    "frame": { "x": 7168, "y": 11264, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 67
+   },
+   "jan_Luke 411.aseprite": {
+    "frame": { "x": 7680, "y": 11264, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 67
+   },
+   "jan_Luke 412.aseprite": {
+    "frame": { "x": 8192, "y": 11264, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 67
+   },
+   "jan_Luke 413.aseprite": {
+    "frame": { "x": 8704, "y": 11264, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 67
+   },
+   "jan_Luke 414.aseprite": {
+    "frame": { "x": 0, "y": 11776, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 67
+   },
+   "jan_Luke 415.aseprite": {
+    "frame": { "x": 512, "y": 11776, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 67
+   },
+   "jan_Luke 416.aseprite": {
+    "frame": { "x": 1024, "y": 11776, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 67
+   },
+   "jan_Luke 417.aseprite": {
+    "frame": { "x": 1536, "y": 11776, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 67
+   },
+   "jan_Luke 418.aseprite": {
+    "frame": { "x": 2048, "y": 11776, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 67
+   },
+   "jan_Luke 419.aseprite": {
+    "frame": { "x": 2560, "y": 11776, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 67
+   },
+   "jan_Luke 420.aseprite": {
+    "frame": { "x": 3072, "y": 11776, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 67
+   },
+   "jan_Luke 421.aseprite": {
+    "frame": { "x": 3584, "y": 11776, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 67
+   },
+   "jan_Luke 422.aseprite": {
+    "frame": { "x": 4096, "y": 11776, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 67
+   },
+   "jan_Luke 423.aseprite": {
+    "frame": { "x": 4608, "y": 11776, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 67
+   },
+   "jan_Luke 424.aseprite": {
+    "frame": { "x": 5120, "y": 11776, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 67
+   },
+   "jan_Luke 425.aseprite": {
+    "frame": { "x": 5632, "y": 11776, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 67
+   },
+   "jan_Luke 426.aseprite": {
+    "frame": { "x": 6144, "y": 11776, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 67
+   },
+   "jan_Luke 427.aseprite": {
+    "frame": { "x": 6656, "y": 11776, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 67
+   },
+   "jan_Luke 428.aseprite": {
+    "frame": { "x": 7168, "y": 11776, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 67
+   },
+   "jan_Luke 429.aseprite": {
+    "frame": { "x": 7680, "y": 11776, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 67
+   },
+   "jan_Luke 430.aseprite": {
+    "frame": { "x": 8192, "y": 11776, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 67
+   },
+   "jan_Luke 431.aseprite": {
+    "frame": { "x": 8704, "y": 11776, "w": 512, "h": 512 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
@@ -2773,7 +3461,7 @@
   "version": "1.3.7-x64",
   "image": "jan_Luke.png",
   "format": "RGBA8888",
-  "size": { "w": 6144, "h": 14848 },
+  "size": { "w": 9216, "h": 12288 },
   "scale": "1",
   "frameTags": [
    { "name": "Idle", "from": 0, "to": 13, "direction": "forward", "color": "#000000ff" },
@@ -2787,40 +3475,42 @@
    { "name": "RL", "from": 67, "to": 73, "direction": "forward", "color": "#000000ff" },
    { "name": "LL", "from": 74, "to": 80, "direction": "forward", "color": "#000000ff" },
    { "name": "ML", "from": 81, "to": 91, "direction": "forward", "color": "#000000ff" },
-   { "name": "NS", "from": 92, "to": 92, "direction": "forward", "color": "#000000ff" },
-   { "name": "SS", "from": 93, "to": 93, "direction": "forward", "color": "#000000ff" },
-   { "name": "RS", "from": 94, "to": 108, "direction": "forward", "color": "#000000ff" },
-   { "name": "LS", "from": 109, "to": 123, "direction": "forward", "color": "#000000ff" },
-   { "name": "MS", "from": 124, "to": 124, "direction": "forward", "color": "#000000ff" },
-   { "name": "NPL", "from": 125, "to": 134, "direction": "forward", "color": "#000000ff" },
-   { "name": "SPL", "from": 135, "to": 144, "direction": "forward", "color": "#000000ff" },
-   { "name": "RPL", "from": 145, "to": 155, "direction": "forward", "color": "#000000ff" },
-   { "name": "LPL", "from": 156, "to": 166, "direction": "forward", "color": "#000000ff" },
-   { "name": "MPL", "from": 167, "to": 168, "direction": "forward", "color": "#000000ff" },
-   { "name": "NPS", "from": 169, "to": 185, "direction": "forward", "color": "#000000ff" },
-   { "name": "SPS", "from": 186, "to": 187, "direction": "forward", "color": "#000000ff" },
-   { "name": "RPS", "from": 188, "to": 189, "direction": "forward", "color": "#000000ff" },
-   { "name": "LPS", "from": 190, "to": 191, "direction": "forward", "color": "#000000ff" },
-   { "name": "MPS", "from": 192, "to": 193, "direction": "forward", "color": "#000000ff" },
-   { "name": "NN", "from": 194, "to": 213, "direction": "forward", "color": "#000000ff" },
-   { "name": "NNF", "from": 214, "to": 219, "direction": "forward", "color": "#000000ff" },
-   { "name": "SN", "from": 220, "to": 221, "direction": "forward", "color": "#000000ff" },
-   { "name": "RN", "from": 222, "to": 229, "direction": "forward", "color": "#000000ff" },
-   { "name": "LN", "from": 230, "to": 230, "direction": "forward", "color": "#000000ff" },
-   { "name": "MN", "from": 231, "to": 240, "direction": "forward", "color": "#000000ff" },
-   { "name": "MNF", "from": 241, "to": 250, "direction": "forward", "color": "#000000ff" },
-   { "name": "Misfire", "from": 251, "to": 254, "direction": "forward", "color": "#000000ff" },
-   { "name": "Grab", "from": 255, "to": 267, "direction": "forward", "color": "#000000ff" },
-   { "name": "Grabbed", "from": 268, "to": 277, "direction": "forward", "color": "#000000ff" },
-   { "name": "LipuSuli", "from": 278, "to": 292, "direction": "forward", "color": "#000000ff" },
-   { "name": "LipuLili", "from": 293, "to": 300, "direction": "forward", "color": "#000000ff" },
-   { "name": "Right Roll", "from": 301, "to": 306, "direction": "forward", "color": "#000000ff" },
-   { "name": "Left Roll", "from": 307, "to": 312, "direction": "forward", "color": "#000000ff" },
-   { "name": "Neutral Roll", "from": 313, "to": 316, "direction": "forward", "color": "#000000ff" },
-   { "name": "Hurt", "from": 317, "to": 321, "direction": "forward", "color": "#000000ff" },
-   { "name": "Block", "from": 322, "to": 326, "direction": "forward", "color": "#000000ff" },
-   { "name": "Parry", "from": 327, "to": 331, "direction": "forward", "color": "#000000ff" },
-   { "name": "Dead", "from": 332, "to": 345, "direction": "forward", "color": "#000000ff" }
+   { "name": "NS", "from": 92, "to": 99, "direction": "forward", "color": "#000000ff" },
+   { "name": "SS", "from": 100, "to": 113, "direction": "forward", "color": "#000000ff" },
+   { "name": "RS", "from": 114, "to": 128, "direction": "forward", "color": "#000000ff" },
+   { "name": "LS", "from": 129, "to": 143, "direction": "forward", "color": "#000000ff" },
+   { "name": "MS", "from": 144, "to": 150, "direction": "forward", "color": "#000000ff" },
+   { "name": "NPL", "from": 151, "to": 160, "direction": "forward", "color": "#000000ff" },
+   { "name": "SPL", "from": 161, "to": 170, "direction": "forward", "color": "#000000ff" },
+   { "name": "RPL", "from": 171, "to": 181, "direction": "forward", "color": "#000000ff" },
+   { "name": "LPL", "from": 182, "to": 192, "direction": "forward", "color": "#000000ff" },
+   { "name": "MPL", "from": 193, "to": 200, "direction": "forward", "color": "#000000ff" },
+   { "name": "NPS", "from": 201, "to": 217, "direction": "forward", "color": "#000000ff" },
+   { "name": "SPS", "from": 218, "to": 227, "direction": "forward", "color": "#000000ff" },
+   { "name": "RPS", "from": 228, "to": 239, "direction": "forward", "color": "#000000ff" },
+   { "name": "LPS", "from": 240, "to": 251, "direction": "forward", "color": "#000000ff" },
+   { "name": "MPS", "from": 252, "to": 260, "direction": "forward", "color": "#000000ff" },
+   { "name": "NN", "from": 261, "to": 280, "direction": "forward", "color": "#000000ff" },
+   { "name": "NNF", "from": 281, "to": 286, "direction": "forward", "color": "#000000ff" },
+   { "name": "SN", "from": 287, "to": 295, "direction": "forward", "color": "#000000ff" },
+   { "name": "RN", "from": 296, "to": 303, "direction": "forward", "color": "#000000ff" },
+   { "name": "LN", "from": 304, "to": 308, "direction": "forward", "color": "#000000ff" },
+   { "name": "LNS", "from": 309, "to": 313, "direction": "forward", "color": "#000000ff" },
+   { "name": "LNF", "from": 314, "to": 316, "direction": "forward", "color": "#000000ff" },
+   { "name": "MN", "from": 317, "to": 326, "direction": "forward", "color": "#000000ff" },
+   { "name": "MNF", "from": 327, "to": 336, "direction": "forward", "color": "#000000ff" },
+   { "name": "Misfire", "from": 337, "to": 340, "direction": "forward", "color": "#000000ff" },
+   { "name": "Grab", "from": 341, "to": 353, "direction": "forward", "color": "#000000ff" },
+   { "name": "Grabbed", "from": 354, "to": 363, "direction": "forward", "color": "#000000ff" },
+   { "name": "LipuSuli", "from": 364, "to": 378, "direction": "forward", "color": "#000000ff" },
+   { "name": "LipuLili", "from": 379, "to": 386, "direction": "forward", "color": "#000000ff" },
+   { "name": "Right Roll", "from": 387, "to": 392, "direction": "forward", "color": "#000000ff" },
+   { "name": "Left Roll", "from": 393, "to": 398, "direction": "forward", "color": "#000000ff" },
+   { "name": "Neutral Roll", "from": 399, "to": 402, "direction": "forward", "color": "#000000ff" },
+   { "name": "Hurt", "from": 403, "to": 407, "direction": "forward", "color": "#000000ff" },
+   { "name": "Block", "from": 408, "to": 412, "direction": "forward", "color": "#000000ff" },
+   { "name": "Parry", "from": 413, "to": 417, "direction": "forward", "color": "#000000ff" },
+   { "name": "Dead", "from": 418, "to": 431, "direction": "forward", "color": "#000000ff" }
   ],
   "layers": [
    { "name": "Head" },

@@ -149,14 +149,24 @@
 		];
 
 		this.headNoun = "󱤑";//jan
-		this.name = "󱤑󱦐󱦗󱦅󱥱󱤘󱤃󱦑";//jan Luke
+		this.name = currentLanguage === "tp" ? "󱤑󱦐󱦗󱦅󱥱󱤘󱤃󱦑" : "Lukeh";//jan Luke
 
 		this.collideRadius = 42;
 
+		this.timerPunishMult = 0.8;
+
 		this.sheet = Spritesheet.copy(assetManager.spritesheets.janLukeSheet);
+		this.auraSheets = [];
+		this.auraSheets.push(Spritesheet.copy(assetManager.spritesheets.konLuke0));
+		this.auraSheets.push(Spritesheet.copy(assetManager.spritesheets.konLuke1));
+		this.auraSheets.push(Spritesheet.copy(assetManager.spritesheets.konLuke2));
+		this.auraSheets.push(Spritesheet.copy(assetManager.spritesheets.konLuke3));
+		this.auraSheets.push(Spritesheet.copy(assetManager.spritesheets.konLuke4));
 
 		this.states.ML = State.copyState(State.ML).addTag("no collide");
+		this.states.RS = State.copyState(State.RS).addTag("rotateable");
 		this.states.SPL = State.copyState(State.SPL).addTag("rotateable");
+		this.states.SPS = State.copyState(State.SPS).addTag("rotateable");
 		this.states.NN = State.copyState(State.NN).addTag("rotateable");
 		this.states.NN_ACTIONS = ["NL", "dash", "power dash"];
 		this.states.NNF = State.copyState(State.NN).setName("NNF");
@@ -171,13 +181,14 @@
 
 		this.turnSpeed = 0.005;
 
-		this.OOBBlockFrame = 2;
+		this.OOBBlockFrame = 4;
 
 		this.dash.turnSpeedBoost = 0.01;
 
 		this.maxBullets = 6;
 		this.bullets = this.maxBullets;
-		
+
+		this.auraFrames = 0;
 	}
 
 	setAttacks() {
@@ -191,20 +202,20 @@
 		this.LL = JanLukeLL;
 		this.ML = JanLukeML;
 
-		//this.NS = JanLukeNS;
-		//this.SS = JanLukeSS;
+		this.NS = JanLukeNS;
+		this.SS = JanLukeSS;
 		this.RS = JanLukeRS;
 		this.LS = JanLukeLS;
-		//this.MS = JanLukeMS;
+		this.MS = JanLukeMS;
 
 		this.NPL = JanLukeNPL;
 		this.SPL = JanLukeSPL;
 		this.RPL = JanLukeRPL;
 		this.LPL = JanLukeLPL;
-		//this.MPL = JanLukeMPL;
+		this.MPL = JanLukeMPL;
 
 		this.NPS = JanLukeNPS;
-		//this.SPS = JanLukeSPS;
+		this.SPS = JanLukeSPS;
 		this.RPS = JanLukeRPS;
 		this.LPS = JanLukeLPS;
 		this.MPS = JanLukeMPS;
@@ -212,12 +223,12 @@
 		this.NN = JanLukeNN;
 		this.SN = JanLukeSN;
 		this.RN = JanLukeRN;
-		//this.LN = JanLukeLN;
+		this.LN = JanLukeLN;
 		this.MN = JanLukeMN;
 	}
 
 	generalLogic() {
-		if (this.bullets <= 0 && (State.stateIsTag(this.currentState, "poka lili") || this.currentState.name === "NN") && this.frameDataRef.getFromStartupF() === 1) {
+		if (((this.bullets <= 1 && this.currentState.name === "SPS") || (this.bullets <= 0 && (State.stateIsTag(this.currentState, "poka lili") || this.currentState.name === "NN"))) && this.frameDataRef.getFromStartupF() === 1) {
 			this.forceChangeState(this.states.MISFIRE, this.states.MISFIRE_ACTIONS);
 			this.sheet.setAnimation("Misfire");
 			this.playSound(assetManager.sounds.e);
@@ -229,6 +240,29 @@
 		if (this.currentState.name === "NNF") {
 			this.attackEndable();
 		}
+		if (this.auraFrames > 0)
+			this.auraFrames--;
+	}
+
+	getInfluence() {
+		return this.world.sikeWawa.getTotalInfluence(this);
+	}
+
+	getInfluenceLevel() {
+		let influence = this.world.sikeWawa.getTotalInfluence(this);
+		if (influence >= 65)
+			return 4;
+		if (influence >= 50)
+			return 3;
+		if (influence >= 35)
+			return 2;
+		if (influence >= 20)
+			return 1;
+		return 0;
+	}
+
+	getDamageMult() {
+		return sqrt(this.getInfluenceLevel() * 0.38 + 0.25);
 	}
 
 	/**
@@ -252,6 +286,9 @@
 		}
 
 		this.sheet.draw(g, -110 + rumbleX, -80 + rumbleY, 220, 220);
+
+		if (this.auraFrames > 0)
+			this.auraSheets[this.getInfluenceLevel()].draw(g, -69 + rumbleX, -25 + rumbleY, 138, 138);
 
 		g.pop();
 
@@ -278,6 +315,7 @@
 
 	drawExtraHUD(g, i, x, y) {
 		let leftX = 512 * 0.12 + 512 * 0.76 * i - 34;
+		let leftX2 = 256 + 60 * i - 30;
 
 		g.push();
 		g.translate(x, y);
@@ -297,23 +335,40 @@
 			}
 		}
 
+		assetManager.spritesheets.sitelenKonLuke.drawFrame(g, this.getInfluenceLevel(), leftX2 - 10, 83, 20, 20);
+
 		g.pop();
 	}
 
 	charSpecificReset() {
 		this.bullets = this.maxBullets;
+		this.vortex = false;
 	}
 
 	runSheets() {
 		if (this.stunFrames <= 0) {
 			this.sheet.run();
+			for (let i in this.auraSheets) {
+				this.auraSheets[i].run();
+			}
 		}
 	}
 
     static addAssets() {
 		assetManager.addSpritesheet("resources/jan_Luke.png", "janLukeSheet", "//");
 
+		assetManager.addSpritesheet("resources/sitelenKonLuke.png", "sitelenKonLuke", "//");
+
+		assetManager.addSpritesheet("resources/konLuke0.png", "konLuke0", "//");
+		assetManager.addSpritesheet("resources/konLuke1.png", "konLuke1", "//");
+		assetManager.addSpritesheet("resources/konLuke2.png", "konLuke2", "//");
+		assetManager.addSpritesheet("resources/konLuke3.png", "konLuke3", "//");
+		assetManager.addSpritesheet("resources/konLuke4.png", "konLuke4", "//");
+
 		assetManager.addSpritesheet("resources/GunEffect.png", "gunEffect", "//");
+		assetManager.addSpritesheet("resources/GunEffectLili.png", "gunEffectLili", "//");
+
+		assetManager.addSpritesheet("resources/konPiTawaSike.png", "konPiTawaSike", "//");
 
 		assetManager.addSpritesheet("resources/LinjaLuka.png", "linjaLuka", "//");
 
@@ -362,8 +417,8 @@ class JanLukeDashAttack extends Attack {
 		let sour1 = new PriorityCircle(30, 50, 40, 1).setCircleVelocity(11);
 		let circles = [sweet1, sour1];
 
-		let sweet = new AttackProperties().setDamage(40).setProration(1).setCancelOptions(cancelOptions).setAngleValue(player.dir.value).setLaunch(10, 4, 0.2).setHitStun(29, 15).setStunFrames(12).setNormalizeHitStun();
-		let sour = new AttackProperties().setDamage(30).setProration(1).setCancelOptions(cancelOptions).setAngleValue(player.dir.value).setLaunch(10, 4, 0.2).setHitStun(29, 15).setStunFrames(12).setNormalizeHitStun();
+		let sweet = new AttackProperties().setDamage(40).setProration(1).setCancelOptions(cancelOptions).setAngleValue(player.dir.value).setLaunch(16, 4, 0.2).setHitStun(33, 15).setStunFrames(12).setNormalizeHitStun();
+		let sour = new AttackProperties().setDamage(30).setProration(1).setCancelOptions(cancelOptions).setAngleValue(player.dir.value).setLaunch(16, 4, 0.2).setHitStun(33, 15).setStunFrames(12).setNormalizeHitStun();
 		let prop = [sweet, sour];
 
 		sweet.setHitSound(assetManager.sounds["8BitHit"]);
@@ -396,14 +451,14 @@ class JanLukeNL extends Attack {
 	}
 
 	static createAttack(player) {
-		let cancelOptions = ["NL", "NPL", "MN"];
+		let cancelOptions = ["attack", "dash"];
 
 		let sweet1 = new PriorityCircle(30, -35, 40, 0).setVelocity(1, 0.4);
 		let sweet2 = new PriorityCircle(50, -25, 30, 0).setVelocity(1, 0.4);
 		let sweet3 = new PriorityCircle(70, -15, 30, 0).setVelocity(1, 0.4);
 		let circles = [sweet1, sweet2, sweet3];
 
-		let sweet = new AttackProperties().setDamage(30).setProration(0.5).setCancelOptions(cancelOptions).setAngleValue(player.dir.value).setLaunch(2, 4, 1.1).setHitStun(20, 20).setStunFrames(12);
+		let sweet = new AttackProperties().setDamage(30).setProration(1).setCancelOptions(cancelOptions).setAngleValue(player.dir.value).setLaunch(2, 4, 1.1).setHitStun(20, 20).setStunFrames(12).setWallPushback(1, 1.5);
 		let prop = [sweet];
 
 		sweet.setHitSound(assetManager.sounds["8BitHit"]);
@@ -425,7 +480,7 @@ class JanLukeNL extends Attack {
 	}
 
 	logic() {
-		this.player.turnSpeedModifier = 0.02;
+		this.player.turnSpeedModifier = 0.05;
 	}
 }
 
@@ -448,8 +503,8 @@ class JanLukeSL extends Attack {
 		let sour3 = new PriorityCircle(70, 15, 0, 1).setVelocity(1, -0.5);
 		let circles = [sweet1, sweet2, sweet3, sour1, sour2, sour3];
 
-		let sweet = new AttackProperties().setDamage(35).setProration(-0.1).setCancelOptions(cancelOptions).setAngleValue(player.dir.value).setLaunch(3, 2, 0.7).setHitStun(28, 20).setStunFrames(12, 12);
-		let sour = new AttackProperties().setDamage(20).setProration(-1.5).setCancelOptions(cancelOptions, sourHitCancelOptions).setAngleValue(player.dir.value).setLaunch(3, 2, 0.7).setHitStun(20, 20).setStunFrames(12, 12);
+		let sweet = new AttackProperties().setDamage(35).setProration(-0.1).setCancelOptions(cancelOptions).setAngleValue(player.dir.value).setLaunch(3, 2, 0.7).setHitStun(28, 20).setStunFrames(12, 12).setWallPushback(1, 3);
+		let sour = new AttackProperties().setDamage(20).setProration(-1.5).setCancelOptions(cancelOptions, sourHitCancelOptions).setAngleValue(player.dir.value).setLaunch(3, 2, 0.7).setHitStun(20, 20).setStunFrames(12, 12).setWallPushback(1, 3);
 		let prop = [sweet, sour];
 
 		//sweet.setHitSound(assetManager.sounds["8BitHit"]);
@@ -589,8 +644,8 @@ class JanLukeML extends Attack {
 		let sour1 = new PriorityCircle(-40, 20, 35, 1).setSubVelocity(-3.5, 0);
 		let circles = [sweet1, sour1];
 
-		let sweet = new AttackProperties().setDamage(30).setProration(-0.5).setCancelOptions(cancelOptions).setAngleValue(player.dir.value).setLaunch(6, 0.1, 0.8).setHitStun(34, 19).setStunFrames(12).setAngleTypes("direct", "direct");
-		let sour = new AttackProperties().setDamage(25).setProration(-0.5).setCancelOptions(cancelOptions).setAngleValue(player.dir.value).setLaunch(6, 0.1, 0.8).setHitStun(34, 19).setStunFrames(12).setAngleTypes("direct", "direct");
+		let sweet = new AttackProperties().setDamage(30).setProration(-0.5).setCancelOptions(cancelOptions).setAngleValue(player.dir.value).setLaunch(6, 0.1, 0.8).setHitStun(45, 40).setStunFrames(12).setAngleTypes("direct", "direct");
+		let sour = new AttackProperties().setDamage(25).setProration(-0.5).setCancelOptions(cancelOptions).setAngleValue(player.dir.value).setLaunch(6, 0.1, 0.8).setHitStun(45, 40).setStunFrames(12).setAngleTypes("direct", "direct");
 		let prop = [sweet, sour];
 
 		//sweet.setHitSound(assetManager.sounds["8BitHit"]);
@@ -601,10 +656,10 @@ class JanLukeML extends Attack {
 
 	static startAttack(player, attack, bufferInfo) {
 		player.startMomentumMultiply(0);
-		player.startMomentumMultiplyDash(1);
+		player.startMomentumMultiplyDash(1.5);
 
-		player.dx += player.dir.getX() * 12;
-		player.dy += player.dir.getY() * 12;
+		player.dx += player.dir.getX() * 16;
+		player.dy += player.dir.getY() * 16;
 
 		player.dir.changeValue(-PI);
 	}
@@ -619,6 +674,87 @@ class JanLukeML extends Attack {
 	logic() {
 		this.player.dx *= 0.9;
 		this.player.dy *= 0.9;
+	}
+}
+
+class JanLukeNS extends Attack {
+	constructor(player, circles = [], props = []) {
+		super(player, circles, props);
+		this.name = "NS";
+	}
+
+	static createAttack(player) {
+		let cancelOptions = ["SL", "RS", "LS", "SS", "NPL", "MN"];
+
+		let sour1 = new PriorityCircle(30, -40, 30, 0).setVelocity(1, 0.6);
+		let sweet1 = new PriorityCircle(57, -35, 40, 1).setVelocity(1, 0.6);
+		let sweet2 = new PriorityCircle(71, 0, 40, 1).setVelocity(1, 0.6);
+		let sweet3 = new PriorityCircle(70, 29, 40, 1).setVelocity(1, 0.6);
+		let circles = [sour1, sweet1, sweet2, sweet3];
+
+		let sour = new AttackProperties().setDamage(40).setProration(0.3).setCancelOptions(cancelOptions).setAngleValue(player.dir.value + PI / 6).setLaunch(4, 2, 1.5).setHitStun(25, 22).setStunFrames(12);
+		let sweet = new AttackProperties().setDamage(40).setProration(0.3).setCancelOptions(cancelOptions).setAngleValue(player.dir.value).setLaunch(3, 2, 1.5).setHitStun(25, 22).setStunFrames(12);
+		let prop = [sour, sweet];
+
+		//sweet.setHitSound(assetManager.sounds["8BitHit"]);
+		//sweet.setBlockSound(assetManager.sounds["8BitHit"]);
+
+		return new this(player, circles, prop).setClashPriority(3).setStartupF(8).setActiveF(3).setEndF(20);
+	}
+
+	static startAttack(player, attack, bufferInfo) {
+		player.startMomentumMultiply(0);
+		player.startMomentumMultiplyDash(1);
+	}
+
+	draw(g) {
+		if (this.currentlyActive()) {
+			if (debug.displayHitboxes)
+				this.debugDraw(g);
+		}
+	}
+
+	logic() {
+		
+	}
+}
+
+class JanLukeSS extends Attack {
+	constructor(player, circles = [], props = []) {
+		super(player, circles, props);
+		this.name = "SS";
+	}
+
+	static createAttack(player) {
+		let cancelOptions = [];
+
+		let sweet1 = new PriorityCircle(110, -35, 60, 0).setVelocity(0.1, 0);
+		let sweet2 = new PriorityCircle(110, 35, 60, 0).setVelocity(0.1, 0);
+		let circles = [sweet1, sweet2];
+
+		let sweet = new AttackProperties().setDamage(45, 35, 6).setProration(0.3).setCancelOptions(cancelOptions).setAngleValue(player.dir.value).setLaunch(16, 2, 0.5).setHitStun(36, 35).setStunFrames(12);
+		let prop = [sweet];
+
+		//sweet.setHitSound(assetManager.sounds["8BitHit"]);
+		//sweet.setBlockSound(assetManager.sounds["8BitHit"]);
+
+		return new this(player, circles, prop).setClashPriority(1).setStartupF(19).setActiveF(7).setEndF(28);
+	}
+
+	static startAttack(player, attack, bufferInfo) {
+		player.startMomentumMultiply(0);
+		player.startMomentumMultiplyDash(1);
+	}
+
+	draw(g) {
+		if (this.currentlyActive()) {
+			if (debug.displayHitboxes)
+				this.debugDraw(g);
+		}
+	}
+
+	logic() {
+
 	}
 }
 
@@ -666,6 +802,7 @@ class JanLukeRS extends Attack {
 	}
 
 	logic() {
+		this.player.turnSpeedModifier = -1;
 		this.player.dx *= 0.9;
 		this.player.dy *= 0.9;
 		if (this.getStartupF() > 11 && this.getFromStartupF() > 4 && this.player.controls.clicked("suli")) {
@@ -673,8 +810,12 @@ class JanLukeRS extends Attack {
 		}
 		if (this.getStartupF() === 11 && !this.secondAttack) {
 			this.setActiveF(0);
+			this.setStartupF(0);
 			this.setEndF(7);
 			this.player.actionLag = 7;
+		}
+		if (this.currentlyEnd() && !this.secondAttack) {
+			this.player.turnSpeedModifier = 0.21;
 		}
 		if (this.getStartupF() === 10) {
 			this.moveAngle.changeValue(-PI / 1.8);
@@ -757,10 +898,100 @@ class JanLukeLS extends Attack {
 	}
 }
 
+class JanLukeMS extends Attack {
+	constructor(player, circles = [], props = []) {
+		super(player, circles, props);
+		this.name = "MS";
+
+		this.vortex = false;
+
+		this.sheet = Spritesheet.copy(assetManager.spritesheets.konPiTawaSike);
+	}
+
+	static createAttack(player) {
+		let circles = [];
+
+		let prop = [];
+
+		return new this(player, circles, prop).setStartupF(26).setActiveF(420).setFollow(false).setProjectile();
+	}
+
+	static startAttack(player, attack, bufferInfo) {
+		player.dx = 0;
+		player.dy = 0;
+
+		if (!player.vortex) {
+			attack.vortex = true;
+			player.vortex = true;
+		} else {
+			attack.setActiveF(0);
+		}
+	}
+
+	draw(g) {
+		if (this.vortex && this.getFromStartupF() > 2) {
+			let size = min(200, this.getActiveF() * 5);
+			if (!this.startupOver()) {
+				size = min(200, 200 - this.getStartupF() * 8);
+			}
+			g.push();
+			g.translate(this.x, this.y);
+			g.rotate(this.dir.value);
+
+			this.sheet.draw(g, -size / 2, -size / 2, size, size);
+
+			g.pop();
+		}
+
+		if (this.currentlyActive()) {
+			if (debug.displayHitboxes)
+				this.debugDraw(g);
+		}
+	}
+
+	applyModifiers() {
+		this.player.counterHittable = true;
+	}
+
+	logic() {
+		this.sheet.run();
+
+		if (this.getStartupF() > 23) {
+			this.player.dx = -this.dir.getX() * 16;
+			this.player.dy = -this.dir.getY() * 16;
+		} else if (this.getStartupF() > 0) {
+			this.player.dx *= 0.82;
+			this.player.dy *= 0.82;
+		}
+
+		if (this.player.targetPlayer && this.vortex && this.startupOver()) {
+			let distance = dist(this.player.targetPlayer.x, this.player.targetPlayer.y, this.x, this.y);
+			let angle = new Angle().setFromPoint(this.player.targetPlayer.x - this.x, this.player.targetPlayer.y - this.y);
+			let speed = 12500 * max(distance, 50) ** -2;
+			if (distance < 40)
+				speed = 5 / speed;
+			if (this.getActiveF() < 40)
+				speed *= 0.95 ** (40 - this.getActiveF());
+			this.player.targetPlayer.x -= angle.getX() * speed;
+			this.player.targetPlayer.y -= angle.getY() * speed;
+			if (distance < this.player.targetPlayer.collideRadius + 100) {
+				this.player.targetPlayer.damageHealthAbs(0.7, 0, true);
+			}
+		}
+	}
+
+	cleanup() {
+		if (this.vortex)
+			this.player.vortex = false;
+	}
+}
+
 class JanLukeNPL extends Attack {
 	constructor(player, circles = [], props = []) {
 		super(player, circles, props);
 		this.name = "NPL";
+
+		this.sheet = Spritesheet.copy(assetManager.spritesheets.gunEffectLili);
 	}
 
 	static createAttack(player) {
@@ -775,7 +1006,7 @@ class JanLukeNPL extends Attack {
 		let sweet7 = new PriorityCircle(150, 0, 20, 0).setVelocity(0.1, 0);
 		let circles = [sweet1, sweet2, sweet3, sweet4, sweet5, sweet6, sweet7];
 
-		let sweet = new AttackProperties().setDamage(35).setProration(0.2).setCancelOptions(cancelOptions).setAngleValue(player.dir.value).setLaunch(4, 0.1, 1.1).setHitStun(28, 12).setStunFrames(13);
+		let sweet = new AttackProperties().setDamage(player.getDamageMult() * 35).setProration(0.2).setCancelOptions(cancelOptions).setAngleValue(player.dir.value).setLaunch(4, 0.1, 1.1).setHitStun(30, 12).setStunFrames(13);
 		let prop = [sweet];
 
 		//sweet.setHitSound(assetManager.sounds["8BitHit"]);
@@ -790,13 +1021,28 @@ class JanLukeNPL extends Attack {
 	}
 
 	draw(g) {
+		if (this.getStartupF() <= 0 && this.getFromEndF() < 6) {
+			g.push();
+			g.translate(this.x, this.y);
+			g.rotate(this.dir.value);
+
+			this.sheet.draw(g, 70, -10.5, 90, 21);
+
+			g.pop();
+		}
+
 		if (this.currentlyActive()) {
-			//if (debug.displayHitboxes)
+			if (debug.displayHitboxes)
 				this.debugDraw(g);
 		}
 	}
 
 	logic() {
+		if (this.getStartupF() <= 0 && this.getFromEndF() < 6)
+			this.sheet.run();
+
+		this.player.auraFrames = 5;
+
 		if (this.getStartupF() === 1) {
 			this.properties[0].playSound(this.world, assetManager.sounds.gunShot);
 			this.player.dx -= this.dir.getX() * 4;
@@ -812,6 +1058,8 @@ class JanLukeSPL extends Attack {
 	constructor(player, circles = [], props = []) {
 		super(player, circles, props);
 		this.name = "SPL";
+
+		this.sheet = Spritesheet.copy(assetManager.spritesheets.gunEffectLili);
 	}
 
 	static createAttack(player) {
@@ -826,7 +1074,7 @@ class JanLukeSPL extends Attack {
 		let sweet7 = new PriorityCircle(210, 0, 25, 0).setVelocity(0.1, 0);
 		let circles = [sweet1, sweet2, sweet3, sweet4, sweet5, sweet6, sweet7];
 
-		let sweet = new AttackProperties().setDamage(40).setProration(0.7).setCancelOptions(cancelOptions).setAngleValue(player.dir.value).setLaunch(4, 0.1, 2).setHitStun(28, 12).setStunFrames(13);
+		let sweet = new AttackProperties().setDamage(player.getDamageMult() * 40).setProration(0.7).setCancelOptions(cancelOptions).setAngleValue(player.dir.value).setLaunch(4, 0.1, 2).setHitStun(28, 12).setStunFrames(13);
 		let prop = [sweet];
 
 		//sweet.setHitSound(assetManager.sounds["8BitHit"]);
@@ -841,13 +1089,28 @@ class JanLukeSPL extends Attack {
 	}
 
 	draw(g) {
+		if (this.getStartupF() <= 0 && this.getFromEndF() < 6) {
+			g.push();
+			g.translate(this.x, this.y);
+			g.rotate(this.dir.value);
+
+			this.sheet.draw(g, 70, -20, 150, 40);
+
+			g.pop();
+		}
+
 		if (this.currentlyActive()) {
-			//if (debug.displayHitboxes)
+			if (debug.displayHitboxes)
 				this.debugDraw(g);
 		}
 	}
 
 	logic() {
+		if (this.getStartupF() <= 0 && this.getFromEndF() < 6)
+			this.sheet.run();
+
+		this.player.auraFrames = 5;
+
 		if (this.getStartupF() === 1) {
 			this.properties[0].playSound(this.world, assetManager.sounds.gunShot);
 			this.player.dx -= this.dir.getX() * 5;
@@ -863,6 +1126,8 @@ class JanLukeRPL extends Attack {
 	constructor(player, circles = [], props = []) {
 		super(player, circles, props);
 		this.name = "RPL";
+
+		this.sheet = Spritesheet.copy(assetManager.spritesheets.gunEffectLili);
 	}
 
 	static createAttack(player) {
@@ -874,9 +1139,10 @@ class JanLukeRPL extends Attack {
 		let sweet4 = new PriorityCircle(90, 0, 20, 0).setVelocity(0.1, 0);
 		let sweet5 = new PriorityCircle(110, 0, 20, 0).setVelocity(0.1, 0);
 		let sweet6 = new PriorityCircle(130, 0, 20, 0).setVelocity(0.1, 0);
-		let circles = [sweet1, sweet2, sweet3, sweet4, sweet5, sweet6];
+		let sweet7 = new PriorityCircle(150, 0, 25, 0).setVelocity(0.1, 0);
+		let circles = [sweet1, sweet2, sweet3, sweet4, sweet5, sweet6, sweet7];
 
-		let sweet = new AttackProperties().setDamage(25).setProration(0.8).setCancelOptions(cancelOptions).setAngleValue(player.dir.value).setLaunch(4, 0.1, 1.1).setHitStun(28, 10).setStunFrames(13);
+		let sweet = new AttackProperties().setDamage(player.getDamageMult() * 25).setProration(0.8).setCancelOptions(cancelOptions).setAngleValue(player.dir.value).setLaunch(4, 0.1, 1.1).setHitStun(28, 10).setStunFrames(13);
 		let prop = [sweet];
 
 		//sweet.setHitSound(assetManager.sounds["8BitHit"]);
@@ -891,13 +1157,28 @@ class JanLukeRPL extends Attack {
 	}
 
 	draw(g) {
+		if (this.getStartupF() <= 0 && this.getFromEndF() < 6) {
+			g.push();
+			g.translate(this.x, this.y);
+			g.rotate(this.dir.value);
+
+			this.sheet.draw(g, 70, -10.5, 90, 21);
+
+			g.pop();
+		}
+
 		if (this.currentlyActive()) {
-			//if (debug.displayHitboxes)
+			if (debug.displayHitboxes)
 				this.debugDraw(g);
 		}
 	}
 
 	logic() {
+		if (this.getStartupF() <= 0 && this.getFromEndF() < 6)
+			this.sheet.run();
+
+		this.player.auraFrames = 5;
+
 		if (this.getStartupF() === 1) {
 			this.properties[0].playSound(this.world, assetManager.sounds.gunShot);
 			this.player.dx -= this.dir.getX() * 3;
@@ -915,7 +1196,7 @@ class JanLukeRPL extends Attack {
 			//if (compare < -0.2) {
 				//this.player.dir.value -= 0.11;
 			//}
-			if (compare > 0.2) {
+			if (compare > 0.05) {
 				this.player.dir.value += 0.11;
 			}
 		}
@@ -926,6 +1207,8 @@ class JanLukeLPL extends Attack {
 	constructor(player, circles = [], props = []) {
 		super(player, circles, props);
 		this.name = "LPL";
+
+		this.sheet = Spritesheet.copy(assetManager.spritesheets.gunEffectLili);
 	}
 
 	static createAttack(player) {
@@ -937,9 +1220,10 @@ class JanLukeLPL extends Attack {
 		let sweet4 = new PriorityCircle(90, 0, 20, 0).setVelocity(0.1, 0);
 		let sweet5 = new PriorityCircle(110, 0, 20, 0).setVelocity(0.1, 0);
 		let sweet6 = new PriorityCircle(130, 0, 20, 0).setVelocity(0.1, 0);
-		let circles = [sweet1, sweet2, sweet3, sweet4, sweet5, sweet6];
+		let sweet7 = new PriorityCircle(150, 0, 25, 0).setVelocity(0.1, 0);
+		let circles = [sweet1, sweet2, sweet3, sweet4, sweet5, sweet6, sweet7];
 
-		let sweet = new AttackProperties().setDamage(35).setProration(0.6).setCancelOptions(cancelOptions).setAngleValue(player.dir.value).setLaunch(4, 0.1, 1.1).setHitStun(28, 10).setStunFrames(13);
+		let sweet = new AttackProperties().setDamage(player.getDamageMult() * 35).setProration(0.6).setCancelOptions(cancelOptions).setAngleValue(player.dir.value).setLaunch(4, 0.1, 1.1).setHitStun(28, 10).setStunFrames(13);
 		let prop = [sweet];
 
 		//sweet.setHitSound(assetManager.sounds["8BitHit"]);
@@ -954,13 +1238,28 @@ class JanLukeLPL extends Attack {
 	}
 
 	draw(g) {
+		if (this.getStartupF() <= 0 && this.getFromEndF() < 6) {
+			g.push();
+			g.translate(this.x, this.y);
+			g.rotate(this.dir.value);
+
+			this.sheet.draw(g, 70, -10.5, 90, 21);
+
+			g.pop();
+		}
+
 		if (this.currentlyActive()) {
-			//if (debug.displayHitboxes)
+			if (debug.displayHitboxes)
 				this.debugDraw(g);
 		}
 	}
 
 	logic() {
+		if (this.getStartupF() <= 0 && this.getFromEndF() < 6)
+			this.sheet.run();
+
+		this.player.auraFrames = 5;
+
 		if (this.getStartupF() === 1) {
 			this.properties[0].playSound(this.world, assetManager.sounds.gunShot);
 			this.player.dx -= this.dir.getX() * 3;
@@ -975,13 +1274,84 @@ class JanLukeLPL extends Attack {
 			let playersAngle = new Angle().setFromPoint(this.player.targetPlayer.x - this.player.x, this.player.targetPlayer.y - this.player.y);
 
 			let compare = Angle.compare(this.player.dir, playersAngle);
-			if (compare < -0.2) {
+			if (compare < -0.05) {
 				this.player.dir.value -= 0.093;
 			}
 			//if (compare > 0.2) {
 				//this.player.dir.value += 0.093;
 			//}
 		}
+	}
+}
+
+class JanLukeMPL extends Attack {
+	constructor(player, circles = [], props = []) {
+		super(player, circles, props);
+		this.name = "MPL";
+
+		this.sheet = Spritesheet.copy(assetManager.spritesheets.gunEffectLili);
+	}
+
+	static createAttack(player) {
+		let cancelOptions = ["SPL", "NPS", "MN"];
+
+		let sweet1 = new PriorityCircle(30, 0, 20, 0).setVelocity(0.1, 0);
+		let sweet2 = new PriorityCircle(50, 0, 20, 0).setVelocity(0.1, 0);
+		let sweet3 = new PriorityCircle(70, 0, 20, 0).setVelocity(0.1, 0);
+		let sweet4 = new PriorityCircle(90, 0, 20, 0).setVelocity(0.1, 0);
+		let sweet5 = new PriorityCircle(110, 0, 20, 0).setVelocity(0.1, 0);
+		let sweet6 = new PriorityCircle(130, 0, 20, 0).setVelocity(0.1, 0);
+		let sweet7 = new PriorityCircle(150, 0, 20, 0).setVelocity(0.1, 0);
+		let circles = [sweet1, sweet2, sweet3, sweet4, sweet5, sweet6, sweet7];
+
+		let sweet = new AttackProperties().setDamage(player.getDamageMult() * 35).setProration(-0.2).setCancelOptions(cancelOptions).setAngleValue(player.dir.value + PI).setLaunch(6, 0.1, 1.1).setHitStun(28, 12).setStunFrames(13);
+		let prop = [sweet];
+
+		//sweet.setHitSound(assetManager.sounds["8BitHit"]);
+		//sweet.setBlockSound(assetManager.sounds["8BitHit"]);
+
+		return new this(player, circles, prop).setClashPriority(false).setStartupF(7).setActiveF(2).setEndF(20).setRotateable();
+	}
+
+	static startAttack(player, attack, bufferInfo) {
+		player.startMomentumMultiply(0);
+		player.startMomentumMultiplyDash(0.5);
+	}
+
+	draw(g) {
+		if (this.getStartupF() <= 0 && this.getFromEndF() < 6) {
+			g.push();
+			g.translate(this.x, this.y);
+			g.rotate(this.dir.value);
+
+			this.sheet.draw(g, 70, -10.5, 90, 21);
+
+			g.pop();
+		}
+
+		if (this.currentlyActive()) {
+			if (debug.displayHitboxes)
+				this.debugDraw(g);
+		}
+	}
+
+	logic() {
+		if (this.getStartupF() <= 0 && this.getFromEndF() < 6)
+			this.sheet.run();
+
+		this.player.auraFrames = 5;
+
+		if (this.getStartupF() > 1 && this.player.bullets > 0) {
+			this.player.dir.changeValue(PI / 6);
+		}
+		if (this.getStartupF() === 1) {
+			this.properties[0].playSound(this.world, assetManager.sounds.gunShot);
+			this.player.dx -= this.dir.getX() * 3;
+			this.player.dy -= this.dir.getY() * 3;
+			this.player.bullets--;
+		}
+		this.player.dx *= 0.94;
+		this.player.dy *= 0.94;
 	}
 }
 
@@ -1017,7 +1387,7 @@ class JanLukeNPS extends Attack {
 		player.startMomentumMultiplyDash(0);
 
 		if (player.targetPlayer) {
-			let futureFrames = constrain(dist(player.x, player.y, player.targetPlayer.x, player.targetPlayer.y) / 2, 10, 40);
+			let futureFrames = constrain(dist(player.x, player.y, player.targetPlayer.x, player.targetPlayer.y) / 2, 10, 33);
 			if (player.targetPlayer.hitStun > 0)
 				futureFrames = max(10, futureFrames - 15);
 			let vel = dist(0, 0, player.targetPlayer.dx, player.targetPlayer.dy);
@@ -1045,6 +1415,8 @@ class JanLukeNPS extends Attack {
 	}
 
 	logic() {
+		this.player.auraFrames = 5;
+
 		if (this.getStartupF() <= 0 && (!this.hitPlayerBool || this.getEndF() > 4))
 			this.sheet.run();
 
@@ -1084,7 +1456,7 @@ class JanLukeNPS extends Attack {
 				let sweet1 = new PriorityCircle(50, 0, 100, 0);
 				let circles = [sweet1];
 
-				let sweet = new AttackProperties().setDamage(this.combo ? 45 : 65, 30).setProration(-1).setCancelOptions(cancelOptions).setAngleValue(this.player.dir.value).setLaunch(this.combo ? 0.5 : 5, this.combo ? 0.5 : 5).setHitStun(this.combo ? 32 : 26).setStunFrames(15);
+				let sweet = new AttackProperties().setDamage(this.player.getDamageMult() * (this.combo ? 45 : 65), 30).setProration(-1).setCancelOptions(cancelOptions).setAngleValue(this.player.dir.value).setLaunch(this.combo ? 0.5 : 5, this.combo ? 0.5 : 6).setHitStun(this.combo ? 32 : 28).setStunFrames(15);
 				let prop = [sweet];
 
 				//sweet.setHitSound(assetManager.sounds.fanTP);
@@ -1118,6 +1490,90 @@ class JanLukeNPS extends Attack {
 	}
 }
 
+class JanLukeSPS extends Attack {
+	constructor(player, circles = [], props = []) {
+		super(player, circles, props);
+		this.name = "SPS";
+
+		this.second = false;
+
+		this.sheet = Spritesheet.copy(assetManager.spritesheets.gunEffectLili);
+	}
+
+	static createAttack(player) {
+		let cancelOptions = [];
+
+		let sweet1 = new PriorityCircle(30, 0, 25, 0).setVelocity(0.1, 0);
+		let sweet2 = new PriorityCircle(60, 0, 25, 0).setVelocity(0.1, 0);
+		let sweet3 = new PriorityCircle(90, 0, 25, 0).setVelocity(0.1, 0);
+		let sweet4 = new PriorityCircle(120, 0, 25, 0).setVelocity(0.1, 0);
+		let sweet5 = new PriorityCircle(150, 0, 25, 0).setVelocity(0.1, 0);
+		let sweet6 = new PriorityCircle(180, 0, 25, 0).setVelocity(0.1, 0);
+		let sweet7 = new PriorityCircle(210, 0, 25, 0).setVelocity(0.1, 0);
+		let sweet8 = new PriorityCircle(240, 0, 25, 0).setVelocity(0.1, 0);
+		let sweet9 = new PriorityCircle(270, 0, 25, 0).setVelocity(0.1, 0);
+		let sweet10 = new PriorityCircle(300, 0, 25, 0).setVelocity(0.1, 0);
+		let circles = [sweet1, sweet2, sweet3, sweet4, sweet5, sweet6, sweet7, sweet8, sweet9, sweet10];
+
+		let sweet = new AttackProperties().setDamage(player.getDamageMult() * 45).setProration(0.9).setCancelOptions(cancelOptions).setAngleValue(player.dir.value).setLaunch(4, 0.1, 2).setHitStun(28, 12).setStunFrames(5);
+		let prop = [sweet];
+
+		//sweet.setHitSound(assetManager.sounds["8BitHit"]);
+		//sweet.setBlockSound(assetManager.sounds["8BitHit"]);
+
+		return new this(player, circles, prop).setClashPriority(false).setStartupF(17).setActiveF(2).setEndF(19).setRotateable();
+	}
+
+	static startAttack(player, attack, bufferInfo) {
+		player.startMomentumMultiply(0);
+		player.startMomentumMultiplyDash(0.5);
+	}
+
+	draw(g) {
+		if (this.getStartupF() <= 0 && this.getFromEndF() < 6) {
+			g.push();
+			g.translate(this.x, this.y);
+			g.rotate(this.dir.value);
+
+			this.sheet.draw(g, 70, -20, 250, 40);
+
+			g.pop();
+		}
+
+		if (this.currentlyActive()) {
+			if (debug.displayHitboxes)
+				this.debugDraw(g);
+		}
+	}
+
+	logic() {
+		if (this.getStartupF() <= 0 && this.getFromEndF() < 6)
+			this.sheet.run();
+
+		this.player.auraFrames = 5;
+
+		if (this.getStartupF() > 0) {
+			this.player.turnSpeedModifier = 0.06;
+		}
+
+		if (this.getStartupF() === 1) {
+			this.properties[0].playSound(this.world, assetManager.sounds.gunShot, 2);
+			this.player.dx -= this.dir.getX() * 5;
+			this.player.dy -= this.dir.getY() * 5;
+			this.player.bullets--;
+		}
+
+		if (this.getFromEndF() === 8 && !this.second) {
+			this.setStartupF(2);
+			this.setActiveF(2);
+			this.player.actionLag = this.duration;
+			this.second = true;
+			this.resetHits();
+			this.sheet.setAnimation("Main");
+		}
+	}
+}
+
 class JanLukeRPS extends Attack {
 	constructor(player, circles = [], props = []) {
 		super(player, circles, props);
@@ -1130,7 +1586,7 @@ class JanLukeRPS extends Attack {
 		this.wait = 6;
 		this.activationDuration = 2;
 		this.explosionDiameter = 140;
-		this.detectionRadius = 50;
+		this.detectionRadius = 60;
 
 		this.sheet = Spritesheet.copy(assetManager.spritesheets.sikePakala);
 	}
@@ -1141,7 +1597,7 @@ class JanLukeRPS extends Attack {
 		let sweet1 = new PriorityCircle(50, 0, 0, 0);
 		let circles = [sweet1];
 
-		let sweet = new AttackProperties().setDamage(15).setProration(0.5).setCancelOptions(cancelOptions).setAngleValue(player.dir.value).setLaunch(2).setHitStun(21, 20).setStunFrames(5).setAngleTypes("direct", "direct");
+		let sweet = new AttackProperties().setDamage(25).setProration(0.5).setCancelOptions(cancelOptions).setAngleValue(player.dir.value).setLaunch(2).setHitStun(21, 20).setStunFrames(5).setAngleTypes("direct", "direct");
 		let prop = [sweet];
 
 		return new this(player, circles, prop).setClashPriority(6).setStartupF(25).setActiveF(400).setEndF(10).setProjectile().setFollow(false).setVelocity(13, 15);
@@ -1173,15 +1629,22 @@ class JanLukeRPS extends Attack {
 			this.held = false;
 		}
 
-		if (this.getFromStartupF() === 6 && this.held) {
-			this.wait = 10;
-			this.activationDuration = 6;
-			this.explosionDiameter = 190;
-			this.detectionRadius = 80;
-			this.dx /= 4;
-			this.dy /= 4;
-			this.setEndF(20);
-			this.player.actionLag = this.getEndF() + this.getStartupF();
+		if (this.getStartupF() === 19) {
+			if (this.held) {
+				this.wait = 10;
+				this.activationDuration = 6;
+				this.explosionDiameter = 190;
+				this.detectionRadius = 80;
+				this.dx /= 4;
+				this.dy /= 4;
+				this.setEndF(20);
+				this.player.actionLag = this.getEndF() + this.getStartupF();
+			} else {
+				this.dx *= 0.7;
+				this.dy *= 0.7;
+				this.dx += this.dir.getX() * 8;
+				this.dy += this.dir.getY() * 8;
+			}
 		}
 		if (this.getStartupF() === 1) {
 			this.dx = 0;
@@ -1236,7 +1699,7 @@ class JanLukeLPS extends Attack {
 		this.wait = 6;
 		this.activationDuration = 2;
 		this.explosionDiameter = 140;
-		this.detectionRadius = 50;
+		this.detectionRadius = 60;
 
 		this.sheet = Spritesheet.copy(assetManager.spritesheets.sikePakala);
 	}
@@ -1247,7 +1710,7 @@ class JanLukeLPS extends Attack {
 		let sweet1 = new PriorityCircle(50, 0, 0, 0);
 		let circles = [sweet1];
 
-		let sweet = new AttackProperties().setDamage(15).setProration(0.5).setCancelOptions(cancelOptions).setAngleValue(player.dir.value).setLaunch(2).setHitStun(21, 20).setStunFrames(5).setAngleTypes("direct", "direct");
+		let sweet = new AttackProperties().setDamage(25).setProration(0.5).setCancelOptions(cancelOptions).setAngleValue(player.dir.value).setLaunch(2).setHitStun(21, 20).setStunFrames(5).setAngleTypes("direct", "direct");
 		let prop = [sweet];
 
 		return new this(player, circles, prop).setClashPriority(6).setStartupF(25).setActiveF(400).setEndF(10).setProjectile().setFollow(false).setVelocity(13, -15);
@@ -1279,15 +1742,22 @@ class JanLukeLPS extends Attack {
 			this.held = false;
 		}
 
-		if (this.getFromStartupF() === 6 && this.held) {
-			this.wait = 10;
-			this.activationDuration = 6;
-			this.explosionDiameter = 190;
-			this.detectionRadius = 80;
-			this.dx /= 4;
-			this.dy /= 4;
-			this.setEndF(20);
-			this.player.actionLag = this.getEndF() + this.getStartupF();
+		if (this.getStartupF() === 19) {
+			if (this.held) {
+				this.wait = 10;
+				this.activationDuration = 6;
+				this.explosionDiameter = 190;
+				this.detectionRadius = 80;
+				this.dx /= 4;
+				this.dy /= 4;
+				this.setEndF(20);
+				this.player.actionLag = this.getEndF() + this.getStartupF();
+			} else {
+				this.dx *= 0.7;
+				this.dy *= 0.7;
+				this.dx += this.dir.getX() * 8;
+				this.dy += this.dir.getY() * 8;
+			}
 		}
 		if (this.getStartupF() === 1) {
 			this.dx = 0;
@@ -1340,17 +1810,19 @@ class JanLukeMPS extends Attack {
 		let cancelOptions = [];
 		let hitCancelOptions = ["NN", "dash"];
 
-		let sour1 = new PriorityCircle(40, 40, 70, 0).setVelocity(0.1, -0.05);
-		let sour2 = new PriorityCircle(-40, 40, 70, 0).setVelocity(0.1, -0.05);
-		let sweet1 = new PriorityCircle(40, -40, 80, 1).setVelocity(0.1, 0.05);
-		let sweet2 = new PriorityCircle(-40, -40, 80, 1).setVelocity(0.1, 0.05);
-		let circles = [sour1, sour2, sweet1, sweet2];
+		let sour1 = new PriorityCircle(50, 45, 70, 0).setVelocity(-0.1, -0.05);
+		let sour2 = new PriorityCircle(5, 43, 70, 0).setVelocity(-0.1, -0.05);
+		let sour3 = new PriorityCircle(-40, 40, 70, 0).setVelocity(-0.1, -0.05);
+		let sweet1 = new PriorityCircle(50, -55, 80, 1).setVelocity(0.1, 0.05);
+		let sweet2 = new PriorityCircle(5, -52, 80, 1).setVelocity(0.1, 0.05);
+		let sweet3 = new PriorityCircle(-40, -45, 80, 1).setVelocity(0.1, 0.05);
+		let circles = [sour1, sour2, sour3, sweet1, sweet2, sweet3];
 
-		let sour = new AttackProperties().setDamage(30).setCancelOptions(cancelOptions, hitCancelOptions).setAngleValue(player.dir.value).setLaunch(10, 3, -0.1).setHitStun(27, 7).setStunFrames(15).setCancelWait(3);
-		let sweet = new AttackProperties().setDamage(30).setCancelOptions(cancelOptions, hitCancelOptions).setAngleValue(player.dir.value + PI).setLaunch(14, -3, 0.1).setHitStun(30, 7).setStunFrames(15);
+		let sour = new AttackProperties().setDamage(30).setCancelOptions(cancelOptions, hitCancelOptions).setAngleValue(player.dir.value + PI).setLaunch(10, 3, -0.1).setHitStun(27, 7).setStunFrames(15).setCancelWait(3);
+		let sweet = new AttackProperties().setDamage(30).setCancelOptions(cancelOptions, hitCancelOptions).setAngleValue(player.dir.value).setLaunch(14, -3, 0.1).setHitStun(30, 7).setStunFrames(15);
 		let prop = [sour, sweet];
 
-		return new this(player, circles, prop).setClashPriority(0).setStartupF(17).setActiveF(6).setEndF(30);
+		return new this(player, circles, prop).setClashPriority(0).setStartupF(14).setActiveF(6).setEndF(15);
 	}
 
 	static startAttack(player, attack, bufferInfo) {
@@ -1392,7 +1864,7 @@ class JanLukeNN extends Attack {
 			circles.push(new PriorityCircle(x, 0, 30, 0).setVelocity(1, 0));
 		}
 
-		let sweet = new AttackProperties().setDamage(125).setProration(1).setCancelOptions(cancelOptions).setAngleValue(player.dir.value).setLaunch(8, 0).setHitStun(40).setStunFrames(15).setBlockBreak();
+		let sweet = new AttackProperties().setDamage(player.getDamageMult() * 125).setProration(1).setCancelOptions(cancelOptions).setAngleValue(player.dir.value).setLaunch(8, 0).setHitStun(40).setStunFrames(15).setBlockBreak();
 		let prop = [sweet];
 
 		sweet.setHitSound(undefined);
@@ -1423,6 +1895,7 @@ class JanLukeNN extends Attack {
 	}
 
 	logic() {
+		this.player.auraFrames = 5;
 		if (this.getStartupF() === 1) {
 			this.player.bullets--;
 		}
@@ -1485,6 +1958,8 @@ class JanLukeSN extends Attack {
 
 		let sour = new AttackProperties().setDamage(35).setGrab(50).setCancelOptions(cancelOptions).setAngleValue(player.dir.value).setLaunch(8, 0.1).setHitStun(31).setStunFrames(4).setWallPushback(300);
 		let prop = [sour];
+
+		sour.setHitSound(assetManager.sounds.gunShot);
 
 		return new this(player, circles, prop).setClashPriority(6).setStartupF(6).setActiveF(6).setEndF(22).setRotateable();
 	}
@@ -1551,12 +2026,63 @@ class JanLukeRN extends Attack {
 	}
 }
 
+class JanLukeLN extends Attack {
+	constructor(player, circles = [], props = []) {
+		super(player, circles, props);
+		this.name = "LN";
+
+		this.held = true;
+	}
+
+	static createAttack(player) {
+		let circles = [];
+
+		let prop = [];
+
+		return new this(player, circles, prop).setStartupF(35);
+	}
+
+	static startAttack(player, attack, bufferInfo) {
+		player.dx = 0;
+		player.dy = 0;
+	}
+
+	draw(g) { }
+
+	applyModifiers() {
+		this.player.counterHittable = true;
+	}
+
+	logic() {
+		this.player.auraFrames = 5;
+		this.player.dx *= 0.5;
+		this.player.dy *= 0.5;
+		if (!this.player.controls.pressed("nasa"))
+			this.held = false;
+		if (this.getStartupF() === 26) {
+			this.player.sheet.setAnimation("LNS");
+		}
+		if (this.getStartupF() === 11) {
+			this.player.sheet.setAnimation("LNF");
+		}
+		if (this.getStartupF() < 26 && this.getStartupF() > 5) {
+			if (this.player.getInfluence() <= 0)
+				this.world.sikeWawa.addMeterAll(0, 0.08, this.player);
+			this.world.sikeWawa.addMeterAll(0.05, 0, this.player);
+		}
+		if (this.held && this.getStartupF() === 20) {
+			this.player.actionLag++;
+			this.setStartupF(this.getStartupF() + 1);
+		}
+	}
+}
+
 class JanLukeMN extends Attack {
 	constructor(player, circles = [], props = []) {
 		super(player, circles, props);
 		this.name = "MN";
 
-		this.cancelledFrame = 10;
+		this.cancelledFrame = 6;
 	}
 
 	static createAttack(player) {

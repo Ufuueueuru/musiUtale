@@ -7,11 +7,13 @@ let debug = {
     displayFrameRate: false,
     displayRollbackFrames: true,//Should always be true
     displayNetplayPauses: false,
+    displayLostFrames: true,
     displayWalls: false,
     displayBlocking: false,
 
     negateDraw: false,
     throttleRun: 1,//This is the number of times per frame that the game tries to simulate while not drawing
+    skipWinScreen: false,
 
     //Framerate Control
     frameRates: [],

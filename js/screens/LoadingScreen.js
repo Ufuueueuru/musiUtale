@@ -23,11 +23,12 @@
     run() {
         frameRate(6);
         if (assetManager.getDisplayPercent() >= 100 && saveFile || debug.loadingBackDoor) {
+            transText = assetManager.jsons.text;
             assetManager.runLoadFuncs();
             if (debug.hitboxEditScreen) {
                 currentScreen = new HitboxEditScreen();
             } else {
-                currentScreen = new MenuDebugScreen();
+                currentScreen = new LanguageSelectScreen();
             }
             frameRate(60);
         }

@@ -889,7 +889,7 @@
 		];
 
 		this.headNoun = "󱤑";//jan
-		this.name = "󱤑󱥍󱦗󿨰";//jan pi toki ike
+		this.name = currentLanguage === "tp" ? "󱤑󱥍󱦗󿨰" : "jan pi toki ike";//jan pi toki ike
 
 		this.collideRadius = 42;
 
@@ -1328,8 +1328,8 @@ class JanTIDashAttack extends Attack {
 		let sweet1 = new PriorityCircle(0, 0, 140, 1).setVelocity(0.1, 0);
 		let circles = [sour1, sweet1];
 
-		let sour = new AttackProperties().setDamage(40, 20, 5).setProration(3.5).setCancelOptions(cancelOptions, hitCancelOptions).setAngleValue(player.dir.value).setLaunch(12, 9).setHitStun(20, 19).setStunFrames(13, 25).setWallPushback(5, 1).setWallLaunchMod(3);
-		let sweet = new AttackProperties().setDamage(45, 20, 5).setProration(3.5).setCancelOptions(cancelOptions, hitCancelOptions).setAngleValue(player.dir.value).setLaunch(6, 8).setHitStun(21, 19).setStunFrames(15, 25).setWallPushback(5, 1.6).setWallLaunchMod(10);
+		let sour = new AttackProperties().setDamage(40, 20, 5).setProration(3.5).setCancelOptions(cancelOptions, hitCancelOptions).setAngleValue(player.dir.value).setLaunch(12, 9).setHitStun(20, 10).setStunFrames(13, 25).setWallPushback(5, 1).setWallLaunchMod(3);
+		let sweet = new AttackProperties().setDamage(45, 20, 5).setProration(3.5).setCancelOptions(cancelOptions, hitCancelOptions).setAngleValue(player.dir.value).setLaunch(6, 8).setHitStun(21, 10).setStunFrames(15, 25).setWallPushback(5, 1.6).setWallLaunchMod(10);
 		let prop = [sour, sweet];
 
 		return new this(player, circles, prop).setClashPriority(2).setStartupF(16).setActiveF(6).setEndF(20);

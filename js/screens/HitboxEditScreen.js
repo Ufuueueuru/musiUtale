@@ -225,6 +225,10 @@ class HitboxEditScreen extends Screen {
             if (e.code === "KeyQ") {
                 this.players[this.currentPlayerID].controls.joysticks[0].x = 0;
                 this.players[this.currentPlayerID].controls.joysticks[0].y = 0;
+                for (let i in this.players[this.currentPlayerID].controls.buttons) {
+                    this.players[this.currentPlayerID].controls.buttons[i].pressed = false;
+                    this.players[this.currentPlayerID].controls.buttons[i].heldFrames = 0;
+                }
             }
             if (e.code === "KeyD") {
                 this.players[this.currentPlayerID].controls.joysticks[0].x = 1;
@@ -244,22 +248,33 @@ class HitboxEditScreen extends Screen {
             }
             if (e.code === "KeyR") {
                 this.players[this.currentPlayerID].controls.buttons.lili.clickedInGame = 2;
+                this.players[this.currentPlayerID].controls.buttons.lili.pressed = true;
+                this.players[this.currentPlayerID].controls.buttons.lili.heldFrames = 1;
             }
             if (e.code === "KeyF") {
                 this.players[this.currentPlayerID].controls.buttons.suli.clickedInGame = 2;
+                this.players[this.currentPlayerID].controls.buttons.suli.pressed = true;
+                this.players[this.currentPlayerID].controls.buttons.suli.heldFrames = 1;
             }
             if (e.code === "KeyT") {
                 this.players[this.currentPlayerID].controls.buttons.pokaLili.clickedInGame = 2;
+                this.players[this.currentPlayerID].controls.buttons.pokaLili.pressed = true;
+                this.players[this.currentPlayerID].controls.buttons.pokaLili.heldFrames = 1;
             }
             if (e.code === "KeyG") {
                 this.players[this.currentPlayerID].controls.buttons.pokaSuli.clickedInGame = 2;
+                this.players[this.currentPlayerID].controls.buttons.pokaSuli.pressed = true;
+                this.players[this.currentPlayerID].controls.buttons.pokaSuli.heldFrames = 1;
             }
             if (e.code === "KeyY") {
                 this.players[this.currentPlayerID].controls.buttons.dash.clickedInGame = 2;
                 this.players[this.currentPlayerID].controls.buttons.dash.pressed = true;
+                this.players[this.currentPlayerID].controls.buttons.dash.heldFrames = 1;
             }
             if (e.code === "KeyH") {
                 this.players[this.currentPlayerID].controls.buttons.nasa.clickedInGame = 2;
+                this.players[this.currentPlayerID].controls.buttons.nasa.pressed = true;
+                this.players[this.currentPlayerID].controls.buttons.nasa.heldFrames = 1;
             }
             if (e.code === "KeyJ") {
                 this.players[this.currentPlayerID].controls.buttons.powerDash.clickedInGame = 2;

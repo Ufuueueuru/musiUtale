@@ -35,16 +35,32 @@ class TrainingComputer extends Controls {
             isReversal: true,
             action: "MPS",
             fromBlock: true,//Should the dummy mash out of block?
-            fromHit: true,//Should the dummy mash out of hit?
+            fromHit: false,//Should the dummy mash out of hit?
             isThreshold: false,//Should the dummy take frame advantage in account on whether to mash or not?
-            advantageMode: "oobCancel",//Either "standard", "cancel", "oob", "oobCancel"
-            frameAdvantageThreshold: 3
+            advantageMode: "oob",//Either "standard", "cancel", "oob", "oobCancel"
+            frameAdvantageThreshold: 4
         };
 
-        this.trainingSettings.mash = {
-            isMashing: false,
-            action: "NL"
-        };
+        this.trainingSettings.mash = [
+            {
+                names: ["grabbed"],
+                isMashing: true,
+                wait: 0,
+                count: 6,
+                hold: 1,
+                offset: 2,
+                actions: ["SN", "SN", "SN", "SN", "SN", "MN", "M", "M", "M", "M", "M"]
+            },
+            {
+                names: ["MN"],
+                isMashing: true,
+                wait: 0,
+                count: 0,
+                hold: 1,
+                offset: 0,
+                actions: ["dash attack"]
+            }
+        ];
     }
 
     logic() {
@@ -62,8 +78,22 @@ class TrainingComputer extends Controls {
         }
 
         //Mashing
-        if (this.trainingSettings.mash.isMashing)
-            this.clickAction(this.trainingSettings.mash.action);
+        for (let i in this.trainingSettings.mash) {
+            let mash = this.trainingSettings.mash[i];
+            if (mash.isMashing && (mash.names.includes(this.player.currentState.name) || ((mash.count + mash.offset) % (mash.wait + mash.hold) <= mash.hold && (mash.count + mash.offset) % (mash.wait + mash.hold) > 0))) {
+                mash.count++;
+                if ((mash.count + mash.offset) % (mash.wait + mash.hold) <= mash.hold) {
+                    let chosenAction = mash.actions[floor(random(0, mash.actions.length))];
+                    if ((mash.count + mash.offset) % (mash.wait + mash.hold) === 0) {
+                        this.clickAction(chosenAction);
+                    } else {
+                        this.pressAction(chosenAction);
+                    }
+                }
+            } else {
+                mash.count = mash.hold;
+            }
+        }
 
         //Blocking attacks
         for (let i in this.world.attacks) {
@@ -131,6 +161,11 @@ class TrainingComputer extends Controls {
                 this.pressButton("nasa");
                 break;
         }
+        if (actionName === "dash attack") {
+            this.pressButton("dash");
+            this.pressButton("lili");
+            return;
+        }
         this.pressButton(actionName);//If the cancel option is a general button rather than a specific attack
     }
 
@@ -169,6 +204,11 @@ class TrainingComputer extends Controls {
                 this.clickButton("nasa");
                 break;
         }
+        if (actionName === "dash attack") {
+            this.clickButton("dash");
+            this.clickButton("lili");
+            return;
+        }
         this.clickButton(actionName);//If the cancel option is a general button rather than a specific attack
     }
 
@@ -189,11 +229,11 @@ class TrainingComputer extends Controls {
 
     pressButton(i) {
         if (this.buttons[i]) {
-            if (!this.buttons[i].pressed) {
+            /*if (!this.buttons[i].pressed) {
                 this.buttons[i].clicked = true;
                 if (this.buttons[i].clickedInGame !== 1)
                     this.buttons[i].clickedInGame = 2;
-            }
+            }*/
             this.buttons[i].pressed = true;
             this.buttons[i].heldFrames++;
         }

@@ -59,6 +59,9 @@ class VSNetplayScreen extends Screen {
         this.farPast = [];//This will look 4 times farther back than this.past for use in resolving packet loss
         this.farPastMultiply = 4;//4
 
+        this.timeStamps = [];//Timestamps used to calculate ping values
+        this.pings = [0];//A list of the past ping amounts
+
         /** @type {Object[]} An array of serialized Controls objects received by the other player */
         this.dataQueue = dataQueue;
         //this.currentData = 0;
@@ -167,14 +170,27 @@ class VSNetplayScreen extends Screen {
                 this.distressWait = 1;
             }
         }*/
-        if (receivedData?.timeStamp && this.farPast.length > 0) {
+        if (receivedData?.rollback && this.farPast.length > 0) {
             let frame = receivedData.frameCount - this.farPast[0].gameState.frameCount;
-            if (this.farPast[frame]?.timeStamp - receivedData.timeStamp > 40) {
-                lostFrames++;
+            if (this.farPast[frame]) {
+                if (receivedData.rollback - this.totalAverageRollback/this.averageRollbackFrames.length > 1) {
+                    lostFrames += (receivedData.rollback - this.totalAverageRollback / this.averageRollbackFrames.length - 1) / 60;
+                    if (debug.displayLostFrames)
+                        print((receivedData.rollback - this.totalAverageRollback / this.averageRollbackFrames.length - 1) / 60);
+                }
             }
         }
         while (receivedData && (receivedData.frameCount !== this.world.frameCount || this.paused)) {
             //print("r: " + receivedData.frameCount + "m: " + this.frameCount);
+            for (let i = this.timeStamps.length - 1; i >= 0; i--) {
+                if (this.timeStamps[i].frameCount === receivedData.frameCount) {
+                    this.pings.push(Date.now() - this.timeStamps[i].time);
+                    if (this.pings.length > 5)
+                        this.pings.splice(0, 1);
+                    this.timeStamps.splice(i, 1);
+                    break;
+                }
+            }
             if (receivedData.frameCount < this.world.frameCount) {
                 //rolledBack = true;
                 let rollback = this.rollbackTo(receivedData);
@@ -245,6 +261,7 @@ class VSNetplayScreen extends Screen {
                 if (!this.past[i].dataReceived) {
                     this.connection.send({ needFrame: this.past[i].gameState.frameCount });
                     this.distressWait = this.maxDistressWait;
+                    this.timeStamps.push({ time: Date.now(), frameCount: this.past[i].gameState.frameCount });
                     if (debug.displayNetplayPauses)
                         print("Waiting for frame " + this.past[i].gameState.frameCount + "...");
                     break;
@@ -305,18 +322,23 @@ class VSNetplayScreen extends Screen {
     }
 
     getExports() {
+        let want = (frameCount % 12 === 0);
+        if (want)
+            this.timeStamps.push({ time: Date.now(), frameCount: this.world.frameCount });
         return {
             frameCount: this.world.frameCount,
             inputs: defaultSerialize(this.myPlayer.controls),
-            timeStamp: Date.now()
-        }
+            rollback: this.totalAverageRollback / this.averageRollbackFrames.length,
+            wantResponse: want
+        };
     }
 
     getExportsFrame(id, wasNeedFrame = true) {
         let inputs = (this.myPlayer === this.world.players[0]) ? this.farPast[id].player1Inputs : this.farPast[id].player2Inputs;
         return {
             frameCount: this.farPast[id].gameState.frameCount,
-            inputs: inputs
+            inputs: inputs,
+            rollback: this.farPast[id].rollback
         };
     }
 
@@ -389,12 +411,18 @@ class VSNetplayScreen extends Screen {
             });
             this.totalAverageRollback = sum;
 
+            sum = 0;//sum becomes the average ping
+            this.pings.forEach((a) => {
+                sum += a;
+            });
+            
             g.fill(255, 0, 0, 170);
             g.noStroke();
             g.textSize(20);
             g.textAlign(CENTER, CENTER);
             g.textFont(assetManager.fonts.asuki);
-            g.text("󱥫󱥜: " + (round(sum / this.averageRollbackFrames.length * 10) / 10), width / 2 - 30, 10);//tenpo sike
+            g.text("󱥫󱥜: " + (round(this.totalAverageRollback / this.averageRollbackFrames.length * 10) / 10).toFixed(1), width / 2 - 70, 10);//tenpo sike
+            g.text(round(sum / this.pings.length) + "ms", width / 2, 10);//ping
         }
     }
 
@@ -407,7 +435,7 @@ class VSNetplayScreen extends Screen {
             player1Inputs: defaultSerialize(this.world.players[0].controls),
             player2Inputs: defaultSerialize(this.world.players[1].controls),
             dataReceived,
-            timeStamp: Date.now()
+            rollback: this.totalAverageRollback / this.averageRollbackFrames.length
         };
         this.past.push(pastData);
         this.farPast.push(pastData);

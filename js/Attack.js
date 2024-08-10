@@ -107,7 +107,7 @@ class Attack extends Hitcircle {
 
 	/** @override */
 	end() {
-
+		this.cleanup();
 	}
 
 	/**
@@ -148,12 +148,14 @@ class Attack extends Hitcircle {
 				p.sheet.setAnimation("Grabbed");
 				this.player.sheet.setAnimation("Grab");
 
+				this.player.playSound(assetManager.sounds.grab);
+
 				//this.world.sikeWawa.addMeterAll(1, -0.5, this.player);
 				if (this.world.sikeWawa.sliceOwnerIs(p)) {
 					this.world.sikeWawa.addMeter(-4, -1, p);
 				}
 
-				dealtDamage = p.damageHealth(property.grabInitialDamage, p.combo * 4 + p.comboProration * 4, false, property.scaling);
+				dealtDamage = p.damageHealth(property.grabInitialDamage, p.combo * 4 + p.comboProration * 4, property.noKill, property.scaling);
 
 				let angle = new Angle().setFromPoint(this.player.x - p.x, this.player.y - p.y);
 				let distance = dist(this.player.x, this.player.y, p.x, p.y);
@@ -256,8 +258,8 @@ class Attack extends Hitcircle {
 				}
 
 				p.lipuHeavy = property.launch >= 8;
-
-				if ((p.controls.joystickPressed(0) && !(angleDif < effectiveLeniency)) || (!p.controls.joystickPressed(0) && (!(standingAngleDif < standLeniency) || debug.noNeutralBlock)) || !p.canChangeState(State.BLOCK) || property.blockBreak) {//Standard hit
+				
+				if ((p.controls.joystickPressed(0) && !(angleDif < effectiveLeniency)) || (!p.controls.joystickPressed(0) && (!(standingAngleDif < standLeniency) || debug.noNeutralBlock)) || !p.canChangeState(p.states.BLOCK) || property.blockBreak) {//Standard hit
 					p.iFrames = 0;
 
 					if (!property.commandGrab)
@@ -276,9 +278,9 @@ class Attack extends Hitcircle {
 
 					if (p.currentState.name !== "hitstun") {
 						if (this.world.sikeWawa.sliceOwnerIs(this.player)) {
-							this.world.sikeWawa.addMeter(4, 1.6, this.player);
+							this.world.sikeWawa.addMeter(7, 2.8, this.player);
 						} else {
-							this.world.sikeWawa.addMeter(5, 2, this.player);
+							this.world.sikeWawa.addMeter(4, 1.6, this.player);
 						}
 					}
 
@@ -302,11 +304,13 @@ class Attack extends Hitcircle {
 
 					//p.health -= property.damage;//Old way of damaging health
 					let staledDamage = property.damage * (this.player.stalePenalty ** this.player.moveStaling.getStaling(this.name));
-					dealtDamage = p.damageHealth(staledDamage, p.combo + p.comboProration, false, property.scaling);
+					dealtDamage = p.damageHealth(staledDamage, p.combo + p.comboProration, property.noKill, property.scaling);
 
 					p.nanpaLipu += property.nanpaLipu;
 					p.nanpaLipu = constrain(p.nanpaLipu, 0, 105);
 
+					if (p.combo === 0)
+						p.comboProration += property.starterProration;
 					if (property.comboCounter)
 						p.combo++;
 					p.comboProration += property.proration;
@@ -356,6 +360,12 @@ class Attack extends Hitcircle {
 
 					p.dx *= property.launchDampening;
 					p.dy *= property.launchDampening;
+					let preDampSpeed = p.dx * p.dx + p.dy * p.dy;
+					let multiple = property.launchDampeningMaxSpeed * property.launchDampeningMaxSpeed / preDampSpeed;
+					if (abs(multiple) < 1) {
+						p.dx *= multiple;
+						p.dy *= multiple;
+					}
 					p.dx += (launchIncludeMulti + wallLaunchMod) * property.angle.getX() / sqrt(p.weight) / further * counterVel;
 					p.dy += (launchIncludeMulti + wallLaunchMod) * property.angle.getY() / sqrt(p.weight) / further * counterVel;
 
@@ -410,7 +420,7 @@ class Attack extends Hitcircle {
 						if (this.world.sikeWawa.sliceOwnerIs(p)) {
 							this.world.sikeWawa.addMeter(1.5, 0.6, p);
 							if (!p.controls.joystickPressed(0))
-								this.world.sikeWawa.addMeter(1.0, 0.9, p);
+								this.world.sikeWawa.addMeter(4.0, 3.6, p);
 						}/* else {
 							this.world.sikeWawa.addMeter(1.2, 0.48, p);
 						}*/
@@ -483,7 +493,7 @@ class Attack extends Hitcircle {
 
 						p.dx /= 1.5;
 						p.dy /= 1.5;
-						p.stunFrames += 18;
+						p.stunFrames += 23 - p.parryFrameBuff;
 
 						//Add a fancy particle effect here
 						this.player.world.ps.createParticle("hitParryEffect", p, px, py, 250, 250, attackAngle, true);
@@ -788,6 +798,11 @@ class Attack extends Hitcircle {
 			this._hitPlayerCounts[i]--;
 		}
 	}
+	resetHits() {
+		this._hitPlayers = [];
+		this._hitPlayerCounts = [];
+		this.hitPlayerBool = false;
+	}
 
 	/**
 	 * @Override
@@ -909,6 +924,8 @@ class Attack extends Hitcircle {
 				this.circles[i].y *= -1;
 				this.circles[i].dy *= -1;
 				this.circles[i].dr *= -1;
+				this.circles[i].subdy *= -1;
+				this.circles[i].subdr *= -1;
 			}
 			for (let i in this.properties) {
 				this.properties[i].angle.value = 2 * this.player.dir.value - this.properties[i].angle.value;
@@ -1100,8 +1117,13 @@ class AttackProperties {
 		this.scaling = 4;
 		/** @type {number} */
 		this.proration = 0;
+		/** @type {number} Makes a move better or worse when starting a combo */
+		this.starterProration = 0;
 		/** @type {boolean} If the combo counter should go up or down */
 		this.comboCounter = true;
+
+		/** @type {boolean} If true, the attack cannot kill */
+		this.noKill = false;
 
 		/** @type {number} A percentage of damage done when the move is blocked */
 		this.chip = 0;
@@ -1116,6 +1138,8 @@ class AttackProperties {
 		this.launch = 0;
 		/** @type {number} Multiplies the momentum of the target player before adding the launch */
 		this.launchDampening = 1;
+		/** @type {number} The speed cap at which the launch dampening multiplier with never exceed */
+		this.launchDampeningMaxSpeed = 20;
 
 		/** @type {number} */
 		this.wallLaunchMod = 0;
@@ -1227,6 +1251,17 @@ class AttackProperties {
 	}
 
 	/**
+	 * Sets the attack to be incapable of killing on hit
+	 * @param {boolean} bool
+	 * @returns
+	 */
+	setNoKill(bool = true) {
+		this.noKill = bool;
+
+		return this;
+	}
+
+	/**
 	 * 
 	 * @param {boolean} bool
 	 * @returns
@@ -1238,11 +1273,12 @@ class AttackProperties {
 	}
 
 	/**
-	 * 
+	 * starterProration is added in addition to regular proration on starter hit
 	 * @param {number} proration
 	 */
-	setProration(proration) {
+	setProration(proration, starterProration=0) {
 		this.proration = proration;
+		this.starterProration = starterProration;
 
 		return this;
 	}
@@ -1360,8 +1396,15 @@ class AttackProperties {
 		return this;
 	}
 
-	setLaunchDampening(num) {
+	/**
+	 * Multiplies the opponent's velocity before knockback is applied (use this to make moves that require multiple hits to ramp up speed)
+	 * @param {number} num
+	 * @param {number} max
+	 * @returns
+	 */
+	setLaunchDampening(num, max) {
 		this.launchDampening = num;
+		this.launchDampeningMaxSpeed = max;
 
 		return this;
 	}

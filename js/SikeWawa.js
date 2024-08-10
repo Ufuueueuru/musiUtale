@@ -103,6 +103,22 @@ class SikeWawa {
         }
     }
 
+    /**
+     * A value representing how much of the sike wawa a player controls (from 0 to 100)
+     * @param {Player} player
+     * @returns
+     */
+    getTotalInfluence(player) {
+        let count = 0;
+        let signV = this.player1 === player ? 1 : -1;
+        for (let i in this.slices) {
+            if (this.slices[i].value * signV > 0)
+                count += min(this.slices[i].value * signV, 16);
+        }
+
+        return round(count * 100 / 128);
+    }
+
     sliceOwnerIs(player) {
         let signV = this.player1 === player ? 1 : -1;
 

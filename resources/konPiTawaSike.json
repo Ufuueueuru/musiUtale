@@ -1,0 +1,71 @@
+{ "frames": {
+   "konPiTawaSike 0.aseprite": {
+    "frame": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 67
+   },
+   "konPiTawaSike 1.aseprite": {
+    "frame": { "x": 512, "y": 0, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 67
+   },
+   "konPiTawaSike 2.aseprite": {
+    "frame": { "x": 0, "y": 512, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 67
+   },
+   "konPiTawaSike 3.aseprite": {
+    "frame": { "x": 512, "y": 512, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 67
+   },
+   "konPiTawaSike 4.aseprite": {
+    "frame": { "x": 0, "y": 1024, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 67
+   },
+   "konPiTawaSike 5.aseprite": {
+    "frame": { "x": 512, "y": 1024, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 67
+   }
+ },
+ "meta": {
+  "app": "https://www.aseprite.org/",
+  "version": "1.3.7-x64",
+  "image": "konPiTawaSike.png",
+  "format": "I8",
+  "size": { "w": 1024, "h": 1536 },
+  "scale": "1",
+  "frameTags": [
+   { "name": "Main", "from": 0, "to": 5, "direction": "forward", "color": "#000000ff" }
+  ],
+  "layers": [
+   { "name": "Haze", "opacity": 255, "blendMode": "normal" },
+   { "name": "Dust", "opacity": 255, "blendMode": "normal" },
+   { "name": "Bottom", "opacity": 255, "blendMode": "normal" },
+   { "name": "Top", "opacity": 255, "blendMode": "normal" },
+   { "name": "Fire", "opacity": 255, "blendMode": "normal" }
+  ],
+  "slices": [
+  ]
+ }
+}

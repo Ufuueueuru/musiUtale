@@ -25,11 +25,11 @@
 		this.buttonArray = ["lili", "suli", "pokaLili", "pokaSuli", "nasa", "dash", "select", "back", "start", "frameAdvance"];
 	}
 
-	openScreen() {
+	openScreen(buffer = 5) {
 		this.playersActive = [];
 		this.menus = [];
 		this.overrideScreen = true;
-		this.overrideBuffer = 10;
+		this.overrideBuffer = buffer;
 	}
 
 	draw(g) {
@@ -219,6 +219,7 @@
 				if (this.overrideBuffer <= 0) {
 					if (this.controls[i].held("back") > 60) {
 						this.overrideScreen = false;
+						this.controls[i].buttons.back.heldFrames = 0;
 					}
 				}
 				if (this.controls[i].clickedAbsolute("select")) {

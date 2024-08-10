@@ -1074,7 +1074,7 @@
 		];
 
 		this.headNoun = "󱦀";//kijetesantakalu
-		this.name = "󱦀󱦐󱦗󱤘󱤃󱦑";//kijetesantakalu Ka
+		this.name = currentLanguage === "tp" ? "󱦀󱦐󱦗󱤘󱤃󱦑" : "Ka";//kijetesantakalu Ka
 
 		this.selectScreenSizeOffset = 75;
 
@@ -1131,6 +1131,8 @@
 		this.dash.cancelComboDashFrame = this.dash.cancelFrames - 2;
 		this.dash.cancelAttackCancelFrame = this.dash.cancelFrames - 14;
 
+		this.powerDash.proration = 0;
+
 		this.turnSpeed = 0.035;
 
 		this.weight = 0.8;
@@ -1149,6 +1151,9 @@
 		this.noTether = 0;//How many frames the tether does not affect Ka (even though it is visible)
 		this.tetherX = 0;//Where the tether point is
 		this.tetherY = 0;//Where the tether point is
+		this.canStickTether = 0;//Can the tether stick to the opponent or not
+		this.parryTetherStickFrames = 60;//How many frames canStickTether is set to when a parry occurs
+		this.tetherStuck = false;
 
 		this.airRotValue = 0;//This is used for displaying the paper airplane attack
 
@@ -1257,9 +1262,29 @@
 
 		if (this.tethered > 0 && this.noTether <= 0) {
 			this.tethered--;
-			this.dx += constrain(this.tetherX - this.x, -40, 40) / 30;
-			this.dy += constrain(this.tetherY - this.y, -40, 40) / 30;
+			let dampening = (this.tetherStuck ? 140 : 60);
+			let radius = (!this.tetherStuck ? 10 : (this.targetPlayer ? this.targetPlayer.collideRadius : 0) + this.collideRadius);
+			if (dist(this.x, this.y, this.tetherX, this.tetherY) >= radius) {
+				this.dx += constrain(this.tetherX - this.x, -80, 80) / dampening;
+				this.dy += constrain(this.tetherY - this.y, -80, 80) / dampening;
+			}
 		}
+		if (this.targetPlayer) {
+			if (!this.tetherStuck && this.canStickTether > 0 && dist(this.tetherX, this.tetherY, this.targetPlayer.x, this.targetPlayer.y) <= this.targetPlayer.collideRadius + 20) {
+				this.tetherStuck = true;
+				this.canStickTether = 0;
+				this.targetPlayer.comboProration += 1;
+				this.world.sikeWawa.addMeter(4, 3, this.targetPlayer);
+			}
+			if (this.tetherStuck) {
+				this.tetherX = this.targetPlayer.x;
+				this.tetherY = this.targetPlayer.y;
+				if (this.targetPlayer.currentState.name === "power dash")
+					this.tetherStuck = false;
+			}
+		}
+		if (this.canStickTether > 0)
+			this.canStickTether--;
 		if (this.noTether > 0)
 			this.noTether--;
 
@@ -2087,6 +2112,8 @@ class KaSPL extends Attack {
 		super(player, circles, props);
 		this.name = "SPL";
 
+		this.fromAttack = false;
+
 		this.sheet = Spritesheet.copy(assetManager.spritesheets.iloSitelenSheet);
 	}
 
@@ -2111,7 +2138,11 @@ class KaSPL extends Attack {
 	}
 
 	static startAttack(player, attack, bufferInfo) {
-		
+		if (State.stateIsTag(player.currentState, "attack")) {
+			player.dx *= 0.5;
+			player.dy *= 0.5;
+			attack.fromAttack = true;
+		}
 	}
 
 	draw(g) {
@@ -2135,8 +2166,9 @@ class KaSPL extends Attack {
 		if (this.getFromStartupF() === 4) {
 			let angle = new Angle(this.player.dir.value + PI / 4);
 			let speed = 8;
-			if (State.stateIsTag(this.player.currentState, "attack")) {
+			if (this.fromAttack) {
 				angle.changeValue(PI / 8);
+				speed = 12;
 				this.player.dx += angle.getX() * speed;
 				this.player.dy += angle.getY() * speed;
 			} else {
@@ -2811,8 +2843,11 @@ class KaRN extends Attack {
 
 		player.tethered = 70;
 		player.noTether = 15;
+		if (player.canStickTether <= 0)
+			player.canStickTether = 15;
 		player.tetherX = player.x;
 		player.tetherY = player.y;
+		player.tetherStuck = false;
 	}
 
 	draw(g) {
@@ -2929,7 +2964,7 @@ class KaMN extends Attack {
 	applyModifiers() {
 		this.player.counterHittable = true;
 		if (this.getEndF() >= 20 && this.held) {
-			this.player.hitStunModifier = -7;
+			this.player.hitStunModifier = -10;
 			this.player.blockLeniencyFrames = 2;
 		}
 	}
@@ -2963,9 +2998,11 @@ class KaMN extends Attack {
 
 	endLife() {
 		if (this.duration > 0 && this.active && this.notUsed) {
-			this.active = this.player.currentState.name !== "hitstun" && this.player.currentState.name !== "dead";
-			if (this.active)
+			this.active = this.player.currentState.name !== "hitstun" && this.player.currentState.name !== "dead" && this.player.currentState.name !== "grabbed";
+			if (this.active) {
 				this.properties[0].playSound(this.world, assetManager.sounds.parry);
+				this.player.canStickTether = this.player.parryTetherStickFrames;
+			}
 			this.setEndF(min(this.player.hitStun, 20));
 			this.held = false;
 			this.notUsed = false;

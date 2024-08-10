@@ -118,7 +118,7 @@ class Spritesheet {
 
 		if (assetManager && loaded.amount >= loaded.total) {
 			assetManager._splitLoaded++;
-			this.image = null;
+			//this.image = null;
 		}
 	}
 

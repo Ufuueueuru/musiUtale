@@ -57,12 +57,12 @@ class MenuDebugScreen extends Screen {
     init() {
         this.menu = new Menu();
 
-        let button1 = new MenuItem(236, 66, assetManager.images.buttonPressed, assetManager.images.buttonUnpressed, CharacterSelectScreen, "󱥱", () => { playersManager.openScreen(); playersManager.resetPositions(); });
-        let button2 = new MenuItem(256, 103, assetManager.images.buttonPressed, assetManager.images.buttonUnpressed, undefined, "󱤤󱤎", () => { controlsManager.openScreen(); });
-        let buttonTraining = new MenuItem(276, 140, assetManager.images.buttonPressed, assetManager.images.buttonUnpressed, CharacterSelectScreen, "󱤖󱥵", () => { playersManager.openScreen(); playersManager.resetPositions(); currentScreen.setTraining(); });//kama wawa
-        let buttonNetplay = new MenuItem(296, 177, assetManager.images.buttonPressed, assetManager.images.buttonUnpressed, CharacterSelectScreen, "󱥱󱤬󱤝", () => { playersManager.openScreen(); playersManager.resetPositionsNetplay(); currentScreen.setNetplay(); });
+        let button1 = new MenuItem(236, 66, assetManager.images.buttonPressed, assetManager.images.buttonUnpressed, CharacterSelectScreen, gt("mainMenuFight"), () => { playersManager.openScreen(); playersManager.resetPositions(); });
+        let button2 = new MenuItem(256, 103, assetManager.images.buttonPressed, assetManager.images.buttonUnpressed, undefined, gt("mainMenuControls"), () => { controlsManager.openScreen(); });
+        let buttonTraining = new MenuItem(276, 140, assetManager.images.buttonPressed, assetManager.images.buttonUnpressed, CharacterSelectScreen, gt("mainMenuTraining"), () => { playersManager.openScreen(); playersManager.resetPositions(); currentScreen.setTraining(); });//kama wawa
+        let buttonNetplay = new MenuItem(296, 177, assetManager.images.buttonPressed, assetManager.images.buttonUnpressed, CharacterSelectScreen, gt("mainMenuOnline"), () => { playersManager.openScreen(); playersManager.resetPositionsNetplay(); currentScreen.setNetplay(); });
         let button3 = new MenuItem(316, 214, assetManager.images.buttonPressed, assetManager.images.buttonUnpressed, MenuDebugScreen, "󱥜");
-        let button4 = new MenuItem(336, 251, assetManager.images.buttonPressed, assetManager.images.buttonUnpressed, undefined, "󱥐", window.electronAPI.closeWindow);
+        let button4 = new MenuItem(336, 251, assetManager.images.buttonPressed, assetManager.images.buttonUnpressed, undefined, gt("mainMenuClose"), window.electronAPI.closeWindow);
 
         button4.addMoves(new MenuMove(button3, Angle.UP));
         button3.addMoves(new MenuMove(buttonNetplay, Angle.UP));

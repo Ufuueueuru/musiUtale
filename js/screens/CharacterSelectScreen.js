@@ -126,6 +126,10 @@ class CharacterSelectScreen extends Screen {
                     break;
                 }
             }
+            if (this.playerControls[u].clickedAbsolute("start")) {
+                controlsManager.openScreen();
+                break;
+            }
             if (this.playerControls[u] !== null && this.playerControls[u].clickedAbsolute("select")) {
                 if (!this.selected[i]) {
                     if (this.netplay) {

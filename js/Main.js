@@ -1,14 +1,20 @@
 "use strict";
 
+let webVersion = false;
+
 if (!window.electronAPI) {
+	webVersion = true;
 	window.electronAPI = {
 		toggleFullscreen: () => { },
 		closeWindow: () => { },
 		writeSave: (data) => { },
-		loadSave: () => { },
-		getSavesPath: () => { }
+		loadSave: async () => { return { "defaultKeyboardControls1": { "keys": [["dash", "KeyY"], ["powerDash", "KeyJ"], ["pokaLili", "KeyT"], ["pokaSuli", "KeyG"], ["lili", "KeyR"], ["suli", "KeyF"], ["nasa", "KeyH"], ["frameAdvance", "Space"], ["select", "KeyR"], ["back", "KeyT"], ["start", "Escape"]], "arrows": [["KeyD", "KeyW", "KeyA", "KeyS"]], "deadzones": [0.25] }, "defaultKeyboardControls2": { "keys": [["dash", "KeyO"], ["powerDash", "KeyK"], ["pokaLili", "KeyP"], ["pokaSuli", "Semicolon"], ["lili", "BracketLeft"], ["suli", "Quote"], ["nasa", "KeyL"], ["frameAdvance", "Space"], ["select", "Enter"], ["back", "KeyP"], ["start", "Escape"]], "arrows": [["ArrowRight", "ArrowUp", "ArrowLeft", "ArrowDown"]], "deadzones": [0.25] }, "defaultGamepadControls": { "keys": [["dash", 4], ["powerDash", 7], ["pokaLili", 3], ["pokaSuli", 1], ["lili", 2], ["suli", 0], ["nasa", 5], ["frameAdvance", 6], ["select", 0], ["back", 1], ["start", 9]], "arrows": [0], "deadzones": [0.35] }, "graphicsSettings": { "resolutionMult": 0.25 }, "currentLanguage": "tp", "version": "0.0.2" } },
+		getSavesPath: () => { },
+		getAppVersion: async () => "Web"
 	};
 }
+
+let appVersion = "";
 
 let hit;
 let hit2;
@@ -45,10 +51,13 @@ let playersManager;
 let errorDisplayMessage = "";
 let errorDisplayFrames = 0;
 
+let transText;
+let currentLanguage = "tp";//en or tp
+
 let dataOnFunction = (incomingData) => { };
 
 let graphicsSettings = {
-	resolutionMult: 1
+	resolutionMult: 0.25
 }
 
 function preload() {
@@ -59,6 +68,8 @@ function setup() {
 	canvas = createCanvas(windowWidth, windowHeight);//512x384
 	//g = createGraphics(512, 384);
 	g = createGraphics(windowWidth, windowHeight);
+
+	getAppVersion();
 
 	Angle.initEnums();
 
@@ -73,6 +84,8 @@ function setup() {
 	assetManager.addImage("resources/backgrounds/MenuSplash.png", "menuSplash");
 	assetManager.addImage("resources/button_unpressed.png", "buttonUnpressed");
 	assetManager.addImage("resources/button_pressed.png", "buttonPressed");
+	assetManager.addImage("resources/language_button_unpressed.png", "buttonUnpressedLanguage");
+	assetManager.addImage("resources/language_button_pressed.png", "buttonPressedLanguage");
 
 	assetManager.addImage("resources/backgrounds/PlayerSelect.png", "playerSelect");
 	assetManager.addImage("resources/keyboardIcon.png", "keyboardIcon");
@@ -117,6 +130,10 @@ function setup() {
 		volume: 0.3
 	});
 
+	assetManager.addSound("resources/sfx/grab.wav", "grab", {
+		volume: 1
+	});
+
 	assetManager.addSound("resources/sfx/explosion.wav", "explosion");
 
 	assetManager.addSound("resources/sfx/awen.wav", "awen", {
@@ -133,6 +150,8 @@ function setup() {
 	assetManager.addSound("resources/sfx/PowerDashSlow.wav", "powerDashSlow", {
 		volume: 0.8
 	});
+
+	assetManager.addJSON("resources/misc/text.json", "text");
 
 	for (let i in characters) {
 		characters[i].addAssets();
@@ -184,13 +203,17 @@ function draw() {
 	background(0);
 
 	if (currentScreen) {
-		if (frameAdvance && !controlsManager.overrideScreen && !playersManager.overrideScreen) {
+		if (controlsManager.overrideScreen) {
+			controlsManager.run();
+		} else if (playersManager.overrideScreen) {
+			playersManager.run();
+		} else if (frameAdvance && !controlsManager.overrideScreen && !playersManager.overrideScreen) {
 			currentScreen.run();
 
 			if (!debug.noSkipFrames && currentScreen.canSkipFrames) {
 				if (deltaTime > 100 / 6)
 					lostFrames += deltaTime * 6 / 100 - 1;
-				lostFrames = min(3, lostFrames);
+				lostFrames = min(4, lostFrames);
 
 				let i = 0;
 				while (lostFrames >= 1 && i < 2) {//This is an attempt to make the game feel less stuttery - it's possible that this could break the consistency of frame perfect stuff, IDK
@@ -208,11 +231,6 @@ function draw() {
 					}
 				}
 			}
-		}
-		if (controlsManager.overrideScreen) {
-			controlsManager.run();
-		} else if (playersManager.overrideScreen) {
-			playersManager.run();
 		}
 		
 		if (!debug.negateDraw) {
@@ -303,6 +321,10 @@ function draw() {
     }
 }
 
+async function getAppVersion() {
+	appVersion = await window.electronAPI.getAppVersion();
+}
+
 function drawBackHold(g, hold = 60) {
 	let maxHeld = 0;
 	for (let i in controls) {
@@ -356,9 +378,13 @@ function windowResized() {
 }
 
 function resetSaveFile() {
+	if (webVersion)
+		return;
 	resetSave = loadJSON("resources/SaveReset.json", finishResetSaveFile);
 }
 function finishResetSaveFile() {
+	if (webVersion)
+		return;
 	saveFile = resetSave;
 	loadSaveObject(saveFile);
 	writeSaveFile();
@@ -373,21 +399,40 @@ function loadSaveFile() {
 }
 
 function loadSaveObject(saveFile) {
-	if (saveFile.version === "0.0.1") {
-		controlsManager.defaultKeyboardControls1 = saveFile.defaultKeyboardControls1;
-		controlsManager.defaultKeyboardControls2 = saveFile.defaultKeyboardControls2;
-		controlsManager.defaultGamepadControls = saveFile.defaultGamepadControls;
+	let keyboard1;
+	let keyboard2;
+	switch (saveFile.version) {
+		case "0.0.1":
+			controlsManager.defaultKeyboardControls1 = saveFile.defaultKeyboardControls1;
+			controlsManager.defaultKeyboardControls2 = saveFile.defaultKeyboardControls2;
+			controlsManager.defaultGamepadControls = saveFile.defaultGamepadControls;
 
-		let keyboard1 = new Controls("keyboard", keys, controlsManager.defaultKeyboardControls1.keys, controlsManager.defaultKeyboardControls1.arrows, controlsManager.defaultKeyboardControls1.deadzones);
-		let keyboard2 = new Controls("keyboard", keys, controlsManager.defaultKeyboardControls2.keys, controlsManager.defaultKeyboardControls2.arrows, controlsManager.defaultKeyboardControls2.deadzones);
-		controls.push(keyboard1);
-		controls.push(keyboard2);
-		controlsManager.keyboardControls.push(keyboard1);
-		controlsManager.keyboardControls.push(keyboard2);
+			keyboard1 = new Controls("keyboard", keys, controlsManager.defaultKeyboardControls1.keys, controlsManager.defaultKeyboardControls1.arrows, controlsManager.defaultKeyboardControls1.deadzones);
+			keyboard2 = new Controls("keyboard", keys, controlsManager.defaultKeyboardControls2.keys, controlsManager.defaultKeyboardControls2.arrows, controlsManager.defaultKeyboardControls2.deadzones);
+			controls.push(keyboard1);
+			controls.push(keyboard2);
+			controlsManager.keyboardControls.push(keyboard1);
+			controlsManager.keyboardControls.push(keyboard2);
+			break;
+		case "0.0.2":
+			controlsManager.defaultKeyboardControls1 = saveFile.defaultKeyboardControls1;
+			controlsManager.defaultKeyboardControls2 = saveFile.defaultKeyboardControls2;
+			controlsManager.defaultGamepadControls = saveFile.defaultGamepadControls;
+
+			keyboard1 = new Controls("keyboard", keys, controlsManager.defaultKeyboardControls1.keys, controlsManager.defaultKeyboardControls1.arrows, controlsManager.defaultKeyboardControls1.deadzones);
+			keyboard2 = new Controls("keyboard", keys, controlsManager.defaultKeyboardControls2.keys, controlsManager.defaultKeyboardControls2.arrows, controlsManager.defaultKeyboardControls2.deadzones);
+			controls.push(keyboard1);
+			controls.push(keyboard2);
+			controlsManager.keyboardControls.push(keyboard1);
+			controlsManager.keyboardControls.push(keyboard2);
+			currentLanguage = saveFile.currentLanguage;
+			break;
 	}
 }
 
 function writeSaveFile() {
+	if (webVersion)
+		return;
 	let saveFile = {};
 	/*saveFile.defaultKeyboardControls1 = {
 		keys: [["dash", "KeyY"],
@@ -437,9 +482,28 @@ function writeSaveFile() {
 
 	saveFile.graphicsSettings = graphicsSettings;
 
-	saveFile.version = "0.0.1";
+	saveFile.currentLanguage = currentLanguage;
+
+	saveFile.version = "0.0.2";
 
 	window.electronAPI.writeSave(saveFile);
+}
+
+/**
+ * Stands for get text - returns the text in the correct language specified by the currentLanguage variable
+ * @param {string} key
+ * @returns
+ */
+function gt(key) {
+	return transText[key][currentLanguage].text;
+}
+/**
+ * Stands for get size - returns the size of the text in the correct language specified by the currentLanguage variable
+ * @param {string} key
+ * @returns
+ */
+function gs(key) {
+	return transText[key][currentLanguage].size;
 }
 
 function defaultCopyValues(dest, obj, excludes = []) {

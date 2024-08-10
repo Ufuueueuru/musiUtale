@@ -97,7 +97,7 @@
 		];
 
 		this.headNoun = "󱤁";//akesi
-		this.name = "󱤁󱦐󱦗󱤢󱥇󱥩󱥅󱦑";//akesi Loto
+		this.name = currentLanguage === "tp" ? "󱤁󱦐󱦗󱤢󱥇󱥩󱥅󱦑" : "Loto";//akesi Loto
 
 		this.collideRadius = 70;
 

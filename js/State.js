@@ -164,10 +164,10 @@ State.MN = new State("MN", "nasa", "neutral action", "attack", "oob");//"oob" me
 State.MN_ACTIONS = ["power dash"];
 
 State.GRAB = new State("grab", "rotateable", "loop hurtbox");
-State.GRAB_ACTIONS = ["power dash"];
+State.GRAB_ACTIONS = ["power dash", "block"];
 
 State.GRABBED = new State("grabbed", "rotateable", "loop hurtbox");
-State.GRABBED_ACTIONS = ["power dash"];
+State.GRABBED_ACTIONS = ["power dash", "block"];
 
 State.LIPU_SULI = new State("lipuSuli", "lipu", "no collide", "loop hurtbox");
 State.LIPU_SULI_ACTIONS = ["rightRoll", "neutralRoll", "leftRoll", "power dash"];

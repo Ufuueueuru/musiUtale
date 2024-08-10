@@ -4,6 +4,7 @@ class AssetManager {
         this.spritesheets = {};
         this.fonts = {};
         this.sounds = {};
+        this.jsons = {};
 
         this.loadFuncs = [];
 
@@ -41,6 +42,9 @@ class AssetManager {
             this.sounds[j].once("load", this.onLoad.bind(this));
             this.sounds[j].once("loaderror", this.onHowlError);
         }
+        for (let o in this.jsons) {
+            this.jsons[o] = loadStrings(this.jsons[o], this.onLoad.bind(this), this.onError);
+        }
     }
 
     splitSheets() {
@@ -54,6 +58,10 @@ class AssetManager {
     parseJSONs() {
         for (let i in this.spritesheets) {
             this.spritesheets[i].parseJSON();
+            this._splitLoaded++;
+        }
+        for (let i in this.jsons) {
+            this.jsons[i] = JSON.parse(this.jsons[i].join(""));
             this._splitLoaded++;
         }
     }
@@ -112,6 +120,11 @@ class AssetManager {
         this.sounds[name] = options;
         this.sounds[name].src = soundStr;
         this._total++;
+    }
+    addJSON(jsonStr, name) {
+        this.jsons[name] = jsonStr;
+        this._total++;
+        this._splitTotal++;
     }
 
     addFunc(func) {
