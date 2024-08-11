@@ -57,7 +57,7 @@ class VSNetplayScreen extends Screen {
         this.future = [];//Game states in the future with data but have not happened yet
 
         this.farPast = [];//This will look 4 times farther back than this.past for use in resolving packet loss
-        this.farPastMultiply = 600;//4
+        this.farPastMultiply = 4;//4
 
         this.timeStamps = [];//Timestamps used to calculate ping values
         this.pings = [0];//A list of the past ping amounts
