@@ -1247,38 +1247,7 @@
 			...o
 		}) => defaultSerialize(o))(this);
 
-		copy.actions = [];
-		for (let i in this.actions) {
-			copy.actions.push(this.actions[i]);
-		}
-
-		copy.cancelActions = [];
-		for (let i in this.cancelActions) {
-			copy.cancelActions.push(this.cancelActions[i]);
-		}
-
-		copy.currentState = this.currentState;
-
-		copy.currentAttackReferences = {};
-		currentAttackLoop: for (let i in this.currentAttackReferences) {
-			for (let u = 0; u < this.world.attacks.length; u++) {
-				if (this.world.attacks[u] === this.currentAttackReferences[i]) {
-					copy.currentAttackReferences[i] = u;
-					continue currentAttackLoop;
-				}
-			}
-		}
-
-		if (this.mostRecentAttackReference) {
-			for (let u = 0; u < this.world.attacks.length; u++) {
-				if (this.world.attacks[u] === this.mostRecentAttackReference) {
-					copy.mostRecentAttackReference = u;
-					break;
-				}
-			}
-		} else {
-			copy.mostRecentAttackReference = -1;
-		}
+		this.serializeCopyHelp(copy);
 
 		return copy;
 	}
@@ -1286,36 +1255,7 @@
 	deserialize(obj) {
 		defaultCopyValues(this, obj, ["currentState", "actions", "cancelActions", "controls", "currentAttackReferences", "mostRecentAttackReference", "frameDataRef", "dashDisplays"]);
 		
-		if (!obj.frameDataRef) {
-			this.frameDataRef = null;
-		} else {
-			this.frameDataRef = new AttackFrameData();
-			this.frameDataRef.deserialize(obj.frameDataRef, this.world);
-		}
-		
-		this.currentState = obj.currentState;
-		this.actions = [];
-		for (let i in obj.actions) {
-			this.actions.push(obj.actions[i]);
-		}
-		this.cancelActions = [];
-		for (let i in obj.cancelActions) {
-			this.actions.push(obj.cancelActions[i]);
-		}
-
-		if (obj.mostRecentAttackReference === -1) {
-			this.mostRecentAttackReference = null;
-		} else {
-			this.mostRecentAttackReference = this.world.attacks[obj.mostRecentAttackReference];
-		}
-		this.currentAttackReferences = [];
-		for (let i in obj.currentAttackReferences) {
-			if (obj.currentAttackReferences[i] === -1) {
-				this.currentAttackReferences.push(null);
-			} else {
-				this.currentAttackReferences.push(this.world.attacks[obj.currentAttackReferences[i]]);
-			}
-		}
+		this.deserializeHelp(obj);
 	}
 }
 

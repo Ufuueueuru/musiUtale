@@ -10,7 +10,7 @@ if (!window.electronAPI) {
 		writeSave: (data) => { },
 		loadSave: async () => { return { "defaultKeyboardControls1": { "keys": [["dash", "KeyY"], ["powerDash", "KeyJ"], ["pokaLili", "KeyT"], ["pokaSuli", "KeyG"], ["lili", "KeyR"], ["suli", "KeyF"], ["nasa", "KeyH"], ["frameAdvance", "Space"], ["select", "KeyR"], ["back", "KeyT"], ["start", "Escape"]], "arrows": [["KeyD", "KeyW", "KeyA", "KeyS"]], "deadzones": [0.25] }, "defaultKeyboardControls2": { "keys": [["dash", "KeyO"], ["powerDash", "KeyK"], ["pokaLili", "KeyP"], ["pokaSuli", "Semicolon"], ["lili", "BracketLeft"], ["suli", "Quote"], ["nasa", "KeyL"], ["frameAdvance", "Space"], ["select", "Enter"], ["back", "KeyP"], ["start", "Escape"]], "arrows": [["ArrowRight", "ArrowUp", "ArrowLeft", "ArrowDown"]], "deadzones": [0.25] }, "defaultGamepadControls": { "keys": [["dash", 4], ["powerDash", 7], ["pokaLili", 3], ["pokaSuli", 1], ["lili", 2], ["suli", 0], ["nasa", 5], ["frameAdvance", 6], ["select", 0], ["back", 1], ["start", 9]], "arrows": [0], "deadzones": [0.35] }, "graphicsSettings": { "resolutionMult": 0.25 }, "currentLanguage": "tp", "version": "0.0.2" } },
 		getSavesPath: () => { },
-		getAppVersion: async () => "Web"
+		getAppVersion: async () => "w.e.b"
 	};
 }
 
@@ -199,9 +199,11 @@ function draw() {
 			if (controls[c].buttons.frameAdvance && (controls[c].clickedAbsolute("frameAdvance") || (controls[c].pressed("frameAdvance") && controls[c].heldFrames("frameAdvance") > 15)))
 				frameAdvance = true;
 		}
+	} else if (!frameAdvance && keyIsDown(32)) {
+		frameAdvance = true;
 	}
 
-	background(0);
+	//background(0);
 
 	if (currentScreen) {
 		if (controlsManager.overrideScreen) {
@@ -214,7 +216,7 @@ function draw() {
 			if (!debug.noSkipFrames && currentScreen.canSkipFrames) {
 				if (deltaTime > 100 / 6)
 					lostFrames += deltaTime * 6 / 100 - 1;
-				lostFrames = min(4, lostFrames);
+				lostFrames = constrain(lostFrames, 0, 4);
 
 				let i = 0;
 				while (lostFrames >= 1 && i < 2) {//This is an attempt to make the game feel less stuttery - it's possible that this could break the consistency of frame perfect stuff, IDK
@@ -233,8 +235,15 @@ function draw() {
 				}
 			}
 		}
-		
-		if (!debug.negateDraw) {
+
+		if (!debug.noSkipDraw && debug.noSkipFrames) {
+			if (deltaTime > 100 / 6)
+				lostFrames += deltaTime * 6 / 100 - 1;
+			lostFrames = constrain(lostFrames, 0, 4);
+		}
+		if (!debug.noSkipDraw && lostFrames > 0.5) {
+			lostFrames -= 0.5;
+		} else if (!debug.negateDraw) {
 			currentScreen.draw(g);
 		}
 

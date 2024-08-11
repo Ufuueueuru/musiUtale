@@ -4,7 +4,7 @@ class Buffer {
         this.player = player;
 
         /**  */
-        this.queue = [[], [], [], []];//DEBUG
+        this.queue = [[], [], [], []];//
 
         /** @type {Object} This will contain buffered information (such as the angle of the joystick when dash is pressed) */
         this.info = { };

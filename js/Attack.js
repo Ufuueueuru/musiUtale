@@ -1402,7 +1402,7 @@ class AttackProperties {
 	 * @param {number} max
 	 * @returns
 	 */
-	setLaunchDampening(num, max) {
+	setLaunchDampening(num, max = 20) {
 		this.launchDampening = num;
 		this.launchDampeningMaxSpeed = max;
 

@@ -57,7 +57,7 @@ class VSNetplayScreen extends Screen {
         this.future = [];//Game states in the future with data but have not happened yet
 
         this.farPast = [];//This will look 4 times farther back than this.past for use in resolving packet loss
-        this.farPastMultiply = 4;//4
+        this.farPastMultiply = 600;//4
 
         this.timeStamps = [];//Timestamps used to calculate ping values
         this.pings = [0];//A list of the past ping amounts
@@ -92,14 +92,27 @@ class VSNetplayScreen extends Screen {
         } else {
             this.data = undefined;
         }
+        for (let i in this.farPast) {
+            if (this.data && this.farPast[i].gameState.frameCount === this.data.frameCount && this.farPast[i].dataReceived)
+                print(this.data.frameCount);
+        }
     }
 
     run() {
-        if (debug.displayRollbackFrames && this.averageRollbackFrames.length > 60) {
+        while (debug.displayRollbackFrames && this.averageRollbackFrames.length > 60) {
             this.averageRollbackFrames.splice(0, 1);
         }
 
+        /*if (deltaTime > 100 / 6)
+            lostFrames += deltaTime * 6 / 100 - 1;
+        lostFrames = constrain(lostFrames, 0, 4);*/
+        //let ifCount = 0;
+        //lostFrames++;
+        //while (lostFrames > 1 && ifCount < 3) {
+            //if (this.paused && ifCount > 1)
+                //break;
         this.updateControls();
+        this.testShouldPause();
         if (!this.paused) {
             this.addFramePast();
             this.connection.send(this.getExports());
@@ -108,6 +121,8 @@ class VSNetplayScreen extends Screen {
 
             this.data = undefined;
         }
+            //lostFrames--;
+        //}
 
         if (this.world.winScreen) {
             for (let i in controls) {
@@ -197,6 +212,7 @@ class VSNetplayScreen extends Screen {
                 if (debug.displayRollbackFrames)
                     this.averageRollbackFrames.push(rollback);
                 receivedData = undefined;
+                this.data = undefined;
             } else if (receivedData.frameCount >= this.world.frameCount) {
                 let futureI = 0;
                 while (this.future[futureI]?.frameCount < receivedData.frameCount) {
@@ -204,6 +220,7 @@ class VSNetplayScreen extends Screen {
                 }
                 this.future.splice(futureI, 0, receivedData);
                 receivedData = undefined;
+                this.data = undefined;
             }
             this.getNextData();
             receivedData = this.data;
@@ -225,6 +242,7 @@ class VSNetplayScreen extends Screen {
                     this.future.splice(0, 1);
                     this.rollbackTo(receivedData);
                     receivedData = undefined;
+                    this.data = undefined;
                 }
 
             }
@@ -232,12 +250,20 @@ class VSNetplayScreen extends Screen {
 
         //
         if (this.myPlayer) {
-            this.theirPlayer.controls.update(receivedData);
-            this.myPlayer.controls.update();
+            //if (!this.paused) {
+                this.theirPlayer.controls.update(receivedData);
+                this.myPlayer.controls.update();
+            //} else {
+                //this.myPlayer.controls.buttons.start.update();
+                //this.myPlayer.controls.buttons.select.update();
+                //this.myPlayer.controls.buttons.back.update();
+            //}
         }
         //if (this.myPlayer)
         //    print(this.myPlayer.controls.pressed("dash"));
+    }
 
+    testShouldPause() {
         this.paused = true;
         while (this.past[0] && this.past[0].dataReceived && this.past.length > this.rollbackFrames - 5) {
             this.past.splice(0, 1);
@@ -328,8 +354,8 @@ class VSNetplayScreen extends Screen {
         return {
             frameCount: this.world.frameCount,
             inputs: defaultSerialize(this.myPlayer.controls),
-            rollback: this.totalAverageRollback / this.averageRollbackFrames.length,
-            wantResponse: want
+            rollback: this.totalAverageRollback / this.averageRollbackFrames.length//,
+            //wantResponse: want
         };
     }
 
@@ -435,7 +461,7 @@ class VSNetplayScreen extends Screen {
             player1Inputs: defaultSerialize(this.world.players[0].controls),
             player2Inputs: defaultSerialize(this.world.players[1].controls),
             dataReceived,
-            rollback: this.totalAverageRollback / this.averageRollbackFrames.length
+            rollback: this.totalAverageRollback / this.averageRollbackFrames.length,
         };
         this.past.push(pastData);
         this.farPast.push(pastData);

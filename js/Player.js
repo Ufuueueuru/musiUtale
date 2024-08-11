@@ -737,12 +737,14 @@ class Player extends Hitcircle {
 				this.currentAttackReferences[i].endLife();
 			}
 		}
+		this.removeAttackReferences();
 	}
 
 	forceEndAttacks() {
 		for (let i in this.currentAttackReferences) {
 			this.currentAttackReferences[i].endLife();
 		}
+		this.removeAttackReferences();
 	}
 
 	removeCurrentAttack(attack) {
@@ -2792,6 +2794,12 @@ class Player extends Hitcircle {
 			...o
 		}) => defaultSerialize(o))(this);
 
+		this.serializeCopyHelp(copy);
+
+		return copy;
+	}
+
+	serializeCopyHelp(copy) {
 		copy.invTo = [];
 		for (let i in this.invTo) {
 			copy.invTo.push(this.invTo[i]);
@@ -2831,13 +2839,15 @@ class Player extends Hitcircle {
 		} else {
 			copy.mostRecentAttackReference = -1;
 		}
-
-		return copy;
 	}
 
 	deserialize(obj) {
 		defaultCopyValues(this, obj, ["circles", "currentState", "invTo", "actions", "cancelActions", "controls", "currentAttackReferences", "mostRecentAttackReference", "frameDataRef"]);
 
+		this.deserializeHelp(obj);
+	}
+
+	deserializeHelp(obj) {
 		this.circles = [];
 		this.copyHurtbox(obj.circles);
 
@@ -2852,7 +2862,7 @@ class Player extends Hitcircle {
 		for (let i in obj.invTo) {
 			this.invTo.push(obj.invTo[i]);
 		}
-		
+
 		this.currentState = obj.currentState;
 		this.actions = [];
 		for (let i in obj.actions) {
@@ -2860,7 +2870,7 @@ class Player extends Hitcircle {
 		}
 		this.cancelActions = [];
 		for (let i in obj.cancelActions) {
-			this.actions.push(obj.cancelActions[i]);
+			this.cancelActions.push(obj.cancelActions[i]);
 		}
 
 		if (obj.mostRecentAttackReference === -1) {
@@ -2891,7 +2901,7 @@ class DefaultAttack extends Attack {
 		let sweet2 = new PriorityCircle(40, 0, 50, 0).setVelocity(5, 0);
 		let circles = [sweet1, sweet2];
 
-		let sweet = new AttackProperties().setDamage(20).setCancelOptions(cancelOptions).setAngleValue(player.dir.value).setLaunch(1, 3, 1.1).setHitStun(17, 5).setStunFrames(11).setWallPushback(4, 1).setCancelWait(3);
+		let sweet = new AttackProperties().setDamage(20).setCancelOptions(cancelOptions).setAngleValue(player.dir.value).setLaunch(5, 3, 1.1).setHitStun(20, 5).setStunFrames(11).setWallPushback(4, 1).setCancelWait(3);
 		let prop = [sweet];
 
 		return new this(player, circles, prop).setClashPriority(4).setStartupF(7).setActiveF(4).setEndF(22);

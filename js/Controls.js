@@ -9,6 +9,8 @@ class Controls {
 
 		/** @type {boolean} */
 		this.computer = false;
+		/** @type {boolean} */
+		this.netplay = false;
 
 		/** How far a joystick has to be pressed in order for the game to register an input
 		 * @type {number[]} */
@@ -167,6 +169,7 @@ class Controls {
 			_keyspad,
 			layout,
 			computer,
+			netplay,
 			name,
 			...o
 		}) => defaultSerialize(o))(this);
@@ -215,7 +218,7 @@ class Button {
 		if ((this.layout === "gamepad" && this.getGamepad()) || (this.layout === "keyboard" && this.keyspad)) {
 			this.clickCheck = this.pressed;
 			if (this.layout === "keyboard") {
-				this.pressed = this.keyspad[this.code];
+				this.pressed = !!this.keyspad[this.code];
 			}
 			if (this.layout === "gamepad") {
 				this.pressed = this.getGamepad().buttons[this.code].pressed;
