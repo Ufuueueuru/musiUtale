@@ -633,7 +633,7 @@
 		this.rightHanded = true;
 
 		this.chargeNN = 0;
-		this.chargeNNMax = 60;
+		this.chargeNNMax = 45;
 
 		this.rnEndLag = 20;
 		this.rnMaxAttacks = 5;
@@ -1352,7 +1352,7 @@ class LipaNL extends Attack {
 
 	static startAttack(player, attack, bufferInfo) {
 		player.startMomentumMultiply(0);
-		player.startMomentumMultiplyDash(0.75);
+		player.startMomentumMultiplyDash(1);
 	}
 
 	logic() {
@@ -1486,7 +1486,7 @@ class LipaLL extends Attack {
 
 	static startAttack(player, attack, bufferInfo) {
 		player.startMomentumMultiply(0);
-		player.startMomentumMultiplyDash(1);
+		player.startMomentumMultiplyDash(1.5);
 	}
 
 	draw(g) {
@@ -2264,7 +2264,7 @@ class LipaNN extends Attack {
 	}
 
 	static createAttack(player) {
-		let cancelOptions = [];
+		let cancelOptions = ["attack"];
 
 		let ultraSour1 = new PriorityCircle(0, 40, 20, 0);
 		let ultraSour2 = new PriorityCircle(20, 35, 20, 0);

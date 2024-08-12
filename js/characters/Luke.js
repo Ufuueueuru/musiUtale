@@ -153,7 +153,7 @@
 
 		this.collideRadius = 42;
 
-		this.timerPunishMult = 0.8;
+		this.timerPunishMult = 1.2;
 
 		this.sheet = Spritesheet.copy(assetManager.spritesheets.janLukeSheet);
 		this.auraSheets = [];
@@ -169,6 +169,7 @@
 		this.states.SPS = State.copyState(State.SPS).addTag("rotateable");
 		this.states.NN = State.copyState(State.NN).addTag("rotateable");
 		this.states.NN_ACTIONS = ["NL", "dash", "power dash"];
+		this.states.LN_ACTIONS = [];
 		this.states.NNF = State.copyState(State.NN).setName("NNF");
 
 		this.states.MISFIRE = new State("misfire");
@@ -644,8 +645,8 @@ class JanLukeML extends Attack {
 		let sour1 = new PriorityCircle(-40, 20, 35, 1).setSubVelocity(-3.5, 0);
 		let circles = [sweet1, sour1];
 
-		let sweet = new AttackProperties().setDamage(30).setProration(-0.5).setCancelOptions(cancelOptions).setAngleValue(player.dir.value + PI).setLaunch(6, 0.1, 0.8).setHitStun(45, 40).setStunFrames(12).setAngleTypes("direct", "direct");
-		let sour = new AttackProperties().setDamage(25).setProration(-0.5).setCancelOptions(cancelOptions).setAngleValue(player.dir.value + PI).setLaunch(6, 0.1, 0.8).setHitStun(45, 40).setStunFrames(12).setAngleTypes("direct", "direct");
+		let sweet = new AttackProperties().setDamage(30).setProration(-0.5).setCancelOptions(cancelOptions).setAngleValue(player.dir.value).setLaunch(6, 0.1, 0.8).setHitStun(45, 40).setStunFrames(12).setAngleTypes("direct", "direct");
+		let sour = new AttackProperties().setDamage(25).setProration(-0.5).setCancelOptions(cancelOptions).setAngleValue(player.dir.value).setLaunch(6, 0.1, 0.8).setHitStun(45, 40).setStunFrames(12).setAngleTypes("direct", "direct");
 		let prop = [sweet, sour];
 
 		//sweet.setHitSound(assetManager.sounds["8BitHit"]);
@@ -913,7 +914,7 @@ class JanLukeMS extends Attack {
 
 		let prop = [];
 
-		return new this(player, circles, prop).setStartupF(26).setActiveF(420).setFollow(false).setProjectile();
+		return new this(player, circles, prop).setStartupF(26).setActiveF(220).setFollow(false).setProjectile();
 	}
 
 	static startAttack(player, attack, bufferInfo) {
@@ -2068,7 +2069,7 @@ class JanLukeLN extends Attack {
 		if (this.getStartupF() < 26 && this.getStartupF() > 5) {
 			if (this.player.getInfluence() <= 0)
 				this.world.sikeWawa.addMeterAll(0, 0.08, this.player);
-			this.world.sikeWawa.addMeterAll(0.05, 0, this.player);
+			this.world.sikeWawa.addMeterAll(0.04, 0, this.player);
 		}
 		if (this.held && this.getStartupF() === 20) {
 			this.player.actionLag++;

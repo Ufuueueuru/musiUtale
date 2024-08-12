@@ -6,7 +6,7 @@ let debug = {
     displayHitboxes: false,
     displayFrameRate: true,
     displayRollbackFrames: true,//Should always be true
-    displayNetplayPauses: true,
+    displayNetplayPauses: false,
     displayLostFrames: false,
     displayWalls: false,
     displayBlocking: false,
@@ -19,7 +19,7 @@ let debug = {
     frameRates: [],
     effectiveFrameRates: [],
     noSkipFrames: false,
-    noSkipDraw: true,
+    noSkipDraw: true,//Should always be true
     controlFrameRateMouse: false,
     manualFrameAdvance: false,
 

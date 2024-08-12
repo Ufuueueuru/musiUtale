@@ -92,10 +92,10 @@ class VSNetplayScreen extends Screen {
         } else {
             this.data = undefined;
         }
-        for (let i in this.farPast) {
+        /*for (let i in this.farPast) {//Debug to display when a frame input is received more than once
             if (this.data && this.farPast[i].gameState.frameCount === this.data.frameCount && this.farPast[i].dataReceived)
                 print(this.data.frameCount);
-        }
+        }*/
     }
 
     run() {
@@ -185,18 +185,22 @@ class VSNetplayScreen extends Screen {
                 this.distressWait = 1;
             }
         }*/
-        if (receivedData?.rollback && this.farPast.length > 0) {
-            let frame = receivedData.frameCount - this.farPast[0].gameState.frameCount;
-            if (this.farPast[frame]) {
-                if (receivedData.rollback - this.totalAverageRollback/this.averageRollbackFrames.length > 1) {
-                    lostFrames += (receivedData.rollback - this.totalAverageRollback / this.averageRollbackFrames.length - 1) / 45;
-                    if (debug.displayLostFrames)
-                        print((receivedData.rollback - this.totalAverageRollback / this.averageRollbackFrames.length - 1) / 45);
-                }
+        if (receivedData?.rollback) {
+            if (this.totalAverageRollback / this.averageRollbackFrames.length < 15 && receivedData.rollback - this.totalAverageRollback / this.averageRollbackFrames.length > 1) {
+                lostFrames += (receivedData.rollback - this.totalAverageRollback / this.averageRollbackFrames.length - 1) / 45;
+                if (debug.displayLostFrames)
+                    print((receivedData.rollback - this.totalAverageRollback / this.averageRollbackFrames.length - 1) / 45);
+            } else {
+                lostFrames += this.future.length / 45;
+                if (debug.displayLostFrames)
+                    print(this.future.length / 45);
             }
         }
         while (receivedData && (receivedData.frameCount !== this.world.frameCount || this.paused)) {
             //print("r: " + receivedData.frameCount + "m: " + this.frameCount);
+            while (this.timeStamps.length > 100) {
+                this.timeStamps.splice(0, 1);
+            }
             for (let i = this.timeStamps.length - 1; i >= 0; i--) {
                 if (this.timeStamps[i].frameCount === receivedData.frameCount) {
                     this.pings.push(Date.now() - this.timeStamps[i].time);
@@ -354,8 +358,8 @@ class VSNetplayScreen extends Screen {
         return {
             frameCount: this.world.frameCount,
             inputs: defaultSerialize(this.myPlayer.controls),
-            rollback: this.totalAverageRollback / this.averageRollbackFrames.length//,
-            //wantResponse: want
+            rollback: this.totalAverageRollback / this.averageRollbackFrames.length,
+            wantResponse: want
         };
     }
 

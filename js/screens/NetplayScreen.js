@@ -259,8 +259,7 @@ class NetplayScreen extends Screen {
                         break;
                     }
                 }
-            }
-            if (incomingData.needFrame) {
+            } else if (incomingData.needFrame) {
                 let success = false;
                 //print("n:" + incomingData.needFrame);
                 if (currentScreen.farPast?.length > 0) {
@@ -274,9 +273,9 @@ class NetplayScreen extends Screen {
                         }
                     }
                 }
-                if (!success) {
-                    //errorDisplayFrames = 1200;
-                    //errorDisplayMessage = "󱤩󱤟󱤧󱥈";//linja kulupu li pakala
+                if (!success && currentScreen.paused) {
+                    errorDisplayFrames = 600;
+                    errorDisplayMessage = "󱤩󱤟󱤧󱥈";//linja kulupu li pakala
                     //this.connectionOpen = false;//Not sure if this is the right thing to do or not
                 }
             } else {
