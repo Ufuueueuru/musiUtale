@@ -638,14 +638,14 @@ class JanLukeML extends Attack {
 	}
 
 	static createAttack(player) {
-		let cancelOptions = ["ML", "MN"];
+		let cancelOptions = ["ML", "SS", "MN"];
 
 		let sweet1 = new PriorityCircle(-80, 0, 65, 0).setSubVelocity(-3.5, 0);
 		let sour1 = new PriorityCircle(-40, 20, 35, 1).setSubVelocity(-3.5, 0);
 		let circles = [sweet1, sour1];
 
-		let sweet = new AttackProperties().setDamage(30).setProration(-0.5).setCancelOptions(cancelOptions).setAngleValue(player.dir.value).setLaunch(6, 0.1, 0.8).setHitStun(45, 40).setStunFrames(12).setAngleTypes("direct", "direct");
-		let sour = new AttackProperties().setDamage(25).setProration(-0.5).setCancelOptions(cancelOptions).setAngleValue(player.dir.value).setLaunch(6, 0.1, 0.8).setHitStun(45, 40).setStunFrames(12).setAngleTypes("direct", "direct");
+		let sweet = new AttackProperties().setDamage(30).setProration(-0.5).setCancelOptions(cancelOptions).setAngleValue(player.dir.value + PI).setLaunch(6, 0.1, 0.8).setHitStun(45, 40).setStunFrames(12).setAngleTypes("direct", "direct");
+		let sour = new AttackProperties().setDamage(25).setProration(-0.5).setCancelOptions(cancelOptions).setAngleValue(player.dir.value + PI).setLaunch(6, 0.1, 0.8).setHitStun(45, 40).setStunFrames(12).setAngleTypes("direct", "direct");
 		let prop = [sweet, sour];
 
 		//sweet.setHitSound(assetManager.sounds["8BitHit"]);
@@ -1006,7 +1006,7 @@ class JanLukeNPL extends Attack {
 		let sweet7 = new PriorityCircle(150, 0, 20, 0).setVelocity(0.1, 0);
 		let circles = [sweet1, sweet2, sweet3, sweet4, sweet5, sweet6, sweet7];
 
-		let sweet = new AttackProperties().setDamage(player.getDamageMult() * 35).setProration(0.2).setCancelOptions(cancelOptions).setAngleValue(player.dir.value).setLaunch(4, 0.1, 1.1).setHitStun(30, 12).setStunFrames(13);
+		let sweet = new AttackProperties().setDamage(player.getDamageMult() * 35).setProration(0.2).setCancelOptions(cancelOptions).setAngleValue(player.dir.value).setLaunch(7, 0.1, 1.1).setHitStun(30, 12).setStunFrames(13);
 		let prop = [sweet];
 
 		//sweet.setHitSound(assetManager.sounds["8BitHit"]);
@@ -1074,7 +1074,7 @@ class JanLukeSPL extends Attack {
 		let sweet7 = new PriorityCircle(210, 0, 25, 0).setVelocity(0.1, 0);
 		let circles = [sweet1, sweet2, sweet3, sweet4, sweet5, sweet6, sweet7];
 
-		let sweet = new AttackProperties().setDamage(player.getDamageMult() * 40).setProration(0.7).setCancelOptions(cancelOptions).setAngleValue(player.dir.value).setLaunch(4, 0.1, 2).setHitStun(28, 12).setStunFrames(13);
+		let sweet = new AttackProperties().setDamage(player.getDamageMult() * 40).setProration(0.7).setCancelOptions(cancelOptions).setAngleValue(player.dir.value).setLaunch(8, 0.1, 2).setHitStun(28, 12).setStunFrames(13);
 		let prop = [sweet];
 
 		//sweet.setHitSound(assetManager.sounds["8BitHit"]);
@@ -1142,7 +1142,7 @@ class JanLukeRPL extends Attack {
 		let sweet7 = new PriorityCircle(150, 0, 25, 0).setVelocity(0.1, 0);
 		let circles = [sweet1, sweet2, sweet3, sweet4, sweet5, sweet6, sweet7];
 
-		let sweet = new AttackProperties().setDamage(player.getDamageMult() * 25).setProration(0.8).setCancelOptions(cancelOptions).setAngleValue(player.dir.value).setLaunch(4, 0.1, 1.1).setHitStun(28, 10).setStunFrames(13);
+		let sweet = new AttackProperties().setDamage(player.getDamageMult() * 25).setProration(0.8).setCancelOptions(cancelOptions).setAngleValue(player.dir.value).setLaunch(7, 0.1, 1.1).setHitStun(28, 10).setStunFrames(13);
 		let prop = [sweet];
 
 		//sweet.setHitSound(assetManager.sounds["8BitHit"]);
@@ -1223,7 +1223,7 @@ class JanLukeLPL extends Attack {
 		let sweet7 = new PriorityCircle(150, 0, 25, 0).setVelocity(0.1, 0);
 		let circles = [sweet1, sweet2, sweet3, sweet4, sweet5, sweet6, sweet7];
 
-		let sweet = new AttackProperties().setDamage(player.getDamageMult() * 35).setProration(0.6).setCancelOptions(cancelOptions).setAngleValue(player.dir.value).setLaunch(4, 0.1, 1.1).setHitStun(28, 10).setStunFrames(13);
+		let sweet = new AttackProperties().setDamage(player.getDamageMult() * 35).setProration(0.6).setCancelOptions(cancelOptions).setAngleValue(player.dir.value).setLaunch(7, 0.1, 1.1).setHitStun(28, 10).setStunFrames(13);
 		let prop = [sweet];
 
 		//sweet.setHitSound(assetManager.sounds["8BitHit"]);
@@ -1304,7 +1304,7 @@ class JanLukeMPL extends Attack {
 		let sweet7 = new PriorityCircle(150, 0, 20, 0).setVelocity(0.1, 0);
 		let circles = [sweet1, sweet2, sweet3, sweet4, sweet5, sweet6, sweet7];
 
-		let sweet = new AttackProperties().setDamage(player.getDamageMult() * 35).setProration(-0.2).setCancelOptions(cancelOptions).setAngleValue(player.dir.value + PI).setLaunch(6, 0.1, 1.1).setHitStun(28, 12).setStunFrames(13);
+		let sweet = new AttackProperties().setDamage(player.getDamageMult() * 35).setProration(-0.2).setCancelOptions(cancelOptions).setAngleValue(player.dir.value + PI).setLaunch(9, 0.1, 1.1).setHitStun(28, 12).setStunFrames(13);
 		let prop = [sweet];
 
 		//sweet.setHitSound(assetManager.sounds["8BitHit"]);
