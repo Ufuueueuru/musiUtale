@@ -1597,7 +1597,7 @@ class JanLukeRPS extends Attack {
 		let sweet1 = new PriorityCircle(50, 0, 0, 0);
 		let circles = [sweet1];
 
-		let sweet = new AttackProperties().setDamage(25).setProration(0.5).setCancelOptions(cancelOptions).setAngleValue(player.dir.value).setLaunch(2).setHitStun(21, 20).setStunFrames(5).setAngleTypes("direct", "direct");
+		let sweet = new AttackProperties().setDamage(25).setProration(0.5).setCancelOptions(cancelOptions).setAngleValue(player.dir.value).setLaunch(6, 0, 2).setHitStun(41, 20).setStunFrames(5).setAngleTypes("direct", "direct");
 		let prop = [sweet];
 
 		return new this(player, circles, prop).setClashPriority(6).setStartupF(25).setActiveF(400).setEndF(10).setProjectile().setFollow(false).setVelocity(13, 15);
@@ -1710,7 +1710,7 @@ class JanLukeLPS extends Attack {
 		let sweet1 = new PriorityCircle(50, 0, 0, 0);
 		let circles = [sweet1];
 
-		let sweet = new AttackProperties().setDamage(25).setProration(0.5).setCancelOptions(cancelOptions).setAngleValue(player.dir.value).setLaunch(2).setHitStun(21, 20).setStunFrames(5).setAngleTypes("direct", "direct");
+		let sweet = new AttackProperties().setDamage(25).setProration(0.5).setCancelOptions(cancelOptions).setAngleValue(player.dir.value).setLaunch(6, 0, 2).setHitStun(41, 20).setStunFrames(5).setAngleTypes("direct", "direct");
 		let prop = [sweet];
 
 		return new this(player, circles, prop).setClashPriority(6).setStartupF(25).setActiveF(400).setEndF(10).setProjectile().setFollow(false).setVelocity(13, -15);
