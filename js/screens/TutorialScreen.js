@@ -1,14 +1,14 @@
 ﻿/** The screen for the tutorial */
 class TutorialScreen extends Screen {
-    constructor(characters, controls, stageID, firstToWin = 0) {
+    constructor(characters = [0, 0], controlsIn = [controls[0], null], stageID = 0, firstToWin = 0) {
         super();
 
-        this.setCharacters(characters);
-        this.setControls(controls);
         this.setStage(stageID);
+        this.setCharacters(characters);
+        this.player1Controls = controlsIn[0];
+        this.player2Controls = controlsIn[1];
 
         this.firstTo = firstToWin;
-
         this.initLater();
 
         this.paused = false;
@@ -95,9 +95,44 @@ class TutorialScreen extends Screen {
         this.tutorial.run();
     }
 
+    initComputerControls() {
+        let trainingControls;
+        if (this.player1Controls === null) {
+            this.player1Controls = new TrainingComputer(this.player1, this.world);
+            controls.push(this.player1Controls);
+            trainingControls = this.player1Controls;
+        }
+        if (this.player2Controls === null) {
+            this.player2Controls = new TrainingComputer(this.player2, this.world);
+            controls.push(this.player2Controls);
+            trainingControls = this.player2Controls;
+        }
+        if (trainingControls) {
+            trainingControls.trainingSettings.reversal.isReversal = false;
+            trainingControls.trainingSettings.mash = [
+                {
+                    names: ["neutral"],
+                    isMashing: false,
+                    wait: 0,
+                    count: 0,
+                    hold: 1,
+                    offset: 0,
+                    actions: ["NPS"]
+                }
+            ]
+        }
+    }
+
     setControls(c) {
         this.player1Controls = c[0];
         this.player2Controls = c[1];
+        this.initComputerControls();
+        if (this.world?.players[0]) {
+            this.world.players[0].controls = this.player1Controls;
+        }
+        if (this.world?.players[1]) {
+            this.world.players[1].controls = this.player2Controls;
+        }
     }
     setCharacters(c) {
         this.player1CharacterID = c[0];
@@ -127,29 +162,7 @@ class TutorialScreen extends Screen {
         this.player1 = new characters[this.player1CharacterID]();
         this.player2 = new characters[this.player2CharacterID]();
 
-        let trainingControls;
-        if (this.player1Controls === null) {
-            this.player1Controls = new TrainingComputer(this.player1, this.world);
-            controls.push(this.player1Controls);
-            trainingControls = this.player1Controls;
-        }
-        if (this.player2Controls === null) {
-            this.player2Controls = new TrainingComputer(this.player2, this.world);
-            controls.push(this.player2Controls);
-            trainingControls = this.player2Controls;
-        }
-        trainingControls.trainingSettings.reversal.isReversal = false;
-        trainingControls.trainingSettings.mash = [
-            {
-                names: ["neutral"],
-                isMashing: false,
-                wait: 0,
-                count: 0,
-                hold: 1,
-                offset: 0,
-                actions: ["NPS"]
-            }
-        ]
+        this.initComputerControls();
 
         this.player1.controls = this.player1Controls;//this.controls2;//this.computer1;
         this.player1.x = this.world.getCenterStageX() - 70;

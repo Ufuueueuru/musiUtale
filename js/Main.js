@@ -66,7 +66,7 @@ let dataOnFunction = (incomingData) => { };
 
 let graphicsSettings = {
 	resolutionMult: 1,
-	spriteResolutionMult: 0.25
+	spriteResolutionMult: 0.5
 }
 
 function preload() {

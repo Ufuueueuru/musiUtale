@@ -117,6 +117,8 @@ class Particle extends Spritesheet {
 			this.currentAnimation = spritesheet.currentAnimation;
 
 			this.animating = spritesheet.animating;
+
+			this.resolutionMult = spritesheet.resolutionMult;
 		}
 	}
 

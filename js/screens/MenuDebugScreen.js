@@ -61,7 +61,7 @@ class MenuDebugScreen extends Screen {
         let button2 = new MenuItem(256, 103, assetManager.images.buttonPressed, assetManager.images.buttonUnpressed, undefined, gt("mainMenuControls"), () => { controlsManager.openScreen(); });
         let buttonTraining = new MenuItem(276, 140, assetManager.images.buttonPressed, assetManager.images.buttonUnpressed, CharacterSelectScreen, gt("mainMenuTraining"), () => { playersManager.openScreen(); playersManager.resetPositions(); currentScreen.setTraining(); });//kama wawa
         let buttonNetplay = new MenuItem(296, 177, assetManager.images.buttonPressed, assetManager.images.buttonUnpressed, CharacterSelectScreen, gt("mainMenuOnline"), () => { playersManager.openScreen(); playersManager.resetPositionsNetplay(); currentScreen.setNetplay(); });
-        let buttonTutorial = new MenuItem(316, 214, assetManager.images.buttonPressed, assetManager.images.buttonUnpressed, undefined, gt("tutorial"), () => { currentScreen = new TutorialScreen([0, 0], [controls[0], null], 0); });
+        let buttonTutorial = new MenuItem(316, 214, assetManager.images.buttonPressed, assetManager.images.buttonUnpressed, TutorialScreen, gt("tutorial"), () => { playersManager.openScreen(); /*currentScreen = new TutorialScreen([0, 0], [controls[0], null], 0);*/ });
         let button3 = new MenuItem(336, 251, assetManager.images.buttonPressed, assetManager.images.buttonUnpressed, MenuDebugScreen, "󱥜");
         let button4 = new MenuItem(356, 288, assetManager.images.buttonPressed, assetManager.images.buttonUnpressed, undefined, gt("mainMenuClose"), window.electronAPI.closeWindow);
 
@@ -73,7 +73,7 @@ class MenuDebugScreen extends Screen {
         buttonTraining.addMoves(new MenuMove(buttonNetplay, Angle.DOWN));
         buttonNetplay.addMoves(new MenuMove(buttonTraining, Angle.UP));
         buttonNetplay.addMoves(new MenuMove(buttonTutorial, Angle.DOWN));
-        buttonTutorial.addMoves(new MenuMove(button3, Angle.UP));
+        buttonTutorial.addMoves(new MenuMove(buttonNetplay, Angle.UP));
         buttonTutorial.addMoves(new MenuMove(button3, Angle.DOWN));
         button3.addMoves(new MenuMove(buttonTutorial, Angle.UP));
         button3.addMoves(new MenuMove(button4, Angle.DOWN));

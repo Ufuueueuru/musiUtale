@@ -197,6 +197,13 @@
                     g.fill(170, 170, 195);
                 }
                 g.text(gt("back") + ": " + (this.testCondition.back ? "󱥔" : "󱤂"), 10, 200);
+
+                if (this.world.players[0].controls.layout === "keyboard") {
+                    assetManager.spritesheets.keys.drawFrame(g, keyImageID[this.world.players[0].controls.joysticks[0].getCode(0)], 485, 192, 25, 25);
+                    assetManager.spritesheets.keys.drawFrame(g, keyImageID[this.world.players[0].controls.joysticks[0].getCode(1)], 460, 167, 25, 25);
+                    assetManager.spritesheets.keys.drawFrame(g, keyImageID[this.world.players[0].controls.joysticks[0].getCode(2)], 435, 192, 25, 25);
+                    assetManager.spritesheets.keys.drawFrame(g, keyImageID[this.world.players[0].controls.joysticks[0].getCode(3)], 460, 192, 25, 25);
+                }
             },
             testCondition: { neutral: false, forward: false, right: false, left: false, back: false },
             finish: () => { return this.world.players[0].actionLag <= 0 && this.testCondition.neutral && this.testCondition.forward && this.testCondition.right && this.testCondition.left && this.testCondition.back },
@@ -238,6 +245,11 @@
                     g.fill(170, 170, 195);
                 }
                 g.text(gt("dashCancel") + ": " + (this.testCondition.dashCancel ? "󱥔" : "󱤂"), 10, 110);
+
+                let keySheet = this.world.players[0].controls.layout === "keyboard" ? assetManager.spritesheets.keys : assetManager.spritesheets.nena;
+                let buttonName = "dash";
+                let buttonID = (this.world.players[0].layout === "keyboard" ? (keyImageID[this.world.players[0].controls.buttons[buttonName].code] ? keyImageID[this.world.players[0].controls.buttons[buttonName].code] : keyImageIDLength) : min(18, this.world.players[0].controls.buttons[buttonName].code));
+                keySheet.drawFrame(g, buttonID, 460, 192, 25, 25);
             },
             testCondition: { dash: false, dashCancel: false },
             finish: () => { return this.world.players[0].actionLag <= 0 && this.testCondition.dash && this.testCondition.dashCancel },

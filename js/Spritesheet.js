@@ -47,6 +47,9 @@ class Spritesheet {
 
 		/** @type {boolean} */
 		this.animating = true;
+
+		/** @type {number} Lets the sprite know if its resolution has been changed */
+		this.resolutionMult = 1;
 	}
 
 	setWorldFrameRate(num) {
@@ -58,7 +61,13 @@ class Spritesheet {
 	}
 
 	loadImage(onLoad, onError) {
-		this.image = loadImage(this.src, onLoad, onError);
+		this.image = loadImage(this.src, ((onLoad) => {
+			if (graphicsSettings.spriteResolutionMult !== 1 && this.image.width * graphicsSettings.spriteResolutionMult % 1 === 0 && this.image.height * graphicsSettings.spriteResolutionMult % 1 === 0) {
+				this.image.resize(this.image.width * graphicsSettings.spriteResolutionMult, 0);
+				this.resolutionMult = graphicsSettings.spriteResolutionMult;
+			}
+			onLoad();
+		}).bind(this, onLoad), onError);
 	}
 
 	loadJSON(onLoad, onError) {
@@ -83,45 +92,53 @@ class Spritesheet {
 
 			this.width = this.animationData.frames[first].frame.w;
 			this.height = this.animationData.frames[first].frame.h;
+			this.animationData = undefined;
 		}
 	}
 
-	splitImage(assetManager) {
+	splitImage(assetManager, finishFunc = () => { }) {
 		this.images = [];
 
 		let x = 0;
 		let y = 0;
 		let i = 0;
 		let total = this.image.height / this.height * this.image.width / this.width;
-		let loaded = { amount: 0, total: total };
-		if (assetManager)
-			assetManager.addSmallLoad(loaded);
-		while (y < this.image.height) {
-			while (x < this.image.width) {
-				setTimeout(this._splitImageHelp.bind(this, x, y, i, loaded, assetManager));
+		
+		if (debug.noSplit) {
+			assetManager._splitLoaded++;
+		} else {
+			let loaded = { amount: 0, total: total };
+			if (assetManager)
+				assetManager.addSmallLoad(loaded);
+			while (y < this.image.height) {
+				while (x < this.image.width) {
+					setTimeout(this._splitImageHelp.bind(this, x, y, i, loaded, assetManager, finishFunc));
 
-				x += this.width;
-				i++;
+					x += this.width;
+					i++;
+				}
+				y += this.height;
+				x = 0;
 			}
-			y += this.height;
-			x = 0;
 		}
 	}
 
-	_splitImageHelp(x, y, i, loaded, assetManager) {
+	_splitImageHelp(x, y, i, loaded, assetManager, finishFunc = () => { }) {
 		//let tg = createGraphics(this.width, this.height);//Old method (slow I think)
 		//tg.image(this.image, 0, 0, this.width, this.height, x, y, this.width, this.height);
-		let tg = this.image.get(x, y, this.width, this.height);
+
+		let tg = this.image.get(x, y, this.width * this.resolutionMult, this.height * this.resolutionMult);
 		this.images[i] = tg;
 
-		if (graphicsSettings.spriteResolutionMult !== 1)
-			this.images[i].resize(Math.round(this.width * graphicsSettings.spriteResolutionMult), 0);
+		/*if (graphicsSettings.spriteResolutionMult !== 1)
+			this.images[i].resize(Math.round(this.width * graphicsSettings.spriteResolutionMult), 0);*/
 
 		loaded.amount++;
 
 		if (assetManager && loaded.amount >= loaded.total) {
 			assetManager._splitLoaded++;
 			this.image = null;
+			finishFunc();
 		}
 	}
 
@@ -173,12 +190,23 @@ class Spritesheet {
     }
 
 	drawFrame(g, id, x, y, width = this.width, height = this.height) {
-		g.image(this.images[id % this.images.length], x, y, width, height);
-		//g.image(this.image, x, y, width, height, 125, 125, 125+width, 125+height);
+		if (debug.noSplit) {
+			let spriteWidth = this.width * this.resolutionMult;
+			let spriteHeight = this.height * this.resolutionMult;
+			g.image(this.image, x, y, width, height, id * spriteWidth % this.image.width, Math.floor(id * spriteWidth / this.image.width) * spriteHeight, spriteWidth, spriteHeight);
+		} else {
+			g.image(this.images[id % this.images.length], x, y, width, height);
+		}
 	}
 
 	draw(g, x, y, width = this.width, height = this.height) {
-		g.image(this.images[this.currentFrame], x, y, width, height);
+		if (debug.noSplit) {
+			let spriteWidth = this.width * this.resolutionMult;
+			let spriteHeight = this.height * this.resolutionMult;
+			g.image(this.image, x, y, width, height, this.currentFrame * spriteWidth % this.image.width, Math.floor(this.currentFrame * spriteWidth / this.image.width) * spriteHeight, spriteWidth, spriteHeight);
+		} else {
+			g.image(this.images[this.currentFrame], x, y, width, height);
+		}
 	}
 
 	run() {
@@ -229,6 +257,8 @@ class Spritesheet {
 		out.currentAnimation = spritesheet.currentAnimation;
 
 		out.animating = spritesheet.animating;
+
+		out.resolutionMult = spritesheet.resolutionMult;
 
 		return out;
 	}

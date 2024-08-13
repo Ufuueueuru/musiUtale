@@ -86,7 +86,6 @@ class Menu {
         if (this.target.targetScreenClass) {
             this.transitioning = 30;
             this.back = false;
-            this.target.pressFunction();
         } else {
             this.target.pressFunction();
         }

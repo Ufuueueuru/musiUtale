@@ -24,36 +24,48 @@ class AssetManager {
 
     loadAssets() {
         let time = millis();
+        let wait = 0;
         for (let u in this.fonts) {//Load all fonts
-            this.fonts[u] = loadFont(this.fonts[u], this.onLoadFont.bind(this), this.onError);
+            setTimeout(((i) => {
+                this.fonts[i] = loadFont(this.fonts[i], this.onLoadFont.bind(this), this.onError);
+            }).bind(this, u));
         }
-        for (let i in this.images) {//Load all images
-            this.images[i] = loadImage(this.images[i], this.onLoad.bind(this), this.onError);
+        for (let u in this.images) {//Load all images
+            setTimeout(((i) => {
+                this.images[i] = loadImage(this.images[i], this.onLoad.bind(this), this.onError);
+            }).bind(this, u));
         }
-        for (let i in this.spritesheets) {//Load all spritesheets
-            let current = new Spritesheet(this.spritesheets[i].src, this.spritesheets[i].jsonsrc, this.spritesheets[i].width, this.spritesheets[i].height);
-            current.loadImage(this.onLoad.bind(this), this.onError);
-            current.loadJSON(this.onLoad.bind(this), this.onError);
-            this.spritesheets[i] = current;
+        for (let u in this.spritesheets) {//Load all spritesheets
+            setTimeout(((i) => {
+                let current = new Spritesheet(this.spritesheets[i].src, this.spritesheets[i].jsonsrc, this.spritesheets[i].width, this.spritesheets[i].height);
+                current.loadImage(this.onLoad.bind(this), this.onError);
+                current.loadJSON(this.onLoad.bind(this), this.onError);
+                this.spritesheets[i] = current;
+            }).bind(this, u), wait += 1000);
         }
-        for (let j in this.sounds) {//Load all sounds (This is different because we are using howler.js)
-            this.sounds[j] = new Howl(this.sounds[j]);
+        for (let u in this.sounds) {//Load all sounds (This is different because we are using howler.js)
+            setTimeout(((j) => {
+                this.sounds[j] = new Howl(this.sounds[j]);
 
-            this.sounds[j].once("load", this.onLoad.bind(this));
-            this.sounds[j].once("loaderror", this.onHowlError);
+                this.sounds[j].once("load", this.onLoad.bind(this));
+                this.sounds[j].once("loaderror", this.onHowlError);
+            }).bind(this, u), wait += 1000);
         }
-        for (let o in this.jsons) {
-            this.jsons[o] = loadStrings(this.jsons[o], this.onLoad.bind(this), this.onError);
+        for (let u in this.jsons) {
+            setTimeout(((o) => {
+                this.jsons[o] = loadStrings(this.jsons[o], this.onLoad.bind(this), this.onError);
+            }).bind(this, u));
         }
     }
 
     splitSheets() {
-        //setTimeout(async () => {
-            for (let i in this.spritesheets) {
-                this.spritesheets[i].splitImage(this);
+
+        for (let i in this.spritesheets) {
+            setTimeout(((u) => {
+                this.spritesheets[u].splitImage(this);
                 //this._splitLoaded++;
-            }
-        //});
+            }).bind(this, i));
+        }
     }
     parseJSONs() {
         for (let i in this.spritesheets) {
