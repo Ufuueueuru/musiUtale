@@ -137,16 +137,31 @@
         Tutorial.TESTMOVE = {
             text: gt("tutorialTestMove"),
             run: () => {
-                if (this.world.players[0].currentState.name.substring(0, 1) === "N")
+                if (this.world.players[0].currentState.name.substring(0, 1) === "N") {
+                    if (!this.testCondition.neutral)
+                        assetManager.sounds.grab.play();
                     this.testCondition.neutral = true;
-                if (this.world.players[0].currentState.name.substring(0, 1) === "S")
+                }
+                if (this.world.players[0].currentState.name.substring(0, 1) === "S") {
+                    if (!this.testCondition.forward)
+                        assetManager.sounds.grab.play();
                     this.testCondition.forward = true;
-                if (this.world.players[0].currentState.name.substring(0, 1) === "R")
+                }
+                if (this.world.players[0].currentState.name.substring(0, 1) === "R") {
+                    if (!this.testCondition.right)
+                        assetManager.sounds.grab.play();
                     this.testCondition.right = true;
-                if (this.world.players[0].currentState.name.substring(0, 1) === "L")
+                }
+                if (this.world.players[0].currentState.name.substring(0, 1) === "L") {
+                    if (!this.testCondition.left)
+                        assetManager.sounds.grab.play();
                     this.testCondition.left = true;
-                if (this.world.players[0].currentState.name.substring(0, 1) === "M")
+                }
+                if (this.world.players[0].currentState.name.substring(0, 1) === "M") {
+                    if (!this.testCondition.back)
+                        assetManager.sounds.grab.play();
                     this.testCondition.back = true;
+                }
             },
             draw: (g) => {
                 g.noStroke();
@@ -196,10 +211,16 @@
         Tutorial.TESTDASH = {
             text: gt("tutorialTestDash"),
             run: () => {
-                if (this.world.players[0].currentState.name === "dash" && this.world.players[0].actionLag < 29)
+                if (this.world.players[0].currentState.name === "dash" && this.world.players[0].actionLag < 29) {
+                    if (!this.testCondition.dash)
+                        assetManager.sounds.grab.play();
                     this.testCondition.dash = true;
-                if (this.world.players[0].currentState.name === "dash cancel")
+                }
+                if (this.world.players[0].currentState.name === "dash cancel") {
+                    if (!this.testCondition.dashCancel)
+                        assetManager.sounds.grab.play();
                     this.testCondition.dashCancel = true;
+                }
             },
             draw: (g) => {
                 g.noStroke();
@@ -225,8 +246,11 @@
         Tutorial.TESTDASHATTACK = {
             text: gt("tutorialExplainDashAttack"),
             run: () => {
-                if (this.world.players[0].currentState.name === "dash attack")
+                if (this.world.players[0].currentState.name === "dash attack") {
+                    if (!this.testCondition.dashAttack)
+                        assetManager.sounds.grab.play();
                     this.testCondition.dashAttack = true;
+                }
             },
             draw: (g) => {
                 g.noStroke();
@@ -254,8 +278,10 @@
             run: () => {
                 this.world.players[1].controls.trainingSettings.mash[0].isMashing = true;
                 this.world.players[1].controls.trainingSettings.mash[0].wait = 90;
-                if ((this.world.players[0].currentState.name === "block" || this.world.players[0].currentState.name === "parry") && this.world.players[0].actionLag === 1)
+                if ((this.world.players[0].currentState.name === "block" || this.world.players[0].currentState.name === "parry") && this.world.players[0].actionLag === 1) {
+                    assetManager.sounds.grab.play();
                     this.testCondition.block++;
+                }
             },
             draw: (g) => {
                 g.noStroke();
@@ -277,8 +303,10 @@
             run: () => {
                 this.world.players[1].controls.trainingSettings.mash[0].actions = ["MN"];
                 this.world.players[1].controls.trainingSettings.mash[0].wait = 105;
-                if ((this.world.players[0].currentState.name === "block" || this.world.players[0].currentState.name === "parry") && this.world.players[0].actionLag === 1)
+                if ((this.world.players[0].currentState.name === "block" || this.world.players[0].currentState.name === "parry") && this.world.players[0].actionLag === 1) {
+                    assetManager.sounds.grab.play();
                     this.testCondition.block++;
+                }
                 for (let i in this.world.sikeWawa.slices) {
                     this.world.sikeWawa.slices[i].value = 0;
                 }
@@ -301,6 +329,11 @@
         Tutorial.SIKEWAWA = {
             text: gt("tutorialExplainSikeWawa"),
             run: () => { },
+            draw: (g) => {
+                g.noFill();
+                g.stroke(255, 60, 70);
+                g.ellipse(256, 75, 45 + random(-2, 2), 45 + random(-2, 2));
+            },
             finish: undefined,
             stayPaused: true
         }
@@ -314,9 +347,15 @@
                     if (this.world.sikeWawa.slices[i].ownerIs(this.world.players[0]) && this.world.sikeWawa.slices[i].isFull())
                         sum++;
                 }
+                if (sum > this.testCondition.full)
+                    assetManager.sounds.grab.play();
                 this.testCondition.full = sum;
             },
             draw: (g) => {
+                g.noFill();
+                g.stroke(255, 60, 70);
+                g.ellipse(256, 75, 45 + random(-2, 2), 45 + random(-2, 2));
+
                 g.noStroke();
                 g.textFont(assetManager.fonts.asuki);
                 g.textSize(30);
@@ -334,10 +373,16 @@
         Tutorial.TESTPOWERDASH = {
             text: gt("tutorialTestPowerDash"),
             run: () => {
-                if (this.world.players[0].currentState.name === "power dash" && this.world.players[0].actionLag === 1)
+                if (this.world.players[0].currentState.name === "power dash" && this.world.players[0].actionLag === 1) {
+                    assetManager.sounds.grab.play();
                     this.testCondition.dashes++;
+                }
             },
             draw: (g) => {
+                g.noFill();
+                g.stroke(255, 60, 70);
+                g.ellipse(256, 75, 45 + random(-2, 2), 45 + random(-2, 2));
+
                 g.noStroke();
                 g.textFont(assetManager.fonts.asuki);
                 g.textSize(30);
@@ -360,22 +405,28 @@
                 this.world.players[1].controls.trainingSettings.mash[0].wait = 0;
                 this.world.players[1].controls.trainingSettings.mash[0].names = ["lipuLili", "lipuSuli"];
                 this.world.players[1].controls.trainingSettings.mash[0].actions = ["R", "L", "N"];
-                if ((this.world.players[1].currentState.name === "lipuSuli" || this.world.players[1].currentState.name === "lipuLili") && this.world.players[0].actionLag === 1)
+                if ((this.world.players[1].currentState.name === "lipuSuli" || this.world.players[1].currentState.name === "lipuLili") && this.world.players[0].actionLag === 1) {
+                    assetManager.sounds.grab.play();
                     this.testCondition.sticks++;
+                }
             },
             draw: (g) => {
+                g.noFill();
+                g.stroke(255, 60, 70);
+                g.ellipse(312, 68, 60 + random(-2, 2), 20 + random(-2, 2));
+
                 g.noStroke();
                 g.textFont(assetManager.fonts.asuki);
                 g.textSize(30);
-                if (this.testCondition.stick > 1) {
+                if (this.testCondition.stick > 2) {
                     g.fill(170, 250, 195);
                 } else {
                     g.fill(170, 170, 195);
                 }
-                g.text(gt("wallSticks") + ": " + this.testCondition.sticks + "/2", 10, 80);
+                g.text(gt("wallSticks") + ": " + this.testCondition.sticks + "/3", 10, 80);
             },
             testCondition: { sticks: 0 },
-            finish: () => { return this.world.players[0].actionLag <= 0 && this.testCondition.sticks > 1 },
+            finish: () => { return this.world.players[0].actionLag <= 0 && this.testCondition.sticks > 2 },
             stayPaused: false
         }
         Tutorial.END = {
@@ -391,8 +442,10 @@
             text: gt("tutorialExplainReversal"),
             run: () => {
                 this.world.players[1].controls.trainingSettings.mash[0].actions = ["NPS"];
-                if (this.world.players[0].currentState.name === "MN" && this.world.players[1].currentState.name === "hitstun")
+                if (this.world.players[0].currentState.name === "MN" && this.world.players[1].currentState.name === "hitstun") {
+                    assetManager.sounds.grab.play();
                     this.testCondition.punish++;
+                }
             },
             draw: (g) => {
                 g.noStroke();
