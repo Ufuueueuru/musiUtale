@@ -13,7 +13,7 @@ if (!window.electronAPI) {
 		loadSave: async () => {
 			if (localStorage.getItem("saveFile") !== null)
 				return localStorage.getItem("saveFile");
-			return { "defaultKeyboardControls1": { "keys": [["dash", "KeyY"], ["powerDash", "KeyJ"], ["pokaLili", "KeyT"], ["pokaSuli", "KeyG"], ["lili", "KeyR"], ["suli", "KeyF"], ["nasa", "KeyH"], ["frameAdvance", "Space"], ["select", "KeyR"], ["back", "KeyT"], ["start", "Escape"]], "arrows": [["KeyD", "KeyW", "KeyA", "KeyS"]], "deadzones": [0.25] }, "defaultKeyboardControls2": { "keys": [["dash", "KeyO"], ["powerDash", "KeyK"], ["pokaLili", "KeyP"], ["pokaSuli", "Semicolon"], ["lili", "BracketLeft"], ["suli", "Quote"], ["nasa", "KeyL"], ["frameAdvance", "Space"], ["select", "Enter"], ["back", "KeyP"], ["start", "Escape"]], "arrows": [["ArrowRight", "ArrowUp", "ArrowLeft", "ArrowDown"]], "deadzones": [0.25] }, "defaultGamepadControls": { "keys": [["dash", 4], ["powerDash", 7], ["pokaLili", 3], ["pokaSuli", 1], ["lili", 2], ["suli", 0], ["nasa", 5], ["frameAdvance", 6], ["select", 0], ["back", 1], ["start", 9]], "arrows": [0], "deadzones": [0.35] }, "graphicsSettings": { "resolutionMult": 0.25 }, "currentLanguage": "tp", "version": "0.0.2" }
+			return { "defaultKeyboardControls1": { "keys": [["dash", "KeyY"], ["powerDash", "KeyJ"], ["pokaLili", "KeyT"], ["pokaSuli", "KeyG"], ["lili", "KeyR"], ["suli", "KeyF"], ["nasa", "KeyH"], ["frameAdvance", "Space"], ["select", "KeyR"], ["back", "KeyT"], ["start", "Escape"]], "arrows": [["KeyD", "KeyW", "KeyA", "KeyS"]], "deadzones": [0.25] }, "defaultKeyboardControls2": { "keys": [["dash", "KeyO"], ["powerDash", "KeyK"], ["pokaLili", "KeyP"], ["pokaSuli", "Semicolon"], ["lili", "BracketLeft"], ["suli", "Quote"], ["nasa", "KeyL"], ["frameAdvance", "Space"], ["select", "Enter"], ["back", "KeyP"], ["start", "Escape"]], "arrows": [["ArrowRight", "ArrowUp", "ArrowLeft", "ArrowDown"]], "deadzones": [0.25] }, "defaultGamepadControls": { "keys": [["dash", 4], ["powerDash", 7], ["pokaLili", 3], ["pokaSuli", 1], ["lili", 2], ["suli", 0], ["nasa", 5], ["frameAdvance", 6], ["select", 0], ["back", 1], ["start", 9]], "arrows": [0], "deadzones": [0.35] }, "graphicsSettings": { "resolutionMult": 0.25 }, "currentLanguage": "tp", "promptTutorial": true, "version": "0.0.3" }
 		},
 		getSavesPath: () => { },
 		getAppVersion: async () => "0.3.4"
@@ -57,6 +57,8 @@ let playersManager;
 let errorDisplayMessage = "";
 let errorDisplayFrames = 0;
 
+let promptTutorial = true;
+
 let transText;
 let currentLanguage = "tp";//en or tp
 
@@ -86,7 +88,7 @@ function setup() {
 
 	assetManager = new AssetManager();
 
-	assetManager.addFont("resources/sitelenselikiwenasuki.ttf", "asuki");
+	assetManager.addFont("resources/sitelenselikiwenjuniko.ttf", "asuki");
 
 	assetManager.addImage("resources/backgrounds/MenuSplash.png", "menuSplash");
 	assetManager.addImage("resources/button_unpressed.png", "buttonUnpressed");
@@ -443,12 +445,24 @@ function loadSaveObject(saveFile) {
 			controlsManager.keyboardControls.push(keyboard2);
 			currentLanguage = saveFile.currentLanguage;
 			break;
+		case "0.0.3":
+			controlsManager.defaultKeyboardControls1 = saveFile.defaultKeyboardControls1;
+			controlsManager.defaultKeyboardControls2 = saveFile.defaultKeyboardControls2;
+			controlsManager.defaultGamepadControls = saveFile.defaultGamepadControls;
+
+			keyboard1 = new Controls("keyboard", keys, controlsManager.defaultKeyboardControls1.keys, controlsManager.defaultKeyboardControls1.arrows, controlsManager.defaultKeyboardControls1.deadzones);
+			keyboard2 = new Controls("keyboard", keys, controlsManager.defaultKeyboardControls2.keys, controlsManager.defaultKeyboardControls2.arrows, controlsManager.defaultKeyboardControls2.deadzones);
+			controls.push(keyboard1);
+			controls.push(keyboard2);
+			controlsManager.keyboardControls.push(keyboard1);
+			controlsManager.keyboardControls.push(keyboard2);
+			currentLanguage = saveFile.currentLanguage;
+			promptTutorial = saveFile.promptTutorial;
+			break;
 	}
 }
 
 function writeSaveFile() {
-	if (webVersion)
-		return;
 	let saveFile = {};
 	/*saveFile.defaultKeyboardControls1 = {
 		keys: [["dash", "KeyY"],
@@ -500,7 +514,9 @@ function writeSaveFile() {
 
 	saveFile.currentLanguage = currentLanguage;
 
-	saveFile.version = "0.0.2";
+	saveFile.promptTutorial = promptTutorial;
+
+	saveFile.version = "0.0.3";
 
 	window.electronAPI.writeSave(saveFile);
 }

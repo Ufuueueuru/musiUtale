@@ -1,4 +1,239 @@
 ﻿{
+  "sample": {
+    "en": {
+      "text": ""
+    },
+    "tp": {
+      "text": ""
+    }
+  },
+  "tutorialWelcome": {
+    "en": {
+      "text": "Welcome to musi Utale!"
+    },
+    "tp": {
+      "text": "󱥄󱤖󱥔󱥩󱤻󱦐󱥱󱥩󱤄󱦝󱦑"
+    }
+  },
+  "tutorialExplainMovement": {
+    "en": {
+      "text": "musi Utale attack inputs are very angle-based. The attack that comes out depends on what direction (neutral, forward, right, left, or back) you are pressing when the attack button is pressed. By default \"forward\" is the direction your character is facing, but it can be changed in controls to be towards the opponent."
+    },
+    "tp": {
+      "text": "󱥀󱥳󱤡󱥱󱤭󱥁󱤧󱤘:  󱥱󱤏,󱥱󱥟,󱥱󱥒󱥳,󱥱󱥒󱥮,󱥱󱤸  󱥞󱥩󱤙󱥊󱤎  󱥊󱤧󱤮󱥩󱥟󱤡󱥱󱥟󱤧󱤬  󱥟󱤎󱤧󱥖󱥟󱤑  󱤆󱤤󱤊󱥷󱥞󱤡󱥟󱤧󱤘󱥩󱤑󱤆"
+    }
+  },
+  "tutorialTestMove": {
+    "en": {
+      "text": "Try attacking with all 5 directions (neutral, forward, right, left, or back)."
+    },
+    "tp": {
+      "text": "󱥄󱥱󱥩󱥟󱥩󱥒󱥩󱥒󱤆󱥩󱤸󱥩󱤂(󱤏)"
+    }
+  },
+  "tutorialExplainDash": {
+    "en": {
+      "text": "There are two types of dashes - a long dash and a short dash. Pressing dash with perform a long dash unless you release the dash button quickly after pressing it, in which case you will perform a short dash."
+    },
+    "tp": {
+      "text": "󱥀󱥩󱤡󱥩󱥣󱤊󱥩󱤨󱤧󱤬  󱥩󱥣󱤡󱥄󱤅󱤉󱥀󱤬󱥫󱥣  󱥩󱤨󱤡󱥄󱤅󱤉󱥀󱤬󱥫󱤨󱤀"
+    }
+  },
+  "tutorialTestDash": {
+    "en": {
+      "text": "Try performing both a long dash and a short dash (remember to release the button quickly to perform a short dash)."
+    },
+    "tp": {
+      "text": "󱥄󱥩󱥣,󱥄󱥩󱤨  󱥩󱤨󱤡󱥄󱤅󱤉󱥀󱤬󱥫󱤨󱤀"
+    }
+  },
+  "tutorialExplainDashAttack": {
+    "en": {
+      "text": "Pressing any non-special attack button immediately after dashing performs a dash attack. Try dash attacking."
+    },
+    "tp": {
+      "text": "󱥀󱥩󱤊󱥀󱥍󱤾󱤂󱤡󱥞󱥱󱥩  󱥄󱥱󱥩"
+    }
+  },
+  "tutorialExplainButtons": {
+    "en": {
+      "text": "There are 6 buttons with 1 optional macro in musi Utale: light, strong, alternate light, alternate strong, special, and dash. A power dash can be performed by pressing dash while holding special or a macro. With a dash attack as well as 5 directions and 5 attacks buttons, that makes 26 unique attacks."
+    },
+    "tp": {
+      "text": "󱥀󱤭󱥳󱤧󱤬:  󱤨,󱥣,󱥒󱤨,󱥒󱥣,󱤾,󱥩 󱥞󱤘\"󱥩󱥵\"󱤙󱥀󱥩󱤬󱥫󱥖󱥍󱥀󱤾  󱥱󱥩󱤊󱤮󱤭󱤊󱥀󱤭󱤡󱥱󱤼󱤭󱥳󱤧󱤬"
+    }
+  },
+  "tutorialExplainBlock": {
+    "en": {
+      "text": "Hold the opposite direction of an incoming attack to block. You know if you blocked an attack or not if the particle effect is blue instead of red. If you press the correct direction shortly before the attack touches you, you will parry the attack and create a yellow particle effect instead. Parrying is much harder than blocking but it decreases the time stuck in the block animation. Try blocking the computer."
+    },
+    "tp": {
+      "text": "󱥞󱤘󱤈󱤉󱥱  󱤈󱥱󱤡󱥊󱥍󱤎󱤤󱥄󱤮󱥩󱤸󱥧󱤖󱥱  󱤈󱤡󱥠󱤣󱤧󱤖  󱥈󱤡󱥠󱤫󱤧󱤖  󱥞󱤮󱤉󱥊󱥩󱥔󱤬󱥫󱥖󱥍󱤖󱥱󱤡󱥠󱤒󱤧󱤖:  󱥁󱤧󱤈󱥵󱤧󱤨󱤉󱥫󱤈  󱥄󱤈󱤉󱥱"
+    }
+  },
+  "tutorialExplainBlockAngles": {
+    "en": {
+      "text": "Some attacks have special block angles. You can know what the angle needed to block an attack is based on the rotation of the particle effect when the attack touches. Try blocking this back special attack."
+    },
+    "tp": {
+      "text": "󱤈󱥱󱤡󱥄󱥡󱤉󱥁:  󱥠󱤫󱤇󱤣󱤇󱤒󱤧󱥌󱤉󱥡󱥍󱤮󱥔  󱥄󱤮󱤉󱥊󱤎󱤤󱥩󱤰󱤆󱥍󱤬󱥠  󱥄󱤈󱤉󱥱\"󱤾󱤸\"󱥁"
+    }
+  },
+  "tutorialExplainSikeWawa": {
+    "en": {
+      "text": "The Power Circle at the center of the HUD is a shared resource by both players. Performing various actions such as blocking attacks or landing a raw hit on the opponent will fill up slices of the Power Circle with your color and decrease the opponent's color. Which slice is filled up is based on the angle between you and the opponent, which is indicated at all times by the colored triangles circling the Power Circle."
+    },
+    "tp": {
+      "text": "󱥜󱥵󱤧󱤬󱦂󱤧󱤬󱥚  󱥄󱤮󱤉󱥆  󱥜󱥵󱤧󱥌󱤉󱤘󱥩󱤑󱤄  󱥞󱤈󱤉󱥱󱤇󱥱󱤉󱤑󱤆󱤡󱥞󱤖󱤓󱤉󱥵󱤬󱥜󱥵  󱥵󱤧󱤖󱥩󱥻󱤬󱤰󱥖󱥁:  󱥞󱤬󱤰󱥙󱥩󱤑󱤆"
+    }
+  },
+  "tutorialTestSikeWawa": {
+    "en": {
+      "text": "Try filling up some slices of the Power Circle by landing raw attacks on the computer."
+    },
+    "tp": {
+      "text": "󱥄󱤖󱤓󱤉󱥵󱤬󱥜󱥵󱤙󱤿󱥁:  󱥄󱥱󱤉󱤑󱤆"
+    }
+  },
+  "tutorialTestPowerDash": {
+    "en": {
+      "text": "Now that you have Power Circle meter, you can power dash! Press dash while holding special or press the power dash macro to power dash. This consumes a bit of meter and in the direction of the power dash and can only be used in directions with full slices. Power dashes can be used to cancel almost any other action, allowing you to cancel endlag of attacks and even extend combos!"
+    },
+    "tp": {
+      "text": "󱥻󱥍󱥜󱥵󱤧󱥐󱤡󱥞󱤘\"󱥩󱥵\"󱤀  󱥩󱥵󱤡󱥄󱤅󱤉󱥀󱥩󱤬󱥫󱥖󱥍󱥀󱤾  󱤇󱤡󱥄󱤅󱤉󱥀\"󱥩󱥵\"  󱥞󱥱󱤡󱥞󱤈󱤘󱥩󱥵  󱥁󱤧󱤘󱤨󱤉󱥫󱥍󱥱󱥞󱤡󱥞󱤘󱥱󱤼󱤙󱥩󱥵"
+    }
+  },
+  "tutorialTestWallStick": {
+    "en": {
+      "text": "The red meter right under your health is the wall stick meter. It goes up every time you are hit by an attack. If it is full when you are knocked against a wall, you are splatted onto the wall and must choose to either recover in the same spot or roll to either side pressing the control stick to either side. Try wall sticking the computer."
+    },
+    "tp": {
+      "text": "󱥼󱤒󱥣󱤧󱤽󱤷󱥞  󱥼󱤫󱥏󱤬󱤅󱥆󱤧󱤽󱤪:  󱤑󱤆󱤧󱥱󱤉󱥞󱤡󱤽󱤪󱤧󱤖󱥣  󱤽󱤪󱤧󱥣󱤄󱤡󱥞󱤘󱤖󱤪󱤬󱥟󱥧󱥱  󱤖󱤪󱤡󱥞󱤘󱤖󱥔󱤬󱤰󱥖󱤬󱤰󱥒󱤙󱥊󱤎󱤤  󱥄󱤖󱤪󱤉󱤑󱤆"
+    }
+  },
+
+  "tutorialExplainReversal": {
+    "en": {
+      "text": "You can cancel the last bit of blockstun into back special. This is known as a reversal and can be used to punish the opponent for using an unsafe move on block. The blue blockstun meter turns yellow to indicate when the cancel can be performed."
+    },
+    "tp": {
+      "text": ""
+    }
+  },
+  "tutorialEnd": {
+    "en": {
+      "text": "You have reached the end of this tutorial."
+    },
+    "tp": {
+      "text": "󱥌󱥡󱤧󱥐"
+    }
+  },
+
+  "neutral": {
+    "en": {
+      "text": "neutral"
+    },
+    "tp": {
+      "text": "󱤏"
+    }
+  },
+  "forward": {
+    "en": {
+      "text": "forward"
+    },
+    "tp": {
+      "text": "󱥟"
+    }
+  },
+  "right": {
+    "en": {
+      "text": "right"
+    },
+    "tp": {
+      "text": "󱥒"
+    }
+  },
+  "left": {
+    "en": {
+      "text": "left"
+    },
+    "tp": {
+      "text": "󱥒󱤆"
+    }
+  },
+  "back": {
+    "en": {
+      "text": "back"
+    },
+    "tp": {
+      "text": "󱤸"
+    }
+  },
+  "dash": {
+    "en": {
+      "text": "long dash"
+    },
+    "tp": {
+      "text": "󱥩󱥣"
+    }
+  },
+  "dashCancel": {
+    "en": {
+      "text": "short dash"
+    },
+    "tp": {
+      "text": "󱥩󱤨"
+    }
+  },
+  "dashAttack": {
+    "en": {
+      "text": "dash attack"
+    },
+    "tp": {
+      "text": "󱥱󱥩"
+    }
+  },
+  "block": {
+    "en": {
+      "text": "block"
+    },
+    "tp": {
+      "text": "󱤈󱥱"
+    }
+  },
+  "sikeWawaSlices": {
+    "en": {
+      "text": "slices"
+    },
+    "tp": {
+      "text": "󱥵󱥐󱥍󱥜󱥵"
+    }
+  },
+  "powerDashes": {
+    "en": {
+      "text": "power dashes"
+    },
+    "tp": {
+      "text": "󱥩󱥵"
+    }
+  },
+  "wallSticks": {
+    "en": {
+      "text": "wall sticks"
+    },
+    "tp": {
+      "text": "󱤖󱤪"
+    }
+  },
+  "paused": {
+    "en": {
+      "text": "Paused"
+    },
+    "tp": {
+      "text": "󱤻󱤧󱤈"
+    }
+  },
+
   "mainMenuFight": {
     "en": {
       "text": "Fight"
@@ -61,6 +296,14 @@
     },
     "tp": {
       "text": "󱥇󱥱"
+    }
+  },
+  "tutorial": {
+    "en": {
+      "text": "Tutorial"
+    },
+    "tp": {
+      "text": "󱤖󱥡󱤉󱤿󱥱"
     }
   }
 }

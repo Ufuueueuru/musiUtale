@@ -180,11 +180,13 @@
 		this.movementSpeed = 1.5;
 		this.forwardSpeedBoost = 2.5;
 
-		this.turnSpeed = 0.005;
+		this.turnSpeed = 0.007;
 
 		this.OOBBlockFrame = 4;
 
 		this.dash.turnSpeedBoost = 0.01;
+		this.dash.backPenalty = 4;
+		this.dash.cancelBackPenaltyMult = 2;
 
 		this.maxBullets = 6;
 		this.bullets = this.maxBullets;
@@ -996,7 +998,7 @@ class JanLukeNPL extends Attack {
 	}
 
 	static createAttack(player) {
-		let cancelOptions = ["SPL", "NPS", "MN"];
+		let cancelOptions = ["SPL", "NPS", "MN", "NN"];
 
 		let sweet1 = new PriorityCircle(30, 0, 20, 0).setVelocity(0.1, 0);
 		let sweet2 = new PriorityCircle(50, 0, 20, 0).setVelocity(0.1, 0);
@@ -1064,7 +1066,7 @@ class JanLukeSPL extends Attack {
 	}
 
 	static createAttack(player) {
-		let cancelOptions = [];
+		let cancelOptions = ["NN"];
 
 		let sweet1 = new PriorityCircle(30, 0, 25, 0).setVelocity(0.1, 0);
 		let sweet2 = new PriorityCircle(60, 0, 25, 0).setVelocity(0.1, 0);
@@ -1294,7 +1296,7 @@ class JanLukeMPL extends Attack {
 	}
 
 	static createAttack(player) {
-		let cancelOptions = ["SPL", "NPS", "MN"];
+		let cancelOptions = ["SPL", "NPS", "MN", "NN"];
 
 		let sweet1 = new PriorityCircle(30, 0, 20, 0).setVelocity(0.1, 0);
 		let sweet2 = new PriorityCircle(50, 0, 20, 0).setVelocity(0.1, 0);

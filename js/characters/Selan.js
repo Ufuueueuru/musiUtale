@@ -2348,7 +2348,7 @@ class SelanNS extends Attack {
 
 	static startAttack(player, attack, bufferInfo) {
 		player.startMomentumMultiply(0);
-		player.startMomentumMultiplyDash(1);
+		player.startMomentumMultiplyDash(2);
 	}
 
 	draw(g) {
@@ -2942,7 +2942,7 @@ class SelanRPS extends Attack {
 
 	static createAttack(player) {
 		let cancelOptions = ["SS", "SPL", "RPL", "LPL", "RPS", "LPS"];
-		let hitCancelOptions = [];
+		let hitCancelOptions = ["dash"];
 
 		let sweet1 = new PriorityCircle(80, 30, 60, 0).setVelocity(1, 0);
 		let sweet2 = new PriorityCircle(56, 86, 55, 0).setVelocity(1, 0);
@@ -2987,7 +2987,7 @@ class SelanLPS extends Attack {
 
 	static createAttack(player) {
 		let cancelOptions = ["SS", "SPL", "RPL", "LPL", "RPS", "LPS"];
-		let hitCancelOptions = [];
+		let hitCancelOptions = ["dash"];
 
 		let sweet1 = new PriorityCircle(80, -30, 60, 0).setVelocity(1, 0);
 		let sweet2 = new PriorityCircle(56, -86, 55, 0).setVelocity(1, 0);

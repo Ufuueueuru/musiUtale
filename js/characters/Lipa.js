@@ -574,7 +574,7 @@
         this.collideRadius = 55;
 
 		this.movementSpeed = 1.9;
-		this.forwardSpeedBoost = 0.6;
+		this.forwardSpeedBoost = 0.7;
 
 		this.OOBBlockFrame = 6;
 
@@ -621,7 +621,7 @@
 		this.dashFailIFrameStart = this.dashFailFrames - 6;
 
 		this.dashCancelRegen = 0;
-		this.dashCancelRegenFull = 200;
+		this.dashCancelRegenFull = 160;
 		this.dashCancelsMax = 5;
 		this.dashCancels = this.dashCancelsMax;
 		this.dashDisplays = [];
@@ -633,7 +633,7 @@
 		this.rightHanded = true;
 
 		this.chargeNN = 0;
-		this.chargeNNMax = 45;
+		this.chargeNNMax = 55;
 
 		this.rnEndLag = 20;
 		this.rnMaxAttacks = 5;
@@ -2261,10 +2261,12 @@ class LipaNN extends Attack {
 	constructor(player, circles = [], props = []) {
 		super(player, circles, props);
 		this.name = "NN";
+
+		this.held = false;
 	}
 
 	static createAttack(player) {
-		let cancelOptions = ["attack"];
+		let cancelOptions = [];
 
 		let ultraSour1 = new PriorityCircle(0, 40, 20, 0);
 		let ultraSour2 = new PriorityCircle(20, 35, 20, 0);
@@ -2300,6 +2302,9 @@ class LipaNN extends Attack {
 				this.player.dir.changeValue(0.8 * min(abs(angleDif), 1));
 			if (angleDif < 0)
 				this.player.dir.changeValue(-0.8 * min(abs(angleDif), 1));
+			for (let i in this.properties) {
+				this.properties[i].setAngleValue(this.player.dir.value);
+			}
 		}
 		if (this.getStartupF() === 4) {
 			this.player.dx *= 0.2;
@@ -2308,8 +2313,15 @@ class LipaNN extends Attack {
 			this.player.dy += this.player.dir.getY() * 20;
 		}
 		if (this.getActiveF() <= 0) {
-			this.player.dx *= 0.6;
-			this.player.dy *= 0.6;
+			if (!this.held || this.getEndF() < 11) {
+				this.player.dx *= 0.6;
+				this.player.dy *= 0.6;
+			} else {
+				this.player.dx *= 0.95;
+				this.player.dy *= 0.95;
+			}
+		} else {
+			this.held = this.player.controls.pressed("nasa");
 		}
 	}
 

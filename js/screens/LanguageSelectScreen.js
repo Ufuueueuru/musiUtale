@@ -43,10 +43,11 @@ class LanguageSelectScreen extends Screen {
 
     init() {
         this.menu = new Menu();
-
-        let button1 = new MenuItem(50, 50, assetManager.images.buttonPressedLanguage, assetManager.images.buttonUnpressedLanguage, MenuDebugScreen, "󱥬󱥔\n(toki pona)", () => { }, () => { currentLanguage = "tp"; writeSaveFile(); });
-        let button2 = new MenuItem(306, 50, assetManager.images.buttonPressedLanguage, assetManager.images.buttonUnpressedLanguage, MenuDebugScreen, "English", () => { }, () => { currentLanguage = "en"; writeSaveFile(); });
-
+        
+        let menu = (!promptTutorial ? MenuDebugScreen : undefined);
+        let button1 = new MenuItem(50, 50, assetManager.images.buttonPressedLanguage, assetManager.images.buttonUnpressedLanguage, menu, "󱥬󱥔\n(toki pona)", () => { currentLanguage = "tp"; writeSaveFile(); if (promptTutorial) { currentScreen = new TutorialScreen([0, 0], [controls[0], null], 0); } });
+        let button2 = new MenuItem(306, 50, assetManager.images.buttonPressedLanguage, assetManager.images.buttonUnpressedLanguage, menu, "English", () => { currentLanguage = "en"; writeSaveFile(); if (promptTutorial) { currentScreen = new TutorialScreen([0, 0], [controls[0], null], 0); } });
+        
         button1.addMoves(new MenuMove(button2, Angle.RIGHT));
         button2.addMoves(new MenuMove(button1, Angle.LEFT));
 
