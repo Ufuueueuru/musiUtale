@@ -97,10 +97,10 @@
   },
   "tutorialTestPowerDash": {
     "en": {
-      "text": "Now that you have Power Circle meter, you can power dash! Press dash while holding special or press the power dash macro to power dash. This consumes a bit of meter and in the direction of the power dash and can only be used in directions with full slices. Power dashes can be used to cancel almost any other action, allowing you to cancel endlag of attacks and even extend combos!"
+      "text": "Now that you have Power Circle meter, you can power dash! Press dash while holding special or press the power dash macro to power dash. This consumes a bit of meter in the direction of the power dash and can only be used in directions with full slices. Power dashes can be used to cancel almost any other action, allowing you to cancel endlag of attacks and even extend combos!"
     },
     "tp": {
-      "text": "󱥻󱥍󱥜󱥵󱤧󱥐󱤡󱥞󱤘\"󱥩󱥵\"󱤀  󱥩󱥵󱤡󱥄󱤅󱤉󱥀󱥩󱤬󱥫󱥖󱥍󱥀󱤾  󱤇󱤡󱥄󱤅󱤉󱥀\"󱥩󱥵\"  󱥞󱥱󱤡󱥞󱤈󱤘󱥩󱥵  󱥁󱤧󱤘󱤨󱤉󱥫󱥍󱥱󱥞󱤡󱥞󱤘󱥱󱤼󱤙󱥩󱥵"
+      "text": "󱥻󱥍󱥜󱥵󱤧󱥐󱤡󱥞󱤘\"󱥩󱥵\"󱤀  󱤿󱥍󱥩󱥵󱤧󱥁:  󱤽󱥳󱤡󱥄󱤈󱤅󱤉󱥀󱤾  󱤽󱥮󱤡󱥄󱤅󱤉󱥀󱤾  󱤇󱤡󱥄󱤅󱤉󱥀\"󱥩󱥵\"  󱥞󱥱󱤡󱥞󱤈󱤘󱥩󱥵  󱥁󱤧󱤘󱤨󱤉󱥫󱥍󱥱󱥞󱤡󱥞󱤘󱥱󱤼󱤙󱥩󱥵"
     }
   },
   "tutorialTestWallStick": {
