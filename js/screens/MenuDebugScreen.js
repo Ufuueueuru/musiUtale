@@ -12,7 +12,14 @@ class MenuDebugScreen extends Screen {
         //g.image(assetManager.images.buttonUnpressed, width/2 + imageWidth * 0.05, height/2 - imageHeight * 0.05, imageWidth * 0.2, imageHeight * 0.1);
         //g.image(assetManager.images.buttonUnpressed, width/2 + imageWidth * 0.0, height/2 - imageHeight * 0.2, imageWidth * 0.2, imageHeight * 0.1);
 
+        assetManager.spritesheets.menuFire.draw(g, width / 2 - imageWidth / 6, height - imageWidth / 3, imageWidth / 3, imageWidth / 3.05);
+
         this.menu.draw(g, imageWidth, imageHeight, imageWidth * 0.2, imageHeight * 0.1);
+
+        if (promptTutorial && !tutorialPromptSelected) {
+            g.background(200, 200, 210, 140);
+            this.promptMenu.draw(g, width, height, width * 0.3, height * 0.5);
+        }
 
         /*g.textFont(assetManager.fonts.asuki);
         g.textFont("Comic Sans");
@@ -31,8 +38,6 @@ class MenuDebugScreen extends Screen {
             assetManager.spritesheets.keys.drawFrame(g, keyImageID[controls[0].buttons.back.code], 4.5 * buttonSize, height - buttonSize, buttonSize, buttonSize);
         }
 
-        assetManager.spritesheets.menuFire.draw(g, width / 2 - imageWidth / 6, height - imageWidth / 3, imageWidth / 3, imageWidth / 3.05);
-
         if (this.menu.transitioning > 0) {
             g.noFill();
             g.stroke(0);
@@ -45,7 +50,12 @@ class MenuDebugScreen extends Screen {
     }
 
     run() {
-        this.menu.run();
+        if ((!promptTutorial || tutorialPromptSelected) || this.menu.transitioning !== 0) {
+            this.menu.run();
+        }
+        if (promptTutorial && !tutorialPromptSelected) {
+            this.promptMenu.run();
+        }
 
         /*if (keys.Space) {
             currentScreen = new DebugScreen();
@@ -57,11 +67,11 @@ class MenuDebugScreen extends Screen {
     init() {
         this.menu = new Menu();
 
-        let button1 = new MenuItem(236, 66, assetManager.images.buttonPressed, assetManager.images.buttonUnpressed, CharacterSelectScreen, gt("mainMenuFight"), () => { playersManager.openScreen(); playersManager.resetPositions(); });
+        let button1 = new MenuItem(236, 66, assetManager.images.buttonPressed, assetManager.images.buttonUnpressed, CharacterSelectScreen, gt("mainMenuFight"), () => { playersManager.openScreen(); playersManager.resetPositions(MenuDebugScreen); });
         let button2 = new MenuItem(256, 103, assetManager.images.buttonPressed, assetManager.images.buttonUnpressed, undefined, gt("mainMenuControls"), () => { controlsManager.openScreen(); });
-        let buttonTraining = new MenuItem(276, 140, assetManager.images.buttonPressed, assetManager.images.buttonUnpressed, CharacterSelectScreen, gt("mainMenuTraining"), () => { playersManager.openScreen(); playersManager.resetPositions(); currentScreen.setTraining(); });//kama wawa
-        let buttonNetplay = new MenuItem(296, 177, assetManager.images.buttonPressed, assetManager.images.buttonUnpressed, CharacterSelectScreen, gt("mainMenuOnline"), () => { playersManager.openScreen(); playersManager.resetPositionsNetplay(); currentScreen.setNetplay(); });
-        let buttonTutorial = new MenuItem(316, 214, assetManager.images.buttonPressed, assetManager.images.buttonUnpressed, TutorialScreen, gt("tutorial"), () => { playersManager.openScreen(); /*currentScreen = new TutorialScreen([0, 0], [controls[0], null], 0);*/ });
+        let buttonTraining = new MenuItem(276, 140, assetManager.images.buttonPressed, assetManager.images.buttonUnpressed, CharacterSelectScreen, gt("mainMenuTraining"), () => { playersManager.openScreen(); playersManager.resetPositions(MenuDebugScreen); currentScreen.setTraining(); });//kama wawa
+        let buttonNetplay = new MenuItem(296, 177, assetManager.images.buttonPressed, assetManager.images.buttonUnpressed, CharacterSelectScreen, gt("mainMenuOnline"), () => { playersManager.openScreen(); playersManager.resetPositionsNetplay(MenuDebugScreen); currentScreen.setNetplay(); });
+        let buttonTutorial = new MenuItem(316, 214, assetManager.images.buttonPressed, assetManager.images.buttonUnpressed, TutorialScreen, gt("tutorial"), () => { playersManager.openScreen(); playersManager.resetPositions(MenuDebugScreen); playersManager.disableP2(); /*currentScreen = new TutorialScreen([0, 0], [controls[0], null], 0);*/ });
         let button3 = new MenuItem(336, 251, assetManager.images.buttonPressed, assetManager.images.buttonUnpressed, MenuDebugScreen, "󱥜");
         let button4 = new MenuItem(356, 288, assetManager.images.buttonPressed, assetManager.images.buttonUnpressed, undefined, gt("mainMenuClose"), window.electronAPI.closeWindow);
 
@@ -82,5 +92,19 @@ class MenuDebugScreen extends Screen {
         this.menu.addMenuItems(button1, button2, buttonNetplay, buttonTraining, button3, button4, buttonTutorial);
 
         this.menu.setTarget(button1);
+
+
+        this.promptMenu = new Menu();
+
+        let startTutorial = new MenuItem(50, 100, assetManager.images.buttonPressedLanguage, assetManager.images.buttonUnpressedLanguage, TutorialScreen, gt("mainMenuAskTutorialYes"), () => { playersManager.openScreen(); playersManager.resetPositions(MenuDebugScreen); playersManager.disableP2(); tutorialPromptSelected = true; });
+        let noTutorial = new MenuItem(307, 100, assetManager.images.buttonPressedLanguage, assetManager.images.buttonUnpressedLanguage, undefined, gt("mainMenuAskTutorialNo"), () => { tutorialPromptSelected = true; });
+        let titleText = new MenuItem(175, -50, undefined, undefined, undefined, gt("mainMenuAskTutorial"), () => { tutorialPromptSelected = true; });
+
+        startTutorial.addMoves(new MenuMove(noTutorial, Angle.RIGHT));
+        noTutorial.addMoves(new MenuMove(startTutorial, Angle.LEFT));
+
+        this.promptMenu.addMenuItems(startTutorial, noTutorial, titleText);
+
+        this.promptMenu.setTarget(startTutorial);
     }
 }

@@ -18,10 +18,10 @@ let debug = {
     //Framerate Control
     frameRates: [],
     effectiveFrameRates: [],
-    noSkipFrames: true,
+    noSkipFrames: false,
     noSkipDraw: true,//Should always be true
     controlFrameRateMouse: false,
-    manualFrameAdvance: true,
+    manualFrameAdvance: false,
 
     //Debug Gameplay Settings
     negateHurtboxShifting: false,

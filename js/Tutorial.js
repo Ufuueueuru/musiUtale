@@ -105,7 +105,7 @@
         g.stroke(0, 0, 14, 200);
         g.fill(170, 170, 195, 200);
         g.rect(10, 234, 492, 140);
-        if (this.textWait <= 0) {
+        if (this.textWait <= 0 && this.finish === this.defaultFinish) {
             g.triangle(256 - 5, 365 + (frameCount % 40 > 20 ? 5 : 0), 256 + 5, 365 + (frameCount % 40 > 20 ? 5 : 0), 256, 377 + (frameCount % 40 > 20 ? 5 : 0));
         }
 
@@ -198,11 +198,33 @@
                 }
                 g.text(gt("back") + ": " + (this.testCondition.back ? "󱥔" : "󱤂"), 10, 200);
 
+                let keySheet = this.world.players[0].controls.layout === "keyboard" ? assetManager.spritesheets.keys : assetManager.spritesheets.nena;
+                let buttonName = "lili";
+                let buttonID = (this.world.players[0].controls.layout === "keyboard" ? (keyImageID[this.world.players[0].controls.buttons[buttonName].code] !== undefined ? keyImageID[this.world.players[0].controls.buttons[buttonName].code] : keyImageIDLength) : min(18, this.world.players[0].controls.buttons[buttonName].code));
+                keySheet.drawFrame(g, buttonID, 385, 192, 25, 25);
+                assetManager.spritesheets.nena.drawFrame(g, 25, 385, 167, 25, 25);
+                buttonName = "suli";
+                buttonID = (this.world.players[0].controls.layout === "keyboard" ? (keyImageID[this.world.players[0].controls.buttons[buttonName].code] !== undefined ? keyImageID[this.world.players[0].controls.buttons[buttonName].code] : keyImageIDLength) : min(18, this.world.players[0].controls.buttons[buttonName].code));
+                keySheet.drawFrame(g, buttonID, 410, 192, 25, 25);
+                assetManager.spritesheets.nena.drawFrame(g, 26, 410, 167, 25, 25);
+                buttonName = "pokaLili";
+                buttonID = (this.world.players[0].controls.layout === "keyboard" ? (keyImageID[this.world.players[0].controls.buttons[buttonName].code] !== undefined ? keyImageID[this.world.players[0].controls.buttons[buttonName].code] : keyImageIDLength) : min(18, this.world.players[0].controls.buttons[buttonName].code));
+                keySheet.drawFrame(g, buttonID, 435, 192, 25, 25);
+                assetManager.spritesheets.nena.drawFrame(g, 27, 435, 167, 25, 25);
+                buttonName = "pokaSuli";
+                buttonID = (this.world.players[0].controls.layout === "keyboard" ? (keyImageID[this.world.players[0].controls.buttons[buttonName].code] !== undefined ? keyImageID[this.world.players[0].controls.buttons[buttonName].code] : keyImageIDLength) : min(18, this.world.players[0].controls.buttons[buttonName].code));
+                keySheet.drawFrame(g, buttonID, 460, 192, 25, 25);
+                assetManager.spritesheets.nena.drawFrame(g, 28, 460, 167, 25, 25);
+                buttonName = "nasa";
+                buttonID = (this.world.players[0].controls.layout === "keyboard" ? (keyImageID[this.world.players[0].controls.buttons[buttonName].code] !== undefined ? keyImageID[this.world.players[0].controls.buttons[buttonName].code] : keyImageIDLength) : min(18, this.world.players[0].controls.buttons[buttonName].code));
+                keySheet.drawFrame(g, buttonID, 485, 192, 25, 25);
+                assetManager.spritesheets.nena.drawFrame(g, 29, 485, 167, 25, 25);
+
                 if (this.world.players[0].controls.layout === "keyboard") {
-                    assetManager.spritesheets.keys.drawFrame(g, keyImageID[this.world.players[0].controls.joysticks[0].getCode(0)], 485, 192, 25, 25);
-                    assetManager.spritesheets.keys.drawFrame(g, keyImageID[this.world.players[0].controls.joysticks[0].getCode(1)], 460, 167, 25, 25);
-                    assetManager.spritesheets.keys.drawFrame(g, keyImageID[this.world.players[0].controls.joysticks[0].getCode(2)], 435, 192, 25, 25);
-                    assetManager.spritesheets.keys.drawFrame(g, keyImageID[this.world.players[0].controls.joysticks[0].getCode(3)], 460, 192, 25, 25);
+                    assetManager.spritesheets.keys.drawFrame(g, keyImageID[this.world.players[0].controls.joysticks[0].getCode(0)], 460, 142, 25, 25);
+                    assetManager.spritesheets.keys.drawFrame(g, keyImageID[this.world.players[0].controls.joysticks[0].getCode(1)], 435, 117, 25, 25);
+                    assetManager.spritesheets.keys.drawFrame(g, keyImageID[this.world.players[0].controls.joysticks[0].getCode(2)], 410, 142, 25, 25);
+                    assetManager.spritesheets.keys.drawFrame(g, keyImageID[this.world.players[0].controls.joysticks[0].getCode(3)], 435, 142, 25, 25);
                 }
             },
             testCondition: { neutral: false, forward: false, right: false, left: false, back: false },
@@ -248,8 +270,9 @@
 
                 let keySheet = this.world.players[0].controls.layout === "keyboard" ? assetManager.spritesheets.keys : assetManager.spritesheets.nena;
                 let buttonName = "dash";
-                let buttonID = (this.world.players[0].layout === "keyboard" ? (keyImageID[this.world.players[0].controls.buttons[buttonName].code] ? keyImageID[this.world.players[0].controls.buttons[buttonName].code] : keyImageIDLength) : min(18, this.world.players[0].controls.buttons[buttonName].code));
+                let buttonID = (this.world.players[0].controls.layout === "keyboard" ? (keyImageID[this.world.players[0].controls.buttons[buttonName].code] !== undefined ? keyImageID[this.world.players[0].controls.buttons[buttonName].code] : keyImageIDLength) : min(18, this.world.players[0].controls.buttons[buttonName].code));
                 keySheet.drawFrame(g, buttonID, 460, 192, 25, 25);
+                assetManager.spritesheets.nena.drawFrame(g, 30, 460, 167, 25, 25);
             },
             testCondition: { dash: false, dashCancel: false },
             finish: () => { return this.world.players[0].actionLag <= 0 && this.testCondition.dash && this.testCondition.dashCancel },
@@ -274,6 +297,28 @@
                     g.fill(170, 170, 195);
                 }
                 g.text(gt("dashAttack") + ": " + (this.testCondition.dashAttack ? "󱥔" : "󱤂"), 10, 80);
+
+                let keySheet = this.world.players[0].controls.layout === "keyboard" ? assetManager.spritesheets.keys : assetManager.spritesheets.nena;
+                let buttonName = "lili";
+                let buttonID = (this.world.players[0].controls.layout === "keyboard" ? (keyImageID[this.world.players[0].controls.buttons[buttonName].code] !== undefined ? keyImageID[this.world.players[0].controls.buttons[buttonName].code] : keyImageIDLength) : min(18, this.world.players[0].controls.buttons[buttonName].code));
+                keySheet.drawFrame(g, buttonID, 360, 192, 25, 25);
+                assetManager.spritesheets.nena.drawFrame(g, 25, 360, 167, 25, 25);
+                buttonName = "suli";
+                buttonID = (this.world.players[0].controls.layout === "keyboard" ? (keyImageID[this.world.players[0].controls.buttons[buttonName].code] !== undefined ? keyImageID[this.world.players[0].controls.buttons[buttonName].code] : keyImageIDLength) : min(18, this.world.players[0].controls.buttons[buttonName].code));
+                keySheet.drawFrame(g, buttonID, 385, 192, 25, 25);
+                assetManager.spritesheets.nena.drawFrame(g, 26, 385, 167, 25, 25);
+                buttonName = "pokaLili";
+                buttonID = (this.world.players[0].controls.layout === "keyboard" ? (keyImageID[this.world.players[0].controls.buttons[buttonName].code] !== undefined ? keyImageID[this.world.players[0].controls.buttons[buttonName].code] : keyImageIDLength) : min(18, this.world.players[0].controls.buttons[buttonName].code));
+                keySheet.drawFrame(g, buttonID, 410, 192, 25, 25);
+                assetManager.spritesheets.nena.drawFrame(g, 27, 410, 167, 25, 25);
+                buttonName = "pokaSuli";
+                buttonID = (this.world.players[0].controls.layout === "keyboard" ? (keyImageID[this.world.players[0].controls.buttons[buttonName].code] !== undefined ? keyImageID[this.world.players[0].controls.buttons[buttonName].code] : keyImageIDLength) : min(18, this.world.players[0].controls.buttons[buttonName].code));
+                keySheet.drawFrame(g, buttonID, 435, 192, 25, 25);
+                assetManager.spritesheets.nena.drawFrame(g, 28, 435, 167, 25, 25);
+                buttonName = "dash";
+                buttonID = (this.world.players[0].controls.layout === "keyboard" ? (keyImageID[this.world.players[0].controls.buttons[buttonName].code] !== undefined ? keyImageID[this.world.players[0].controls.buttons[buttonName].code] : keyImageIDLength) : min(18, this.world.players[0].controls.buttons[buttonName].code));
+                keySheet.drawFrame(g, buttonID, 475, 192, 25, 25);
+                assetManager.spritesheets.nena.drawFrame(g, 30, 475, 167, 25, 25);
             },
             testCondition: { dashAttack: false },
             finish: () => { return this.world.players[0].actionLag <= 0 && this.testCondition.dashAttack },
@@ -404,6 +449,16 @@
                     g.fill(170, 170, 195);
                 }
                 g.text(gt("powerDashes") + ": " + this.testCondition.dashes + "/3", 10, 80);
+
+                let keySheet = this.world.players[0].controls.layout === "keyboard" ? assetManager.spritesheets.keys : assetManager.spritesheets.nena;
+                let buttonName = "nasa";
+                let buttonID = (this.world.players[0].controls.layout === "keyboard" ? (keyImageID[this.world.players[0].controls.buttons[buttonName].code] !== undefined ? keyImageID[this.world.players[0].controls.buttons[buttonName].code] : keyImageIDLength) : min(18, this.world.players[0].controls.buttons[buttonName].code));
+                keySheet.drawFrame(g, buttonID, 415, 192, 25, 25);
+                assetManager.spritesheets.nena.drawFrame(g, 29, 415, 167, 25, 25);
+                buttonName = "dash";
+                buttonID = (this.world.players[0].controls.layout === "keyboard" ? (keyImageID[this.world.players[0].controls.buttons[buttonName].code] !== undefined ? keyImageID[this.world.players[0].controls.buttons[buttonName].code] : keyImageIDLength) : min(18, this.world.players[0].controls.buttons[buttonName].code));
+                keySheet.drawFrame(g, buttonID, 460, 192, 25, 25);
+                assetManager.spritesheets.nena.drawFrame(g, 30, 460, 167, 25, 25);
             },
             testCondition: { dashes: 0 },
             finish: () => { return this.world.players[0].actionLag <= 0 && this.testCondition.dashes > 2 },
@@ -417,7 +472,7 @@
                 this.world.players[1].controls.trainingSettings.mash[0].wait = 0;
                 this.world.players[1].controls.trainingSettings.mash[0].names = ["lipuLili", "lipuSuli"];
                 this.world.players[1].controls.trainingSettings.mash[0].actions = ["R", "L", "N"];
-                if ((this.world.players[1].currentState.name === "lipuSuli" || this.world.players[1].currentState.name === "lipuLili") && this.world.players[0].actionLag === 1) {
+                if ((this.world.players[1].currentState.name === "lipuSuli" || this.world.players[1].currentState.name === "lipuLili") && this.world.players[0].actionLag === 20) {
                     assetManager.sounds.grab.play();
                     this.testCondition.sticks++;
                 }

@@ -66,6 +66,15 @@ class TutorialScreen extends Screen {
                 this.world.run(this);
             }
         }
+        this.world.timer = 99;
+        if (this.world.players[0].actionLag === 0) {
+            this.world.players[0].health = this.world.players[0].maxHealth;
+            this.world.players[0].tempDamageCount = 0;
+        }
+        if (this.world.players[1].actionLag === 0) {
+            this.world.players[1].health = this.world.players[1].maxHealth;
+            this.world.players[1].tempDamageCount = 0;
+        }
 
         /*if (!this.world.players[0]?.controls.valid() || !this.world.players[1]?.controls.valid()) {
             playersManager.openScreen();

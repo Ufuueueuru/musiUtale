@@ -41,7 +41,7 @@ class AssetManager {
                 current.loadImage(this.onLoad.bind(this), this.onError);
                 current.loadJSON(this.onLoad.bind(this), this.onError);
                 this.spritesheets[i] = current;
-            }).bind(this, u), wait += 1000);
+            }).bind(this, u));
         }
         for (let u in this.sounds) {//Load all sounds (This is different because we are using howler.js)
             setTimeout(((j) => {

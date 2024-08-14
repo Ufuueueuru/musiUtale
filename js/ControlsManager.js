@@ -64,7 +64,7 @@
 			let keySheet = this.playersActive[ud].layout === "keyboard" ? assetManager.spritesheets.keys : assetManager.spritesheets.nena;
 			for (let num = 0; num < buttonArray.length; num++) {
 				let i = buttonArray[num];
-				let buttonID = (this.playersActive[ud].layout === "keyboard" ? (keyImageID[this.playersActive[ud].buttons[i].code] ? keyImageID[this.playersActive[ud].buttons[i].code] : keyImageIDLength) : min(18, this.playersActive[ud].buttons[i].code));
+				let buttonID = (this.playersActive[ud].layout === "keyboard" ? (keyImageID[this.playersActive[ud].buttons[i].code] !== undefined ? keyImageID[this.playersActive[ud].buttons[i].code] : keyImageIDLength) : min(18, this.playersActive[ud].buttons[i].code));
 				assetManager.spritesheets.nena.drawFrame(g, num + 25, 108.5 + 30 * id, 135 + 100 * ud, 25, 25);
 				keySheet.drawFrame(g, buttonID, 108.5 + 30 * id, 135 + 100 * ud + 26, 25, 25);
 				id++;

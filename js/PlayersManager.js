@@ -8,14 +8,26 @@ class PlayersManager {
 
         this.overrideScreen = false;
         this.overrideBuffer = 0;
+
+        this.disableP2Bool = false;
+
+        this.backScreen = undefined;
     }
 
-    resetPositions() {
+    disableP2() {
+        this.disableP2Bool = true;
+    }
+
+    resetPositions(backScreen = undefined) {
         this.chosenControls = [null, null];
+        this.disableP2Bool = false;
+        this.backScreen = backScreen;
     }
 
-    resetPositionsNetplay() {
+    resetPositionsNetplay(backScreen = undefined) {
         this.chosenControls = [null, new NetplayControls()];
+        this.disableP2Bool = false;
+        this.backScreen = backScreen;
     }
 
     openScreen(buffer = 4) {
@@ -63,7 +75,13 @@ class PlayersManager {
         }
         if (this.chosenControls[1] === null) {
             g.text("󱤎", width / 2 + imageWidth * 0.2, height / 2 - imageHeight * 0.07);//ilo
+            if (this.disableP2Bool) {
+                g.fill(250, 129, 140);
+                g.textSize(50 * imageWidth / 384);
+                g.text("󱤂", width / 2 + imageWidth * 0.2, height / 2 - imageHeight * 0.07);//ala
+            }
         } else if (this.chosenControls[1].netplay) {
+            g.fill(250, 129, 140);
             g.textSize(60 * imageWidth / 384);
             g.text("󱤝", width / 2 + imageWidth * 0.2, height / 2 - imageHeight * 0.07);//kon
         }
@@ -80,7 +98,7 @@ class PlayersManager {
                     if (Angle.distance(this.controls[i].angle(0), Angle.RIGHT) <= PI / 4) {
                         if (this.chosenControls[0] === this.controls[i]) {
                             this.chosenControls[0] = null;
-                        } else if (this.chosenControls[1] === null) {
+                        } else if (this.chosenControls[1] === null && !this.disableP2Bool) {
                             this.chosenControls[1] = this.controls[i];
                         }
                     }
@@ -104,6 +122,9 @@ class PlayersManager {
                             currentScreen.setNetplay();
                         currentScreen.setControls(this.chosenControls, fakeControls);
                     }
+                } else if (this.controls[i].clickedAbsolute("back") && this.backScreen) {
+                    this.overrideScreen = false;
+                    currentScreen = new this.backScreen();
                 }
             }
         }

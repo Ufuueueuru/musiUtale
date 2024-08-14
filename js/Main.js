@@ -58,9 +58,12 @@ let errorDisplayMessage = "";
 let errorDisplayFrames = 0;
 
 let promptTutorial = true;
+let tutorialPromptSelected = false;
 
 let transText;
 let currentLanguage = "tp";//en or tp
+
+let canDisplayFrameRate = false;
 
 let dataOnFunction = (incomingData) => { };
 
@@ -306,7 +309,7 @@ function draw() {
 		textAlign(LEFT, BASELINE);
 	}
 	
-	if (debug.displayFrameRate && deltaTime > 0) {
+	if (debug.displayFrameRate && deltaTime > 0 && canDisplayFrameRate) {
 		debug.effectiveFrameRates[debug.effectiveFrameRates.length - 1] *= 1000 / deltaTime;
 		if (debug.effectiveFrameRates.length > 30)
 			debug.effectiveFrameRates.splice(0, 1);

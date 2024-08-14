@@ -31,8 +31,9 @@ class MenuItem {
 
     drawSelected(g, width, height, imageWidth, imageHeight) {
         let x = windowWidth / 2 - width / 2 + this.x * width / 512;
-        let y = windowHeight / 2 - height / 2 + this.y * height / 384;
-        g.image(this.pressedImage, x, y, imageWidth, imageHeight);
+        let y = windowHeight / 2 - height / 2 + this.y * height / 384
+        if (this.pressedImage)
+            g.image(this.pressedImage, x, y, imageWidth, imageHeight);
         g.fill(35, 35, 15, 225);
         g.noStroke();
         g.textAlign(CENTER, CENTER);
@@ -43,7 +44,8 @@ class MenuItem {
     drawUnselected(g, width, height, imageWidth, imageHeight) {
         let x = windowWidth / 2 - width / 2 + this.x * width / 512;
         let y = windowHeight / 2 - height / 2 + this.y * height / 384;
-        g.image(this.unpressedImage, x, y, imageWidth, imageHeight);
+        if (this.unpressedImage)
+            g.image(this.unpressedImage, x, y, imageWidth, imageHeight);
         g.fill(15, 15, 15, 225);
         g.noStroke();
         g.textAlign(CENTER, CENTER);

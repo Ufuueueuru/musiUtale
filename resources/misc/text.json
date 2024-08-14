@@ -274,6 +274,30 @@
       "text": "󱥐"
     }
   },
+  "mainMenuAskTutorial": {
+    "en": {
+      "text": "Play tutorial?"
+    },
+    "tp": {
+      "text": "󱥞󱥷󱤂󱥷󱤖󱥡󱤉󱤿󱥱"
+    }
+  },
+  "mainMenuAskTutorialYes": {
+    "en": {
+      "text": "Yes"
+    },
+    "tp": {
+      "text": "󱤖󱥡"
+    }
+  },
+  "mainMenuAskTutorialNo": {
+    "en": {
+      "text": "No"
+    },
+    "tp": {
+      "text": "󱤂"
+    }
+  },
   "copiedToClipboard": {
     "en": {
       "text": "Copied to clipboard"
