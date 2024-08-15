@@ -298,6 +298,48 @@
       "text": "󱤂"
     }
   },
+
+  "trainingSettingsTitle": {
+    "en": {
+      "text": "Training Settings"
+    },
+    "tp": {
+      "text": "󱤆󱤤󱥍󱤖󱥡"
+    }
+  },
+  "opponentSettingsButton": {
+    "en": {
+      "text": "Opponent Settings"
+    },
+    "tp": {
+      "text": "󱥉󱥍󱤑󱤆"
+    }
+  },
+  "opponentBlockingButton": {
+    "en": {
+      "text": "Blocking"
+    },
+    "tp": {
+      "text": "󱤈"
+    }
+  },
+  "opponentCounterButton": {
+    "en": {
+      "text": "Counter Hit"
+    },
+    "tp": {
+      "text": "󱥱󱤧󱥎󱥈"
+    }
+  },
+  "trainingExitButton": {
+    "en": {
+      "text": "Exit Training"
+    },
+    "tp": {
+      "text": "󱥶"
+    }
+  },
+
   "copiedToClipboard": {
     "en": {
       "text": "Copied to clipboard"

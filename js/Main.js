@@ -69,7 +69,7 @@ let dataOnFunction = (incomingData) => { };
 
 let graphicsSettings = {
 	resolutionMult: 1,
-	spriteResolutionMult: 0.5
+	spriteResolutionMult: 0.25
 }
 
 function preload() {
@@ -98,6 +98,8 @@ function setup() {
 	assetManager.addImage("resources/button_pressed.png", "buttonPressed");
 	assetManager.addImage("resources/language_button_unpressed.png", "buttonUnpressedLanguage");
 	assetManager.addImage("resources/language_button_pressed.png", "buttonPressedLanguage");
+	assetManager.addImage("resources/genericButtonOn.png", "buttonOn");
+	assetManager.addImage("resources/genericButtonOff.png", "buttonOff");
 
 	assetManager.addImage("resources/backgrounds/PlayerSelect.png", "playerSelect");
 	assetManager.addImage("resources/keyboardIcon.png", "keyboardIcon");

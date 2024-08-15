@@ -19,10 +19,10 @@ class TrainingScreen extends VSScreen {
         this.player2.canAttack = false;
 
         this.trainingSettings.meter = {
-            staticSikeWawa: true,//Should the sike wawa meter be stuck how it is?
-            meters: [16, -16, 16, -16, 16, -16, 16, -16],
-            staticNanpaLipu: true,//Should the lipu meter be stuck?
-            lipuMeters: [65, 65],
+            staticSikeWawa: false,//Should the sike wawa meter be stuck how it is?
+            meters: [0, 0, 0, 0, 0, 0, 0, 0],
+            staticNanpaLipu: false,//Should the lipu meter be stuck?
+            lipuMeters: [0, 0],
             resetFunctions: {
                 always: () => { return true; },
                 neutral: () => {
@@ -33,6 +33,53 @@ class TrainingScreen extends VSScreen {
         };
         this.trainingSettings.meter.sikeResetFunction = this.trainingSettings.meter.resetFunctions.neutral;
         this.trainingSettings.meter.lipuResetFunction = this.trainingSettings.meter.resetFunctions.neutral;
+
+        let select = assetManager.images.buttonPressedLanguage;
+        let deselect = assetManager.images.buttonUnpressedLanguage;
+
+        //let pressedButton =
+
+
+        this.pauseMenu = new Menu();
+        this.currentMenu = this.pauseMenu;
+
+        //opponent menu
+        let opponentButton = new MenuItem(-750, 25, select, deselect, undefined, gt("opponentSettingsButton"), () => {
+            this.currentMenu = this.opponentMenu;
+            this.opponentMenuOn = true;
+        });
+        if (currentLanguage === "en")
+            opponentButton.textSize = 23;
+        this.opponentMenu = new Menu();
+        this.opponentMenuOn = false;
+
+        let opponentBlockingButton = new MenuItem(150, 25, select, deselect, undefined, gt("opponentBlockingButton"), () => {
+            this.trainingControls.trainingSettings.block.isBlocking = !this.trainingControls.trainingSettings.block.isBlocking;
+            this.trainingControls.trainingSettings.block.isHit = !this.trainingControls.trainingSettings.block.isBlocking;
+        });
+        let opponentCounterHitButton = new MenuItem(150, 60, select, deselect, undefined, gt("opponentCounterButton"), () => {
+            this.trainingControls.trainingSettings.block.isCounter = !this.trainingControls.trainingSettings.block.isCounter;
+        });
+
+        opponentBlockingButton.addMoves(new MenuMove(opponentCounterHitButton, Angle.DOWN));
+        opponentCounterHitButton.addMoves(new MenuMove(opponentBlockingButton, Angle.UP));
+
+        this.opponentMenu.addMenuItems(opponentBlockingButton, opponentCounterHitButton);
+
+        this.opponentMenu.setTarget(opponentBlockingButton);
+        //
+
+        let exitButton = new MenuItem(-750, 75, select, deselect, undefined, gt("trainingExitButton"), () => {
+            this.destruct();
+            currentScreen = new MenuDebugScreen();
+        });
+
+        opponentButton.addMoves(new MenuMove(exitButton, Angle.DOWN));
+        exitButton.addMoves(new MenuMove(opponentButton, Angle.UP));
+
+        this.pauseMenu.addMenuItems(opponentButton, exitButton);
+        this.pauseMenu.setTarget(opponentButton);
+
     }
 
     run() {
@@ -64,6 +111,8 @@ class TrainingScreen extends VSScreen {
 
         if (!this.paused) {
             this.world.run(this);
+        } else {
+            this.currentMenu.run();
         }
 
         /*if (!this.world.players[0]?.controls.valid() || !this.world.players[1]?.controls.valid()) {
@@ -80,21 +129,70 @@ class TrainingScreen extends VSScreen {
                 break;
             }
             if (controls[i].clickedAbsolute("back") && this.paused) {
-                this.destruct();
-                currentScreen = new CharacterSelectScreen();
-                currentScreen.setTraining();
-                let fake = false;
-                if (this.player1.controls === null && this.player2.controls === null) {
-                    fake = true;
-                    this.player1.controls = controls[i];
+                if (this.opponentMenuOn) {
+                    this.currentMenu = this.pauseMenu;
+                    this.opponentMenuOn = false;
+                } else {
+                    this.paused = false;
+                    controls[i].clickedInGame = 0;
                 }
-                currentScreen.setControls([this.player1.controls, this.player2.controls], fake);
-                break;
             }
-            if (controls[i].pressed("nasa") && controls[i].pressed("lili") && controls[i].pressed("pokaLili")) {
+            if (controls[i].pressed("nasa") && controls[i].pressed("lili") && controls[i].pressed("pokaLili") && !this.paused) {
                 this.world.deserialize(this.trainingSettings.positionReset);
                 break;
             }
+        }
+    }
+
+    draw(g) {
+        g.background(35, 65, 35);
+
+        //this.world.g.background(55, 155, 45);
+        //this.world.g.background(0);
+
+        let canvasSlope = this.world.height / this.world.width;
+        let minSize = min(windowWidth, windowHeight / canvasSlope);
+        this.world.draw(g, (windowWidth - minSize) / 2, (windowHeight - minSize * canvasSlope) / 2, minSize, minSize * canvasSlope);
+
+        if (this.paused) {
+            g.textFont(assetManager.fonts.asuki);
+            g.noStroke();
+            g.fill(15, 0, 0, 140);
+            g.rect(0, 0, windowWidth / 3.5, windowHeight);
+
+            g.textAlign(CENTER, CENTER);
+            g.textSize(80 * windowHeight / 384);
+            g.stroke(15, 0, 0);
+            g.strokeWeight(5);
+            g.fill(170, 40, 60);
+            if (this.pausedPlayer === 1)
+                g.fill(47, 31, 171);
+            //g.text(gt("trainingSettingsTitle"), windowWidth / 2, windowHeight / 2);//Training settings / ante lawa pi kama sona
+            this.pauseMenu.draw(g, windowWidth / 4, windowHeight, windowWidth / 3.6, windowHeight / 12);
+            if (this.opponentMenuOn) {
+                g.noStroke();
+                g.fill(15, 0, 60, 150);
+                g.rect(windowWidth / 3, 0, windowWidth * 2 / 3, windowHeight);
+                this.opponentMenu.draw(g, windowWidth * 2 / 3, windowHeight, windowWidth / 4, windowHeight / 12);
+
+                g.push();
+                g.translate(windowWidth / 2, 0);
+                g.scale(windowHeight / 384);
+                g.translate(-256, 0);
+
+                this.drawButton(g, this.trainingControls.trainingSettings.block.isBlocking, 400, 25, 60);
+                this.drawButton(g, this.trainingControls.trainingSettings.block.isCounter, 400, 60, 60);
+
+                g.pop();
+            }
+        }
+    }
+
+    drawButton(g, bool, x, y, width=400, height=width*224/400) {
+        if (bool) {
+            g.image(assetManager.images.buttonOn, x, y, width, height);
+        } else {
+            g.image(assetManager.images.buttonOff, x, y, width, height);
         }
     }
 
@@ -109,10 +207,12 @@ class TrainingScreen extends VSScreen {
         if (this.player1Controls === null) {
             this.player1Controls = new TrainingComputer(this.player1, this.world);
             controls.push(this.player1Controls);
+            this.trainingControls = this.player1Controls;
         }
         if (this.player2Controls === null) {
             this.player2Controls = new TrainingComputer(this.player2, this.world);
             controls.push(this.player2Controls);
+            this.trainingControls = this.player2Controls;
         }
 
         this.player1.controls = this.player1Controls;//this.controls2;//this.computer1;

@@ -124,7 +124,9 @@
 
         Tutorial.START = {
             text: gt("tutorialWelcome"),
-            run: () => { },
+            run: () => {
+                this.world.players[1].controls.setSettingsToBlock();
+            },
             finish: undefined,
             stayPaused: true
         };
@@ -333,8 +335,17 @@
         Tutorial.TESTBLOCK = {
             text: gt("tutorialExplainBlock"),
             run: () => {
-                this.world.players[1].controls.trainingSettings.mash[0].isMashing = true;
-                this.world.players[1].controls.trainingSettings.mash[0].wait = 90;
+                if (this.world.players[1].controls.trainingSettings.mash.length < 1) {
+                    this.world.players[1].controls.trainingSettings.mash = [{
+                        names: ["neutral"],
+                        isMashing: true,
+                        wait: 90,
+                        count: 0,
+                        hold: 1,
+                        offset: 0,
+                        actions: ["NPS"]
+                    }];
+                }
                 if ((this.world.players[0].currentState.name === "block" || this.world.players[0].currentState.name === "parry") && this.world.players[0].actionLag === 1) {
                     assetManager.sounds.grab.play();
                     this.testCondition.block++;
@@ -472,7 +483,7 @@
                 this.world.players[1].controls.trainingSettings.mash[0].wait = 0;
                 this.world.players[1].controls.trainingSettings.mash[0].names = ["lipuLili", "lipuSuli"];
                 this.world.players[1].controls.trainingSettings.mash[0].actions = ["R", "L", "N"];
-                if ((this.world.players[1].currentState.name === "lipuSuli" || this.world.players[1].currentState.name === "lipuLili") && this.world.players[0].actionLag === 20) {
+                if ((this.world.players[1].currentState.name === "lipuSuli" || this.world.players[1].currentState.name === "lipuLili") && this.world.players[1].actionLag === 20) {
                     assetManager.sounds.grab.play();
                     this.testCondition.sticks++;
                 }

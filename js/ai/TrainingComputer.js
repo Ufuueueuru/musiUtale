@@ -22,7 +22,7 @@ class TrainingComputer extends Controls {
         this.trainingSettings = {};
 
         this.trainingSettings.block = {
-            isBlocking: true,//Whether the training dummy tries to block attacks or not
+            isBlocking: false,//Whether the training dummy tries to block attacks or not
             angle: new Angle(),//What angle to block from
             dynamicAngle: true,//Should the block angle change relative to attack position?
             staticRelative: true,//Should the static block angle rotate relative to the enemy position?
@@ -33,7 +33,7 @@ class TrainingComputer extends Controls {
 
         this.trainingSettings.reversal = {
             isReversal: true,
-            action: "MPS",
+            action: "MN",
             fromBlock: true,//Should the dummy mash out of block?
             fromHit: false,//Should the dummy mash out of hit?
             isThreshold: false,//Should the dummy take frame advantage in account on whether to mash or not?
@@ -50,15 +50,6 @@ class TrainingComputer extends Controls {
                 hold: 1,
                 offset: 2,
                 actions: ["SN", "SN", "SN", "SN", "SN", "MN", "M", "M", "M", "M", "M"]
-            },
-            {
-                names: ["MN"],
-                isMashing: true,
-                wait: 0,
-                count: 0,
-                hold: 1,
-                offset: 0,
-                actions: ["dash attack"]
             }
         ];
     }
@@ -280,5 +271,15 @@ class TrainingComputer extends Controls {
             if (!this.joysticks[i].pressed())
                 this.joysticks[i].heldFrames = 0;
         }
+    }
+
+    setSettingsToBlock() {
+        this.trainingSettings.block.isBlocking = true;
+        this.trainingSettings.block.isParry = false;
+        this.trainingSettings.block.isHit = false;
+
+        this.trainingSettings.reversal.isReversal = false;
+
+        this.trainingSettings.mash = [];
     }
 }
