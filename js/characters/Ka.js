@@ -1152,7 +1152,7 @@
 		this.tetherX = 0;//Where the tether point is
 		this.tetherY = 0;//Where the tether point is
 		this.canStickTether = 0;//Can the tether stick to the opponent or not
-		this.parryTetherStickFrames = 60;//How many frames canStickTether is set to when a parry occurs
+		this.parryTetherStickFrames = 20;//How many frames canStickTether is set to when a parry occurs
 		this.tetherStuck = false;
 
 		this.airRotValue = 0;//This is used for displaying the paper airplane attack
@@ -1263,7 +1263,7 @@
 		if (this.tethered > 0 && this.noTether <= 0) {
 			this.tethered--;
 			let dampening = (this.tetherStuck ? 140 : 60);
-			let radius = (!this.tetherStuck ? 10 : (this.targetPlayer ? this.targetPlayer.collideRadius : 0) + this.collideRadius);
+			let radius = (!this.tetherStuck ? 10 : (this.targetPlayer ? this.targetPlayer.collideRadius : 0) + this.collideRadius + 30);
 			if (dist(this.x, this.y, this.tetherX, this.tetherY) >= radius) {
 				this.dx += constrain(this.tetherX - this.x, -80, 80) / dampening;
 				this.dy += constrain(this.tetherY - this.y, -80, 80) / dampening;
@@ -1273,7 +1273,7 @@
 			if (!this.tetherStuck && this.canStickTether > 0 && dist(this.tetherX, this.tetherY, this.targetPlayer.x, this.targetPlayer.y) <= this.targetPlayer.collideRadius + 20) {
 				this.tetherStuck = true;
 				this.canStickTether = 0;
-				this.targetPlayer.comboProration += 1;
+				this.targetPlayer.comboProration += 2;
 				this.world.sikeWawa.addMeter(4, 3, this.targetPlayer);
 			}
 			if (this.tetherStuck) {
@@ -2844,7 +2844,7 @@ class KaRN extends Attack {
 		player.tethered = 70;
 		player.noTether = 15;
 		if (player.canStickTether <= 0)
-			player.canStickTether = 15;
+			player.canStickTether = 5;
 		player.tetherX = player.x;
 		player.tetherY = player.y;
 		player.tetherStuck = false;
