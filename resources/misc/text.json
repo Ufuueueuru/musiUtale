@@ -273,6 +273,14 @@
       "text": "󱤻󱤧󱤈"
     }
   },
+  "computer": {
+    "en": {
+      "text": "CPU"
+    },
+    "tp": {
+      "text": "󱤎"
+    }
+  },
 
   "mainMenuFight": {
     "en": {

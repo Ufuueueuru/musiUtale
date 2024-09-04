@@ -349,14 +349,27 @@ async function getAppVersion() {
 }
 
 function drawBackHold(g, hold = 60) {
+	g.push();
+	g.scale(height / 384);
+
 	let maxHeld = 0;
 	for (let i in controls) {
 		if (!controls[i].computer)
 			maxHeld = max(maxHeld, controls[i].heldFrames("back"));
 	}
 	g.noStroke();
+	let size = 40;
+	if (maxHeld > 0) {
+		g.fill(75, 20, 20);
+		g.ellipse(60, 60, 90, 90);
+		size = 60;
+	}
 	g.fill(150, 40, 40, 150 + maxHeld * 200 / hold);
 	g.arc(60, 60, 80, 80, PI / 2, PI / 2 + maxHeld * 2 * PI / (hold - 1));
+
+	assetManager.spritesheets.nena.drawFrame(g, currentLanguage === "en" ? 42 : 32, 60 - size / 2, 60 - size / 2, size, size);
+
+	g.pop();
 }
 
 function mouseWheelHelper(e) { }

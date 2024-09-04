@@ -130,10 +130,10 @@
 				if (this.playersActive[i].layout === "keyboard") {
 					let keyspad = this.playersActive[i].getKeyspad();
 					for (let u in keyspad) {
-						let notSelectOverlap = (this.menus[i].xSelect === 6 || this.menus[i].xSelect < 6 || u !== this.playersActive[i].buttons["select"].code);
-						let notBackOverlap = (this.menus[i].xSelect === 7 || this.menus[i].xSelect < 6 || u !== this.playersActive[i].buttons["back"].code);
 						let noArrowCollisions = (u !== this.playersActive[i].joysticks[0].buttonaxis[0] && u !== this.playersActive[i].joysticks[0].buttonaxis[1] && u !== this.playersActive[i].joysticks[0].buttonaxis[2] && u !== this.playersActive[i].joysticks[0].buttonaxis[3]);
-						let notArrowsOverlap = (this.menus[i].ySelect <= 0 || u === this.playersActive[i].joysticks[0].buttonaxis[this.menus[i].ySelect - 1] || noArrowCollisions);
+						let notSelectOverlap = (this.menus[i].xSelect === 6 || this.menus[i].xSelect < 6 || (u !== this.playersActive[i].buttons["select"].code && noArrowCollisions));
+						let notBackOverlap = (this.menus[i].xSelect === 7 || this.menus[i].xSelect < 6 || (u !== this.playersActive[i].buttons["back"].code && noArrowCollisions));
+						let notArrowsOverlap = (this.menus[i].ySelect <= 0 || u === this.playersActive[i].joysticks[0].buttonaxis[this.menus[i].ySelect - 1] || (u !== this.playersActive[i].buttons["back"].code && u !== this.playersActive[i].buttons["select"].code && noArrowCollisions));
 						if (keyspad[u] && notArrowsOverlap && notBackOverlap && notSelectOverlap) {
 							if (this.menus[i].ySelect === -1 && this.menus[i].xSelect !== 6) {
 								this.playersActive[i].buttons["powerDash"].code = u;
