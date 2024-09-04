@@ -355,6 +355,54 @@
       "text": "󱤆󱤤󱥍󱤖󱥡"
     }
   },
+  "displaySettingsButton": {
+    "en": {
+      "text": "Display Settings"
+    },
+    "tp": {
+      "text": "󱥠"
+    }
+  },
+  "displayFrameDataButton": {
+    "en": {
+      "text": "Display Frame Data"
+    },
+    "tp": {
+      "text": "󱥄󱤮󱤉󱥫󱥱"
+    }
+  },
+  "displayHurtboxesButton": {
+    "en": {
+      "text": "Display Hurtboxes"
+    },
+    "tp": {
+      "text": "󱥄󱤮󱤉󱥛"
+    }
+  },
+  "displayHitboxesButton": {
+    "en": {
+      "text": "Display Hitboxes"
+    },
+    "tp": {
+      "text": "󱥄󱤮󱤉󱥛󱥱"
+    }
+  },
+  "displayBlockingButton": {
+    "en": {
+      "text": "Display Blocking Angles"
+    },
+    "tp": {
+      "text": "󱥄󱤮󱤉󱤈"
+    }
+  },
+  "displayWallsButton": {
+    "en": {
+      "text": "Display Walls"
+    },
+    "tp": {
+      "text": "󱥄󱤮󱤉󱥟"
+    }
+  },
   "opponentSettingsButton": {
     "en": {
       "text": "Opponent Settings"

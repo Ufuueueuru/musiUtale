@@ -109,10 +109,13 @@ class Wall extends Line {
 	}
 
 	draw(g, accuracy = 0.0125) {
-		g.noStroke();
+		g.stroke(255, 0, 0, 128);
+		g.strokeWeight(this.radius * 2);
+		g.line(this.point1.x, this.point1.y, this.point2.x, this.point2.y);
+		/*g.noStroke();
 		g.fill(255, 0, 0, max(1, 4800 * accuracy));
 		for (let percent = 0; percent <= 1; percent += accuracy) {
 			g.ellipse(this.point1.x * percent + this.point2.x * (1 - percent), this.point1.y * percent + this.point2.y * (1 - percent), this.radius * 2, this.radius * 2);
-		}
+		}*/
 	}
 }

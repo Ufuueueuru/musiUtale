@@ -61,15 +61,20 @@ class TrainingScreen extends VSScreen {
         this.opponentMenuOn = false;
 
         let opponentBlockingButton = new MenuItem(150, 25, select, deselect, undefined, gt("opponentBlockingButton"), () => {
-            this.trainingControls.trainingSettings.block.isBlocking = !this.trainingControls.trainingSettings.block.isBlocking;
-            this.trainingControls.trainingSettings.block.isHit = !this.trainingControls.trainingSettings.block.isBlocking;
+            if (this.trainingControls) {
+                this.trainingControls.trainingSettings.block.isBlocking = !this.trainingControls.trainingSettings.block.isBlocking;
+                this.trainingControls.trainingSettings.block.isHit = !this.trainingControls.trainingSettings.block.isBlocking;
+            }
         });
         let opponentNeutralBlockButton = new MenuItem(150, 60, select, deselect, undefined, gt("opponentNeutralBlockButton"), () => {
-            this.trainingControls.trainingSettings.block.isBlocking = false;
-            this.trainingControls.trainingSettings.block.isHit = !this.trainingControls.trainingSettings.block.isHit;
+            if (this.trainingControls) {
+                this.trainingControls.trainingSettings.block.isBlocking = false;
+                this.trainingControls.trainingSettings.block.isHit = !this.trainingControls.trainingSettings.block.isHit;
+            }
         });
         let opponentCounterHitButton = new MenuItem(150, 95, select, deselect, undefined, gt("opponentCounterButton"), () => {
-            this.trainingControls.trainingSettings.block.isCounter = !this.trainingControls.trainingSettings.block.isCounter;
+            if (this.trainingControls)
+                this.trainingControls.trainingSettings.block.isCounter = !this.trainingControls.trainingSettings.block.isCounter;
         });
 
         opponentBlockingButton.addMoves(new MenuMove(opponentNeutralBlockButton, Angle.DOWN));
@@ -82,18 +87,63 @@ class TrainingScreen extends VSScreen {
         this.opponentMenu.setTarget(opponentBlockingButton);
         //
 
+        let displayButton = new MenuItem(-750, 75, select, deselect, undefined, gt("displaySettingsButton"), () => {
+            this.currentMenu = this.displayMenu;
+            this.displayMenuOn = true;
+        });
+        if (currentLanguage === "en")
+            displayButton.textSize = 23;
+        this.displayMenu = new Menu();
+        this.displayMenuOn = false;
 
-        let exitButton = new MenuItem(-750, 75, select, deselect, undefined, gt("trainingExitButton"), () => {
+        let displayFrameDataButton = new MenuItem(150, 25, select, deselect, undefined, gt("displayFrameDataButton"), () => {
+            this.trainingSettings.display.isVisible = !this.trainingSettings.display.isVisible;
+        });
+        let displayHurtboxesButton = new MenuItem(150, 60, select, deselect, undefined, gt("displayHurtboxesButton"), () => {
+            debug.displayHurtboxes = !debug.displayHurtboxes;
+        });
+        let displayHitboxesButton = new MenuItem(150, 95, select, deselect, undefined, gt("displayHitboxesButton"), () => {
+            debug.displayHitboxes = !debug.displayHitboxes;
+        });
+        let displayBlockingButton = new MenuItem(150, 130, select, deselect, undefined, gt("displayBlockingButton"), () => {
+            debug.displayBlocking = !debug.displayBlocking;
+        });
+        let displayWallsButton = new MenuItem(150, 165, select, deselect, undefined, gt("displayWallsButton"), () => {
+            debug.displayWalls = !debug.displayWalls;
+        });
+
+        displayFrameDataButton.addMoves(new MenuMove(displayHurtboxesButton, Angle.DOWN));
+        displayHurtboxesButton.addMoves(new MenuMove(displayFrameDataButton, Angle.UP), new MenuMove(displayHitboxesButton, Angle.DOWN));
+        displayHitboxesButton.addMoves(new MenuMove(displayHurtboxesButton, Angle.UP), new MenuMove(displayBlockingButton, Angle.DOWN));
+        displayBlockingButton.addMoves(new MenuMove(displayHitboxesButton, Angle.UP), new MenuMove(displayWallsButton, Angle.DOWN));
+        displayWallsButton.addMoves(new MenuMove(displayBlockingButton, Angle.UP));
+
+        this.displayMenu.addMenuItems(displayFrameDataButton, displayHurtboxesButton, displayHitboxesButton, displayBlockingButton, displayWallsButton);
+
+        this.displayMenu.setTarget(displayFrameDataButton);
+
+        /*
+        debug.controlFrameRateMouse = false;
+        debug.manualFrameAdvance = false;*/
+
+
+        let exitButton = new MenuItem(-750, 125, select, deselect, undefined, gt("trainingExitButton"), () => {
             this.destruct();
             currentScreen = new MenuDebugScreen();
         });
 
-        opponentButton.addMoves(new MenuMove(exitButton, Angle.DOWN));
-        exitButton.addMoves(new MenuMove(opponentButton, Angle.UP));
+        opponentButton.addMoves(new MenuMove(displayButton, Angle.DOWN));
+        displayButton.addMoves(new MenuMove(opponentButton, Angle.UP));
+        displayButton.addMoves(new MenuMove(exitButton, Angle.DOWN));
+        exitButton.addMoves(new MenuMove(displayButton, Angle.UP));
 
-        this.pauseMenu.addMenuItems(opponentButton, exitButton);
+        this.pauseMenu.addMenuItems(opponentButton, displayButton, exitButton);
         this.pauseMenu.setTarget(opponentButton);
 
+        this.closeMenus = () => {
+            this.opponentMenuOn = false;//Every sub-menu needs to be added here :(
+            this.displayMenuOn = false;
+        };
     }
 
     run() {
@@ -145,9 +195,9 @@ class TrainingScreen extends VSScreen {
                 break;
             }
             if (controls[i].clickedAbsolute("back") && this.paused) {
-                if (this.opponentMenuOn) {
+                if (this.currentMenu !== this.pauseMenu) {
                     this.currentMenu = this.pauseMenu;
-                    this.opponentMenuOn = false;
+                    this.closeMenus();
                 } else {
                     this.paused = false;
                     controls[i].clickedInGame = 0;
@@ -299,9 +349,30 @@ class TrainingScreen extends VSScreen {
                 g.scale(windowHeight / 384);
                 g.translate(-256, 0);
 
-                this.drawButton(g, this.trainingControls.trainingSettings.block.isBlocking, 400, 25, 60);
-                this.drawButton(g, !this.trainingControls.trainingSettings.block.isBlocking && !this.trainingControls.trainingSettings.block.isHit, 400, 60, 60);
-                this.drawButton(g, this.trainingControls.trainingSettings.block.isCounter, 400, 95, 60);
+                if (this.trainingControls) {
+                    this.drawButton(g, this.trainingControls.trainingSettings.block.isBlocking, 400, 25, 60);
+                    this.drawButton(g, !this.trainingControls.trainingSettings.block.isBlocking && !this.trainingControls.trainingSettings.block.isHit, 400, 60, 60);
+                    this.drawButton(g, this.trainingControls.trainingSettings.block.isCounter, 400, 95, 60);
+                }
+
+                g.pop();
+            }
+            if (this.displayMenuOn) {
+                g.noStroke();
+                g.fill(15, 0, 60, 150);
+                g.rect(windowWidth / 3, 0, windowWidth * 2 / 3, windowHeight);
+                this.displayMenu.draw(g, windowWidth * 2 / 3, windowHeight, windowWidth / 4, windowHeight / 12);
+
+                g.push();
+                g.translate(windowWidth / 2, 0);
+                g.scale(windowHeight / 384);
+                g.translate(-256, 0);
+
+                this.drawButton(g, this.trainingSettings.display.isVisible, 400, 25, 60);
+                this.drawButton(g, debug.displayHurtboxes, 400, 60, 60);
+                this.drawButton(g, debug.displayHitboxes, 400, 95, 60);
+                this.drawButton(g, debug.displayBlocking, 400, 130, 60);
+                this.drawButton(g, debug.displayWalls, 400, 165, 60);
 
                 g.pop();
             }
@@ -334,6 +405,9 @@ class TrainingScreen extends VSScreen {
             this.player2Controls = new TrainingComputer(this.player2, this.world);
             controls.push(this.player2Controls);
             this.trainingControls = this.player2Controls;
+            this.trainingPlayer = this.player1;
+        }
+        if (!this.trainingPlayer) {
             this.trainingPlayer = this.player1;
         }
 
@@ -373,5 +447,14 @@ class TrainingScreen extends VSScreen {
         this.canSkipFrames = true;
 
         this.world.playMusic();
+    }
+
+    destruct() {
+        debug.displayHurtboxes = false;
+        debug.displayHitboxes = false;
+        debug.displayWalls = false;
+        debug.displayBlocking = false;
+        debug.controlFrameRateMouse = false;
+        debug.manualFrameAdvance = false;
     }
 }
