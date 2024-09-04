@@ -149,7 +149,7 @@
 		];
 
 		this.headNoun = "󱤑";//jan
-		this.name = currentLanguage === "tp" ? "󱤑󱦐󱦗󱦅󱥱󱤘󱤃󱦑" : "Lukeh";//jan Luke
+		this.name = currentLanguage === "tp" ? "󱤑󱦐󱦗󱦅󱥱󱤘󱤋󱦑" : "Lukeh";//jan Luke
 
 		this.collideRadius = 42;
 

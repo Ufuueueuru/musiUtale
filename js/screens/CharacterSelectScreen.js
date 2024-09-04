@@ -7,8 +7,8 @@ class CharacterSelectScreen extends Screen {
 
         g.background(80, 40, 50);
         g.noStroke();
-        for (let i = 0; i < 50; i += 2) {
-            let y1 = height - ((i * width/51 + frameCount * 5 - halfY) % (height + 120) - 60) + random(-5, 5);
+        for (let i = 0; i < 100; i += 15) {
+            let y1 = height - ((i * width/51 + frameCount * 5 * height / 384 - halfY) % (height + 120) - 60) + random(-5, 5);
             let x1 = halfX + (1 - y1 / height) * ((i * 613 + frameCount / 20) % halfX) * ((i % 2) * 2 - 1) + random(-5, 5);
             let x2 = x1 + width / 10 + random(-5, 5) + (x1 - halfX) / width * 100;
             let y2 = y1 - width / 10 + random(-5, 5);

@@ -256,7 +256,7 @@ function draw() {
 		}
 		if (!debug.noSkipDraw && lostFrames > 0.5) {
 			lostFrames -= 0.5;
-		} else if (!debug.negateDraw) {
+		} else if (!debug.negateDraw && !playersManager.overrideScreen) {
 			currentScreen.draw(g);
 		}
 
