@@ -360,7 +360,8 @@ class World {
         g.strokeWeight(3);
         g.textSize(30);
         g.textAlign(CENTER, CENTER);
-        g.text(ceil(this.timer), 256, 35);
+        let timerDisplay = this.timer > 99 ? "󱤄" : ceil(this.timer);
+        g.text(timerDisplay, 256, 35);
         g.textAlign(LEFT, BASELINE);
     }
 

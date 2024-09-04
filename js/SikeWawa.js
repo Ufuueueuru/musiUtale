@@ -88,6 +88,43 @@ class SikeWawa {
         this.slices[rightID].negativeSheet.requestAnimationChange(frameID);
     }
 
+    /**
+     * Subtracts meter only if the player is in control of the slice
+     * @param {any} value
+     * @param {any} sideValue
+     * @param {any} player
+     */
+    subtractMeter(value, sideValue, player) {
+        let signV = this.player1 === player ? 1 : -1;
+
+        let sliceID;
+        if (signV > 0) {
+            sliceID = round(this.player1Angle.value * 4 / PI);
+        } else {
+            sliceID = round(this.player2Angle.value * 4 / PI);
+        }
+        sliceID %= 8;
+        let leftID = (sliceID + 7) % 8;
+        let rightID = (sliceID + 1) % 8;
+
+        if (this.slices[sliceID].ownerIs(player))
+            this.slices[sliceID].value -= value * signV;
+        if (this.slices[leftID].ownerIs(player))
+            this.slices[leftID].value -= sideValue * signV;
+        if (this.slices[rightID].ownerIs(player))
+            this.slices[rightID].value -= sideValue * signV;
+
+        let frameID = floor(min(abs(this.slices[sliceID].value), 16));
+        this.slices[sliceID].positiveSheet.requestAnimationChange(frameID);
+        this.slices[sliceID].negativeSheet.requestAnimationChange(frameID);
+        frameID = floor(min(abs(this.slices[leftID].value), 16))
+        this.slices[leftID].positiveSheet.requestAnimationChange(frameID);
+        this.slices[leftID].negativeSheet.requestAnimationChange(frameID);
+        frameID = floor(min(abs(this.slices[rightID].value), 16))
+        this.slices[rightID].positiveSheet.requestAnimationChange(frameID);
+        this.slices[rightID].negativeSheet.requestAnimationChange(frameID);
+    }
+
     addMeterAll(value, minusValue, player) {
         let signV = this.player1 === player ? 1 : -1;
 

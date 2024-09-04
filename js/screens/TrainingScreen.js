@@ -34,6 +34,13 @@ class TrainingScreen extends VSScreen {
         this.trainingSettings.meter.sikeResetFunction = this.trainingSettings.meter.resetFunctions.neutral;
         this.trainingSettings.meter.lipuResetFunction = this.trainingSettings.meter.resetFunctions.neutral;
 
+        this.trainingSettings.display = {
+            isVisible: true,
+            lastState: "",
+            lastCanStates: "",
+            lastCanStates2: ""
+        };
+
         let select = assetManager.images.buttonPressedLanguage;
         let deselect = assetManager.images.buttonUnpressedLanguage;
 
@@ -57,17 +64,24 @@ class TrainingScreen extends VSScreen {
             this.trainingControls.trainingSettings.block.isBlocking = !this.trainingControls.trainingSettings.block.isBlocking;
             this.trainingControls.trainingSettings.block.isHit = !this.trainingControls.trainingSettings.block.isBlocking;
         });
-        let opponentCounterHitButton = new MenuItem(150, 60, select, deselect, undefined, gt("opponentCounterButton"), () => {
+        let opponentNeutralBlockButton = new MenuItem(150, 60, select, deselect, undefined, gt("opponentNeutralBlockButton"), () => {
+            this.trainingControls.trainingSettings.block.isBlocking = false;
+            this.trainingControls.trainingSettings.block.isHit = !this.trainingControls.trainingSettings.block.isHit;
+        });
+        let opponentCounterHitButton = new MenuItem(150, 95, select, deselect, undefined, gt("opponentCounterButton"), () => {
             this.trainingControls.trainingSettings.block.isCounter = !this.trainingControls.trainingSettings.block.isCounter;
         });
 
-        opponentBlockingButton.addMoves(new MenuMove(opponentCounterHitButton, Angle.DOWN));
-        opponentCounterHitButton.addMoves(new MenuMove(opponentBlockingButton, Angle.UP));
+        opponentBlockingButton.addMoves(new MenuMove(opponentNeutralBlockButton, Angle.DOWN));
+        opponentNeutralBlockButton.addMoves(new MenuMove(opponentBlockingButton, Angle.UP));
+        opponentNeutralBlockButton.addMoves(new MenuMove(opponentCounterHitButton, Angle.DOWN));
+        opponentCounterHitButton.addMoves(new MenuMove(opponentNeutralBlockButton, Angle.UP));
 
-        this.opponentMenu.addMenuItems(opponentBlockingButton, opponentCounterHitButton);
+        this.opponentMenu.addMenuItems(opponentBlockingButton, opponentNeutralBlockButton, opponentCounterHitButton);
 
         this.opponentMenu.setTarget(opponentBlockingButton);
         //
+
 
         let exitButton = new MenuItem(-750, 75, select, deselect, undefined, gt("trainingExitButton"), () => {
             this.destruct();
@@ -115,6 +129,8 @@ class TrainingScreen extends VSScreen {
             this.currentMenu.run();
         }
 
+        this.world.timer = 100;
+
         /*if (!this.world.players[0]?.controls.valid() || !this.world.players[1]?.controls.valid()) {
             playersManager.openScreen();
             playersManager.resetPositions();
@@ -144,6 +160,107 @@ class TrainingScreen extends VSScreen {
         }
     }
 
+    convertState(name) {
+        switch (name) {
+            case "power dash":
+                return "TW";
+            case "dash":
+                return "T";
+            case "dash cancel":
+                return "TL";
+            case "dash attack":
+                return "UT";
+            case "hitstun":
+                return gt("hit");
+            case "block":
+                return gt("block");
+            case "attack":
+                return gt("attack");
+            case "dead":
+                return gt("dead");
+            case "lili":
+                return "L";
+            case "poka lili":
+                return "PL";
+            case "suli":
+                return "S";
+            case "poka suli":
+                return "PS";
+            case "nasa":
+                return "N";
+            case "block cancel":
+                return "";
+            case "oob":
+                return "mN";
+            case "UTK":
+                return "UT";
+            case "UTU":
+                return "UT";
+            case "UTT":
+                return "UT";
+            case "UTA":
+                return "UT";
+            case "rightRoll":
+                return "";
+            case "leftRoll":
+                return "";
+            case "neutralRoll":
+                return "";
+            case "grab":
+                return gt("grab");
+            case "grabbed":
+                return gt("grabbed");
+        }
+
+        return name.charAt(0).toLowerCase() + name.slice(1);
+    }
+
+    drawDisplay(g, x, y, width, height) {
+        if (this.trainingSettings.display.isVisible) {
+            g.fill(0, 0, 14, 75);
+            g.stroke(0, 0, 14, 150);
+            g.strokeWeight(2);
+
+            g.rect(x + width / 4, y + height / 8, width / 2, height / 3.5);
+
+            g.noStroke();
+            g.fill(240, 240, 250);
+            g.textSize(25 * width / 512);
+            g.textFont(assetManager.fonts.asuki);
+            g.textAlign(LEFT, BASELINE);
+            let theirPlayer = (this.player1 === this.trainingPlayer ? this.player2 : this.player1);
+            g.text("󱥫: " + (-theirPlayer.advantage > 0 ? "+" : "") + -theirPlayer.advantage, x + width / 4, y + height / 8 + 25 * width / 512);
+            g.text("󱥫󱥱: " + (-theirPlayer.cancelAdvantage > 0 ? "+" : "") + -theirPlayer.cancelAdvantage, x + width / 4, y + height / 8 + 50 * width / 512);
+            g.text("󱥫/mPS: " + (-theirPlayer.oobAdvantage > 0 ? "+" : "") + -theirPlayer.oobAdvantage, x + width / 4, y + height / 8 + 75 * width / 512);
+            g.text("󱥫󱥱/mPS: " + (-theirPlayer.oobCancelAdvantage > 0 ? "+" : "") + -theirPlayer.oobCancelAdvantage, x + width / 4, y + height / 8 + 100 * width / 512);
+
+            if (this.trainingPlayer.currentState.name !== "neutral" && this.trainingPlayer.currentState.name !== "walk") {
+                this.trainingSettings.display.lastState = this.convertState(this.trainingPlayer.currentState.name);
+                this.trainingSettings.display.lastCanStates = "";
+                this.trainingSettings.display.lastCanStates2 = "";
+                let bool = true;
+                for (let i in this.trainingPlayer.actions) {
+                    let name = this.convertState(this.trainingPlayer.actions[i]);
+                    if (name !== "") {
+                        if (bool) {
+                            this.trainingSettings.display.lastCanStates += "\n";
+                            this.trainingSettings.display.lastCanStates += name;
+                        } else {
+                            this.trainingSettings.display.lastCanStates2 += "\n";
+                            this.trainingSettings.display.lastCanStates2 += name;
+                        }
+                        bool = !bool;
+                    }
+                }
+            }
+
+            g.textSize(15 * width / 512);
+            g.text("󱥉: " + this.trainingSettings.display.lastState, x + width / 2, y + height / 8 + 25 * width / 512);
+            g.text("󱤘󱥉: " + this.trainingSettings.display.lastCanStates, x + width - 75 * width / 512, y + height / 8 + 35 * width / 512);
+            g.text(this.trainingSettings.display.lastCanStates2, x + width - 35 * width / 512, y + height / 8 + 35 * width / 512);
+        }
+    }
+
     draw(g) {
         g.background(35, 65, 35);
 
@@ -153,6 +270,8 @@ class TrainingScreen extends VSScreen {
         let canvasSlope = this.world.height / this.world.width;
         let minSize = min(windowWidth, windowHeight / canvasSlope);
         this.world.draw(g, (windowWidth - minSize) / 2, (windowHeight - minSize * canvasSlope) / 2, minSize, minSize * canvasSlope);
+
+        this.drawDisplay(g, (windowWidth - minSize) / 2, (windowHeight - minSize * canvasSlope) / 2, minSize, minSize * canvasSlope);
 
         if (this.paused) {
             g.textFont(assetManager.fonts.asuki);
@@ -181,7 +300,8 @@ class TrainingScreen extends VSScreen {
                 g.translate(-256, 0);
 
                 this.drawButton(g, this.trainingControls.trainingSettings.block.isBlocking, 400, 25, 60);
-                this.drawButton(g, this.trainingControls.trainingSettings.block.isCounter, 400, 60, 60);
+                this.drawButton(g, !this.trainingControls.trainingSettings.block.isBlocking && !this.trainingControls.trainingSettings.block.isHit, 400, 60, 60);
+                this.drawButton(g, this.trainingControls.trainingSettings.block.isCounter, 400, 95, 60);
 
                 g.pop();
             }
@@ -208,11 +328,13 @@ class TrainingScreen extends VSScreen {
             this.player1Controls = new TrainingComputer(this.player1, this.world);
             controls.push(this.player1Controls);
             this.trainingControls = this.player1Controls;
+            this.trainingPlayer = this.player2;
         }
         if (this.player2Controls === null) {
             this.player2Controls = new TrainingComputer(this.player2, this.world);
             controls.push(this.player2Controls);
             this.trainingControls = this.player2Controls;
+            this.trainingPlayer = this.player1;
         }
 
         this.player1.controls = this.player1Controls;//this.controls2;//this.computer1;

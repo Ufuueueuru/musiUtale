@@ -122,6 +122,9 @@ class NetplayScreen extends Screen {
                     }
                 }
             }
+            if (this.keyboardActive && (keyIsPressed(27) || keyIsPressed(13))) {
+                this.deactivateKeyboard();
+            }
         }
 
         if (this.clipboard.displayFrames > 0)

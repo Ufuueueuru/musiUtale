@@ -193,12 +193,52 @@
       "text": "󱥱󱥩"
     }
   },
+  "dead": {
+    "en": {
+      "text": "dead"
+    },
+    "tp": {
+      "text": "󱤷"
+    }
+  },
+  "attack": {
+    "en": {
+      "text": "attack"
+    },
+    "tp": {
+      "text": "󱥱"
+    }
+  },
   "block": {
     "en": {
       "text": "block"
     },
     "tp": {
       "text": "󱤈󱥱"
+    }
+  },
+  "hit": {
+    "en": {
+      "text": "hit"
+    },
+    "tp": {
+      "text": "󱥈"
+    }
+  },
+  "grab": {
+    "en": {
+      "text": "grab"
+    },
+    "tp": {
+      "text": "󱤓󱥔"
+    }
+  },
+  "grabbed": {
+    "en": {
+      "text": "grabbed"
+    },
+    "tp": {
+      "text": "󱤓󱤍"
     }
   },
   "sikeWawaSlices": {
@@ -321,6 +361,14 @@
     },
     "tp": {
       "text": "󱤈"
+    }
+  },
+  "opponentNeutralBlockButton": {
+    "en": {
+      "text": "Neutral Blocking"
+    },
+    "tp": {
+      "text": "󱤈󱤬󱥟󱥨"
     }
   },
   "opponentCounterButton": {

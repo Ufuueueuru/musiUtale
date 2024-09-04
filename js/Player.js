@@ -1353,7 +1353,7 @@ class Player extends Hitcircle {
 					let slice = this.world.sikeWawa.slices[this.buffer.info.sliceID];
 
 					this.actionLag = this.powerDash.frames;
-					if (this.currentState.name === "hitstun") {
+					if (State.stateIs(this.currentState, "hitstun") && this.hitStun > 0) {
 						this.slowDownMax = 2;
 						this.slowDownMod = 5;
 						this.slowDownFrames = floor(this.powerDash.frames * this.slowDownMod / this.slowDownMax);
@@ -1611,7 +1611,7 @@ class Player extends Hitcircle {
 		}
 	}
 	dashAttackLogic() {
-		if (this.currentState.name === "dash attack") {
+		if (State.stateIs(this.currentState, "dash attack")) {
 			this.dx *= this.dash.friction;
 			this.dy *= this.dash.friction;
 			//this.turnSpeedModifier = 0;

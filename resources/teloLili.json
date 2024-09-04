@@ -1,0 +1,78 @@
+{ "frames": {
+   "teloLili 0.aseprite": {
+    "frame": { "x": 0, "y": 0, "w": 208, "h": 128 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 208, "h": 128 },
+    "sourceSize": { "w": 208, "h": 128 },
+    "duration": 33
+   },
+   "teloLili 1.aseprite": {
+    "frame": { "x": 208, "y": 0, "w": 208, "h": 128 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 208, "h": 128 },
+    "sourceSize": { "w": 208, "h": 128 },
+    "duration": 33
+   },
+   "teloLili 2.aseprite": {
+    "frame": { "x": 416, "y": 0, "w": 208, "h": 128 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 208, "h": 128 },
+    "sourceSize": { "w": 208, "h": 128 },
+    "duration": 33
+   },
+   "teloLili 3.aseprite": {
+    "frame": { "x": 624, "y": 0, "w": 208, "h": 128 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 208, "h": 128 },
+    "sourceSize": { "w": 208, "h": 128 },
+    "duration": 33
+   },
+   "teloLili 4.aseprite": {
+    "frame": { "x": 0, "y": 128, "w": 208, "h": 128 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 208, "h": 128 },
+    "sourceSize": { "w": 208, "h": 128 },
+    "duration": 33
+   },
+   "teloLili 5.aseprite": {
+    "frame": { "x": 208, "y": 128, "w": 208, "h": 128 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 208, "h": 128 },
+    "sourceSize": { "w": 208, "h": 128 },
+    "duration": 33
+   },
+   "teloLili 6.aseprite": {
+    "frame": { "x": 416, "y": 128, "w": 208, "h": 128 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 208, "h": 128 },
+    "sourceSize": { "w": 208, "h": 128 },
+    "duration": 33
+   },
+   "teloLili 7.aseprite": {
+    "frame": { "x": 624, "y": 128, "w": 208, "h": 128 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 208, "h": 128 },
+    "sourceSize": { "w": 208, "h": 128 },
+    "duration": 33
+   }
+ },
+ "meta": {
+  "app": "https://www.aseprite.org/",
+  "version": "1.3.8.1-x64",
+  "image": "teloLili.png",
+  "format": "RGBA8888",
+  "size": { "w": 832, "h": 256 },
+  "scale": "1",
+  "frameTags": [
+   { "name": "Main", "from": 0, "to": 7, "direction": "forward", "color": "#000000ff" }
+  ]
+ }
+}

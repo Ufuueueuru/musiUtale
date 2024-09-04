@@ -151,9 +151,7 @@ class Attack extends Hitcircle {
 				this.player.playSound(assetManager.sounds.grab);
 
 				//this.world.sikeWawa.addMeterAll(1, -0.5, this.player);
-				if (this.world.sikeWawa.sliceOwnerIs(p)) {
-					this.world.sikeWawa.addMeter(-4, -1, p);
-				}
+				this.world.sikeWawa.subtractMeter(4, 1, p);
 
 				dealtDamage = p.damageHealth(property.grabInitialDamage, p.combo * 4 + p.comboProration * 4, property.noKill, property.scaling);
 
@@ -417,11 +415,10 @@ class Attack extends Hitcircle {
 					}
 
 					if (this.multi === 0) {
-						if (this.world.sikeWawa.sliceOwnerIs(p)) {
-							this.world.sikeWawa.addMeter(1.5, 0.6, p);
-							if (!p.controls.joystickPressed(0))
-								this.world.sikeWawa.addMeter(4.0, 3.6, p);
-						}/* else {
+						this.world.sikeWawa.subtractMeter(-1.5, -0.6, p);//Add meter to opponent when they block but only if they already control the slice
+						if (!p.controls.joystickPressed(0))
+							this.world.sikeWawa.subtractMeter(-4.0, -3.6, p);
+						/* else {
 							this.world.sikeWawa.addMeter(1.2, 0.48, p);
 						}*/
 					}

@@ -42,6 +42,21 @@ class State {
     }
 
     /**
+     * 
+     * @param {State} state
+     * @param {string} tag
+     */
+    static stateIs(state, tag) {
+        if (state.name === tag)
+            return true;
+        for (let i in state.tags) {
+            if (state.tags[i] === tag)
+                return true;
+        }
+        return false;
+    }
+
+    /**
      * Creates a copy of the given state (to avoid references causing problems)
      * @param {State} state
      */

@@ -66,7 +66,7 @@ class TutorialScreen extends Screen {
                 this.world.run(this);
             }
         }
-        this.world.timer = 99;
+        this.world.timer = 100;
         if (this.world.players[0].actionLag === 0) {
             this.world.players[0].health = this.world.players[0].maxHealth;
             this.world.players[0].tempDamageCount = 0;

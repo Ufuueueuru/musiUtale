@@ -1983,10 +1983,6 @@ class JanTPDashAttack extends Attack {
 	}
 
 	draw(g) {
-		if (this.getFromStartupF() === 10) {
-			this.player.iFrames = 11;
-			this.player.invTo = ["attack"];
-		}
 		if (this.currentlyActive()) {
 			/*let x = cos(this.dir.value);
 			let y = sin(this.dir.value);
@@ -2007,7 +2003,10 @@ class JanTPDashAttack extends Attack {
 	}
 
 	logic() {
-		
+		if (this.getFromStartupF() === 10) {
+			this.player.iFrames = 11;
+			this.player.invTo = ["attack"];
+		}
 	}
 }
 
@@ -2064,7 +2063,7 @@ class JanTPSL extends Attack {
 		let sweet2 = new PriorityCircle(45, 20, 30, 0).setVelocity(4, -1);
 		let circles = [sweet1, sweet2];
 
-		let sweet = new AttackProperties().setDamage(33).setProration(0.125).setCancelOptions(cancelOptions).setAngleValue(player.dir.value).setLaunch(5, 1).setHitStun(23, 10).setStunFrames(14).setWallPushback(15, 4).setCancelWait(0, 4);
+		let sweet = new AttackProperties().setDamage(33).setProration(0.125).setCancelOptions(cancelOptions).setAngleValue(player.dir.value).setLaunch(5, 1).setHitStun(23, 10).setStunFrames(14).setWallPushback(15, 4).setCancelWait(0, 3);
 		let prop = [sweet];
 
 		return new this(player, circles, prop).setClashPriority(5).setStartupF(15).setActiveF(9).setEndF(21).setRotateable();
