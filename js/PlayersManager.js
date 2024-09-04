@@ -71,10 +71,10 @@ class PlayersManager {
         g.fill(186, 179, 190);
         g.textAlign(CENTER, CENTER);
         if (this.chosenControls[0] === null) {
-            g.text("󱤎", width / 2 - imageWidth * 0.2, height / 2 - imageHeight * 0.07);//ilo
+            g.text(gt("computer"), width / 2 - imageWidth * 0.2, height / 2 - imageHeight * 0.07);//ilo
         }
         if (this.chosenControls[1] === null) {
-            g.text("󱤎", width / 2 + imageWidth * 0.2, height / 2 - imageHeight * 0.07);//ilo
+            g.text(gt("computer"), width / 2 + imageWidth * 0.2, height / 2 - imageHeight * 0.07);//ilo
             if (this.disableP2Bool) {
                 g.fill(250, 129, 140);
                 g.textSize(50 * imageWidth / 384);
