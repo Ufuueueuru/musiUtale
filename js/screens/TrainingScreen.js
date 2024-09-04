@@ -99,15 +99,21 @@ class TrainingScreen extends VSScreen {
         let displayFrameDataButton = new MenuItem(150, 25, select, deselect, undefined, gt("displayFrameDataButton"), () => {
             this.trainingSettings.display.isVisible = !this.trainingSettings.display.isVisible;
         });
+        if (currentLanguage === "en")
+            displayFrameDataButton.textSize = 23;
         let displayHurtboxesButton = new MenuItem(150, 60, select, deselect, undefined, gt("displayHurtboxesButton"), () => {
             debug.displayHurtboxes = !debug.displayHurtboxes;
         });
+        if (currentLanguage === "en")
+            displayHurtboxesButton.textSize = 28;
         let displayHitboxesButton = new MenuItem(150, 95, select, deselect, undefined, gt("displayHitboxesButton"), () => {
             debug.displayHitboxes = !debug.displayHitboxes;
         });
         let displayBlockingButton = new MenuItem(150, 130, select, deselect, undefined, gt("displayBlockingButton"), () => {
             debug.displayBlocking = !debug.displayBlocking;
         });
+        if (currentLanguage === "en")
+            displayBlockingButton.textSize = 20;
         let displayWallsButton = new MenuItem(150, 165, select, deselect, undefined, gt("displayWallsButton"), () => {
             debug.displayWalls = !debug.displayWalls;
         });
