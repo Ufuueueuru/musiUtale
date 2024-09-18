@@ -96,6 +96,10 @@ class Player extends Hitcircle {
 		this.turnSpeedModifier = 0;
 		/** @type {number} Nerf - increases the amount of hitstun you take from each hit */
 		this.hitStunModifier = 0;
+		/** @type {number} To be used in generalLogic so that a character can access the hitStunModifier value (DO NOT USE THIS INSIDE ATTACK CODE) */
+		this.bufferHitStunModifier = 0;
+		/** @type {number} Used for making a block angle larger */
+		this.blockLeniencyModifier = 0;
 
 		/** @type {number} Determines how much faster a character moves forward than backwards */
 		this.forwardSpeedBoost = 0;
@@ -257,7 +261,7 @@ class Player extends Hitcircle {
 		/** @type {number} The leniency of angle where you can block an attack */
 		this.blockLeniency = (PI / 4 + PI / 8);
 		/** @type {number} Block leniency gets increased for a short time while you are blocking an attack */
-		this.blockLeniencyBuff = PI / 4;
+		this.blockLeniencyBuff = PI / 3;
 		/** @type {number} How long the block leniency buff lasts */
 		this.blockLeniencyFrames = 0;
 		/** @type {number} How much leniency you get to block mids via standing instead of moving */
@@ -340,10 +344,15 @@ class Player extends Hitcircle {
 		this.monsi = new Angle(PI);
 		this.left = new Angle(-PI / 2);
 
+		//These are for training mode purposes
 		this.advantage = 0;
 		this.cancelAdvantage = 0;
 		this.oobAdvantage = 0;
 		this.oobCancelAdvantage = 0;
+		this.percentDamage = 0;
+		this.dealtDamage = 0;
+
+		this.hitByProjectile = false;
 
 		/** @type {number} How much farther away from the player the directional indicator arrow should be displayed */
 		this.arrowOffset = 0;
@@ -447,7 +456,9 @@ class Player extends Hitcircle {
 
 	resetModifiers() {
 		this.turnSpeedModifier = 0;
-		this.hitStunModifier = 0;
+		this.hitStunModifier = this.bufferHitStunModifier;
+		this.bufferHitStunModifier = 0;
+		this.blockLeniencyModifier = 0;
 		this.counterHittable = false;
 		if (this.bufferCounterHittable) {
 			this.counterHittable = true;
@@ -785,20 +796,28 @@ class Player extends Hitcircle {
 		let angle = new Angle();
 		if (this.controls.joystickPressed(0)) {
 			angle.value = this.controls.angle(0).value;
-			let leniency = this.blockLeniency + (this.blockLeniencyFrames > 0 ? this.blockLeniencyBuff : 0);
+			let leniency = this.blockLeniency + (this.blockLeniencyFrames > 0 ? this.blockLeniencyBuff : 0) + this.blockLeniencyModifier;
 			angle.value += leniency;
-			g.line(0, 0, -angle.getX() * 100, -angle.getY() * 100);
-			angle.value -= 2 * leniency;
-			g.line(0, 0, -angle.getX() * 100, -angle.getY() * 100);
-			g.arc(0, 0, 200, 200, PI + angle.value, PI + angle.value + 2 * leniency);
+			if (leniency >= PI) {
+				g.ellipse(0, 0, 200, 200);
+			} else {
+				g.line(0, 0, -angle.getX() * 100, -angle.getY() * 100);
+				angle.value -= 2 * leniency;
+				g.line(0, 0, -angle.getX() * 100, -angle.getY() * 100);
+				g.arc(0, 0, 200, 200, PI + angle.value, PI + angle.value + 2 * leniency);
+			}
 		} else {//Standing
 			angle.value = this.dir.value;
-			let leniency = this.standingBlockLeniency + (this.blockLeniencyFrames > 0 ? this.blockLeniencyBuff : 0);
+			let leniency = this.standingBlockLeniency + (this.blockLeniencyFrames > 0 ? this.blockLeniencyBuff : 0) + this.blockLeniencyModifier;
 			angle.value += leniency;
-			g.line(0, 0, angle.getX() * 100, angle.getY() * 100);
-			angle.value -= 2 * leniency;
-			g.line(0, 0, angle.getX() * 100, angle.getY() * 100);
-			g.arc(0, 0, 200, 200, angle.value, angle.value + 2 * leniency);
+			if (leniency >= PI) {
+				g.ellipse(0, 0, 200, 200);
+			} else {
+				g.line(0, 0, angle.getX() * 100, angle.getY() * 100);
+				angle.value -= 2 * leniency;
+				g.line(0, 0, angle.getX() * 100, angle.getY() * 100);
+				g.arc(0, 0, 200, 200, angle.value, angle.value + 2 * leniency);
+			}
 
 		}
 
@@ -1138,7 +1157,7 @@ class Player extends Hitcircle {
 		this.iFrames = frames;
 		this.invTo = ["attack", "grab"];
 
-		this.stunFrames = 20;
+		this.stunFrames = 24;
 
 		this.damageHealth(damage, this.combo);
 	}
@@ -2407,7 +2426,7 @@ class Player extends Hitcircle {
 		if (this.canAttack && this.stunFrames <= 10 && this.cancelWait <= 10) {
 			this.startDashAttack();
 
-			if (!this.buffer.contains(this.states.DASH_ATTACK) || !this.currentState.name === "dash" || !this.buffer.contains(this.states.DASH)) {
+			if (!this.buffer.containsStateTag("dash attack") || !this.currentState.name === "dash" || !this.buffer.contains(this.states.DASH)) {
 				this.startNL();
 				this.startSL();
 				this.startRL();

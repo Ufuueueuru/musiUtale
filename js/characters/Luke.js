@@ -6,6 +6,87 @@
 			new ICircle(30, -35, 25)
 		]);
 
+		this.hurtboxes["hitstun"] = [
+			[new Circle(0, 0, 65),
+			new ICircle(10, 48, 27),
+			new ICircle(10, -48, 27)]
+		];
+
+		this.hurtboxes["grab"] = [
+			[new Circle(0, 0, 65),
+			new ICircle(30, 35, 25),
+			new ICircle(30, -35, 25)]
+		];
+
+		this.hurtboxes["grabbed"] = [
+			[new Circle(0, 0, 65),
+			new ICircle(30, 35, 25),
+			new ICircle(30, -35, 25)]
+		];
+
+		this.hurtboxes["lipuLili"] = [
+			[new Circle(0, 0, 65),
+			new ICircle(30, 35, 25),
+			new ICircle(30, -35, 25)]
+		];
+
+		this.hurtboxes["lipuSuli"] = [
+			[new Circle(0, 0, 65),
+			new ICircle(30, 35, 25),
+			new ICircle(30, -35, 25)]
+		];
+
+		this.hurtboxes["rightRoll"] = [
+			[new Circle(0, 0, 65),
+			new ICircle(30, 35, 25),
+			new ICircle(30, -35, 25)]
+		];
+
+		this.hurtboxes["neutralRoll"] = [
+			[new Circle(0, 0, 65),
+			new ICircle(30, 35, 25),
+			new ICircle(30, -35, 25)]
+		];
+
+		this.hurtboxes["leftRoll"] = [
+			[new Circle(0, 0, 65),
+			new ICircle(30, 35, 25),
+			new ICircle(30, -35, 25)]
+		];
+
+		this.hurtboxes["walk"] = [
+			[new Circle(1, 1, 65),
+			new ICircle(36, 33, 25),
+			new ICircle(19, -39, 25)],
+			[new Circle(0, 1, 63),
+			new ICircle(42, 29, 25),
+			new ICircle(13, -39, 25)],
+			[new Circle(1, 2, 63),
+			new ICircle(42, 28, 25),
+			new ICircle(12, -39, 25)],
+			[new Circle(3, 0, 65),
+			new ICircle(39, 31, 25),
+			new ICircle(16, -38, 25)],
+			[new Circle(4, 1, 65),
+			new ICircle(28, 39, 25),
+			new ICircle(25, -37, 25)],
+			[new Circle(2, 0, 64),
+			new ICircle(24, 41, 25),
+			new ICircle(34, -37, 25)],
+			[new Circle(0, 0, 64),
+			new ICircle(20, 44, 25),
+			new ICircle(40, -33, 25)],
+			[new Circle(0, 0, 64),
+			new ICircle(19, 45, 25),
+			new ICircle(43, -30, 25)],
+			[new Circle(0, 0, 64),
+			new ICircle(23, 41, 25),
+			new ICircle(38, -33, 25)],
+			[new Circle(2, 1, 66),
+			new ICircle(30, 38, 25),
+			new ICircle(30, -37, 25)]
+		];
+
 		this.hurtboxes["dash attack"] = [
 			[new Circle(0, 0, 65),
 			new ICircle(30, 35, 25),
@@ -77,6 +158,95 @@
 			new ICircle(39, -35, 20)]
 		];
 
+		this.hurtboxes["SL"] = [
+			[new Circle(0, 0, 65),
+			new ICircle(26, 41, 25),
+			new ICircle(19, -38, 25)],
+			[new Circle(0, 0, 65),
+			new ICircle(15, 45, 25),
+			new ICircle(19, -38, 25)],
+			[new Circle(3, 0, 65),
+			new ICircle(30, 42, 25),
+			new ICircle(28, -36, 25),
+			new ICircle(52, -23, 21),
+			new ICircle(73, -13, 22)],
+			[new Circle(8, 1, 65),
+			new ICircle(38, 43, 25),
+			new ICircle(53, -20, 25),
+			new ICircle(58, 30, 29),
+			new ICircle(78, 16, 25)],
+			[new Circle(8, 0, 65),
+			new ICircle(55, 21, 25),
+			new ICircle(51, -21, 25)],
+			[new Circle(6, 3, 65),
+			new ICircle(51, 24, 25),
+			new ICircle(46, -27, 25)],
+			[new Circle(5, 2, 65),
+			new ICircle(47, 31, 25),
+			new ICircle(41, -30, 25)],
+			[new Circle(3, 1, 65),
+			new ICircle(44, 32, 25),
+			new ICircle(32, -34, 25)],
+			[new Circle(2, 1, 65),
+			new ICircle(39, 36, 25),
+			new ICircle(30, -35, 25)],
+			[new Circle(2, 2, 65),
+			new ICircle(32, 38, 25),
+			new ICircle(29, -36, 25)]
+		];
+
+		this.hurtboxes["RL"] = [
+			[new Circle(0, 0, 65),
+			new ICircle(38, 42, 25),
+			new ICircle(27, -39, 25)],
+			[new Circle(0, 0, 65),
+			new ICircle(46, 39, 25),
+			new ICircle(20, -41, 25)],
+			[new Circle(6, 3, 65),
+			new ICircle(53, 26, 36),
+			new ICircle(-33, -7, 25),
+			new ICircle(60, -9, 35),
+			new ICircle(52, -42, 35)],
+			[new Circle(4, 3, 65),
+			new ICircle(49, 24, 25),
+			new ICircle(-22, -42, 25)],
+			[new Circle(3, 2, 65),
+			new ICircle(45, 28, 25),
+			new ICircle(-3, -46, 25)],
+			[new Circle(3, 2, 65),
+			new ICircle(41, 31, 25),
+			new ICircle(11, -46, 25)],
+			[new Circle(2, 1, 65),
+			new ICircle(34, 36, 25),
+			new ICircle(22, -42, 25)]
+		];
+
+		this.hurtboxes["LL"] = [
+			[new Circle(1, -2, 65),
+			new ICircle(28, 39, 25),
+			new ICircle(37, -41, 25)],
+			[new Circle(1, -2, 65),
+			new ICircle(20, 40, 25),
+			new ICircle(45, -39, 25)],
+			[new Circle(7, -4, 65),
+			new ICircle(-32, 7, 25),
+			new ICircle(58, -27, 37),
+			new ICircle(59, 9, 37),
+			new ICircle(52, 43, 32)],
+			[new Circle(5, -3, 65),
+			new ICircle(-22, 41, 25),
+			new ICircle(42, -29, 25)],
+			[new Circle(4, -2, 65),
+			new ICircle(-1, 47, 25),
+			new ICircle(38, -35, 25)],
+			[new Circle(3, -1, 65),
+			new ICircle(11, 47, 25),
+			new ICircle(33, -39, 25)],
+			[new Circle(1, -1, 65),
+			new ICircle(22, 42, 25),
+			new ICircle(31, -39, 25)]
+		];
+
 		this.hurtboxes["ML"] = [
 			[new Circle(5, 4, 67),
 			new ICircle(38, -28, 25),
@@ -111,6 +281,566 @@
 			[new Circle(2, -1, 64),
 			new ICircle(32, 37, 25),
 			new ICircle(26, -41, 25)]
+		];
+
+		this.hurtboxes["NS"] = [
+			[new Circle(1, -3, 65),
+			new ICircle(30, 35, 25),
+			new ICircle(24, -38, 25)],
+			[new Circle(-1, -4, 65),
+			new ICircle(39, 30, 25),
+			new ICircle(17, -43, 25)],
+			[new Circle(8, 2, 65),
+			new ICircle(30, 36, 25),
+			new ICircle(53, 32, 25)],
+			[new Circle(8, 2, 65),
+			new ICircle(26, 44, 25),
+			new ICircle(53, 32, 25)],
+			[new Circle(8, 1, 65),
+			new ICircle(23, 46, 25),
+			new ICircle(53, 32, 25)],
+			[new Circle(5, 1, 65),
+			new ICircle(22, 40, 25),
+			new ICircle(54, 19, 25)],
+			[new Circle(4, 0, 65),
+			new ICircle(27, 37, 25),
+			new ICircle(49, -15, 25)],
+			[new Circle(1, -1, 65),
+			new ICircle(30, 35, 25),
+			new ICircle(37, -30, 25)]
+		];
+
+		this.hurtboxes["SS"] = [
+			[new Circle(-1, 0, 65),
+			new ICircle(25, 39, 25),
+			new ICircle(27, -38, 25)],
+			[new Circle(-4, -1, 64),
+			new ICircle(13, 47, 25),
+			new ICircle(13, -46, 25)],
+			[new Circle(-4, 0, 65),
+			new ICircle(13, 47, 25),
+			new ICircle(13, -46, 25)],
+			[new Circle(2, 0, 65),
+			new ICircle(41, 32, 25),
+			new ICircle(36, -40, 25)],
+			[new Circle(5, -2, 65),
+			new ICircle(49, 21, 25),
+			new ICircle(47, -27, 25)],
+			[new Circle(5, -1, 65),
+			new ICircle(51, 19, 25),
+			new ICircle(51, -22, 25)],
+			[new Circle(6, 0, 65),
+			new ICircle(52, 12, 25),
+			new ICircle(51, -19, 25)],
+			[new Circle(6, 0, 65),
+			new ICircle(52, 12, 25),
+			new ICircle(51, -19, 25)],
+			[new Circle(6, 0, 65),
+			new ICircle(57, 21, 25),
+			new ICircle(55, -26, 25)],
+			[new Circle(5, -1, 65),
+			new ICircle(56, 30, 25),
+			new ICircle(51, -33, 25)],
+			[new Circle(6, 0, 65),
+			new ICircle(48, 44, 25),
+			new ICircle(48, -38, 25)],
+			[new Circle(4, 0, 65),
+			new ICircle(41, 43, 25),
+			new ICircle(44, -42, 25)],
+			[new Circle(3, -1, 65),
+			new ICircle(37, 42, 25),
+			new ICircle(39, -44, 25)],
+			[new Circle(0, 0, 65),
+			new ICircle(34, 40, 25),
+			new ICircle(33, -42, 25)]
+		];
+
+		this.hurtboxes["RS"] = [
+			[new Circle(2, -1, 65),
+			new ICircle(23, 40, 25),
+			new ICircle(35, -33, 25)],
+			[new Circle(2, -1, 65),
+			new ICircle(23, 43, 25),
+			new ICircle(34, -33, 25)],
+			[new Circle(0, 0, 65),
+			new ICircle(23, 42, 25),
+			new ICircle(34, -33, 25)],
+			[new Circle(1, 0, 65),
+			new ICircle(23, 42, 25),
+			new ICircle(34, -32, 25)],
+			[new Circle(0, 0, 65),
+			new ICircle(23, 42, 25),
+			new ICircle(33, -36, 25)],
+			[new Circle(0, 0, 65),
+			new ICircle(26, 40, 25),
+			new ICircle(29, -40, 25)],
+			[new Circle(1, -1, 65),
+			new ICircle(30, 35, 25),
+			new ICircle(23, -45, 25)],
+			[new Circle(0, 0, 65),
+			new ICircle(40, 51, 42),
+			new ICircle(8, -53, 25),
+			new ICircle(58, 19, 43),
+			new ICircle(56, -18, 47)],
+			[new Circle(1, -1, 65),
+			new ICircle(49, -32, 25),
+			new ICircle(7, -55, 25)],
+			[new Circle(0, 0, 65),
+			new ICircle(48, -30, 25),
+			new ICircle(8, -54, 25)],
+			[new Circle(0, 0, 65),
+			new ICircle(48, -30, 25),
+			new ICircle(8, -54, 25)],
+			[new Circle(0, 0, 65),
+			new ICircle(48, -30, 25),
+			new ICircle(8, -54, 25)],
+			[new Circle(0, 0, 65),
+			new ICircle(48, -30, 25),
+			new ICircle(8, -54, 25)],
+			[new Circle(1, 0, 65),
+			new ICircle(48, -30, 25),
+			new ICircle(8, -54, 25)],
+			[new Circle(0, 0, 65),
+			new ICircle(51, 9, 25),
+			new ICircle(21, -42, 25)]
+		];
+
+		this.hurtboxes["LS"] = [
+			[new Circle(2, 0, 65),
+			new ICircle(34, 31, 25),
+			new ICircle(23, -41, 25)],
+			[new Circle(1, 0, 65),
+			new ICircle(35, 33, 25),
+			new ICircle(23, -41, 25)],
+			[new Circle(0, 0, 65),
+			new ICircle(35, 33, 25),
+			new ICircle(23, -41, 25)],
+			[new Circle(1, 0, 65),
+			new ICircle(35, 33, 25),
+			new ICircle(23, -41, 25)],
+			[new Circle(0, 0, 65),
+			new ICircle(33, 37, 25),
+			new ICircle(23, -41, 25)],
+			[new Circle(0, 0, 65),
+			new ICircle(30, 40, 25),
+			new ICircle(26, -40, 25)],
+			[new Circle(0, 0, 65),
+			new ICircle(23, 45, 25),
+			new ICircle(31, -36, 25)],
+			[new Circle(0, 0, 65),
+			new ICircle(9, 52, 25),
+			new ICircle(37, -50, 43),
+			new ICircle(54, -20, 48),
+			new ICircle(55, 15, 48)],
+			[new Circle(1, 1, 65),
+			new ICircle(9, 52, 25),
+			new ICircle(47, 28, 25)],
+			[new Circle(1, 1, 65),
+			new ICircle(9, 52, 25),
+			new ICircle(47, 28, 25)],
+			[new Circle(0, 0, 65),
+			new ICircle(9, 52, 25),
+			new ICircle(47, 28, 25)],
+			[new Circle(0, 0, 65),
+			new ICircle(9, 52, 25),
+			new ICircle(47, 28, 25)],
+			[new Circle(0, 1, 65),
+			new ICircle(9, 52, 25),
+			new ICircle(47, 28, 25)],
+			[new Circle(1, 0, 65),
+			new ICircle(9, 52, 25),
+			new ICircle(47, 28, 25)],
+			[new Circle(0, 0, 65),
+			new ICircle(19, 47, 25),
+			new ICircle(49, -3, 25)]
+		];
+
+		this.hurtboxes["MS"] = [
+			[new Circle(-12, -1, 65),
+			new ICircle(42, 24, 25),
+			new ICircle(43, -28, 25)],
+			[new Circle(-11, 0, 65),
+			new ICircle(31, 27, 25),
+			new ICircle(30, -31, 25)],
+			[new Circle(-8, 0, 65),
+			new ICircle(19, 39, 25),
+			new ICircle(21, -36, 25)],
+			[new Circle(0, 0, 65),
+			new ICircle(18, 44, 25),
+			new ICircle(20, -41, 25)],
+			[new Circle(4, 0, 65),
+			new ICircle(22, 47, 25),
+			new ICircle(23, -43, 25)],
+			[new Circle(3, -1, 65),
+			new ICircle(28, 48, 25),
+			new ICircle(30, -44, 25)],
+			[new Circle(2, 0, 65),
+			new ICircle(31, 42, 25),
+			new ICircle(30, -41, 25)]
+		];
+
+		this.hurtboxes["NPL"] = [
+			[new Circle(1, 0, 65),
+			new ICircle(53, -6, 35),
+			new ICircle(21, -35, 25)],
+			[new Circle(1, 0, 65),
+			new ICircle(53, -6, 34),
+			new ICircle(21, -35, 25)],
+			[new Circle(1, 0, 65),
+			new ICircle(53, -7, 34),
+			new ICircle(21, -35, 25)],
+			[new Circle(-3, -1, 62),
+			new ICircle(36, -11, 25),
+			new ICircle(19, -35, 25)],
+			[new Circle(-5, 0, 63),
+			new ICircle(33, -12, 25),
+			new ICircle(18, -35, 25)],
+			[new Circle(-8, 0, 64),
+			new ICircle(31, -12, 25),
+			new ICircle(20, -35, 25)],
+			[new Circle(-7, 0, 63),
+			new ICircle(30, -12, 25),
+			new ICircle(20, -35, 25)],
+			[new Circle(-5, 0, 64),
+			new ICircle(34, -4, 25),
+			new ICircle(20, -35, 25)],
+			[new Circle(-4, 0, 65),
+			new ICircle(34, 14, 25),
+			new ICircle(20, -35, 25)],
+			[new Circle(-1, -2, 64),
+			new ICircle(32, 31, 25),
+			new ICircle(20, -35, 25)]
+		];
+
+		this.hurtboxes["SPL"] = [
+			[new Circle(2, -1, 64),
+			new ICircle(55, -6, 38),
+			new ICircle(22, -35, 25)],
+			[new Circle(1, -1, 64),
+			new ICircle(55, -6, 37),
+			new ICircle(22, -35, 25)],
+			[new Circle(0, 0, 65),
+			new ICircle(55, -6, 37),
+			new ICircle(22, -35, 25)],
+			[new Circle(1, 0, 64),
+			new ICircle(55, -6, 37),
+			new ICircle(22, -35, 25)],
+			[new Circle(1, -1, 64),
+			new ICircle(55, -6, 37),
+			new ICircle(23, -34, 25)],
+			[new Circle(2, 0, 64),
+			new ICircle(55, -6, 37),
+			new ICircle(22, -35, 25)],
+			[new Circle(2, -1, 65),
+			new ICircle(55, -6, 37),
+			new ICircle(22, -35, 25)],
+			[new Circle(-7, -2, 59),
+			new ICircle(36, -12, 25),
+			new ICircle(16, -37, 25)],
+			[new Circle(-6, -1, 63),
+			new ICircle(35, 14, 25),
+			new ICircle(16, -37, 25)],
+			[new Circle(-3, -1, 63),
+			new ICircle(32, 27, 25),
+			new ICircle(21, -43, 25)]
+		];
+
+		this.hurtboxes["RPL"] = [
+			[new Circle(1, 0, 65),
+			new ICircle(53, -6, 35),
+			new ICircle(21, -35, 25)],
+			[new Circle(1, 0, 65),
+			new ICircle(53, -6, 34),
+			new ICircle(21, -35, 25)],
+			[new Circle(1, 0, 65),
+			new ICircle(53, -7, 34),
+			new ICircle(21, -35, 25)],
+			[new Circle(-3, -1, 62),
+			new ICircle(36, -11, 25),
+			new ICircle(19, -35, 25)],
+			[new Circle(-5, 0, 63),
+			new ICircle(33, -12, 25),
+			new ICircle(18, -35, 25)],
+			[new Circle(-8, 0, 64),
+			new ICircle(31, -12, 25),
+			new ICircle(20, -35, 25)],
+			[new Circle(-7, 0, 63),
+			new ICircle(30, -12, 25),
+			new ICircle(20, -35, 25)],
+			[new Circle(-5, 0, 64),
+			new ICircle(34, -4, 25),
+			new ICircle(20, -35, 25)],
+			[new Circle(-4, 0, 65),
+			new ICircle(34, 14, 25),
+			new ICircle(20, -35, 25)],
+			[new Circle(-1, -2, 64),
+			new ICircle(32, 31, 25),
+			new ICircle(20, -35, 25)]
+		];
+
+		this.hurtboxes["LPL"] = [
+			[new Circle(1, 0, 65),
+			new ICircle(53, -6, 35),
+			new ICircle(21, -35, 25)],
+			[new Circle(1, 0, 65),
+			new ICircle(53, -6, 34),
+			new ICircle(21, -35, 25)],
+			[new Circle(1, 0, 65),
+			new ICircle(53, -7, 34),
+			new ICircle(21, -35, 25)],
+			[new Circle(-3, -1, 62),
+			new ICircle(36, -11, 25),
+			new ICircle(19, -35, 25)],
+			[new Circle(-5, 0, 63),
+			new ICircle(33, -12, 25),
+			new ICircle(18, -35, 25)],
+			[new Circle(-8, 0, 64),
+			new ICircle(31, -12, 25),
+			new ICircle(20, -35, 25)],
+			[new Circle(-7, 0, 63),
+			new ICircle(30, -12, 25),
+			new ICircle(20, -35, 25)],
+			[new Circle(-5, 0, 64),
+			new ICircle(34, -4, 25),
+			new ICircle(20, -35, 25)],
+			[new Circle(-4, 0, 65),
+			new ICircle(34, 14, 25),
+			new ICircle(20, -35, 25)],
+			[new Circle(-1, -2, 64),
+			new ICircle(32, 31, 25),
+			new ICircle(20, -35, 25)]
+		];
+
+		this.hurtboxes["MPL"] = [
+			[new Circle(1, 0, 65),
+			new ICircle(49, -14, 25),
+			new ICircle(19, -34, 25)],
+			[new Circle(1, 0, 65),
+			new ICircle(49, -13, 25),
+			new ICircle(19, -34, 25)],
+			[new Circle(-3, -1, 61),
+			new ICircle(35, -12, 25),
+			new ICircle(19, -34, 25)],
+			[new Circle(-6, 0, 62),
+			new ICircle(31, -13, 25),
+			new ICircle(17, -34, 25)],
+			[new Circle(-7, 0, 63),
+			new ICircle(31, -13, 25),
+			new ICircle(19, -35, 25)],
+			[new Circle(-7, 0, 63),
+			new ICircle(31, -13, 25),
+			new ICircle(20, -35, 25)],
+			[new Circle(-5, -1, 65),
+			new ICircle(34, 9, 25),
+			new ICircle(20, -35, 25)],
+			[new Circle(-4, 0, 64),
+			new ICircle(29, 35, 25),
+			new ICircle(20, -35, 25)]
+		];
+
+		this.hurtboxes["NPS"] = [
+			[new Circle(1, -1, 65),
+			new ICircle(48, 15, 25),
+			new ICircle(23, -36, 25)],
+			[new Circle(1, -1, 65),
+			new ICircle(48, -2, 25),
+			new ICircle(20, -36, 25)],
+			[new Circle(1, -1, 65),
+			new ICircle(49, -11, 25),
+			new ICircle(20, -36, 25)],
+			[new Circle(1, -1, 65),
+			new ICircle(49, -11, 25),
+			new ICircle(20, -36, 25)],
+			[new Circle(1, -1, 65),
+			new ICircle(49, -11, 25),
+			new ICircle(20, -36, 25)],
+			[new Circle(1, -1, 65),
+			new ICircle(49, -11, 25),
+			new ICircle(20, -36, 25)],
+			[new Circle(1, -1, 65),
+			new ICircle(49, -11, 25),
+			new ICircle(20, -36, 25)],
+			[new Circle(1, -1, 65),
+			new ICircle(49, -11, 25),
+			new ICircle(20, -36, 25)],
+			[new Circle(1, -1, 65),
+			new ICircle(49, -11, 25),
+			new ICircle(20, -36, 25)],
+			[new Circle(1, -1, 65),
+			new ICircle(49, -11, 25),
+			new ICircle(20, -36, 25)],
+			[new Circle(1, -1, 65),
+			new ICircle(49, -11, 25),
+			new ICircle(20, -36, 25)],
+			[new Circle(1, -1, 65),
+			new ICircle(49, -11, 25),
+			new ICircle(20, -36, 25)],
+			[new Circle(1, -1, 65),
+			new ICircle(49, -11, 25),
+			new ICircle(20, -36, 25)],
+			[new Circle(1, -1, 65),
+			new ICircle(49, -11, 25),
+			new ICircle(20, -36, 25)],
+			[new Circle(1, -1, 65),
+			new ICircle(49, -11, 25),
+			new ICircle(20, -36, 25)],
+			[new Circle(1, -1, 65),
+			new ICircle(49, -11, 25),
+			new ICircle(20, -36, 25)],
+			[new Circle(1, -1, 65),
+			new ICircle(48, -7, 25),
+			new ICircle(20, -36, 25)],
+			[new Circle(1, -1, 65),
+			new ICircle(41, 9, 25),
+			new ICircle(20, -36, 25)]
+		];
+
+		this.hurtboxes["SPS"] = [
+			[new Circle(1, -1, 65),
+			new ICircle(39, 23, 25),
+			new ICircle(35, -39, 25)],
+			[new Circle(2, -2, 65),
+			new ICircle(47, 9, 25),
+			new ICircle(43, -37, 25)],
+			[new Circle(3, -6, 65),
+			new ICircle(50, -9, 25),
+			new ICircle(44, -37, 25)],
+			[new Circle(3, -6, 64),
+			new ICircle(51, -12, 25),
+			new ICircle(45, -35, 25)],
+			[new Circle(-5, -8, 62),
+			new ICircle(37, -16, 25),
+			new ICircle(31, -37, 25)],
+			[new Circle(-3, -7, 65),
+			new ICircle(50, -15, 25),
+			new ICircle(28, -41, 25)],
+			[new Circle(6, -5, 65),
+			new ICircle(50, -15, 25),
+			new ICircle(28, -54, 25)],
+			[new Circle(-7, -5, 62),
+			new ICircle(36, -15, 25),
+			new ICircle(27, -46, 25)],
+			[new Circle(-2, -4, 63),
+			new ICircle(34, 13, 25),
+			new ICircle(23, -44, 25)],
+			[new Circle(0, -3, 63),
+			new ICircle(33, 24, 25),
+			new ICircle(26, -41, 25)],
+			[new Circle(1, -1, 65),
+			new ICircle(39, 23, 25),
+			new ICircle(35, -39, 25)]
+		];
+
+		this.hurtboxes["RPS"] = [
+			[new Circle(0, 0, 65),
+			new ICircle(42, 21, 25),
+			new ICircle(41, -24, 25)],
+			[new Circle(7, 0, 65),
+			new ICircle(55, 20, 25),
+			new ICircle(58, -9, 25)],
+			[new Circle(10, 1, 65),
+			new ICircle(56, 23, 25),
+			new ICircle(58, -9, 25)],
+			[new Circle(10, 2, 64),
+			new ICircle(58, 25, 25),
+			new ICircle(52, -18, 25)],
+			[new Circle(10, 2, 65),
+			new ICircle(58, 22, 25),
+			new ICircle(49, -36, 25)],
+			[new Circle(10, 2, 64),
+			new ICircle(57, 17, 25),
+			new ICircle(48, -37, 25)],
+			[new Circle(7, 1, 62),
+			new ICircle(52, 18, 25),
+			new ICircle(54, -34, 25)],
+			[new Circle(4, -1, 62),
+			new ICircle(59, 26, 25),
+			new ICircle(47, -30, 25)],
+			[new Circle(2, -1, 62),
+			new ICircle(64, 36, 25),
+			new ICircle(44, -36, 25)],
+			[new Circle(3, -1, 63),
+			new ICircle(64, 49, 25),
+			new ICircle(47, -41, 25)],
+			[new Circle(2, -1, 62),
+			new ICircle(45, 63, 25),
+			new ICircle(48, -40, 25)],
+			[new Circle(2, -1, 62),
+			new ICircle(33, 46, 25),
+			new ICircle(41, -39, 25)]
+		];
+
+		this.hurtboxes["LPS"] = [
+			[new Circle(1, -1, 65),
+			new ICircle(43, 22, 25),
+			new ICircle(40, -24, 25)],
+			[new Circle(7, -3, 67),
+			new ICircle(58, -2, 25),
+			new ICircle(46, -29, 25)],
+			[new Circle(12, -2, 66),
+			new ICircle(58, -4, 25),
+			new ICircle(47, -28, 25)],
+			[new Circle(12, -3, 65),
+			new ICircle(60, -4, 25),
+			new ICircle(43, -41, 25)],
+			[new Circle(12, -3, 64),
+			new ICircle(52, 2, 25),
+			new ICircle(43, -46, 25)],
+			[new Circle(12, -3, 64),
+			new ICircle(50, 6, 25),
+			new ICircle(38, -53, 25)],
+			[new Circle(11, -4, 61),
+			new ICircle(54, -8, 25),
+			new ICircle(40, -47, 25)],
+			[new Circle(9, -4, 61),
+			new ICircle(58, -7, 25),
+			new ICircle(35, -38, 25)],
+			[new Circle(7, -3, 61),
+			new ICircle(62, 1, 25),
+			new ICircle(27, -45, 25)],
+			[new Circle(4, 0, 60),
+			new ICircle(63, 28, 25),
+			new ICircle(36, -53, 25)],
+			[new Circle(3, -1, 60),
+			new ICircle(49, 50, 25),
+			new ICircle(48, -47, 25)],
+			[new Circle(4, -1, 61),
+			new ICircle(33, 46, 25),
+			new ICircle(42, -39, 25)]
+		];
+
+		this.hurtboxes["MPS"] = [
+			[new Circle(1, -1, 65),
+			new ICircle(43, 32, 25),
+			new ICircle(3, -44, 25)],
+			[new Circle(1, -1, 65),
+			new ICircle(60, 33, 25),
+			new ICircle(-20, -50, 25)],
+			[new Circle(2, 0, 62),
+			new ICircle(73, 33, 25),
+			new ICircle(-52, -50, 25)],
+			[new Circle(2, 0, 62),
+			new ICircle(-41, 42, 25),
+			new ICircle(87, -60, 25),
+			new ICircle(56, 49, 50),
+			new ICircle(-32, -67, 50),
+			new ICircle(-3, 64, 47),
+			new ICircle(34, -78, 56)],
+			[new Circle(2, 0, 64),
+			new ICircle(-46, 44, 25),
+			new ICircle(90, -53, 25)],
+			[new Circle(3, 0, 64),
+			new ICircle(-45, 45, 25),
+			new ICircle(89, -52, 25)],
+			[new Circle(2, 0, 61),
+			new ICircle(-21, 57, 25),
+			new ICircle(78, -47, 25)],
+			[new Circle(2, 0, 61),
+			new ICircle(1, 61, 25),
+			new ICircle(62, -43, 25)],
+			[new Circle(2, -1, 65),
+			new ICircle(18, 50, 25),
+			new ICircle(47, -38, 25)]
 		];
 
 		this.hurtboxes["NN"] = [
@@ -148,6 +878,117 @@
 			new ICircle(33, 35, 24)]
 		];
 
+		this.hurtboxes["SN"] = [
+			[new Circle(0, 0, 65),
+			new ICircle(30, 35, 25),
+			new ICircle(30, -37, 25)],
+			[new Circle(-1, -1, 65),
+			new ICircle(31, 41, 25),
+			new ICircle(30, -45, 25)],
+			[new Circle(0, -1, 65),
+			new ICircle(38, 21, 50),
+			new ICircle(36, -15, 53)],
+			[new Circle(1, -1, 65),
+			new ICircle(41, 16, 25),
+			new ICircle(43, -15, 25)],
+			[new Circle(3, -1, 65),
+			new ICircle(41, 16, 25),
+			new ICircle(43, -15, 25)],
+			[new Circle(3, -1, 63),
+			new ICircle(41, 21, 25),
+			new ICircle(41, -22, 25)],
+			[new Circle(3, -1, 61),
+			new ICircle(38, 25, 25),
+			new ICircle(39, -26, 25)],
+			[new Circle(2, -2, 62),
+			new ICircle(36, 29, 25),
+			new ICircle(37, -28, 25)],
+			[new Circle(2, -2, 62),
+			new ICircle(34, 32, 25),
+			new ICircle(36, -30, 25)]
+		];
+
+		this.hurtboxes["RN"] = [
+			[new Circle(0, 0, 65),
+			new ICircle(33, 34, 25),
+			new ICircle(41, -19, 25)],
+			[new Circle(1, 0, 65),
+			new ICircle(33, 34, 25),
+			new ICircle(45, -31, 25)],
+			[new Circle(1, 0, 65),
+			new ICircle(31, 37, 25),
+			new ICircle(41, -40, 25)],
+			[new Circle(1, -1, 65),
+			new ICircle(33, 38, 25),
+			new ICircle(37, -45, 25)],
+			[new Circle(1, -1, 65),
+			new ICircle(33, 38, 25),
+			new ICircle(30, -46, 25)],
+			[new Circle(1, -1, 65),
+			new ICircle(28, 35, 25),
+			new ICircle(26, -46, 25)],
+			[new Circle(1, -1, 65),
+			new ICircle(28, 35, 25),
+			new ICircle(26, -44, 25)],
+			[new Circle(1, -1, 65),
+			new ICircle(31, 36, 25),
+			new ICircle(26, -43, 25)]
+		];
+
+		this.hurtboxes["LN"] = [
+			[new Circle(0, 0, 65),
+			new ICircle(44, 19, 35),
+			new ICircle(30, -36, 25)],
+			[new Circle(0, 0, 65),
+			new ICircle(46, 14, 45),
+			new ICircle(30, -36, 25)],
+			[new Circle(0, 0, 65),
+			new ICircle(50, 6, 51),
+			new ICircle(29, -37, 25),
+			new ICircle(33, 40, 25)],
+			[new Circle(1, -1, 65),
+			new ICircle(50, 5, 57),
+			new ICircle(29, -37, 25),
+			new ICircle(38, 38, 25)],
+			[new Circle(1, -1, 65),
+			new ICircle(50, 5, 57),
+			new ICircle(28, -36, 30),
+			new ICircle(33, 36, 35)]
+		];
+
+		this.hurtboxes["MN"] = [
+			[new Circle(1, -2, 64),
+			new ICircle(5, 50, 22),
+			new ICircle(6, -49, 22)],
+			[new Circle(-1, -1, 64),
+			new ICircle(2, 52, 22),
+			new ICircle(0, -51, 22)],
+			[new Circle(-8, -1, 64),
+			new ICircle(-5, 52, 22),
+			new ICircle(-8, -52, 22)],
+			[new Circle(-9, -1, 63),
+			new ICircle(-7, 52, 24),
+			new ICircle(-9, -52, 24)],
+			[new Circle(-9, -1, 63),
+			new ICircle(-10, 52, 24),
+			new ICircle(-11, -51, 24)],
+			[new Circle(-9, -1, 63),
+			new ICircle(-13, 49, 24),
+			new ICircle(-15, -51, 24)],
+			[new Circle(-6, -1, 64),
+			new ICircle(-13, 50, 24),
+			new ICircle(-14, -50, 24)],
+			[new Circle(-4, -1, 64),
+			new ICircle(-7, 52, 24),
+			new ICircle(-8, -51, 24)],
+			[new Circle(1, -1, 64),
+			new ICircle(0, 53, 25),
+			new ICircle(-1, -51, 25)],
+			[new Circle(2, -1, 63),
+			new ICircle(9, 49, 25),
+			new ICircle(8, -49, 25)]
+		];
+
 		this.headNoun = "󱤑";//jan
 		this.name = currentLanguage === "tp" ? "󱤑󱦐󱦗󱦅󱥱󱤘󱤋󱦑" : "Lukeh";//jan Luke
 
@@ -162,6 +1003,8 @@
 		this.auraSheets.push(Spritesheet.copy(assetManager.spritesheets.konLuke2));
 		this.auraSheets.push(Spritesheet.copy(assetManager.spritesheets.konLuke3));
 		this.auraSheets.push(Spritesheet.copy(assetManager.spritesheets.konLuke4));
+
+		this.states.HITSTUN = State.copyState(State.HITSTUN).removeTag("BASE");
 
 		this.states.ML = State.copyState(State.ML).addTag("no collide");
 		this.states.RS = State.copyState(State.RS).addTag("rotateable");
@@ -507,7 +1350,7 @@ class JanLukeSL extends Attack {
 		let circles = [sweet1, sweet2, sweet3, sour1, sour2, sour3];
 
 		let sweet = new AttackProperties().setDamage(35).setProration(-0.1).setCancelOptions(cancelOptions).setAngleValue(player.dir.value).setLaunch(3, 2, 0.7).setHitStun(28, 20).setStunFrames(12, 12).setWallPushback(1, 3);
-		let sour = new AttackProperties().setDamage(20).setProration(-1.5).setCancelOptions(cancelOptions, sourHitCancelOptions).setAngleValue(player.dir.value).setLaunch(3, 2, 0.7).setHitStun(20, 20).setStunFrames(12, 12).setWallPushback(1, 3);
+		let sour = new AttackProperties().setDamage(20).setProration(-1.1, 1.0).setCancelOptions(cancelOptions, sourHitCancelOptions).setAngleValue(player.dir.value).setLaunch(3, 2, 0.7).setHitStun(20, 20).setStunFrames(12, 12).setWallPushback(1, 3);
 		let prop = [sweet, sour];
 
 		//sweet.setHitSound(assetManager.sounds["8BitHit"]);
@@ -695,8 +1538,8 @@ class JanLukeNS extends Attack {
 		let sweet3 = new PriorityCircle(70, 29, 40, 1).setVelocity(1, 0.6);
 		let circles = [sour1, sweet1, sweet2, sweet3];
 
-		let sour = new AttackProperties().setDamage(40).setProration(0.3).setCancelOptions(cancelOptions).setAngleValue(player.dir.value + PI / 6).setLaunch(4, 2, 1.5).setHitStun(25, 22).setStunFrames(12);
-		let sweet = new AttackProperties().setDamage(40).setProration(0.3).setCancelOptions(cancelOptions).setAngleValue(player.dir.value).setLaunch(3, 2, 1.5).setHitStun(25, 22).setStunFrames(12);
+		let sour = new AttackProperties().setDamage(40).setProration(0.6, -1.9).setCancelOptions(cancelOptions).setAngleValue(player.dir.value + PI / 6).setLaunch(4, 2, 1.5).setHitStun(25, 22).setStunFrames(12);
+		let sweet = new AttackProperties().setDamage(40).setProration(0.6, -1.9).setCancelOptions(cancelOptions).setAngleValue(player.dir.value).setLaunch(3, 2, 1.5).setHitStun(25, 22).setStunFrames(12);
 		let prop = [sour, sweet];
 
 		//sweet.setHitSound(assetManager.sounds["8BitHit"]);
@@ -731,12 +1574,14 @@ class JanLukeSS extends Attack {
 	static createAttack(player) {
 		let cancelOptions = [];
 
-		let sweet1 = new PriorityCircle(110, -35, 60, 0).setVelocity(0.1, 0);
-		let sweet2 = new PriorityCircle(110, 35, 60, 0).setVelocity(0.1, 0);
-		let circles = [sweet1, sweet2];
+		let sour1 = new PriorityCircle(45, 0, 65, 0).setVelocity(0.1, 0);
+		let sweet1 = new PriorityCircle(110, -35, 60, 1).setVelocity(0.1, 0);
+		let sweet2 = new PriorityCircle(110, 35, 60, 1).setVelocity(0.1, 0);
+		let circles = [sour1, sweet1, sweet2];
 
-		let sweet = new AttackProperties().setDamage(45, 35, 6).setProration(0.3).setCancelOptions(cancelOptions).setAngleValue(player.dir.value).setLaunch(16, 2, 0.5).setHitStun(36, 35).setStunFrames(12);
-		let prop = [sweet];
+		let sour = new AttackProperties().setDamage(30, 35).setProration(0.5).setCancelOptions(cancelOptions).setAngleValue(player.dir.value).setLaunch(16, 2, 0.5).setHitStun(36, 35).setStunFrames(12);
+		let sweet = new AttackProperties().setDamage(45, 35, 6).setProration(0.3).setCancelOptions(cancelOptions).setAngleValue(player.dir.value).setLaunch(16, 2, 0.5).setHitStun(44, 35).setStunFrames(12);
+		let prop = [sour, sweet];
 
 		//sweet.setHitSound(assetManager.sounds["8BitHit"]);
 		//sweet.setBlockSound(assetManager.sounds["8BitHit"]);
@@ -1813,17 +2658,17 @@ class JanLukeMPS extends Attack {
 		let cancelOptions = [];
 		let hitCancelOptions = ["NN", "dash"];
 
-		let sour1 = new PriorityCircle(50, 45, 70, 0).setVelocity(-0.1, -0.05);
-		let sour2 = new PriorityCircle(5, 43, 70, 0).setVelocity(-0.1, -0.05);
-		let sour3 = new PriorityCircle(-40, 40, 70, 0).setVelocity(-0.1, -0.05);
-		let sweet1 = new PriorityCircle(50, -55, 80, 1).setVelocity(0.1, 0.05);
-		let sweet2 = new PriorityCircle(5, -52, 80, 1).setVelocity(0.1, 0.05);
-		let sweet3 = new PriorityCircle(-40, -45, 80, 1).setVelocity(0.1, 0.05);
-		let circles = [sour1, sour2, sour3, sweet1, sweet2, sweet3];
+		let sweet1 = new PriorityCircle(50, -55, 80, 0).setVelocity(0.1, 0.05);
+		let sweet2 = new PriorityCircle(5, -52, 80, 0).setVelocity(0.1, 0.05);
+		let sweet3 = new PriorityCircle(-40, -45, 80, 0).setVelocity(0.1, 0.05);
+		let sour1 = new PriorityCircle(50, 45, 70, 1).setVelocity(-0.1, -0.05);
+		let sour2 = new PriorityCircle(5, 43, 70, 1).setVelocity(-0.1, -0.05);
+		let sour3 = new PriorityCircle(-40, 40, 70, 1).setVelocity(-0.1, -0.05);
+		let circles = [sweet1, sweet2, sweet3, sour1, sour2, sour3];
 
-		let sour = new AttackProperties().setDamage(30).setCancelOptions(cancelOptions, hitCancelOptions).setAngleValue(player.dir.value + PI).setLaunch(10, 3, -0.1).setHitStun(27, 7).setStunFrames(15).setCancelWait(3);
 		let sweet = new AttackProperties().setDamage(30).setCancelOptions(cancelOptions, hitCancelOptions).setAngleValue(player.dir.value).setLaunch(14, -3, 0.1).setHitStun(30, 7).setStunFrames(15);
-		let prop = [sour, sweet];
+		let sour = new AttackProperties().setDamage(30).setCancelOptions(cancelOptions, hitCancelOptions).setAngleValue(player.dir.value + PI).setLaunch(10, 3, -0.1).setHitStun(27, 7).setStunFrames(15).setCancelWait(3);
+		let prop = [sweet, sour];
 
 		return new this(player, circles, prop).setClashPriority(0).setStartupF(14).setActiveF(6).setEndF(15);
 	}
@@ -2069,9 +2914,7 @@ class JanLukeLN extends Attack {
 			this.player.sheet.setAnimation("LNF");
 		}
 		if (this.getStartupF() < 26 && this.getStartupF() > 5) {
-			if (this.player.getInfluence() <= 0)
-				this.world.sikeWawa.addMeterAll(0, 0.08, this.player);
-			this.world.sikeWawa.addMeterAll(0.04, 0, this.player);
+			this.world.sikeWawa.addMeter(0.12, 0.09, this.player);
 		}
 		if (this.held && this.getStartupF() === 20) {
 			this.player.actionLag++;

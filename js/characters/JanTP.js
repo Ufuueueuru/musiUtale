@@ -81,6 +81,12 @@
 			new Circle(8, -40, 20)]
 		];
 
+		this.hurtboxes["dash attack"] = [
+			[new Circle(0, 0, 80),
+			new Circle(10, 40, 20),
+			new Circle(10, -40, 20)]
+		];
+
 		this.hurtboxes["NL"] = [
 			[new Circle(0, 0, 80),
 			new ICircle(30, 30, 23),

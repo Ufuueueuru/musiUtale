@@ -248,8 +248,8 @@ class Attack extends Hitcircle {
 				let wallAngle = new Angle();
 				let wallLaunchMod = 0;
 
-				let effectiveLeniency = p.blockLeniency;
-				let standLeniency = p.standingBlockLeniency;
+				let effectiveLeniency = p.blockLeniency + p.blockLeniencyModifier;
+				let standLeniency = p.standingBlockLeniency + p.blockLeniencyModifier;
 				if (p.blockLeniencyFrames > 0) {
 					effectiveLeniency += p.blockLeniencyBuff;
 					standLeniency += p.blockLeniencyBuff;
@@ -460,6 +460,14 @@ class Attack extends Hitcircle {
 						p.dy = this.player.dy;
 					}
 
+					p.dx *= property.launchDampeningBlock;
+					p.dy *= property.launchDampeningBlock;
+					let preDampSpeed = p.dx * p.dx + p.dy * p.dy;
+					let multiple = property.launchDampeningMaxSpeedBlock * property.launchDampeningMaxSpeedBlock / preDampSpeed;
+					if (abs(multiple) < 1) {
+						p.dx *= multiple;
+						p.dy *= multiple;
+					}
 					p.dx += (launchIncludeMulti + wallLaunchMod) * property.blockLaunchMult * property.angle.getX() / sqrt(p.weight) / 3 / further;
 					p.dy += (launchIncludeMulti + wallLaunchMod) * property.blockLaunchMult * property.angle.getY() / sqrt(p.weight) / 3 / further;
 
@@ -511,6 +519,7 @@ class Attack extends Hitcircle {
 					}
 					this.hitConfirmSetFrames();
 				}
+				p.hitByProjectile = this.projectile;
 				p.advantage = -(p.hitStun - this.player.actionLag + p.stunFrames - this.player.stunFrames);
 				p.cancelAdvantage = -(p.hitStun - property.cancelWait + p.stunFrames - this.player.stunFrames);
 				p.oobAdvantage = -(max(0, p.hitStun - p.OOBBlockFrame) - this.player.actionLag + p.stunFrames - this.player.stunFrames);
@@ -520,6 +529,10 @@ class Attack extends Hitcircle {
 					//print("Cancel Advantage: " + (-p.cancelAdvantage));
 					print("OOB Advantage: " + (-p.oobAdvantage) + " /C: " + (-p.oobCancelAdvantage));
 					//print("OOBC Advantage: " + (-p.oobCancelAdvantage));
+				}
+				if (dealtDamage) {
+					p.dealtDamage = floor(dealtDamage * 10) / 10;
+					p.percentDamage = round(1000 * dealtDamage / property.damage) / 10;
 				}
 				if (debug.displayScalingPercent && dealtDamage) {
 					print(round(1000 * dealtDamage / property.damage) / 10 + "% Damage");
@@ -1137,6 +1150,10 @@ class AttackProperties {
 		this.launchDampening = 1;
 		/** @type {number} The speed cap at which the launch dampening multiplier with never exceed */
 		this.launchDampeningMaxSpeed = 20;
+		/** @type {number} Multiplies the momentum of the target player before adding the launch (when blocked) */
+		this.launchDampeningBlock = 1;
+		/** @type {number} The speed cap at which the launch dampening multiplier with never exceed (when blocked) */
+		this.launchDampeningMaxSpeedBlock = 20;
 
 		/** @type {number} */
 		this.wallLaunchMod = 0;
@@ -1399,9 +1416,11 @@ class AttackProperties {
 	 * @param {number} max
 	 * @returns
 	 */
-	setLaunchDampening(num, max = 20) {
+	setLaunchDampening(num, max = 20, numBlock=num, maxBlock=max) {
 		this.launchDampening = num;
 		this.launchDampeningMaxSpeed = max;
+		this.launchDampeningBlock = numBlock;
+		this.launchDampeningMaxSpeedBlock = maxBlock;
 
 		return this;
 	}

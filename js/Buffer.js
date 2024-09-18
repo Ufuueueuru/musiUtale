@@ -22,6 +22,18 @@ class Buffer {
         return output;
     }
 
+    containsStateTag(tag) {
+        let output = false;
+        for (let i in this.queue) {
+            for (let u in this.queue[i]) {
+                if (State.stateIs(this.queue[i][u].state, tag))
+                    output = true;
+            }
+        }
+
+        return output;
+    }
+
     bufferStateChange(state, actions, info = { }, ifthen = undefined, ifelse = undefined) {
         this.queue[0].push({
             state: state,

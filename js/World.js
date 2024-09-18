@@ -542,10 +542,6 @@ class World {
                 } else {
                     p.startLipu(p.states.LIPU_LILI, p.states.LIPU_LILI_ACTIONS, p.lipuLiliFrames, "LipuLili", p.lipuDamage);
                 }
-
-                p.stunFrames = 18;
-                if (p.targetPlayer !== null)
-                    p.targetPlayer.stunFrames = 18;
             }
 
             //Bouncing off of a wall

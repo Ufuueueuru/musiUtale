@@ -93,6 +93,7 @@ class TrainingComputer extends Controls {
                 collideInfo = this.world.attacks[i].getCollideInformation(this.player);
             if (collideInfo?.collided) {
                 if (this.trainingSettings.block.isBlocking) {
+                    this.resetButtons();
                     if (this.trainingSettings.block.dynamicAngle) {
                         this.pressJoystick(0, this.world.attacks[i].getAttackAngle(this.player, collideInfo.circle, collideInfo.playerCircle, collideInfo.property));
                     } else {
@@ -108,6 +109,7 @@ class TrainingComputer extends Controls {
                     }
                 }
                 if (this.trainingSettings.block.isHit) {
+                    this.resetButtons();
                     if (this.trainingSettings.block.isCounter)
                         this.player.bufferCounterHittable = true;
 

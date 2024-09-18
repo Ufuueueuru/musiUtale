@@ -36,6 +36,8 @@ class TrainingScreen extends VSScreen {
 
         this.trainingSettings.display = {
             isVisible: true,
+            dealtDamage: 0,
+            percentDamage: 0,
             lastState: "",
             lastCanStates: "",
             lastCanStates2: ""
@@ -290,6 +292,10 @@ class TrainingScreen extends VSScreen {
             g.text("󱥫/mPS: " + (-theirPlayer.oobAdvantage > 0 ? "+" : "") + -theirPlayer.oobAdvantage, x + width / 4, y + height / 8 + 75 * width / 512);
             g.text("󱥫󱥱/mPS: " + (-theirPlayer.oobCancelAdvantage > 0 ? "+" : "") + -theirPlayer.oobCancelAdvantage, x + width / 4, y + height / 8 + 100 * width / 512);
 
+            if (theirPlayer.currentState.name !== "neutral" && this.trainingPlayer.currentState.name !== "walk") {
+                this.trainingSettings.display.dealtDamage = theirPlayer.dealtDamage;
+                this.trainingSettings.display.percentDamage = theirPlayer.percentDamage;
+            }
             if (this.trainingPlayer.currentState.name !== "neutral" && this.trainingPlayer.currentState.name !== "walk") {
                 this.trainingSettings.display.lastState = this.convertState(this.trainingPlayer.currentState.name);
                 this.trainingSettings.display.lastCanStates = "";
@@ -311,7 +317,9 @@ class TrainingScreen extends VSScreen {
             }
 
             g.textSize(15 * width / 512);
-            g.text("󱥉: " + this.trainingSettings.display.lastState, x + width / 2, y + height / 8 + 25 * width / 512);
+            g.text("󱥉: " + this.trainingSettings.display.lastState, x + width / 2 + 25 * width / 512, y + height / 8 + 25 * width / 512);
+            g.text("󱥈: " + this.trainingSettings.display.dealtDamage, x + width / 2 + 25 * width / 512, y + height / 8 + 40 * width / 512);
+            g.text("󱥻󱥈: " + this.trainingSettings.display.percentDamage + "%", x + width / 2 + 25 * width / 512, y + height / 8 + 55 * width / 512);
             g.text("󱤘󱥉: " + this.trainingSettings.display.lastCanStates, x + width - 75 * width / 512, y + height / 8 + 35 * width / 512);
             g.text(this.trainingSettings.display.lastCanStates2, x + width - 35 * width / 512, y + height / 8 + 35 * width / 512);
         }

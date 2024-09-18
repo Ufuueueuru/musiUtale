@@ -81,6 +81,12 @@
 			new Circle(12, -40, 20)]
 		];
 
+		this.hurtboxes["dash attack"] = [
+			[new Circle(0, 0, 80),
+			new Circle(10, 40, 20),
+			new Circle(10, -40, 20)]
+		];
+
 		this.hurtboxes["NL"] = [
 			[new Circle(0, 0, 80),
 			new ICircle(24, -32, 30),
@@ -888,6 +894,12 @@
 			new Circle(-1, 49, 22)]
 		];
 
+		this.hurtboxes["kepeken"] = [
+			[new Circle(0, 0, 81),
+			new Circle(36, -35, 25),
+			new Circle(36, 35, 29)]
+		];
+
 		this.headNoun = "󱤑";//jan
 		this.name = currentLanguage === "tp" ? "󱤑󱥍󱦗󿨰" : "jan pi toki ike";//jan pi toki ike
 
@@ -907,6 +919,9 @@
 		this.states.RN = State.copyState(State.RN).addTag("rotateable");
 		this.states.NN = State.copyState(State.NN).addTag("rotateable");
 		this.states.LNF = State.copyState(State.LN).setName("LNF");
+
+		this.states.KEPEKEN = new State("kepeken");
+		this.states.KEPEKEN_ACTIONS = ["power dash"];
 
 		this.movementSpeed = 1.9;
 		this.forwardSpeedBoost = 1.7;
@@ -1161,6 +1176,24 @@
 		} else {
 			this.defense = 1;
 		}
+
+		let count = 0;
+		if (this.controls.pressed("lili"))
+			count++;
+		if (this.controls.pressed("suli"))
+			count++;
+		if (this.controls.pressed("pokaLili"))
+			count++;
+		if (this.controls.pressed("pokaSuli"))
+			count++;
+		if (this.currentState.name === "MN" && count >= 3) {
+			this.sheet.setAnimation("Kepeken");
+			this.forceChangeState(this.states.KEPEKEN, this.states.KEPEKEN_ACTIONS);
+			this.actionLag = 111;
+			this.playSound(assetManager.sounds.miKepekenEIlo);
+		}
+		if (this.currentState.name === "kepeken")
+			this.attackEndable();
 	}
 
 	//Character specific attacks
@@ -1309,6 +1342,10 @@
 		assetManager.addSpritesheet("resources/jan_pi_toki_ike.png", "janTISheet", "//");
 
 		assetManager.addSpritesheet("resources/LipuNasaIke.png", "lipuNasaIke", "//");
+
+		assetManager.addSound("resources/sfx/miKepekenEIlo.wav", "miKepekenEIlo", {
+			volume: 0.8
+		});
 	}
 }
 
@@ -1342,30 +1379,17 @@ class JanTIDashAttack extends Attack {
 	}
 
 	draw(g) {
-		if (this.getFromStartupF() === 10) {
-			this.player.iFrames = 11;
-			this.player.invTo = ["attack"];
-		}
 		if (this.currentlyActive()) {
-			/*let x = cos(this.dir.value);
-			let y = sin(this.dir.value);
-
-			g.push();
-			g.translate(this.x + 50 * x, this.y + 50 * y);
-			g.rotate(this.dir.value + PI / 2);
-
-			this.sheet.draw(g, -64, -64, 128, 128);
-			if (this.player.stunFrames <= 0)
-				this.sheet.run();
-
-			g.pop();*/
-
 			if (debug.displayHitboxes)
 				this.debugDraw(g);
 		}
 	}
 
 	logic() {
+		if (this.getFromStartupF() === 10) {
+			this.player.iFrames = 11;
+			this.player.invTo = ["attack"];
+		}
 		if (this.player.targetPlayer && this.player.targetPlayer.combo > 3) {
 			this.player.timerPunishHealth++;
 		}
