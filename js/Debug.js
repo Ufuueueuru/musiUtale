@@ -4,7 +4,7 @@ let debug = {
     displayScalingPercent: false,
     displayHurtboxes: false,
     displayHitboxes: false,
-    displayFrameRate: true,
+    displayFrameRate: false,
     displayRollbackFrames: true,//Should always be true
     displayNetplayPauses: false,
     displayLostFrames: false,

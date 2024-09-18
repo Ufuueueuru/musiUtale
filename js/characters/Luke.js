@@ -1580,7 +1580,7 @@ class JanLukeSS extends Attack {
 		let circles = [sour1, sweet1, sweet2];
 
 		let sour = new AttackProperties().setDamage(30, 35).setProration(0.5).setCancelOptions(cancelOptions).setAngleValue(player.dir.value).setLaunch(16, 2, 0.5).setHitStun(36, 35).setStunFrames(12);
-		let sweet = new AttackProperties().setDamage(45, 35, 6).setProration(0.3).setCancelOptions(cancelOptions).setAngleValue(player.dir.value).setLaunch(16, 2, 0.5).setHitStun(44, 35).setStunFrames(12);
+		let sweet = new AttackProperties().setDamage(55, 35, 6).setProration(0.3).setCancelOptions(cancelOptions).setAngleValue(player.dir.value).setLaunch(16, 2, 0.5).setHitStun(44, 35).setStunFrames(12);
 		let prop = [sour, sweet];
 
 		//sweet.setHitSound(assetManager.sounds["8BitHit"]);
