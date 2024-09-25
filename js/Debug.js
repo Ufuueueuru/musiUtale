@@ -28,7 +28,7 @@ let debug = {
     noNeutralBlock: false,
 
     //Other
-    noSplit: true,
+    noSplit: false,
     loadingBackDoor: false,
     noUpdateControls: false,
     escapeKeyExit: false,

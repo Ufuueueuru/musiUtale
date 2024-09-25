@@ -289,8 +289,8 @@ class TrainingScreen extends VSScreen {
             let theirPlayer = (this.player1 === this.trainingPlayer ? this.player2 : this.player1);
             g.text("󱥫: " + (-theirPlayer.advantage > 0 ? "+" : "") + -theirPlayer.advantage, x + width / 4, y + height / 8 + 25 * width / 512);
             g.text("󱥫󱥱: " + (-theirPlayer.cancelAdvantage > 0 ? "+" : "") + -theirPlayer.cancelAdvantage, x + width / 4, y + height / 8 + 50 * width / 512);
-            g.text("󱥫/mPS: " + (-theirPlayer.oobAdvantage > 0 ? "+" : "") + -theirPlayer.oobAdvantage, x + width / 4, y + height / 8 + 75 * width / 512);
-            g.text("󱥫󱥱/mPS: " + (-theirPlayer.oobCancelAdvantage > 0 ? "+" : "") + -theirPlayer.oobCancelAdvantage, x + width / 4, y + height / 8 + 100 * width / 512);
+            g.text("󱥫/mN: " + (-theirPlayer.oobAdvantage > 0 ? "+" : "") + -theirPlayer.oobAdvantage, x + width / 4, y + height / 8 + 75 * width / 512);
+            g.text("󱥫󱥱/mN: " + (-theirPlayer.oobCancelAdvantage > 0 ? "+" : "") + -theirPlayer.oobCancelAdvantage, x + width / 4, y + height / 8 + 100 * width / 512);
 
             if (theirPlayer.currentState.name !== "neutral" && this.trainingPlayer.currentState.name !== "walk") {
                 this.trainingSettings.display.dealtDamage = theirPlayer.dealtDamage;
@@ -470,5 +470,16 @@ class TrainingScreen extends VSScreen {
         debug.displayBlocking = false;
         debug.controlFrameRateMouse = false;
         debug.manualFrameAdvance = false;
+
+        for (let u = controls.length - 1; u >= 0; u--) {
+            if (controls[u].computer)
+                controls.splice(u, 1);
+        }
+        if (this.player1.controls.computer)
+            this.player1.controls = null;
+        if (this.player2.controls.computer)
+            this.player2.controls = null;
+
+        Howler.stop();
     }
 }

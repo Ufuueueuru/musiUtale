@@ -50,6 +50,15 @@ class TrainingComputer extends Controls {
                 hold: 1,
                 offset: 2,
                 actions: ["SN", "SN", "SN", "SN", "SN", "MN", "M", "M", "M", "M", "M"]
+            },
+            {
+                names: ["hitstun"],
+                isMashing: true,
+                wait: 0,
+                count: 0,
+                hold: 1,
+                offset: 0,
+                actions: ["MPS"]
             }
         ];
     }

@@ -54,9 +54,17 @@ class CharacterSelectScreen extends Screen {
                         g.stroke(150, 150, 10);
                     g.rect(256 - 75 * charWidth / 2 + 75 * x + 3, 192 - 75 * charHeight / 2 + 75 * y + 3, 69, 69);
                 }
-                this.characters[i].sheet.drawFrame(g, 0, 256 - 75 * charWidth / 2 + 75 * x - this.characters[i].selectScreenSizeOffset / 2, 192 - 75 * charHeight / 2 + 75 * y - this.characters[i].selectScreenSizeOffset / 2, 75 + this.characters[i].selectScreenSizeOffset, 75 + this.characters[i].selectScreenSizeOffset);
+
+                g.push();
+                g.translate(75/2 + this.characters[i].selectScreenSizeOffset/2, 75/2 + this.characters[i].selectScreenSizeOffset/2);
+                g.translate(256 - 75 * charWidth / 2 + 75 * x - this.characters[i].selectScreenSizeOffset / 2, 192 - 75 * charHeight / 2 + 75 * y - this.characters[i].selectScreenSizeOffset / 2);
+                g.rotate(this.characters[i].selectScreenRotation);
+                this.characters[i].sheet.drawFrame(g, 0, -75/2 - this.characters[i].selectScreenSizeOffset/2, -75/2 - this.characters[i].selectScreenSizeOffset/2 + this.characters[i].selectScreenYOffset, 75 + this.characters[i].selectScreenSizeOffset, 75 + this.characters[i].selectScreenSizeOffset);
+                g.pop();
+
                 g.fill(15, 0, 0);
-                g.noStroke();
+                g.stroke(240, 240, 255);
+                g.strokeWeight(2);
                 g.textSize(15);
                 g.textAlign(CENTER, CENTER);
                 g.text(this.characters[i].name, 256 - 75 * charWidth / 2 + 75 * x + 38, 192 - 75 * charHeight / 2 + 75 * y + 65);

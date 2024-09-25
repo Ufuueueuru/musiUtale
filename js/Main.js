@@ -7,16 +7,19 @@ if (!window.electronAPI) {
 	window.electronAPI = {
 		toggleFullscreen: () => { },
 		closeWindow: () => { },
+		readdir: async (name) => [],
+		setMods: (data) => { },
+		getMods: (name) => { return []; },
 		writeSave: (data) => {
 			localStorage.setItem("saveFile", data);
 		},
 		loadSave: async () => {
 			if (localStorage.getItem("saveFile") !== null && localStorage.getItem("saveFile").defaultKeyboardControls1)
 				return localStorage.getItem("saveFile");
-			return { "defaultKeyboardControls1": { "keys": [["dash", "KeyY"], ["powerDash", "KeyJ"], ["pokaLili", "KeyT"], ["pokaSuli", "KeyG"], ["lili", "KeyR"], ["suli", "KeyF"], ["nasa", "KeyH"], ["frameAdvance", "Space"], ["select", "KeyR"], ["back", "KeyT"], ["start", "Escape"]], "arrows": [["KeyD", "KeyW", "KeyA", "KeyS"]], "deadzones": [0.25] }, "defaultKeyboardControls2": { "keys": [["dash", "KeyO"], ["powerDash", "KeyK"], ["pokaLili", "KeyP"], ["pokaSuli", "Semicolon"], ["lili", "BracketLeft"], ["suli", "Quote"], ["nasa", "KeyL"], ["frameAdvance", "Space"], ["select", "Enter"], ["back", "KeyP"], ["start", "Escape"]], "arrows": [["ArrowRight", "ArrowUp", "ArrowLeft", "ArrowDown"]], "deadzones": [0.25] }, "defaultGamepadControls": { "keys": [["dash", 4], ["powerDash", 7], ["pokaLili", 3], ["pokaSuli", 1], ["lili", 2], ["suli", 0], ["nasa", 5], ["frameAdvance", 6], ["select", 0], ["back", 1], ["start", 9]], "arrows": [0], "deadzones": [0.35] }, "graphicsSettings": { "resolutionMult": 0.25 }, "currentLanguage": "tp", "promptTutorial": true, "version": "0.0.3" }
+			return { "defaultKeyboardControls1": { "keys": [["dash", "KeyY"], ["powerDash", "KeyJ"], ["pokaLili", "KeyT"], ["pokaSuli", "KeyG"], ["lili", "KeyR"], ["suli", "KeyF"], ["nasa", "KeyH"], ["frameAdvance", "Space"], ["select", "KeyR"], ["back", "KeyT"], ["start", "Escape"]], "arrows": [["KeyD", "KeyW", "KeyA", "KeyS"]], "deadzones": [0.25] }, "defaultKeyboardControls2": { "keys": [["dash", "KeyO"], ["powerDash", "KeyK"], ["pokaLili", "KeyP"], ["pokaSuli", "Semicolon"], ["lili", "BracketLeft"], ["suli", "Quote"], ["nasa", "KeyL"], ["frameAdvance", "Space"], ["select", "Enter"], ["back", "KeyP"], ["start", "Escape"]], "arrows": [["ArrowRight", "ArrowUp", "ArrowLeft", "ArrowDown"]], "deadzones": [0.25] }, "defaultGamepadControls": { "keys": [["dash", 4], ["powerDash", 7], ["pokaLili", 3], ["pokaSuli", 1], ["lili", 2], ["suli", 0], ["nasa", 5], ["frameAdvance", 6], ["select", 0], ["back", 1], ["start", 9]], "arrows": [0], "deadzones": [0.35] }, "graphicsSettings": { "resolutionMult": 1, "spriteResolutionMult": 0.5, "noSplitSheets": true }, "currentLanguage": "tp", "promptTutorial": true, "version": "0.0.4" }
 		},
 		getSavesPath: () => { },
-		getAppVersion: async () => "0.4.0"
+		getAppVersion: async () => "0.4.1"
 	};
 }
 
@@ -69,7 +72,8 @@ let dataOnFunction = (incomingData) => { };
 
 let graphicsSettings = {
 	resolutionMult: 1,
-	spriteResolutionMult: 0.5
+	spriteResolutionMult: 1,
+	noSplitSheets: true
 }
 
 function preload() {
@@ -174,8 +178,6 @@ function setup() {
 		stages[i].addAssets();
 	}
 
-	assetManager.loadAssets();
-
 	loadingScreen = new LoadingScreen();
 
 	loadingScreen.init();
@@ -190,7 +192,9 @@ function setup() {
 	frameRate(60);
 
 	//resetSaveFile();
-	loadSaveFile();
+	loadSaveFile(() => {
+		assetManager.loadAssets();
+	});
 }
 
 function draw() {
@@ -426,11 +430,13 @@ function finishResetSaveFile() {
 	writeSaveFile();
 }
 
-function loadSaveFile() {
+function loadSaveFile(buffer = () => {}) {
 	setTimeout(async () => {
 		saveFile = await window.electronAPI.loadSave();
 
 		loadSaveObject(saveFile);
+
+		buffer();
 	});
 }
 
@@ -476,6 +482,23 @@ function loadSaveObject(saveFile) {
 			controlsManager.keyboardControls.push(keyboard2);
 			currentLanguage = saveFile.currentLanguage;
 			promptTutorial = saveFile.promptTutorial;
+			break;
+		case "0.0.4":
+			controlsManager.defaultKeyboardControls1 = saveFile.defaultKeyboardControls1;
+			controlsManager.defaultKeyboardControls2 = saveFile.defaultKeyboardControls2;
+			controlsManager.defaultGamepadControls = saveFile.defaultGamepadControls;
+
+			keyboard1 = new Controls("keyboard", keys, controlsManager.defaultKeyboardControls1.keys, controlsManager.defaultKeyboardControls1.arrows, controlsManager.defaultKeyboardControls1.deadzones);
+			keyboard2 = new Controls("keyboard", keys, controlsManager.defaultKeyboardControls2.keys, controlsManager.defaultKeyboardControls2.arrows, controlsManager.defaultKeyboardControls2.deadzones);
+			controls.push(keyboard1);
+			controls.push(keyboard2);
+			controlsManager.keyboardControls.push(keyboard1);
+			controlsManager.keyboardControls.push(keyboard2);
+			currentLanguage = saveFile.currentLanguage;
+			promptTutorial = saveFile.promptTutorial;
+
+			graphicsSettings = saveFile.graphicsSettings;
+			debug.noSplit = graphicsSettings.noSplitSheets;
 			break;
 	}
 }
@@ -534,9 +557,17 @@ function writeSaveFile() {
 
 	saveFile.promptTutorial = promptTutorial;
 
-	saveFile.version = "0.0.3";
+	saveFile.version = "0.0.4";
 
 	window.electronAPI.writeSave(saveFile);
+}
+
+function reloadGame() {
+	if (webVersion) {
+		location.reload();
+	} else {
+		window.electronAPI.reloadWindow();
+	}
 }
 
 /**

@@ -208,7 +208,7 @@
     "duration": 67
    },
    "jan_Lipa 26.aseprite": {
-    "frame": { "x": 0, "y": 768, "w": 768, "h": 768 },
+    "frame": { "x": 19968, "y": 0, "w": 768, "h": 768 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 768, "h": 768 },
@@ -216,7 +216,7 @@
     "duration": 67
    },
    "jan_Lipa 27.aseprite": {
-    "frame": { "x": 768, "y": 768, "w": 768, "h": 768 },
+    "frame": { "x": 20736, "y": 0, "w": 768, "h": 768 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 768, "h": 768 },
@@ -224,7 +224,7 @@
     "duration": 67
    },
    "jan_Lipa 28.aseprite": {
-    "frame": { "x": 1536, "y": 768, "w": 768, "h": 768 },
+    "frame": { "x": 21504, "y": 0, "w": 768, "h": 768 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 768, "h": 768 },
@@ -232,7 +232,7 @@
     "duration": 67
    },
    "jan_Lipa 29.aseprite": {
-    "frame": { "x": 2304, "y": 768, "w": 768, "h": 768 },
+    "frame": { "x": 22272, "y": 0, "w": 768, "h": 768 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 768, "h": 768 },
@@ -240,7 +240,7 @@
     "duration": 67
    },
    "jan_Lipa 30.aseprite": {
-    "frame": { "x": 3072, "y": 768, "w": 768, "h": 768 },
+    "frame": { "x": 23040, "y": 0, "w": 768, "h": 768 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 768, "h": 768 },
@@ -248,7 +248,7 @@
     "duration": 67
    },
    "jan_Lipa 31.aseprite": {
-    "frame": { "x": 3840, "y": 768, "w": 768, "h": 768 },
+    "frame": { "x": 23808, "y": 0, "w": 768, "h": 768 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 768, "h": 768 },
@@ -256,7 +256,7 @@
     "duration": 67
    },
    "jan_Lipa 32.aseprite": {
-    "frame": { "x": 4608, "y": 768, "w": 768, "h": 768 },
+    "frame": { "x": 24576, "y": 0, "w": 768, "h": 768 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 768, "h": 768 },
@@ -264,7 +264,7 @@
     "duration": 67
    },
    "jan_Lipa 33.aseprite": {
-    "frame": { "x": 5376, "y": 768, "w": 768, "h": 768 },
+    "frame": { "x": 25344, "y": 0, "w": 768, "h": 768 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 768, "h": 768 },
@@ -272,7 +272,7 @@
     "duration": 67
    },
    "jan_Lipa 34.aseprite": {
-    "frame": { "x": 6144, "y": 768, "w": 768, "h": 768 },
+    "frame": { "x": 26112, "y": 0, "w": 768, "h": 768 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 768, "h": 768 },
@@ -280,7 +280,7 @@
     "duration": 67
    },
    "jan_Lipa 35.aseprite": {
-    "frame": { "x": 6912, "y": 768, "w": 768, "h": 768 },
+    "frame": { "x": 26880, "y": 0, "w": 768, "h": 768 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 768, "h": 768 },
@@ -288,7 +288,7 @@
     "duration": 67
    },
    "jan_Lipa 36.aseprite": {
-    "frame": { "x": 7680, "y": 768, "w": 768, "h": 768 },
+    "frame": { "x": 27648, "y": 0, "w": 768, "h": 768 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 768, "h": 768 },
@@ -296,7 +296,7 @@
     "duration": 67
    },
    "jan_Lipa 37.aseprite": {
-    "frame": { "x": 8448, "y": 768, "w": 768, "h": 768 },
+    "frame": { "x": 0, "y": 768, "w": 768, "h": 768 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 768, "h": 768 },
@@ -304,7 +304,7 @@
     "duration": 67
    },
    "jan_Lipa 38.aseprite": {
-    "frame": { "x": 9216, "y": 768, "w": 768, "h": 768 },
+    "frame": { "x": 768, "y": 768, "w": 768, "h": 768 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 768, "h": 768 },
@@ -312,7 +312,7 @@
     "duration": 67
    },
    "jan_Lipa 39.aseprite": {
-    "frame": { "x": 9984, "y": 768, "w": 768, "h": 768 },
+    "frame": { "x": 1536, "y": 768, "w": 768, "h": 768 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 768, "h": 768 },
@@ -320,7 +320,7 @@
     "duration": 67
    },
    "jan_Lipa 40.aseprite": {
-    "frame": { "x": 10752, "y": 768, "w": 768, "h": 768 },
+    "frame": { "x": 2304, "y": 768, "w": 768, "h": 768 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 768, "h": 768 },
@@ -328,7 +328,7 @@
     "duration": 67
    },
    "jan_Lipa 41.aseprite": {
-    "frame": { "x": 11520, "y": 768, "w": 768, "h": 768 },
+    "frame": { "x": 3072, "y": 768, "w": 768, "h": 768 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 768, "h": 768 },
@@ -336,7 +336,7 @@
     "duration": 67
    },
    "jan_Lipa 42.aseprite": {
-    "frame": { "x": 12288, "y": 768, "w": 768, "h": 768 },
+    "frame": { "x": 3840, "y": 768, "w": 768, "h": 768 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 768, "h": 768 },
@@ -344,7 +344,7 @@
     "duration": 67
    },
    "jan_Lipa 43.aseprite": {
-    "frame": { "x": 13056, "y": 768, "w": 768, "h": 768 },
+    "frame": { "x": 4608, "y": 768, "w": 768, "h": 768 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 768, "h": 768 },
@@ -352,7 +352,7 @@
     "duration": 67
    },
    "jan_Lipa 44.aseprite": {
-    "frame": { "x": 13824, "y": 768, "w": 768, "h": 768 },
+    "frame": { "x": 5376, "y": 768, "w": 768, "h": 768 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 768, "h": 768 },
@@ -360,7 +360,7 @@
     "duration": 67
    },
    "jan_Lipa 45.aseprite": {
-    "frame": { "x": 14592, "y": 768, "w": 768, "h": 768 },
+    "frame": { "x": 6144, "y": 768, "w": 768, "h": 768 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 768, "h": 768 },
@@ -368,7 +368,7 @@
     "duration": 67
    },
    "jan_Lipa 46.aseprite": {
-    "frame": { "x": 15360, "y": 768, "w": 768, "h": 768 },
+    "frame": { "x": 6912, "y": 768, "w": 768, "h": 768 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 768, "h": 768 },
@@ -376,7 +376,7 @@
     "duration": 67
    },
    "jan_Lipa 47.aseprite": {
-    "frame": { "x": 16128, "y": 768, "w": 768, "h": 768 },
+    "frame": { "x": 7680, "y": 768, "w": 768, "h": 768 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 768, "h": 768 },
@@ -384,7 +384,7 @@
     "duration": 67
    },
    "jan_Lipa 48.aseprite": {
-    "frame": { "x": 16896, "y": 768, "w": 768, "h": 768 },
+    "frame": { "x": 8448, "y": 768, "w": 768, "h": 768 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 768, "h": 768 },
@@ -392,7 +392,7 @@
     "duration": 67
    },
    "jan_Lipa 49.aseprite": {
-    "frame": { "x": 17664, "y": 768, "w": 768, "h": 768 },
+    "frame": { "x": 9216, "y": 768, "w": 768, "h": 768 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 768, "h": 768 },
@@ -400,7 +400,7 @@
     "duration": 67
    },
    "jan_Lipa 50.aseprite": {
-    "frame": { "x": 18432, "y": 768, "w": 768, "h": 768 },
+    "frame": { "x": 9984, "y": 768, "w": 768, "h": 768 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 768, "h": 768 },
@@ -408,7 +408,7 @@
     "duration": 67
    },
    "jan_Lipa 51.aseprite": {
-    "frame": { "x": 19200, "y": 768, "w": 768, "h": 768 },
+    "frame": { "x": 10752, "y": 768, "w": 768, "h": 768 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 768, "h": 768 },
@@ -416,7 +416,7 @@
     "duration": 67
    },
    "jan_Lipa 52.aseprite": {
-    "frame": { "x": 0, "y": 1536, "w": 768, "h": 768 },
+    "frame": { "x": 11520, "y": 768, "w": 768, "h": 768 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 768, "h": 768 },
@@ -424,7 +424,7 @@
     "duration": 67
    },
    "jan_Lipa 53.aseprite": {
-    "frame": { "x": 768, "y": 1536, "w": 768, "h": 768 },
+    "frame": { "x": 12288, "y": 768, "w": 768, "h": 768 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 768, "h": 768 },
@@ -432,7 +432,7 @@
     "duration": 67
    },
    "jan_Lipa 54.aseprite": {
-    "frame": { "x": 1536, "y": 1536, "w": 768, "h": 768 },
+    "frame": { "x": 13056, "y": 768, "w": 768, "h": 768 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 768, "h": 768 },
@@ -440,7 +440,7 @@
     "duration": 67
    },
    "jan_Lipa 55.aseprite": {
-    "frame": { "x": 2304, "y": 1536, "w": 768, "h": 768 },
+    "frame": { "x": 13824, "y": 768, "w": 768, "h": 768 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 768, "h": 768 },
@@ -448,7 +448,7 @@
     "duration": 67
    },
    "jan_Lipa 56.aseprite": {
-    "frame": { "x": 3072, "y": 1536, "w": 768, "h": 768 },
+    "frame": { "x": 14592, "y": 768, "w": 768, "h": 768 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 768, "h": 768 },
@@ -456,7 +456,7 @@
     "duration": 67
    },
    "jan_Lipa 57.aseprite": {
-    "frame": { "x": 3840, "y": 1536, "w": 768, "h": 768 },
+    "frame": { "x": 15360, "y": 768, "w": 768, "h": 768 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 768, "h": 768 },
@@ -464,7 +464,7 @@
     "duration": 67
    },
    "jan_Lipa 58.aseprite": {
-    "frame": { "x": 4608, "y": 1536, "w": 768, "h": 768 },
+    "frame": { "x": 16128, "y": 768, "w": 768, "h": 768 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 768, "h": 768 },
@@ -472,7 +472,7 @@
     "duration": 67
    },
    "jan_Lipa 59.aseprite": {
-    "frame": { "x": 5376, "y": 1536, "w": 768, "h": 768 },
+    "frame": { "x": 16896, "y": 768, "w": 768, "h": 768 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 768, "h": 768 },
@@ -480,7 +480,7 @@
     "duration": 67
    },
    "jan_Lipa 60.aseprite": {
-    "frame": { "x": 6144, "y": 1536, "w": 768, "h": 768 },
+    "frame": { "x": 17664, "y": 768, "w": 768, "h": 768 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 768, "h": 768 },
@@ -488,7 +488,7 @@
     "duration": 67
    },
    "jan_Lipa 61.aseprite": {
-    "frame": { "x": 6912, "y": 1536, "w": 768, "h": 768 },
+    "frame": { "x": 18432, "y": 768, "w": 768, "h": 768 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 768, "h": 768 },
@@ -496,7 +496,7 @@
     "duration": 67
    },
    "jan_Lipa 62.aseprite": {
-    "frame": { "x": 7680, "y": 1536, "w": 768, "h": 768 },
+    "frame": { "x": 19200, "y": 768, "w": 768, "h": 768 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 768, "h": 768 },
@@ -504,7 +504,7 @@
     "duration": 67
    },
    "jan_Lipa 63.aseprite": {
-    "frame": { "x": 8448, "y": 1536, "w": 768, "h": 768 },
+    "frame": { "x": 19968, "y": 768, "w": 768, "h": 768 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 768, "h": 768 },
@@ -512,7 +512,7 @@
     "duration": 67
    },
    "jan_Lipa 64.aseprite": {
-    "frame": { "x": 9216, "y": 1536, "w": 768, "h": 768 },
+    "frame": { "x": 20736, "y": 768, "w": 768, "h": 768 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 768, "h": 768 },
@@ -520,7 +520,7 @@
     "duration": 67
    },
    "jan_Lipa 65.aseprite": {
-    "frame": { "x": 9984, "y": 1536, "w": 768, "h": 768 },
+    "frame": { "x": 21504, "y": 768, "w": 768, "h": 768 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 768, "h": 768 },
@@ -528,7 +528,7 @@
     "duration": 67
    },
    "jan_Lipa 66.aseprite": {
-    "frame": { "x": 10752, "y": 1536, "w": 768, "h": 768 },
+    "frame": { "x": 22272, "y": 768, "w": 768, "h": 768 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 768, "h": 768 },
@@ -536,7 +536,7 @@
     "duration": 67
    },
    "jan_Lipa 67.aseprite": {
-    "frame": { "x": 11520, "y": 1536, "w": 768, "h": 768 },
+    "frame": { "x": 23040, "y": 768, "w": 768, "h": 768 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 768, "h": 768 },
@@ -544,7 +544,7 @@
     "duration": 67
    },
    "jan_Lipa 68.aseprite": {
-    "frame": { "x": 12288, "y": 1536, "w": 768, "h": 768 },
+    "frame": { "x": 23808, "y": 768, "w": 768, "h": 768 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 768, "h": 768 },
@@ -552,7 +552,7 @@
     "duration": 67
    },
    "jan_Lipa 69.aseprite": {
-    "frame": { "x": 13056, "y": 1536, "w": 768, "h": 768 },
+    "frame": { "x": 24576, "y": 768, "w": 768, "h": 768 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 768, "h": 768 },
@@ -560,7 +560,7 @@
     "duration": 67
    },
    "jan_Lipa 70.aseprite": {
-    "frame": { "x": 13824, "y": 1536, "w": 768, "h": 768 },
+    "frame": { "x": 25344, "y": 768, "w": 768, "h": 768 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 768, "h": 768 },
@@ -568,7 +568,7 @@
     "duration": 67
    },
    "jan_Lipa 71.aseprite": {
-    "frame": { "x": 14592, "y": 1536, "w": 768, "h": 768 },
+    "frame": { "x": 26112, "y": 768, "w": 768, "h": 768 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 768, "h": 768 },
@@ -576,7 +576,7 @@
     "duration": 67
    },
    "jan_Lipa 72.aseprite": {
-    "frame": { "x": 15360, "y": 1536, "w": 768, "h": 768 },
+    "frame": { "x": 26880, "y": 768, "w": 768, "h": 768 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 768, "h": 768 },
@@ -584,7 +584,7 @@
     "duration": 67
    },
    "jan_Lipa 73.aseprite": {
-    "frame": { "x": 16128, "y": 1536, "w": 768, "h": 768 },
+    "frame": { "x": 27648, "y": 768, "w": 768, "h": 768 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 768, "h": 768 },
@@ -592,7 +592,7 @@
     "duration": 67
    },
    "jan_Lipa 74.aseprite": {
-    "frame": { "x": 16896, "y": 1536, "w": 768, "h": 768 },
+    "frame": { "x": 0, "y": 1536, "w": 768, "h": 768 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 768, "h": 768 },
@@ -600,7 +600,7 @@
     "duration": 67
    },
    "jan_Lipa 75.aseprite": {
-    "frame": { "x": 17664, "y": 1536, "w": 768, "h": 768 },
+    "frame": { "x": 768, "y": 1536, "w": 768, "h": 768 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 768, "h": 768 },
@@ -608,7 +608,7 @@
     "duration": 67
    },
    "jan_Lipa 76.aseprite": {
-    "frame": { "x": 18432, "y": 1536, "w": 768, "h": 768 },
+    "frame": { "x": 1536, "y": 1536, "w": 768, "h": 768 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 768, "h": 768 },
@@ -616,7 +616,7 @@
     "duration": 67
    },
    "jan_Lipa 77.aseprite": {
-    "frame": { "x": 19200, "y": 1536, "w": 768, "h": 768 },
+    "frame": { "x": 2304, "y": 1536, "w": 768, "h": 768 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 768, "h": 768 },
@@ -624,7 +624,7 @@
     "duration": 67
    },
    "jan_Lipa 78.aseprite": {
-    "frame": { "x": 0, "y": 2304, "w": 768, "h": 768 },
+    "frame": { "x": 3072, "y": 1536, "w": 768, "h": 768 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 768, "h": 768 },
@@ -632,7 +632,7 @@
     "duration": 67
    },
    "jan_Lipa 79.aseprite": {
-    "frame": { "x": 768, "y": 2304, "w": 768, "h": 768 },
+    "frame": { "x": 3840, "y": 1536, "w": 768, "h": 768 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 768, "h": 768 },
@@ -640,7 +640,7 @@
     "duration": 67
    },
    "jan_Lipa 80.aseprite": {
-    "frame": { "x": 1536, "y": 2304, "w": 768, "h": 768 },
+    "frame": { "x": 4608, "y": 1536, "w": 768, "h": 768 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 768, "h": 768 },
@@ -648,7 +648,7 @@
     "duration": 67
    },
    "jan_Lipa 81.aseprite": {
-    "frame": { "x": 2304, "y": 2304, "w": 768, "h": 768 },
+    "frame": { "x": 5376, "y": 1536, "w": 768, "h": 768 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 768, "h": 768 },
@@ -656,7 +656,7 @@
     "duration": 67
    },
    "jan_Lipa 82.aseprite": {
-    "frame": { "x": 3072, "y": 2304, "w": 768, "h": 768 },
+    "frame": { "x": 6144, "y": 1536, "w": 768, "h": 768 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 768, "h": 768 },
@@ -664,7 +664,7 @@
     "duration": 67
    },
    "jan_Lipa 83.aseprite": {
-    "frame": { "x": 3840, "y": 2304, "w": 768, "h": 768 },
+    "frame": { "x": 6912, "y": 1536, "w": 768, "h": 768 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 768, "h": 768 },
@@ -672,7 +672,7 @@
     "duration": 67
    },
    "jan_Lipa 84.aseprite": {
-    "frame": { "x": 4608, "y": 2304, "w": 768, "h": 768 },
+    "frame": { "x": 7680, "y": 1536, "w": 768, "h": 768 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 768, "h": 768 },
@@ -680,7 +680,7 @@
     "duration": 67
    },
    "jan_Lipa 85.aseprite": {
-    "frame": { "x": 5376, "y": 2304, "w": 768, "h": 768 },
+    "frame": { "x": 8448, "y": 1536, "w": 768, "h": 768 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 768, "h": 768 },
@@ -688,7 +688,7 @@
     "duration": 67
    },
    "jan_Lipa 86.aseprite": {
-    "frame": { "x": 6144, "y": 2304, "w": 768, "h": 768 },
+    "frame": { "x": 9216, "y": 1536, "w": 768, "h": 768 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 768, "h": 768 },
@@ -696,7 +696,7 @@
     "duration": 67
    },
    "jan_Lipa 87.aseprite": {
-    "frame": { "x": 6912, "y": 2304, "w": 768, "h": 768 },
+    "frame": { "x": 9984, "y": 1536, "w": 768, "h": 768 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 768, "h": 768 },
@@ -704,7 +704,7 @@
     "duration": 67
    },
    "jan_Lipa 88.aseprite": {
-    "frame": { "x": 7680, "y": 2304, "w": 768, "h": 768 },
+    "frame": { "x": 10752, "y": 1536, "w": 768, "h": 768 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 768, "h": 768 },
@@ -712,7 +712,7 @@
     "duration": 67
    },
    "jan_Lipa 89.aseprite": {
-    "frame": { "x": 8448, "y": 2304, "w": 768, "h": 768 },
+    "frame": { "x": 11520, "y": 1536, "w": 768, "h": 768 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 768, "h": 768 },
@@ -720,7 +720,7 @@
     "duration": 67
    },
    "jan_Lipa 90.aseprite": {
-    "frame": { "x": 9216, "y": 2304, "w": 768, "h": 768 },
+    "frame": { "x": 12288, "y": 1536, "w": 768, "h": 768 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 768, "h": 768 },
@@ -728,7 +728,7 @@
     "duration": 67
    },
    "jan_Lipa 91.aseprite": {
-    "frame": { "x": 9984, "y": 2304, "w": 768, "h": 768 },
+    "frame": { "x": 13056, "y": 1536, "w": 768, "h": 768 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 768, "h": 768 },
@@ -736,7 +736,7 @@
     "duration": 67
    },
    "jan_Lipa 92.aseprite": {
-    "frame": { "x": 10752, "y": 2304, "w": 768, "h": 768 },
+    "frame": { "x": 13824, "y": 1536, "w": 768, "h": 768 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 768, "h": 768 },
@@ -744,7 +744,7 @@
     "duration": 67
    },
    "jan_Lipa 93.aseprite": {
-    "frame": { "x": 11520, "y": 2304, "w": 768, "h": 768 },
+    "frame": { "x": 14592, "y": 1536, "w": 768, "h": 768 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 768, "h": 768 },
@@ -752,7 +752,7 @@
     "duration": 67
    },
    "jan_Lipa 94.aseprite": {
-    "frame": { "x": 12288, "y": 2304, "w": 768, "h": 768 },
+    "frame": { "x": 15360, "y": 1536, "w": 768, "h": 768 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 768, "h": 768 },
@@ -760,7 +760,7 @@
     "duration": 67
    },
    "jan_Lipa 95.aseprite": {
-    "frame": { "x": 13056, "y": 2304, "w": 768, "h": 768 },
+    "frame": { "x": 16128, "y": 1536, "w": 768, "h": 768 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 768, "h": 768 },
@@ -768,7 +768,7 @@
     "duration": 67
    },
    "jan_Lipa 96.aseprite": {
-    "frame": { "x": 13824, "y": 2304, "w": 768, "h": 768 },
+    "frame": { "x": 16896, "y": 1536, "w": 768, "h": 768 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 768, "h": 768 },
@@ -776,7 +776,7 @@
     "duration": 67
    },
    "jan_Lipa 97.aseprite": {
-    "frame": { "x": 14592, "y": 2304, "w": 768, "h": 768 },
+    "frame": { "x": 17664, "y": 1536, "w": 768, "h": 768 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 768, "h": 768 },
@@ -784,7 +784,7 @@
     "duration": 67
    },
    "jan_Lipa 98.aseprite": {
-    "frame": { "x": 15360, "y": 2304, "w": 768, "h": 768 },
+    "frame": { "x": 18432, "y": 1536, "w": 768, "h": 768 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 768, "h": 768 },
@@ -792,7 +792,7 @@
     "duration": 67
    },
    "jan_Lipa 99.aseprite": {
-    "frame": { "x": 16128, "y": 2304, "w": 768, "h": 768 },
+    "frame": { "x": 19200, "y": 1536, "w": 768, "h": 768 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 768, "h": 768 },
@@ -800,7 +800,7 @@
     "duration": 67
    },
    "jan_Lipa 100.aseprite": {
-    "frame": { "x": 16896, "y": 2304, "w": 768, "h": 768 },
+    "frame": { "x": 19968, "y": 1536, "w": 768, "h": 768 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 768, "h": 768 },
@@ -808,7 +808,7 @@
     "duration": 67
    },
    "jan_Lipa 101.aseprite": {
-    "frame": { "x": 17664, "y": 2304, "w": 768, "h": 768 },
+    "frame": { "x": 20736, "y": 1536, "w": 768, "h": 768 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 768, "h": 768 },
@@ -816,7 +816,7 @@
     "duration": 67
    },
    "jan_Lipa 102.aseprite": {
-    "frame": { "x": 18432, "y": 2304, "w": 768, "h": 768 },
+    "frame": { "x": 21504, "y": 1536, "w": 768, "h": 768 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 768, "h": 768 },
@@ -824,7 +824,7 @@
     "duration": 67
    },
    "jan_Lipa 103.aseprite": {
-    "frame": { "x": 19200, "y": 2304, "w": 768, "h": 768 },
+    "frame": { "x": 22272, "y": 1536, "w": 768, "h": 768 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 768, "h": 768 },
@@ -832,7 +832,7 @@
     "duration": 67
    },
    "jan_Lipa 104.aseprite": {
-    "frame": { "x": 0, "y": 3072, "w": 768, "h": 768 },
+    "frame": { "x": 23040, "y": 1536, "w": 768, "h": 768 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 768, "h": 768 },
@@ -840,7 +840,7 @@
     "duration": 67
    },
    "jan_Lipa 105.aseprite": {
-    "frame": { "x": 768, "y": 3072, "w": 768, "h": 768 },
+    "frame": { "x": 23808, "y": 1536, "w": 768, "h": 768 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 768, "h": 768 },
@@ -848,7 +848,7 @@
     "duration": 67
    },
    "jan_Lipa 106.aseprite": {
-    "frame": { "x": 1536, "y": 3072, "w": 768, "h": 768 },
+    "frame": { "x": 24576, "y": 1536, "w": 768, "h": 768 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 768, "h": 768 },
@@ -856,7 +856,7 @@
     "duration": 67
    },
    "jan_Lipa 107.aseprite": {
-    "frame": { "x": 2304, "y": 3072, "w": 768, "h": 768 },
+    "frame": { "x": 25344, "y": 1536, "w": 768, "h": 768 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 768, "h": 768 },
@@ -864,7 +864,7 @@
     "duration": 67
    },
    "jan_Lipa 108.aseprite": {
-    "frame": { "x": 3072, "y": 3072, "w": 768, "h": 768 },
+    "frame": { "x": 26112, "y": 1536, "w": 768, "h": 768 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 768, "h": 768 },
@@ -872,7 +872,7 @@
     "duration": 67
    },
    "jan_Lipa 109.aseprite": {
-    "frame": { "x": 3840, "y": 3072, "w": 768, "h": 768 },
+    "frame": { "x": 26880, "y": 1536, "w": 768, "h": 768 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 768, "h": 768 },
@@ -880,7 +880,7 @@
     "duration": 67
    },
    "jan_Lipa 110.aseprite": {
-    "frame": { "x": 4608, "y": 3072, "w": 768, "h": 768 },
+    "frame": { "x": 27648, "y": 1536, "w": 768, "h": 768 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 768, "h": 768 },
@@ -888,7 +888,7 @@
     "duration": 67
    },
    "jan_Lipa 111.aseprite": {
-    "frame": { "x": 5376, "y": 3072, "w": 768, "h": 768 },
+    "frame": { "x": 0, "y": 2304, "w": 768, "h": 768 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 768, "h": 768 },
@@ -896,7 +896,7 @@
     "duration": 67
    },
    "jan_Lipa 112.aseprite": {
-    "frame": { "x": 6144, "y": 3072, "w": 768, "h": 768 },
+    "frame": { "x": 768, "y": 2304, "w": 768, "h": 768 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 768, "h": 768 },
@@ -904,7 +904,7 @@
     "duration": 67
    },
    "jan_Lipa 113.aseprite": {
-    "frame": { "x": 6912, "y": 3072, "w": 768, "h": 768 },
+    "frame": { "x": 1536, "y": 2304, "w": 768, "h": 768 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 768, "h": 768 },
@@ -912,7 +912,7 @@
     "duration": 67
    },
    "jan_Lipa 114.aseprite": {
-    "frame": { "x": 7680, "y": 3072, "w": 768, "h": 768 },
+    "frame": { "x": 2304, "y": 2304, "w": 768, "h": 768 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 768, "h": 768 },
@@ -920,7 +920,7 @@
     "duration": 67
    },
    "jan_Lipa 115.aseprite": {
-    "frame": { "x": 8448, "y": 3072, "w": 768, "h": 768 },
+    "frame": { "x": 3072, "y": 2304, "w": 768, "h": 768 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 768, "h": 768 },
@@ -928,7 +928,7 @@
     "duration": 67
    },
    "jan_Lipa 116.aseprite": {
-    "frame": { "x": 9216, "y": 3072, "w": 768, "h": 768 },
+    "frame": { "x": 3840, "y": 2304, "w": 768, "h": 768 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 768, "h": 768 },
@@ -936,7 +936,7 @@
     "duration": 67
    },
    "jan_Lipa 117.aseprite": {
-    "frame": { "x": 9984, "y": 3072, "w": 768, "h": 768 },
+    "frame": { "x": 4608, "y": 2304, "w": 768, "h": 768 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 768, "h": 768 },
@@ -944,7 +944,7 @@
     "duration": 67
    },
    "jan_Lipa 118.aseprite": {
-    "frame": { "x": 10752, "y": 3072, "w": 768, "h": 768 },
+    "frame": { "x": 5376, "y": 2304, "w": 768, "h": 768 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 768, "h": 768 },
@@ -952,7 +952,7 @@
     "duration": 67
    },
    "jan_Lipa 119.aseprite": {
-    "frame": { "x": 11520, "y": 3072, "w": 768, "h": 768 },
+    "frame": { "x": 6144, "y": 2304, "w": 768, "h": 768 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 768, "h": 768 },
@@ -960,7 +960,7 @@
     "duration": 67
    },
    "jan_Lipa 120.aseprite": {
-    "frame": { "x": 12288, "y": 3072, "w": 768, "h": 768 },
+    "frame": { "x": 6912, "y": 2304, "w": 768, "h": 768 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 768, "h": 768 },
@@ -968,7 +968,7 @@
     "duration": 67
    },
    "jan_Lipa 121.aseprite": {
-    "frame": { "x": 13056, "y": 3072, "w": 768, "h": 768 },
+    "frame": { "x": 7680, "y": 2304, "w": 768, "h": 768 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 768, "h": 768 },
@@ -976,7 +976,7 @@
     "duration": 67
    },
    "jan_Lipa 122.aseprite": {
-    "frame": { "x": 13824, "y": 3072, "w": 768, "h": 768 },
+    "frame": { "x": 8448, "y": 2304, "w": 768, "h": 768 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 768, "h": 768 },
@@ -984,7 +984,7 @@
     "duration": 67
    },
    "jan_Lipa 123.aseprite": {
-    "frame": { "x": 14592, "y": 3072, "w": 768, "h": 768 },
+    "frame": { "x": 9216, "y": 2304, "w": 768, "h": 768 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 768, "h": 768 },
@@ -992,7 +992,7 @@
     "duration": 67
    },
    "jan_Lipa 124.aseprite": {
-    "frame": { "x": 15360, "y": 3072, "w": 768, "h": 768 },
+    "frame": { "x": 9984, "y": 2304, "w": 768, "h": 768 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 768, "h": 768 },
@@ -1000,7 +1000,7 @@
     "duration": 67
    },
    "jan_Lipa 125.aseprite": {
-    "frame": { "x": 16128, "y": 3072, "w": 768, "h": 768 },
+    "frame": { "x": 10752, "y": 2304, "w": 768, "h": 768 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 768, "h": 768 },
@@ -1008,7 +1008,7 @@
     "duration": 67
    },
    "jan_Lipa 126.aseprite": {
-    "frame": { "x": 16896, "y": 3072, "w": 768, "h": 768 },
+    "frame": { "x": 11520, "y": 2304, "w": 768, "h": 768 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 768, "h": 768 },
@@ -1016,7 +1016,7 @@
     "duration": 67
    },
    "jan_Lipa 127.aseprite": {
-    "frame": { "x": 17664, "y": 3072, "w": 768, "h": 768 },
+    "frame": { "x": 12288, "y": 2304, "w": 768, "h": 768 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 768, "h": 768 },
@@ -1024,7 +1024,7 @@
     "duration": 67
    },
    "jan_Lipa 128.aseprite": {
-    "frame": { "x": 18432, "y": 3072, "w": 768, "h": 768 },
+    "frame": { "x": 13056, "y": 2304, "w": 768, "h": 768 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 768, "h": 768 },
@@ -1032,7 +1032,7 @@
     "duration": 67
    },
    "jan_Lipa 129.aseprite": {
-    "frame": { "x": 19200, "y": 3072, "w": 768, "h": 768 },
+    "frame": { "x": 13824, "y": 2304, "w": 768, "h": 768 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 768, "h": 768 },
@@ -1040,7 +1040,7 @@
     "duration": 67
    },
    "jan_Lipa 130.aseprite": {
-    "frame": { "x": 0, "y": 3840, "w": 768, "h": 768 },
+    "frame": { "x": 14592, "y": 2304, "w": 768, "h": 768 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 768, "h": 768 },
@@ -1048,7 +1048,7 @@
     "duration": 67
    },
    "jan_Lipa 131.aseprite": {
-    "frame": { "x": 768, "y": 3840, "w": 768, "h": 768 },
+    "frame": { "x": 15360, "y": 2304, "w": 768, "h": 768 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 768, "h": 768 },
@@ -1056,7 +1056,7 @@
     "duration": 67
    },
    "jan_Lipa 132.aseprite": {
-    "frame": { "x": 1536, "y": 3840, "w": 768, "h": 768 },
+    "frame": { "x": 16128, "y": 2304, "w": 768, "h": 768 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 768, "h": 768 },
@@ -1064,7 +1064,7 @@
     "duration": 67
    },
    "jan_Lipa 133.aseprite": {
-    "frame": { "x": 2304, "y": 3840, "w": 768, "h": 768 },
+    "frame": { "x": 16896, "y": 2304, "w": 768, "h": 768 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 768, "h": 768 },
@@ -1072,7 +1072,7 @@
     "duration": 67
    },
    "jan_Lipa 134.aseprite": {
-    "frame": { "x": 3072, "y": 3840, "w": 768, "h": 768 },
+    "frame": { "x": 17664, "y": 2304, "w": 768, "h": 768 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 768, "h": 768 },
@@ -1080,7 +1080,7 @@
     "duration": 67
    },
    "jan_Lipa 135.aseprite": {
-    "frame": { "x": 3840, "y": 3840, "w": 768, "h": 768 },
+    "frame": { "x": 18432, "y": 2304, "w": 768, "h": 768 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 768, "h": 768 },
@@ -1088,7 +1088,7 @@
     "duration": 67
    },
    "jan_Lipa 136.aseprite": {
-    "frame": { "x": 4608, "y": 3840, "w": 768, "h": 768 },
+    "frame": { "x": 19200, "y": 2304, "w": 768, "h": 768 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 768, "h": 768 },
@@ -1096,7 +1096,7 @@
     "duration": 67
    },
    "jan_Lipa 137.aseprite": {
-    "frame": { "x": 5376, "y": 3840, "w": 768, "h": 768 },
+    "frame": { "x": 19968, "y": 2304, "w": 768, "h": 768 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 768, "h": 768 },
@@ -1104,7 +1104,7 @@
     "duration": 67
    },
    "jan_Lipa 138.aseprite": {
-    "frame": { "x": 6144, "y": 3840, "w": 768, "h": 768 },
+    "frame": { "x": 20736, "y": 2304, "w": 768, "h": 768 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 768, "h": 768 },
@@ -1112,7 +1112,7 @@
     "duration": 67
    },
    "jan_Lipa 139.aseprite": {
-    "frame": { "x": 6912, "y": 3840, "w": 768, "h": 768 },
+    "frame": { "x": 21504, "y": 2304, "w": 768, "h": 768 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 768, "h": 768 },
@@ -1120,7 +1120,7 @@
     "duration": 67
    },
    "jan_Lipa 140.aseprite": {
-    "frame": { "x": 7680, "y": 3840, "w": 768, "h": 768 },
+    "frame": { "x": 22272, "y": 2304, "w": 768, "h": 768 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 768, "h": 768 },
@@ -1128,7 +1128,7 @@
     "duration": 67
    },
    "jan_Lipa 141.aseprite": {
-    "frame": { "x": 8448, "y": 3840, "w": 768, "h": 768 },
+    "frame": { "x": 23040, "y": 2304, "w": 768, "h": 768 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 768, "h": 768 },
@@ -1136,7 +1136,7 @@
     "duration": 67
    },
    "jan_Lipa 142.aseprite": {
-    "frame": { "x": 9216, "y": 3840, "w": 768, "h": 768 },
+    "frame": { "x": 23808, "y": 2304, "w": 768, "h": 768 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 768, "h": 768 },
@@ -1144,7 +1144,7 @@
     "duration": 67
    },
    "jan_Lipa 143.aseprite": {
-    "frame": { "x": 9984, "y": 3840, "w": 768, "h": 768 },
+    "frame": { "x": 24576, "y": 2304, "w": 768, "h": 768 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 768, "h": 768 },
@@ -1152,7 +1152,7 @@
     "duration": 67
    },
    "jan_Lipa 144.aseprite": {
-    "frame": { "x": 10752, "y": 3840, "w": 768, "h": 768 },
+    "frame": { "x": 25344, "y": 2304, "w": 768, "h": 768 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 768, "h": 768 },
@@ -1160,7 +1160,7 @@
     "duration": 67
    },
    "jan_Lipa 145.aseprite": {
-    "frame": { "x": 11520, "y": 3840, "w": 768, "h": 768 },
+    "frame": { "x": 26112, "y": 2304, "w": 768, "h": 768 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 768, "h": 768 },
@@ -1168,7 +1168,7 @@
     "duration": 67
    },
    "jan_Lipa 146.aseprite": {
-    "frame": { "x": 12288, "y": 3840, "w": 768, "h": 768 },
+    "frame": { "x": 26880, "y": 2304, "w": 768, "h": 768 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 768, "h": 768 },
@@ -1176,7 +1176,7 @@
     "duration": 67
    },
    "jan_Lipa 147.aseprite": {
-    "frame": { "x": 13056, "y": 3840, "w": 768, "h": 768 },
+    "frame": { "x": 27648, "y": 2304, "w": 768, "h": 768 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 768, "h": 768 },
@@ -1184,7 +1184,7 @@
     "duration": 67
    },
    "jan_Lipa 148.aseprite": {
-    "frame": { "x": 13824, "y": 3840, "w": 768, "h": 768 },
+    "frame": { "x": 0, "y": 3072, "w": 768, "h": 768 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 768, "h": 768 },
@@ -1192,7 +1192,7 @@
     "duration": 67
    },
    "jan_Lipa 149.aseprite": {
-    "frame": { "x": 14592, "y": 3840, "w": 768, "h": 768 },
+    "frame": { "x": 768, "y": 3072, "w": 768, "h": 768 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 768, "h": 768 },
@@ -1200,7 +1200,7 @@
     "duration": 67
    },
    "jan_Lipa 150.aseprite": {
-    "frame": { "x": 15360, "y": 3840, "w": 768, "h": 768 },
+    "frame": { "x": 1536, "y": 3072, "w": 768, "h": 768 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 768, "h": 768 },
@@ -1208,7 +1208,7 @@
     "duration": 67
    },
    "jan_Lipa 151.aseprite": {
-    "frame": { "x": 16128, "y": 3840, "w": 768, "h": 768 },
+    "frame": { "x": 2304, "y": 3072, "w": 768, "h": 768 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 768, "h": 768 },
@@ -1216,7 +1216,7 @@
     "duration": 67
    },
    "jan_Lipa 152.aseprite": {
-    "frame": { "x": 16896, "y": 3840, "w": 768, "h": 768 },
+    "frame": { "x": 3072, "y": 3072, "w": 768, "h": 768 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 768, "h": 768 },
@@ -1224,7 +1224,7 @@
     "duration": 67
    },
    "jan_Lipa 153.aseprite": {
-    "frame": { "x": 17664, "y": 3840, "w": 768, "h": 768 },
+    "frame": { "x": 3840, "y": 3072, "w": 768, "h": 768 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 768, "h": 768 },
@@ -1232,7 +1232,7 @@
     "duration": 67
    },
    "jan_Lipa 154.aseprite": {
-    "frame": { "x": 18432, "y": 3840, "w": 768, "h": 768 },
+    "frame": { "x": 4608, "y": 3072, "w": 768, "h": 768 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 768, "h": 768 },
@@ -1240,7 +1240,7 @@
     "duration": 67
    },
    "jan_Lipa 155.aseprite": {
-    "frame": { "x": 19200, "y": 3840, "w": 768, "h": 768 },
+    "frame": { "x": 5376, "y": 3072, "w": 768, "h": 768 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 768, "h": 768 },
@@ -1248,7 +1248,7 @@
     "duration": 67
    },
    "jan_Lipa 156.aseprite": {
-    "frame": { "x": 0, "y": 4608, "w": 768, "h": 768 },
+    "frame": { "x": 6144, "y": 3072, "w": 768, "h": 768 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 768, "h": 768 },
@@ -1256,7 +1256,7 @@
     "duration": 67
    },
    "jan_Lipa 157.aseprite": {
-    "frame": { "x": 768, "y": 4608, "w": 768, "h": 768 },
+    "frame": { "x": 6912, "y": 3072, "w": 768, "h": 768 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 768, "h": 768 },
@@ -1264,7 +1264,7 @@
     "duration": 67
    },
    "jan_Lipa 158.aseprite": {
-    "frame": { "x": 1536, "y": 4608, "w": 768, "h": 768 },
+    "frame": { "x": 7680, "y": 3072, "w": 768, "h": 768 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 768, "h": 768 },
@@ -1272,7 +1272,7 @@
     "duration": 67
    },
    "jan_Lipa 159.aseprite": {
-    "frame": { "x": 2304, "y": 4608, "w": 768, "h": 768 },
+    "frame": { "x": 8448, "y": 3072, "w": 768, "h": 768 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 768, "h": 768 },
@@ -1280,7 +1280,7 @@
     "duration": 67
    },
    "jan_Lipa 160.aseprite": {
-    "frame": { "x": 3072, "y": 4608, "w": 768, "h": 768 },
+    "frame": { "x": 9216, "y": 3072, "w": 768, "h": 768 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 768, "h": 768 },
@@ -1288,7 +1288,7 @@
     "duration": 67
    },
    "jan_Lipa 161.aseprite": {
-    "frame": { "x": 3840, "y": 4608, "w": 768, "h": 768 },
+    "frame": { "x": 9984, "y": 3072, "w": 768, "h": 768 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 768, "h": 768 },
@@ -1296,7 +1296,7 @@
     "duration": 67
    },
    "jan_Lipa 162.aseprite": {
-    "frame": { "x": 4608, "y": 4608, "w": 768, "h": 768 },
+    "frame": { "x": 10752, "y": 3072, "w": 768, "h": 768 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 768, "h": 768 },
@@ -1304,7 +1304,7 @@
     "duration": 67
    },
    "jan_Lipa 163.aseprite": {
-    "frame": { "x": 5376, "y": 4608, "w": 768, "h": 768 },
+    "frame": { "x": 11520, "y": 3072, "w": 768, "h": 768 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 768, "h": 768 },
@@ -1312,7 +1312,7 @@
     "duration": 67
    },
    "jan_Lipa 164.aseprite": {
-    "frame": { "x": 6144, "y": 4608, "w": 768, "h": 768 },
+    "frame": { "x": 12288, "y": 3072, "w": 768, "h": 768 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 768, "h": 768 },
@@ -1320,7 +1320,7 @@
     "duration": 67
    },
    "jan_Lipa 165.aseprite": {
-    "frame": { "x": 6912, "y": 4608, "w": 768, "h": 768 },
+    "frame": { "x": 13056, "y": 3072, "w": 768, "h": 768 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 768, "h": 768 },
@@ -1328,7 +1328,7 @@
     "duration": 67
    },
    "jan_Lipa 166.aseprite": {
-    "frame": { "x": 7680, "y": 4608, "w": 768, "h": 768 },
+    "frame": { "x": 13824, "y": 3072, "w": 768, "h": 768 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 768, "h": 768 },
@@ -1336,7 +1336,7 @@
     "duration": 67
    },
    "jan_Lipa 167.aseprite": {
-    "frame": { "x": 8448, "y": 4608, "w": 768, "h": 768 },
+    "frame": { "x": 14592, "y": 3072, "w": 768, "h": 768 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 768, "h": 768 },
@@ -1344,7 +1344,7 @@
     "duration": 67
    },
    "jan_Lipa 168.aseprite": {
-    "frame": { "x": 9216, "y": 4608, "w": 768, "h": 768 },
+    "frame": { "x": 15360, "y": 3072, "w": 768, "h": 768 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 768, "h": 768 },
@@ -1352,7 +1352,7 @@
     "duration": 67
    },
    "jan_Lipa 169.aseprite": {
-    "frame": { "x": 9984, "y": 4608, "w": 768, "h": 768 },
+    "frame": { "x": 16128, "y": 3072, "w": 768, "h": 768 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 768, "h": 768 },
@@ -1360,7 +1360,7 @@
     "duration": 67
    },
    "jan_Lipa 170.aseprite": {
-    "frame": { "x": 10752, "y": 4608, "w": 768, "h": 768 },
+    "frame": { "x": 16896, "y": 3072, "w": 768, "h": 768 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 768, "h": 768 },
@@ -1368,7 +1368,7 @@
     "duration": 67
    },
    "jan_Lipa 171.aseprite": {
-    "frame": { "x": 11520, "y": 4608, "w": 768, "h": 768 },
+    "frame": { "x": 17664, "y": 3072, "w": 768, "h": 768 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 768, "h": 768 },
@@ -1376,7 +1376,7 @@
     "duration": 67
    },
    "jan_Lipa 172.aseprite": {
-    "frame": { "x": 12288, "y": 4608, "w": 768, "h": 768 },
+    "frame": { "x": 18432, "y": 3072, "w": 768, "h": 768 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 768, "h": 768 },
@@ -1384,7 +1384,7 @@
     "duration": 67
    },
    "jan_Lipa 173.aseprite": {
-    "frame": { "x": 13056, "y": 4608, "w": 768, "h": 768 },
+    "frame": { "x": 19200, "y": 3072, "w": 768, "h": 768 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 768, "h": 768 },
@@ -1392,7 +1392,7 @@
     "duration": 67
    },
    "jan_Lipa 174.aseprite": {
-    "frame": { "x": 13824, "y": 4608, "w": 768, "h": 768 },
+    "frame": { "x": 19968, "y": 3072, "w": 768, "h": 768 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 768, "h": 768 },
@@ -1400,7 +1400,7 @@
     "duration": 67
    },
    "jan_Lipa 175.aseprite": {
-    "frame": { "x": 14592, "y": 4608, "w": 768, "h": 768 },
+    "frame": { "x": 20736, "y": 3072, "w": 768, "h": 768 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 768, "h": 768 },
@@ -1408,7 +1408,7 @@
     "duration": 67
    },
    "jan_Lipa 176.aseprite": {
-    "frame": { "x": 15360, "y": 4608, "w": 768, "h": 768 },
+    "frame": { "x": 21504, "y": 3072, "w": 768, "h": 768 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 768, "h": 768 },
@@ -1416,7 +1416,7 @@
     "duration": 67
    },
    "jan_Lipa 177.aseprite": {
-    "frame": { "x": 16128, "y": 4608, "w": 768, "h": 768 },
+    "frame": { "x": 22272, "y": 3072, "w": 768, "h": 768 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 768, "h": 768 },
@@ -1424,7 +1424,7 @@
     "duration": 67
    },
    "jan_Lipa 178.aseprite": {
-    "frame": { "x": 16896, "y": 4608, "w": 768, "h": 768 },
+    "frame": { "x": 23040, "y": 3072, "w": 768, "h": 768 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 768, "h": 768 },
@@ -1432,7 +1432,7 @@
     "duration": 67
    },
    "jan_Lipa 179.aseprite": {
-    "frame": { "x": 17664, "y": 4608, "w": 768, "h": 768 },
+    "frame": { "x": 23808, "y": 3072, "w": 768, "h": 768 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 768, "h": 768 },
@@ -1440,7 +1440,7 @@
     "duration": 67
    },
    "jan_Lipa 180.aseprite": {
-    "frame": { "x": 18432, "y": 4608, "w": 768, "h": 768 },
+    "frame": { "x": 24576, "y": 3072, "w": 768, "h": 768 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 768, "h": 768 },
@@ -1448,7 +1448,7 @@
     "duration": 67
    },
    "jan_Lipa 181.aseprite": {
-    "frame": { "x": 19200, "y": 4608, "w": 768, "h": 768 },
+    "frame": { "x": 25344, "y": 3072, "w": 768, "h": 768 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 768, "h": 768 },
@@ -1456,7 +1456,7 @@
     "duration": 67
    },
    "jan_Lipa 182.aseprite": {
-    "frame": { "x": 0, "y": 5376, "w": 768, "h": 768 },
+    "frame": { "x": 26112, "y": 3072, "w": 768, "h": 768 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 768, "h": 768 },
@@ -1464,7 +1464,7 @@
     "duration": 67
    },
    "jan_Lipa 183.aseprite": {
-    "frame": { "x": 768, "y": 5376, "w": 768, "h": 768 },
+    "frame": { "x": 26880, "y": 3072, "w": 768, "h": 768 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 768, "h": 768 },
@@ -1472,7 +1472,7 @@
     "duration": 67
    },
    "jan_Lipa 184.aseprite": {
-    "frame": { "x": 1536, "y": 5376, "w": 768, "h": 768 },
+    "frame": { "x": 27648, "y": 3072, "w": 768, "h": 768 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 768, "h": 768 },
@@ -1480,7 +1480,7 @@
     "duration": 67
    },
    "jan_Lipa 185.aseprite": {
-    "frame": { "x": 2304, "y": 5376, "w": 768, "h": 768 },
+    "frame": { "x": 0, "y": 3840, "w": 768, "h": 768 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 768, "h": 768 },
@@ -1488,7 +1488,7 @@
     "duration": 67
    },
    "jan_Lipa 186.aseprite": {
-    "frame": { "x": 3072, "y": 5376, "w": 768, "h": 768 },
+    "frame": { "x": 768, "y": 3840, "w": 768, "h": 768 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 768, "h": 768 },
@@ -1496,7 +1496,7 @@
     "duration": 67
    },
    "jan_Lipa 187.aseprite": {
-    "frame": { "x": 3840, "y": 5376, "w": 768, "h": 768 },
+    "frame": { "x": 1536, "y": 3840, "w": 768, "h": 768 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 768, "h": 768 },
@@ -1504,7 +1504,7 @@
     "duration": 67
    },
    "jan_Lipa 188.aseprite": {
-    "frame": { "x": 4608, "y": 5376, "w": 768, "h": 768 },
+    "frame": { "x": 2304, "y": 3840, "w": 768, "h": 768 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 768, "h": 768 },
@@ -1512,7 +1512,7 @@
     "duration": 67
    },
    "jan_Lipa 189.aseprite": {
-    "frame": { "x": 5376, "y": 5376, "w": 768, "h": 768 },
+    "frame": { "x": 3072, "y": 3840, "w": 768, "h": 768 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 768, "h": 768 },
@@ -1520,7 +1520,7 @@
     "duration": 67
    },
    "jan_Lipa 190.aseprite": {
-    "frame": { "x": 6144, "y": 5376, "w": 768, "h": 768 },
+    "frame": { "x": 3840, "y": 3840, "w": 768, "h": 768 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 768, "h": 768 },
@@ -1528,7 +1528,7 @@
     "duration": 67
    },
    "jan_Lipa 191.aseprite": {
-    "frame": { "x": 6912, "y": 5376, "w": 768, "h": 768 },
+    "frame": { "x": 4608, "y": 3840, "w": 768, "h": 768 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 768, "h": 768 },
@@ -1536,7 +1536,7 @@
     "duration": 67
    },
    "jan_Lipa 192.aseprite": {
-    "frame": { "x": 7680, "y": 5376, "w": 768, "h": 768 },
+    "frame": { "x": 5376, "y": 3840, "w": 768, "h": 768 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 768, "h": 768 },
@@ -1544,7 +1544,7 @@
     "duration": 67
    },
    "jan_Lipa 193.aseprite": {
-    "frame": { "x": 8448, "y": 5376, "w": 768, "h": 768 },
+    "frame": { "x": 6144, "y": 3840, "w": 768, "h": 768 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 768, "h": 768 },
@@ -1552,7 +1552,7 @@
     "duration": 67
    },
    "jan_Lipa 194.aseprite": {
-    "frame": { "x": 9216, "y": 5376, "w": 768, "h": 768 },
+    "frame": { "x": 6912, "y": 3840, "w": 768, "h": 768 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 768, "h": 768 },
@@ -1560,7 +1560,7 @@
     "duration": 67
    },
    "jan_Lipa 195.aseprite": {
-    "frame": { "x": 9984, "y": 5376, "w": 768, "h": 768 },
+    "frame": { "x": 7680, "y": 3840, "w": 768, "h": 768 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 768, "h": 768 },
@@ -1568,7 +1568,7 @@
     "duration": 67
    },
    "jan_Lipa 196.aseprite": {
-    "frame": { "x": 10752, "y": 5376, "w": 768, "h": 768 },
+    "frame": { "x": 8448, "y": 3840, "w": 768, "h": 768 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 768, "h": 768 },
@@ -1576,7 +1576,7 @@
     "duration": 67
    },
    "jan_Lipa 197.aseprite": {
-    "frame": { "x": 11520, "y": 5376, "w": 768, "h": 768 },
+    "frame": { "x": 9216, "y": 3840, "w": 768, "h": 768 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 768, "h": 768 },
@@ -1584,7 +1584,7 @@
     "duration": 67
    },
    "jan_Lipa 198.aseprite": {
-    "frame": { "x": 12288, "y": 5376, "w": 768, "h": 768 },
+    "frame": { "x": 9984, "y": 3840, "w": 768, "h": 768 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 768, "h": 768 },
@@ -1592,7 +1592,7 @@
     "duration": 67
    },
    "jan_Lipa 199.aseprite": {
-    "frame": { "x": 13056, "y": 5376, "w": 768, "h": 768 },
+    "frame": { "x": 10752, "y": 3840, "w": 768, "h": 768 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 768, "h": 768 },
@@ -1600,7 +1600,7 @@
     "duration": 67
    },
    "jan_Lipa 200.aseprite": {
-    "frame": { "x": 13824, "y": 5376, "w": 768, "h": 768 },
+    "frame": { "x": 11520, "y": 3840, "w": 768, "h": 768 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 768, "h": 768 },
@@ -1608,7 +1608,7 @@
     "duration": 67
    },
    "jan_Lipa 201.aseprite": {
-    "frame": { "x": 14592, "y": 5376, "w": 768, "h": 768 },
+    "frame": { "x": 12288, "y": 3840, "w": 768, "h": 768 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 768, "h": 768 },
@@ -1616,7 +1616,7 @@
     "duration": 67
    },
    "jan_Lipa 202.aseprite": {
-    "frame": { "x": 15360, "y": 5376, "w": 768, "h": 768 },
+    "frame": { "x": 13056, "y": 3840, "w": 768, "h": 768 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 768, "h": 768 },
@@ -1624,7 +1624,7 @@
     "duration": 67
    },
    "jan_Lipa 203.aseprite": {
-    "frame": { "x": 16128, "y": 5376, "w": 768, "h": 768 },
+    "frame": { "x": 13824, "y": 3840, "w": 768, "h": 768 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 768, "h": 768 },
@@ -1632,7 +1632,7 @@
     "duration": 67
    },
    "jan_Lipa 204.aseprite": {
-    "frame": { "x": 16896, "y": 5376, "w": 768, "h": 768 },
+    "frame": { "x": 14592, "y": 3840, "w": 768, "h": 768 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 768, "h": 768 },
@@ -1640,7 +1640,7 @@
     "duration": 67
    },
    "jan_Lipa 205.aseprite": {
-    "frame": { "x": 17664, "y": 5376, "w": 768, "h": 768 },
+    "frame": { "x": 15360, "y": 3840, "w": 768, "h": 768 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 768, "h": 768 },
@@ -1648,7 +1648,7 @@
     "duration": 67
    },
    "jan_Lipa 206.aseprite": {
-    "frame": { "x": 18432, "y": 5376, "w": 768, "h": 768 },
+    "frame": { "x": 16128, "y": 3840, "w": 768, "h": 768 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 768, "h": 768 },
@@ -1656,7 +1656,7 @@
     "duration": 67
    },
    "jan_Lipa 207.aseprite": {
-    "frame": { "x": 19200, "y": 5376, "w": 768, "h": 768 },
+    "frame": { "x": 16896, "y": 3840, "w": 768, "h": 768 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 768, "h": 768 },
@@ -1664,7 +1664,7 @@
     "duration": 67
    },
    "jan_Lipa 208.aseprite": {
-    "frame": { "x": 0, "y": 6144, "w": 768, "h": 768 },
+    "frame": { "x": 17664, "y": 3840, "w": 768, "h": 768 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 768, "h": 768 },
@@ -1672,7 +1672,7 @@
     "duration": 67
    },
    "jan_Lipa 209.aseprite": {
-    "frame": { "x": 768, "y": 6144, "w": 768, "h": 768 },
+    "frame": { "x": 18432, "y": 3840, "w": 768, "h": 768 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 768, "h": 768 },
@@ -1680,7 +1680,7 @@
     "duration": 67
    },
    "jan_Lipa 210.aseprite": {
-    "frame": { "x": 1536, "y": 6144, "w": 768, "h": 768 },
+    "frame": { "x": 19200, "y": 3840, "w": 768, "h": 768 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 768, "h": 768 },
@@ -1688,7 +1688,7 @@
     "duration": 67
    },
    "jan_Lipa 211.aseprite": {
-    "frame": { "x": 2304, "y": 6144, "w": 768, "h": 768 },
+    "frame": { "x": 19968, "y": 3840, "w": 768, "h": 768 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 768, "h": 768 },
@@ -1696,7 +1696,7 @@
     "duration": 67
    },
    "jan_Lipa 212.aseprite": {
-    "frame": { "x": 3072, "y": 6144, "w": 768, "h": 768 },
+    "frame": { "x": 20736, "y": 3840, "w": 768, "h": 768 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 768, "h": 768 },
@@ -1704,7 +1704,7 @@
     "duration": 67
    },
    "jan_Lipa 213.aseprite": {
-    "frame": { "x": 3840, "y": 6144, "w": 768, "h": 768 },
+    "frame": { "x": 21504, "y": 3840, "w": 768, "h": 768 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 768, "h": 768 },
@@ -1712,7 +1712,7 @@
     "duration": 67
    },
    "jan_Lipa 214.aseprite": {
-    "frame": { "x": 4608, "y": 6144, "w": 768, "h": 768 },
+    "frame": { "x": 22272, "y": 3840, "w": 768, "h": 768 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 768, "h": 768 },
@@ -1720,7 +1720,7 @@
     "duration": 67
    },
    "jan_Lipa 215.aseprite": {
-    "frame": { "x": 5376, "y": 6144, "w": 768, "h": 768 },
+    "frame": { "x": 23040, "y": 3840, "w": 768, "h": 768 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 768, "h": 768 },
@@ -1728,7 +1728,7 @@
     "duration": 67
    },
    "jan_Lipa 216.aseprite": {
-    "frame": { "x": 6144, "y": 6144, "w": 768, "h": 768 },
+    "frame": { "x": 23808, "y": 3840, "w": 768, "h": 768 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 768, "h": 768 },
@@ -1736,7 +1736,7 @@
     "duration": 67
    },
    "jan_Lipa 217.aseprite": {
-    "frame": { "x": 6912, "y": 6144, "w": 768, "h": 768 },
+    "frame": { "x": 24576, "y": 3840, "w": 768, "h": 768 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 768, "h": 768 },
@@ -1744,7 +1744,7 @@
     "duration": 67
    },
    "jan_Lipa 218.aseprite": {
-    "frame": { "x": 7680, "y": 6144, "w": 768, "h": 768 },
+    "frame": { "x": 25344, "y": 3840, "w": 768, "h": 768 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 768, "h": 768 },
@@ -1752,7 +1752,7 @@
     "duration": 67
    },
    "jan_Lipa 219.aseprite": {
-    "frame": { "x": 8448, "y": 6144, "w": 768, "h": 768 },
+    "frame": { "x": 26112, "y": 3840, "w": 768, "h": 768 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 768, "h": 768 },
@@ -1760,7 +1760,7 @@
     "duration": 67
    },
    "jan_Lipa 220.aseprite": {
-    "frame": { "x": 9216, "y": 6144, "w": 768, "h": 768 },
+    "frame": { "x": 26880, "y": 3840, "w": 768, "h": 768 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 768, "h": 768 },
@@ -1768,7 +1768,7 @@
     "duration": 67
    },
    "jan_Lipa 221.aseprite": {
-    "frame": { "x": 9984, "y": 6144, "w": 768, "h": 768 },
+    "frame": { "x": 27648, "y": 3840, "w": 768, "h": 768 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 768, "h": 768 },
@@ -1776,7 +1776,7 @@
     "duration": 67
    },
    "jan_Lipa 222.aseprite": {
-    "frame": { "x": 10752, "y": 6144, "w": 768, "h": 768 },
+    "frame": { "x": 0, "y": 4608, "w": 768, "h": 768 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 768, "h": 768 },
@@ -1784,7 +1784,7 @@
     "duration": 67
    },
    "jan_Lipa 223.aseprite": {
-    "frame": { "x": 11520, "y": 6144, "w": 768, "h": 768 },
+    "frame": { "x": 768, "y": 4608, "w": 768, "h": 768 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 768, "h": 768 },
@@ -1792,7 +1792,7 @@
     "duration": 67
    },
    "jan_Lipa 224.aseprite": {
-    "frame": { "x": 12288, "y": 6144, "w": 768, "h": 768 },
+    "frame": { "x": 1536, "y": 4608, "w": 768, "h": 768 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 768, "h": 768 },
@@ -1800,7 +1800,7 @@
     "duration": 67
    },
    "jan_Lipa 225.aseprite": {
-    "frame": { "x": 13056, "y": 6144, "w": 768, "h": 768 },
+    "frame": { "x": 2304, "y": 4608, "w": 768, "h": 768 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 768, "h": 768 },
@@ -1808,7 +1808,7 @@
     "duration": 67
    },
    "jan_Lipa 226.aseprite": {
-    "frame": { "x": 13824, "y": 6144, "w": 768, "h": 768 },
+    "frame": { "x": 3072, "y": 4608, "w": 768, "h": 768 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 768, "h": 768 },
@@ -1816,7 +1816,7 @@
     "duration": 67
    },
    "jan_Lipa 227.aseprite": {
-    "frame": { "x": 14592, "y": 6144, "w": 768, "h": 768 },
+    "frame": { "x": 3840, "y": 4608, "w": 768, "h": 768 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 768, "h": 768 },
@@ -1824,7 +1824,7 @@
     "duration": 67
    },
    "jan_Lipa 228.aseprite": {
-    "frame": { "x": 15360, "y": 6144, "w": 768, "h": 768 },
+    "frame": { "x": 4608, "y": 4608, "w": 768, "h": 768 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 768, "h": 768 },
@@ -1832,7 +1832,7 @@
     "duration": 67
    },
    "jan_Lipa 229.aseprite": {
-    "frame": { "x": 16128, "y": 6144, "w": 768, "h": 768 },
+    "frame": { "x": 5376, "y": 4608, "w": 768, "h": 768 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 768, "h": 768 },
@@ -1840,7 +1840,7 @@
     "duration": 67
    },
    "jan_Lipa 230.aseprite": {
-    "frame": { "x": 16896, "y": 6144, "w": 768, "h": 768 },
+    "frame": { "x": 6144, "y": 4608, "w": 768, "h": 768 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 768, "h": 768 },
@@ -1848,7 +1848,7 @@
     "duration": 67
    },
    "jan_Lipa 231.aseprite": {
-    "frame": { "x": 17664, "y": 6144, "w": 768, "h": 768 },
+    "frame": { "x": 6912, "y": 4608, "w": 768, "h": 768 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 768, "h": 768 },
@@ -1856,7 +1856,7 @@
     "duration": 67
    },
    "jan_Lipa 232.aseprite": {
-    "frame": { "x": 18432, "y": 6144, "w": 768, "h": 768 },
+    "frame": { "x": 7680, "y": 4608, "w": 768, "h": 768 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 768, "h": 768 },
@@ -1864,7 +1864,7 @@
     "duration": 67
    },
    "jan_Lipa 233.aseprite": {
-    "frame": { "x": 19200, "y": 6144, "w": 768, "h": 768 },
+    "frame": { "x": 8448, "y": 4608, "w": 768, "h": 768 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 768, "h": 768 },
@@ -1872,7 +1872,7 @@
     "duration": 67
    },
    "jan_Lipa 234.aseprite": {
-    "frame": { "x": 0, "y": 6912, "w": 768, "h": 768 },
+    "frame": { "x": 9216, "y": 4608, "w": 768, "h": 768 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 768, "h": 768 },
@@ -1880,7 +1880,7 @@
     "duration": 67
    },
    "jan_Lipa 235.aseprite": {
-    "frame": { "x": 768, "y": 6912, "w": 768, "h": 768 },
+    "frame": { "x": 9984, "y": 4608, "w": 768, "h": 768 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 768, "h": 768 },
@@ -1888,7 +1888,7 @@
     "duration": 67
    },
    "jan_Lipa 236.aseprite": {
-    "frame": { "x": 1536, "y": 6912, "w": 768, "h": 768 },
+    "frame": { "x": 10752, "y": 4608, "w": 768, "h": 768 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 768, "h": 768 },
@@ -1896,7 +1896,7 @@
     "duration": 67
    },
    "jan_Lipa 237.aseprite": {
-    "frame": { "x": 2304, "y": 6912, "w": 768, "h": 768 },
+    "frame": { "x": 11520, "y": 4608, "w": 768, "h": 768 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 768, "h": 768 },
@@ -1904,7 +1904,7 @@
     "duration": 67
    },
    "jan_Lipa 238.aseprite": {
-    "frame": { "x": 3072, "y": 6912, "w": 768, "h": 768 },
+    "frame": { "x": 12288, "y": 4608, "w": 768, "h": 768 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 768, "h": 768 },
@@ -1912,7 +1912,7 @@
     "duration": 67
    },
    "jan_Lipa 239.aseprite": {
-    "frame": { "x": 3840, "y": 6912, "w": 768, "h": 768 },
+    "frame": { "x": 13056, "y": 4608, "w": 768, "h": 768 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 768, "h": 768 },
@@ -1920,7 +1920,7 @@
     "duration": 67
    },
    "jan_Lipa 240.aseprite": {
-    "frame": { "x": 4608, "y": 6912, "w": 768, "h": 768 },
+    "frame": { "x": 13824, "y": 4608, "w": 768, "h": 768 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 768, "h": 768 },
@@ -1928,7 +1928,7 @@
     "duration": 67
    },
    "jan_Lipa 241.aseprite": {
-    "frame": { "x": 5376, "y": 6912, "w": 768, "h": 768 },
+    "frame": { "x": 14592, "y": 4608, "w": 768, "h": 768 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 768, "h": 768 },
@@ -1936,7 +1936,7 @@
     "duration": 67
    },
    "jan_Lipa 242.aseprite": {
-    "frame": { "x": 6144, "y": 6912, "w": 768, "h": 768 },
+    "frame": { "x": 15360, "y": 4608, "w": 768, "h": 768 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 768, "h": 768 },
@@ -1944,7 +1944,7 @@
     "duration": 67
    },
    "jan_Lipa 243.aseprite": {
-    "frame": { "x": 6912, "y": 6912, "w": 768, "h": 768 },
+    "frame": { "x": 16128, "y": 4608, "w": 768, "h": 768 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 768, "h": 768 },
@@ -1952,7 +1952,7 @@
     "duration": 67
    },
    "jan_Lipa 244.aseprite": {
-    "frame": { "x": 7680, "y": 6912, "w": 768, "h": 768 },
+    "frame": { "x": 16896, "y": 4608, "w": 768, "h": 768 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 768, "h": 768 },
@@ -1960,7 +1960,7 @@
     "duration": 67
    },
    "jan_Lipa 245.aseprite": {
-    "frame": { "x": 8448, "y": 6912, "w": 768, "h": 768 },
+    "frame": { "x": 17664, "y": 4608, "w": 768, "h": 768 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 768, "h": 768 },
@@ -1968,7 +1968,7 @@
     "duration": 67
    },
    "jan_Lipa 246.aseprite": {
-    "frame": { "x": 9216, "y": 6912, "w": 768, "h": 768 },
+    "frame": { "x": 18432, "y": 4608, "w": 768, "h": 768 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 768, "h": 768 },
@@ -1976,7 +1976,7 @@
     "duration": 67
    },
    "jan_Lipa 247.aseprite": {
-    "frame": { "x": 9984, "y": 6912, "w": 768, "h": 768 },
+    "frame": { "x": 19200, "y": 4608, "w": 768, "h": 768 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 768, "h": 768 },
@@ -1984,7 +1984,7 @@
     "duration": 67
    },
    "jan_Lipa 248.aseprite": {
-    "frame": { "x": 10752, "y": 6912, "w": 768, "h": 768 },
+    "frame": { "x": 19968, "y": 4608, "w": 768, "h": 768 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 768, "h": 768 },
@@ -1992,7 +1992,7 @@
     "duration": 67
    },
    "jan_Lipa 249.aseprite": {
-    "frame": { "x": 11520, "y": 6912, "w": 768, "h": 768 },
+    "frame": { "x": 20736, "y": 4608, "w": 768, "h": 768 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 768, "h": 768 },
@@ -2000,7 +2000,7 @@
     "duration": 67
    },
    "jan_Lipa 250.aseprite": {
-    "frame": { "x": 12288, "y": 6912, "w": 768, "h": 768 },
+    "frame": { "x": 21504, "y": 4608, "w": 768, "h": 768 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 768, "h": 768 },
@@ -2008,7 +2008,7 @@
     "duration": 67
    },
    "jan_Lipa 251.aseprite": {
-    "frame": { "x": 13056, "y": 6912, "w": 768, "h": 768 },
+    "frame": { "x": 22272, "y": 4608, "w": 768, "h": 768 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 768, "h": 768 },
@@ -2016,7 +2016,7 @@
     "duration": 67
    },
    "jan_Lipa 252.aseprite": {
-    "frame": { "x": 13824, "y": 6912, "w": 768, "h": 768 },
+    "frame": { "x": 23040, "y": 4608, "w": 768, "h": 768 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 768, "h": 768 },
@@ -2024,7 +2024,7 @@
     "duration": 67
    },
    "jan_Lipa 253.aseprite": {
-    "frame": { "x": 14592, "y": 6912, "w": 768, "h": 768 },
+    "frame": { "x": 23808, "y": 4608, "w": 768, "h": 768 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 768, "h": 768 },
@@ -2032,7 +2032,7 @@
     "duration": 67
    },
    "jan_Lipa 254.aseprite": {
-    "frame": { "x": 15360, "y": 6912, "w": 768, "h": 768 },
+    "frame": { "x": 24576, "y": 4608, "w": 768, "h": 768 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 768, "h": 768 },
@@ -2040,7 +2040,7 @@
     "duration": 67
    },
    "jan_Lipa 255.aseprite": {
-    "frame": { "x": 16128, "y": 6912, "w": 768, "h": 768 },
+    "frame": { "x": 25344, "y": 4608, "w": 768, "h": 768 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 768, "h": 768 },
@@ -2048,7 +2048,7 @@
     "duration": 67
    },
    "jan_Lipa 256.aseprite": {
-    "frame": { "x": 16896, "y": 6912, "w": 768, "h": 768 },
+    "frame": { "x": 26112, "y": 4608, "w": 768, "h": 768 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 768, "h": 768 },
@@ -2056,7 +2056,7 @@
     "duration": 67
    },
    "jan_Lipa 257.aseprite": {
-    "frame": { "x": 17664, "y": 6912, "w": 768, "h": 768 },
+    "frame": { "x": 26880, "y": 4608, "w": 768, "h": 768 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 768, "h": 768 },
@@ -2064,7 +2064,7 @@
     "duration": 67
    },
    "jan_Lipa 258.aseprite": {
-    "frame": { "x": 18432, "y": 6912, "w": 768, "h": 768 },
+    "frame": { "x": 27648, "y": 4608, "w": 768, "h": 768 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 768, "h": 768 },
@@ -2072,7 +2072,7 @@
     "duration": 67
    },
    "jan_Lipa 259.aseprite": {
-    "frame": { "x": 19200, "y": 6912, "w": 768, "h": 768 },
+    "frame": { "x": 0, "y": 5376, "w": 768, "h": 768 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 768, "h": 768 },
@@ -2080,7 +2080,7 @@
     "duration": 67
    },
    "jan_Lipa 260.aseprite": {
-    "frame": { "x": 0, "y": 7680, "w": 768, "h": 768 },
+    "frame": { "x": 768, "y": 5376, "w": 768, "h": 768 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 768, "h": 768 },
@@ -2088,7 +2088,7 @@
     "duration": 67
    },
    "jan_Lipa 261.aseprite": {
-    "frame": { "x": 768, "y": 7680, "w": 768, "h": 768 },
+    "frame": { "x": 1536, "y": 5376, "w": 768, "h": 768 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 768, "h": 768 },
@@ -2096,7 +2096,7 @@
     "duration": 67
    },
    "jan_Lipa 262.aseprite": {
-    "frame": { "x": 1536, "y": 7680, "w": 768, "h": 768 },
+    "frame": { "x": 2304, "y": 5376, "w": 768, "h": 768 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 768, "h": 768 },
@@ -2104,7 +2104,7 @@
     "duration": 67
    },
    "jan_Lipa 263.aseprite": {
-    "frame": { "x": 2304, "y": 7680, "w": 768, "h": 768 },
+    "frame": { "x": 3072, "y": 5376, "w": 768, "h": 768 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 768, "h": 768 },
@@ -2112,7 +2112,7 @@
     "duration": 67
    },
    "jan_Lipa 264.aseprite": {
-    "frame": { "x": 3072, "y": 7680, "w": 768, "h": 768 },
+    "frame": { "x": 3840, "y": 5376, "w": 768, "h": 768 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 768, "h": 768 },
@@ -2120,7 +2120,7 @@
     "duration": 67
    },
    "jan_Lipa 265.aseprite": {
-    "frame": { "x": 3840, "y": 7680, "w": 768, "h": 768 },
+    "frame": { "x": 4608, "y": 5376, "w": 768, "h": 768 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 768, "h": 768 },
@@ -2128,7 +2128,7 @@
     "duration": 67
    },
    "jan_Lipa 266.aseprite": {
-    "frame": { "x": 4608, "y": 7680, "w": 768, "h": 768 },
+    "frame": { "x": 5376, "y": 5376, "w": 768, "h": 768 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 768, "h": 768 },
@@ -2136,7 +2136,7 @@
     "duration": 67
    },
    "jan_Lipa 267.aseprite": {
-    "frame": { "x": 5376, "y": 7680, "w": 768, "h": 768 },
+    "frame": { "x": 6144, "y": 5376, "w": 768, "h": 768 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 768, "h": 768 },
@@ -2144,7 +2144,7 @@
     "duration": 67
    },
    "jan_Lipa 268.aseprite": {
-    "frame": { "x": 6144, "y": 7680, "w": 768, "h": 768 },
+    "frame": { "x": 6912, "y": 5376, "w": 768, "h": 768 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 768, "h": 768 },
@@ -2152,7 +2152,7 @@
     "duration": 67
    },
    "jan_Lipa 269.aseprite": {
-    "frame": { "x": 6912, "y": 7680, "w": 768, "h": 768 },
+    "frame": { "x": 7680, "y": 5376, "w": 768, "h": 768 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 768, "h": 768 },
@@ -2160,7 +2160,7 @@
     "duration": 67
    },
    "jan_Lipa 270.aseprite": {
-    "frame": { "x": 7680, "y": 7680, "w": 768, "h": 768 },
+    "frame": { "x": 8448, "y": 5376, "w": 768, "h": 768 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 768, "h": 768 },
@@ -2168,7 +2168,7 @@
     "duration": 67
    },
    "jan_Lipa 271.aseprite": {
-    "frame": { "x": 8448, "y": 7680, "w": 768, "h": 768 },
+    "frame": { "x": 9216, "y": 5376, "w": 768, "h": 768 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 768, "h": 768 },
@@ -2176,7 +2176,7 @@
     "duration": 67
    },
    "jan_Lipa 272.aseprite": {
-    "frame": { "x": 9216, "y": 7680, "w": 768, "h": 768 },
+    "frame": { "x": 9984, "y": 5376, "w": 768, "h": 768 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 768, "h": 768 },
@@ -2184,7 +2184,7 @@
     "duration": 67
    },
    "jan_Lipa 273.aseprite": {
-    "frame": { "x": 9984, "y": 7680, "w": 768, "h": 768 },
+    "frame": { "x": 10752, "y": 5376, "w": 768, "h": 768 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 768, "h": 768 },
@@ -2192,7 +2192,7 @@
     "duration": 67
    },
    "jan_Lipa 274.aseprite": {
-    "frame": { "x": 10752, "y": 7680, "w": 768, "h": 768 },
+    "frame": { "x": 11520, "y": 5376, "w": 768, "h": 768 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 768, "h": 768 },
@@ -2200,7 +2200,7 @@
     "duration": 67
    },
    "jan_Lipa 275.aseprite": {
-    "frame": { "x": 11520, "y": 7680, "w": 768, "h": 768 },
+    "frame": { "x": 12288, "y": 5376, "w": 768, "h": 768 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 768, "h": 768 },
@@ -2208,7 +2208,7 @@
     "duration": 67
    },
    "jan_Lipa 276.aseprite": {
-    "frame": { "x": 12288, "y": 7680, "w": 768, "h": 768 },
+    "frame": { "x": 13056, "y": 5376, "w": 768, "h": 768 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 768, "h": 768 },
@@ -2216,7 +2216,7 @@
     "duration": 67
    },
    "jan_Lipa 277.aseprite": {
-    "frame": { "x": 13056, "y": 7680, "w": 768, "h": 768 },
+    "frame": { "x": 13824, "y": 5376, "w": 768, "h": 768 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 768, "h": 768 },
@@ -2224,7 +2224,7 @@
     "duration": 67
    },
    "jan_Lipa 278.aseprite": {
-    "frame": { "x": 13824, "y": 7680, "w": 768, "h": 768 },
+    "frame": { "x": 14592, "y": 5376, "w": 768, "h": 768 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 768, "h": 768 },
@@ -2232,7 +2232,7 @@
     "duration": 67
    },
    "jan_Lipa 279.aseprite": {
-    "frame": { "x": 14592, "y": 7680, "w": 768, "h": 768 },
+    "frame": { "x": 15360, "y": 5376, "w": 768, "h": 768 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 768, "h": 768 },
@@ -2240,7 +2240,7 @@
     "duration": 67
    },
    "jan_Lipa 280.aseprite": {
-    "frame": { "x": 15360, "y": 7680, "w": 768, "h": 768 },
+    "frame": { "x": 16128, "y": 5376, "w": 768, "h": 768 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 768, "h": 768 },
@@ -2248,7 +2248,7 @@
     "duration": 67
    },
    "jan_Lipa 281.aseprite": {
-    "frame": { "x": 16128, "y": 7680, "w": 768, "h": 768 },
+    "frame": { "x": 16896, "y": 5376, "w": 768, "h": 768 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 768, "h": 768 },
@@ -2256,7 +2256,7 @@
     "duration": 67
    },
    "jan_Lipa 282.aseprite": {
-    "frame": { "x": 16896, "y": 7680, "w": 768, "h": 768 },
+    "frame": { "x": 17664, "y": 5376, "w": 768, "h": 768 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 768, "h": 768 },
@@ -2264,7 +2264,7 @@
     "duration": 67
    },
    "jan_Lipa 283.aseprite": {
-    "frame": { "x": 17664, "y": 7680, "w": 768, "h": 768 },
+    "frame": { "x": 18432, "y": 5376, "w": 768, "h": 768 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 768, "h": 768 },
@@ -2272,7 +2272,7 @@
     "duration": 67
    },
    "jan_Lipa 284.aseprite": {
-    "frame": { "x": 18432, "y": 7680, "w": 768, "h": 768 },
+    "frame": { "x": 19200, "y": 5376, "w": 768, "h": 768 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 768, "h": 768 },
@@ -2280,7 +2280,7 @@
     "duration": 67
    },
    "jan_Lipa 285.aseprite": {
-    "frame": { "x": 19200, "y": 7680, "w": 768, "h": 768 },
+    "frame": { "x": 19968, "y": 5376, "w": 768, "h": 768 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 768, "h": 768 },
@@ -2288,7 +2288,7 @@
     "duration": 67
    },
    "jan_Lipa 286.aseprite": {
-    "frame": { "x": 0, "y": 8448, "w": 768, "h": 768 },
+    "frame": { "x": 20736, "y": 5376, "w": 768, "h": 768 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 768, "h": 768 },
@@ -2296,7 +2296,7 @@
     "duration": 67
    },
    "jan_Lipa 287.aseprite": {
-    "frame": { "x": 768, "y": 8448, "w": 768, "h": 768 },
+    "frame": { "x": 21504, "y": 5376, "w": 768, "h": 768 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 768, "h": 768 },
@@ -2304,7 +2304,7 @@
     "duration": 67
    },
    "jan_Lipa 288.aseprite": {
-    "frame": { "x": 1536, "y": 8448, "w": 768, "h": 768 },
+    "frame": { "x": 22272, "y": 5376, "w": 768, "h": 768 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 768, "h": 768 },
@@ -2312,7 +2312,7 @@
     "duration": 67
    },
    "jan_Lipa 289.aseprite": {
-    "frame": { "x": 2304, "y": 8448, "w": 768, "h": 768 },
+    "frame": { "x": 23040, "y": 5376, "w": 768, "h": 768 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 768, "h": 768 },
@@ -2320,7 +2320,7 @@
     "duration": 67
    },
    "jan_Lipa 290.aseprite": {
-    "frame": { "x": 3072, "y": 8448, "w": 768, "h": 768 },
+    "frame": { "x": 23808, "y": 5376, "w": 768, "h": 768 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 768, "h": 768 },
@@ -2328,7 +2328,7 @@
     "duration": 67
    },
    "jan_Lipa 291.aseprite": {
-    "frame": { "x": 3840, "y": 8448, "w": 768, "h": 768 },
+    "frame": { "x": 24576, "y": 5376, "w": 768, "h": 768 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 768, "h": 768 },
@@ -2336,7 +2336,7 @@
     "duration": 67
    },
    "jan_Lipa 292.aseprite": {
-    "frame": { "x": 4608, "y": 8448, "w": 768, "h": 768 },
+    "frame": { "x": 25344, "y": 5376, "w": 768, "h": 768 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 768, "h": 768 },
@@ -2344,7 +2344,7 @@
     "duration": 67
    },
    "jan_Lipa 293.aseprite": {
-    "frame": { "x": 5376, "y": 8448, "w": 768, "h": 768 },
+    "frame": { "x": 26112, "y": 5376, "w": 768, "h": 768 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 768, "h": 768 },
@@ -2352,7 +2352,7 @@
     "duration": 67
    },
    "jan_Lipa 294.aseprite": {
-    "frame": { "x": 6144, "y": 8448, "w": 768, "h": 768 },
+    "frame": { "x": 26880, "y": 5376, "w": 768, "h": 768 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 768, "h": 768 },
@@ -2360,7 +2360,7 @@
     "duration": 67
    },
    "jan_Lipa 295.aseprite": {
-    "frame": { "x": 6912, "y": 8448, "w": 768, "h": 768 },
+    "frame": { "x": 27648, "y": 5376, "w": 768, "h": 768 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 768, "h": 768 },
@@ -2368,7 +2368,7 @@
     "duration": 67
    },
    "jan_Lipa 296.aseprite": {
-    "frame": { "x": 7680, "y": 8448, "w": 768, "h": 768 },
+    "frame": { "x": 0, "y": 6144, "w": 768, "h": 768 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 768, "h": 768 },
@@ -2376,7 +2376,7 @@
     "duration": 67
    },
    "jan_Lipa 297.aseprite": {
-    "frame": { "x": 8448, "y": 8448, "w": 768, "h": 768 },
+    "frame": { "x": 768, "y": 6144, "w": 768, "h": 768 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 768, "h": 768 },
@@ -2384,7 +2384,7 @@
     "duration": 67
    },
    "jan_Lipa 298.aseprite": {
-    "frame": { "x": 9216, "y": 8448, "w": 768, "h": 768 },
+    "frame": { "x": 1536, "y": 6144, "w": 768, "h": 768 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 768, "h": 768 },
@@ -2392,7 +2392,7 @@
     "duration": 67
    },
    "jan_Lipa 299.aseprite": {
-    "frame": { "x": 9984, "y": 8448, "w": 768, "h": 768 },
+    "frame": { "x": 2304, "y": 6144, "w": 768, "h": 768 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 768, "h": 768 },
@@ -2400,7 +2400,7 @@
     "duration": 67
    },
    "jan_Lipa 300.aseprite": {
-    "frame": { "x": 10752, "y": 8448, "w": 768, "h": 768 },
+    "frame": { "x": 3072, "y": 6144, "w": 768, "h": 768 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 768, "h": 768 },
@@ -2408,7 +2408,7 @@
     "duration": 67
    },
    "jan_Lipa 301.aseprite": {
-    "frame": { "x": 11520, "y": 8448, "w": 768, "h": 768 },
+    "frame": { "x": 3840, "y": 6144, "w": 768, "h": 768 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 768, "h": 768 },
@@ -2416,7 +2416,7 @@
     "duration": 67
    },
    "jan_Lipa 302.aseprite": {
-    "frame": { "x": 12288, "y": 8448, "w": 768, "h": 768 },
+    "frame": { "x": 4608, "y": 6144, "w": 768, "h": 768 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 768, "h": 768 },
@@ -2424,7 +2424,7 @@
     "duration": 67
    },
    "jan_Lipa 303.aseprite": {
-    "frame": { "x": 13056, "y": 8448, "w": 768, "h": 768 },
+    "frame": { "x": 5376, "y": 6144, "w": 768, "h": 768 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 768, "h": 768 },
@@ -2432,7 +2432,7 @@
     "duration": 67
    },
    "jan_Lipa 304.aseprite": {
-    "frame": { "x": 13824, "y": 8448, "w": 768, "h": 768 },
+    "frame": { "x": 6144, "y": 6144, "w": 768, "h": 768 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 768, "h": 768 },
@@ -2440,7 +2440,7 @@
     "duration": 67
    },
    "jan_Lipa 305.aseprite": {
-    "frame": { "x": 14592, "y": 8448, "w": 768, "h": 768 },
+    "frame": { "x": 6912, "y": 6144, "w": 768, "h": 768 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 768, "h": 768 },
@@ -2448,7 +2448,7 @@
     "duration": 67
    },
    "jan_Lipa 306.aseprite": {
-    "frame": { "x": 15360, "y": 8448, "w": 768, "h": 768 },
+    "frame": { "x": 7680, "y": 6144, "w": 768, "h": 768 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 768, "h": 768 },
@@ -2456,7 +2456,7 @@
     "duration": 67
    },
    "jan_Lipa 307.aseprite": {
-    "frame": { "x": 16128, "y": 8448, "w": 768, "h": 768 },
+    "frame": { "x": 8448, "y": 6144, "w": 768, "h": 768 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 768, "h": 768 },
@@ -2464,7 +2464,7 @@
     "duration": 67
    },
    "jan_Lipa 308.aseprite": {
-    "frame": { "x": 16896, "y": 8448, "w": 768, "h": 768 },
+    "frame": { "x": 9216, "y": 6144, "w": 768, "h": 768 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 768, "h": 768 },
@@ -2472,7 +2472,7 @@
     "duration": 67
    },
    "jan_Lipa 309.aseprite": {
-    "frame": { "x": 17664, "y": 8448, "w": 768, "h": 768 },
+    "frame": { "x": 9984, "y": 6144, "w": 768, "h": 768 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 768, "h": 768 },
@@ -2480,7 +2480,7 @@
     "duration": 67
    },
    "jan_Lipa 310.aseprite": {
-    "frame": { "x": 18432, "y": 8448, "w": 768, "h": 768 },
+    "frame": { "x": 10752, "y": 6144, "w": 768, "h": 768 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 768, "h": 768 },
@@ -2488,7 +2488,7 @@
     "duration": 67
    },
    "jan_Lipa 311.aseprite": {
-    "frame": { "x": 19200, "y": 8448, "w": 768, "h": 768 },
+    "frame": { "x": 11520, "y": 6144, "w": 768, "h": 768 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 768, "h": 768 },
@@ -2496,7 +2496,7 @@
     "duration": 67
    },
    "jan_Lipa 312.aseprite": {
-    "frame": { "x": 0, "y": 9216, "w": 768, "h": 768 },
+    "frame": { "x": 12288, "y": 6144, "w": 768, "h": 768 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 768, "h": 768 },
@@ -2504,7 +2504,7 @@
     "duration": 67
    },
    "jan_Lipa 313.aseprite": {
-    "frame": { "x": 768, "y": 9216, "w": 768, "h": 768 },
+    "frame": { "x": 13056, "y": 6144, "w": 768, "h": 768 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 768, "h": 768 },
@@ -2512,7 +2512,7 @@
     "duration": 67
    },
    "jan_Lipa 314.aseprite": {
-    "frame": { "x": 1536, "y": 9216, "w": 768, "h": 768 },
+    "frame": { "x": 13824, "y": 6144, "w": 768, "h": 768 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 768, "h": 768 },
@@ -2520,7 +2520,7 @@
     "duration": 67
    },
    "jan_Lipa 315.aseprite": {
-    "frame": { "x": 2304, "y": 9216, "w": 768, "h": 768 },
+    "frame": { "x": 14592, "y": 6144, "w": 768, "h": 768 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 768, "h": 768 },
@@ -2528,7 +2528,7 @@
     "duration": 67
    },
    "jan_Lipa 316.aseprite": {
-    "frame": { "x": 3072, "y": 9216, "w": 768, "h": 768 },
+    "frame": { "x": 15360, "y": 6144, "w": 768, "h": 768 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 768, "h": 768 },
@@ -2536,7 +2536,7 @@
     "duration": 67
    },
    "jan_Lipa 317.aseprite": {
-    "frame": { "x": 3840, "y": 9216, "w": 768, "h": 768 },
+    "frame": { "x": 16128, "y": 6144, "w": 768, "h": 768 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 768, "h": 768 },
@@ -2544,7 +2544,7 @@
     "duration": 67
    },
    "jan_Lipa 318.aseprite": {
-    "frame": { "x": 4608, "y": 9216, "w": 768, "h": 768 },
+    "frame": { "x": 16896, "y": 6144, "w": 768, "h": 768 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 768, "h": 768 },
@@ -2552,7 +2552,7 @@
     "duration": 67
    },
    "jan_Lipa 319.aseprite": {
-    "frame": { "x": 5376, "y": 9216, "w": 768, "h": 768 },
+    "frame": { "x": 17664, "y": 6144, "w": 768, "h": 768 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 768, "h": 768 },
@@ -2560,7 +2560,7 @@
     "duration": 67
    },
    "jan_Lipa 320.aseprite": {
-    "frame": { "x": 6144, "y": 9216, "w": 768, "h": 768 },
+    "frame": { "x": 18432, "y": 6144, "w": 768, "h": 768 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 768, "h": 768 },
@@ -2568,7 +2568,7 @@
     "duration": 67
    },
    "jan_Lipa 321.aseprite": {
-    "frame": { "x": 6912, "y": 9216, "w": 768, "h": 768 },
+    "frame": { "x": 19200, "y": 6144, "w": 768, "h": 768 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 768, "h": 768 },
@@ -2576,7 +2576,7 @@
     "duration": 67
    },
    "jan_Lipa 322.aseprite": {
-    "frame": { "x": 7680, "y": 9216, "w": 768, "h": 768 },
+    "frame": { "x": 19968, "y": 6144, "w": 768, "h": 768 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 768, "h": 768 },
@@ -2584,7 +2584,7 @@
     "duration": 67
    },
    "jan_Lipa 323.aseprite": {
-    "frame": { "x": 8448, "y": 9216, "w": 768, "h": 768 },
+    "frame": { "x": 20736, "y": 6144, "w": 768, "h": 768 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 768, "h": 768 },
@@ -2592,7 +2592,7 @@
     "duration": 67
    },
    "jan_Lipa 324.aseprite": {
-    "frame": { "x": 9216, "y": 9216, "w": 768, "h": 768 },
+    "frame": { "x": 21504, "y": 6144, "w": 768, "h": 768 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 768, "h": 768 },
@@ -2600,7 +2600,7 @@
     "duration": 67
    },
    "jan_Lipa 325.aseprite": {
-    "frame": { "x": 9984, "y": 9216, "w": 768, "h": 768 },
+    "frame": { "x": 22272, "y": 6144, "w": 768, "h": 768 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 768, "h": 768 },
@@ -2608,7 +2608,7 @@
     "duration": 67
    },
    "jan_Lipa 326.aseprite": {
-    "frame": { "x": 10752, "y": 9216, "w": 768, "h": 768 },
+    "frame": { "x": 23040, "y": 6144, "w": 768, "h": 768 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 768, "h": 768 },
@@ -2616,7 +2616,7 @@
     "duration": 67
    },
    "jan_Lipa 327.aseprite": {
-    "frame": { "x": 11520, "y": 9216, "w": 768, "h": 768 },
+    "frame": { "x": 23808, "y": 6144, "w": 768, "h": 768 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 768, "h": 768 },
@@ -2624,7 +2624,7 @@
     "duration": 67
    },
    "jan_Lipa 328.aseprite": {
-    "frame": { "x": 12288, "y": 9216, "w": 768, "h": 768 },
+    "frame": { "x": 24576, "y": 6144, "w": 768, "h": 768 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 768, "h": 768 },
@@ -2632,7 +2632,7 @@
     "duration": 67
    },
    "jan_Lipa 329.aseprite": {
-    "frame": { "x": 13056, "y": 9216, "w": 768, "h": 768 },
+    "frame": { "x": 25344, "y": 6144, "w": 768, "h": 768 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 768, "h": 768 },
@@ -2640,7 +2640,7 @@
     "duration": 67
    },
    "jan_Lipa 330.aseprite": {
-    "frame": { "x": 13824, "y": 9216, "w": 768, "h": 768 },
+    "frame": { "x": 26112, "y": 6144, "w": 768, "h": 768 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 768, "h": 768 },
@@ -2648,7 +2648,7 @@
     "duration": 67
    },
    "jan_Lipa 331.aseprite": {
-    "frame": { "x": 14592, "y": 9216, "w": 768, "h": 768 },
+    "frame": { "x": 26880, "y": 6144, "w": 768, "h": 768 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 768, "h": 768 },
@@ -2656,7 +2656,7 @@
     "duration": 67
    },
    "jan_Lipa 332.aseprite": {
-    "frame": { "x": 15360, "y": 9216, "w": 768, "h": 768 },
+    "frame": { "x": 27648, "y": 6144, "w": 768, "h": 768 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 768, "h": 768 },
@@ -2664,7 +2664,7 @@
     "duration": 67
    },
    "jan_Lipa 333.aseprite": {
-    "frame": { "x": 16128, "y": 9216, "w": 768, "h": 768 },
+    "frame": { "x": 0, "y": 6912, "w": 768, "h": 768 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 768, "h": 768 },
@@ -2672,7 +2672,7 @@
     "duration": 67
    },
    "jan_Lipa 334.aseprite": {
-    "frame": { "x": 16896, "y": 9216, "w": 768, "h": 768 },
+    "frame": { "x": 768, "y": 6912, "w": 768, "h": 768 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 768, "h": 768 },
@@ -2680,7 +2680,7 @@
     "duration": 67
    },
    "jan_Lipa 335.aseprite": {
-    "frame": { "x": 17664, "y": 9216, "w": 768, "h": 768 },
+    "frame": { "x": 1536, "y": 6912, "w": 768, "h": 768 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 768, "h": 768 },
@@ -2688,7 +2688,7 @@
     "duration": 67
    },
    "jan_Lipa 336.aseprite": {
-    "frame": { "x": 18432, "y": 9216, "w": 768, "h": 768 },
+    "frame": { "x": 2304, "y": 6912, "w": 768, "h": 768 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 768, "h": 768 },
@@ -2696,7 +2696,7 @@
     "duration": 67
    },
    "jan_Lipa 337.aseprite": {
-    "frame": { "x": 19200, "y": 9216, "w": 768, "h": 768 },
+    "frame": { "x": 3072, "y": 6912, "w": 768, "h": 768 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 768, "h": 768 },
@@ -2704,7 +2704,7 @@
     "duration": 67
    },
    "jan_Lipa 338.aseprite": {
-    "frame": { "x": 0, "y": 9984, "w": 768, "h": 768 },
+    "frame": { "x": 3840, "y": 6912, "w": 768, "h": 768 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 768, "h": 768 },
@@ -2712,7 +2712,7 @@
     "duration": 67
    },
    "jan_Lipa 339.aseprite": {
-    "frame": { "x": 768, "y": 9984, "w": 768, "h": 768 },
+    "frame": { "x": 4608, "y": 6912, "w": 768, "h": 768 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 768, "h": 768 },
@@ -2720,7 +2720,7 @@
     "duration": 67
    },
    "jan_Lipa 340.aseprite": {
-    "frame": { "x": 1536, "y": 9984, "w": 768, "h": 768 },
+    "frame": { "x": 5376, "y": 6912, "w": 768, "h": 768 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 768, "h": 768 },
@@ -2728,7 +2728,7 @@
     "duration": 67
    },
    "jan_Lipa 341.aseprite": {
-    "frame": { "x": 2304, "y": 9984, "w": 768, "h": 768 },
+    "frame": { "x": 6144, "y": 6912, "w": 768, "h": 768 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 768, "h": 768 },
@@ -2736,7 +2736,7 @@
     "duration": 67
    },
    "jan_Lipa 342.aseprite": {
-    "frame": { "x": 3072, "y": 9984, "w": 768, "h": 768 },
+    "frame": { "x": 6912, "y": 6912, "w": 768, "h": 768 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 768, "h": 768 },
@@ -2744,7 +2744,7 @@
     "duration": 67
    },
    "jan_Lipa 343.aseprite": {
-    "frame": { "x": 3840, "y": 9984, "w": 768, "h": 768 },
+    "frame": { "x": 7680, "y": 6912, "w": 768, "h": 768 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 768, "h": 768 },
@@ -2752,7 +2752,7 @@
     "duration": 67
    },
    "jan_Lipa 344.aseprite": {
-    "frame": { "x": 4608, "y": 9984, "w": 768, "h": 768 },
+    "frame": { "x": 8448, "y": 6912, "w": 768, "h": 768 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 768, "h": 768 },
@@ -2760,7 +2760,7 @@
     "duration": 67
    },
    "jan_Lipa 345.aseprite": {
-    "frame": { "x": 5376, "y": 9984, "w": 768, "h": 768 },
+    "frame": { "x": 9216, "y": 6912, "w": 768, "h": 768 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 768, "h": 768 },
@@ -2768,7 +2768,7 @@
     "duration": 67
    },
    "jan_Lipa 346.aseprite": {
-    "frame": { "x": 6144, "y": 9984, "w": 768, "h": 768 },
+    "frame": { "x": 9984, "y": 6912, "w": 768, "h": 768 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 768, "h": 768 },
@@ -2776,7 +2776,7 @@
     "duration": 67
    },
    "jan_Lipa 347.aseprite": {
-    "frame": { "x": 6912, "y": 9984, "w": 768, "h": 768 },
+    "frame": { "x": 10752, "y": 6912, "w": 768, "h": 768 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 768, "h": 768 },
@@ -2784,7 +2784,7 @@
     "duration": 67
    },
    "jan_Lipa 348.aseprite": {
-    "frame": { "x": 7680, "y": 9984, "w": 768, "h": 768 },
+    "frame": { "x": 11520, "y": 6912, "w": 768, "h": 768 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 768, "h": 768 },
@@ -2792,7 +2792,7 @@
     "duration": 67
    },
    "jan_Lipa 349.aseprite": {
-    "frame": { "x": 8448, "y": 9984, "w": 768, "h": 768 },
+    "frame": { "x": 12288, "y": 6912, "w": 768, "h": 768 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 768, "h": 768 },
@@ -2800,7 +2800,7 @@
     "duration": 67
    },
    "jan_Lipa 350.aseprite": {
-    "frame": { "x": 9216, "y": 9984, "w": 768, "h": 768 },
+    "frame": { "x": 13056, "y": 6912, "w": 768, "h": 768 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 768, "h": 768 },
@@ -2808,7 +2808,7 @@
     "duration": 67
    },
    "jan_Lipa 351.aseprite": {
-    "frame": { "x": 9984, "y": 9984, "w": 768, "h": 768 },
+    "frame": { "x": 13824, "y": 6912, "w": 768, "h": 768 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 768, "h": 768 },
@@ -2816,7 +2816,7 @@
     "duration": 67
    },
    "jan_Lipa 352.aseprite": {
-    "frame": { "x": 10752, "y": 9984, "w": 768, "h": 768 },
+    "frame": { "x": 14592, "y": 6912, "w": 768, "h": 768 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 768, "h": 768 },
@@ -2824,7 +2824,7 @@
     "duration": 67
    },
    "jan_Lipa 353.aseprite": {
-    "frame": { "x": 11520, "y": 9984, "w": 768, "h": 768 },
+    "frame": { "x": 15360, "y": 6912, "w": 768, "h": 768 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 768, "h": 768 },
@@ -2832,7 +2832,7 @@
     "duration": 67
    },
    "jan_Lipa 354.aseprite": {
-    "frame": { "x": 12288, "y": 9984, "w": 768, "h": 768 },
+    "frame": { "x": 16128, "y": 6912, "w": 768, "h": 768 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 768, "h": 768 },
@@ -2840,7 +2840,7 @@
     "duration": 67
    },
    "jan_Lipa 355.aseprite": {
-    "frame": { "x": 13056, "y": 9984, "w": 768, "h": 768 },
+    "frame": { "x": 16896, "y": 6912, "w": 768, "h": 768 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 768, "h": 768 },
@@ -2848,7 +2848,7 @@
     "duration": 67
    },
    "jan_Lipa 356.aseprite": {
-    "frame": { "x": 13824, "y": 9984, "w": 768, "h": 768 },
+    "frame": { "x": 17664, "y": 6912, "w": 768, "h": 768 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 768, "h": 768 },
@@ -2856,7 +2856,7 @@
     "duration": 67
    },
    "jan_Lipa 357.aseprite": {
-    "frame": { "x": 14592, "y": 9984, "w": 768, "h": 768 },
+    "frame": { "x": 18432, "y": 6912, "w": 768, "h": 768 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 768, "h": 768 },
@@ -2864,7 +2864,7 @@
     "duration": 67
    },
    "jan_Lipa 358.aseprite": {
-    "frame": { "x": 15360, "y": 9984, "w": 768, "h": 768 },
+    "frame": { "x": 19200, "y": 6912, "w": 768, "h": 768 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 768, "h": 768 },
@@ -2872,7 +2872,7 @@
     "duration": 67
    },
    "jan_Lipa 359.aseprite": {
-    "frame": { "x": 16128, "y": 9984, "w": 768, "h": 768 },
+    "frame": { "x": 19968, "y": 6912, "w": 768, "h": 768 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 768, "h": 768 },
@@ -2880,7 +2880,7 @@
     "duration": 67
    },
    "jan_Lipa 360.aseprite": {
-    "frame": { "x": 16896, "y": 9984, "w": 768, "h": 768 },
+    "frame": { "x": 20736, "y": 6912, "w": 768, "h": 768 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 768, "h": 768 },
@@ -2888,7 +2888,7 @@
     "duration": 67
    },
    "jan_Lipa 361.aseprite": {
-    "frame": { "x": 17664, "y": 9984, "w": 768, "h": 768 },
+    "frame": { "x": 21504, "y": 6912, "w": 768, "h": 768 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 768, "h": 768 },
@@ -2896,7 +2896,7 @@
     "duration": 67
    },
    "jan_Lipa 362.aseprite": {
-    "frame": { "x": 18432, "y": 9984, "w": 768, "h": 768 },
+    "frame": { "x": 22272, "y": 6912, "w": 768, "h": 768 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 768, "h": 768 },
@@ -2904,7 +2904,7 @@
     "duration": 67
    },
    "jan_Lipa 363.aseprite": {
-    "frame": { "x": 19200, "y": 9984, "w": 768, "h": 768 },
+    "frame": { "x": 23040, "y": 6912, "w": 768, "h": 768 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 768, "h": 768 },
@@ -2912,7 +2912,7 @@
     "duration": 67
    },
    "jan_Lipa 364.aseprite": {
-    "frame": { "x": 0, "y": 10752, "w": 768, "h": 768 },
+    "frame": { "x": 23808, "y": 6912, "w": 768, "h": 768 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 768, "h": 768 },
@@ -2920,7 +2920,7 @@
     "duration": 67
    },
    "jan_Lipa 365.aseprite": {
-    "frame": { "x": 768, "y": 10752, "w": 768, "h": 768 },
+    "frame": { "x": 24576, "y": 6912, "w": 768, "h": 768 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 768, "h": 768 },
@@ -2928,7 +2928,7 @@
     "duration": 67
    },
    "jan_Lipa 366.aseprite": {
-    "frame": { "x": 1536, "y": 10752, "w": 768, "h": 768 },
+    "frame": { "x": 25344, "y": 6912, "w": 768, "h": 768 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 768, "h": 768 },
@@ -2936,7 +2936,7 @@
     "duration": 67
    },
    "jan_Lipa 367.aseprite": {
-    "frame": { "x": 2304, "y": 10752, "w": 768, "h": 768 },
+    "frame": { "x": 26112, "y": 6912, "w": 768, "h": 768 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 768, "h": 768 },
@@ -2944,7 +2944,7 @@
     "duration": 67
    },
    "jan_Lipa 368.aseprite": {
-    "frame": { "x": 3072, "y": 10752, "w": 768, "h": 768 },
+    "frame": { "x": 26880, "y": 6912, "w": 768, "h": 768 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 768, "h": 768 },
@@ -2952,7 +2952,7 @@
     "duration": 67
    },
    "jan_Lipa 369.aseprite": {
-    "frame": { "x": 3840, "y": 10752, "w": 768, "h": 768 },
+    "frame": { "x": 27648, "y": 6912, "w": 768, "h": 768 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 768, "h": 768 },
@@ -2960,7 +2960,7 @@
     "duration": 67
    },
    "jan_Lipa 370.aseprite": {
-    "frame": { "x": 4608, "y": 10752, "w": 768, "h": 768 },
+    "frame": { "x": 0, "y": 7680, "w": 768, "h": 768 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 768, "h": 768 },
@@ -2968,7 +2968,7 @@
     "duration": 67
    },
    "jan_Lipa 371.aseprite": {
-    "frame": { "x": 5376, "y": 10752, "w": 768, "h": 768 },
+    "frame": { "x": 768, "y": 7680, "w": 768, "h": 768 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 768, "h": 768 },
@@ -2976,7 +2976,7 @@
     "duration": 67
    },
    "jan_Lipa 372.aseprite": {
-    "frame": { "x": 6144, "y": 10752, "w": 768, "h": 768 },
+    "frame": { "x": 1536, "y": 7680, "w": 768, "h": 768 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 768, "h": 768 },
@@ -2984,7 +2984,7 @@
     "duration": 67
    },
    "jan_Lipa 373.aseprite": {
-    "frame": { "x": 6912, "y": 10752, "w": 768, "h": 768 },
+    "frame": { "x": 2304, "y": 7680, "w": 768, "h": 768 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 768, "h": 768 },
@@ -2992,7 +2992,7 @@
     "duration": 67
    },
    "jan_Lipa 374.aseprite": {
-    "frame": { "x": 7680, "y": 10752, "w": 768, "h": 768 },
+    "frame": { "x": 3072, "y": 7680, "w": 768, "h": 768 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 768, "h": 768 },
@@ -3000,7 +3000,7 @@
     "duration": 67
    },
    "jan_Lipa 375.aseprite": {
-    "frame": { "x": 8448, "y": 10752, "w": 768, "h": 768 },
+    "frame": { "x": 3840, "y": 7680, "w": 768, "h": 768 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 768, "h": 768 },
@@ -3008,7 +3008,7 @@
     "duration": 67
    },
    "jan_Lipa 376.aseprite": {
-    "frame": { "x": 9216, "y": 10752, "w": 768, "h": 768 },
+    "frame": { "x": 4608, "y": 7680, "w": 768, "h": 768 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 768, "h": 768 },
@@ -3016,7 +3016,7 @@
     "duration": 67
    },
    "jan_Lipa 377.aseprite": {
-    "frame": { "x": 9984, "y": 10752, "w": 768, "h": 768 },
+    "frame": { "x": 5376, "y": 7680, "w": 768, "h": 768 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 768, "h": 768 },
@@ -3024,7 +3024,7 @@
     "duration": 67
    },
    "jan_Lipa 378.aseprite": {
-    "frame": { "x": 10752, "y": 10752, "w": 768, "h": 768 },
+    "frame": { "x": 6144, "y": 7680, "w": 768, "h": 768 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 768, "h": 768 },
@@ -3032,7 +3032,7 @@
     "duration": 67
    },
    "jan_Lipa 379.aseprite": {
-    "frame": { "x": 11520, "y": 10752, "w": 768, "h": 768 },
+    "frame": { "x": 6912, "y": 7680, "w": 768, "h": 768 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 768, "h": 768 },
@@ -3040,7 +3040,7 @@
     "duration": 67
    },
    "jan_Lipa 380.aseprite": {
-    "frame": { "x": 12288, "y": 10752, "w": 768, "h": 768 },
+    "frame": { "x": 7680, "y": 7680, "w": 768, "h": 768 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 768, "h": 768 },
@@ -3048,7 +3048,7 @@
     "duration": 67
    },
    "jan_Lipa 381.aseprite": {
-    "frame": { "x": 13056, "y": 10752, "w": 768, "h": 768 },
+    "frame": { "x": 8448, "y": 7680, "w": 768, "h": 768 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 768, "h": 768 },
@@ -3056,7 +3056,7 @@
     "duration": 67
    },
    "jan_Lipa 382.aseprite": {
-    "frame": { "x": 13824, "y": 10752, "w": 768, "h": 768 },
+    "frame": { "x": 9216, "y": 7680, "w": 768, "h": 768 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 768, "h": 768 },
@@ -3064,7 +3064,7 @@
     "duration": 67
    },
    "jan_Lipa 383.aseprite": {
-    "frame": { "x": 14592, "y": 10752, "w": 768, "h": 768 },
+    "frame": { "x": 9984, "y": 7680, "w": 768, "h": 768 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 768, "h": 768 },
@@ -3072,7 +3072,7 @@
     "duration": 67
    },
    "jan_Lipa 384.aseprite": {
-    "frame": { "x": 15360, "y": 10752, "w": 768, "h": 768 },
+    "frame": { "x": 10752, "y": 7680, "w": 768, "h": 768 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 768, "h": 768 },
@@ -3080,7 +3080,7 @@
     "duration": 67
    },
    "jan_Lipa 385.aseprite": {
-    "frame": { "x": 16128, "y": 10752, "w": 768, "h": 768 },
+    "frame": { "x": 11520, "y": 7680, "w": 768, "h": 768 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 768, "h": 768 },
@@ -3088,7 +3088,7 @@
     "duration": 67
    },
    "jan_Lipa 386.aseprite": {
-    "frame": { "x": 16896, "y": 10752, "w": 768, "h": 768 },
+    "frame": { "x": 12288, "y": 7680, "w": 768, "h": 768 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 768, "h": 768 },
@@ -3096,7 +3096,7 @@
     "duration": 67
    },
    "jan_Lipa 387.aseprite": {
-    "frame": { "x": 17664, "y": 10752, "w": 768, "h": 768 },
+    "frame": { "x": 13056, "y": 7680, "w": 768, "h": 768 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 768, "h": 768 },
@@ -3104,7 +3104,7 @@
     "duration": 67
    },
    "jan_Lipa 388.aseprite": {
-    "frame": { "x": 18432, "y": 10752, "w": 768, "h": 768 },
+    "frame": { "x": 13824, "y": 7680, "w": 768, "h": 768 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 768, "h": 768 },
@@ -3112,7 +3112,7 @@
     "duration": 67
    },
    "jan_Lipa 389.aseprite": {
-    "frame": { "x": 19200, "y": 10752, "w": 768, "h": 768 },
+    "frame": { "x": 14592, "y": 7680, "w": 768, "h": 768 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 768, "h": 768 },
@@ -3120,7 +3120,7 @@
     "duration": 67
    },
    "jan_Lipa 390.aseprite": {
-    "frame": { "x": 0, "y": 11520, "w": 768, "h": 768 },
+    "frame": { "x": 15360, "y": 7680, "w": 768, "h": 768 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 768, "h": 768 },
@@ -3128,7 +3128,7 @@
     "duration": 67
    },
    "jan_Lipa 391.aseprite": {
-    "frame": { "x": 768, "y": 11520, "w": 768, "h": 768 },
+    "frame": { "x": 16128, "y": 7680, "w": 768, "h": 768 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 768, "h": 768 },
@@ -3136,7 +3136,7 @@
     "duration": 67
    },
    "jan_Lipa 392.aseprite": {
-    "frame": { "x": 1536, "y": 11520, "w": 768, "h": 768 },
+    "frame": { "x": 16896, "y": 7680, "w": 768, "h": 768 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 768, "h": 768 },
@@ -3144,7 +3144,7 @@
     "duration": 67
    },
    "jan_Lipa 393.aseprite": {
-    "frame": { "x": 2304, "y": 11520, "w": 768, "h": 768 },
+    "frame": { "x": 17664, "y": 7680, "w": 768, "h": 768 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 768, "h": 768 },
@@ -3152,7 +3152,7 @@
     "duration": 67
    },
    "jan_Lipa 394.aseprite": {
-    "frame": { "x": 3072, "y": 11520, "w": 768, "h": 768 },
+    "frame": { "x": 18432, "y": 7680, "w": 768, "h": 768 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 768, "h": 768 },
@@ -3160,7 +3160,7 @@
     "duration": 67
    },
    "jan_Lipa 395.aseprite": {
-    "frame": { "x": 3840, "y": 11520, "w": 768, "h": 768 },
+    "frame": { "x": 19200, "y": 7680, "w": 768, "h": 768 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 768, "h": 768 },
@@ -3168,7 +3168,7 @@
     "duration": 67
    },
    "jan_Lipa 396.aseprite": {
-    "frame": { "x": 4608, "y": 11520, "w": 768, "h": 768 },
+    "frame": { "x": 19968, "y": 7680, "w": 768, "h": 768 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 768, "h": 768 },
@@ -3176,7 +3176,7 @@
     "duration": 67
    },
    "jan_Lipa 397.aseprite": {
-    "frame": { "x": 5376, "y": 11520, "w": 768, "h": 768 },
+    "frame": { "x": 20736, "y": 7680, "w": 768, "h": 768 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 768, "h": 768 },
@@ -3184,7 +3184,7 @@
     "duration": 67
    },
    "jan_Lipa 398.aseprite": {
-    "frame": { "x": 6144, "y": 11520, "w": 768, "h": 768 },
+    "frame": { "x": 21504, "y": 7680, "w": 768, "h": 768 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 768, "h": 768 },
@@ -3192,7 +3192,7 @@
     "duration": 67
    },
    "jan_Lipa 399.aseprite": {
-    "frame": { "x": 6912, "y": 11520, "w": 768, "h": 768 },
+    "frame": { "x": 22272, "y": 7680, "w": 768, "h": 768 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 768, "h": 768 },
@@ -3200,7 +3200,7 @@
     "duration": 67
    },
    "jan_Lipa 400.aseprite": {
-    "frame": { "x": 7680, "y": 11520, "w": 768, "h": 768 },
+    "frame": { "x": 23040, "y": 7680, "w": 768, "h": 768 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 768, "h": 768 },
@@ -3208,7 +3208,7 @@
     "duration": 67
    },
    "jan_Lipa 401.aseprite": {
-    "frame": { "x": 8448, "y": 11520, "w": 768, "h": 768 },
+    "frame": { "x": 23808, "y": 7680, "w": 768, "h": 768 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 768, "h": 768 },
@@ -3216,7 +3216,7 @@
     "duration": 67
    },
    "jan_Lipa 402.aseprite": {
-    "frame": { "x": 9216, "y": 11520, "w": 768, "h": 768 },
+    "frame": { "x": 24576, "y": 7680, "w": 768, "h": 768 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 768, "h": 768 },
@@ -3224,7 +3224,7 @@
     "duration": 67
    },
    "jan_Lipa 403.aseprite": {
-    "frame": { "x": 9984, "y": 11520, "w": 768, "h": 768 },
+    "frame": { "x": 25344, "y": 7680, "w": 768, "h": 768 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 768, "h": 768 },
@@ -3232,7 +3232,7 @@
     "duration": 67
    },
    "jan_Lipa 404.aseprite": {
-    "frame": { "x": 10752, "y": 11520, "w": 768, "h": 768 },
+    "frame": { "x": 26112, "y": 7680, "w": 768, "h": 768 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 768, "h": 768 },
@@ -3240,7 +3240,7 @@
     "duration": 67
    },
    "jan_Lipa 405.aseprite": {
-    "frame": { "x": 11520, "y": 11520, "w": 768, "h": 768 },
+    "frame": { "x": 26880, "y": 7680, "w": 768, "h": 768 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 768, "h": 768 },
@@ -3248,7 +3248,7 @@
     "duration": 67
    },
    "jan_Lipa 406.aseprite": {
-    "frame": { "x": 12288, "y": 11520, "w": 768, "h": 768 },
+    "frame": { "x": 27648, "y": 7680, "w": 768, "h": 768 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 768, "h": 768 },
@@ -3256,7 +3256,7 @@
     "duration": 67
    },
    "jan_Lipa 407.aseprite": {
-    "frame": { "x": 13056, "y": 11520, "w": 768, "h": 768 },
+    "frame": { "x": 0, "y": 8448, "w": 768, "h": 768 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 768, "h": 768 },
@@ -3264,7 +3264,7 @@
     "duration": 67
    },
    "jan_Lipa 408.aseprite": {
-    "frame": { "x": 13824, "y": 11520, "w": 768, "h": 768 },
+    "frame": { "x": 768, "y": 8448, "w": 768, "h": 768 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 768, "h": 768 },
@@ -3272,7 +3272,7 @@
     "duration": 67
    },
    "jan_Lipa 409.aseprite": {
-    "frame": { "x": 14592, "y": 11520, "w": 768, "h": 768 },
+    "frame": { "x": 1536, "y": 8448, "w": 768, "h": 768 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 768, "h": 768 },
@@ -3280,7 +3280,7 @@
     "duration": 67
    },
    "jan_Lipa 410.aseprite": {
-    "frame": { "x": 15360, "y": 11520, "w": 768, "h": 768 },
+    "frame": { "x": 2304, "y": 8448, "w": 768, "h": 768 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 768, "h": 768 },
@@ -3288,7 +3288,7 @@
     "duration": 67
    },
    "jan_Lipa 411.aseprite": {
-    "frame": { "x": 16128, "y": 11520, "w": 768, "h": 768 },
+    "frame": { "x": 3072, "y": 8448, "w": 768, "h": 768 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 768, "h": 768 },
@@ -3296,7 +3296,7 @@
     "duration": 67
    },
    "jan_Lipa 412.aseprite": {
-    "frame": { "x": 16896, "y": 11520, "w": 768, "h": 768 },
+    "frame": { "x": 3840, "y": 8448, "w": 768, "h": 768 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 768, "h": 768 },
@@ -3304,7 +3304,7 @@
     "duration": 67
    },
    "jan_Lipa 413.aseprite": {
-    "frame": { "x": 17664, "y": 11520, "w": 768, "h": 768 },
+    "frame": { "x": 4608, "y": 8448, "w": 768, "h": 768 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 768, "h": 768 },
@@ -3312,7 +3312,7 @@
     "duration": 67
    },
    "jan_Lipa 414.aseprite": {
-    "frame": { "x": 18432, "y": 11520, "w": 768, "h": 768 },
+    "frame": { "x": 5376, "y": 8448, "w": 768, "h": 768 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 768, "h": 768 },
@@ -3320,7 +3320,7 @@
     "duration": 67
    },
    "jan_Lipa 415.aseprite": {
-    "frame": { "x": 19200, "y": 11520, "w": 768, "h": 768 },
+    "frame": { "x": 6144, "y": 8448, "w": 768, "h": 768 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 768, "h": 768 },
@@ -3328,7 +3328,7 @@
     "duration": 67
    },
    "jan_Lipa 416.aseprite": {
-    "frame": { "x": 0, "y": 12288, "w": 768, "h": 768 },
+    "frame": { "x": 6912, "y": 8448, "w": 768, "h": 768 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 768, "h": 768 },
@@ -3336,7 +3336,7 @@
     "duration": 67
    },
    "jan_Lipa 417.aseprite": {
-    "frame": { "x": 768, "y": 12288, "w": 768, "h": 768 },
+    "frame": { "x": 7680, "y": 8448, "w": 768, "h": 768 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 768, "h": 768 },
@@ -3344,7 +3344,7 @@
     "duration": 67
    },
    "jan_Lipa 418.aseprite": {
-    "frame": { "x": 1536, "y": 12288, "w": 768, "h": 768 },
+    "frame": { "x": 8448, "y": 8448, "w": 768, "h": 768 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 768, "h": 768 },
@@ -3352,7 +3352,7 @@
     "duration": 67
    },
    "jan_Lipa 419.aseprite": {
-    "frame": { "x": 2304, "y": 12288, "w": 768, "h": 768 },
+    "frame": { "x": 9216, "y": 8448, "w": 768, "h": 768 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 768, "h": 768 },
@@ -3360,7 +3360,7 @@
     "duration": 67
    },
    "jan_Lipa 420.aseprite": {
-    "frame": { "x": 3072, "y": 12288, "w": 768, "h": 768 },
+    "frame": { "x": 9984, "y": 8448, "w": 768, "h": 768 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 768, "h": 768 },
@@ -3368,7 +3368,7 @@
     "duration": 67
    },
    "jan_Lipa 421.aseprite": {
-    "frame": { "x": 3840, "y": 12288, "w": 768, "h": 768 },
+    "frame": { "x": 10752, "y": 8448, "w": 768, "h": 768 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 768, "h": 768 },
@@ -3376,7 +3376,7 @@
     "duration": 67
    },
    "jan_Lipa 422.aseprite": {
-    "frame": { "x": 4608, "y": 12288, "w": 768, "h": 768 },
+    "frame": { "x": 11520, "y": 8448, "w": 768, "h": 768 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 768, "h": 768 },
@@ -3384,7 +3384,7 @@
     "duration": 67
    },
    "jan_Lipa 423.aseprite": {
-    "frame": { "x": 5376, "y": 12288, "w": 768, "h": 768 },
+    "frame": { "x": 12288, "y": 8448, "w": 768, "h": 768 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 768, "h": 768 },
@@ -3392,7 +3392,7 @@
     "duration": 67
    },
    "jan_Lipa 424.aseprite": {
-    "frame": { "x": 6144, "y": 12288, "w": 768, "h": 768 },
+    "frame": { "x": 13056, "y": 8448, "w": 768, "h": 768 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 768, "h": 768 },
@@ -3400,7 +3400,7 @@
     "duration": 67
    },
    "jan_Lipa 425.aseprite": {
-    "frame": { "x": 6912, "y": 12288, "w": 768, "h": 768 },
+    "frame": { "x": 13824, "y": 8448, "w": 768, "h": 768 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 768, "h": 768 },
@@ -3408,7 +3408,7 @@
     "duration": 67
    },
    "jan_Lipa 426.aseprite": {
-    "frame": { "x": 7680, "y": 12288, "w": 768, "h": 768 },
+    "frame": { "x": 14592, "y": 8448, "w": 768, "h": 768 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 768, "h": 768 },
@@ -3416,7 +3416,7 @@
     "duration": 67
    },
    "jan_Lipa 427.aseprite": {
-    "frame": { "x": 8448, "y": 12288, "w": 768, "h": 768 },
+    "frame": { "x": 15360, "y": 8448, "w": 768, "h": 768 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 768, "h": 768 },
@@ -3424,7 +3424,7 @@
     "duration": 67
    },
    "jan_Lipa 428.aseprite": {
-    "frame": { "x": 9216, "y": 12288, "w": 768, "h": 768 },
+    "frame": { "x": 16128, "y": 8448, "w": 768, "h": 768 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 768, "h": 768 },
@@ -3432,7 +3432,7 @@
     "duration": 67
    },
    "jan_Lipa 429.aseprite": {
-    "frame": { "x": 9984, "y": 12288, "w": 768, "h": 768 },
+    "frame": { "x": 16896, "y": 8448, "w": 768, "h": 768 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 768, "h": 768 },
@@ -3440,7 +3440,7 @@
     "duration": 67
    },
    "jan_Lipa 430.aseprite": {
-    "frame": { "x": 10752, "y": 12288, "w": 768, "h": 768 },
+    "frame": { "x": 17664, "y": 8448, "w": 768, "h": 768 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 768, "h": 768 },
@@ -3448,7 +3448,7 @@
     "duration": 67
    },
    "jan_Lipa 431.aseprite": {
-    "frame": { "x": 11520, "y": 12288, "w": 768, "h": 768 },
+    "frame": { "x": 18432, "y": 8448, "w": 768, "h": 768 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 768, "h": 768 },
@@ -3456,7 +3456,7 @@
     "duration": 67
    },
    "jan_Lipa 432.aseprite": {
-    "frame": { "x": 12288, "y": 12288, "w": 768, "h": 768 },
+    "frame": { "x": 19200, "y": 8448, "w": 768, "h": 768 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 768, "h": 768 },
@@ -3464,7 +3464,7 @@
     "duration": 67
    },
    "jan_Lipa 433.aseprite": {
-    "frame": { "x": 13056, "y": 12288, "w": 768, "h": 768 },
+    "frame": { "x": 19968, "y": 8448, "w": 768, "h": 768 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 768, "h": 768 },
@@ -3472,7 +3472,7 @@
     "duration": 67
    },
    "jan_Lipa 434.aseprite": {
-    "frame": { "x": 13824, "y": 12288, "w": 768, "h": 768 },
+    "frame": { "x": 20736, "y": 8448, "w": 768, "h": 768 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 768, "h": 768 },
@@ -3480,7 +3480,7 @@
     "duration": 67
    },
    "jan_Lipa 435.aseprite": {
-    "frame": { "x": 14592, "y": 12288, "w": 768, "h": 768 },
+    "frame": { "x": 21504, "y": 8448, "w": 768, "h": 768 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 768, "h": 768 },
@@ -3488,7 +3488,7 @@
     "duration": 67
    },
    "jan_Lipa 436.aseprite": {
-    "frame": { "x": 15360, "y": 12288, "w": 768, "h": 768 },
+    "frame": { "x": 22272, "y": 8448, "w": 768, "h": 768 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 768, "h": 768 },
@@ -3496,7 +3496,55 @@
     "duration": 67
    },
    "jan_Lipa 437.aseprite": {
-    "frame": { "x": 16128, "y": 12288, "w": 768, "h": 768 },
+    "frame": { "x": 23040, "y": 8448, "w": 768, "h": 768 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 768, "h": 768 },
+    "sourceSize": { "w": 768, "h": 768 },
+    "duration": 67
+   },
+   "jan_Lipa 438.aseprite": {
+    "frame": { "x": 23808, "y": 8448, "w": 768, "h": 768 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 768, "h": 768 },
+    "sourceSize": { "w": 768, "h": 768 },
+    "duration": 67
+   },
+   "jan_Lipa 439.aseprite": {
+    "frame": { "x": 24576, "y": 8448, "w": 768, "h": 768 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 768, "h": 768 },
+    "sourceSize": { "w": 768, "h": 768 },
+    "duration": 67
+   },
+   "jan_Lipa 440.aseprite": {
+    "frame": { "x": 25344, "y": 8448, "w": 768, "h": 768 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 768, "h": 768 },
+    "sourceSize": { "w": 768, "h": 768 },
+    "duration": 67
+   },
+   "jan_Lipa 441.aseprite": {
+    "frame": { "x": 26112, "y": 8448, "w": 768, "h": 768 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 768, "h": 768 },
+    "sourceSize": { "w": 768, "h": 768 },
+    "duration": 67
+   },
+   "jan_Lipa 442.aseprite": {
+    "frame": { "x": 26880, "y": 8448, "w": 768, "h": 768 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 768, "h": 768 },
+    "sourceSize": { "w": 768, "h": 768 },
+    "duration": 67
+   },
+   "jan_Lipa 443.aseprite": {
+    "frame": { "x": 27648, "y": 8448, "w": 768, "h": 768 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 768, "h": 768 },
@@ -3509,7 +3557,7 @@
   "version": "1.3.8.1-x64",
   "image": "jan_Lipa.png",
   "format": "RGBA8888",
-  "size": { "w": 19968, "h": 13056 },
+  "size": { "w": 28416, "h": 9216 },
   "scale": "1",
   "frameTags": [
    { "name": "Idle", "from": 0, "to": 4, "direction": "forward", "color": "#000000ff" },
@@ -3557,9 +3605,9 @@
    { "name": "Left Roll", "from": 406, "to": 411, "direction": "forward", "color": "#000000ff" },
    { "name": "Neutral Roll", "from": 412, "to": 415, "direction": "forward", "color": "#000000ff" },
    { "name": "Hurt", "from": 416, "to": 419, "direction": "forward", "color": "#000000ff" },
-   { "name": "Block", "from": 420, "to": 421, "direction": "forward", "color": "#000000ff" },
-   { "name": "Parry", "from": 422, "to": 423, "direction": "forward", "color": "#000000ff" },
-   { "name": "Dead", "from": 424, "to": 437, "direction": "forward", "color": "#000000ff" }
+   { "name": "Block", "from": 420, "to": 424, "direction": "forward", "color": "#000000ff" },
+   { "name": "Parry", "from": 425, "to": 429, "direction": "forward", "color": "#000000ff" },
+   { "name": "Dead", "from": 430, "to": 443, "direction": "forward", "color": "#000000ff" }
   ]
  }
 }

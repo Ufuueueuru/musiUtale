@@ -101,7 +101,8 @@
 
 		this.collideRadius = 70;
 
-		this.selectScreenSizeOffset = -200;
+		this.selectScreenSizeOffset = 90;
+		this.selectScreenYOffset = -25;
 
 		this.sheet = Spritesheet.copy(assetManager.spritesheets.akesiLotoSheet);
 

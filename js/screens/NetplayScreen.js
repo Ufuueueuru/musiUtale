@@ -122,7 +122,7 @@ class NetplayScreen extends Screen {
                     }
                 }
             }
-            if (this.keyboardActive && (keyIsPressed(27) || keyIsPressed(13))) {
+            if (this.keyboardActive && (keyIsDown(27) || keyIsDown(13))) {
                 this.deactivateKeyboard();
             }
         }

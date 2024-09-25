@@ -31,7 +31,7 @@ class MenuItem {
 
     drawSelected(g, width, height, imageWidth, imageHeight) {
         let x = windowWidth / 2 - width / 2 + this.x * width / 512;
-        let y = windowHeight / 2 - height / 2 + this.y * height / 384
+        let y = windowHeight / 2 - height / 2 + this.y * height / 384;
         if (this.pressedImage)
             g.image(this.pressedImage, x, y, imageWidth, imageHeight);
         g.fill(35, 35, 15, 225);
@@ -63,5 +63,33 @@ class MenuMove {
         this.angle = angle;
         /** @type {number} */
         this.leniency = leniency;
+    }
+}
+
+class MenuButton extends MenuItem {
+    constructor(x, y, pressedImage, unpressedImage, targetScreenClass, text = "", pressFunction, pressedFunction) {
+        super(x, y, pressedImage, unpressedImage, targetScreenClass, text, pressFunction);
+        this.pressedFunction = pressedFunction;
+    }
+
+    drawSelected(g, width, height, imageWidth, imageHeight) {
+        let x = windowWidth / 2 - width / 2 + this.x * width / 512 + imageWidth * 1.1;
+        let y = windowHeight / 2 - height / 2 + this.y * height / 384 + imageHeight * 1.1 - imageHeight;
+        super.drawSelected(g, width, height, imageWidth, imageHeight);
+        if (this.pressedFunction()) {
+            g.image(assetManager.images.buttonOn, x, y, imageHeight * 400 / 224, imageHeight);
+        } else {
+            g.image(assetManager.images.buttonOff, x, y, imageHeight * 400 / 224, imageHeight);
+        }
+    }
+    drawUnselected(g, width, height, imageWidth, imageHeight) {
+        let x = windowWidth / 2 - width / 2 + this.x * width / 512 + imageWidth * 1.1;
+        let y = windowHeight / 2 - height / 2 + this.y * height / 384 + imageHeight * 1.1 - imageHeight;
+        super.drawUnselected(g, width, height, imageWidth, imageHeight);
+        if (this.pressedFunction()) {
+            g.image(assetManager.images.buttonOn, x, y, imageHeight * 400 / 224, imageHeight);
+        } else {
+            g.image(assetManager.images.buttonOff, x, y, imageHeight * 400 / 224, imageHeight);
+        }
     }
 }

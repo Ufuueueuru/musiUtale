@@ -63,7 +63,8 @@ class Spritesheet {
 	loadImage(onLoad, onError) {
 		this.image = loadImage(this.src, ((onLoad) => {
 			if (graphicsSettings.spriteResolutionMult !== 1 && this.image.width * graphicsSettings.spriteResolutionMult % 1 === 0 && this.image.height * graphicsSettings.spriteResolutionMult % 1 === 0) {
-				this.image.resize(this.image.width * graphicsSettings.spriteResolutionMult, 0);
+				if (debug.noSplit)
+					this.image.resize(this.image.width * graphicsSettings.spriteResolutionMult, 0);
 				this.resolutionMult = graphicsSettings.spriteResolutionMult;
 			}
 			onLoad();
@@ -127,11 +128,11 @@ class Spritesheet {
 		//let tg = createGraphics(this.width, this.height);//Old method (slow I think)
 		//tg.image(this.image, 0, 0, this.width, this.height, x, y, this.width, this.height);
 
-		let tg = this.image.get(x, y, this.width * this.resolutionMult, this.height * this.resolutionMult);
+		let tg = this.image.get(x, y, this.width, this.height);
 		this.images[i] = tg;
 
-		/*if (graphicsSettings.spriteResolutionMult !== 1)
-			this.images[i].resize(Math.round(this.width * graphicsSettings.spriteResolutionMult), 0);*/
+		if (graphicsSettings.spriteResolutionMult !== 1)
+			this.images[i].resize(Math.round(this.width * graphicsSettings.spriteResolutionMult), 0);
 
 		loaded.amount++;
 

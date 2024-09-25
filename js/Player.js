@@ -30,6 +30,10 @@ class Player extends Hitcircle {
 
 		/** @type {number} How much bigger to draw the image in the character select screen */
 		this.selectScreenSizeOffset = 0;
+		/** @type {number} How offset the y-value of the character is drawn on the select screen */
+		this.selectScreenYOffset = 0;
+		/** @type {number} How much to rotate the character model in the character select screen*/
+		this.selectScreenRotation = 0;
 
 		/** @type {Spritesheet} */
 		this.sheet = Spritesheet.copy(assetManager.spritesheets.hitEffect);//DEBUG (I think)
@@ -632,7 +636,7 @@ class Player extends Hitcircle {
 		}
 	}
 
-	copyHurtbox(target) {
+	copyHurtbox(target, rollbacking = false) {
 		this.circles = [];
 		for (let i in target) {
 			this.circles.push(new Circle(target[i].x, target[i].y, target[i].diameter));
@@ -2757,6 +2761,8 @@ class Player extends Hitcircle {
 			headNoun,
 			name,
 			selectScreenSizeOffset,
+			selectScreenYOffset,
+			selectScreenRotation,
 			world,
 			collideRadius,
 			deathChanceThreshold,
@@ -2868,7 +2874,7 @@ class Player extends Hitcircle {
 
 	deserializeHelp(obj) {
 		this.circles = [];
-		this.copyHurtbox(obj.circles);
+		this.copyHurtbox(obj.circles, true);
 
 		if (!obj.frameDataRef) {
 			this.frameDataRef = null;

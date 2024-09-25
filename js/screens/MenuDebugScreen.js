@@ -14,7 +14,7 @@ class MenuDebugScreen extends Screen {
 
         assetManager.spritesheets.menuFire.draw(g, width / 2 - imageWidth / 6, height - imageWidth / 3, imageWidth / 3, imageWidth / 3.05);
 
-        this.menu.draw(g, imageWidth, imageHeight, imageWidth * 0.2, imageHeight * 0.1);
+        this.menu.draw(g, imageWidth, imageHeight, imageWidth * 0.21, imageHeight * 0.1);
 
         if (promptTutorial && !tutorialPromptSelected) {
             g.background(200, 200, 210, 140);
@@ -72,7 +72,7 @@ class MenuDebugScreen extends Screen {
         let buttonTraining = new MenuItem(276, 140, assetManager.images.buttonPressed, assetManager.images.buttonUnpressed, CharacterSelectScreen, gt("mainMenuTraining"), () => { playersManager.openScreen(); playersManager.resetPositions(MenuDebugScreen); currentScreen.setTraining(); });//kama wawa
         let buttonNetplay = new MenuItem(296, 177, assetManager.images.buttonPressed, assetManager.images.buttonUnpressed, CharacterSelectScreen, gt("mainMenuOnline"), () => { playersManager.openScreen(); playersManager.resetPositionsNetplay(MenuDebugScreen); currentScreen.setNetplay(); });
         let buttonTutorial = new MenuItem(316, 214, assetManager.images.buttonPressed, assetManager.images.buttonUnpressed, TutorialScreen, gt("tutorial"), () => { playersManager.openScreen(); playersManager.resetPositions(MenuDebugScreen); playersManager.disableP2(); /*currentScreen = new TutorialScreen([0, 0], [controls[0], null], 0);*/ });
-        let button3 = new MenuItem(336, 251, assetManager.images.buttonPressed, assetManager.images.buttonUnpressed, MenuDebugScreen, "󱥜");
+        let button3 = new MenuItem(336, 251, assetManager.images.buttonPressed, assetManager.images.buttonUnpressed, MenuOtherScreen, gt("mainMenuOther"));
         let button4 = new MenuItem(356, 288, assetManager.images.buttonPressed, assetManager.images.buttonUnpressed, undefined, gt("mainMenuClose"), window.electronAPI.closeWindow);
 
         

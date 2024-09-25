@@ -314,6 +314,14 @@
       "text": "󱥱󱤬󱤝"
     }
   },
+  "mainMenuOther": {
+    "en": {
+      "text": "Other"
+    },
+    "tp": {
+      "text": "󱤆"
+    }
+  },
   "mainMenuClose": {
     "en": {
       "text": "Exit"
@@ -344,6 +352,89 @@
     },
     "tp": {
       "text": "󱤂"
+    }
+  },
+
+  "otherMenuGraphics": {
+    "en": {
+      "text": "Graphics"
+    },
+    "tp": {
+      "text": "󱤮󱥠"
+    }
+  },
+  "otherMenuSound": {
+    "en": {
+      "text": "Sound"
+    },
+    "tp": {
+      "text": "󱤠󱤕"
+    }
+  },
+  "otherMenuPlaceholder": {
+    "en": {
+      "text": "Placeholder"
+    },
+    "tp": {
+      "text": "󱤌󱤂"
+    }
+  },
+  "otherMenuMods": {
+    "en": {
+      "text": "Mods"
+    },
+    "tp": {
+      "text": "󱥸"
+    }
+  },
+  "otherMenuReload": {
+    "en": {
+      "text": "Reload Game"
+    },
+    "tp": {
+      "text": "󱥄󱥝󱤉󱤻"
+    }
+  },
+  "otherMenuCredits": {
+    "en": {
+      "text": "Credits"
+    },
+    "tp": {
+      "text": "󱥧󱤑"
+    }
+  },
+  "otherMenuBack": {
+    "en": {
+      "text": "Back"
+    },
+    "tp": {
+      "text": "󱥶"
+    }
+  },
+
+  "graphicsResolution": {
+    "en": {
+      "text": "Resolution:"
+    },
+    "tp": {
+      "text": "󱥵󱥍󱥠󱤄:"
+    }
+  },
+  "graphicsSpriteResolution": {
+    "en": {
+      "text": "Sprite Resolution:"
+    },
+    "tp": {
+      "text": "󱥵󱥍󱥠󱤨:"
+    }
+  },
+
+  "noMods": {
+    "en": {
+      "text": "No mods found in mods folder!"
+    },
+    "tp": {
+      "text": "󱥸󱤂󱤧󱤬󱤪\"mods\""
     }
   },
 

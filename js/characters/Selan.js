@@ -1802,7 +1802,7 @@
 		this.headNoun = "󱤎󱥈";//ilo pakala
 		this.name = currentLanguage === "tp" ? "󱤎󱥈4891" : "Error: 4891";//ilo pakala 4891
 
-		this.selectScreenSizeOffset = 10;
+		this.selectScreenSizeOffset = 0;
 
 		this.sheet = Spritesheet.copy(assetManager.spritesheets.iloPakalaSheet);
 
@@ -1871,8 +1871,8 @@
 
 		this.weight = 1.6;
 
-		this.health = 1000;
-		this.maxHealth = 1000;
+		this.health = 950;
+		this.maxHealth = 950;
 
 		this.arrowOffset = 0;
 
@@ -2063,15 +2063,6 @@ class SelanDashAttack extends Attack {
 	}
 
 	draw(g) {
-		/*if (this.getStartupF() < 16 && this.getFromEndF() < 8) {
-			g.push();
-			g.translate(this.x, this.y);
-			g.rotate(this.dir.value);
-
-			this.sheet.draw(g, 20, -90, 130, 180);
-
-			g.pop();
-		}*/
 		if (this.currentlyActive()) {
 			if (debug.displayHitboxes)
 				this.debugDraw(g);
@@ -3043,7 +3034,7 @@ class SelanMPS extends Attack {
 		let sweet8 = new PriorityCircle(0, -160, 80, 0).setVelocity(0.1, 0);
 		let circles = [sweet1, sweet2, sweet3, sweet4, sweet5, sweet6, sweet7, sweet8];
 
-		let sweet = new AttackProperties().setDamage(25, player.powerupGrabFrames ? 10 : 3).setProration(player.powerupGrabFrames ? 0 : 1).setCancelOptions(cancelOptions).setAngleValue(player.dir.value).setLaunch(21, 0.1, 0.5).setHitStun(48, 28).setStunFrames(4).setNormalizeHitStun();
+		let sweet = new AttackProperties().setDamage(20, player.powerupGrabFrames ? 10 : 3).setProration(player.powerupGrabFrames ? 0 : 1).setCancelOptions(cancelOptions).setAngleValue(player.dir.value).setLaunch(21, 0.1, 0.5).setHitStun(48, 28).setStunFrames(4).setNormalizeHitStun();
 		let prop = [sweet];
 
 		//sweet.setHitSound(assetManager.sounds.fanTP);
@@ -3231,7 +3222,7 @@ class SelanLN extends Attack {
 		let sweet1 = new PriorityCircle(0, -30, 60, 0).setVelocity(20, -4);
 		let circles = [sweet1];
 
-		let sweet = new AttackProperties().setDamage((player.powerupGrabFrames ? 6.5 : 5) * (this.weak ? 0.5 : 1)).setProration(-1).setCancelOptions(cancelOptions).setAngleValue(player.dir.value + 0.1).setLaunch(3, 1).setHitStun(40).setStunFrames(30).setCommandGrab().setCancelWait(3).setNoKill(this.weak);
+		let sweet = new AttackProperties().setDamage((player.powerupGrabFrames ? 6.5 : 5) * (this.weak ? 0.5 : 1)).setProration(-1).setCancelOptions(cancelOptions).setAngleValue(player.dir.value + 0.1).setLaunch(3, 1).setHitStun(38).setStunFrames(30).setCommandGrab().setCancelWait(3).setNoKill(this.weak);
 		let prop = [sweet];
 
 		//sweet.setHitSound(assetManager.sounds.fanTP);
@@ -3312,8 +3303,8 @@ class SelanMN extends Attack {
 		let sweet1 = new PriorityCircle(0, 0, 190, 1);
 		let circles = [sour1, sweet1];
 
-		let sweet = new AttackProperties().setDamage(60).setCancelOptions(cancelOptions, hitCancelOptions).setAngleValue(player.dir.value).setLaunch(20, 0, player.powerupGrabFrames ? 0.8 : 0.3).setHitStun(43, 30).setStunFrames(15, 16).setAngleTypes("direct", "direct");
-		let sour = new AttackProperties().setDamage(50).setCancelOptions(cancelOptions, hitCancelOptions).setAngleValue(player.dir.value).setLaunch(20, 0, player.powerupGrabFrames ? 0.8 : 0.3).setHitStun(42, 30).setStunFrames(15, 16).setAngleTypes("direct", "direct");
+		let sweet = new AttackProperties().setDamage(60).setCancelOptions(cancelOptions, hitCancelOptions).setAngleValue(player.dir.value).setLaunch(20, 0, player.powerupGrabFrames ? 0.8 : 0.3).setHitStun(43, 20).setStunFrames(15, 16).setAngleTypes("direct", "direct");
+		let sour = new AttackProperties().setDamage(50).setCancelOptions(cancelOptions, hitCancelOptions).setAngleValue(player.dir.value).setLaunch(20, 0, player.powerupGrabFrames ? 0.8 : 0.3).setHitStun(42, 20).setStunFrames(15, 16).setAngleTypes("direct", "direct");
 		let prop = [sour, sweet];
 
 		return new this(player, circles, prop).setClashPriority(player.powerupGrabFrames ? false : 1).setStartupF(15).setActiveF(30).setEndF(20).setRotateable().setMulti(4, 15, 15);
@@ -3333,16 +3324,16 @@ class SelanMN extends Attack {
 
 	applyModifiers() {
 		this.player.counterHittable = true;
-
 	}
 
 	logic() {
-		if (this.getFromStartupF() === 4) {
+		if (this.getFromActiveF() === 5) {
+			this.setClashPriority(5);
+			this.circles[1].diameter = 150;
+		}
+		if (this.getFromStartupF() === 6) {
 			this.player.invTo = ["attack"];
 			this.player.iFrames = 16;
-		}
-		if (this.getFromActiveF() === 5) {
-			this.setClashPriority(6);
 		}
 	}
 }

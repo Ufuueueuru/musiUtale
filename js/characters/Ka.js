@@ -1139,7 +1139,7 @@
 
 		this.health = 700;
 		this.maxHealth = 700;
-		this.timerPunishMult = 0.7;
+		this.timerPunishMult = 0.65;
 
 		this.arrowOffset = -15;
 
@@ -1241,12 +1241,12 @@
 
 	generalLogic() {
 		this.hitStunModifier = 3;
-		if (this.currentState.name === "hitstun")
+		if (this.currentState.name === "hitstun" || ((this.currentState.name === "neutral" || this.currentState.name === "walk") && this.world.frameCount % 10 === 0))
 			this.risk--;
 		if (this.targetPlayer && this.targetPlayer.currentState.name === "block" && this.targetPlayer.hitStun % 3 > 0)
 			this.risk++;
 		this.risk = constrain(this.risk, 0, 600);
-		this.defense = constrain(1 + this.risk / 1200, 1, 1.4);
+		this.defense = constrain(1 + this.risk / 2000, 1, 1.2);
 
 		if (this.targetPlayer) {
 			this.pastX = (this.pastX * 498 + this.x + this.targetPlayer.x) / 500;
@@ -1715,8 +1715,8 @@ class KaML extends Attack {
 		let sweet1 = new PriorityCircle(-10, 0, 125, 1);
 		let circles = [sour1, sweet1];
 
-		let sour = new AttackProperties().setDamage(15, -20).setProration(-0.175).setCancelOptions(cancelOptions).setAngleValue(player.dir.value).setLaunch(2, 1, 1).setHitStun(28, 11).setStunFrames(12).setCancelWait(5).setAngleTypes("direct", "direct");
-		let sweet = new AttackProperties().setDamage(16, -20).setProration(-0.175).setCancelOptions(cancelOptions).setAngleValue(player.dir.value).setLaunch(1, 1, 1).setHitStun(28, 11).setStunFrames(12).setCancelWait(5).setAngleTypes("direct", "direct");
+		let sour = new AttackProperties().setDamage(15, -20).setProration(-0.175).setCancelOptions(cancelOptions).setAngleValue(player.dir.value).setLaunch(2, 1, 1).setHitStun(28, 16).setStunFrames(12).setCancelWait(5).setAngleTypes("direct", "direct");
+		let sweet = new AttackProperties().setDamage(16, -20).setProration(-0.175).setCancelOptions(cancelOptions).setAngleValue(player.dir.value).setLaunch(1, 1, 1).setHitStun(28, 16).setStunFrames(12).setCancelWait(5).setAngleTypes("direct", "direct");
 		let prop = [sour, sweet];
 
 		sweet.setHitSound(assetManager.sounds["8BitHit"]);
@@ -1853,8 +1853,8 @@ class KaNS extends Attack {
 		let sweet1 = new PriorityCircle(50, 0, 70, 1).setVelocity(0.1, 0);
 		let circles = [sour1, sour2, sweet1];
 
-		let sour = new AttackProperties().setDamage(28).setProration(0).setCancelOptions(cancelOptions).setAngleValue(player.dir.value).setLaunch(7, 7, 1).setHitStun(38, 13).setStunFrames(13).setCancelWait(4).setWallPushback(8);
-		let sweet = new AttackProperties().setDamage(32).setProration(0).setCancelOptions(cancelOptions).setAngleValue(player.dir.value).setLaunch(2, 5, 1).setHitStun(38, 13).setStunFrames(13).setCancelWait(4).setWallPushback(11);
+		let sour = new AttackProperties().setDamage(28).setProration(0).setCancelOptions(cancelOptions).setAngleValue(player.dir.value).setLaunch(7, 7, 1).setHitStun(38, 14).setStunFrames(13).setCancelWait(4).setWallPushback(8);
+		let sweet = new AttackProperties().setDamage(32).setProration(0).setCancelOptions(cancelOptions).setAngleValue(player.dir.value).setLaunch(2, 5, 1).setHitStun(38, 14).setStunFrames(13).setCancelWait(4).setWallPushback(11);
 		let prop = [sour, sweet];
 
 		sweet.setHitSound(assetManager.sounds["8BitHit"]);
@@ -2024,7 +2024,7 @@ class KaMS extends Attack {
 		let sweet2 = new PriorityCircle(60, -30, 50, 0).setVelocity(0.1, 0.1);
 		let circles = [sweet1, sweet2];
 
-		let sweet = new AttackProperties().setDamage(35, -30, 6).setProration(0.2).setCancelOptions(cancelOptions).setAngleValue(player.dir.value - PI / 5).setLaunch(2, 1, 0.3).setHitStun(28, 11).setStunFrames(12).setCancelWait(5, 10);
+		let sweet = new AttackProperties().setDamage(35, -30, 6).setProration(0.2).setCancelOptions(cancelOptions).setAngleValue(player.dir.value - PI / 5).setLaunch(2, 1, 0.3).setHitStun(28, 11).setStunFrames(12).setCancelWait(5, 7);
 		let prop = [sweet];
 
 		sweet.setHitSound(assetManager.sounds["8BitHit"]);
@@ -2380,7 +2380,7 @@ class KaNPS extends Attack {
 		let sour1 = new PriorityCircle(0, 0, 160, 0);
 		let circles = [sour1];
 
-		let sweet = new AttackProperties().setProration(-0.9).setCancelOptions(cancelOptions).setAngleValue(player.dir.value).setHitStun(35, 10).setStunFrames(13).setCancelWait(9).setAngleTypes("direct", "direct");
+		let sweet = new AttackProperties().setProration(-0.9).setCancelOptions(cancelOptions).setAngleValue(player.dir.value).setHitStun(35, 20).setStunFrames(13).setCancelWait(9).setAngleTypes("direct", "direct");
 		let prop = [sweet];
 
 		sweet.setHitSound(assetManager.sounds["8BitHit"]);
@@ -2681,7 +2681,7 @@ class KaMPS extends Attack {
 		sweet.setHitSound(assetManager.sounds["8BitHit"]);
 		//sweet.setBlockSound(assetManager.sounds["8BitHit"]);
 
-		return new this(player, circles, prop).setClashPriority(1).setStartupF(16).setActiveF(7).setEndF(30);
+		return new this(player, circles, prop).setClashPriority(1).setStartupF(16).setActiveF(7).setEndF(25);
 	}
 
 	static startAttack(player, attack, bufferInfo) {

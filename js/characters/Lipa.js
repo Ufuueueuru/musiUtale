@@ -10,6 +10,137 @@
 			new ICircle(52, 15, 15)
 		]);
 
+		this.hurtboxes["walk"] = [
+			[new Circle(0, 5, 50),
+			new Circle(15, -7, 40),
+			new Circle(24, -13, 25),
+			new Circle(-19, 24, 28),
+			new ICircle(43, -7, 15),
+			new ICircle(50, 2, 15),
+			new ICircle(53, 15, 15)],
+			[new Circle(0, 5, 50),
+			new Circle(16, -8, 40),
+			new Circle(26, -13, 25),
+			new Circle(-18, 23, 28),
+			new ICircle(43, -7, 15),
+			new ICircle(51, 4, 15),
+			new ICircle(54, 17, 15)],
+			[new Circle(0, 4, 51),
+			new Circle(20, -8, 40),
+			new Circle(31, -13, 25),
+			new Circle(-14, 18, 34),
+			new ICircle(43, -7, 15),
+			new ICircle(51, 6, 15),
+			new ICircle(54, 20, 15)],
+			[new Circle(0, 5, 51),
+			new Circle(19, -8, 42),
+			new Circle(30, -13, 25),
+			new Circle(-15, 18, 32),
+			new ICircle(43, -5, 15),
+			new ICircle(51, 6, 15),
+			new ICircle(55, 20, 15)],
+			[new Circle(0, 4, 50),
+			new Circle(16, -8, 40),
+			new Circle(26, -13, 25),
+			new Circle(-18, 21, 28),
+			new ICircle(43, -3, 15),
+			new ICircle(51, 8, 15),
+			new ICircle(55, 20, 15)],
+			[new Circle(0, 5, 50),
+			new Circle(15, -7, 40),
+			new Circle(24, -13, 26),
+			new Circle(-17, 22, 33),
+			new ICircle(42, -5, 15),
+			new ICircle(50, 5, 15),
+			new ICircle(55, 18, 15)],
+			[new Circle(-1, 7, 52),
+			new Circle(12, -4, 40),
+			new Circle(22, -10, 25),
+			new Circle(-18, 27, 32),
+			new ICircle(41, -5, 15),
+			new ICircle(48, 5, 15),
+			new ICircle(54, 18, 15)],
+			[new Circle(0, 6, 52),
+			new Circle(10, -4, 40),
+			new Circle(19, -12, 25),
+			new Circle(-15, 29, 35),
+			new ICircle(37, -4, 15),
+			new ICircle(47, 6, 15),
+			new ICircle(54, 17, 15)],
+			[new Circle(-1, 7, 50),
+			new Circle(11, -4, 40),
+			new Circle(19, -12, 25),
+			new Circle(-15, 30, 33),
+			new ICircle(38, -4, 15),
+			new ICircle(47, 6, 15),
+			new ICircle(54, 17, 15)],
+			[new Circle(-1, 7, 51),
+			new Circle(12, -5, 40),
+			new Circle(21, -12, 25),
+			new Circle(-17, 28, 31),
+			new ICircle(40, -5, 15),
+			new ICircle(49, 5, 15),
+			new ICircle(54, 17, 15)]
+		];
+
+		this.hurtboxes["grab"] = [
+			[new Circle(0, 5, 50),
+			new Circle(15, -9, 40),
+			new Circle(25, -15, 25),
+			new Circle(-20, 25, 25),
+			new ICircle(42, -5, 15),
+			new ICircle(47, 5, 15),
+			new ICircle(52, 15, 15)]
+		];
+
+		this.hurtboxes["grabbed"] = [
+			[new Circle(10, 0, 80),
+			new Circle(18, -21, 38),
+			new Circle(18, 19, 38),
+			new ICircle(1, 49, 28),
+			new ICircle(-1, -50, 27)]
+		];
+
+		this.hurtboxes["lipuLili"] = [
+			[new Circle(10, 0, 80),
+			new Circle(18, -21, 38),
+			new Circle(18, 19, 38),
+			new ICircle(1, 49, 28),
+			new ICircle(-1, -50, 27)]
+		];
+
+		this.hurtboxes["lipuSuli"] = [
+			[new Circle(10, 0, 80),
+			new Circle(18, -21, 38),
+			new Circle(18, 19, 38),
+			new ICircle(1, 49, 28),
+			new ICircle(-1, -50, 27)]
+		];
+
+		this.hurtboxes["rightRoll"] = [
+			[new Circle(10, 0, 80),
+			new Circle(18, -21, 38),
+			new Circle(18, 19, 38),
+			new ICircle(1, 49, 28),
+			new ICircle(-1, -50, 27)]
+		];
+
+		this.hurtboxes["neutralRoll"] = [
+			[new Circle(10, 0, 80),
+			new Circle(18, -21, 38),
+			new Circle(18, 19, 38),
+			new ICircle(1, 49, 28),
+			new ICircle(-1, -50, 27)]
+		];
+
+		this.hurtboxes["leftRoll"] = [
+			[new Circle(10, 0, 80),
+			new Circle(18, -21, 38),
+			new Circle(18, 19, 38),
+			new ICircle(1, 49, 28),
+			new ICircle(-1, -50, 27)]
+		];
+
 		this.hurtboxes["hitstun"] = [
 			[new Circle(10, 0, 80),
 			new Circle(18, -21, 38),
@@ -384,12 +515,71 @@
 
 		this.hurtboxes["SN"] = [
 			[new Circle(0, 5, 50),
-			new Circle(15, -9, 40),
-			new Circle(25, -15, 25),
-			new Circle(-20, 25, 25),
-			new ICircle(42, -5, 15),
-			new ICircle(47, 5, 15),
-			new ICircle(52, 15, 15)]
+			new Circle(15, -7, 43),
+			new Circle(-19, 24, 29),
+			new ICircle(39, -16, 15),
+			new ICircle(47, -20, 15),
+			new ICircle(57, -21, 15)],
+			[new Circle(0, 5, 50),
+			new Circle(15, -7, 43),
+			new Circle(-19, 24, 29),
+			new ICircle(37, -22, 15),
+			new ICircle(46, -29, 15),
+			new ICircle(56, -36, 15)],
+			[new Circle(8, 5, 50),
+			new Circle(24, -7, 43),
+			new Circle(-11, 23, 29),
+			new ICircle(47, -6, 15),
+			new ICircle(55, 2, 15),
+			new ICircle(59, 13, 15)],
+			[new Circle(8, 5, 50),
+			new Circle(24, -7, 43),
+			new Circle(-11, 23, 29),
+			new ICircle(47, -6, 15),
+			new ICircle(55, 2, 15),
+			new ICircle(59, 13, 15)],
+			[new Circle(8, 5, 50),
+			new Circle(24, -7, 43),
+			new Circle(-11, 23, 29),
+			new ICircle(47, -6, 15),
+			new ICircle(55, 2, 15),
+			new ICircle(59, 13, 15)],
+			[new Circle(5, 4, 50),
+			new Circle(22, -8, 42),
+			new Circle(-14, 22, 29),
+			new ICircle(47, -6, 15),
+			new ICircle(55, -1, 15),
+			new ICircle(60, 8, 15)],
+			[new Circle(3, 4, 50),
+			new Circle(19, -7, 42),
+			new Circle(-17, 23, 29),
+			new ICircle(43, -5, 15),
+			new ICircle(51, -1, 15),
+			new ICircle(57, 8, 15)],
+			[new Circle(3, 4, 50),
+			new Circle(18, -7, 42),
+			new Circle(-17, 24, 29),
+			new ICircle(40, -5, 15),
+			new ICircle(47, 1, 15),
+			new ICircle(53, 11, 15)],
+			[new Circle(2, 4, 50),
+			new Circle(17, -7, 42),
+			new Circle(-19, 24, 29),
+			new ICircle(39, -6, 15),
+			new ICircle(46, 0, 15),
+			new ICircle(50, 11, 15)],
+			[new Circle(2, 4, 50),
+			new Circle(17, -7, 42),
+			new Circle(-19, 24, 29),
+			new ICircle(40, -7, 15),
+			new ICircle(48, 1, 15),
+			new ICircle(52, 13, 15)],
+			[new Circle(2, 4, 50),
+			new Circle(17, -7, 42),
+			new Circle(-19, 24, 29),
+			new ICircle(41, -8, 15),
+			new ICircle(50, 2, 15),
+			new ICircle(53, 16, 15)]
 		];
 
 		this.hurtboxes["RN"] = [
@@ -542,7 +732,8 @@
 		this.headNoun = "󱤑";//jan
 		this.name = currentLanguage === "tp" ? "󱤑󱦐󱦗󱤮󱤏󱥔󱤈󱦑" : "Lipa";//jan Lipa
 
-		this.selectScreenSizeOffset = 60;
+		this.selectScreenSizeOffset = 90;
+		this.selectScreenRotation = -PI / 32;
 
 		this.sheet = Spritesheet.copy(assetManager.spritesheets.janLipaSheet);
 
@@ -568,8 +759,9 @@
 		this.states.SS = State.copyState(State.SS).addTag("rotateable");
 		this.states.LS = State.copyState(State.LS).addTag("rotateable");
 		this.states.NPL = State.copyState(State.NPL).addTag("rotateable");
+		this.states.SPL = State.copyState(State.SPL).addTag("rotateable");
 		this.states.LN_ACTIONS = [];
-		this.states.LNF = State.copyState(State.LN).setName("LNF");
+		this.states.LNF = State.copyState(State.LN).setName("LNF").addTag("BASE");
 
         this.collideRadius = 55;
 
@@ -1120,12 +1312,12 @@
 		}
 	}
 
-	copyHurtbox(target) {
+	copyHurtbox(target, rollbacking) {
 		for (let i in target) {
 			this.circles.push(new Circle(target[i].x, target[i].y, target[i].diameter));
 			if (target[i].intangible)
 				this.circles[i].intangible = target[i].intangible;
-			if (!this.rightHanded)
+			if (!this.rightHanded && !rollbacking)
 				this.circles[i].y *= -1;
 		}
 	}
@@ -1191,6 +1383,8 @@
 			headNoun,
 			name,
 			selectScreenSizeOffset,
+			selectScreenYOffset,
+			selectScreenRotation,
 			world,
 			collideRadius,
 			deathChanceThreshold,
@@ -1284,30 +1478,17 @@ class LipaDashAttack extends Attack {
 	}
 
 	draw(g) {
-		if (this.getFromStartupF() === 10) {
-			this.player.iFrames = 9;
-			this.player.invTo = ["attack"];
-		}
 		if (this.currentlyActive()) {
-			/*let x = cos(this.dir.value);
-			let y = sin(this.dir.value);
-
-			g.push();
-			g.translate(this.x + 50 * x, this.y + 50 * y);
-			g.rotate(this.dir.value + PI / 2);
-
-			this.sheet.draw(g, -64, -64, 128, 128);
-			if (this.player.stunFrames <= 0)
-				this.sheet.run();
-
-			g.pop();*/
-
 			if (debug.displayHitboxes)
 				this.debugDraw(g);
 		}
 	}
 
 	logic() {
+		if (this.getFromStartupF() === 10) {
+			this.player.iFrames = 9;
+			this.player.invTo = ["attack"];
+		}
 		if (this.getStartupF() === 1) {
 			this.player.rightHanded = !this.player.rightHanded;
 		}
@@ -1815,8 +1996,8 @@ class LipaNPL extends Attack {
 		let sweet2 = new PriorityCircle(74, 25, 20, 2).setVelocity(11, 0);
 		let circles = [ultraSour1, ultraSour2, ultraSour3, sour1, sour2, sour3, sweet1, sweet2];
 
-		let ultraSour = new AttackProperties().setDamage(15).setProration(-0.5, 0.9).setCancelOptions(cancelOptions).setAngleValue(player.dir.value + PI / 16).setLaunch(7, 0.1).setLaunchDampening(1).setHitStun(26, 14).setStunFrames(13).setWallPushback(3).setChip(0.25).setHitSound(assetManager.sounds.spearHit).setBlockSound(assetManager.sounds.spearBlock);
-		let sour = new AttackProperties().setDamage(16).setProration(-0.8, 1.5).setCancelOptions(cancelOptions).setAngleValue(player.dir.value + PI / 16).setLaunch(7, 0.1).setLaunchDampening(0.5).setHitStun(30, 15).setStunFrames(13).setWallPushback(3).setChip(0.25).setHitSound(assetManager.sounds.spearHit).setBlockSound(assetManager.sounds.spearBlock);
+		let ultraSour = new AttackProperties().setDamage(15).setProration(-0.5, 1.8).setCancelOptions(cancelOptions).setAngleValue(player.dir.value + PI / 16).setLaunch(7, 0.1).setLaunchDampening(1).setHitStun(26, 14).setStunFrames(13).setWallPushback(3).setChip(0.25).setHitSound(assetManager.sounds.spearHit).setBlockSound(assetManager.sounds.spearBlock);
+		let sour = new AttackProperties().setDamage(16).setProration(-0.8, 1.8).setCancelOptions(cancelOptions).setAngleValue(player.dir.value + PI / 16).setLaunch(7, 0.1).setLaunchDampening(0.5).setHitStun(30, 15).setStunFrames(13).setWallPushback(3).setChip(0.25).setHitSound(assetManager.sounds.spearHit).setBlockSound(assetManager.sounds.spearBlock);
 		let sweet = new AttackProperties().setDamage(21).setProration(-0.9, 1.8).setCancelOptions(cancelOptions).setAngleValue(player.dir.value + PI / 16).setLaunch(2, 0.1).setLaunchDampening(0.2).setHitStun(32, 20).setStunFrames(13).setWallPushback(3).setChip(0.25).setHitSound(assetManager.sounds.spearHit).setBlockSound(assetManager.sounds.spearBlock);
 
 		let prop = [ultraSour, sour, sweet];
@@ -1848,30 +2029,30 @@ class LipaSPL extends Attack {
 	}
 
 	static createAttack(player) {
-		let cancelOptions = ["NS", "NPL", "RPL", "NPS", "SPS", "RPS", "NN", "dash"];
+		let cancelOptions = ["NS", "NPL", "RPL", "NPS", "SPS", "RPS", "NN", "MN", "dash"];
 
-		let ultraSour1 = new PriorityCircle(0, 17, 20, 0).setVelocity(7, 2);
-		let ultraSour2 = new PriorityCircle(-20, 10, 20, 0).setVelocity(7, 2);
-		let ultraSour3 = new PriorityCircle(-40, 5, 20, 0).setVelocity(7, 2);
-		let sour1 = new PriorityCircle(20, 20, 30, 1).setVelocity(7, 3);
-		let sour2 = new PriorityCircle(36, 30, 30, 1).setVelocity(7.5, 3);
-		let sour3 = new PriorityCircle(54, 48, 30, 1).setVelocity(8, 4);
-		let sweet1 = new PriorityCircle(68, 53, 20, 2).setVelocity(10, 5);
-		let sweet2 = new PriorityCircle(71, 51, 20, 2).setVelocity(10, 5);
-		let circles = [ultraSour1, ultraSour2, ultraSour3, sour1, sour2, sour3, sweet1, sweet2];
+		let ultraSour1 = new PriorityCircle(-48, 36, 25, 0).setVelocity(0.1, 0.03);
+		let ultraSour2 = new PriorityCircle(-20, 42, 25, 0).setVelocity(0.1, 0.03);
+		let ultraSour3 = new PriorityCircle(7, 46, 25, 0).setVelocity(0.1, 0.03);
+		let sour1 = new PriorityCircle(35, 52, 35, 1).setVelocity(0.1, 0.03);
+		let sour2 = new PriorityCircle(63, 58, 35, 1).setVelocity(0.1, 0.03);
+		let sour3 = new PriorityCircle(90, 65, 35, 1).setVelocity(0.1, 0.03);
+		let sweet1 = new PriorityCircle(125, 70, 38, 2).setVelocity(0.1, 0.03);
 
-		let ultraSour = new AttackProperties().setDamage(27).setProration(0.5).setCancelOptions(cancelOptions).setAngleValue(player.dir.value + PI / 6).setLaunch(2, 0.1).setLaunchDampening(1).setHitStun(26, 24).setStunFrames(13).setWallPushback(3).setChip(0.25).setHitSound(assetManager.sounds.spearHit).setBlockSound(assetManager.sounds.spearBlock);
-		let sour = new AttackProperties().setDamage(33).setProration(-0.1).setCancelOptions(cancelOptions).setAngleValue(player.dir.value).setLaunch(3, 0.1).setLaunchDampening(0.5).setHitStun(28, 25).setStunFrames(13).setWallPushback(3).setChip(0.25).setHitSound(assetManager.sounds.spearHit).setBlockSound(assetManager.sounds.spearBlock);
-		let sweet = new AttackProperties().setDamage(38).setProration(-0.5).setCancelOptions(cancelOptions).setAngleValue(player.dir.value).setLaunch(1, 0.1).setLaunchDampening(0.2).setHitStun(30, 27).setStunFrames(13).setWallPushback(3).setChip(0.25).setHitSound(assetManager.sounds.spearHit).setBlockSound(assetManager.sounds.spearBlock);
+		let circles = [ultraSour1, ultraSour2, ultraSour3, sour1, sour2, sour3, sweet1];
+
+		let ultraSour = new AttackProperties().setDamage(27).setProration(-0.5, 1.2).setCancelOptions(cancelOptions).setAngleValue(player.dir.value + PI / 6).setLaunch(2, 0.1).setLaunchDampening(1).setHitStun(26, 24).setStunFrames(13).setWallPushback(3).setChip(0.25).setHitSound(assetManager.sounds.spearHit).setBlockSound(assetManager.sounds.spearBlock);
+		let sour = new AttackProperties().setDamage(33).setProration(-0.6, 1.2).setCancelOptions(cancelOptions).setAngleValue(player.dir.value).setLaunch(3, 0.1).setLaunchDampening(0.5).setHitStun(28, 25).setStunFrames(13).setWallPushback(3).setChip(0.25).setHitSound(assetManager.sounds.spearHit).setBlockSound(assetManager.sounds.spearBlock);
+		let sweet = new AttackProperties().setDamage(38).setProration(-0.7, 1.2).setCancelOptions(cancelOptions).setAngleValue(player.dir.value).setLaunch(1, 0.1).setLaunchDampening(0.2).setHitStun(30, 27).setStunFrames(13).setWallPushback(3).setChip(0.25).setHitSound(assetManager.sounds.spearHit).setBlockSound(assetManager.sounds.spearBlock);
 
 		let prop = [ultraSour, sour, sweet];
 
-		return new this(player, circles, prop).setClashPriority(2).setStartupF(14).setActiveF(8).setEndF(16).setRotateable().reflectHitboxes(!player.rightHanded);
+		return new this(player, circles, prop).setClashPriority(2).setStartupF(16).setActiveF(3).setEndF(14).setRotateable().reflectHitboxes(!player.rightHanded);
 	}
 
 	draw(g) {
 		if (this.currentlyActive()) {
-			//if (debug.displayHitboxes)
+			if (debug.displayHitboxes)
 				this.debugDraw(g);
 		}
 	}
@@ -1882,14 +2063,25 @@ class LipaSPL extends Attack {
 	}
 
 	logic() {
+		this.player.turnSpeedModifier = -1;
+		if (this.getFromStartupF() === 13) {
+			let angle = new Angle(this.dir.value).changeValue(PI / 5 * this.player.rightHanded ? 1: -1);
+			this.player.dx += angle.getX() * 8;
+			this.player.dy += angle.getY() * 8;
+		}
 		if (this.getFromStartupF() === 5) {
-			let angle = new Angle(this.dir.value).changeValue(PI / 5 * this.rightHanded ? -1: 1);
-			this.player.dx += angle.getX() * 5;
-			this.player.dy += angle.getY() * 5;
+			let angle = new Angle(this.dir.value).changeValue(PI / 5 * this.player.rightHanded ? 1: -1);
+			this.player.dx += angle.getX() * 8;
+			this.player.dy += angle.getY() * 8;
+		}
+		if (this.getFromStartupF() > 5 && this.currentlyStartup()) {
+			this.player.dx *= 0.8;
+			this.player.dy *= 0.8;
 		}
 		if (this.getActiveF() <= 0) {
 			this.player.dx *= 0.9;
 			this.player.dy *= 0.9;
+			this.player.turnSpeedModifier = 0.2;
 		}
 	}
 }
@@ -1901,7 +2093,7 @@ class LipaRPL extends Attack {
 	}
 
 	static createAttack(player) {
-		let cancelOptions = ["SL", "NL", "NS", "NPL", "NPS", "SPS", "NN", "MN"];
+		let cancelOptions = ["SL", "NL", "NS", "NPL", "LPL", "NPS", "SPS", "LPS", "NN", "MN"];
 
 		let sour1 = new PriorityCircle(40, 40, 70, 0).setVelocity(0.1, 0);
 		let sweet1 = new PriorityCircle(40, 40, 160, 1).setVelocity(0.1, 0);
@@ -1978,27 +2170,31 @@ class LipaMPL extends Attack {
 	static createAttack(player) {
 		let cancelOptions = ["SPL", "SPS", "NN", "dash"];
 
-		let ultraSour3 = new PriorityCircle(-40, 40, 20, 0).setVelocity(7, 7);
-		let ultraSour2 = new PriorityCircle(-21, 44, 20, 0).setVelocity(7, 7.2);
-		let ultraSour1 = new PriorityCircle(-2, 49, 20, 0).setVelocity(7, 7.4);
-		let sour1 = new PriorityCircle(12, 50, 30, 1).setVelocity(7, 8);
-		let sour2 = new PriorityCircle(31, 57, 30, 1).setVelocity(7.5, 8.9);
-		let sweet1 = new PriorityCircle(74, 60, 40, 2).setVelocity(11, 11);
-		let circles = [ultraSour1, ultraSour2, ultraSour3, sour1, sour2, sweet1];
+		let sour1 = new PriorityCircle(67, 15, 60, 0).setVelocity(0.1, 0);
+		let sour2 = new PriorityCircle(10, 68, 59, 0).setVelocity(0.1, 0);
+		let sour3 = new PriorityCircle(48, 48, 81, 0).setVelocity(0.1, 0);
+		let sweet1 = new PriorityCircle(-47, 81, 36, 1).setVelocity(0.1, 0);
+		let sweet2 = new PriorityCircle(58, 58, 107, 1).setVelocity(0.1, 0);
+		let sweet3 = new PriorityCircle(5, 87, 80, 1).setVelocity(0.1, 0);
+		let sweet4 = new PriorityCircle(86, 10, 81, 1).setVelocity(0.1, 0);
+		let sweet5 = new PriorityCircle(-27, 90, 50, 1).setVelocity(0.1, 0);
+		let sweet6 = new PriorityCircle(39, 86, 83, 1).setVelocity(0.1, 0);
+		let sweet7 = new PriorityCircle(81, 39, 88, 1).setVelocity(0.1, 0);
+		let sweet8 = new PriorityCircle(94, -35, 32, 1).setVelocity(0.1, 0);
+		let circles = [sour1, sour2, sour3, sweet1, sweet2, sweet3, sweet4, sweet5, sweet6, sweet7, sweet8];
 
-		let ultraSour = new AttackProperties().setDamage(34).setProration(1).setCancelOptions(cancelOptions).setAngleValue(player.dir.value + PI / 4).setLaunch(4, 0.1).setLaunchDampening(1).setHitStun(23, 20).setStunFrames(13).setWallPushback(3).setChip(0.25).setHitSound(assetManager.sounds.spearHit).setBlockSound(assetManager.sounds.spearBlock);
-		let sour = new AttackProperties().setDamage(35).setProration(-0.4).setCancelOptions(cancelOptions).setAngleValue(player.dir.value + PI / 4).setLaunch(4, 0.1).setLaunchDampening(0.5).setHitStun(26, 22).setStunFrames(13).setWallPushback(3).setChip(0.25).setHitSound(assetManager.sounds.spearHit).setBlockSound(assetManager.sounds.spearBlock);
-		let sweet = new AttackProperties().setDamage(40).setProration(-0.5).setCancelOptions(cancelOptions).setAngleValue(player.dir.value + PI / 4).setLaunch(3.5, 0.1).setLaunchDampening(0.2).setHitStun(28, 25).setStunFrames(13).setWallPushback(3).setChip(0.25).setHitSound(assetManager.sounds.spearHit).setBlockSound(assetManager.sounds.spearBlock);
+		let sour = new AttackProperties().setDamage(30).setProration(-0.9).setCancelOptions(cancelOptions).setAngleValue(player.dir.value + PI / 4).setLaunch(4, 1).setHitStun(27, 1).setStunFrames(10).setWallPushback(3).setChip(0.25).setHitSound(assetManager.sounds.spearHit).setBlockSound(assetManager.sounds.spearBlock);
+		let sweet = new AttackProperties().setDamage(35).setProration(-1).setCancelOptions(cancelOptions).setAngleValue(player.dir.value + PI / 4).setLaunch(3.5, 1).setHitStun(28, 1).setStunFrames(10).setWallPushback(3).setChip(0.25).setHitSound(assetManager.sounds.spearHit).setBlockSound(assetManager.sounds.spearBlock);
 
-		let prop = [ultraSour, sour, sweet];
+		let prop = [sour, sweet];
 
-		return new this(player, circles, prop).setClashPriority(2).setStartupF(16).setActiveF(4).setEndF(17).setRotateable().reflectHitboxes(!player.rightHanded);
+		return new this(player, circles, prop).setClashPriority(2).setStartupF(16).setActiveF(4).setEndF(18).reflectHitboxes(!player.rightHanded);
 	}
 
 	draw(g) {
 		if (this.currentlyActive()) {
-			//if (debug.displayHitboxes)
-			this.debugDraw(g);
+			if (debug.displayHitboxes)
+				this.debugDraw(g);
 		}
 	}
 
@@ -2100,7 +2296,7 @@ class LipaRPS extends Attack {
 	}
 
 	static createAttack(player) {
-		let cancelOptions = ["SL", "NL", "NS", "NPL", "NPS", "SPS", "NN", "MN"];
+		let cancelOptions = ["SL", "NL", "NS", "NPL", "LPL", "NPS", "SPS", "LPS", "NN", "MN"];
 
 		let sour1 = new PriorityCircle(40, 40, 70, 0).setVelocity(0.1, 0);
 		let sweet1 = new PriorityCircle(40, 40, 160, 1).setVelocity(0.1, 0);
