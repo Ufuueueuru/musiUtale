@@ -215,7 +215,7 @@ class Button {
 
 	/** */
 	update() {
-		if (this.keyspad[this.code] && ((this.layout === "gamepad" && this.getGamepad()) || (this.layout === "keyboard" && this.keyspad))) {
+		if (((this.layout === "gamepad" && this.getGamepad() && this.getGamepad().buttons[this.code]) || (this.layout === "keyboard" && this.keyspad && this.keyspad[this.code]))) {
 			this.clickCheck = this.pressed;
 			if (this.layout === "keyboard") {
 				this.pressed = !!this.keyspad[this.code];
