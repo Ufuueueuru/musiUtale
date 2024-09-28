@@ -215,7 +215,7 @@ class Button {
 
 	/** */
 	update() {
-		if ((this.layout === "gamepad" && this.getGamepad()) || (this.layout === "keyboard" && this.keyspad)) {
+		if (this.keyspad[this.code] && ((this.layout === "gamepad" && this.getGamepad()) || (this.layout === "keyboard" && this.keyspad))) {
 			this.clickCheck = this.pressed;
 			if (this.layout === "keyboard") {
 				this.pressed = !!this.keyspad[this.code];
@@ -295,7 +295,7 @@ class Joystick {
 
 	/** */
 	update() {
-		if (this.layout === "gamepad" && this.getGamepad() || (this.layout === "keyboard" && this.keyspad)) {
+		if (((this.layout === "gamepad" && this.getGamepad() && this.getGamepad().axes && this.getGamepad().axes[this.buttonaxis*2+1] && this.getGamepad().axes[this.buttonaxis*2]) || (this.layout === "keyboard" && this.keyspad))) {
 			if (this.layout === "keyboard") {
 				this.x = (this.keyspad[this.buttonaxis[0]] ? 1 : 0) - (this.keyspad[this.buttonaxis[2]] ? 1 : 0);
 				this.y = (this.keyspad[this.buttonaxis[3]] ? 1 : 0) - (this.keyspad[this.buttonaxis[1]] ? 1 : 0);
