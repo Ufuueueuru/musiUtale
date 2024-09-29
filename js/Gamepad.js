@@ -12,9 +12,11 @@ window.addEventListener("gamepaddisconnected", (e) => {
 });
 
 window.addEventListener("gamepadconnected", (e) => {
-    let tempControls = new Controls("gamepad", e.gamepad.index, controlsManager.defaultGamepadControls.keys, controlsManager.defaultGamepadControls.arrows, controlsManager.defaultGamepadControls.deadzones);
-    controlsManager.controls.push(tempControls);
-    controlsManager.gamepadControls.push(tempControls);
+    if (e.gamepad.axes?.length > 1 && e.gamepad.buttons?.length > 9) {
+        let tempControls = new Controls("gamepad", e.gamepad.index, controlsManager.defaultGamepadControls.keys, controlsManager.defaultGamepadControls.arrows, controlsManager.defaultGamepadControls.deadzones);
+        controlsManager.controls.push(tempControls);
+        controlsManager.gamepadControls.push(tempControls);
+    }
 });
 
 /*function gamepadHandler(event, connecting) {
