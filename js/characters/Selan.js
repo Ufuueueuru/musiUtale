@@ -2087,7 +2087,7 @@ class SelanNL extends Attack {
 		let sweet2 = new PriorityCircle(40, -30, 70, 0).setVelocity(0.1, 0);
 		let circles = [sweet1, sweet2];
 
-		let sweet = new AttackProperties().setDamage(player.powerupGrabFrames ? 35 : 30).setProration(player.powerupGrabFrames ? 0 : 1).setCancelOptions(cancelOptions).setAngleValue(player.dir.value).setLaunch(0.6, 2, 3.5).setHitStun(20, 20).setStunFrames(12).setBlockBreak(!!player.powerupGrabFrames);
+		let sweet = new AttackProperties().setDamage(player.powerupGrabFrames ? 35 : 30).setProration(player.powerupGrabFrames ? 0 : 1).setCancelOptions(cancelOptions).setAngleValue(player.dir.value).setLaunch(0.6, 2, 3.5).setHitStun(20, 20).setStunFrames(12).setBlockBreak(!!player.powerupGrabFrames, true);
 		let prop = [sweet];
 
 		//sweet.setHitSound(assetManager.sounds.fanTP);
@@ -3048,7 +3048,7 @@ class SelanMPS extends Attack {
 		player.startMomentumMultiplyDash(0.1);
 
 		player.invTo = ["grab"];
-		player.iFrames = 20;
+		player.iFrames = 40;
 	}
 
 	draw(g) {
@@ -3219,10 +3219,10 @@ class SelanLN extends Attack {
 	static createAttack(player) {
 		let cancelOptions = [];
 
-		let sweet1 = new PriorityCircle(0, -30, 60, 0).setVelocity(20, -4);
+		let sweet1 = new PriorityCircle(-5, -27, 55, 0).setVelocity(18, -4);
 		let circles = [sweet1];
 
-		let sweet = new AttackProperties().setDamage((player.powerupGrabFrames ? 6.5 : 5) * (this.weak ? 0.5 : 1)).setProration(-1).setCancelOptions(cancelOptions).setAngleValue(player.dir.value + 0.1).setLaunch(3, 1).setHitStun(38).setStunFrames(30).setCommandGrab().setCancelWait(3).setNoKill(this.weak);
+		let sweet = new AttackProperties().setDamage((player.powerupGrabFrames ? 6.5 : 5) * (this.weak ? 0.5 : 1)).setProration(-1).setCancelOptions(cancelOptions).setAngleValue(player.dir.value + 0.1).setLaunch(4, 1).setHitStun(34).setStunFrames(30).setCommandGrab().setCancelWait(3).setNoKill(this.weak);
 		let prop = [sweet];
 
 		//sweet.setHitSound(assetManager.sounds.fanTP);

@@ -76,6 +76,20 @@ class CharacterSelectScreen extends Screen {
         }
         g.pop();
 
+        for (let i in this.playerControls) {
+            if (!this.playerControls[i] || this.playerControls[i].computer || this.playerControls[i].netplay)
+                continue;
+            let buttonSize = windowWidth / 512 * 25;
+            if (this.playerControls.layout === "keyboard") {
+                assetManager.spritesheets.keys.drawFrame(g, keyImageID[this.playerControls[i].buttons.start.code], 3.5 * buttonSize, height - buttonSize, buttonSize, buttonSize);
+            } else {
+                assetManager.spritesheets.nena.drawFrame(g, min(18, this.playerControls[i].buttons.start.code), 3.5 * buttonSize, height - buttonSize, buttonSize, buttonSize);
+            }
+            g.fill(0, 0, 14);
+            g.textSize(30 * windowWidth / 512);
+            g.text(gt("mainMenuControls") + ":", buttonSize / 5, height - buttonSize / 5);
+        }
+
         if (this.menu.transitioning > 0) {
             g.fill(0);
             g.noStroke();

@@ -153,7 +153,7 @@ class Attack extends Hitcircle {
 				//this.world.sikeWawa.addMeterAll(1, -0.5, this.player);
 				this.world.sikeWawa.subtractMeter(4, 1, p);
 
-				dealtDamage = p.damageHealth(property.grabInitialDamage, p.combo * 4 + p.comboProration * 4, property.noKill, property.scaling);
+				dealtDamage = p.damageHealth(property.grabInitialDamage, p.combo * 4 + p.comboProration * 4, true, property.scaling);
 
 				let angle = new Angle().setFromPoint(this.player.x - p.x, this.player.y - p.y);
 				let distance = dist(this.player.x, this.player.y, p.x, p.y);
@@ -234,7 +234,9 @@ class Attack extends Hitcircle {
 					attackAngle = new Angle().setFromPoint(results.dx, results.dy);
 				if (property.angleLaunchType === "direct")
 					property.angle = new Angle().setFromPoint(p.x - results.ax, p.y - results.ay);
+				let parryAngle = new Angle(attackAngle.value + PI);
 
+				let parryAngleDif = Angle.distance(joystickAngle, parryAngle);
 				let angleDif = Angle.distance(joystickAngle, attackAngle);
 				let standingAngleDif = Angle.distance(new Angle(p.dir.value + PI), attackAngle);//Not sure if this should be p.dir or just use playerAngle (might have to 180 swap playerAngle)
 
@@ -256,8 +258,9 @@ class Attack extends Hitcircle {
 				}
 
 				p.lipuHeavy = property.launch >= 8;
-				
-				if ((p.controls.joystickPressed(0) && !(angleDif < effectiveLeniency)) || (!p.controls.joystickPressed(0) && (!(standingAngleDif < standLeniency) || debug.noNeutralBlock)) || !p.canChangeState(p.states.BLOCK) || property.blockBreak) {//Standard hit
+
+				let parried = (p.moveCount <= p.parryLeniency && p.moveCount > 0 && parryAngleDif < effectiveLeniency && p.parryCooldown <= 0);
+				if ((p.controls.joystickPressed(0) && !(angleDif < effectiveLeniency) && !parried) || (!p.controls.joystickPressed(0) && (!(standingAngleDif < standLeniency) || debug.noNeutralBlock)) || !(p.canChangeState(p.states.BLOCK) || (State.stateIsTag(p.currentState, "parry override") && parried)) || ((property.blockBreak && !property.blockBreakParriable) || (property.blockBreak && property.blockBreakParriable && !parried))) {//Standard hit
 					p.iFrames = 0;
 
 					if (!property.commandGrab)
@@ -297,6 +300,9 @@ class Attack extends Hitcircle {
 					p.hitStun = max(p.hitStun, property.hitStun + hitStunModify - comboBreaker + p.hitStunModifier);
 					p.actionLag = p.hitStun;
 					p.forceChangeState(p.states.HITSTUN, p.states.HITSTUN_ACTIONS);
+					
+					if (property.commandGrab)
+						p.removeAction("power dash");
 
 					p.sheet.setAnimation("Hurt");
 
@@ -319,7 +325,7 @@ class Attack extends Hitcircle {
 						if (!property.commandGrab) {
 							p.stunFrames += 10;
 						} else {
-							p.damageHealthAbs(30, 0);
+							p.damageHealthAbs(30, 0, property.noKill);
 						}
 						this.player.world.ps.createParticle("counterHitEffect", p, px - 80, py - 40, 80, 40);
 					}
@@ -491,7 +497,7 @@ class Attack extends Hitcircle {
 
 					property.playBlockSound(this.world, this.multiConst);
 
-					if (p.moveCount <= p.parryLeniency && p.moveCount > 0) {//p.controls.joystickHeld(0) <= 4
+					if (parried) {//p.controls.joystickHeld(0) <= 4
 						this.player.dx /= 1.5;
 						this.player.dy /= 1.5;
 						this.player.stunFrames += 23;
@@ -499,6 +505,8 @@ class Attack extends Hitcircle {
 						p.dx /= 1.5;
 						p.dy /= 1.5;
 						p.stunFrames += 23 - p.parryFrameBuff;
+
+						p.parryCooldown = 0;
 
 						//Add a fancy particle effect here
 						this.player.world.ps.createParticle("hitParryEffect", p, px, py, 250, 250, attackAngle, true);
@@ -1242,6 +1250,8 @@ class AttackProperties {
 
 		/** @type {boolean} If true, the move cannot be blocked */
 		this.blockBreak = false;
+		/** @type {boolean} If true, the unblockable attack can still be parried */
+		this.blockBreakParriable = false;
 
 		/** @type {Howler} */
 		this.hitSound = assetManager.sounds["8BitHit"];
@@ -1519,8 +1529,9 @@ class AttackProperties {
 		return this;
 	}
 
-	setBlockBreak(bool = true) {
+	setBlockBreak(bool = true, parriable = false) {
 		this.blockBreak = bool;
+		this.blockBreakParriable = parriable;
 
 		return this;
 	}

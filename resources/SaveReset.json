@@ -45,12 +45,21 @@
       [ "frameAdvance", 6 ],
       [ "select", 0 ],
       [ "back", 1 ],
-      [ "start", 9 ]
+      [ "start", 9 ],
+      [ "up", 12 ],
+      [ "down", 13 ],
+      [ "left", 14 ],
+      [ "right", 15 ]
     ],
     "arrows": [ 0 ],
     "deadzones": [ 0.35 ]
   },
-  "graphicsSettings": { "resolutionMult": 1 },
-  "currentLanguage": "tp",
-  "version": "0.0.2"
+  "graphicsSettings": {
+    "resolutionMult": 1,
+    "spriteResolutionMult": 1,
+    "noSplitSheets": false
+  },
+  "currentLanguage": "en",
+  "promptTutorial": false,
+  "version": "0.0.4"
 }

@@ -87,6 +87,14 @@
 
 				keySheet.drawFrame(g, keyImageID[this.playersActive[ud].buttons.powerDash.code], 256 - 60, 108 + 100 * ud, 26, 26);
 			} else {
+				let conversion = { "right": 0, "up": 1, "left": 2, "down": 3 };
+				let u = 0;
+				for (let i in conversion) {
+					let baseCode = this.playersActive[ud].buttons[i].code;
+					assetManager.spritesheets.nena.drawFrame(g, min(18, baseCode), 195 + 40 * u, 135 + 100 * ud + 52, 18, 18);
+					assetManager.spritesheets.nena.drawFrame(g, 21 + conversion[i], 177 + 40 * u, 135 + 100 * ud + 52, 18, 18);
+					u++;
+				}
 				g.image(assetManager.images.gamepadIcon, 256 - 16, 110 + 100 * ud, 32, 22);
 
 				keySheet.drawFrame(g, this.playersActive[ud].buttons.powerDash.code, 256 - 60, 108 + 100 * ud, 26, 26);
@@ -152,11 +160,19 @@
 				} else {
 					let gamepad = this.playersActive[i].getGamepad();
 					for (let u = 0; u < gamepad.buttons.length; u++) {
-						if (gamepad.buttons[u].pressed && (this.menus[i].xSelect === 7 || this.menus[i].xSelect < 6 || u !== this.playersActive[i].buttons["back"].code) && (this.menus[i].xSelect === 6 || this.menus[i].xSelect < 6 || u !== this.playersActive[i].buttons["select"].code)) {
+						let buttons = ["right", "up", "left", "down"];
+						let noArrowCollisions = (u !== this.playersActive[i].buttons["up"].code && u !== this.playersActive[i].buttons["down"].code && u !== this.playersActive[i].buttons["left"].code && u !== this.playersActive[i].buttons["right"].code);
+						let notSelectOverlap = (this.menus[i].xSelect === 6 || this.menus[i].xSelect < 6 || (u !== this.playersActive[i].buttons["select"].code && noArrowCollisions));
+						let notBackOverlap = (this.menus[i].xSelect === 7 || this.menus[i].xSelect < 6 || (u !== this.playersActive[i].buttons["back"].code && noArrowCollisions));
+						let notArrowsOverlap = (this.menus[i].ySelect <= 0 || u === this.playersActive[i].buttons[buttons[this.menus[i].ySelect - 1]].code || (u !== this.playersActive[i].buttons["back"].code && u !== this.playersActive[i].buttons["select"].code && noArrowCollisions));
+						if (gamepad.buttons[u].pressed && notArrowsOverlap && notBackOverlap && notSelectOverlap) {
 							if (this.menus[i].ySelect === -1 && this.menus[i].xSelect !== 6) {
 								this.playersActive[i].buttons["powerDash"].code = u;
-							} else {
+							} else if (this.menus[i].ySelect === 0) {
 								this.playersActive[i].buttons[this.buttonArray[this.menus[i].xSelect]].code = u;
+							} else {
+								this.playersActive[i].buttons[buttons[this.menus[i].ySelect - 1]].code = u;
+								this.menus[i].finishSelectingArrows = true;
 							}
 							this.menus[i].selecting = false;
 							this.menus[i].holdingSelect = false;
@@ -289,7 +305,7 @@ class ControlsMenu {
 		}
 	}
 	moveDown(isKeyboard) {
-		if (this.ySelect === 0 && isKeyboard) {
+		if (this.ySelect === 0/* && isKeyboard*/) {
 			this.ySelect = constrain(this.xSelect - 2, 1, this.yMax);
 		}
 		if (this.ySelect === -1) {

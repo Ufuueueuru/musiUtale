@@ -135,7 +135,7 @@ class Controls {
 				this.buttons[i].update();
 			}
 			for (let i in this.joysticks) {
-				this.joysticks[i].update();
+				this.joysticks[i].update(this.buttons);
 			}
 		}
 	}
@@ -215,7 +215,7 @@ class Button {
 
 	/** */
 	update() {
-		if (((this.layout === "gamepad" && this.getGamepad() && this.getGamepad().buttons[this.code]) || (this.layout === "keyboard" && this.keyspad && this.keyspad[this.code]))) {
+		if (((this.layout === "gamepad" && this.getGamepad() && this.getGamepad().buttons[this.code] !== undefined) || (this.layout === "keyboard" && this.keyspad))) {
 			this.clickCheck = this.pressed;
 			if (this.layout === "keyboard") {
 				this.pressed = !!this.keyspad[this.code];
@@ -294,8 +294,8 @@ class Joystick {
 	}
 
 	/** */
-	update() {
-		if (((this.layout === "gamepad" && this.getGamepad() && this.getGamepad().axes && this.getGamepad().axes[this.buttonaxis*2+1] && this.getGamepad().axes[this.buttonaxis*2]) || (this.layout === "keyboard" && this.keyspad))) {
+	update(buttons=[]) {
+		if (((this.layout === "gamepad" && this.getGamepad() && this.getGamepad().axes !== undefined && this.getGamepad().axes[this.buttonaxis*2+1] !== undefined && this.getGamepad().axes[this.buttonaxis*2] !== undefined) || (this.layout === "keyboard" && this.keyspad))) {
 			if (this.layout === "keyboard") {
 				this.x = (this.keyspad[this.buttonaxis[0]] ? 1 : 0) - (this.keyspad[this.buttonaxis[2]] ? 1 : 0);
 				this.y = (this.keyspad[this.buttonaxis[3]] ? 1 : 0) - (this.keyspad[this.buttonaxis[1]] ? 1 : 0);
@@ -303,12 +303,32 @@ class Joystick {
 			if (this.layout === "gamepad") {
 				this.x = this.getGamepad().axes[this.buttonaxis * 2];
 				this.y = this.getGamepad().axes[this.buttonaxis * 2 + 1];
+				if (buttons !== undefined)
+					this.overrideJoystickInput(buttons);
 			}
 			if (this.pressed()) {
 				this.heldFrames++;
 			} else {
 				this.heldFrames = 0;
 			}
+		}
+	}
+
+	overrideJoystickInput(buttons) {
+		if (this.x === 0 && this.y === 0) {
+			let outX = 0;
+			let outY = 0;
+			
+			if (buttons["up"] !== undefined && buttons["up"].pressed)
+				outY--;
+			if (buttons["down"] !== undefined && buttons["down"].pressed)
+				outY++;
+			if (buttons["left"] !== undefined && buttons["left"].pressed)
+				outX--;
+			if (buttons["right"] !== undefined && buttons["right"].pressed)
+				outX++;
+			this.x = outX;
+			this.y = outY;
 		}
 	}
 

@@ -1770,8 +1770,8 @@ class KaSS extends Attack {
 	}
 
 	static startAttack(player, attack, bufferInfo) {
-		player.dx = 0;
-		player.dy = 0;
+		player.dx = (player.dx + 4 * player.dir.getX()) / 4;
+		player.dy = (player.dy + 4 * player.dir.getY()) / 4;
 
 		if (State.stateIsTag(player.currentState, "attack")) {
 			player.slowDownFrames = 15;
@@ -2375,12 +2375,12 @@ class KaNPS extends Attack {
 	}
 
 	static createAttack(player) {
-		let cancelOptions = ["attack", "dash"];
+		let cancelOptions = ["attack"];
 
 		let sour1 = new PriorityCircle(0, 0, 160, 0);
 		let circles = [sour1];
 
-		let sweet = new AttackProperties().setProration(-0.9).setCancelOptions(cancelOptions).setAngleValue(player.dir.value).setHitStun(35, 20).setStunFrames(13).setCancelWait(9).setAngleTypes("direct", "direct");
+		let sweet = new AttackProperties().setProration(-0.9).setCancelOptions(cancelOptions).setAngleValue(player.dir.value).setHitStun(35, 23).setStunFrames(13).setCancelWait(7).setAngleTypes("direct", "direct");
 		let prop = [sweet];
 
 		sweet.setHitSound(assetManager.sounds["8BitHit"]);
@@ -2433,6 +2433,9 @@ class KaNPS extends Attack {
 		if (this.getActiveF() <= 0) {
 			this.player.dx *= 0.85;
 			this.player.dy *= 0.85;
+		}
+		if (this.getFromActiveF() === 1) {
+			this.player.addAction("dash");
 		}
 		if (this.getFromStartupF() < 5) {
 			this.player.turnSpeedModifier = 0.5;

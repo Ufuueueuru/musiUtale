@@ -293,7 +293,11 @@ class Player extends Hitcircle {
 		this.slowDownFrames = 0;
 
 		/** @type {number} How many frames you have to parry */
-		this.parryLeniency = 3;
+		this.parryLeniency = 5;
+		/** @type {number} Countdown for parry to be useable */
+		this.parryCooldown = 0;
+		/** @type {number} Number of frames after starting moving where a parry cannot be performed */
+		this.maxParryCooldown = 22;
 		/** @type {number} Used for knowing whether something was a parry or not */
 		this.moveCount = 0;
 
@@ -569,7 +573,11 @@ class Player extends Hitcircle {
 		if (this.stunFrames > 0) {
 			if (this.controls.joystickHeld(0)) {
 				this.moveCount++;
+				if (this.moveCount === this.parryLeniency + 1)
+					this.parryCooldown = this.maxParryCooldown;
 			} else {
+				if (this.moveCount > 0 && this.parryCooldown <= 0)
+					this.parryCooldown = this.maxParryCooldown;
 				this.moveCount = 0;
 			}
 		}
@@ -1128,7 +1136,11 @@ class Player extends Hitcircle {
 
 		if (this.controls.joystickHeld(0)) {
 			this.moveCount++;
+			if (this.moveCount === this.parryLeniency + 1)
+				this.parryCooldown = this.maxParryCooldown;
 		} else {
+			if (this.moveCount > 0 && this.parryCooldown <= 0)
+				this.parryCooldown = this.maxParryCooldown;
 			this.moveCount = 0;
 		}
 	}
@@ -2405,8 +2417,10 @@ class Player extends Hitcircle {
 	}
 
 	attackEndable() {
-		if (this.actionLag === 0 && this.currentState.name !== "neutral")
+		if (this.actionLag === 0 && this.currentState.name !== "neutral") {
 			this.forceChangeState(this.states.NEUTRAL, this.states.NEUTRAL_ACTIONS);
+			this.sheet.setAnimation("neutral");
+		}
     }
 
 	runNoStun() {
@@ -2620,6 +2634,8 @@ class Player extends Hitcircle {
 	}
 
 	countDownValues() {
+		if (this.parryCooldown > 0)
+			this.parryCooldown--;
 		if (this.slowWalkFrames > 0) {
 			this.slowWalkFrames--;
 		} else {
@@ -2660,23 +2676,27 @@ class Player extends Hitcircle {
 		if (this.currentState.name !== "grabbed" && this.currentState.name !== "hitstun" && this.currentState.name !== "block") {
 			if (this.tempDamageCount !== 0 && this.combo > 1) {//Debug (I think?)
 				let particle = new Particle(undefined).setPlayer(this).setPosition(this.x, this.y).setDraw((g) => {
-					g.noStroke();
-					g.fill(243, 34, 13);
-					g.textAlign(CENTER, CENTER);
-					g.textSize(40 + (particle.currentFrame % particle.count * 3) / 12);
-					g.textFont(assetManager.fonts.asuki);
-					g.text(round(particle.count) + "󱤀", 50, 50);
-					if (particle.combo > 1) {
-						g.textSize(30 + (particle.currentFrame / 2 % particle.count * 3) / 14);
-						g.text("󱤟" + particle.combo, 50, 80);
-					}
+					g.image(particle.image, 0, 0);
 				}).setLogic(() => {
 					particle.currentFrame++;
-					if (particle.currentFrame > 60)
+					if (particle.currentFrame > 180)
 						particle.currentFrame = 0;
 				});
 				particle.count = this.tempDamageCount;
 				particle.combo = this.combo;
+
+				let tempImage = createGraphics(100, 100);
+				tempImage.noStroke();
+				tempImage.fill(243, 34, 13);
+				tempImage.textAlign(CENTER, CENTER);
+				tempImage.textSize(40 + (particle.currentFrame % particle.count * 3) / 12);
+				tempImage.textFont(assetManager.fonts.asuki);
+				tempImage.text(round(particle.count) + "󱤀", 50, 50);
+				tempImage.textSize(30 + (particle.currentFrame / 2 % particle.count * 3) / 14);
+				tempImage.text("󱤟" + particle.combo, 50, 80);
+				particle.image = tempImage.get();
+				tempImage.remove();
+
 				this.world.ps.particles.push(particle);
 			}
 

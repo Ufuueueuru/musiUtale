@@ -190,13 +190,13 @@ State.LIPU_SULI_ACTIONS = ["rightRoll", "neutralRoll", "leftRoll", "power dash"]
 State.LIPU_LILI = new State("lipuLili", "lipu", "no collide", "loop hurtbox");
 State.LIPU_LILI_ACTIONS = ["rightRoll", "neutralRoll", "leftRoll", "power dash"];
 
-State.RIGHTROLL = new State("rightRoll", "no collide");
+State.RIGHTROLL = new State("rightRoll", "no collide", "parry override");
 State.RIGHTROLL_ACTIONS = ["power dash"];
 
-State.NEUTRALROLL = new State("neutralRoll", "no collide");
+State.NEUTRALROLL = new State("neutralRoll", "no collide", "parry override");
 State.NEUTRALROLL_ACTIONS = ["power dash"];
 
-State.LEFTROLL = new State("leftRoll", "no collide");
+State.LEFTROLL = new State("leftRoll", "no collide", "parry override");
 State.LEFTROLL_ACTIONS = ["power dash"];
 
 State.DEAD = new State("dead");

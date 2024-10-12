@@ -39,7 +39,11 @@
     }
 
     playMusic() {
-        
+        this.playSong(assetManager.sounds.maWeka);
+    }
+
+    static addAssets() {
+        assetManager.addImage("resources/backgrounds/ma_pi_tomo_awen.png", "tomoAwen");
     }
 
     serialize() {
@@ -47,6 +51,8 @@
             g,
             name,
             background,
+            name1,
+            name2,
             helperForeground,
             foreground,
             width,
@@ -67,10 +73,6 @@
             ps,
             ...o
         }) => defaultSerialize(o))(this);
-    }
-
-    static addAssets() {
-        assetManager.addImage("resources/backgrounds/ma_pi_tomo_awen.png", "tomoAwen");
     }
 }
 

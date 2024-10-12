@@ -97,7 +97,7 @@ class MenuDebugScreen extends Screen {
         this.promptMenu = new Menu();
 
         let startTutorial = new MenuItem(50, 100, assetManager.images.buttonPressedLanguage, assetManager.images.buttonUnpressedLanguage, TutorialScreen, gt("mainMenuAskTutorialYes"), () => { playersManager.openScreen(); playersManager.resetPositions(MenuDebugScreen); playersManager.disableP2(); tutorialPromptSelected = true; });
-        let noTutorial = new MenuItem(307, 100, assetManager.images.buttonPressedLanguage, assetManager.images.buttonUnpressedLanguage, undefined, gt("mainMenuAskTutorialNo"), () => { tutorialPromptSelected = true; });
+        let noTutorial = new MenuItem(307, 100, assetManager.images.buttonPressedLanguage, assetManager.images.buttonUnpressedLanguage, undefined, gt("mainMenuAskTutorialNo"), () => { tutorialPromptSelected = true; promptTutorial = false; writeSaveFile(); });
         let titleText = new MenuItem(175, -50, undefined, undefined, undefined, gt("mainMenuAskTutorial"), () => { tutorialPromptSelected = true; });
 
         startTutorial.addMoves(new MenuMove(noTutorial, Angle.RIGHT));

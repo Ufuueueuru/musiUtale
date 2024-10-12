@@ -121,6 +121,7 @@ class World {
             this.players[i].fullReset();
         }
         this.resetPositions();
+        this.initHUDNames();
         this.sikeWawa.reset();
     }
 
@@ -346,15 +347,20 @@ class World {
             this.drawWins(g, i, 220, 77);
         }
         this.sikeWawa.draw(g, 256, 75);
-        g.textFont(assetManager.fonts.asuki);
-        g.fill(170, 40, 60);
+
+        this.drawHUDNames(g);
+
+        /*g.fill(170, 40, 60);
         g.stroke(15, 0, 0);
         g.strokeWeight(2);
         g.textSize(25);
         g.textAlign(LEFT, BASELINE);
         g.text(this.players[0].headNoun + "󱤽󱥳", 28, 20);//[head noun] nanpa wan
         g.fill(47, 31, 171);
-        g.text(this.players[1].headNoun + "󱤽󱥮", 284, 20);//[head noun] nanpa wan
+        g.text(this.players[1].headNoun + "󱤽󱥮", 284, 20);//[head noun] nanpa wan*/
+
+
+        g.textFont(assetManager.fonts.asuki);
         g.stroke(15, 0, 0);
         g.fill(240, 240, 255);
         g.strokeWeight(3);
@@ -363,6 +369,35 @@ class World {
         let timerDisplay = this.timer > 99 ? "󱤄" : ceil(this.timer);
         g.text(timerDisplay, 256, 35);
         g.textAlign(LEFT, BASELINE);
+    }
+
+    drawHUDNames(g) {
+        g.image(this.name1, 28, 0);
+        g.image(this.name2, 284, 0);
+    }
+
+    initHUDNames() {
+        let name1 = createGraphics(100, 30);
+        let name2 = createGraphics(100, 30);
+        name1.textFont(assetManager.fonts.asuki);
+        name1.fill(170, 40, 60);
+        name1.stroke(15, 0, 0);
+        name1.strokeWeight(2);
+        name1.textSize(25);
+        name1.textAlign(LEFT, BASELINE);
+        name1.text(this.players[0].headNoun + "󱤽󱥳", 0, 20);//[head noun] nanpa wan
+        this.name1 = name1.get();
+        name1.remove();
+
+        name2.textFont(assetManager.fonts.asuki);
+        name2.fill(47, 31, 171);
+        name2.stroke(15, 0, 0);
+        name2.strokeWeight(2);
+        name2.textSize(25);
+        name2.textAlign(LEFT, BASELINE);
+        name2.text(this.players[1].headNoun + "󱤽󱥮", 0, 20);//[head noun] nanpa tu
+        this.name2 = name2.get();
+        name2.remove();
     }
 
     drawWins(g, i, x, y) {
@@ -912,6 +947,8 @@ class World {
             foreground,
             width,
             height,
+            name1,
+            name2,
             maxPlayerDist,
             walls,
             stageWidth,

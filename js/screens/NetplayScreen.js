@@ -211,6 +211,7 @@ class NetplayScreen extends Screen {
     establishConnection() {
         this.connection = this.peer.connect(this.theirID);
         this.pickMyStage = random(0, 1) > 0.5;
+        print(this.pickMyStage, this.selection);
         this.connection.on("open", () => {
             let sentData = {
                 character: this.characterSelections[0],
