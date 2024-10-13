@@ -32,7 +32,7 @@ class TrainingComputer extends Controls {
         };
 
         this.trainingSettings.reversal = {
-            isReversal: true,
+            isReversal: false,
             action: "MN",
             fromBlock: true,//Should the dummy mash out of block?
             fromHit: false,//Should the dummy mash out of hit?
@@ -44,7 +44,7 @@ class TrainingComputer extends Controls {
         this.trainingSettings.mash = [
             {
                 names: ["grabbed"],
-                isMashing: true,
+                isMashing: false,
                 wait: 0,
                 count: 6,
                 hold: 1,
@@ -53,7 +53,7 @@ class TrainingComputer extends Controls {
             },
             {
                 names: ["hitstun"],
-                isMashing: true,
+                isMashing: false,
                 wait: 0,
                 count: 0,
                 hold: 1,
@@ -103,13 +103,14 @@ class TrainingComputer extends Controls {
             if (collideInfo?.collided) {
                 if (this.trainingSettings.block.isBlocking) {
                     this.resetButtons();
+                    let parryOffset = (this.trainingSettings.block.isParry ? PI : 0);
                     if (this.trainingSettings.block.dynamicAngle) {
-                        this.pressJoystick(0, this.world.attacks[i].getAttackAngle(this.player, collideInfo.circle, collideInfo.playerCircle, collideInfo.property));
+                        this.pressJoystick(0, new Angle(this.world.attacks[i].getAttackAngle(this.player, collideInfo.circle, collideInfo.playerCircle, collideInfo.property).value + parryOffset));
                     } else {
                         let rotation = 0;
                         if (this.player.targetPlayer && this.trainingSettings.block.staticRelative)
                             rotation = atan2(this.player.targetPlayer.y - this.player.y, this.player.targetPlayer.x - this.player.x);
-                        this.pressJoystick(0, new Angle(this.trainingSettings.block.angle.value + rotation));
+                        this.pressJoystick(0, new Angle(this.trainingSettings.block.angle.value + rotation + parryOffset));
                     }
                     if (this.trainingSettings.block.isParry) {
                         this.player.moveCount = 1;
@@ -122,6 +123,7 @@ class TrainingComputer extends Controls {
                     if (this.trainingSettings.block.isCounter)
                         this.player.bufferCounterHittable = true;
 
+                    this.player.moveCount = 10;
                     this.pressJoystick(0, this.world.attacks[i].getAttackAngle(this.player, collideInfo.circle, collideInfo.playerCircle, collideInfo.property).changeValue(PI));
                 }
             }

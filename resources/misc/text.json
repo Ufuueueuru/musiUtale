@@ -412,6 +412,56 @@
     }
   },
 
+  "gamePaused": {
+    "en": {
+      "text": "Paused"
+    },
+    "tp": {
+      "text": "󱤻󱤧󱤈"
+    }
+  },
+
+  "battleBack": {
+    "en": {
+      "text": "Back"
+    },
+    "tp": {
+      "text": "󱤈󱥱"
+    }
+  },
+  "battleCharacterSelect": {
+    "en": {
+      "text": "Character Select"
+    },
+    "tp": {
+      "text": "󱤆󱤉󱤑"
+    }
+  },
+  "battleEditControls": {
+    "en": {
+      "text": "Edit Controls"
+    },
+    "tp": {
+      "text": "󱤆󱤉󱤤󱤎"
+    }
+  },
+  "battlePlayerSelect": {
+    "en": {
+      "text": "Select Controls"
+    },
+    "tp": {
+      "text": "󱤆󱤉󱤑󱤤"
+    }
+  },
+  "battleExit": {
+    "en": {
+      "text": "Exit to menu"
+    },
+    "tp": {
+      "text": "󱥶󱥧󱥱"
+    }
+  },
+
   "graphicsResolution": {
     "en": {
       "text": "Resolution:"

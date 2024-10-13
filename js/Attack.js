@@ -123,7 +123,7 @@ class Attack extends Hitcircle {
 			}
 		}
 		let counterHit = p.combo === 0 && (p.counterHittable || p.mostRecentAttackReference?.getActiveF() > 0 || p.mostRecentAttackReference?.getStartupF() > 0);
-		let punishHit = p.combo === 0 && p.mostRecentAttackReference?.getStartupF() <= 0 && p.mostRecentAttackReference?.getActiveF() <= 0;
+		let punishHit = p.combo === 0 && ((p.mostRecentAttackReference?.getStartupF() <= 0 && p.mostRecentAttackReference?.getActiveF() <= 0) || p.currentState.name === "rightRoll" || p.currentState.name === "leftRoll" || p.currentState.name === "neutralRoll");
 		let dealtDamage;
 		let hitBool = false;
 		if (property.grab) {

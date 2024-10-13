@@ -47,7 +47,8 @@ class TrainingScreen extends VSScreen {
         let deselect = assetManager.images.buttonUnpressedLanguage;
 
         //let pressedButton =
-
+        this.paused = false;
+        this.bufferUnpause = -1;
 
         this.pauseMenu = new Menu();
         this.currentMenu = this.pauseMenu;
@@ -194,6 +195,15 @@ class TrainingScreen extends VSScreen {
             playersManager.resetPositions();
         }*/
 
+        if (this.bufferUnpause === 0) {
+            this.paused = false;
+            for (let i in controls) {
+                controls[i].updateInGame();
+            }
+        }
+        if (this.bufferUnpause >= 0)
+            this.bufferUnpause--;
+
         for (let i in controls) {
             if (controls[i].computer)
                 continue;
@@ -207,7 +217,7 @@ class TrainingScreen extends VSScreen {
                     this.currentMenu = this.pauseMenu;
                     this.closeMenus();
                 } else {
-                    this.paused = false;
+                    this.bufferUnpause = 4;
                     controls[i].clickedInGame = 0;
                 }
             }

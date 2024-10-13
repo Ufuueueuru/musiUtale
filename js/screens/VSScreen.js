@@ -11,7 +11,52 @@ class VSScreen extends Screen {
 
         this.initLater();
 
+        this.pausedPlayer = undefined;
+
         this.paused = false;
+        this.bufferUnpause = -1;
+
+        this.pauseMenu = new Menu();
+
+        let select = assetManager.images.buttonPressedLanguage;
+        let deselect = assetManager.images.buttonUnpressedLanguage;
+        let backButton = new MenuItem(128, 90, select, deselect, undefined, gt("battleBack"), () => {
+            this.bufferUnpause = 4;
+        });
+        let characterSelectButton = new MenuItem(128, 150, select, deselect, undefined, gt("battleCharacterSelect"), () => {
+            this.destruct();
+            currentScreen = new CharacterSelectScreen();
+            let fake = false;
+            if (this.player1.controls === null && this.player2.controls === null) {
+                fake = true;
+                this.player1.controls = controls[i];
+            }
+            currentScreen.setControls([this.player1.controls, this.player2.controls], fake);
+        });
+        let playerSelectButton = new MenuItem(128, 210, select, deselect, undefined, gt("battlePlayerSelect"), () => {
+            playersManager.resetPositions();
+            playersManager.openScreen();
+        });
+        let editControlsButton = new MenuItem(128, 270, select, deselect, undefined, gt("battleEditControls"), () => {
+            controlsManager.openScreen();
+        });
+        let exitButton = new MenuItem(128, 330, select, deselect, undefined, gt("battleExit"), () => {
+            this.destruct();
+            currentScreen = new MenuDebugScreen();
+        });
+
+        backButton.addMoves(new MenuMove(characterSelectButton, Angle.DOWN));
+        characterSelectButton.addMoves(new MenuMove(backButton, Angle.UP));
+        characterSelectButton.addMoves(new MenuMove(playerSelectButton, Angle.DOWN));
+        playerSelectButton.addMoves(new MenuMove(characterSelectButton, Angle.UP));
+        playerSelectButton.addMoves(new MenuMove(editControlsButton, Angle.DOWN));
+        editControlsButton.addMoves(new MenuMove(playerSelectButton, Angle.UP));
+        editControlsButton.addMoves(new MenuMove(exitButton, Angle.DOWN));
+        exitButton.addMoves(new MenuMove(editControlsButton, Angle.UP));
+
+        this.pauseMenu.addMenuItems(backButton, characterSelectButton, playerSelectButton, editControlsButton, exitButton);
+
+        this.pauseMenu.setTarget(backButton);
     }
 
     draw(g) {
@@ -24,6 +69,7 @@ class VSScreen extends Screen {
         let minSize = min(windowWidth, windowHeight / canvasSlope);
         this.world.draw(g, (windowWidth - minSize) / 2, (windowHeight - minSize * canvasSlope) / 2, minSize, minSize * canvasSlope);
 
+
         if (this.paused) {
             g.textFont(assetManager.fonts.asuki);
             g.background(15, 0, 0, 50);
@@ -32,9 +78,10 @@ class VSScreen extends Screen {
             g.stroke(15, 0, 0);
             g.strokeWeight(5);
             g.fill(170, 40, 60);
-            if (this.pausedPlayer === 1)
+            if (this.pausedPlayer === this.player2Controls)
                 g.fill(47, 31, 171);
-            g.text("󱤻󱤧󱤈", windowWidth / 2, windowHeight / 2);//musi li awen
+            g.text(gt("gamePaused"), windowWidth / 2, (windowHeight - minSize * canvasSlope) / 2 + 40 * minSize / 512);//musi li awen
+            this.pauseMenu.draw(g, minSize, minSize * 384 / 512, minSize * 0.5, minSize * canvasSlope * 0.13);
             /*if (frameCount % 60 === 0)
                 print(stringifyRefJSON(this.player1));*/
         }
@@ -61,6 +108,13 @@ class VSScreen extends Screen {
             for (let i = 0; i < max; i++) {
                 this.world.run(this);
             }
+        } else {
+            if (this.pauseMenu.transitioning <= 0) {
+                this.pauseMenu.run();
+            } else {
+                this.pauseMenu.controlMenu(this.pausedPlayer);
+                this.pauseMenu.transitioning--;
+            }
         }
 
         /*if (!this.world.players[0]?.controls.valid() || !this.world.players[1]?.controls.valid()) {
@@ -68,15 +122,30 @@ class VSScreen extends Screen {
             playersManager.resetPositions();
         }*/
 
+        if (this.bufferUnpause === 0) {
+            this.paused = false;
+            for (let i in controls) {
+                controls[i].updateInGame();
+            }
+        }
+        if (this.bufferUnpause >= 0)
+            this.bufferUnpause--;
+
         for (let i in controls) {
             if (controls[i].computer)
                 continue;
             if (controls[i].clickedAbsolute("start")) {
-                this.paused = !this.paused;
-                this.pausedPlayer = i;
-                break;
+                if (!this.paused) {
+                    this.paused = true;
+                    this.pauseMenu.transitioning = 30;
+                    this.pausedPlayer = controls[i];
+                    break;
+                } else if (this.pauseMenu.transitioning === 0) {
+                    this.bufferUnpause = 4;
+                    break;
+                }
             }
-            if (controls[i].clickedAbsolute("back") && this.paused) {
+            /*if (controls[i].clickedAbsolute("back") && this.paused) {
                 this.destruct();
                 currentScreen = new CharacterSelectScreen();
                 let fake = false;
@@ -86,7 +155,7 @@ class VSScreen extends Screen {
                 }
                 currentScreen.setControls([this.player1.controls, this.player2.controls], fake);
                 break;
-            }
+            }*/
         }
     }
 

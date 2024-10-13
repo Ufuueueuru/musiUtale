@@ -21,19 +21,24 @@ class Menu {
         }
     }
 
+    controlMenu(control) {
+        if (control.joystickPressedMenu(0)) {
+            this.moveSelect(control.angle(0));
+        }
+        if (control.clickedAbsolute("select")) {
+            this.selectItem();
+            return;
+        } else if (control.clickedAbsolute("back")) {
+            this.backOut();
+            return;
+        }
+    }
+
     run() {
         if (this.transitioning === 0) {
             for (let i in controls) {
-                if (controls[i].joystickPressedMenu(0)) {
-                    this.moveSelect(controls[i].angle(0));
-                }
-                if (controls[i].clickedAbsolute("select")) {
-                    this.selectItem();
-                    break;
-                } else if (controls[i].clickedAbsolute("back")) {
-                    this.backOut();
-                    break;
-                }
+                if (!controls[i].computer && !controls[i].netplay)
+                    this.controlMenu(controls[i]);
             }
             if (this.target)
                 this.target.awenFunction();
