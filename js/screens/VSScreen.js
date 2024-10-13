@@ -23,7 +23,14 @@ class VSScreen extends Screen {
         let backButton = new MenuItem(128, 90, select, deselect, undefined, gt("battleBack"), () => {
             this.bufferUnpause = 4;
         });
-        let characterSelectButton = new MenuItem(128, 150, select, deselect, undefined, gt("battleCharacterSelect"), () => {
+        let playerSelectButton = new MenuItem(128, 150, select, deselect, undefined, gt("battlePlayerSelect"), () => {
+            playersManager.resetPositions();
+            playersManager.openScreen();
+        });
+        let editControlsButton = new MenuItem(128, 210, select, deselect, undefined, gt("battleEditControls"), () => {
+            controlsManager.openScreen();
+        });
+        let characterSelectButton = new MenuItem(128, 270, select, deselect, undefined, gt("battleCharacterSelect"), () => {
             this.destruct();
             currentScreen = new CharacterSelectScreen();
             let fake = false;
@@ -33,28 +40,21 @@ class VSScreen extends Screen {
             }
             currentScreen.setControls([this.player1.controls, this.player2.controls], fake);
         });
-        let playerSelectButton = new MenuItem(128, 210, select, deselect, undefined, gt("battlePlayerSelect"), () => {
-            playersManager.resetPositions();
-            playersManager.openScreen();
-        });
-        let editControlsButton = new MenuItem(128, 270, select, deselect, undefined, gt("battleEditControls"), () => {
-            controlsManager.openScreen();
-        });
         let exitButton = new MenuItem(128, 330, select, deselect, undefined, gt("battleExit"), () => {
             this.destruct();
             currentScreen = new MenuDebugScreen();
         });
 
-        backButton.addMoves(new MenuMove(characterSelectButton, Angle.DOWN));
-        characterSelectButton.addMoves(new MenuMove(backButton, Angle.UP));
-        characterSelectButton.addMoves(new MenuMove(playerSelectButton, Angle.DOWN));
-        playerSelectButton.addMoves(new MenuMove(characterSelectButton, Angle.UP));
+        backButton.addMoves(new MenuMove(playerSelectButton, Angle.DOWN));
+        playerSelectButton.addMoves(new MenuMove(backButton, Angle.UP));
         playerSelectButton.addMoves(new MenuMove(editControlsButton, Angle.DOWN));
         editControlsButton.addMoves(new MenuMove(playerSelectButton, Angle.UP));
-        editControlsButton.addMoves(new MenuMove(exitButton, Angle.DOWN));
-        exitButton.addMoves(new MenuMove(editControlsButton, Angle.UP));
+        editControlsButton.addMoves(new MenuMove(characterSelectButton, Angle.DOWN));
+        characterSelectButton.addMoves(new MenuMove(editControlsButton, Angle.UP));
+        characterSelectButton.addMoves(new MenuMove(exitButton, Angle.DOWN));
+        exitButton.addMoves(new MenuMove(characterSelectButton, Angle.UP));
 
-        this.pauseMenu.addMenuItems(backButton, characterSelectButton, playerSelectButton, editControlsButton, exitButton);
+        this.pauseMenu.addMenuItems(backButton, playerSelectButton, editControlsButton, characterSelectButton, exitButton);
 
         this.pauseMenu.setTarget(backButton);
     }
