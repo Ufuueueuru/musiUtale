@@ -140,7 +140,10 @@ class VSScreen extends Screen {
                     this.pauseMenu.transitioning = 30;
                     this.pausedPlayer = controls[i];
                     break;
-                } else if (this.pauseMenu.transitioning === 0) {
+                }
+            }
+            if (controls[i].clickedAbsolute("start") || controls[i].clickedAbsolute("back")) {
+                if (this.paused && this.pauseMenu.transitioning === 0) {
                     this.bufferUnpause = 4;
                     break;
                 }
@@ -159,9 +162,32 @@ class VSScreen extends Screen {
         }
     }
 
-    setControls(c) {
+    setControls(c, fake = false) {
         this.player1Controls = c[0];
         this.player2Controls = c[1];
+
+        for (let u = controls.length - 1; u >= 0; u--) {
+            if (controls[u].computer)
+                controls.splice(u, 1);
+        }
+        if (this.player1?.controls) {
+            if ((fake || !this.player1Controls)) {
+                this.player1.controls = new ComputerControlsTree(this.player1);
+                this.player1Controls = this.player1.controls;
+                controls.push(this.player1.controls);
+            } else {
+                this.player1.controls = this.player1Controls;
+            }
+        }
+        if (this.player2?.controls) {
+            if ((fake || !this.player2Controls)) {
+                this.player2.controls = new ComputerControlsTree(this.player2);
+                this.player2Controls = this.player2.controls;
+                controls.push(this.player2.controls);
+            } else {
+                this.player2.controls = this.player2Controls;
+            }
+        }
     }
     setCharacters(c) {
         this.player1CharacterID = c[0];
