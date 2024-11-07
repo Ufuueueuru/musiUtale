@@ -412,6 +412,46 @@
     }
   },
 
+  "gameFight": {
+    "en": {
+      "text": "Fight!"
+    },
+    "tp": {
+      "text": "󱥄󱥱!"
+    }
+  },
+  "gameWait": {
+    "en": {
+      "text": "Wait..."
+    },
+    "tp": {
+      "text": "󱥄󱤈..."
+    }
+  },
+  "gameMove": {
+    "en": {
+      "text": "Move..."
+    },
+    "tp": {
+      "text": "󱥄󱥩..."
+    }
+  },
+  "gameFinish": {
+    "en": {
+      "text": "Finish!"
+    },
+    "tp": {
+      "text": "󱥐󱤀"
+    }
+  },
+  "gameTied": {
+    "en": {
+      "text": "Tie!"
+    },
+    "tp": {
+      "text": "󱥱󱤧󱥵󱥖!"
+    }
+  },
   "gamePaused": {
     "en": {
       "text": "Paused"
@@ -459,6 +499,21 @@
     },
     "tp": {
       "text": "󱥶󱥧󱥱"
+    }
+  },
+
+  "controlsManagerTitle": {
+    "en": {
+      "text": "Controls"
+    },
+    "text": "󱤤󱤎"
+  },
+  "controlsManagerStart": {
+    "en": {
+      "text": "Press"
+    },
+    "tp": {
+      "text": "󱤆󱤡󱥄󱤅󱤉"
     }
   },
 

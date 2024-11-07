@@ -17,10 +17,10 @@ if (!window.electronAPI) {
 			let file = JSON.parse(localStorage.getItem("saveFile"));
 			if (localStorage.getItem("saveFile") !== null && file.defaultKeyboardControls1)
 				return JSON.parse(localStorage.getItem("saveFile"));
-			return { "defaultKeyboardControls1": { "keys": [["dash", "KeyY"], ["powerDash", "KeyJ"], ["pokaLili", "KeyT"], ["pokaSuli", "KeyG"], ["lili", "KeyR"], ["suli", "KeyF"], ["nasa", "KeyH"], ["frameAdvance", "Space"], ["select", "KeyR"], ["back", "KeyT"], ["start", "Escape"]], "arrows": [["KeyD", "KeyW", "KeyA", "KeyS"]], "deadzones": [0.25] }, "defaultKeyboardControls2": { "keys": [["dash", "KeyO"], ["powerDash", "KeyK"], ["pokaLili", "KeyP"], ["pokaSuli", "Semicolon"], ["lili", "BracketLeft"], ["suli", "Quote"], ["nasa", "KeyL"], ["frameAdvance", "Space"], ["select", "Enter"], ["back", "KeyP"], ["start", "Escape"]], "arrows": [["ArrowRight", "ArrowUp", "ArrowLeft", "ArrowDown"]], "deadzones": [0.25] }, "defaultGamepadControls": { "keys": [["dash", 4], ["powerDash", 7], ["pokaLili", 3], ["pokaSuli", 1], ["lili", 2], ["suli", 0], ["nasa", 5], ["frameAdvance", 6], ["select", 0], ["back", 1], ["start", 9], ["up", 12], ["down", 13], ["left", 14], ["right", 15]], "arrows": [0], "deadzones": [0.35] }, "graphicsSettings": { "resolutionMult": 0.5, "spriteResolutionMult": 0.25, "noSplitSheets": true }, "currentLanguage": "tp", "promptTutorial": true, "version": "0.0.4" }
+			return { "defaultKeyboardControls1": { "keys": [["dash", "KeyY"], ["powerDash", "KeyJ"], ["pokaLili", "KeyT"], ["pokaSuli", "KeyG"], ["lili", "KeyR"], ["suli", "KeyF"], ["nasa", "KeyH"], ["frameAdvance", "Space"], ["select", "KeyR"], ["back", "KeyT"], ["start", "Escape"]], "arrows": [["KeyD", "KeyW", "KeyA", "KeyS"]], "deadzones": [0.25] }, "defaultKeyboardControls2": { "keys": [["dash", "KeyO"], ["powerDash", "KeyK"], ["pokaLili", "KeyP"], ["pokaSuli", "Semicolon"], ["lili", "BracketLeft"], ["suli", "Quote"], ["nasa", "KeyL"], ["frameAdvance", "Space"], ["select", "Enter"], ["back", "KeyP"], ["start", "Escape"]], "arrows": [["ArrowRight", "ArrowUp", "ArrowLeft", "ArrowDown"]], "deadzones": [0.25] }, "defaultGamepadControls": { "keys": [["dash", 4], ["powerDash", 7], ["pokaLili", 3], ["pokaSuli", 1], ["lili", 2], ["suli", 0], ["nasa", 5], ["frameAdvance", 6], ["select", 0], ["back", 1], ["start", 9], ["up", 12], ["down", 13], ["left", 14], ["right", 15]], "arrows": [0], "deadzones": [0.35] }, "graphicsSettings": { "resolutionMult": 0.5, "spriteResolutionMult": 0.25, antiAliasing: false, "noSplitSheets": true }, "currentLanguage": "tp", "promptTutorial": true, "version": "0.0.4" }
 		},
 		getSavesPath: () => { },
-		getAppVersion: async () => "0.4.3"
+		getAppVersion: async () => "0.4.4"
 	};
 }
 
@@ -43,6 +43,8 @@ let keys = [];
 
 let playerGamepads = [];
 
+let cursorMoveCounter = 0;//When 0, no cursor
+
 let currentScreen;
 let loadingScreen;
 
@@ -51,6 +53,8 @@ let assetManager;
 let g;
 
 let lostFrames = 0;
+let lostDrawFrames = 0;
+let previousDrawTime = 0;
 
 let controls = [];
 
@@ -74,6 +78,7 @@ let dataOnFunction = (incomingData) => { };
 let graphicsSettings = {
 	resolutionMult: 1,
 	spriteResolutionMult: 1,
+	antiAliasing: true,
 	noSplitSheets: true
 }
 
@@ -148,6 +153,10 @@ function setup() {
 		loop: true,
 		volume: 0.4
 	});
+	assetManager.addSound("resources/music/awen tawa.wav", "awenTawa", {
+		loop: true,
+		volume: 0.4
+	});
 
 	assetManager.addSound("resources/sfx/8bithit.wav", "8BitHit", {
 		volume: 0.3
@@ -189,20 +198,28 @@ function setup() {
 
 	currentScreen = loadingScreen;
 
-	//These 3 lines should be used only if we want pixel art
-	//pixelDensity(1);
-	//g.noSmooth();
-	//noSmooth();
-
 	frameRate(60);
 
 	//resetSaveFile();
 	loadSaveFile(() => {
 		assetManager.loadAssets();
+
+		if (!graphicsSettings.antiAliasing) {
+			//These 3 lines should be used only if we want pixel art
+			pixelDensity(1);
+			g.noSmooth();
+			noSmooth();
+		}
 	});
 }
 
 function draw() {
+	if (cursorMoveCounter > 0) {
+		cursorMoveCounter--;
+		if (cursorMoveCounter === 1)
+			noCursor();
+	}
+
 	if (debug.controlFrameRateMouse) {
 		frameRate(constrain(90 * mouseX / windowWidth, 1, 60));
 	}
@@ -228,6 +245,15 @@ function draw() {
 	//background(0);
 
 	if (currentScreen) {
+
+		let lostDrawCurrent = 0;
+		if (!debug.noSkipDraw) {
+			if (deltaTime > 100 / 6)
+				lostDrawCurrent = Math.min(0.5, deltaTime * 6 / 100 - 1);
+			lostDrawFrames += lostDrawCurrent;
+			lostDrawFrames = constrain(lostDrawFrames, 0, 4);
+		}
+
 		if (controlsManager.overrideScreen) {
 			controlsManager.run();
 		} else if (playersManager.overrideScreen) {
@@ -236,8 +262,8 @@ function draw() {
 			currentScreen.run();
 
 			if (!debug.noSkipFrames && currentScreen.canSkipFrames) {
-				if (deltaTime > 100 / 6)
-					lostFrames += deltaTime * 6 / 100 - 1;
+				if (deltaTime > 100 / 6 + lostDrawCurrent)
+					lostFrames += deltaTime * 6 / 100 - 1 - lostDrawCurrent;
 				lostFrames = constrain(lostFrames, 0, 4);
 
 				let i = 0;
@@ -258,22 +284,21 @@ function draw() {
 			}
 		}
 
-		if (!debug.noSkipDraw && debug.noSkipFrames) {
-			if (deltaTime > 100 / 6)
-				lostFrames += deltaTime * 6 / 100 - 1;
-			lostFrames = constrain(lostFrames, 0, 4);
-		}
-		if (!debug.noSkipDraw && lostFrames > 0.5) {
-			lostFrames -= 0.5;
-		} else if (!debug.negateDraw && !playersManager.overrideScreen) {
-			currentScreen.draw(g);
-		}
+		//let drawStartTime = performance.now();
+		if (!debug.noSkipDraw && lostDrawFrames > 1 && currentScreen.canSkipFrames) {
+			lostDrawFrames -= 0.5;//Prevent the frame from being drawn if the framerate is lagging behind
+		} else if (!debug.negateDraw) {//If the debug option to negate drawing is toggled off
+			if (!playersManager.overrideScreen)
+				currentScreen.draw(g);
 
-		if (controlsManager.overrideScreen) {
-			controlsManager.draw(g);
-		} else if (playersManager.overrideScreen) {
-			playersManager.draw(g);
+			if (controlsManager.overrideScreen) {
+				controlsManager.draw(g);
+			} else if (playersManager.overrideScreen) {
+				playersManager.draw(g);
+			}
 		}
+		//previousDrawTime = performance.now() - drawStartTime;
+
 	}
 	/*if (currentScreen === undefined) {
 		currentScreen = new DebugScreen();
@@ -307,7 +332,7 @@ function draw() {
 	g.strokeWeight(3);
 	g.rect(0, 0, 512, 384);*/
 
-	image(g, 0, 0, width, height);
+	image(g, 0, 0);
 
 	if (errorDisplayFrames > 0) {
 		errorDisplayFrames--;
@@ -419,7 +444,13 @@ function keyReleased(e) {
 
 function windowResized() {
 	resizeCanvas(windowWidth, windowHeight);
+	g.remove();
 	g = createGraphics(windowWidth, windowHeight);
+}
+
+function mouseMoved() {
+	cursor(ARROW);
+	cursorMoveCounter = 180;
 }
 
 function resetSaveFile() {
@@ -502,7 +533,9 @@ function loadSaveObject(saveFile) {
 			currentLanguage = saveFile.currentLanguage;
 			promptTutorial = saveFile.promptTutorial;
 
-			graphicsSettings = saveFile.graphicsSettings;
+			for (let i in saveFile.graphicsSettings) {
+				graphicsSettings[i] = saveFile.graphicsSettings[i];
+			}
 			debug.noSplit = graphicsSettings.noSplitSheets;
 			break;
 	}

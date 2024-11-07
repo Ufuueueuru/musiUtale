@@ -19,7 +19,7 @@ let debug = {
     frameRates: [],
     effectiveFrameRates: [],
     noSkipFrames: false,
-    noSkipDraw: true,//Should always be true
+    noSkipDraw: true,//Should be true
     controlFrameRateMouse: false,
     manualFrameAdvance: false,
 

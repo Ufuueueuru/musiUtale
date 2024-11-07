@@ -359,6 +359,11 @@
 				green = 200;
 				blue = 0;
 			}
+			if (this.iFrames > 0 && this.invTo.includes("attack") && this.invTo.includes("grab")) {
+				red = 0;
+				green = 255;
+				blue = 40;
+			}
 
 			this.debugDraw(g, red, green, blue);
 		}
@@ -1487,7 +1492,7 @@ class LotoMNA extends Attack {
 	applyModifiers() {
 		this.player.counterHittable = true;
 		if (this.getFromEndF() >= this.activeStart && this.getFromEndF() <= this.activeEnd) {
-			this.player.blockLeniencyModifier = PI;
+			this.player.setBlockLeniencyModifier(PI);
 		}
 	}
 

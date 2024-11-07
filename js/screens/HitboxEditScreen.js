@@ -13,6 +13,7 @@ class HitboxEditScreen extends Screen {
         let currentPlayer = this.players[this.currentPlayerID];
 
         currentPlayer.draw(g);
+
         let red = 200;
         let green = 210;
         let blue = 220;
@@ -126,8 +127,13 @@ class HitboxEditScreen extends Screen {
             this.players.push(new characters[i]());
             this.players[i].controls = new NetplayControls();
             this.fakeWorld.addPlayer(this.players[i]);
+        }
+        this.fakeWorld.resetPositions();
+        for (let i in characters) {
             this.players[i].canMove = true;
             this.players[i].canAttack = true;
+            this.players[i].x = 0;
+            this.players[i].y = 0;
         }
         this.currentPlayerID = 0;
         this.moving = true;

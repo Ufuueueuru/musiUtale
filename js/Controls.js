@@ -315,7 +315,7 @@ class Joystick {
 	}
 
 	overrideJoystickInput(buttons) {
-		if (this.x === 0 && this.y === 0) {
+		if (!this.pressed()) {
 			let outX = 0;
 			let outY = 0;
 			

@@ -190,7 +190,8 @@ class VSNetplayScreen extends Screen {
                 lostFrames += (receivedData.rollback - this.totalAverageRollback / this.averageRollbackFrames.length - 1) / 45;
                 if (debug.displayLostFrames)
                     print((receivedData.rollback - this.totalAverageRollback / this.averageRollbackFrames.length - 1) / 45);
-            } else {
+            }
+            if (this.future.length > 2) {
                 lostFrames += this.future.length / 45;
                 if (debug.displayLostFrames)
                     print(this.future.length / 45);

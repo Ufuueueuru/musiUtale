@@ -129,6 +129,8 @@ class Player extends Hitcircle {
 		this.dash.backPenalty = 3;//How much your speed decreases from dashing backwards
 		this.dash.cancelBackPenaltyMult = 2;
 		this.dash.friction = 0.9;
+		this.dash.regularFriction = 0.8;
+		this.dash.regularFrictionFrame = this.dash.frames - 16;
 
 		this.dash.iFrames = 14;
 		this.dash.invTo = ["attack"];
@@ -161,6 +163,7 @@ class Player extends Hitcircle {
 		this.powerDash.turnSpeedBoost = 0.3;
 		this.powerDash.addHitstunFrames = 15;
 		this.powerDash.proration = 1;
+		this.powerDash.reversalIFrameMult = 0.65;
 
 		//Init States
 		this.states = {};
@@ -293,7 +296,7 @@ class Player extends Hitcircle {
 		this.slowDownFrames = 0;
 
 		/** @type {number} How many frames you have to parry */
-		this.parryLeniency = 5;
+		this.parryLeniency = 6;
 		/** @type {number} Countdown for parry to be useable */
 		this.parryCooldown = 0;
 		/** @type {number} Number of frames after starting moving where a parry cannot be performed */
@@ -311,6 +314,9 @@ class Player extends Hitcircle {
 
 		/** @type {State} */
 		this.currentState = this.states.NEUTRAL;
+
+		/** @type {string[]} */
+		this.actions = [];
 
 		/** @type {Attack[]} */
 		this.currentAttackReferences = [];
@@ -456,6 +462,11 @@ class Player extends Hitcircle {
 		this.charSpecificReset();
 	}
 
+	setBlockLeniencyModifier(num) {
+		if (num > this.blockLeniencyModifier)
+			this.blockLeniencyModifier = num;
+	}
+
 	fullReset() {
 		this.reset();
 		this.charSpecificFullReset();
@@ -576,8 +587,8 @@ class Player extends Hitcircle {
 				if (this.moveCount === this.parryLeniency + 1)
 					this.parryCooldown = this.maxParryCooldown;
 			} else {
-				if (this.moveCount > 0 && this.parryCooldown <= 0)
-					this.parryCooldown = this.maxParryCooldown;
+				//if (this.moveCount > 0 && this.parryCooldown <= 0)
+					//this.parryCooldown = this.maxParryCooldown;
 				this.moveCount = 0;
 			}
 		}
@@ -841,6 +852,7 @@ class Player extends Hitcircle {
 		g.translate(this.x, this.y);
 		g.rotate(this.dir.value);
 		g.push();
+
 		g.translate(this.arrowOffset, 0);
 
 		let red = (this.rotateSlowDownFrames > 0 ? 200 : 0);
@@ -851,6 +863,7 @@ class Player extends Hitcircle {
 		g.triangle(65, 0, 60, 3, 60, -3);
 
 		g.pop();
+
 		g.push();
 		g.translate(-this.arrowOffsetBack, 0);
 
@@ -860,9 +873,17 @@ class Player extends Hitcircle {
 		} else {
 			g.fill(47, 31, 171, 200);
 		}
-		g.triangle(-65, 0, -75, 6, -75, -6);
+		g.triangle(-63, 0, -77, 10, -77, -10);
 
 		g.pop();
+
+		//g.noStroke();
+		//if (playerID % 2 === 0) {
+		//	g.fill(170, 40, 60, 50);
+		//} else {
+		//	g.fill(47, 31, 171, 50);
+		//}
+		//g.ellipse(0, 0, this.collideRadius * 2, this.collideRadius * 2);
 
 		g.pop();
 	}
@@ -884,6 +905,14 @@ class Player extends Hitcircle {
 		g.stroke(0, 0, 15);
 		g.strokeWeight(5);
 		g.rect(0, 0, width, height);
+
+		/*g.strokeWeight(1);//Player number color-coded border
+		g.noFill();
+		if (!flip)
+			g.stroke(47, 31, 171);
+		else
+			g.stroke(170, 40, 60);
+		g.rect(-1, -1, width + 2, height + 2);*/
 
 		if (flip) {
 			g.noStroke();
@@ -1139,8 +1168,8 @@ class Player extends Hitcircle {
 			if (this.moveCount === this.parryLeniency + 1)
 				this.parryCooldown = this.maxParryCooldown;
 		} else {
-			if (this.moveCount > 0 && this.parryCooldown <= 0)
-				this.parryCooldown = this.maxParryCooldown;
+			//if (this.moveCount > 0 && this.parryCooldown <= 0)
+				//this.parryCooldown = this.maxParryCooldown;
 			this.moveCount = 0;
 		}
 	}
@@ -1387,11 +1416,15 @@ class Player extends Hitcircle {
 
 					let slice = this.world.sikeWawa.slices[this.buffer.info.sliceID];
 
+					let iFramePunish = 1;
+
 					this.actionLag = this.powerDash.frames;
 					if (State.stateIs(this.currentState, "hitstun") && this.hitStun > 0) {
-						this.slowDownMax = 2;
-						this.slowDownMod = 5;
+						this.slowDownMax = 3;
+						this.slowDownMod = 10;
 						this.slowDownFrames = floor(this.powerDash.frames * this.slowDownMod / this.slowDownMax);
+
+						iFramePunish = this.powerDash.reversalIFrameMult;
 
 						slice.value *= -1;
 
@@ -1424,7 +1457,7 @@ class Player extends Hitcircle {
 
 					this.sheet.setAnimation("Power Dash");
 
-					this.iFrames = this.powerDash.iFrames;
+					this.iFrames = Math.floor(this.powerDash.iFrames * iFramePunish);
 					this.invTo = ["attack", "grab"];
 
 					if (this.targetPlayer) {
@@ -1508,9 +1541,9 @@ class Player extends Hitcircle {
 				this.x -= this.dx;
 				this.y -= this.dy;
 			}
-			if (this.actionLag < this.dash.frames - 16) {//27
-				this.dx /= 1.25;
-				this.dy /= 1.25;
+			if (this.actionLag < this.dash.regularFrictionFrame) {//27
+				this.dx *= this.dash.regularFriction;
+				this.dy *= this.dash.regularFriction;
 			}
 			if (this.actionLag === this.dash.cancelFrame) {
 				this.addAction("dash cancel");
@@ -2361,7 +2394,7 @@ class Player extends Hitcircle {
 
 	grabLogic() {
 		if (this.currentState.name === "grab") {
-			if (this.targetPlayer?.currentState.name === "MN") {
+			if (this.targetPlayer?.currentState.name !== "grabbed") {
 				this.endAttacks();
 			}
 
@@ -2481,6 +2514,8 @@ class Player extends Hitcircle {
 				this.mostRecentAttackReference = null;
 			}
 		}
+
+		this.generalLogicNoStun();
     }
 
 	/** */
@@ -2567,6 +2602,8 @@ class Player extends Hitcircle {
 
 	/** @override */
 	generalLogic() { }
+	/** @override */
+	generalLogicNoStun() { }
 
 	/** Gets rid of attacks that don't need to be referenced anymore */
 	removeAttackReferences() {
@@ -2576,14 +2613,16 @@ class Player extends Hitcircle {
 		}
 	}
 
-	setAngleRefs() {
+	setAngleRefs(inputAngleType) {
+		if (inputAngleType === undefined)
+			inputAngleType = this.controls.inputAngleType;
 		let angle
 		if (this.targetPlayer === null) {
 			angle = this.dir;
 		} else {
 			angle = new Angle().setFromPoint(this.targetPlayer.x - this.x, this.targetPlayer.y - this.y);
 		}
-		if (this.controls.inputAngleType === "relative")
+		if (inputAngleType === "relative")
 			angle = this.dir;
 		this.sinpin = new Angle(angle.value);
 		this.right = new Angle(angle.value + PI / 2);

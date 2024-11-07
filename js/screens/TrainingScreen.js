@@ -38,6 +38,7 @@ class TrainingScreen extends VSScreen {
             isVisible: true,
             dealtDamage: 0,
             percentDamage: 0,
+            proration: 0,
             lastState: "",
             lastCanStates: "",
             lastCanStates2: ""
@@ -305,6 +306,7 @@ class TrainingScreen extends VSScreen {
             if (theirPlayer.currentState.name !== "neutral" && this.trainingPlayer.currentState.name !== "walk") {
                 this.trainingSettings.display.dealtDamage = theirPlayer.dealtDamage;
                 this.trainingSettings.display.percentDamage = theirPlayer.percentDamage;
+                this.trainingSettings.display.proration = round((theirPlayer.comboProration + theirPlayer.combo) * 10) / 10;
             }
             if (this.trainingPlayer.currentState.name !== "neutral" && this.trainingPlayer.currentState.name !== "walk") {
                 this.trainingSettings.display.lastState = this.convertState(this.trainingPlayer.currentState.name);
@@ -330,6 +332,8 @@ class TrainingScreen extends VSScreen {
             g.text("󱥉: " + this.trainingSettings.display.lastState, x + width / 2 + 25 * width / 512, y + height / 8 + 25 * width / 512);
             g.text("󱥈: " + this.trainingSettings.display.dealtDamage, x + width / 2 + 25 * width / 512, y + height / 8 + 40 * width / 512);
             g.text("󱥻󱥈: " + this.trainingSettings.display.percentDamage + "%", x + width / 2 + 25 * width / 512, y + height / 8 + 55 * width / 512);
+            g.text("󱤨󱥈: " + this.trainingSettings.display.proration, x + width / 2 + 25 * width / 512, y + height / 8 + 70 * width / 512);
+
             g.text("󱤘󱥉: " + this.trainingSettings.display.lastCanStates, x + width - 75 * width / 512, y + height / 8 + 35 * width / 512);
             g.text(this.trainingSettings.display.lastCanStates2, x + width - 35 * width / 512, y + height / 8 + 35 * width / 512);
         }

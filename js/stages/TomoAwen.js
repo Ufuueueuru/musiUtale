@@ -39,7 +39,12 @@
     }
 
     playMusic() {
-        this.playSong(assetManager.sounds.maWeka);
+        let r = random(0, 2);
+        if (r < 1) {
+            this.playSong(assetManager.sounds.maWeka);
+        } else {
+            this.playSong(assetManager.sounds.awenTawa);
+        }
     }
 
     static addAssets() {

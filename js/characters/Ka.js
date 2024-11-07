@@ -1243,7 +1243,7 @@
 		this.hitStunModifier = 3;
 		if (this.currentState.name === "hitstun" || ((this.currentState.name === "neutral" || this.currentState.name === "walk") && this.world.frameCount % 10 === 0))
 			this.risk--;
-		if (this.targetPlayer && this.targetPlayer.currentState.name === "block" && this.targetPlayer.hitStun % 3 > 0)
+		if (this.targetPlayer && this.targetPlayer.currentState.name === "block" && this.targetPlayer.hitStun % 2 > 0)
 			this.risk++;
 		this.risk = constrain(this.risk, 0, 600);
 		this.defense = constrain(1 + this.risk / 2000, 1, 1.2);
@@ -1386,6 +1386,11 @@
 				red = 255;
 				green = 200;
 				blue = 0;
+			}
+			if (this.iFrames > 0 && this.invTo.includes("attack") && this.invTo.includes("grab")) {
+				red = 0;
+				green = 255;
+				blue = 40;
 			}
 
 			this.debugDraw(g, red, green, blue);
@@ -1549,6 +1554,8 @@ class KaSL extends Attack {
 	constructor(player, circles = [], props = []) {
 		super(player, circles, props);
 		this.name = "SL";
+
+		this.duplicate = false;
 	}
 
 	static createAttack(player) {
@@ -1558,7 +1565,7 @@ class KaSL extends Attack {
 		let sweet2 = new PriorityCircle(30, 0, 40, 0).setVelocity(0.1, 0);
 		let circles = [sweet1, sweet2];
 
-		let sweet = new AttackProperties().setDamage(14, 15).setProration(0.1).setCancelOptions(cancelOptions).setAngleValue(player.dir.value).setLaunch(3, 2, 0.5).setHitStun(24, 17).setStunFrames(11).setCancelWait(4).setWallPushback(2);
+		let sweet = new AttackProperties().setDamage(14, 15).setProration(0.1, 1.5).setCancelOptions(cancelOptions).setAngleValue(player.dir.value).setLaunch(3, 5, 0.5).setHitStun(24, 17).setStunFrames(11).setCancelWait(4).setWallPushback(2);
 		let prop = [sweet];
 
 		//sweet.setHitSound(assetManager.sounds["8BitHit"]);
@@ -1571,8 +1578,11 @@ class KaSL extends Attack {
 		player.startMomentumMultiply(0);
 		player.startMomentumMultiplyDash(1);
 
-		if (player.currentState.name === "SL")
+		if (player.currentState.name === "SL") {
 			attack.properties[0].setHitStun(10, 9);
+			attack.duplicate = true;
+			player.risk++;
+		}
 	}
 
 	hitConfirmSetFrames() {
@@ -1589,8 +1599,9 @@ class KaSL extends Attack {
 
 	logic() {
 		if (this.getStartupF() === 3) {
-			this.player.dx += this.player.dir.getX() * 7;
-			this.player.dy += this.player.dir.getY() * 7;
+			let speed = (this.duplicate ? 0 : 7);
+			this.player.dx += this.player.dir.getX() * speed;
+			this.player.dy += this.player.dir.getY() * speed;
 		}
 		if (this.getActiveF() <= 1 || this.hitPlayerBool) {
 			this.player.dx *= 0.86;
@@ -1770,8 +1781,8 @@ class KaSS extends Attack {
 	}
 
 	static startAttack(player, attack, bufferInfo) {
-		player.dx = (player.dx + 4 * player.dir.getX()) / 4;
-		player.dy = (player.dy + 4 * player.dir.getY()) / 4;
+		player.dx = (player.dx + 4 * player.dir.getX()) / 5;
+		player.dy = (player.dy + 4 * player.dir.getY()) / 5;
 
 		if (State.stateIsTag(player.currentState, "attack")) {
 			player.slowDownFrames = 15;
@@ -1801,7 +1812,7 @@ class KaSS extends Attack {
 			let sweet1 = new PriorityCircle(60, 0, 200, 0);
 			let circles = [sweet1];
 
-			let sweet = new AttackProperties().setDamage(80).setProration(-1).setCancelOptions(cancelOptions).setAngleValue(this.player.dir.value).setLaunch(13, 0.1).setHitStun(28).setStunFrames(15);
+			let sweet = new AttackProperties().setDamage(70).setProration(-1).setCancelOptions(cancelOptions).setAngleValue(this.player.dir.value).setLaunch(13, 0.1).setHitStun(28).setStunFrames(15);
 			let prop = [sweet];
 
 			//sweet.setHitSound(assetManager.sounds.fanTP);
@@ -1827,6 +1838,8 @@ class KaSS extends Attack {
 			this.player.targetPlayer.y = this.player.y + this.player.dir.getY() * this.dist;
 			this.player.targetPlayer.dir.value = this.player.dir.value + PI;
 		}
+		this.player.dx = 0;
+		this.player.dy = 0;
 		this.player.actionLag = 40;
 		this.setEndF(40);
 		this.player.iFrames = 40;
@@ -2528,7 +2541,7 @@ class KaRPS extends Attack {
 		let sour1 = new PriorityCircle(50, 0, 60, 0).setVelocity(0.1, 0);
 		let circles = [sour1];
 
-		let sweet = new AttackProperties().setDamage(55, 35, 10).setProration(-0.7).setCancelOptions(cancelOptions).setAngleValue(player.dir.value - PI / 2).setLaunch(10, 4, 0.3).setHitStun(30, 17).setStunFrames(13).setCancelWait(9);
+		let sweet = new AttackProperties().setDamage(40, 35, 3).setProration(2, -2.7).setCancelOptions(cancelOptions).setAngleValue(player.dir.value - PI / 2).setLaunch(12, 4, 1).setHitStun(30, 12).setStunFrames(13).setCancelWait(9);
 		let prop = [sweet];
 
 		sweet.setHitSound(assetManager.sounds["8BitHit"]);
@@ -2571,7 +2584,7 @@ class KaRPS extends Attack {
 	}
 
 	logic() {
-		if (this.getFromStartupF() > 4 && this.getActiveF() > 0) {
+		if (this.getFromStartupF() > 4 && this.getActiveF() > 0 && !this.hitPlayerBool) {
 			let speed = (this.getStartupF() > 11 || this.getStartupF() <= 1) ? 15 : 3;
 			this.player.dx = this.player.dir.getX() * speed;
 			this.player.dy = this.player.dir.getY() * speed;
@@ -2586,6 +2599,11 @@ class KaRPS extends Attack {
 			this.player.dy *= 0.8;
 		}
 		this.sheet.run();
+	}
+
+	hitConfirmSetFrames() {
+		this.player.dx *= 0.5;
+		this.player.dy *= 0.5;
 	}
 }
 
@@ -2603,7 +2621,7 @@ class KaLPS extends Attack {
 		let sour1 = new PriorityCircle(50, 0, 60, 0).setVelocity(0.1, 0);
 		let circles = [sour1];
 
-		let sweet = new AttackProperties().setDamage(55, 35, 10).setProration(-0.7).setCancelOptions(cancelOptions).setAngleValue(player.dir.value + PI / 2).setLaunch(10, 4, 0.3).setHitStun(30, 17).setStunFrames(13).setCancelWait(9);
+		let sweet = new AttackProperties().setDamage(40, 35, 3).setProration(2, -2.7).setCancelOptions(cancelOptions).setAngleValue(player.dir.value + PI / 2).setLaunch(12, 4, 1).setHitStun(30, 12).setStunFrames(13).setCancelWait(9);
 		let prop = [sweet];
 
 		sweet.setHitSound(assetManager.sounds["8BitHit"]);
@@ -2646,7 +2664,7 @@ class KaLPS extends Attack {
 	}
 
 	logic() {
-		if (this.getFromStartupF() > 4 && this.getActiveF() > 0) {
+		if (this.getFromStartupF() > 4 && this.getActiveF() > 0 && !this.hitPlayerBool) {
 			let speed = (this.getStartupF() > 11 || this.getStartupF() <= 1) ? 15 : 3;
 			this.player.dx = this.player.dir.getX() * speed;
 			this.player.dy = this.player.dir.getY() * speed;
@@ -2661,6 +2679,11 @@ class KaLPS extends Attack {
 			this.player.dy *= 0.8;
 		}
 		this.sheet.run();
+	}
+
+	hitConfirmSetFrames() {
+		this.player.dx *= 0.5;
+		this.player.dy *= 0.5;
 	}
 }
 

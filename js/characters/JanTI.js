@@ -1320,6 +1320,11 @@
 				green = 200;
 				blue = 0;
 			}
+			if (this.iFrames > 0 && this.invTo.includes("attack") && this.invTo.includes("grab")) {
+				red = 0;
+				green = 255;
+				blue = 40;
+			}
 
 			this.debugDraw(g, red, green, blue);
 		}
@@ -2037,16 +2042,17 @@ class JanTISPL extends Attack {
 		super(player, circles, props);
 		this.name = "SPL";
 
+		this.tracking = true;
 		this.sheet = Spritesheet.copy(assetManager.spritesheets.konNasa);
 	}
 
 	static createAttack(player) {
 		let cancelOptions = [];
 
-		let sweet1 = new PriorityCircle(50, -20, 35, 0).setVelocity(5, -3);
+		let sweet1 = new PriorityCircle(50, -20, 35, 0).setVelocity(4.5, -4);
 		let circles = [sweet1];
 
-		let sweet = new AttackProperties().setDamage(35, undefined, 10).setProration(0.5).setCancelOptions(cancelOptions).setAngleValue(player.dir.value).setLaunch(2).setHitStun(21, 15).setStunFrames(10).setAngleTypes("vel", "direct");
+		let sweet = new AttackProperties().setDamage(35, undefined, 10).setProration(0.5).setCancelOptions(cancelOptions).setAngleValue(player.dir.value).setLaunch(2).setHitStun(21, 5).setStunFrames(10).setAngleTypes("vel", "direct");
 		let prop = [sweet];
 
 		return new this(player, circles, prop).setClashPriority(1).setStartupF(15).setActiveF(60).setEndF(25).setProjectile().setFollow(false);
@@ -2080,7 +2086,9 @@ class JanTISPL extends Attack {
 	logic() {
 		this.circles[0].dx *= 0.99;
 		this.circles[0].dy *= 0.99;
-		if (this.player.targetPlayer) {
+		if (this.player.currentState.name === "block" || this.player.currentState.name === "hitstun")
+			this.tracking = false;
+		if (this.player.targetPlayer && this.tracking) {
 			let angle = new Angle().setFromPoint(this.player.targetPlayer.x - this.circleX(0), this.player.targetPlayer.y - this.circleY(0));
 			this.circles[0].dx += angle.getX() / 3 * (this.getFromActiveF() / 35 + 0.1);
 			this.circles[0].dy += angle.getY() / 3 * (this.getFromActiveF() / 35 + 0.1);
@@ -2401,16 +2409,17 @@ class JanTISPS extends Attack {
 		super(player, circles, props);
 		this.name = "SPS";
 
+		this.tracking = true;
 		this.sheet = Spritesheet.copy(assetManager.spritesheets.konNasa);
 	}
 
 	static createAttack(player) {
 		let cancelOptions = [];
 
-		let sweet1 = new PriorityCircle(60, -30, 50, 0).setVelocity(2, 1);
+		let sweet1 = new PriorityCircle(60, -30, 50, 0).setVelocity(2, -2);
 		let circles = [sweet1];
 
-		let sweet = new AttackProperties().setDamage(55).setProration(0.5).setCancelOptions(cancelOptions).setAngleValue(player.dir.value).setLaunch(3).setHitStun(36, 20).setStunFrames(15).setAngleTypes("vel", "direct");
+		let sweet = new AttackProperties().setDamage(55).setProration(0.5).setCancelOptions(cancelOptions).setAngleValue(player.dir.value).setLaunch(3).setHitStun(36, 5).setStunFrames(15).setAngleTypes("vel", "direct");
 		let prop = [sweet];
 
 		return new this(player, circles, prop).setClashPriority(0).setStartupF(29).setActiveF(90).setEndF(23).setProjectile().setFollow(false);
@@ -2443,7 +2452,9 @@ class JanTISPS extends Attack {
 	logic() {
 		this.circles[0].dx *= 0.99;
 		this.circles[0].dy *= 0.99;
-		if (this.player.targetPlayer) {
+		if (this.player.currentState.name === "block" || this.player.currentState.name === "hitstun")
+			this.tracking = false;
+		if (this.player.targetPlayer && this.tracking) {
 			let angle = new Angle().setFromPoint(this.player.targetPlayer.x - this.circleX(0), this.player.targetPlayer.y - this.circleY(0));
 			this.circles[0].dx += angle.getX() / 6 * (this.getFromActiveF() / 50 + 0.1);
 			this.circles[0].dy += angle.getY() / 6 * (this.getFromActiveF() / 50 + 0.1);

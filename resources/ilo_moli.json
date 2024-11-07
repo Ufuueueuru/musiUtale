@@ -1,0 +1,95 @@
+{ "frames": {
+   "ilo_moli 0.aseprite": {
+    "frame": { "x": 0, "y": 0, "w": 160, "h": 128 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 160, "h": 128 },
+    "sourceSize": { "w": 160, "h": 128 },
+    "duration": 67
+   },
+   "ilo_moli 1.aseprite": {
+    "frame": { "x": 160, "y": 0, "w": 160, "h": 128 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 160, "h": 128 },
+    "sourceSize": { "w": 160, "h": 128 },
+    "duration": 67
+   },
+   "ilo_moli 2.aseprite": {
+    "frame": { "x": 0, "y": 128, "w": 160, "h": 128 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 160, "h": 128 },
+    "sourceSize": { "w": 160, "h": 128 },
+    "duration": 67
+   },
+   "ilo_moli 3.aseprite": {
+    "frame": { "x": 160, "y": 128, "w": 160, "h": 128 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 160, "h": 128 },
+    "sourceSize": { "w": 160, "h": 128 },
+    "duration": 67
+   },
+   "ilo_moli 4.aseprite": {
+    "frame": { "x": 0, "y": 256, "w": 160, "h": 128 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 160, "h": 128 },
+    "sourceSize": { "w": 160, "h": 128 },
+    "duration": 67
+   },
+   "ilo_moli 5.aseprite": {
+    "frame": { "x": 160, "y": 256, "w": 160, "h": 128 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 160, "h": 128 },
+    "sourceSize": { "w": 160, "h": 128 },
+    "duration": 67
+   },
+   "ilo_moli 6.aseprite": {
+    "frame": { "x": 0, "y": 384, "w": 160, "h": 128 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 160, "h": 128 },
+    "sourceSize": { "w": 160, "h": 128 },
+    "duration": 67
+   },
+   "ilo_moli 7.aseprite": {
+    "frame": { "x": 160, "y": 384, "w": 160, "h": 128 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 160, "h": 128 },
+    "sourceSize": { "w": 160, "h": 128 },
+    "duration": 67
+   },
+   "ilo_moli 8.aseprite": {
+    "frame": { "x": 0, "y": 512, "w": 160, "h": 128 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 160, "h": 128 },
+    "sourceSize": { "w": 160, "h": 128 },
+    "duration": 67
+   },
+   "ilo_moli 9.aseprite": {
+    "frame": { "x": 160, "y": 512, "w": 160, "h": 128 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 160, "h": 128 },
+    "sourceSize": { "w": 160, "h": 128 },
+    "duration": 67
+   }
+ },
+ "meta": {
+  "app": "https://www.aseprite.org/",
+  "version": "1.3.9.2-x64",
+  "image": "ilo_moli.png",
+  "format": "I8",
+  "size": { "w": 320, "h": 640 },
+  "scale": "1",
+  "frameTags": [
+   { "name": "Inactive", "from": 0, "to": 4, "direction": "forward", "color": "#000000ff" },
+   { "name": "Active", "from": 5, "to": 9, "direction": "forward", "color": "#000000ff" }
+  ]
+ }
+}

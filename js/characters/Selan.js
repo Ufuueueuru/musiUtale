@@ -234,39 +234,39 @@
 		];
 
 		this.hurtboxes["dash"] = [
-			[new Circle(7, 0, 71),
-			new Circle(39, 20, 48),
-			new Circle(55, -12, 48)],
-			[new Circle(-13, 0, 65),
-			new Circle(10, 9, 50),
-			new Circle(31, -10, 47)],
-			[new Circle(-6, 0, 68),
-			new Circle(17, -14, 49),
-			new Circle(40, 6, 48)],
-			[new Circle(-5, -4, 70),
-			new Circle(-1, 24, 54),
-			new Circle(17, -36, 47)],
-			[new Circle(0, 0, 71),
-			new Circle(-22, 20, 58),
-			new Circle(26, -20, 46)],
-			[new Circle(1, -1, 64),
-			new Circle(-27, 6, 53),
-			new Circle(27, 2, 53)],
-			[new Circle(-3, -13, 53),
-			new Circle(-17, 3, 63),
-			new Circle(18, 19, 47)],
-			[new Circle(-5, 0, 71),
-			new Circle(5, -25, 49),
-			new Circle(11, 24, 45)],
-			[new Circle(0, 0, 85),
-			new Circle(13, 34, 42),
-			new Circle(14, -34, 47)]
+			[new Circle(7, 0, 50),
+			new Circle(22, 12, 34),
+			new Circle(31, -8, 30)],
+			[new Circle(-10, -3, 38),
+			new Circle(11, 9, 41),
+			new Circle(31, -10, 37)],
+			[new Circle(0, 2, 51),
+			new Circle(17, -14, 36),
+			new Circle(32, 8, 36)],
+			[new Circle(1, -4, 59),
+			new Circle(14, 16, 39),
+			new Circle(22, -24, 38)],
+			[new Circle(5, -1, 56),
+			new Circle(-4, 19, 42),
+			new Circle(26, -11, 39)],
+			[new Circle(6, -8, 51),
+			new Circle(-21, 1, 46),
+			new Circle(27, 5, 42)],
+			[new Circle(-3, -14, 43),
+			new Circle(-17, 3, 48),
+			new Circle(11, 16, 37)],
+			[new Circle(-5, 0, 56),
+			new Circle(4, -21, 38),
+			new Circle(9, 18, 36)],
+			[new Circle(0, 0, 67),
+			new Circle(9, 28, 36),
+			new Circle(9, -30, 39)]
 		];
 
 		this.hurtboxes["dash cancel"] = [
-			[new Circle(7, 0, 71),
-			new Circle(39, 20, 48),
-			new Circle(55, -12, 48)],
+			[new Circle(7, 0, 49),
+			new Circle(22, 13, 39),
+			new Circle(30, -12, 35)],
 			[new Circle(-17, 0, 59),
 			new Circle(10, 9, 50),
 			new Circle(41, -7, 47)],
@@ -767,12 +767,12 @@
 			[new Circle(2, 0, 95),
 			new Circle(-35, -41, 56),
 			new Circle(-39, 38, 54)],
-			[new Circle(3, -1, 93),
-			new Circle(-2, 42, 50),
-			new Circle(-4, -43, 50)],
-			[new Circle(3, -1, 95),
-			new Circle(6, 39, 50),
-			new Circle(6, -41, 50)]
+			[new Circle(-3, -1, 93),
+			new Circle(39, 42, 50),
+			new Circle(41, -43, 50)],
+			[new Circle(-4, -1, 95),
+			new Circle(20, 39, 50),
+			new Circle(20, -41, 50)]
 		];
 
 		this.hurtboxes["SPL"] = [
@@ -1144,23 +1144,23 @@
 			[new Circle(0, 0, 90),
 			new Circle(10, 40, 40),
 			new Circle(10, -40, 40)],
-			[new Circle(54, 81, 61),
-			new Circle(1, 107, 58),
-			new Circle(77, 28, 59),
-			new Circle(-2, 56, 44),
-			new Circle(32, 32, 37),
+			[new Circle(74, 100, 61),
+			new Circle(6, 130, 58),
+			new Circle(101, 32, 59),
+			new Circle(14, 70, 44),
+			new Circle(43, 35, 37),
 			new Circle(-2, 6, 48)],
-			[new Circle(57, 82, 62),
-			new Circle(5, 106, 59),
-			new Circle(81, 28, 58),
-			new Circle(0, 55, 45),
-			new Circle(34, 31, 38),
+			[new Circle(78, 102, 62),
+			new Circle(11, 128, 59),
+			new Circle(103, 32, 58),
+			new Circle(14, 67, 45),
+			new Circle(45, 33, 38),
 			new Circle(0, 4, 49)],
-			[new Circle(60, 83, 63),
-			new Circle(9, 108, 56),
-			new Circle(85, 29, 58),
-			new Circle(3, 58, 43),
-			new Circle(36, 32, 41),
+			[new Circle(84, 102, 63),
+			new Circle(13, 129, 56),
+			new Circle(106, 34, 58),
+			new Circle(15, 67, 43),
+			new Circle(50, 37, 41),
 			new Circle(0, 3, 50)],
 			[new Circle(76, 25, 40),
 			new Circle(6, 98, 33),
@@ -1210,23 +1210,23 @@
 			[new Circle(0, 0, 90),
 			new Circle(10, -40, 40),
 			new Circle(10, 40, 40)],
-			[new Circle(54, -81, 61),
-			new Circle(1, -107, 58),
-			new Circle(77, -28, 59),
-			new Circle(-2, -56, 44),
-			new Circle(32, -32, 37),
+			[new Circle(74, -100, 61),
+			new Circle(6, -130, 58),
+			new Circle(101, -32, 59),
+			new Circle(14, -70, 44),
+			new Circle(43, -35, 37),
 			new Circle(-2, -6, 48)],
-			[new Circle(57, -82, 62),
-			new Circle(5, -106, 59),
-			new Circle(81, -28, 58),
-			new Circle(0, -55, 45),
-			new Circle(34, -31, 38),
+			[new Circle(78, -102, 62),
+			new Circle(11, -128, 59),
+			new Circle(103, -32, 58),
+			new Circle(14, -67, 45),
+			new Circle(45, -33, 38),
 			new Circle(0, -4, 49)],
-			[new Circle(60, -83, 63),
-			new Circle(9, -108, 56),
-			new Circle(85, -29, 58),
-			new Circle(3, -58, 43),
-			new Circle(36, -32, 41),
+			[new Circle(84, -102, 63),
+			new Circle(13, -129, 56),
+			new Circle(106, -34, 58),
+			new Circle(15, -67, 43),
+			new Circle(50, -37, 41),
 			new Circle(0, -3, 50)],
 			[new Circle(76, -25, 40),
 			new Circle(6, -98, 33),
@@ -1864,7 +1864,7 @@
 		this.powerDash.frames = 28;
 		this.powerDash.speed = 4;
 		this.powerDash.iFrames = 26;
-		this.powerDash.addHitstunFrames = 5;
+		this.powerDash.addHitstunFrames = 8;
 		this.powerDash.proration = 3;
 
 		this.turnSpeed = 0.05;
@@ -2012,6 +2012,11 @@
 				green = 200;
 				blue = 0;
 			}
+			if (this.iFrames > 0 && this.invTo.includes("attack") && this.invTo.includes("grab")) {
+				red = 0;
+				green = 255;
+				blue = 40;
+			}
 
 			this.debugDraw(g, red, green, blue);
 		}
@@ -2048,7 +2053,7 @@ class SelanDashAttack extends Attack {
 		let sweet1 = new PriorityCircle(0, 0, 110, 0).setVelocity(0.1, 0);
 		let circles = [sweet1];
 
-		let sweet = new AttackProperties().setDamage(player.powerupGrabFrames ? 25 : 15).setProration(4).setCancelOptions(cancelOptions).setAngleValue(player.dir.value).setLaunch(0.6, 0.5, 0.5).setHitStun(5, 28).setStunFrames(18).setNormalizeHitStun().setAngleTypes("direct", "direct");
+		let sweet = new AttackProperties().setDamage(player.powerupGrabFrames ? 25 : 15).setProration(4).setCancelOptions(cancelOptions).setAngleValue(player.dir.value).setLaunch(0.6, 0.5, 0.5).setHitStun(10, 28).setStunFrames(18).setNormalizeHitStun().setAngleTypes("direct", "direct");
 		let prop = [sweet];
 
 		//sweet.setHitSound(assetManager.sounds.fanTP);
@@ -2562,19 +2567,22 @@ class SelanNPL extends Attack {
 		}
 	}
 
+	applyModifiers() {
+		if (this.getEndF() === 8) {
+			this.player.dir.changeValue(PI);
+		}
+	}
+
 	logic() {
 		this.player.greenDisplay = 150;
 		if (this.getStartupF() === 1 && this.player.targetPlayer?.currentState.name === "block" && this.player.targetPlayer?.actionLag > 1) {
 			this.properties[0].setNoKill();
 		}
 		if (this.getFromEndF() === 2) {
-			this.player.iFrames = 15;
+			this.player.iFrames = 8;
 			this.player.invTo = ["attack", "grab"];
 			this.player.x += this.player.dir.getX() * 180;
 			this.player.y += this.player.dir.getY() * 180;
-		}
-		if (this.getEndF() === 1) {
-			this.player.dir.changeValue(PI);
 		}
 	}
 
@@ -2867,6 +2875,8 @@ class SelanNPS extends Attack {
 	}
 
 	hitConfirmSetFrames() {
+		this.player.dx = 0;
+		this.player.dy = 0;
 		this.player.actionLag = 72;
 		this.setEndF(72);
 		this.player.hurtboxStateFrame = 40;
@@ -2882,14 +2892,14 @@ class SelanSPS extends Attack {
 	}
 
 	static createAttack(player) {
-		let cancelOptions = [];
+		let cancelOptions = ["attack", "dash"];
 
 		let sweet1 = new PriorityCircle(50, 0, 80, 0).setVelocity(0.1, 0);
 		let other1 = new PriorityCircle(80, 0, 80, 1).setVelocity(0.1, 0);
 		let circles = [sweet1, other1];
 
-		let sweet = new AttackProperties().setDamage(player.powerupGrabFrames ? 25 : 20).setProration(player.powerupGrabFrames ? -1 : -0.5).setCancelOptions(cancelOptions).setAngleValue(player.dir.value).setLaunch(14, 1, 2.7).setHitStun(50, 15).setStunFrames(13).setNormalizeHitStun();
-		let other = new AttackProperties().setDamage(player.powerupGrabFrames ? 25 : 20).setProration(player.powerupGrabFrames ? -1 : -0.5).setCancelOptions(cancelOptions).setAngleValue(player.dir.value).setLaunch(7, 1, 2.5).setHitStun(50, 15).setStunFrames(13).setNormalizeHitStun();
+		let sweet = new AttackProperties().setDamage(player.powerupGrabFrames ? 45 : 40).setProration(player.powerupGrabFrames ? -0.5 : 0).setCancelOptions(cancelOptions).setAngleValue(player.dir.value).setLaunch(14, 1, 2.7).setHitStun(40, 15).setStunFrames(13).setNormalizeHitStun().setCancelWait(4);
+		let other = new AttackProperties().setDamage(player.powerupGrabFrames ? 45 : 40).setProration(player.powerupGrabFrames ? -0.5 : 0).setCancelOptions(cancelOptions).setAngleValue(player.dir.value).setLaunch(7, 1, 2.5).setHitStun(40, 15).setStunFrames(13).setNormalizeHitStun().setCancelWait(4);
 		let prop = [sweet, other];
 
 		//sweet.setHitSound(assetManager.sounds.fanTP);
@@ -2935,14 +2945,15 @@ class SelanRPS extends Attack {
 		let cancelOptions = ["SS", "SPL", "RPL", "LPL", "RPS", "LPS"];
 		let hitCancelOptions = ["dash"];
 
-		let sweet1 = new PriorityCircle(80, 30, 60, 0).setVelocity(1, 0);
-		let sweet2 = new PriorityCircle(56, 86, 55, 0).setVelocity(1, 0);
-		let sweet3 = new PriorityCircle(0, 110, 55, 0).setVelocity(1, 0);
-		let sweet4 = new PriorityCircle(20, 40, 60, 0).setVelocity(1, 0);
-		let circles = [sweet1, sweet2, sweet3, sweet4];
+		let sour1 = new PriorityCircle(24, 48, 80, 0).setVelocity(1, 0);
+		let sweet1 = new PriorityCircle(108, 36, 80, 1).setVelocity(1, 0);
+		let sweet2 = new PriorityCircle(79, 103, 75, 1).setVelocity(1, 0);
+		let sweet3 = new PriorityCircle(12, 132, 75, 1).setVelocity(1, 0);
+		let circles = [sour1, sweet1, sweet2, sweet3];
 
-		let sweet = new AttackProperties().setDamage(player.powerupGrabFrames ? 50 : 45, 30).setProration(2).setCancelOptions(cancelOptions, hitCancelOptions).setAngleValue(player.dir.value - PI / 3).setLaunch(3.7, 4, 0.4).setHitStun(47, 37).setStunFrames(13).setCancelWait(4).setWallPushback(3, 18);
-		let prop = [sweet];
+		let sour = new AttackProperties().setDamage(player.powerupGrabFrames ? 50 : 45, 30).setProration(2).setCancelOptions(cancelOptions, hitCancelOptions).setAngleValue(player.dir.value - PI / 3).setLaunch(7.9, 4, 0.4).setHitStun(47, 39).setStunFrames(13).setCancelWait(4).setWallPushback(3, 18);
+		let sweet = new AttackProperties().setDamage(player.powerupGrabFrames ? 50 : 45, 30).setProration(2).setCancelOptions(cancelOptions, hitCancelOptions).setAngleValue(player.dir.value - PI / 3).setLaunch(3.7, 4, 0.4).setHitStun(47, 39).setStunFrames(13).setCancelWait(4).setWallPushback(3, 18);
+		let prop = [sour, sweet];
 
 		return new this(player, circles, prop).setClashPriority(2).setStartupF(28).setActiveF(12).setEndF(25);
 	}
@@ -2980,14 +2991,15 @@ class SelanLPS extends Attack {
 		let cancelOptions = ["SS", "SPL", "RPL", "LPL", "RPS", "LPS"];
 		let hitCancelOptions = ["dash"];
 
-		let sweet1 = new PriorityCircle(80, -30, 60, 0).setVelocity(1, 0);
-		let sweet2 = new PriorityCircle(56, -86, 55, 0).setVelocity(1, 0);
-		let sweet3 = new PriorityCircle(0, -110, 55, 0).setVelocity(1, 0);
-		let sweet4 = new PriorityCircle(20, -40, 60, 0).setVelocity(1, 0);
-		let circles = [sweet1, sweet2, sweet3, sweet4];
+		let sour1 = new PriorityCircle(24, -48, 80, 0).setVelocity(1, 0);
+		let sweet1 = new PriorityCircle(108, -36, 80, 1).setVelocity(1, 0);
+		let sweet2 = new PriorityCircle(79, -103, 75, 1).setVelocity(1, 0);
+		let sweet3 = new PriorityCircle(12, -132, 75, 1).setVelocity(1, 0);
+		let circles = [sour1, sweet1, sweet2, sweet3];
 
-		let sweet = new AttackProperties().setDamage(player.powerupGrabFrames ? 55 : 50, 30).setProration(2).setCancelOptions(cancelOptions, hitCancelOptions).setAngleValue(player.dir.value + PI / 3).setLaunch(2.5, 4, 0.4).setHitStun(47, 37).setStunFrames(13).setCancelWait(4).setWallPushback(3, 18);
-		let prop = [sweet];
+		let sour = new AttackProperties().setDamage(player.powerupGrabFrames ? 50 : 45, 30).setProration(2).setCancelOptions(cancelOptions, hitCancelOptions).setAngleValue(player.dir.value + PI / 3).setLaunch(7.9, 4, 0.4).setHitStun(47, 39).setStunFrames(13).setCancelWait(4).setWallPushback(3, 18);
+		let sweet = new AttackProperties().setDamage(player.powerupGrabFrames ? 50 : 45, 30).setProration(2).setCancelOptions(cancelOptions, hitCancelOptions).setAngleValue(player.dir.value + PI / 3).setLaunch(3.7, 4, 0.4).setHitStun(47, 39).setStunFrames(13).setCancelWait(4).setWallPushback(3, 18);
+		let prop = [sour, sweet];
 
 		return new this(player, circles, prop).setClashPriority(2).setStartupF(28).setActiveF(12).setEndF(25);
 	}

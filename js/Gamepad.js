@@ -1,14 +1,29 @@
 let gamepads = navigator.getGamepads();
 
 window.addEventListener("gamepaddisconnected", (e) => {
-    print("disconnected");
-    for (let i in controls) {
-        if (controls[i] === controlsManager.gamepadControls[e.gamepad.index]) {
-            controls.splice(i, 1);
-            break;
+    print("disconnected", e.gamepad.index);
+    for (let i = controls.length - 1; i >= 0; i--) {
+        if (controls[i].layout === "gamepad") {
+            /*if (controls[i].getKeyspad() > e.gamepad.index) {
+                controls[i].setKeyspad(controls[i].getKeyspad() - 1);
+                continue;
+            }*/
+            if (controls[i].getKeyspad() === e.gamepad.index) {
+                controls.splice(i, 1);
+                continue;
+            }
         }
     }
-    controlsManager.gamepadControls.splice(e.gamepad.index, 1);
+    for (let i = controlsManager.gamepadControls.length - 1; i >= 0; i--) {
+        /*if (controlsManager.gamepadControls[i].getKeyspad() > e.gamepad.index) {
+            controlsManager.gamepadControls[i].setKeyspad(controlsManager.gamepadControls[i].getKeyspad() - 1);
+            continue;
+        }*/
+        if (controlsManager.gamepadControls[i].getKeyspad() === e.gamepad.index) {
+            controlsManager.gamepadControls.splice(i, 1);
+            continue;
+        }
+    }
 });
 
 window.addEventListener("gamepadconnected", (e) => {

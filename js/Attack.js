@@ -111,6 +111,23 @@ class Attack extends Hitcircle {
 	}
 
 	/**
+	 * Returns whether the attack's player is in stun or not
+	 * @override
+	 * @returns
+	 */
+	notStun() {
+		return this.player.stunFrames <= 0;
+	}
+
+	/**
+	 * Sets the attack's player's stunFrames
+	 * @override
+	 */
+	setPlayerStunFrames(num) {
+		this.player.stunFrames = num;
+	}
+
+	/**
 	 * 
 	 * @param {AttackProperties} property
 	 * @param {Player} p
@@ -123,7 +140,7 @@ class Attack extends Hitcircle {
 			}
 		}
 		let counterHit = p.combo === 0 && (p.counterHittable || p.mostRecentAttackReference?.getActiveF() > 0 || p.mostRecentAttackReference?.getStartupF() > 0);
-		let punishHit = p.combo === 0 && ((p.mostRecentAttackReference?.getStartupF() <= 0 && p.mostRecentAttackReference?.getActiveF() <= 0) || p.currentState.name === "rightRoll" || p.currentState.name === "leftRoll" || p.currentState.name === "neutralRoll");
+		let punishHit = p.combo === 0 && ((p.mostRecentAttackReference?.getStartupF() <= 0 && p.mostRecentAttackReference?.getActiveF() <= 0) || p.currentState.name === "rightRoll" || p.currentState.name === "leftRoll" || p.currentState.name === "neutralRoll" || p.currentState.name === "power dash");
 		let dealtDamage;
 		let hitBool = false;
 		if (property.grab) {
@@ -272,7 +289,7 @@ class Attack extends Hitcircle {
 						wallLaunchMod = property.wallLaunchMod;
 					}
 
-					if (p.hitStun <= 0) {
+					if (p.hitStun <= 0 && !property.noLaunch) {
 						p.dx = 0;
 						p.dy = 0;
 					}
@@ -297,14 +314,17 @@ class Attack extends Hitcircle {
 					let comboBreaker = 0;
 					if (p.combo > 5 && this.player.moveStaling.getStaling(this.name) >= this.player.moveStaling.maxStale - 1)
 						comboBreaker += (p.combo - 5) * 2;
-					p.hitStun = max(p.hitStun, property.hitStun + hitStunModify - comboBreaker + p.hitStunModifier);
-					p.actionLag = p.hitStun;
-					p.forceChangeState(p.states.HITSTUN, p.states.HITSTUN_ACTIONS);
-					
-					if (property.commandGrab)
-						p.removeAction("power dash");
 
-					p.sheet.setAnimation("Hurt");
+					if (!property.noLaunch) {
+						p.hitStun = max(p.hitStun, property.hitStun + hitStunModify - comboBreaker + p.hitStunModifier);
+						p.actionLag = p.hitStun;
+						p.forceChangeState(p.states.HITSTUN, p.states.HITSTUN_ACTIONS);
+
+						if (property.commandGrab)
+							p.removeAction("power dash");
+
+						p.sheet.setAnimation("Hurt");
+					}
 
 					//p.health -= property.damage;//Old way of damaging health
 					let staledDamage = property.damage * (this.player.stalePenalty ** this.player.moveStaling.getStaling(this.name));
@@ -355,49 +375,51 @@ class Attack extends Hitcircle {
 
 					let launchIncludeMulti = (this.multi > 0 ? this.multiLaunch : property.launch);
 
-					if (this.multi > 0) {
-						p.dx = this.player.dx;
-						p.dy = this.player.dy;
-					} else {
-						this.player.moveStaling.add(this);
-					}
+					if (!property.noLaunch) {
+						if (this.multi > 0) {
+							p.dx = this.player.dx;
+							p.dy = this.player.dy;
+						} else {
+							this.player.moveStaling.add(this);
+						}
 
-					p.dx *= property.launchDampening;
-					p.dy *= property.launchDampening;
-					let preDampSpeed = p.dx * p.dx + p.dy * p.dy;
-					let multiple = property.launchDampeningMaxSpeed * property.launchDampeningMaxSpeed / preDampSpeed;
-					if (abs(multiple) < 1) {
-						p.dx *= multiple;
-						p.dy *= multiple;
-					}
-					p.dx += (launchIncludeMulti + wallLaunchMod) * property.angle.getX() / sqrt(p.weight) / further * counterVel;
-					p.dy += (launchIncludeMulti + wallLaunchMod) * property.angle.getY() / sqrt(p.weight) / further * counterVel;
+						p.dx *= property.launchDampening;
+						p.dy *= property.launchDampening;
+						let preDampSpeed = p.dx * p.dx + p.dy * p.dy;
+						let multiple = property.launchDampeningMaxSpeed * property.launchDampeningMaxSpeed / preDampSpeed;
+						if (abs(multiple) < 1) {
+							p.dx *= multiple;
+							p.dy *= multiple;
+						}
+						p.dx += (launchIncludeMulti + wallLaunchMod) * property.angle.getX() / sqrt(p.weight) / further * counterVel;
+						p.dy += (launchIncludeMulti + wallLaunchMod) * property.angle.getY() / sqrt(p.weight) / further * counterVel;
 
-					if (this.follow || wallPushback !== 1) {
-						if (this.player.dx * -property.counterLaunch * playerAngle.getX() / sqrt(this.player.weight) / 5 * wallPushback / further + this.player.dy * -property.counterLaunch * playerAngle.getY() / sqrt(this.player.weight) / 5 * wallPushback / further < 0) {
-							further -= 0.4 * (p.combo - 1);
-							further = max(0.4, further);
-							if (further < 1) {
-								this.player.dx /= 2;
-								this.player.dy /= 2;
+						if (this.follow || wallPushback !== 1) {
+							if (this.player.dx * -property.counterLaunch * playerAngle.getX() / sqrt(this.player.weight) / 5 * wallPushback / further + this.player.dy * -property.counterLaunch * playerAngle.getY() / sqrt(this.player.weight) / 5 * wallPushback / further < 0) {
+								further -= 0.4 * (p.combo - 1);
+								further = max(0.4, further);
+								if (further < 1) {
+									this.player.dx /= 2;
+									this.player.dy /= 2;
+								}
 							}
-						}
-						let wallX = max(0.4, abs(wallAngle.getX()));
-						let wallY = max(0.4, abs(wallAngle.getY()));
-						if (wallPushback === 1) {
-							wallX = 1;
-							wallY = 1;
-						}
+							let wallX = max(0.4, abs(wallAngle.getX()));
+							let wallY = max(0.4, abs(wallAngle.getY()));
+							if (wallPushback === 1) {
+								wallX = 1;
+								wallY = 1;
+							}
 
-						let counterLaunchIncludeMulti = (this.multi > 0 ? 0 : property.counterLaunch);
+							let counterLaunchIncludeMulti = (this.multi > 0 ? 0 : property.counterLaunch);
 
-						this.player.dx += -counterLaunchIncludeMulti * playerAngle.getX() / sqrt(this.player.weight) / 5 * wallPushback * wallX / further;
-						this.player.dy += -counterLaunchIncludeMulti * playerAngle.getY() / sqrt(this.player.weight) / 5 * wallPushback * wallY / further;
+							this.player.dx += -counterLaunchIncludeMulti * playerAngle.getX() / sqrt(this.player.weight) / 5 * wallPushback * wallX / further;
+							this.player.dy += -counterLaunchIncludeMulti * playerAngle.getY() / sqrt(this.player.weight) / 5 * wallPushback * wallY / further;
 
-						let magnitude = dist(0, 0, this.player.dx, this.player.dy);
-						if (magnitude > 15) {
-							this.player.dx *= 15 / magnitude;
-							this.player.dy *= 15 / magnitude;
+							let magnitude = dist(0, 0, this.player.dx, this.player.dy);
+							if (magnitude > 15) {
+								this.player.dx *= 15 / magnitude;
+								this.player.dy *= 15 / magnitude;
+							}
 						}
 					}
 
@@ -435,6 +457,7 @@ class Attack extends Hitcircle {
 					if (this.follow || wallPushback !== 1)
 						this.player.stunFrames = max(this.player.stunFrames, property.blockStunFrames);
 					let hitStunModify = property.normalizeHitStun ? this._activeF - 1 : 0;
+					
 					p.hitStun = max(p.hitStun, property.blockStun + hitStunModify + p.hitStunModifier - (!p.controls.joystickPressed(0) ? p.neutralBlockBuff : 0));
 					p.actionLag = p.hitStun;
 					p.forceChangeState(p.states.BLOCK, p.states.BLOCK_ACTIONS);
@@ -1140,6 +1163,9 @@ class AttackProperties {
 		/** @type {boolean} If the combo counter should go up or down */
 		this.comboCounter = true;
 
+		/** @type {boolean} The attack will not launch the opponent if noLaunch is true (only works for unblockables) */
+		this.noLaunch = false;
+
 		/** @type {boolean} If true, the attack cannot kill */
 		this.noKill = false;
 
@@ -1275,6 +1301,17 @@ class AttackProperties {
 	}
 
 	/**
+	 * Sets the attack to not launch at all (only works with unblockable attacks)
+	 * @param {boolean} bool
+	 * @returns
+	 */
+	setNoLaunch(bool = true) {
+		this.noLaunch = bool;
+
+		return this;
+	}
+
+	/**
 	 * Sets the attack to be incapable of killing on hit
 	 * @param {boolean} bool
 	 * @returns
@@ -1313,6 +1350,17 @@ class AttackProperties {
 	 */
 	setBlockStun(num) {
 		this.blockStun = num;
+
+		return this;
+	}
+
+	/**
+	 * Sets the number of frames that an attack increases the block angle
+	 * @param {number} num
+	 * @returns
+	 */
+	setBlockLeniency(num) {
+		this.blockLeniency = num;
 
 		return this;
 	}

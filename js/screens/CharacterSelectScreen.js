@@ -88,6 +88,7 @@ class CharacterSelectScreen extends Screen {
             }
             g.fill(0, 0, 14);
             g.textSize(30 * windowWidth / 512);
+            g.textAlign(LEFT, BASELINE);
             g.text(gt("mainMenuControls") + ":", buttonSize / 5, height - buttonSize / 5);
 
             nonCPUCount++;
@@ -249,5 +250,7 @@ class CharacterSelectScreen extends Screen {
 
         /** @type {boolean} Used to indicate that both players are supposed to be computers */
         this.fakeControls = false;
+
+        this.canSkipFrames = true;
     }
 }

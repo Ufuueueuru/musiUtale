@@ -209,9 +209,10 @@ class NetplayScreen extends Screen {
     }
 
     establishConnection() {
-        this.connection = this.peer.connect(this.theirID);
+        this.connection = this.peer.connect(this.theirID/*, {reliable: true}*/);
         this.pickMyStage = random(0, 1) > 0.5;
-        print(this.pickMyStage, this.selection);
+        
+        //print(this.pickMyStage, this.selection);
         this.connection.on("open", () => {
             let sentData = {
                 character: this.characterSelections[0],
@@ -265,11 +266,14 @@ class NetplayScreen extends Screen {
                 }
             } else if (incomingData.needFrame) {
                 let success = false;
+				let errorOutput = "0";
                 //print("n:" + incomingData.needFrame);
                 if (currentScreen.farPast?.length > 0) {
+					errorOutput = "1";
                     let pastFrame = currentScreen.farPast[0].gameState.frameCount;
                     if (pastFrame <= incomingData.needFrame) {
                         let id = incomingData.needFrame - pastFrame;
+						errorOutput = "2," + id;
                         if (currentScreen.farPast[id]) {
                             //print("s: " + currentScreen.farPast[id].gameState.frameCount);
                             currentScreen.connection.send(currentScreen.getExportsFrame(id));
@@ -279,7 +283,7 @@ class NetplayScreen extends Screen {
                 }
                 if (!success && currentScreen.paused) {
                     errorDisplayFrames = 600;
-                    errorDisplayMessage = "󱤩󱤟󱤧󱥈";//linja kulupu li pakala
+                    errorDisplayMessage = "󱤩󱤟󱤧󱥈" + ": " + errorOutput;//linja kulupu li pakala
                     //this.connectionOpen = false;//Not sure if this is the right thing to do or not
                 }
             } else {

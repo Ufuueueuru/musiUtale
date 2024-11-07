@@ -49,13 +49,31 @@ class AssetManager {
 
                 this.sounds[j].once("load", this.onLoad.bind(this));
                 this.sounds[j].once("loaderror", this.onHowlError);
-            }).bind(this, u), wait += 1000);
+            }).bind(this, u));
         }
         for (let u in this.jsons) {
             setTimeout(((o) => {
                 this.jsons[o] = loadStrings(this.jsons[o], this.onLoad.bind(this), this.onError);
             }).bind(this, u));
         }
+    }
+
+    loadSpritesheet(sheetName) {
+        setTimeout(((i) => {
+            let current = new Spritesheet(this.spritesheets[i].src, this.spritesheets[i].jsonsrc, this.spritesheets[i].width, this.spritesheets[i].height);
+            current.loadImage(this.onLoad.bind(this), this.onError);
+            current.loadJSON(this.onLoad.bind(this), this.onError);
+            this.spritesheets[i] = current;
+        }).bind(this, sheetName));
+    }
+
+    loadSound(soundName) {
+        setTimeout(((j) => {
+            this.sounds[j] = new Howl(this.sounds[j]);
+
+            this.sounds[j].once("load", this.onLoad.bind(this));
+            this.sounds[j].once("loaderror", this.onHowlError);
+        }).bind(this, soundName));
     }
 
     splitSheets() {

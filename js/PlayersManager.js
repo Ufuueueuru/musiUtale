@@ -92,6 +92,11 @@ class PlayersManager {
         if (this.overrideBuffer > 0)
             this.overrideBuffer--;
 
+        for (let u in this.chosenControls) {
+            if (this.chosenControls[u] && this.chosenControls[u].layout === "gamepad" && !this.chosenControls[u].getGamepad()) {
+                this.chosenControls[u] = null;
+            }
+        }
         for (let i in this.controls) {
             if (this.overrideBuffer <= 0 && !this.controls[i].computer && !this.controls[i].netplay) {
                 if (this.controls[i].joystickPressedMenu(0)) {

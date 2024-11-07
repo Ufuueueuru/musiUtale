@@ -49,11 +49,11 @@
 		g.stroke(186, 179, 190);
 		g.strokeWeight(2);
 		g.textAlign(CENTER, CENTER);
-		g.text("󱤤󱤎", 256, 90);//lawa ilo
+		g.text(gt("controlsManagerTitle"), 256, 90);//lawa ilo
 
 		for (let i = this.playersActive.length; i < 2; i++) {
-			g.text("󱤆󱤡󱥄󱤅󱤉", 246, 130 + 100 * i);//ante la o anpa e [select]
-			assetManager.spritesheets.nena.drawFrame(g, 31, 246 + 55, 120 + 100 * i, 25, 25);
+			g.text(gt("controlsManagerStart"), 246, 130 + 100 * i);//ante la o anpa e [select]
+			assetManager.spritesheets.nena.drawFrame(g, 31 + (currentLanguage === "en" ? 10 : 0), 246 + 55, 120 + 100 * i, 25, 25);
 		}
 
 		g.textAlign(LEFT, BASELINE);

@@ -57,6 +57,7 @@
   "graphicsSettings": {
     "resolutionMult": 1,
     "spriteResolutionMult": 1,
+    "antiAliasing": true,
     "noSplitSheets": false
   },
   "currentLanguage": "en",

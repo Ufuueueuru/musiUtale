@@ -62,7 +62,7 @@ class Spritesheet {
 
 	loadImage(onLoad, onError) {
 		this.image = loadImage(this.src, ((onLoad) => {
-			if (graphicsSettings.spriteResolutionMult !== 1 && this.image.width * graphicsSettings.spriteResolutionMult % 1 === 0 && this.image.height * graphicsSettings.spriteResolutionMult % 1 === 0) {
+			if (graphicsSettings.spriteResolutionMult !== 1 && this.image.width * graphicsSettings.spriteResolutionMult % 1 === 0 && this.image.height * graphicsSettings.spriteResolutionMult % 1 === 0 && !this.noResize) {
 				if (debug.noSplit)
 					this.image.resize(this.image.width * graphicsSettings.spriteResolutionMult, 0);
 				this.resolutionMult = graphicsSettings.spriteResolutionMult;
@@ -93,6 +93,7 @@ class Spritesheet {
 
 			this.width = this.animationData.frames[first].frame.w;
 			this.height = this.animationData.frames[first].frame.h;
+			this.noResize = this.animationData.noResize;
 			this.animationData = undefined;
 		}
 	}
@@ -131,7 +132,7 @@ class Spritesheet {
 		let tg = this.image.get(x, y, this.width, this.height);
 		this.images[i] = tg;
 
-		if (graphicsSettings.spriteResolutionMult !== 1)
+		if (graphicsSettings.spriteResolutionMult !== 1 && !this.noResize)
 			this.images[i].resize(Math.round(this.width * graphicsSettings.spriteResolutionMult), 0);
 
 		loaded.amount++;
@@ -155,6 +156,15 @@ class Spritesheet {
 			return true;
 		}
 		return false;
+	}
+
+	/**
+	 * 
+	 * @param {number} num
+	 * @returns
+	 */
+	getFrameRelative(num=this.currentFrame) {
+		return num - this.animations[this.currentAnimation].from;
 	}
 
 	/**

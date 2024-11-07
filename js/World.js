@@ -5,6 +5,8 @@ class World {
     constructor(width, height, walls, stageWidth = width * 1.3, stageHeight = height * 1.3, xMargins = width / 2, yMargins = height / 2) {
 		/** @type {Graphics} */
         this.g = createGraphics(width, height);
+        if (!graphicsSettings.antiAliasing)
+            this.g.noSmooth();
 
         /** @type {string} */
         this.name = "󱤰";//ma
@@ -265,7 +267,7 @@ class World {
 
         if(this.startCountdown >= 0 && this.startCountdown < this.countdownMax - 60)
             this.drawCountdown(this.g);
-        if (this.resetCounter > 0)
+        if (this.resetCounter > 0 && this.resetCounter < 180)
             this.drawEndingText(this.g);
     }
 
@@ -282,7 +284,7 @@ class World {
         g.stroke(0, 0, 15, 200);
         g.textAlign(CENTER, CENTER);
 
-        g.text("󱥐󱤀", 256, 192 - 30);//pini a
+        g.text(gt("gameFinish"), 256, 192 - 30);//pini a
         g.textSize(80 + currentSize / 15);
         let lookup = [
             "󱥳",//wan
@@ -292,11 +294,14 @@ class World {
         ];
         if (this.playersTied) {
             g.fill(255, 242, 0, 200);
-            g.text("󱥱󱤧󱥵󱥖!", 256, 192 + 90);//utala li wawa sama!
+            g.text("", 256, 192 + 90);//utala li wawa sama!
         } else {
             if (this.playerWonID == 1)
                 g.fill(47, 31, 171, 200);
-            g.text(this.players[this.playerWonID].headNoun + "󱤽" + lookup[this.playerWonID] + "󱤧󱥵!", 256, 192 + 90);//jan nanpa # li wawa!
+            let winText = this.players[this.playerWonID].headNoun + "󱤽" + lookup[this.playerWonID] + "󱤧󱥵!";//jan nanpa # li wawa!
+            if (currentLanguage === "en")
+                winText = "Player 󱤽" + lookup[this.playerWonID] + " wins!";
+            g.text(winText, 256, 192 + 90);
         }
 
         g.textAlign(CENTER, BASELINE);
@@ -315,7 +320,7 @@ class World {
         countdown = ((c) => {
             switch (c) {
                 case 0:
-                    return "󱥄󱥱!";//o utala!
+                    return gt("gameFight");//o utala!
                 case 1:
                     return "󱥳...";//wan
                 case 2:
@@ -323,9 +328,9 @@ class World {
                 case 3:
                     return "󱤼...";//mute
                 case 4:
-                    return "󱥄󱥩...";//o tawa
+                    return gt("gameMove");//o tawa
                 case 5:
-                    return "󱥄󱤈...";//o awen...
+                    return gt("gameWait");//o awen...
                 default:
                     return "󱥄󱥱!";
             }
@@ -382,7 +387,7 @@ class World {
         name1.textFont(assetManager.fonts.asuki);
         name1.fill(170, 40, 60);
         name1.stroke(15, 0, 0);
-        name1.strokeWeight(2);
+        name1.strokeWeight(1);
         name1.textSize(25);
         name1.textAlign(LEFT, BASELINE);
         name1.text(this.players[0].headNoun + "󱤽󱥳", 0, 20);//[head noun] nanpa wan
@@ -392,7 +397,7 @@ class World {
         name2.textFont(assetManager.fonts.asuki);
         name2.fill(47, 31, 171);
         name2.stroke(15, 0, 0);
-        name2.strokeWeight(2);
+        name2.strokeWeight(1);
         name2.textSize(25);
         name2.textAlign(LEFT, BASELINE);
         name2.text(this.players[1].headNoun + "󱤽󱥮", 0, 20);//[head noun] nanpa tu
@@ -606,13 +611,13 @@ class World {
         }
         for (let i = this.attacks.length - 1; i >= 0; i--) {//Loop through all of the attacks currently in the world for collisions
             let a = this.attacks[i];
-            if (a.player.stunFrames <= 0) {
+            if (a.notStun()) {
                 this.collideAttacks();
             }
         }
         for (let i = this.attacks.length - 1; i >= 0; i--) {//Loop through all of the attacks currently in the world for standard logic
             let a = this.attacks[i];
-            if (a.player.stunFrames <= 0) {
+            if (a.notStun()) {
                 a.run();
 
                 if (a.duration <= 0) {
@@ -696,7 +701,7 @@ class World {
         if (this.resetCounter > 0)
             this.resetCounter--;
         if (this.resetCounter <= 0 && playerDead) {
-            this.resetCounter = 180;
+            this.resetCounter = 185;
             let minHealthPlayer = 0;
             let maxHealthPlayer = 0;
             let numDeadPlayers = 0;
@@ -706,7 +711,7 @@ class World {
                 if (this.players[i].health <= 0) {
                     this.players[i].forceChangeState(this.players[i].states.DEAD, this.players[i].states.DEAD_ACTIONS);
                     this.players[i].sheet.setAnimation("Dead");
-                    this.players[i].iFrames = 180;
+                    this.players[i].iFrames = 185;
                     this.players[i].invTo = ["attack", "grab"];
                     this.players[i].canMove = false;
                     this.players[i].canAttack = false;
@@ -734,7 +739,7 @@ class World {
                 } else {
                     this.players[minHealthPlayer].forceChangeState(this.players[minHealthPlayer].states.DEAD, this.players[minHealthPlayer].states.DEAD_ACTIONS);
                     this.players[minHealthPlayer].sheet.setAnimation("Dead");
-                    this.players[minHealthPlayer].iFrames = 180;
+                    this.players[minHealthPlayer].iFrames = 185;
                     this.players[minHealthPlayer].invTo = ["attack", "grab"];
                     this.players[minHealthPlayer].canMove = false;
                     this.players[minHealthPlayer].canAttack = false;
@@ -779,7 +784,7 @@ class World {
         }
     }
 
-    collidePlayer(p) {
+    collidePlayer(p, distMult = 1) {
         for (let u in this.players) {//Resolve collisions between players
             let c = this.players[u];
             if (c !== p) {
@@ -815,13 +820,13 @@ class World {
                 }
                 
                 let totalDist = dist(c.x, c.y, p.x, p.y);
-                if (totalDist > this.maxPlayerDist) {
+                if (totalDist > this.maxPlayerDist * distMult) {
                     let tempAngle = atan2(p.y - c.y, p.x - c.x);
                     if (abs(p.dx) > 0 || abs(p.dy) > 0) {
-                        p.x -= cos(tempAngle) * (totalDist - this.maxPlayerDist) / 90;
-                        p.y -= sin(tempAngle) * (totalDist - this.maxPlayerDist) / 90;
+                        p.x -= cos(tempAngle) * (totalDist - this.maxPlayerDist * distMult) / 90;
+                        p.y -= sin(tempAngle) * (totalDist - this.maxPlayerDist * distMult) / 90;
                     }
-                    if (abs(c.dx) > 0 || abs(c.dy) > 0) {
+                    if ((abs(c.dx) > 0 || abs(c.dy) > 0) && distMult === 1) {
                         c.x += cos(tempAngle) * (totalDist - this.maxPlayerDist) / 90;
                         c.y += sin(tempAngle) * (totalDist - this.maxPlayerDist) / 90;
                     }
@@ -900,9 +905,9 @@ class World {
                 }
 
                 if (a.follow)
-                    a.player.stunFrames = 20;
+                    a.setPlayerStunFrames(20);
                 if (b.follow)
-                    b.player.stunFrames = 20;
+                    b.setPlayerStunFrames(20);
             }
         }
         for (let i in pcs) {
@@ -913,7 +918,7 @@ class World {
                 a.attack(p);
 
 
-            if (a.projectile && (p.iFrames <= 0 || !p.invTo.includes("attack"))) {
+            if (a.projectile && (p.iFrames <= 0 || !p.invTo.includes("attack")) && a.multi <= 0) {
                 a.endLife();
             }
         }
