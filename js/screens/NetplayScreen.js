@@ -1,5 +1,14 @@
 ﻿/** The screen for establishing a connection with another player */
 class NetplayScreen extends Screen {
+    constructor(peer, connectionID) {
+        super();
+
+        this.peer = peer;
+        this.theirID = connectionID;
+
+        this.initLater();
+    }
+
     draw(g) {
         g.background(15, 25, 20);
 
@@ -129,11 +138,15 @@ class NetplayScreen extends Screen {
 
         if (this.clipboard.displayFrames > 0)
             this.clipboard.displayFrames--;
-        if (this.startCountdown > 0)
-            this.startCountdown--;
+        if (this.startCountdown > 0) {
+            this.startCountdown -= deltaTime * 3 / 50;
+            if (this.startCountdown < 0)
+                this.startCountdown = 0;
+        }
         if (this.startCountdown === 0) {
             this.destruct();
             let screen = new VSNetplayScreen(this.peer, this.connection, this.characterSelections, this.playerControls, this.selection, 2, this.dataQueue, this.rSeed);
+            screen.setRandom(this.randomChoices);
             //screen.setupEvents();
             //screen.world.rSeed = this.rSeed;
             currentScreen = screen;
@@ -237,8 +250,14 @@ class NetplayScreen extends Screen {
             this.breakdownEvents();
         };
         this.connection.on("data", (incomingData) => {
+            //if (incomingData.stage !== undefined)
+            //    print(incomingData.stage + "\\INIT");
             dataOnFunction(incomingData);
         });
+    }
+
+    setRandom(choices) {
+        this.randomChoices = choices;
     }
 
     breakdownEvents() {
@@ -254,7 +273,9 @@ class NetplayScreen extends Screen {
             if (incomingData.wantResponse) {
                 currentScreen.connection.send({ frameCount: incomingData.frameCount, response: true });
             }
-            if (incomingData.response) {
+            if (incomingData.randomChoices) {
+                currentScreen.setNewRandom(incomingData.randomChoices);
+            } else if (incomingData.response) {
                 for (let i = currentScreen.timeStamps.length - 1; i >= 0; i--) {
                     if (currentScreen.timeStamps[i].frameCount === incomingData.frameCount) {
                         currentScreen.pings.push(Date.now() - currentScreen.timeStamps[i].time);
@@ -281,7 +302,7 @@ class NetplayScreen extends Screen {
                         }
                     }
                 }
-                if (!success && currentScreen.paused) {
+                if (!success && currentScreen.paused && currentScreen.world.frameCount > currentScreen.rollbackFrames) {
                     errorDisplayFrames = 600;
                     errorDisplayMessage = "󱤩󱤟󱤧󱥈" + ": " + errorOutput;//linja kulupu li pakala
                     //this.connectionOpen = false;//Not sure if this is the right thing to do or not
@@ -319,7 +340,7 @@ class NetplayScreen extends Screen {
         errorDisplayFrames = 0;
     }
 
-    init() {
+    initLater() {
         this.menu = new Menu(MenuDebugScreen);
 
         let gg = createGraphics(800, 300);
@@ -367,55 +388,68 @@ class NetplayScreen extends Screen {
         this.ala.text("󱤂", 0, 100);
         this.ala = this.ala.get();
 
-        this.myID = "";
-        this.theirID = "";
-
         this.connection = undefined;
 
-        this.peer = new Peer();
+        this.myID = "";
 
-        this.peer.on("error", (err) => {
-            errorDisplayMessage = "󱤎󱤧󱥈:\n" + err.type;
-            errorDisplayFrames = 1200;
-        });
-        this.peer.on("open", (id) => {
-            this.myID = id;
-            this.getIDButton.text = "󱤽󱥞:\n" + this.myID;//nanpa sina
-        });
-        this.peer.on("connection", (conn) => {
-            this.connection = conn;
-            this.connection.on("open", () => {
-                this.connection.send({
-                    character: this.characterSelections[this.myCharacter],
-                    stage: this.selection
-                });
-            });
-            this.connection.on("error", (err) => {
+        if (!this.peer) {
+            this.theirID = "";
+
+            this.peer = new Peer();
+
+            this.peer.on("error", (err) => {
                 errorDisplayMessage = "󱤎󱤧󱥈:\n" + err.type;
                 errorDisplayFrames = 1200;
             });
-            dataOnFunction = (incomingData) => {
-                this.myCharacter = 1;
-                this.characterSelections[1] = this.characterSelections[0];
-                this.characterSelections[0] = incomingData.character;
+            this.peer.on("open", (id) => {
+                this.myID = id;
+                this.getIDButton.text = "󱤽󱥞:\n" + this.myID;//nanpa sina
+            });
+            this.peer.on("connection", (conn) => {
+                if (!currentScreen.connection) {
+                    //print("me: " + currentScreen.selection);
+                    currentScreen.connection = conn;
+                    currentScreen.connection.on("open", () => {
+                        currentScreen.connection.send({
+                            character: currentScreen.characterSelections[currentScreen.myCharacter],
+                            stage: currentScreen.selection
+                        });
+                    });
+                    currentScreen.connection.on("error", (err) => {
+                        errorDisplayMessage = "󱤎󱤧󱥈:\n" + err.type;
+                        errorDisplayFrames = 1200;
+                    });
+                    dataOnFunction = (incomingData) => {
+                        currentScreen.myCharacter = 1;
+                        currentScreen.characterSelections[1] = currentScreen.characterSelections[0];
+                        currentScreen.characterSelections[0] = incomingData.character;
 
-                let tempControls = this.playerControls[0];
-                this.playerControls[0] = this.playerControls[1];
-                this.playerControls[1] = tempControls;
+                        let tempControls = currentScreen.playerControls[0];
+                        currentScreen.playerControls[0] = currentScreen.playerControls[1];
+                        currentScreen.playerControls[1] = tempControls;
 
-                if (incomingData.stage)
-                    this.selection = incomingData.stage;
+                        if (incomingData.stage)
+                            currentScreen.selection = incomingData.stage;
 
-                this.rSeed = incomingData.rSeed;
+                        currentScreen.rSeed = incomingData.rSeed;
 
-                this.startCountdown = 180;
+                        currentScreen.startCountdown = 180;
 
-                this.breakdownEvents();
-            };
-            this.connection.on("data", (incomingData) => {
-                dataOnFunction(incomingData);
-            })
-        });
+                        currentScreen.breakdownEvents();
+                    };
+                    currentScreen.connection.on("data", (incomingData) => {
+                        //if (incomingData.stage)
+                        //    print(incomingData.stage + "/");
+                        dataOnFunction(incomingData);
+                    });
+                }
+            });
+        } else {
+            this.myID = this.peer.id;
+            this.getIDButton.text = "󱤽󱥞:\n" + this.myID;//nanpa sina
+            //this.theirID is already set in the constructor
+            this.setIDButton.text = "󱤽󱤝:\n" + this.theirID;//nanpa kon
+        }
 
         this.rSeed = floor(random(0, 1000000));
 
@@ -450,5 +484,7 @@ class NetplayScreen extends Screen {
             ['a', 's', 'd', 'f', 'g', 'h', 'j', 'k', 'l'],
             ['z', 'x', 'c', 'v', 'b', 'n', 'm', '-']
         ];
+
+        this.randomChoices = [false, false, false];
     }
 }

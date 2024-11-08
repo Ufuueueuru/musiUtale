@@ -461,6 +461,15 @@
     }
   },
 
+  "netBackToExit": {
+    "en": {
+      "text": "Press back to exit"
+    },
+    "tp": {
+      "text": "󱥶󱤡󱥄󱤅󱤉󱥀󱥶"
+    }
+  },
+
   "battleBack": {
     "en": {
       "text": "Back"
@@ -506,7 +515,9 @@
     "en": {
       "text": "Controls"
     },
-    "text": "󱤤󱤎"
+    "tp": {
+      "text": "󱤤󱤎"
+    }
   },
   "controlsManagerStart": {
     "en": {

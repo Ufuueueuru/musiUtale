@@ -29,6 +29,7 @@ let debug = {
 
     //Other
     noSplit: false,
+    noSendData: false,
     loadingBackDoor: false,
     noUpdateControls: false,
     escapeKeyExit: false,

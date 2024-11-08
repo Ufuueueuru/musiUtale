@@ -10,6 +10,12 @@ class Buffer {
         this.info = { };
     }
 
+    clear() {
+        for (let i in this.queue) {
+            this.queue[i] = [];
+        }
+    }
+
     contains(state) {
         let output = false;
         for (let i in this.queue) {

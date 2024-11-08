@@ -117,6 +117,7 @@ class World {
     }
 
     completeReset() {
+        //this.frameCount = 0;
         for (let i in this.players) {
             if (this.players[i].randomizeCharacter)
                 this.randomizeCharacter(i);
@@ -128,9 +129,23 @@ class World {
     }
 
     randomizeCharacter(i) {
+        let out = floor(random(0, characters.length - 2));
         let controls = this.players[i].controls;
-        this.players[i] = new characters[this.random(0, characters.length - 2)](this);
+        this.players[i] = new characters[out](this);
         this.players[i].randomizeCharacter = true;
+        this.players[i].setWorld(this);
+        this.sikeWawa.setPlayers(this.players[0], this.players[1]);
+        this.players[i].controls = controls;
+        if (controls.player)
+            controls.player = this.players[i];
+
+        return out;
+    }
+
+    setCharacter(i, choice) {
+        let out = choice;
+        let controls = this.players[i].controls;
+        this.players[i] = new characters[out](this);
         this.players[i].setWorld(this);
         this.sikeWawa.setPlayers(this.players[0], this.players[1]);
         this.players[i].controls = controls;
@@ -278,13 +293,11 @@ class World {
 
         let currentSize = 180 - this.resetCounter;
         g.textFont(assetManager.fonts.asuki);
-        g.textSize(180 + currentSize / 15);
         g.fill(170, 40, 60, 200);
         g.strokeWeight(5);
         g.stroke(0, 0, 15, 200);
         g.textAlign(CENTER, CENTER);
 
-        g.text(gt("gameFinish"), 256, 192 - 30);//pini a
         g.textSize(80 + currentSize / 15);
         let lookup = [
             "󱥳",//wan
@@ -294,7 +307,7 @@ class World {
         ];
         if (this.playersTied) {
             g.fill(255, 242, 0, 200);
-            g.text("", 256, 192 + 90);//utala li wawa sama!
+            g.text(gt("gameTied"), 256, 192 + 90);//utala li wawa sama!
         } else {
             if (this.playerWonID == 1)
                 g.fill(47, 31, 171, 200);
@@ -303,6 +316,8 @@ class World {
                 winText = "Player 󱤽" + lookup[this.playerWonID] + " wins!";
             g.text(winText, 256, 192 + 90);
         }
+        g.textSize(180 + currentSize / 15);
+        g.text(gt("gameFinish"), 256, 192 - 30);//pini a
 
         g.textAlign(CENTER, BASELINE);
     }
@@ -649,9 +664,9 @@ class World {
                         if (parentScreen) {
                             parentScreen.player1 = this.players[0];
                             parentScreen.player2 = this.players[1];
+                            this.stopMusic();
                             if (this.randomizeStage) {
-                                this.stopMusic();
-                                parentScreen.world = new stages[this.random(0, stages.length - 2)](512 * graphicsSettings.resolutionMult, 384 * graphicsSettings.resolutionMult);
+                                parentScreen.world = new stages[floor(random(0, stages.length - 2))](512 * graphicsSettings.resolutionMult, 384 * graphicsSettings.resolutionMult);
                                 parentScreen.world.randomizeStage = true;
                                 parentScreen.world.setFirstTo(this.firstTo);
                                 parentScreen.world.addPlayer(this.players[0]);
@@ -664,6 +679,8 @@ class World {
                                 if (parentScreen.player2.controls.world)
                                     parentScreen.player2.controls.world = this.world;
                                 return;
+                            } else {
+                                this.playMusic();
                             }
                         }
                     }
@@ -686,7 +703,8 @@ class World {
             playerDead = true;
             timeout = true;
             for (let i in this.players) {
-                this.players[i].damageHealthAbs(this.players[i].timerPunishHealth, 0);
+                let kill = (this.players[i].health - this.players[i].timerPunishHealth) / this.players[i].maxHealth < (this.players[i].targetPlayer.health - this.players[i].targetPlayer.timerPunishHealth) / this.players[i].targetPlayer.maxHealth;
+                this.players[i].damageHealthAbs(this.players[i].timerPunishHealth, 0, !kill);
             }
         }
         if (this.resetCounter === 1) {

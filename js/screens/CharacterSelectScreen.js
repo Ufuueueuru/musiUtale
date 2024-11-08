@@ -170,7 +170,7 @@ class CharacterSelectScreen extends Screen {
                     currentScreen = screen;*/
                     let screen = new StageSelectScreen();
                     if (this.netplay)
-                        screen.setNetplay();
+                        screen.setNetplay(this.peer, this.connectionID);
                     if (this.training)
                         screen.setTraining();
                     screen.setSelections(this.selections);
@@ -210,8 +210,11 @@ class CharacterSelectScreen extends Screen {
         }
     }
 
-    setNetplay() {
+    setNetplay(peer, connectionID) {
         this.netplay = true;
+
+        this.peer = peer;
+        this.connectionID = connectionID;
     }
 
     setTraining() {

@@ -23,6 +23,7 @@ class VSNetplayScreen extends Screen {
 
         this.connection = connection;
         this.connectionOpen = true;
+        this.theirID = this.connection.peer;
 
         //this.setupEvents();
 
@@ -52,6 +53,39 @@ class VSNetplayScreen extends Screen {
         this.paused = true;
 
         this.leaveMenu = false;
+        this.pausedControls = undefined;
+        this.bufferUnpause = 0;
+
+        this.pauseMenu = new Menu();
+
+        let select = assetManager.images.buttonPressedLanguage;
+        let deselect = assetManager.images.buttonUnpressedLanguage;
+        let backButton = new MenuItem(128, 90, select, deselect, undefined, gt("battleBack"), () => {
+            this.bufferUnpause = 4;
+        });
+        let characterSelectButton = new MenuItem(128, 150, select, deselect, undefined, gt("battleCharacterSelect"), () => {
+            dataOnFunction = () => { };
+            currentScreen = new CharacterSelectScreen();
+            currentScreen.setNetplay(this.peer, this.theirID);
+            currentScreen.setControls([this.pausedControls, new NetplayControls()]);
+            this.destruct();
+        });
+        let exitButton = new MenuItem(128, 210, select, deselect, undefined, gt("battleExit"), () => {
+            this.destruct();
+            this.peer?.destroy();
+            dataOnFunction = () => { };
+            currentScreen = new MenuDebugScreen();
+        });
+
+        backButton.addMoves(new MenuMove(characterSelectButton, Angle.DOWN));
+        characterSelectButton.addMoves(new MenuMove(backButton, Angle.UP));
+        characterSelectButton.addMoves(new MenuMove(exitButton, Angle.DOWN));
+        exitButton.addMoves(new MenuMove(characterSelectButton, Angle.UP));
+
+        this.pauseMenu.addMenuItems(backButton, characterSelectButton, exitButton);
+
+        this.pauseMenu.setTarget(backButton);
+
 
         this.past = [];//Game states saved in the past that have not yet received data for
         this.future = [];//Game states in the future with data but have not happened yet
@@ -76,6 +110,8 @@ class VSNetplayScreen extends Screen {
 
         this.averageRollbackFrames = [0];
         this.totalAverageRollback = 0;
+
+        this.randomChoices = [false, false, false];
 
         debug.noUpdateControls = true;
         debug.noSkipFrames = false;
@@ -111,11 +147,13 @@ class VSNetplayScreen extends Screen {
         //while (lostFrames > 1 && ifCount < 3) {
             //if (this.paused && ifCount > 1)
                 //break;
+
         this.updateControls();
         this.testShouldPause();
         if (!this.paused) {
             this.addFramePast();
-            this.connection.send(this.getExports());
+            if (!debug.noSendData)
+                this.connection.send(this.getExports());
 
             this.world.run();
 
@@ -124,30 +162,33 @@ class VSNetplayScreen extends Screen {
             //lostFrames--;
         //}
 
-        if (this.world.winScreen) {
-            for (let i in controls) {
-                if (!controls[i].computer && !controls[i].netplay) {
-                    if (controls[i] != this.myPlayer.controls) {
-                        controls[i].update();
-                    }
-                    if (controls[i].clickedAbsolute("select")) {
-                        this.world.player1Score = 0;
-                        this.world.player2Score = 0;
-                        this.world.winScreen = false;
-                        if (this.world.randomizeStage) {
-                            this.world.stopMusic();
-                            this.world = new stages[this.world.random(0, stages.length - 2)](512 * graphicsSettings.resolutionMult, 384 * graphicsSettings.resolutionMult);
-                            this.world.randomizeStage = true;
-                            this.world.addPlayer(this.player1);
-                            this.world.addPlayer(this.player2);
-                            this.world.sikeWawa.setPlayers(this.player1, this.player2);
-                            this.world.playMusic();
-                        }
-                        this.world.completeReset();
-                        this.player1 = this.world.players[0];
-                        this.player2 = this.world.players[1];
-                    }
+        if (this.bufferUnpause === 0) {
+            this.leaveMenu = false;
+        }
+        if (this.bufferUnpause >= 0)
+            this.bufferUnpause--;
+
+        this.endRun = false;
+        for (let i in controls) {
+            if (!controls[i].computer && !controls[i].netplay) {
+                if (controls[i] != this.myPlayer.controls) {
+                    controls[i].update();
                 }
+                this.runControls(controls[i]);
+                if (this.endRun)
+                    return;
+            }
+        }
+        this.runControls(this.myPlayer.controls);
+        if (this.endRun)
+            return;
+
+        if (this.leaveMenu) {
+            if (this.pauseMenu.transitioning <= 0) {
+                this.pauseMenu.run();
+            } else {
+                this.pauseMenu.controlMenu(this.pausedPlayer);
+                this.pauseMenu.transitioning--;
             }
         }
 
@@ -156,16 +197,6 @@ class VSNetplayScreen extends Screen {
             playersManager.resetPositionsNetplay();
         }*/
 
-        if (this.myPlayer.controls?.clickedAbsolute("start")) {
-            this.leaveMenu = !this.leaveMenu;
-        }
-        if (this.myPlayer.controls?.clickedAbsolute("back") && this.leaveMenu) {
-            this.destruct();
-            this.peer?.destroy();
-            dataOnFunction = () => { };
-            currentScreen = new MenuDebugScreen();
-        }
-
         /*if (keys.KeyU && !this.connection)
             this.startConnection();*/
 
@@ -173,6 +204,47 @@ class VSNetplayScreen extends Screen {
             //this.connection.send({ pause: true });
             noLoop();
         }*/
+    }
+
+    runControls(control) {
+        if (control.clickedAbsolute("start")) {
+            this.leaveMenu = !this.leaveMenu;
+            this.pausedControls = control;
+        }
+        /*if (this.pausedControls === control && this.leaveMenu && control.clickedAbsolute("back")) {//Character select screen
+            //this.peer?.destroy();
+            dataOnFunction = () => { };
+            currentScreen = new CharacterSelectScreen();
+            currentScreen.setNetplay(this.peer, this.theirID);
+            currentScreen.setControls([control, new NetplayControls()]);
+            this.destruct();
+            this.endRun = true;
+            return;
+        }
+        if (this.pausedControls === control && this.leaveMenu && control.clickedAbsolute("back")) {//Back to main menu
+            this.destruct();
+            this.peer?.destroy();
+            dataOnFunction = () => { };
+            currentScreen = new MenuDebugScreen();
+            this.endRun = true;
+            return;
+        }*/
+        if (this.pausedControls === control && this.leaveMenu && control.clickedAbsolute("back")) {//Leave the menu by pressing back
+            this.leaveMenu = false;
+        }
+        if (this.world.winScreen && (control.clickedAbsolute("select") || debug.skipWinScreen)) {
+            this.world.player1Score = 0;
+            this.world.player2Score = 0;
+            this.world.winScreen = false;
+            this.world.stopMusic();
+            //this.reRandomize();
+            this.world.playMusic();
+            this.world.completeReset();
+            this.player1 = this.world.players[0];
+            this.player2 = this.world.players[1];
+
+            //this.resetWorld();
+        }
     }
 
     updateControls() {
@@ -187,14 +259,14 @@ class VSNetplayScreen extends Screen {
         }*/
         if (receivedData?.rollback) {
             if (this.totalAverageRollback / this.averageRollbackFrames.length < 15 && receivedData.rollback - this.totalAverageRollback / this.averageRollbackFrames.length > 1) {
-                lostFrames += (receivedData.rollback - this.totalAverageRollback / this.averageRollbackFrames.length - 1) / 45;
+                lostFrames += (receivedData.rollback - this.totalAverageRollback / this.averageRollbackFrames.length - 1) / 30;
                 if (debug.displayLostFrames)
-                    print((receivedData.rollback - this.totalAverageRollback / this.averageRollbackFrames.length - 1) / 45);
+                    print((receivedData.rollback - this.totalAverageRollback / this.averageRollbackFrames.length - 1) / 30);
             }
             if (this.future.length > 2) {
-                lostFrames += this.future.length / 45;
+                lostFrames += this.future.length / 30;
                 if (debug.displayLostFrames)
-                    print(this.future.length / 45);
+                    print(this.future.length / 30);
             }
         }
         while (receivedData && (receivedData.frameCount !== this.world.frameCount || this.paused)) {
@@ -233,23 +305,22 @@ class VSNetplayScreen extends Screen {
         /*if (!rolledBack) {
             this.averageRollbackFrames.push(0);
         }*/
-        if (!receivedData && !this.paused) {
-            if (this.future[0]) {
-                /*while (this.future[0].frameCount < this.world.frameCount) {
-                    receivedData = this.future[0];
-                    this.future.splice(0, 1);
-                }*/
-                if (this.future[0].frameCount === this.world.frameCount) {
-                    receivedData = this.future[0];
-                    this.future.splice(0, 1);
-                } else if (this.future[0].frameCount < this.world.frameCount) {
-                    receivedData = this.future[0];
-                    this.future.splice(0, 1);
-                    this.rollbackTo(receivedData);
-                    receivedData = undefined;
-                    this.data = undefined;
+        if (!receivedData) {
+            //this.data = undefined;
+            let u = 0;
+            let id = 0;
+            while (this.future[id] !== undefined && id < this.future.length && u < this.future.length) {
+                //print(id + " " + this.future[id].frameCount);
+                if (this.future[id].frameCount === this.world.frameCount && !this.paused) {
+                    //receivedData = this.future[id];
+                    //this.future.splice(id, 1);
+                } else if (this.future[id].frameCount < this.world.frameCount) {
+                    this.rollbackTo(this.future[id]);
+                    this.future.splice(id, 1);
+                } else {
+                    id++;
                 }
-
+                u++;
             }
         }
 
@@ -373,6 +444,67 @@ class VSNetplayScreen extends Screen {
         };
     }
 
+    setRandom(choices) {
+        this.randomChoices = choices;
+    }
+
+    setNewRandom(choices) {
+        if (choices[0] > -1) {
+            this.world.setCharacter(0, choices[0]);
+        }
+        if (choices[1] > -1) {
+            this.world.setCharacter(1, choices[1]);
+        }
+        if (choices[2] > -1) {
+            this.setStage(choices[2]);
+        }
+    }
+
+    setStage(choice) {
+        let firstTo = this.world.firstTo;
+        let player1 = this.world.players[0];
+        let player2 = this.world.players[1];
+        this.world = new stages[choice](512 * graphicsSettings.resolutionMult, 384 * graphicsSettings.resolutionMult);
+        this.world.setFirstTo(firstTo);
+        this.world.addPlayer(player1);
+        this.world.addPlayer(player2);
+        this.world.sikeWawa.setPlayers(player1, players2);
+        this.world.completeReset();
+        if (this.player1.controls.world)
+            this.player1.controls.world = this.world;
+        if (this.player2.controls.world)
+            this.player2.controls.world = this.world;
+    }
+
+    resetWorld() {
+        this.past = [];
+        this.farPast = [];
+        this.future = [];
+        this.dataQueue = [];
+    }
+
+    reRandomize() {
+        let choices = [-1, -1, -1];
+        //Randomize characters
+        if (this.randomChoices[0]) {
+            choices[0] = this.world.randomizeCharacter(0);
+            this.world.players[0].randomizeCharacter = false;
+        }
+        if (this.randomChoices[1]) {
+            choices[1] = this.world.randomizeCharacter(1);
+            this.world.players[1].randomizeCharacter = false;
+        }
+        //Randomize the world
+        if (this.randomChoices[2]) {
+            choices[2] = floor(random(0, stages.length - 2));
+            this.setStage(choices[2]);
+        }
+
+        this.connection.send({
+            randomChoices: choices
+        });
+    }
+
     /*startConnection() {
         this.connection = this.peer.connect(this.theirID);
         this.myPlayer = this.world.players[0];
@@ -432,7 +564,10 @@ class VSNetplayScreen extends Screen {
             g.stroke(15, 0, 0);
             g.strokeWeight(5);
             g.fill(170, 40, 60);
-            g.text("󱤻󱤧󱤈", windowWidth / 2, windowHeight / 2);//musi li awen
+            if (this.myPlayer.controls === this.player2Controls)
+                g.fill(47, 31, 171);
+            g.text(gt("gamePaused"), windowWidth / 2, (windowHeight - minSize * canvasSlope) / 2 + 40 * minSize / 512);//musi li awen
+            this.pauseMenu.draw(g, minSize, minSize * 384 / 512, minSize * 0.5, minSize * canvasSlope * 0.13);
         }
 
         if (debug.displayRollbackFrames) {
@@ -484,6 +619,21 @@ class VSNetplayScreen extends Screen {
         this.stageID = id;
     }
 
+    halfDestruct() {
+        debug.noUpdateControls = false;
+        debug.noSkipFrames = false;
+        for (let u = controls.length - 1; u >= 0; u--) {
+            if (controls[u].computer)
+                controls.splice(u, 1);
+        }
+        if (this.player1.controls.computer)
+            this.player1.controls = null;
+        if (this.player2.controls.computer)
+            this.player2.controls = null;
+        errorDisplayFrames = 0;
+        Howler.stop();
+    }
+
     destruct() {
         debug.noUpdateControls = false;
         debug.noSkipFrames = false;
@@ -504,9 +654,6 @@ class VSNetplayScreen extends Screen {
         this.world = new stages[this.stageID](512 * graphicsSettings.resolutionMult, 384 * graphicsSettings.resolutionMult);
         this.world.setFirstTo(this.firstTo);
         //g.noSmooth();
-
-        if (this.rSeed)
-            this.world.rSeed = this.rSeed;
 
         this.player1 = new characters[this.player1CharacterID]();
         this.player2 = new characters[this.player2CharacterID]();
@@ -535,7 +682,7 @@ class VSNetplayScreen extends Screen {
         this.world.sikeWawa.setPlayers(this.player1, this.player2);
 
         if (this.world.randomizeStage) {
-            this.world = new stages[this.world.random(0, stages.length - 2)](512 * graphicsSettings.resolutionMult, 384 * graphicsSettings.resolutionMult);
+            this.world = new stages[floor(random(0, stages.length - 2))](512 * graphicsSettings.resolutionMult, 384 * graphicsSettings.resolutionMult);
             this.world.randomizeStage = true;
             this.world.setFirstTo(this.firstTo);
             this.world.addPlayer(this.player1);
@@ -554,6 +701,9 @@ class VSNetplayScreen extends Screen {
         this.player2.randomizeCharacter = false;
 
         this.canSkipFrames = true;
+
+        if (this.rSeed)
+            this.world.rSeed = this.rSeed;
 
         this.world.playMusic();
     }

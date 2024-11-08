@@ -444,6 +444,7 @@ class Player extends Hitcircle {
 
 	reset() {
 		this.resetModifiers();
+		this.buffer.clear();
 		this.iFrames = 0;
 		this.health = this.maxHealth;
 		this.timerPunishHealth = 0;//Should this reset?

@@ -111,7 +111,21 @@ class StageSelectScreen extends Screen {
                     if (this.fakeControls)
                         this.playerControls[0] = null;
                     if (this.netplay) {
-                        let screen = new NetplayScreen();
+                        let randomChoices = [false, false, false];
+                        if (this.characterSelections[0] === characters.length - 1) {
+                            this.characterSelections[0] = floor(random(0, characters.length - 2));
+                            randomChoices[0] = true;
+                        }
+                        if (this.characterSelections[1] === characters.length - 1) {
+                            this.characterSelections[1] = floor(random(0, characters.length - 2));
+                            randomChoices[1] = true;
+                        }
+                        if (this.selection === stages.length - 1) {
+                            this.selection = floor(random(0, stages.length - 2));
+                            randomChoices[2] = true;
+                        }
+                        let screen = new NetplayScreen(this.peer, this.connectionID);
+                        screen.setRandom(randomChoices);
                         screen.setSelections(this.characterSelections, this.selection);
                         screen.setControls(this.playerControls, this.fakeControls);
                         currentScreen = screen;
@@ -156,8 +170,10 @@ class StageSelectScreen extends Screen {
         this.characterSelections = selections;
     }
 
-    setNetplay() {
+    setNetplay(peer, connectionID) {
         this.netplay = true;
+        this.peer = peer;
+        this.connectionID = connectionID;
     }
 
     setTraining() {
