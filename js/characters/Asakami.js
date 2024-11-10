@@ -938,6 +938,7 @@
 		this.OOBBlockFrame = 8;
 
 		this.dash.friction = 0.93;
+		this.dash.regularFrictionFrame = this.dash.frames - 16;
 
 		this.dash.startRotateFrame = this.dash.invFirstFrame;
 		this.dash.endRotateFrame = max(this.dash.attackCancelFrame, this.dash.blockCancelFrame);

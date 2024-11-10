@@ -928,6 +928,7 @@
 		this.OOBBlockFrame = 8;
 
 		this.dash.friction = 0.93;
+		this.dash.regularFrictionFrame = this.dash.frames - 16;
 
 		this.dash.bookCancelFrame = this.dash.frames - 20;
 

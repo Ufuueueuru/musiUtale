@@ -1030,6 +1030,7 @@
 		this.dash.turnSpeedBoost = 0.01;
 		this.dash.backPenalty = 4;
 		this.dash.cancelBackPenaltyMult = 2;
+		this.dash.regularFrictionFrame = this.dash.frames - 16;
 
 		this.maxBullets = 6;
 		this.bullets = this.maxBullets;

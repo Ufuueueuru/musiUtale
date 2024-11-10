@@ -144,6 +144,7 @@
 		this.dash.backPenalty = 3;//How much your speed decreases from dashing backwards
 		this.dash.cancelBackPenaltyMult = 2;
 		this.dash.friction = 0.85;
+		this.dash.regularFrictionFrame = this.dash.frames - 16;
 
 		this.dash.iFrames = 14;
 		this.dash.invTo = ["attack"];

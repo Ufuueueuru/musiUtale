@@ -942,6 +942,7 @@
 
 		this.dash.speed = 16;
 		this.dash.friction = 0.83;
+		this.dash.regularFrictionFrame = this.dash.frames - 16;
 		this.dash.backPenalty = 5;
 
 		this.dash.bookCancelFrame = this.dash.frames - 20;

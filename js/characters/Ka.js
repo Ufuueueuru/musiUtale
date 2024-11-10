@@ -1108,6 +1108,7 @@
 		this.dash.backPenalty = 8;//How much your speed decreases from dashing backwards
 		this.dash.cancelBackPenaltyMult = 1.4;
 		this.dash.friction = 0.9;
+		this.dash.regularFrictionFrame = this.dash.frames - 16;
 
 		this.dash.iFrames = 10;
 		this.dash.invTo = ["attack"];
@@ -1243,8 +1244,16 @@
 		this.hitStunModifier = 3;
 		if (this.currentState.name === "hitstun" || ((this.currentState.name === "neutral" || this.currentState.name === "walk") && this.world.frameCount % 10 === 0))
 			this.risk--;
-		if (this.targetPlayer && this.targetPlayer.currentState.name === "block" && this.targetPlayer.hitStun % 2 > 0)
-			this.risk++;
+		if (this.targetPlayer && this.targetPlayer.currentState.name === "block" && this.targetPlayer.hitStun % 3 > 0)
+			this.risk += 2;
+		if (this.risk > 300 && this.mostRecentAttackReference?.hitPlayerBool) {
+			this.slowDownFrames = 2;
+			this.slowDownMax = 1;
+			this.slowDownMod = 5;
+		}
+		if (this.risk > 600) {
+			this.timerPunishHealth++;
+		}
 		this.risk = constrain(this.risk, 0, 600);
 		this.defense = constrain(1 + this.risk / 2000, 1, 1.2);
 
@@ -1405,6 +1414,8 @@
 
 		g.noStroke();
 		g.fill(250, 222, 225, 180);
+		if (this.risk > 300)
+			g.fill(255, 195, 200, 180);
 		g.rect(left - other * 50 + random(-danger, danger), 64, 50, 6, 20);
 		if (this.risk > 20) {
 			g.fill(this.risk * 256 / 600, 24, 36, 150);
