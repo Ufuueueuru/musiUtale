@@ -80,6 +80,9 @@ class Attack extends Hitcircle {
 		/** @type {number} */
 		this.duration = 0;
 
+		/** @type {number} Which of the attacks properties is the default (used for playing sounds and potentially garnering attack info when a counter is used) */
+		this.defaultProperty = 0;
+
 		this.frameDataRef = new AttackFrameData(this);
 	}
 
@@ -117,6 +120,29 @@ class Attack extends Hitcircle {
 	 */
 	notStun() {
 		return this.player.stunFrames <= 0;
+	}
+
+	/**
+	 * Sets the id of the property that the attack will default to in niche situations
+	 * @param {number} num
+	 * @returns
+	 */
+	setDefaultProperty(num) {
+		this.defaultProperty = num;
+
+		return this;
+	}
+
+	getDefaultProperty() {
+		return this.properties[this.defaultProperty];
+	}
+
+	playHitSoundDefault(world, maxPlay = undefined) {
+		this.getDefaultProperty().playHitSound(world, maxPlay);
+	}
+
+	playBlockSoundDefault(world, maxPlay = undefined) {
+		this.getDefaultProperty().playBlockSound(world, maxPlay);
 	}
 
 	/**

@@ -10,7 +10,7 @@
 
 		this.selectScreenSizeOffset = 5;
 
-		this.sheet = Spritesheet.copy(assetManager.spritesheets.seme);
+		//this.sheet = Spritesheet.copy(assetManager.spritesheets.seme);
 
 		this.collideRadius = 70;
 
@@ -89,8 +89,12 @@
 		}
 	}
 
+	static getMenuImage() {
+		return assetManager.images.seme;
+	}
+
 	static addAssets() {
-		assetManager.addSpritesheet("resources/seme.png", "seme", "//");
+		assetManager.addImage("resources/seme.png", "seme", true);
 	}
 }
 

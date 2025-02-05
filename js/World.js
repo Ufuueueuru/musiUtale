@@ -18,6 +18,11 @@ class World {
         /** @type {boolean} */
         this.loopBackground = false;
 
+        /** @type {number} For the stage select screen */
+        this.displayOffX = 0;
+        /** @type {number} For the stage select screen */
+        this.displayOffY = 0;
+
 		/** @type {number} */
 		this.width = width;
 		/** @type {number} */
@@ -77,6 +82,8 @@ class World {
 
         this.rollbacking = false;
         this.rollbackingFrames = 0;
+
+        this.savedReplay = false;
     }
 
     resetCountdown() {
@@ -117,21 +124,30 @@ class World {
     }
 
     completeReset() {
+        let randomized = false;
         //this.frameCount = 0;
         for (let i in this.players) {
-            if (this.players[i].randomizeCharacter)
+            if (this.players[i].randomizeCharacter) {
                 this.randomizeCharacter(i);
+                randomized = true;
+            }
             this.players[i].fullReset();
         }
         this.resetPositions();
         this.initHUDNames();
         this.sikeWawa.reset();
+        return randomized;
     }
 
     randomizeCharacter(i) {
-        let out = floor(random(0, characters.length - 2));
+        let out = floor(random(0, characters.length - 1));
         let controls = this.players[i].controls;
-        this.players[i] = new characters[out](this);
+        let newPlayer = new characters[out](this);
+        /*if (this.players[i].name !== newPlayer.name) {
+            this.players[i].deload();
+            newPlayer.addShouldLoad();
+        }*/
+        this.players[i] = newPlayer;
         this.players[i].randomizeCharacter = true;
         this.players[i].setWorld(this);
         this.sikeWawa.setPlayers(this.players[0], this.players[1]);
@@ -226,7 +242,7 @@ class World {
 
 		this.camera.pushMatrix(this.g);
         this.camera.transform(this.g);
-
+        
         this.g.push();
         this.g.scale(512 / this.width, 384 / this.height);
         if (this.loopBackground) {
@@ -660,29 +676,43 @@ class World {
                         this.player1Score = 0;
                         this.player2Score = 0;
                         this.winScreen = false;
-                        this.completeReset();
+                        this.savedReplay = false;
+                        let randomizedFirst = this.completeReset();
+                        if (randomizedFirst) {
+                            assetManager.resetAssets();
+                            this.addShouldLoad();
+                        }
                         if (parentScreen) {
                             parentScreen.player1 = this.players[0];
                             parentScreen.player2 = this.players[1];
                             this.stopMusic();
                             if (this.randomizeStage) {
-                                parentScreen.world = new stages[floor(random(0, stages.length - 2))](512 * graphicsSettings.resolutionMult, 384 * graphicsSettings.resolutionMult);
+                                parentScreen.world = new stages[floor(random(0, stages.length - 1))](512 * graphicsSettings.resolutionMult, 384 * graphicsSettings.resolutionMult);
                                 parentScreen.world.randomizeStage = true;
                                 parentScreen.world.setFirstTo(this.firstTo);
                                 parentScreen.world.addPlayer(this.players[0]);
                                 parentScreen.world.addPlayer(this.players[1]);
                                 parentScreen.world.sikeWawa.setPlayers(this.players[0], this.players[1]);
-                                parentScreen.world.completeReset();
-                                parentScreen.world.playMusic();
+                                let randomized = parentScreen.world.completeReset();
+                                if (randomized) {
+                                    assetManager.resetAssets();
+                                    parentScreen.world.addShouldLoad();
+                                }
+                                //parentScreen.world.playMusic();
                                 if (parentScreen.player1.controls.world)
                                     parentScreen.player1.controls.world = this.world;
                                 if (parentScreen.player2.controls.world)
                                     parentScreen.player2.controls.world = this.world;
-                                return;
                             } else {
                                 this.playMusic();
                             }
+                            if (parentScreen.replay) {
+                                parentScreen.replay = new Replay();
+                            }
                         }
+                        assetManager.loadAssetsWithScreen();
+                        //print("new!");
+                        break;
                     }
                 }
             }
@@ -702,9 +732,13 @@ class World {
         if (this.timer <= 0 && this.resetCounter <= 0) {//Timer runs out - damage players based on their timer penalties
             playerDead = true;
             timeout = true;
-            for (let i in this.players) {
-                let kill = (this.players[i].health - this.players[i].timerPunishHealth) / this.players[i].maxHealth < (this.players[i].targetPlayer.health - this.players[i].targetPlayer.timerPunishHealth) / this.players[i].targetPlayer.maxHealth;
-                this.players[i].damageHealthAbs(this.players[i].timerPunishHealth, 0, !kill);
+            let kills = [];
+            for (let i = 0; i < this.players.length; i++) {
+                let u = (i + 1) % 2;
+                kills[i] = !this.players[u] || ((this.players[i].health - this.players[i].timerPunishHealth) / this.players[i].maxHealth < (this.players[u].health - this.players[u].timerPunishHealth) / this.players[u].maxHealth);
+            }
+            for (let i = 0; i < this.players.length; i++) {
+                this.players[i].damageHealthAbs(this.players[i].timerPunishHealth, 0, !kills[i]);
             }
         }
         if (this.resetCounter === 1) {
@@ -713,6 +747,15 @@ class World {
             } else {
                 this.winScreen = true;
                 this.resetCounter++;
+                if (parentScreen?.replay && !this.savedReplay) {
+                    savingReplayDisplay = true;
+                    saveReplay(parentScreen.replay, () => {
+                        savingReplayDisplay = false;
+                    }, () => {//If the replays are maxed out
+                        savingReplayDisplay = false;
+                    });
+                    this.savedReplay = true;
+                }
             }
             playerDead = false;
         }
@@ -778,6 +821,46 @@ class World {
 
     followCamera(x, y) {
         this.camera.follow(x, y, 3);
+    }
+
+    copyAssets() {
+        for (let i in this.players) {
+            if (this.players[i].copyAssets)
+                this.players[i].copyAssets();
+        }
+    }
+
+    getShouldLoadImages() {
+        return [];
+    }
+    getShouldLoadSpritesheets() {
+        return [];
+    }
+    getShouldLoadFonts() {
+        return [];
+    }
+    getShouldLoadSounds() {
+        return [];
+    }
+    addShouldLoadStage() {
+        for (let i of this.getShouldLoadImages()) {
+            assetManager.addShouldImage(i);
+        }
+        for (let i of this.getShouldLoadSpritesheets()) {
+            assetManager.addShouldSpritesheet(i);
+        }
+        for (let i of this.getShouldLoadFonts()) {
+            assetManager.addShouldFont(i);
+        }
+        for (let i of this.getShouldLoadSounds()) {
+            assetManager.addShouldSound(i);
+        }
+    }
+    addShouldLoad() {
+        for (let i in this.players) {
+            this.players[i].addShouldLoad();
+        }
+        this.addShouldLoadStage();
     }
 
     addPlayer(p) {

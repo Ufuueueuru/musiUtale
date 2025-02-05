@@ -1437,7 +1437,21 @@
 		}
 	}
 
+	copyAssets() {
+		this.sheet = Spritesheet.copy(assetManager.spritesheets.kiKaSheet);
+	}
+
+	getShouldLoadSpritesheets() {
+		return ["kiKaSheet", "iloSitelenSheet", "shieldSheet"];
+	}
+
+	static getMenuImage() {
+		return assetManager.images.kaMenuImage;
+	}
+
 	static addAssets() {
+		assetManager.addImage("resources/kijetesantakalu_KaAWEN.png", "kaMenuImage", true);
+
 		assetManager.addSpritesheet("resources/kijetesantakalu_Ka.png", "kiKaSheet", "//");
 
 		assetManager.addSpritesheet("resources/iloSitelen.png", "iloSitelenSheet", "//");

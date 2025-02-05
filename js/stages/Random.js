@@ -6,7 +6,7 @@
 
         this.randomizeStage = true;
 
-        assetManager.spritesheets.seme.drawFrame(this.background, 0, 64, 0, 384, 384);
+        this.background.image(assetManager.images.seme, 64, 0, 384, 384);
     }
 
     static addAssets() {

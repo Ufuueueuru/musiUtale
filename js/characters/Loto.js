@@ -6,7 +6,7 @@
 			new Circle(40, 30, 30),//Right frill
 			new Circle(40, -30, 30),//Left frill
 			new Circle(-40, 0, 40),//Tail Close
-			new Circle(-70, -5, 40)//Tail Far
+			new ICircle(-60, -5, 10)//Tail Far
 		]);
 
 		this.hurtboxes["walk"] = [
@@ -15,85 +15,85 @@
 				new Circle(40, 30, 30),//Right frill
 				new Circle(40, -30, 30),//Left frill
 				new Circle(-40, 0, 40),//Tail Close
-				new Circle(-72, -15, 40)],//Tail Far
+				new ICircle(-62, -15, 10)],//Tail Far
 			[new Circle(0, 0, 50),
 				new Circle(40, 0, 50),
 				new Circle(40, 30, 30),
 				new Circle(40, -30, 30),
 				new Circle(-40, 0, 40),
-				new Circle(-72, 15, 40)],
+				new ICircle(-62, 15, 10)],
 			[new Circle(0, 0, 50),
 				new Circle(40, 0, 50),
 				new Circle(40, 30, 30),
 				new Circle(40, -30, 30),
 				new Circle(-40, 0, 40),
-				new Circle(-70, 20, 40)],
+				new ICircle(-60, 20, 10)],
 			[new Circle(0, 0, 50),
 				new Circle(40, 0, 50),
 				new Circle(40, 30, 30),
 				new Circle(40, -30, 30),
 				new Circle(-40, 0, 40),
-				new Circle(-60, 25, 40)],
+				new ICircle(-50, 25, 10)],
 			[new Circle(0, 0, 50),
 				new Circle(40, 0, 50),
 				new Circle(40, 30, 30),
 				new Circle(40, -30, 30),
 				new Circle(-40, 0, 40),
-				new Circle(-55, 30, 35)],
+				new ICircle(-45, 30, 10)],
 			[new Circle(0, 0, 50),
 				new Circle(40, 0, 50),
 				new Circle(40, 30, 30),
 				new Circle(40, -30, 30),
 				new Circle(-40, 0, 40),
-				new Circle(-60, 25, 40)],
+				new ICircle(-50, 25, 10)],
 			[new Circle(0, 0, 50),
 				new Circle(40, 0, 50),
 				new Circle(40, 30, 30),
 				new Circle(40, -30, 30),
 				new Circle(-40, 0, 40),
-				new Circle(-70, 20, 40)],
+				new ICircle(-60, 20, 10)],
 			[new Circle(0, 0, 50),
 				new Circle(40, 0, 50),
 				new Circle(40, 30, 30),
 				new Circle(40, -30, 30),
 				new Circle(-40, 0, 40),
-				new Circle(-72, 15, 40)],
+				new ICircle(-62, 15, 10)],
 			[new Circle(0, 0, 50),
 				new Circle(40, 0, 50),
 				new Circle(40, 30, 30),
 				new Circle(40, -30, 30),
 				new Circle(-40, 0, 40),
-				new Circle(-72, -15, 40)],
+				new ICircle(-62, -15, 10)],
 			[new Circle(0, 0, 50),
 				new Circle(40, 0, 50),
 				new Circle(40, 30, 30),
 				new Circle(40, -30, 30),
 				new Circle(-40, 0, 40),
-				new Circle(-70, -20, 40)],
+				new ICircle(-60, -20, 10)],
 			[new Circle(0, 0, 50),
 				new Circle(40, 0, 50),
 				new Circle(40, 30, 30),
 				new Circle(40, -30, 30),
 				new Circle(-40, 0, 40),
-				new Circle(-60, -25, 40)],
+				new ICircle(-50, -25, 10)],
 			[new Circle(0, 0, 50),
 				new Circle(40, 0, 50),
 				new Circle(40, 30, 30),
 				new Circle(40, -30, 30),
 				new Circle(-40, 0, 40),
-				new Circle(-55, -30, 35)],
+				new ICircle(-45, -30, 10)],
 			[new Circle(0, 0, 50),
 				new Circle(40, 0, 50),
 				new Circle(40, 30, 30),
 				new Circle(40, -30, 30),
 				new Circle(-40, 0, 40),
-				new Circle(-60, -25, 40)],
+				new ICircle(-50, -25, 10)],
 			[new Circle(0, 0, 50),
 				new Circle(40, 0, 50),
 				new Circle(40, 30, 30),
 				new Circle(40, -30, 30),
 				new Circle(-40, 0, 40),
-				new Circle(-70, -20, 40)]
+				new ICircle(-60, -20, 10)]
 		];
 
 		this.headNoun = "󱤁";//akesi
@@ -226,11 +226,12 @@
 
 		//this.NPS = LotoNPS;
 		//this.SPS = LotoSPS;
-		//this.RPS = LotoRPS;
-		//this.LPS = LotoLPS;
+		this.RPS = LotoRPS;
+		this.LPS = LotoLPS;
 		//this.MPS = LotoMPS;
 
 		this.NN = LotoNN;
+		this.SN = LotoSN;
 
 		this.MNK = LotoMNK;//akesi
 		this.MNU = LotoMNU;//utala
@@ -243,14 +244,16 @@
 			if (this.currentState.name !== "dash" && this.currentState.name !== "UTU")
 				this.turnSpeedModifier = -1;
 
-			if (this.targetPlayer && (this.currentState.name === "neutral" || this.currentState.name === "walk" || this.currentState.name === "ML")) {
+			if (this.targetPlayer && (this.currentState.name === "neutral" || this.currentState.name === "walk" || this.currentState.name === "ML" || this.currentState.name === "power dash")) {
 				let angle = new Angle().setFromPoint(this.targetPlayer.x - this.x, this.targetPlayer.y - this.y);
 				let compare = Angle.compare(angle, this.dir);
 				let slowDown = (this.rotateSlowDownFrames > 0 ? this.rotateSlowDown * this.rotateSlowDown : 1);
 				if (compare === 0)
 					compare = 0.01;
 				if (abs(compare) < 3.1)
-					this.dir.changeValue(constrain(0.1 / compare * slowDown, -0.3, 0.3));
+					this.dir.changeValue(constrain(0.1 / compare * slowDown, -0.4, 0.4));
+				if (this.currentState.name === "power dash")
+					this.dir.value = (angle.value + PI) % (2 * PI);
 			}
 			if (this.stance !== this.stances.OFFENSE || this.currentState.name === "grabbed" || this.currentState.name === "grab")
 				this.backStance = false;
@@ -429,7 +432,26 @@
 		}
 	}
 
+	copyAssets() {
+		this.sheet = Spritesheet.copy(assetManager.spritesheets.akesiLotoSheet);
+		this.teloDisplays = [];
+		for (let i = 0; i < this.teloTonsi; i++) {
+			this.teloDisplays.push(Spritesheet.copy(assetManager.spritesheets.teloTonsi));
+			this.teloDisplays[i].currentFrame += i * 2;
+		}
+	}
+
+	getShouldLoadSpritesheets() {
+		return ["akesiLotoSheet", "akesiLotoLasoSheet", "akesiLotoLojeSheet", "akesiLotoJeloSheet", "sitelenAkesi", "sitelenAwen", "sitelenTawa", "sitelenUtala", "teloTonsi", "teloLili"];
+	}
+
+	static getMenuImage() {
+		return assetManager.images.akesiLotoMenuImage;
+	}
+
 	static addAssets() {
+		assetManager.addImage("resources/akesi_LotoAWEN.png", "akesiLotoMenuImage", true);
+
 		assetManager.addSpritesheet("resources/akesi_Loto.png", "akesiLotoSheet", "//");
 		assetManager.addSpritesheet("resources/akesi_Loto_Laso.png", "akesiLotoLasoSheet", "//");
 		assetManager.addSpritesheet("resources/akesi_Loto_Loje.png", "akesiLotoLojeSheet", "//");
@@ -613,6 +635,8 @@ class LotoDashAttackU extends Attack {
 	constructor(player, circles = [], props = []) {
 		super(player, circles, props);
 		this.name = "UTU";
+
+		this.damper = true;
 	}
 
 	static createAttack(player) {
@@ -627,12 +651,26 @@ class LotoDashAttackU extends Attack {
 	draw(g) { }
 
 	logic() {
-		this.player.turnSpeedModifier = 0.5;
-		if (this.getFromStartupF() === 4) {
-			this.player.addAction("attack", "SN", "dash");
+		if (State.stateIs(this.player.currentState, "dash attack")) {
+			this.player.turnSpeedModifier = 0.9;
+			this.player.dx = 0;
+			this.player.dy = 0;
+			if (this.getFromStartupF() === 4) {
+				this.player.addAction("attack", "SN", "dash");
+			}
+			if (this.getFromStartupF() < 10) {
+				this.player.dx = this.player.dir.getX() * 15;
+				this.player.dy = this.player.dir.getY() * 15;
+			}
+			if (this.getFromStartupF() > 0 && this.getFromStartupF() < 11) {
+				this.player.x -= this.player.dir.getX() * 15;
+				this.player.y -= this.player.dir.getY() * 15;
+			}
+		} else if (!State.stateIs(this.player.currentState, "SN") && this.damper) {
+			this.player.dx = 0;
+			this.player.dy = 0;
+			this.damper = false;
 		}
-		this.player.dx = 0;
-		this.player.dy = 0;
 	}
 }
 
@@ -1006,8 +1044,8 @@ class LotoNPL extends Attack {
 		let right2 = new PriorityCircle(0, 100, 70, 1).setVelocity(0, 1).setSubVelocity(0, -1);
 		let circles = [left1, left2, right1, right2];
 
-		let left = new AttackProperties().setDamage(10 * player.attackMult, 10, 10).setProration(-0.5).setCancelOptions(cancel).setAngleValue(player.dir.value - PI / 2).setLaunch(8).setHitStun(33, 4).setStunFrames(4).setRotateSlowDown(0.7, 60);
-		let right = new AttackProperties().setDamage(10 * player.attackMult, 10, 10).setProration(-0.5).setCancelOptions(cancel).setAngleValue(player.dir.value + PI / 2).setLaunch(8).setHitStun(33, 4).setStunFrames(4).setRotateSlowDown(0.7, 60);
+		let left = new AttackProperties().setDamage(15 * player.attackMult, 10, 10).setProration(-1.5).setCancelOptions(cancel).setAngleValue(player.dir.value - PI / 2).setLaunch(8).setHitStun(36, 4).setStunFrames(8).setRotateSlowDown(0.7, 60);
+		let right = new AttackProperties().setDamage(15 * player.attackMult, 10, 10).setProration(-1.5).setCancelOptions(cancel).setAngleValue(player.dir.value + PI / 2).setLaunch(8).setHitStun(36, 4).setStunFrames(8).setRotateSlowDown(0.7, 60);
 		let prop = [left, right];
 
 		return new this(player, circles, prop).setClashPriority(6).setStartupF(6).setActiveF(8).setEndF(17);
@@ -1240,6 +1278,128 @@ class LotoMPL extends Attack {
 	}
 }
 
+class LotoRPS extends Attack {
+	constructor(player, circles = [], props = []) {
+		super(player, circles, props);
+		this.name = "RPS";
+	}
+
+	static createAttack(player) {
+		let cancelOptions = ["LL", "MPL"];
+		player.moveStanceDashCancel(cancelOptions);
+
+		let sweet1 = new PriorityCircle(-50, -40, 90, 0).setVelocity(0, -0.1);
+		let sweet2 = new PriorityCircle(-10, -55, 80, 0).setVelocity(0, -0.1);
+		let sweet3 = new PriorityCircle(20, -55, 80, 0).setVelocity(0, -0.1);
+		let sweet4 = new PriorityCircle(50, -50, 70, 0).setVelocity(0, -0.1);
+		let sour1 = new PriorityCircle(40, -50, 40, 1).setVelocity(18, 3);
+		let circles = [sweet1, sweet2, sweet3, sweet4, sour1];
+
+		let sweet = new AttackProperties().setDamage(30 * player.attackMult).setProration(0).setCancelOptions(cancelOptions).setAngleValue(player.dir.value - PI / 3).setLaunch(5, 2, 1.2).setHitStun(39, 30).setStunFrames(15).setWallPushback(4, 3);
+		let sour = new AttackProperties().setDamage(10 * player.attackMult).setProration(1).setCancelOptions(cancelOptions).setAngleValue(player.dir.value).setLaunch(3, 0, 0.5).setHitStun(18, 5).setStunFrames(5);
+		let prop = [sweet, sour];
+
+		//sweet.setHitSound(undefined);
+		//sweet.setBlockSound(undefined);
+
+		return new this(player, circles, prop).setClashPriority(3).setStartupF(24).setActiveF(16).setEndF(15);
+	}
+
+	static startAttack(player, attack, bufferInfo) {
+		player.startMomentumMultiply(0);
+		player.startMomentumMultiplyDash(1);
+	}
+
+	draw(g) {
+		if (this.currentlyActive()) {
+			//if (debug.displayHitboxes)
+			this.debugDraw(g);
+		}
+	}
+
+	logic() {
+		if (this.getFromStartupF() < 20) {
+			let angle = new Angle(this.dir.value + 1.1 * PI / 2 + PI / 6 * this.getFromStartupF() / 4);
+			let speed = 9;
+			if (this.getFromStartupF() < 10)
+				speed = 15;
+			this.player.dx = angle.getX() * speed;
+			this.player.dy = angle.getY() * speed;
+			this.player.dx += this.dir.getX() * 2;
+			this.player.dy += this.dir.getY() * 2;
+		}
+		if (this.getFromActiveF() === 5) {
+			this.circles[0].diameter = 0;
+			this.circles[1].diameter = 0;
+			this.circles[2].diameter = 0;
+			this.circles[3].diameter = 0;
+		}
+		this.player.dx *= 0.8;
+		this.player.dy *= 0.8;
+	}
+}
+
+class LotoLPS extends Attack {
+	constructor(player, circles = [], props = []) {
+		super(player, circles, props);
+		this.name = "LPS";
+	}
+
+	static createAttack(player) {
+		let cancelOptions = ["RL", "MPL"];
+		player.moveStanceDashCancel(cancelOptions);
+
+		let sweet1 = new PriorityCircle(-50, 40, 90, 0).setVelocity(0, 0.1);
+		let sweet2 = new PriorityCircle(-10, 55, 80, 0).setVelocity(0, 0.1);
+		let sweet3 = new PriorityCircle(20, 55, 80, 0).setVelocity(0, 0.1);
+		let sweet4 = new PriorityCircle(50, 50, 70, 0).setVelocity(0, 0.1);
+		let sour1 = new PriorityCircle(40, 50, 40, 1).setVelocity(18, -3);
+		let circles = [sweet1, sweet2, sweet3, sweet4, sour1];
+
+		let sweet = new AttackProperties().setDamage(30 * player.attackMult).setProration(0).setCancelOptions(cancelOptions).setAngleValue(player.dir.value + PI / 3).setLaunch(5, 2, 1.2).setHitStun(39, 30).setStunFrames(15).setWallPushback(4, 3);
+		let sour = new AttackProperties().setDamage(10 * player.attackMult).setProration(1).setCancelOptions(cancelOptions).setAngleValue(player.dir.value).setLaunch(3, 0, 0.5).setHitStun(18, 5).setStunFrames(5);
+		let prop = [sweet, sour];
+
+		//sweet.setHitSound(undefined);
+		//sweet.setBlockSound(undefined);
+
+		return new this(player, circles, prop).setClashPriority(3).setStartupF(24).setActiveF(16).setEndF(15);
+	}
+
+	static startAttack(player, attack, bufferInfo) {
+		player.startMomentumMultiply(0);
+		player.startMomentumMultiplyDash(1);
+	}
+
+	draw(g) {
+		if (this.currentlyActive()) {
+			//if (debug.displayHitboxes)
+			this.debugDraw(g);
+		}
+	}
+
+	logic() {
+		if (this.getFromStartupF() < 20) {
+			let angle = new Angle(this.dir.value - 1.1 * PI / 2 - PI / 6 * this.getFromStartupF() / 4);
+			let speed = 9;
+			if (this.getFromStartupF() < 10)
+				speed = 15;
+			this.player.dx = angle.getX() * speed;
+			this.player.dy = angle.getY() * speed;
+			this.player.dx += this.dir.getX() * 2;
+			this.player.dy += this.dir.getY() * 2;
+		}
+		if (this.getFromActiveF() === 5) {
+			this.circles[0].diameter = 0;
+			this.circles[1].diameter = 0;
+			this.circles[2].diameter = 0;
+			this.circles[3].diameter = 0;
+		}
+		this.player.dx *= 0.8;
+		this.player.dy *= 0.8;
+	}
+}
+
 class LotoNN extends Attack {
 	constructor(player, circles = [], props = []) {
 		super(player, circles, props);
@@ -1310,7 +1470,7 @@ class LotoNN extends Attack {
 		this.awenSheet.run();
 		this.tawaSheet.run();
 		this.utalaSheet.run();
-		if (this.heldCount > 0 && this.getFromEndF() <= 13) {
+		if (this.heldCount > 0 && this.getFromEndF() <= 7) {
 			let angle = Angle.compare(this.player.sinpin, this.player.controls.angle(0));
 			if (!this.player.controls.joystickPressed(0)) {
 				this.selection = this.player.stances.NEUTRAL;
@@ -1326,15 +1486,66 @@ class LotoNN extends Attack {
 			this.held = false;
 		if (!this.held)
 			this.heldCount--;
-		if (this.getFromEndF() < 13 && this.heldCount > 0 && !this.fromHitstun) {
+		if (this.getFromEndF() < 7 && this.heldCount > 0 && !this.fromHitstun) {
 			this.setEndF(this.getEndF() + 1);
 			this.player.actionLag++;
 		}
-		if (this.getFromEndF() === 13) {
+		if (this.getFromEndF() === 7) {
 			this.player.stance = this.selection;
 			if (!this.fromHitstun) {
-				this.player.iFrames = 8;
+				this.player.iFrames = 15;
 				this.player.invTo = ["attack", "grab"];
+			}
+		}
+	}
+}
+
+class LotoSN extends Attack {
+	constructor(player, circles = [], props = []) {
+		super(player, circles, props);
+		this.name = "SN";
+	}
+
+	static createAttack(player) {
+		let cancelOptions = [];
+
+		let sour1 = new PriorityCircle(70, 0, 30, 0);
+		let sour2 = new PriorityCircle(65, -30, 30, 0);
+		let sour3 = new PriorityCircle(65, 30, 30, 0);
+		let circles = [sour1, sour2, sour3];
+
+		let sour = new AttackProperties().setDamage(40).setGrab(55).setCancelOptions(cancelOptions).setAngleValue(player.dir.value).setLaunch(8, 0.1).setHitStun(31).setStunFrames(4).setWallPushback(300);
+		let prop = [sour];
+
+		return new this(player, circles, prop).setClashPriority(6).setStartupF(5).setActiveF(6).setEndF(27).setRotateable();
+	}
+
+	static startAttack(player, attack, bufferInfo) {
+		if (!State.stateIs(player.currentState, "dash attack")) {
+			player.dx = 0;
+			player.dy = 0;
+		}
+	}
+
+	draw(g) {
+		if (this.currentlyActive()) {
+			if (debug.displayHitboxes)
+				this.debugDraw(g);
+		}
+	}
+
+	logic() {
+		this.player.dx *= 0.8;
+		this.player.dy *= 0.8;
+		if (this.player.targetPlayer && this.getStartupF() > 0) {
+			let playersAngle = new Angle().setFromPoint(this.player.targetPlayer.x - this.player.x, this.player.targetPlayer.y - this.player.y);
+
+			let compare = Angle.compare(this.player.dir, playersAngle);
+			if (compare < -0.1) {
+				this.player.dir.value -= 0.1;
+			}
+			if (compare > 0.1) {
+				this.player.dir.value += 0.1;
 			}
 		}
 	}

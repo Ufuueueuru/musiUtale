@@ -42,6 +42,9 @@ class ModScreen extends Screen {
         this.scroll = 0;
 
         this.totalList = [];
+
+        this.menu = new Menu(MenuOtherScreen);
+
         (async () => {
             this.totalList = await window.electronAPI.readdir("/mods");
 
@@ -81,7 +84,5 @@ class ModScreen extends Screen {
                 }
             }
         })();
-
-        this.menu = new Menu(MenuOtherScreen);
     }
 }

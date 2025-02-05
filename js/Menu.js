@@ -11,6 +11,10 @@ class Menu {
         this.back = false;
     }
 
+    setBackScreen(back) {
+        this.backScreenClass = back;
+    }
+
     draw(g, width = windowWidth, height = windowHeight, imageWidth = windowWidth * 0.2, imageHeight = windowHeight * 0.2) {
         for (let i in this.menus) {
             if (this.target === this.menus[i]) {
@@ -105,5 +109,12 @@ class Menu {
 
     setTarget(menu) {
         this.target = menu;
+    }
+
+    getDisplayX(x, width) {
+        return windowWidth / 2 - width / 2 + x * width / 512;
+    }
+    getDisplayY(y, height) {
+        return windowHeight / 2 - height / 2 + y * height / 384;
     }
 }

@@ -1206,7 +1206,33 @@
 		}
 	}
 
-    static addAssets() {
+	copyAssets() {
+		this.sheet = Spritesheet.copy(assetManager.spritesheets.janLukeSheet);
+		this.auraSheets = [];
+		this.auraSheets.push(Spritesheet.copy(assetManager.spritesheets.konLuke0));
+		this.auraSheets.push(Spritesheet.copy(assetManager.spritesheets.konLuke1));
+		this.auraSheets.push(Spritesheet.copy(assetManager.spritesheets.konLuke2));
+		this.auraSheets.push(Spritesheet.copy(assetManager.spritesheets.konLuke3));
+		this.auraSheets.push(Spritesheet.copy(assetManager.spritesheets.konLuke4));
+	}
+
+	getShouldLoadSpritesheets() {
+		return ["janLukeSheet", "sitelenKonLuke", "konLuke0", "konLuke1", "konLuke2", "konLuke3", "konLuke4", "gunEffect", "gunEffectLili", "konPiTawaSike", "linjaLuka", "sikePakala"];
+	}
+	getShouldLoadImages() {
+		return ["bulletEmpty", "bulletFull"];
+	}
+	getShouldLoadSounds() {
+		return ["sinaSeme", "e", "reload", "gunShot", "gunCock", "linjaLuka", "kalamaLinja"];
+	}
+
+	static getMenuImage() {
+		return assetManager.images.janLukeMenuImage;
+	}
+
+	static addAssets() {
+		assetManager.addImage("resources/jan_LukeAWEN.png", "janLukeMenuImage", true);
+
 		assetManager.addSpritesheet("resources/jan_Luke.png", "janLukeSheet", "//");
 
 		assetManager.addSpritesheet("resources/sitelenKonLuke.png", "sitelenKonLuke", "//");
@@ -1776,8 +1802,8 @@ class JanLukeMS extends Attack {
 
 		if (!player.vortex) {
 			attack.vortex = true;
-			player.vortex = true;
-			player.world.sikeWawa.addMeter(-5.5, -2.2, player);
+			player.vortex = true;			
+			player.world.sikeWawa.subtractMeter(4.0, 2.2, player);
 		} else {
 			attack.setActiveF(0);
 		}
@@ -2246,7 +2272,7 @@ class JanLukeNPS extends Attack {
 		player.startMomentumMultiply(0);
 		player.startMomentumMultiplyDash(0);
 
-		player.world.sikeWawa.addMeter(-5.5, -2.2, player);
+		player.world.sikeWawa.subtractMeter(4.0, 2.2, player);
 
 		if (player.targetPlayer) {
 			let futureFrames = constrain(dist(player.x, player.y, player.targetPlayer.x, player.targetPlayer.y) / 2, 13, 36);
@@ -2470,8 +2496,6 @@ class JanLukeRPS extends Attack {
 	static startAttack(player, attack, bufferInfo) {
 		player.startMomentumMultiply(0);
 		player.startMomentumMultiplyDash(0.5);
-
-		player.world.sikeWawa.addMeter(-5.5, -2.2, player);
 	}
 
 	draw(g) {
@@ -2587,8 +2611,6 @@ class JanLukeLPS extends Attack {
 	static startAttack(player, attack, bufferInfo) {
 		player.startMomentumMultiply(0);
 		player.startMomentumMultiplyDash(0.5);
-
-		player.world.sikeWawa.addMeter(-5.5, -2.2, player);
 	}
 
 	draw(g) {
@@ -2938,7 +2960,7 @@ class JanLukeLN extends Attack {
 			this.player.sheet.setAnimation("LNF");
 		}
 		if (this.getStartupF() < 26 && this.getStartupF() > 5) {
-			this.world.sikeWawa.addMeter(0.12, 0.09, this.player);
+			this.world.sikeWawa.addMeter(0.19, 0.16, this.player);
 		}
 		if (this.held && this.getStartupF() === 20) {
 			this.player.actionLag++;

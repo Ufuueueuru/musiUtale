@@ -1923,9 +1923,27 @@
 
 		if (this.book.duration > 0)
 			this.book.sheet.run();
-    }
+	}
+
+	copyAssets() {
+		this.sheet = Spritesheet.copy(assetManager.spritesheets.janTPSheet);
+		this.book.sheet = Spritesheet.copy(assetManager.spritesheets.lipuNasa);
+	}
+
+	getShouldLoadSpritesheets() {
+		return ["janTPSheet", "janTPSeliNPL", "janTPIlo", "lipuNasa", "janTPUtalaLipu", "konNasa", "teloSike", "kalamaSuli", "sikeSeli", "wawaPalisa", "konNasaLanpan", "konSike", "teloLonPokaLen", "janTPTawaIlo"];
+	}
+	getShouldLoadSound() {
+		return ["fanTP", "fireBad", "teloLuka", "teloLukaPakala"];
+	}
+
+	static getMenuImage() {
+		return assetManager.images.janTPMenuImage;
+	}
 
 	static addAssets() {
+		assetManager.addImage("resources/jan_pi_toki_ponaAWEN.png", "janTPMenuImage", true);
+
 		assetManager.addSpritesheet("resources/jan_pi_toki_pona_low_res.png", "janTPSheet", "//");
 
 		assetManager.addSpritesheet("resources/janTPSeliNPL.png", "janTPSeliNPL", "//");

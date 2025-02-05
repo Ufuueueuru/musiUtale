@@ -7,11 +7,13 @@ class TrainingScreen extends VSScreen {
         this.trainingSettings = {};
 
         this.world.startCountdown = 0;
+        this.world.timer = 100;
         this.player1.canMove = true;
         this.player1.canAttack = true;
         this.player2.canMove = true;
         this.player2.canAttack = true;
         this.trainingSettings.positionReset = this.world.serialize();
+        this.world.addShouldLoad();
         this.world.startCountdown = this.world.countdownMax;
         this.player1.canMove = false;
         this.player1.canAttack = false;
@@ -23,16 +25,22 @@ class TrainingScreen extends VSScreen {
             meters: [0, 0, 0, 0, 0, 0, 0, 0],
             staticNanpaLipu: false,//Should the lipu meter be stuck?
             lipuMeters: [0, 0],
+            staticHealth: true,//Should the health bars be stuck?
+            healthMeters: [1, 1],
             resetFunctions: {
                 always: () => { return true; },
                 neutral: () => {
                     return (this.player1.currentState.name === "walk" || this.player1.currentState.name === "neutral") && 
                            (this.player2.currentState.name === "walk" || this.player2.currentState.name === "neutral");
+                },
+                opponentNeutral: () => {
+                    return (this.getNonTrainingPlayer().currentState.name === "walk" || this.getNonTrainingPlayer().currentState.name === "neutral");
                 }
             }
         };
         this.trainingSettings.meter.sikeResetFunction = this.trainingSettings.meter.resetFunctions.neutral;
         this.trainingSettings.meter.lipuResetFunction = this.trainingSettings.meter.resetFunctions.neutral;
+        this.trainingSettings.meter.healthResetFunction = this.trainingSettings.meter.resetFunctions.opponentNeutral;
 
         this.trainingSettings.display = {
             isVisible: true,
@@ -154,6 +162,8 @@ class TrainingScreen extends VSScreen {
             this.opponentMenuOn = false;//Every sub-menu needs to be added here :(
             this.displayMenuOn = false;
         };
+
+        assetManager.loadAssetsWithScreen();
     }
 
     run() {
@@ -165,6 +175,11 @@ class TrainingScreen extends VSScreen {
         if (this.trainingSettings.meter.staticNanpaLipu && this.trainingSettings.meter.lipuResetFunction()) {
             for (let i in this.world.players) {
                 this.world.players[i].nanpaLipu = this.trainingSettings.meter.lipuMeters[i];
+            }
+        }
+        if (this.trainingSettings.meter.staticHealth && this.trainingSettings.meter.healthResetFunction()) {
+            for (let i in this.world.players) {
+                this.world.players[i].health = this.trainingSettings.meter.healthMeters[i] * this.world.players[i].maxHealth;
             }
         }
 
@@ -226,6 +241,10 @@ class TrainingScreen extends VSScreen {
                 this.world.deserialize(this.trainingSettings.positionReset);
                 break;
             }
+            if (controls[i].pressed("nasa") && controls[i].pressed("suli") && controls[i].pressed("pokaSuli") && !this.paused) {
+                this.trainingSettings.positionReset = this.world.serialize();
+                break;
+            }
         }
     }
 
@@ -282,6 +301,10 @@ class TrainingScreen extends VSScreen {
         }
 
         return name.charAt(0).toLowerCase() + name.slice(1);
+    }
+
+    getNonTrainingPlayer() {
+        return (this.player1 === this.trainingPlayer ? this.player2 : this.player1);
     }
 
     drawDisplay(g, x, y, width, height) {
@@ -474,7 +497,7 @@ class TrainingScreen extends VSScreen {
 
         this.canSkipFrames = true;
 
-        this.world.playMusic();
+        //this.world.addShouldLoad();
     }
 
     destruct() {
@@ -495,5 +518,12 @@ class TrainingScreen extends VSScreen {
             this.player2.controls = null;
 
         Howler.stop();
+
+        assetManager.resetAssets();
+    }
+
+    loaded() {
+        this.world.copyAssets();
+        this.world.playMusic();
     }
 }

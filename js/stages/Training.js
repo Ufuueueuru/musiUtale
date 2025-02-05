@@ -31,8 +31,12 @@
         this.playSong(assetManager.sounds.kalamaPiKamaSona);
     }
 
+    getShouldLoadSounds() {
+        return ["kalamaPiKamaSona"];
+    }
+
     static addAssets() {
-        assetManager.addImage("resources/backgrounds/training_background.png", "trainingBackground");
+        assetManager.addImage("resources/backgrounds/training_background.png", "trainingBackground", true);
     }
 }
 

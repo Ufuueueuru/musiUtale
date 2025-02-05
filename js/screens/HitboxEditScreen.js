@@ -27,7 +27,10 @@ class HitboxEditScreen extends Screen {
             green = 200;
             blue = 0;
         }
-        currentPlayer.debugDraw(g, red, green, blue);
+        if (this.showHurtboxes) {
+            currentPlayer.debugDraw(g, red, green, blue);
+        }
+        g.noStroke();
         let lastFrame = (floor(currentPlayer.hurtboxStateFrame / 4) % currentPlayer.hurtboxes[currentPlayer.hurtboxState].length + currentPlayer.hurtboxes[currentPlayer.hurtboxState].length - 1) % currentPlayer.hurtboxes[currentPlayer.hurtboxState].length;
         if (this.onionSkin && lastFrame >= 0) {
             g.fill(100, 145, 110, 100);
@@ -47,7 +50,8 @@ class HitboxEditScreen extends Screen {
 
         for (let i in this.fakeWorld.attacks) {
             this.fakeWorld.attacks[i].draw(g);
-            this.fakeWorld.attacks[i].debugDraw(g);
+            if (this.showHitboxes)
+                this.fakeWorld.attacks[i].debugDraw(g);
         }
 
         this.camera.popMatrix(g);
@@ -121,6 +125,9 @@ class HitboxEditScreen extends Screen {
     }
 
     init() {
+        this.showHurtboxes = true;
+        this.showHitboxes = true;
+
         this.fakeWorld = new Training(512, 384);
         this.players = [];
         for (let i in characters) {
@@ -146,6 +153,9 @@ class HitboxEditScreen extends Screen {
         this.camera = new Camera();
         this.camera.x = -windowWidth / 2;
         this.camera.y = -windowHeight / 2;
+
+        this.fakeWorld.addShouldLoad();
+        assetManager.loadAssetsWithScreen();
 
         mousePressedHelper = (e) => {
             if (mouseButton === LEFT) {
@@ -219,6 +229,12 @@ class HitboxEditScreen extends Screen {
             }
             if (e.code === "BracketLeft") {
                 this.runPhysics();
+            }
+            if (e.code === "KeyM") {
+                this.showHurtboxes = !this.showHurtboxes;
+            }
+            if (e.code === "KeyN") {
+                this.showHitboxes = !this.showHitboxes;
             }
             if (e.code === "KeyO") {
                 this.onionSkin = !this.onionSkin;
@@ -379,5 +395,9 @@ class HitboxEditScreen extends Screen {
             this.players[this.currentPlayerID].dx = 0;
             this.players[this.currentPlayerID].dy = 0;
         }
+    }
+
+    loaded() {
+        this.fakeWorld.copyAssets();
     }
 }

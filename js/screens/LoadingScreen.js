@@ -13,7 +13,7 @@
             if (this.images) {
                 for (let i in this.images) {
                     let offset = 0;
-                    if ((frameCount - i + 4) % 4 < 1)
+                    if ((floor(frameCount/2) - i + 4) % 4 < 1)
                         offset = 7;
                     g.image(this.images[i], width / 2 - 45 + 20 * i, height / 2 - offset - 50);
                     //g.text(displayText[i], width / 2 - 30 + 20 * i, height / 2 - offset - 35);
@@ -23,7 +23,7 @@
                 g.noStroke();
                 g.textSize(30);
                 g.textAlign(CENTER, CENTER);
-                g.text(floor(max(assetManager.getDisplayPercent(), assetManager.getDisplayPercentNonsmall())) + "%", windowWidth / 2, windowHeight / 2);
+                g.text(floor(max(assetManager.getRealDisplayPercent(), /*assetManager.getRealDisplayPercentNonsmall()*/0)) + "%", windowWidth / 2, windowHeight / 2);
             } else {
                 this.images = [];
                 let g = createGraphics(30, 30);
@@ -44,8 +44,8 @@
     }
 
     run() {
-        frameRate(6);
-        if (assetManager.getDisplayPercent() >= 100 && saveFile || debug.loadingBackDoor) {
+        frameRate(12);
+        if (assetManager.getRealDisplayPercent() >= 100 && saveFile || debug.loadingBackDoor) {
             canDisplayFrameRate = true;
             transText = assetManager.jsons.text;
             assetManager.runLoadFuncs();
@@ -53,6 +53,7 @@
                 currentScreen = new HitboxEditScreen();
             } else {
                 currentScreen = new LanguageSelectScreen();
+                assetManager.resetAssets();
             }
             frameRate(60);
         }

@@ -13,4 +13,6 @@ class Screen {
 	run() { }
 
 	init() { }
+
+	loaded() { }
 }

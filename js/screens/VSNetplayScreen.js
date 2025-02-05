@@ -327,7 +327,22 @@ class VSNetplayScreen extends Screen {
         //
         if (this.myPlayer) {
             //if (!this.paused) {
+            if (receivedData) {
                 this.theirPlayer.controls.update(receivedData);
+            } else {
+                let i = this.past.length - 1;
+                while (i > 0 && !this.past[i].dataReceived) {
+                    i--;
+                }
+                //Make sure the past frame exists
+                if (this.past[i] !== undefined) {
+                    if (this.myPlayer === this.world.players[0]) {
+                        this.theirPlayer.controls.update(this.past[i].player2Inputs);
+                    } else {
+                        this.theirPlayer.controls.update(this.past[i].player1Inputs);
+                    }
+                }
+            }
                 this.myPlayer.controls.update();
             //} else {
                 //this.myPlayer.controls.buttons.start.update();
@@ -648,6 +663,8 @@ class VSNetplayScreen extends Screen {
         this.connection?.close();
         errorDisplayFrames = 0;
         Howler.stop();
+
+        assetManager.resetAssets();
     }
 
     initLater() {
@@ -705,6 +722,14 @@ class VSNetplayScreen extends Screen {
         if (this.rSeed)
             this.world.rSeed = this.rSeed;
 
+        if (assetManager.getRealDisplayPercent() >= 100)
+            this.world.playMusic();
+        else
+            dynamicLoadingDisplay = true;
+    }
+
+    loaded() {
+        this.world.copyAssets();
         this.world.playMusic();
     }
 }

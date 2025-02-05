@@ -47,8 +47,12 @@
         }
     }
 
+    getShouldLoadSounds() {
+        return ["maWeka", "awenTawa"];
+    }
+
     static addAssets() {
-        assetManager.addImage("resources/backgrounds/ma_pi_tomo_awen.png", "tomoAwen");
+        assetManager.addImage("resources/backgrounds/ma_pi_tomo_awen.png", "tomoAwen", true);
     }
 
     serialize() {

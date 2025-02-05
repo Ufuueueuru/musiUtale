@@ -1,7 +1,9 @@
 ﻿class Asakami extends Player {
 	constructor() {
 		super([
-			new Circle(0, 0, 80)
+			new Circle(0, 0, 80),
+			new ICircle(19, 52, 29),
+			new ICircle(-3, -67, 31)
 		]);
 
 		this.hurtboxes["grab"] = [
@@ -47,36 +49,36 @@
 		];
 
 		this.hurtboxes["walk"] = [
+			[new Circle(1, -1, 81),
+			new ICircle(16, 54, 30),
+			new ICircle(-7, -67, 30)],
+			[new Circle(0, -1, 81),
+			new ICircle(18, 52, 31),
+			new ICircle(-11, -66, 30)],
+			[new Circle(0, -1, 80),
+			new ICircle(24, 51, 30),
+			new ICircle(-11, -65, 31)],
+			[new Circle(0, -1, 81),
+			new ICircle(25, 51, 29),
+			new ICircle(-7, -66, 31)],
+			[new Circle(1, -1, 81),
+			new ICircle(16, 54, 30),
+			new ICircle(-4, -66, 31)],
 			[new Circle(0, 0, 80),
-			new Circle(10, 40, 20),
-			new Circle(10, -40, 20)],
+			new ICircle(10, 60, 32),
+			new ICircle(0, -69, 30)],
 			[new Circle(0, 0, 80),
-			new Circle(8, 40, 20),
-			new Circle(12, -40, 20)],
+			new ICircle(-1, 62, 30),
+			new ICircle(5, -70, 30)],
 			[new Circle(0, 0, 80),
-			new Circle(6, 40, 20),
-			new Circle(14, -40, 20)],
+			new ICircle(0, 61, 32),
+			new ICircle(5, -69, 30)],
 			[new Circle(0, 0, 80),
-			new Circle(6, 40, 20),
-			new Circle(14, -40, 20)],
+			new ICircle(10, 61, 32),
+			new ICircle(0, -67, 32)],
 			[new Circle(0, 0, 80),
-			new Circle(8, 40, 20),
-			new Circle(12, -40, 20)],
-			[new Circle(0, 0, 80),
-			new Circle(10, 40, 20),
-			new Circle(10, -40, 20)],
-			[new Circle(0, 0, 80),
-			new Circle(12, 40, 20),
-			new Circle(8, -40, 20)],
-			[new Circle(0, 0, 80),
-			new Circle(14, 40, 20),
-			new Circle(6, -40, 20)],
-			[new Circle(0, 0, 80),
-			new Circle(14, 40, 20),
-			new Circle(6, -40, 20)],
-			[new Circle(0, 0, 80),
-			new Circle(12, 40, 20),
-			new Circle(8, -40, 20)]
+			new ICircle(13, 59, 31),
+			new ICircle(-4, -66, 31)]
 		];
 
 		this.hurtboxes["dash attack"] = [
@@ -86,27 +88,45 @@
 		];
 
 		this.hurtboxes["NL"] = [
-			[new Circle(0, 0, 80),
-			new ICircle(30, 30, 23),
-			new Circle(10, -40, 20)],
-			[new Circle(5, 5, 85),
-			new ICircle(45, 20, 30),
-			new Circle(10, -40, 20)],
-			[new Circle(10, 10, 90),
-			new ICircle(65, 16, 30),
-			new Circle(10, -40, 20)],
-			[new Circle(10, 10, 90),
-			new ICircle(65, 17, 30),
-			new Circle(10, -40, 20)],
-			[new Circle(10, 10, 90),
-			new ICircle(58, 21, 30),
-			new Circle(10, -40, 20)],
-			[new Circle(0, 0, 80),
-			new ICircle(44, 22, 36),
-			new Circle(10, -40, 20)],
-			[new Circle(2, 2, 82),
-			new ICircle(36, 29, 29),
-			new Circle(12, -36, 23)]
+			[new Circle(1, -1, 82),
+			new ICircle(15, 54, 31),
+			new ICircle(-7, -64, 33)],
+			[new Circle(5, 6, 83),
+			new ICircle(23, 56, 31),
+			new ICircle(-10, -63, 33)],
+			[new Circle(10, 14, 83),
+			new ICircle(36, 63, 32),
+			new ICircle(-10, -53, 33)],
+			[new Circle(11, 18, 83),
+			new ICircle(44, 70, 32),
+			new ICircle(-27, -42, 34),
+			new ICircle(-13, -21, 29)],
+			[new Circle(11, 18, 82),
+			new ICircle(44, 70, 31),
+			new ICircle(-31, -39, 31),
+			new ICircle(-16, -19, 30)],
+			[new Circle(-19, -1, 82),
+			new ICircle(-33, 55, 32),
+			new ICircle(31, -39, 31),
+			new ICircle(13, -34, 34)],
+			[new Circle(-54, -25, 82),
+			new ICircle(-114, -15, 35),
+			new ICircle(-27, 30, 37)],
+			[new Circle(-55, -24, 82),
+			new ICircle(-115, -16, 35),
+			new ICircle(-26, 29, 37)],
+			[new Circle(-51, -18, 80),
+			new ICircle(-112, -3, 31),
+			new ICircle(-6, 27, 36)],
+			[new Circle(-39, -12, 81),
+			new ICircle(-86, 28, 33),
+			new ICircle(21, 3, 34)],
+			[new Circle(-29, -11, 82),
+			new ICircle(28, -36, 32),
+			new ICircle(-33, 50, 33)],
+			[new Circle(-14, -5, 81),
+			new ICircle(19, -62, 30),
+			new ICircle(-6, 52, 34)]
 		];
 
 		this.hurtboxes["SL"] = [
@@ -450,347 +470,6 @@
 			new Circle(17, -30, 40)]
 		];
 
-		this.hurtboxes["NPL"] = [
-			[new Circle(0, 0, 80),
-			new Circle(9, 36, 24),
-			new ICircle(26, -22, 49)]
-		];
-
-		this.hurtboxes["SPL"] = [
-			[new Circle(0, 0, 80),
-			new Circle(21, 37, 24),
-			new Circle(21, -35, 30)],
-			[new Circle(0, 0, 80),
-			new Circle(25, 34, 30),
-			new Circle(17, -21, 51)],
-			[new Circle(0, 1, 80),
-			new Circle(24, 28, 36),
-			new Circle(19, -19, 50)],
-			[new Circle(0, 2, 80),
-			new Circle(29, 29, 32),
-			new Circle(20, -16, 50)],
-			[new Circle(0, 0, 71),
-			new Circle(13, 41, 35),
-			new Circle(25, -38, 38)],
-			[new Circle(0, 0, 72),
-			new Circle(12, 44, 32),
-			new Circle(24, -37, 44)],
-			[new Circle(0, 0, 73),
-			new Circle(14, 41, 35),
-			new Circle(26, -39, 39)],
-			[new Circle(0, 0, 70),
-			new Circle(14, 45, 32),
-			new Circle(24, -40, 39)],
-			[new Circle(0, 0, 73),
-			new Circle(16, 44, 32),
-			new Circle(26, -40, 37)],
-			[new Circle(0, 0, 75),
-			new Circle(15, 34, 35),
-			new Circle(21, -33, 35)]
-		];
-
-		this.hurtboxes["RPL"] = [
-			[new Circle(0, 0, 80),
-			new Circle(23, 33, 25),
-			new Circle(10, -40, 20)],
-			[new Circle(0, 6, 80),
-			new Circle(30, 34, 24),
-			new Circle(9, -19, 50)],
-			[new Circle(3, 5, 77),
-			new Circle(35, 36, 28),
-			new Circle(8, -20, 50)],
-			[new Circle(1, 1, 77),
-			new Circle(31, 29, 32),
-			new Circle(9, -19, 50)],
-			[new Circle(0, -10, 72),
-			new Circle(17, 16, 50),
-			new Circle(38, 33, 22)],
-			[new Circle(2, -10, 70),
-			new Circle(13, 14, 56),
-			new Circle(38, 35, 22)],
-			[new Circle(2, -11, 67),
-			new Circle(14, 16, 54),
-			new Circle(36, 36, 22)],
-			[new Circle(3, -11, 66),
-			new Circle(14, 15, 53),
-			new Circle(36, 37, 21)],
-			[new Circle(4, -10, 68),
-			new Circle(11, 18, 53),
-			new Circle(32, 35, 22)]
-		];
-
-		this.hurtboxes["LPL"] = [
-			[new Circle(0, 0, 80),
-			new Circle(10, 40, 20),
-			new Circle(20, -29, 33)],
-			[new Circle(-1, -3, 81),
-			new Circle(7, 22, 47),
-			new Circle(26, -29, 37)],
-			[new Circle(-1, -1, 80),
-			new Circle(7, 21, 50),
-			new Circle(33, -33, 36)],
-			[new Circle(0, -3, 79),
-			new Circle(8, 21, 50),
-			new Circle(33, -33, 37)],
-			[new Circle(1, -3, 79),
-			new Circle(8, 22, 50),
-			new Circle(32, -34, 36)],
-			[new Circle(1, -3, 78),
-			new Circle(8, 22, 50),
-			new Circle(33, -32, 38)],
-			[new Circle(2, -4, 77),
-			new Circle(8, 22, 50),
-			new Circle(33, -33, 36)],
-			[new Circle(0, -2, 79),
-			new Circle(8, 22, 50),
-			new Circle(32, -33, 38)],
-			[new Circle(1, -1, 79),
-			new Circle(8, 25, 45),
-			new Circle(26, -29, 38)],
-			[new Circle(1, 0, 78),
-			new Circle(8, 26, 44),
-			new Circle(18, -25, 41)]
-		];
-
-		this.hurtboxes["MPL"] = [
-			[new Circle(0, 0, 80),
-			new Circle(10, 40, 20),
-			new Circle(10, -40, 20)],
-			[new Circle(-3, -2, 81),
-			new Circle(3, 31, 30),
-			new Circle(10, -32, 32)],
-			[new Circle(-6, -2, 76),
-			new Circle(-6, 28, 32),
-			new Circle(9, -32, 33)],
-			[new Circle(3, -6, 80),
-			new Circle(38, 16, 46)],
-			[new Circle(3, -8, 77),
-			new Circle(38, 14, 50)],
-			[new Circle(0, -1, 84),
-			new Circle(42, 9, 50)],
-			[new Circle(3, -2, 81),
-			new Circle(45, 5, 50)],
-			[new Circle(-1, -3, 81),
-			new Circle(41, 10, 50)],
-			[new Circle(1, 3, 78),
-			new Circle(35, 21, 39),
-			new Circle(7, -27, 36)]
-		];
-
-		this.hurtboxes["NPS"] = [
-			[new Circle(0, 0, 80),
-			new Circle(16, -38, 20),
-			new Circle(14, 38, 20)],
-			[new Circle(-2, 0, 80),
-			new Circle(9, -36, 22),
-			new Circle(17, 40, 19)],
-			[new Circle(0, 3, 81),
-			new Circle(6, -31, 31),
-			new Circle(20, 38, 21)],
-			[new Circle(0, 0, 85),
-			new Circle(17, -31, 35),
-			new Circle(15, 38, 26)],
-			[new Circle(-1, 0, 83),
-			new Circle(27, -27, 36),
-			new Circle(13, 38, 24)],
-			[new Circle(-2, 0, 82),
-			new Circle(25, -19, 50),
-			new Circle(6, 36, 22)],
-			[new Circle(-2, 0, 79),
-			new Circle(27, -19, 45),
-			new Circle(4, 35, 20)],
-			[new Circle(-2, 0, 79),
-			new Circle(27, -18, 46),
-			new Circle(4, 34, 21)],
-			[new Circle(-2, 0, 80),
-			new Circle(27, -18, 46),
-			new Circle(4, 34, 21)],
-			[new Circle(-1, 0, 80),
-			new Circle(26, -18, 47),
-			new Circle(7, 33, 24)],
-			[new Circle(0, 0, 81),
-			new Circle(23, -19, 54),
-			new Circle(7, 20, 50)],
-			[new Circle(0, 0, 80),
-			new Circle(24, -30, 38),
-			new Circle(9, 26, 39)]
-		];
-
-		this.hurtboxes["SPS"] = [
-			[new Circle(0, 0, 80),
-			new Circle(14, -38, 27),
-			new Circle(11, 38, 27)],
-			[new Circle(-5, -3, 77),
-			new Circle(21, -27, 38),
-			new Circle(-4, 35, 28)],
-			[new Circle(-5, -2, 77),
-			new Circle(24, -26, 35),
-			new Circle(-6, 34, 31)],
-			[new Circle(-7, -2, 77),
-			new Circle(22, -31, 37),
-			new Circle(-6, 38, 29)],
-			[new Circle(-9, -4, 78),
-			new Circle(22, -31, 36),
-			new Circle(-3, 35, 29)],
-			[new Circle(-10, -1, 72),
-			new Circle(21, -29, 32),
-			new Circle(-4, 36, 27)],
-			[new Circle(-10, -3, 75),
-			new Circle(22, -16, 46),
-			new Circle(-1, 36, 31)],
-			[new Circle(-7, -2, 76),
-			new Circle(22, 32, 33),
-			new Circle(31, -1, 48)],
-			[new Circle(-8, -2, 76),
-			new Circle(28, 0, 51),
-			new Circle(22, 32, 33)],
-			[new Circle(-9, -3, 75),
-			new Circle(28, 1, 50),
-			new Circle(21, 32, 33)],
-			[new Circle(-1, 0, 74),
-			new Circle(31, 3, 48),
-			new Circle(23, 30, 39)],
-			[new Circle(-1, 0, 73),
-			new Circle(31, 2, 46),
-			new Circle(24, 32, 33)],
-			[new Circle(2, 1, 75),
-			new Circle(38, -7, 35),
-			new Circle(19, 33, 33)],
-			[new Circle(1, 3, 76),
-			new Circle(24, -22, 39),
-			new Circle(18, 37, 27)]
-		];
-
-		this.hurtboxes["RPS"] = [
-			[new Circle(-2, -1, 76),
-			new Circle(17, -32, 25),
-			new Circle(7, 36, 20)],
-			[new Circle(-9, -3, 77),
-			new Circle(11, -30, 29),
-			new Circle(1, 36, 26)],
-			[new Circle(-9, -4, 77),
-			new Circle(11, -30, 29),
-			new Circle(-3, 36, 26)],
-			[new Circle(-6, -4, 80),
-			new Circle(24, -13, 37),
-			new Circle(5, 33, 29)],
-			[new Circle(-7, 1, 76),
-			new Circle(11, 8, 64),
-			new Circle(2, 35, 28)],
-			[new Circle(-7, 1, 76),
-			new Circle(9, 6, 69),
-			new Circle(2, 35, 27)],
-			[new Circle(-8, 1, 76),
-			new Circle(7, 7, 73),
-			new Circle(3, 35, 28)],
-			[new Circle(-7, 1, 76),
-			new Circle(6, 6, 76),
-			new Circle(2, 35, 27)],
-			[new Circle(-7, 1, 74),
-			new Circle(4, 8, 75),
-			new Circle(1, 36, 26)],
-			[new Circle(0, 7, 83)],
-			[new Circle(2, 9, 80)],
-			[new Circle(-2, 5, 83),
-			new Circle(19, -6, 50)],
-			[new Circle(4, -8, 76),
-			new Circle(-6, -44, 20),
-			new Circle(36, 4, 25)],
-			[new Circle(4, -5, 75),
-			new Circle(1, -41, 24),
-			new Circle(27, 21, 32)],
-			[new Circle(4, -1, 76),
-			new Circle(8, -32, 38),
-			new Circle(18, 27, 39)]
-		];
-
-		this.hurtboxes["LPS"] = [
-			[new Circle(-3, 0, 75),
-			new Circle(10, -40, 20),
-			new Circle(19, 33, 20)],
-			[new Circle(-9, 3, 77),
-			new Circle(0, -37, 25),
-			new Circle(13, 30, 27)],
-			[new Circle(-10, 3, 78),
-			new Circle(-2, -36, 27),
-			new Circle(12, 31, 28)],
-			[new Circle(-7, 2, 81),
-			new Circle(4, -34, 28),
-			new Circle(24, 12, 37)],
-			[new Circle(-6, 2, 80),
-			new Circle(6, -14, 68),
-			new Circle(13, 2, 53)],
-			[new Circle(-6, 1, 80),
-			new Circle(6, -14, 68),
-			new Circle(16, 0, 50)],
-			[new Circle(-7, 2, 79),
-			new Circle(2, -11, 74),
-			new Circle(14, 1, 50)],
-			[new Circle(-7, 1, 79),
-			new Circle(3, -14, 69),
-			new Circle(31, 6, 27)],
-			[new Circle(-7, 1, 78),
-			new Circle(3, -12, 74),
-			new Circle(28, 17, 24)],
-			[new Circle(-7, 0, 79),
-			new Circle(2, -8, 80)],
-			[new Circle(3, -6, 81)],
-			[new Circle(-2, -3, 77),
-			new Circle(10, -27, 34),
-			new Circle(25, 9, 39)],
-			[new Circle(5, 7, 76),
-			new Circle(32, -2, 32),
-			new Circle(-4, 40, 28)],
-			[new Circle(5, 5, 75),
-			new Circle(26, -20, 34),
-			new Circle(0, 41, 29)],
-			[new Circle(4, 3, 76),
-			new Circle(19, -28, 36),
-			new Circle(5, 39, 29)]
-		];
-
-		this.hurtboxes["MPS"] = [
-			[new Circle(1, 0, 82),
-			new Circle(13, 37, 23),
-			new Circle(12, -37, 22)],
-			[new Circle(1, 0, 82),
-			new Circle(23, 33, 31),
-			new Circle(25, -31, 32)],
-			[new Circle(1, 0, 81),
-			new Circle(26, 24, 41),
-			new Circle(26, -26, 37)],
-			[new Circle(1, 0, 80),
-			new Circle(27, 23, 42),
-			new Circle(26, -24, 41)],
-			[new Circle(0, 0, 82),
-			new Circle(7, 47, 24),
-			new Circle(9, -47, 27)],
-			[new Circle(1, 2, 81),
-			new Circle(7, 49, 20),
-			new Circle(10, -46, 28)],
-			[new Circle(1, 2, 80),
-			new Circle(7, 48, 23),
-			new Circle(9, -46, 29)],
-			[new Circle(2, 1, 80),
-			new Circle(7, 48, 23),
-			new Circle(9, -46, 30)],
-			[new Circle(1, 1, 80),
-			new Circle(7, 48, 22),
-			new Circle(9, -46, 29)],
-			[new Circle(1, 0, 81),
-			new Circle(7, 48, 22),
-			new Circle(9, -47, 27)],
-			[new Circle(2, 0, 82),
-			new Circle(11, 45, 22),
-			new Circle(16, -40, 27)],
-			[new Circle(2, 3, 80),
-			new Circle(18, 41, 20),
-			new Circle(16, -38, 26)],
-			[new Circle(1, 0, 84),
-			new Circle(14, 34, 29),
-			new Circle(13, -34, 29)]
-		];
-
 		this.hurtboxes["NN"] = [
 			[new Circle(0, 0, 86),
 			new Circle(15, 38, 27),
@@ -893,6 +572,7 @@
 		this.sheetRotation = new Angle();
 
 		this.states.DASH_ATTACK = State.copyState(State.DASH_ATTACK).removeTag("rotateable");
+		this.states.SS = State.copyState(State.SS).addTag("rotateable");
 
 		this.movementSpeed = 1.5;
 		this.forwardSpeedBoost = 1.5;
@@ -914,38 +594,50 @@
 			dr: 0,
 			dir: new Angle(),
 			active: false,
+			held: true,
+			tracking: false,
 			sheet: Spritesheet.copy(assetManager.spritesheets.iloMoliSheet)
 		};
 
 		this.scytheAnimations = {
 			walk: [
-				new ScytheFrame(-10, -50, -1 * PI / 3.7),
 				new ScytheFrame(-10, -50, -1.05 * PI / 3.7),
 				new ScytheFrame(-10, -50, -1.1 * PI / 3.7),
 				new ScytheFrame(-10, -50, -1.1 * PI / 3.7),
 				new ScytheFrame(-10, -50, -1.05 * PI / 3.7),
 				new ScytheFrame(-10, -50, -1 * PI / 3.7),
-				new ScytheFrame(-10, -50, -0.95 * PI / 3.7),
-				new ScytheFrame(-10, -50, -0.9 * PI / 3.7),
-				new ScytheFrame(-10, -50, -0.9 * PI / 3.7),
-				new ScytheFrame(-10, -50, -0.95 * PI / 3.7)
+				new ScytheFrame(-8, -50, -0.95 * PI / 3.7),
+				new ScytheFrame(-5, -50, -0.9 * PI / 3.7),
+				new ScytheFrame(-5, -50, -0.9 * PI / 3.7),
+				new ScytheFrame(-8, -50, -0.95 * PI / 3.7),
+				new ScytheFrame(-10, -50, -1 * PI / 3.7)
 			],
 			neutral: [
 				new ScytheFrame(-10, -50, -PI / 3.7)
+			],
+			dash: [
+				new ScytheFrame(0, -35, -1.8 * PI / 4)
+			],
+			powerDash: [
+				new ScytheFrame(0, -35, -1.8 * PI / 4),
+				new ScytheFrame(0, -35, -2 * PI / 4)
 			]
 		}
 
-		this.OOBBlockFrame = 8;
+		this.OOBBlockFrame = 10;
 
 		this.dash.friction = 0.93;
 		this.dash.regularFrictionFrame = this.dash.frames - 16;
 
 		this.dash.startRotateFrame = this.dash.invFirstFrame;
 		this.dash.endRotateFrame = max(this.dash.attackCancelFrame, this.dash.blockCancelFrame);
+
+		this.powerDash.addHitstunFrames = 30;
 	}
 
 	setAttacks() {
 		this.DASH_ATTACK = AsakamiDashAttack;
+		this.DASH_ATTACKP = AsakamiPuppetDashAttack;
 
 		this.NL = AsakamiNL;
 		this.SL = AsakamiSL;
@@ -974,6 +666,7 @@
 		this.NN = AsakamiNN;
 		this.NNP = AsakamiPuppetNN;
 		this.SN = AsakamiSN;
+		this.SNP = AsakamiPuppetSN;
 		this.RN = AsakamiRN;
 		this.RNP = AsakamiPuppetRN;
 		this.LN = AsakamiLN;
@@ -1502,18 +1195,29 @@
 
 	generalLogic() {
 		this.collidePuppet();
-		if (this.targetPlayer)
+		if (this.targetPlayer && State.stateIsTag(this.puppet.currentState, "rotateable"))
 			this.puppet.dir.value = new Angle().setFromPoint(this.targetPlayer.x - this.puppet.x, this.targetPlayer.y - this.puppet.y).value;
 
 		this.scythe.x += this.scythe.dx;
 		this.scythe.y += this.scythe.dy;
 		this.scythe.dir.changeValue(this.scythe.dr);
 
-		if (this.currentState.name === "walk") {
-			this.animateScytheLoop(this.scytheAnimations.walk);
-		}
-		if (this.currentState.name === "neutral") {
-			this.animateScytheLoop(this.scytheAnimations.neutral);
+		if (this.scythe.held) {
+			this.scythe.x = 0;
+			this.scythe.y = 0;
+
+			if (this.currentState.name === "walk") {
+				this.animateScytheLoop(this.scytheAnimations.walk);
+			}
+			if (this.currentState.name === "neutral") {
+				this.animateScytheLoop(this.scytheAnimations.neutral);
+			}
+			if (this.currentState.name === "dash" || this.currentState.name === "dash cancel") {
+				this.animateScytheLoop(this.scytheAnimations.dash);
+			}
+			if (this.currentState.name === "power dash") {
+				this.animateScytheLoop(this.scytheAnimations.powerDash);
+			}
 		}
 	}
 
@@ -1521,6 +1225,10 @@
 		this.runPuppet();
 		this.puppet.canMove = this.canMove;
 		//this.puppet.canAttack = this.canAttack;
+
+		if (this.targetPlayer && this.targetPlayer.currentState.name !== "hitstun" && this.puppet.health > 0) {
+			this.world.sikeWawa.addMeter(-0.02, -0.01, this);
+		}
 	}
 
 	//Character specific attacks
@@ -1541,7 +1249,7 @@
 			if (this.puppet.slowDownFrames > 0)
 				this.puppet.slowDownFrames--;
 
-			if (this.puppet.health >= 0)
+			if (this.puppet.health > 0)
 				this.world.collidePlayer(this.puppet, 0.4);
 		} else {
 			this.puppet.tickStunFrames();
@@ -1573,12 +1281,14 @@
 
 		if (this.controls.clicked("nasa") && this.pressedNeutralPuppet())
 			this.puppet.startNN();
-		if (this.controls.clicked("nasa") && this.pressedRightPuppet())
-			this.puppet.startRN();
+		if (this.controls.clicked("nasa") && !this.pressedNeutralPuppet())
+			this.puppet.startSN();
+		/*if (this.controls.clicked("nasa") && this.pressedRightPuppet())
+			this.puppet.startSN();
 		if (this.controls.clicked("nasa") && this.pressedLeftPuppet())
-			this.puppet.startLN();
+			this.puppet.startSN();
 		if (this.controls.clicked("nasa") && this.pressedMonsiPuppet())
-			this.puppet.startMN();
+			this.puppet.startSN();*/
 	}
 
 	pressedNeutralPuppet() {
@@ -1601,6 +1311,18 @@
 		return this.controls.joystickPressed(0) && Angle.distance(this.controls.angle(0), this.puppet.monsi) <= PI / 4;
 	}
 
+	finishPuppet(a) {
+		let p = this.puppet;
+		p.forceChangeState(p.states.DEAD, p.states.DEAD_ACTIONS);
+		p.sheet.setAnimation("Dead");
+		p.deathCountdown = 60;
+		p.iFrames = 61;
+		p.invTo = ["attack", "grab"];
+		p.actionLag = 60;
+		if (a)
+			a.setPlayerStunFrames(8);
+	}
+
 	collidePuppet() {
 		if (this.puppet.hitStun <= 0 && this.puppet.health > 0 && this.puppet.iFrames <= 0) {
 			for (let i in this.world.attacks) {
@@ -1610,15 +1332,11 @@
 
 					if (!a.clashNegate) {
 						p.health--;
+						a.playHitSoundDefault(this.world);
+						let projectileCheck = a.projectile && p.iFrames <= 0;
 						if (p.health <= 0) {
 							this.endPuppetAttacks();
-							p.forceChangeState(p.states.DEAD, p.states.DEAD_ACTIONS);
-							p.sheet.setAnimation("Dead");
-							p.deathCountdown = 60;
-							p.iFrames = 61;
-							p.invTo = ["attack", "grab"];
-							p.actionLag = 60;
-							a.setPlayerStunFrames(8);
+							this.finishPuppet(a);
 						} else {
 							let collided;
 							if (Hitcircle.collideMain(a, p)) {
@@ -1646,12 +1364,13 @@
 								p.sheet.setAnimation("Hurt");
 							}
 						}
+
+						if (projectileCheck && a.multi > 0)
+							a.multi--;
+						if (projectileCheck && a.multi <= 0)
+							a.endLife();
 					}
 
-					if (a.projectile && p.iFrames <= 0 && a.multi > 0)
-						a.multi--;
-					if (a.projectile && p.iFrames <= 0 && a.multi <= 0)
-						a.endLife();
 				}
 			}
 		}
@@ -1693,7 +1412,7 @@
 			rumbleY = random(-3, 3);
 		}
 
-		this.sheet.draw(g, -188 + rumbleX, -188 + rumbleY, 376, 376);
+		this.sheet.draw(g, -122 + rumbleX, -122 + rumbleY, 244, 244);
 
 		g.pop();
 
@@ -1743,6 +1462,30 @@
 		}
 	}
 
+	drawExtraHUD(g, i, x, y) {
+		let leftX = 512 * 0.12 + 512 * 0.81 * i - 35 + (this.puppet.reviveChargeMax - 3) * 0.035;
+
+		g.push();
+		g.translate(x, y);
+
+		g.noStroke();
+		g.fill(80, 0, 15, 130);
+		let displayValue = this.puppet.reviveCharges;
+		if (this.puppet.health > 0) {
+			displayValue = this.puppet.health;
+			g.fill(90 + 20 * this.puppet.health, 0, 210 - 65 * this.puppet.health);
+		}
+		for (let u = 0; u < displayValue; u++) {
+			g.rect(leftX + 15 * u - u * i * 30 + 30 * i, 67 + this.puppet.health * Math.sin(this.world.frameCount / 10 + u / 2 + i) * 2 / 3, 15, 15, 10);
+		}
+		g.stroke(0, 0, 15);
+		g.strokeWeight(1);
+		g.noFill();
+		g.rect(leftX, 65, 45, 19, 8);
+
+		g.pop();
+	}
+
 	drawArrow(g, playerID) {
 		super.drawArrow(g, playerID);
 		if (this.puppet.health > 0 || this.puppet.deathCountdown > 0)
@@ -1753,6 +1496,7 @@
 		this.setAngleRefs();
 		this.puppet.reset();
 		this.puppet.health = this.puppet.maxHealth;
+		this.puppet.reviveCharges = 0;
 		this.puppet.world = this.world;
 		this.puppet.parentID = (this.world.players[0] === this ? 0 : 1);
 		this.puppet.x = this.x + this.right.getX() * this.puppetStartDistance;
@@ -1774,12 +1518,32 @@
 		}
 	}
 
+	copyAssets() {
+		this.sheet = Spritesheet.copy(assetManager.spritesheets.asakamiSheet);
+		this.puppet.sheet = Spritesheet.copy(assetManager.spritesheets.asakamiGhostSheet);
+		this.scythe.sheet = Spritesheet.copy(assetManager.spritesheets.iloMoliSheet);
+	}
+
+	getShouldLoadSpritesheets() {
+		return ["asakamiSheet", "asakamiGhostSheet", "iloMoliSheet", "scytheTrail", "konSeli"];
+	}
+
+	static getMenuImage() {
+		return assetManager.images.asakamiMenuImage;
+	}
+
 	static addAssets() {
+		assetManager.addImage("resources/moli_AsakamiAWEN.png", "asakamiMenuImage", true);
+
 		assetManager.addSpritesheet("resources/moli_Asakami.png", "asakamiSheet", "//");
 
 		assetManager.addSpritesheet("resources/kon_Asakami.png", "asakamiGhostSheet", "//");
 
 		assetManager.addSpritesheet("resources/ilo_moli.png", "iloMoliSheet", "//");
+
+		assetManager.addSpritesheet("resources/scytheTrail.png", "scytheTrail", "//");
+
+		assetManager.addSpritesheet("resources/konSeli.png", "konSeli", "//");
 
 		//assetManager.addSound("resources/sfx/Fan.wav", "fanTP");
 	}
@@ -1788,6 +1552,320 @@
 class AsakamiPuppet extends Player {
 	constructor(parentID) {
 		super([new ICircle(0, 0, 60), new Circle(0, 0, 20)]);
+
+		this.hurtboxes["NPL"] = [
+			[new ICircle(-5, 0, 60),
+			new Circle(-5, 0, 20)],
+			[new ICircle(60, 0, 70),
+			new Circle(40, 0, 20)],
+			[new ICircle(60, 0, 70),
+			new Circle(40, 0, 20)],
+			[new ICircle(52, 0, 40),
+			new Circle(32, 0, 20)],
+			[new ICircle(40, 0, 50),
+			new Circle(20, 0, 20)],
+			[new ICircle(20, 0, 60),
+			new Circle(10, 0, 20)]
+		];
+
+		this.hurtboxes["SPL"] = [
+			[new ICircle(-20, 0, 58),
+			new Circle(-19, 0, 20)],
+			[new ICircle(-20, 0, 58),
+			new Circle(-19, 0, 20)],
+			[new ICircle(-9, 0, 58),
+			new Circle(-8, 0, 20)],
+			[new ICircle(27, 1, 72),
+			new Circle(-2, 0, 20)],
+			[new ICircle(26, -4, 70),
+			new Circle(1, 0, 20)],
+			[new ICircle(20, -5, 64),
+			new Circle(9, 0, 20),
+			new ICircle(58, -17, 26)],
+			[new ICircle(15, 12, 45),
+			new Circle(9, 0, 20),
+			new ICircle(14, -12, 40),
+			new ICircle(28, -37, 28)],
+			[new ICircle(14, 9, 50),
+			new Circle(0, 0, 20),
+			new ICircle(-6, -18, 36)],
+			[new ICircle(6, 1, 56),
+			new Circle(-4, 0, 20)]
+		];
+
+		this.hurtboxes["RPL"] = [
+			[new ICircle(2, -3, 60),
+			new Circle(0, 0, 20),
+			new ICircle(-12, -25, 50)],
+			[new ICircle(6, -3, 53),
+			new Circle(0, 0, 20),
+			new ICircle(11, -38, 32),
+			new ICircle(46, -37, 25)],
+			[new ICircle(9, -3, 50),
+			new Circle(0, 0, 20),
+			new ICircle(70, 2, 86),
+			new ICircle(30, 22, 96)],
+			[new ICircle(4, -1, 49),
+			new Circle(0, 0, 20),
+			new ICircle(0, 24, 75),
+			new ICircle(64, 21, 52)],
+			[new ICircle(2, -1, 50),
+			new Circle(0, 0, 20),
+			new ICircle(-19, 18, 59)],
+			[new ICircle(1, -1, 53),
+			new Circle(0, 0, 20),
+			new ICircle(-22, 15, 51)],
+			[new ICircle(0, 0, 57),
+			new Circle(0, 0, 20)]
+		];
+
+		this.hurtboxes["LPL"] = [
+			[new ICircle(2, 3, 60),
+			new Circle(0, 0, 20),
+			new ICircle(-12, 25, 50)],
+			[new ICircle(6, 3, 53),
+			new Circle(0, 0, 20),
+			new ICircle(11, 38, 32),
+			new ICircle(46, 37, 25)],
+			[new ICircle(9, 3, 50),
+			new Circle(0, 0, 20),
+			new ICircle(70, -2, 86),
+			new ICircle(30, -22, 96)],
+			[new ICircle(4, 1, 49),
+			new Circle(0, 0, 20),
+			new ICircle(0, -24, 75),
+			new ICircle(64, -21, 52)],
+			[new ICircle(2, 1, 50),
+			new Circle(0, 0, 20),
+			new ICircle(-19, -18, 59)],
+			[new ICircle(1, 1, 53),
+			new Circle(0, 0, 20),
+			new ICircle(-22, -15, 51)],
+			[new ICircle(0, 0, 57),
+			new Circle(0, 0, 20)]
+		];
+
+		this.hurtboxes["MPL"] = [
+			[new ICircle(-1, 0, 55),
+			new Circle(0, 0, 20)],
+			[new ICircle(0, 0, 55),
+			new Circle(0, 0, 20)],
+			[new ICircle(0, 0, 62),
+			new Circle(0, 0, 20)],
+			[new ICircle(0, 0, 153),
+			new Circle(0, 0, 20)],
+			[new ICircle(0, 0, 128),
+			new Circle(0, 0, 20)],
+			[new ICircle(0, 0, 143),
+			new Circle(0, 0, 20)],
+			[new ICircle(0, 0, 134),
+			new Circle(0, 0, 20)],
+			[new ICircle(0, 0, 104),
+			new Circle(0, 0, 20)],
+			[new ICircle(0, 0, 71),
+			new Circle(0, 0, 20)],
+			[new ICircle(0, 0, 60),
+			new Circle(0, 0, 20)]
+		];
+
+		this.hurtboxes["NPS"] = [
+			[new ICircle(7, 0, 43),
+			new Circle(0, 0, 20),
+			new ICircle(-20, 1, 38),
+			new ICircle(-47, 0, 21)],
+			[new ICircle(-2, -21, 35),
+			new Circle(0, 0, 20),
+			new ICircle(-2, 22, 28),
+			new ICircle(-3, -5, 40)],
+			[new ICircle(1, -4, 36),
+			new Circle(0, 0, 20),
+			new ICircle(0, 28, 34),
+			new ICircle(-4, 54, 31),
+			new ICircle(-1, -36, 33),
+			new ICircle(-1, -61, 31)],
+			[new ICircle(0, 0, 34),
+			new Circle(0, 0, 20),
+			new ICircle(-1, 25, 34),
+			new ICircle(-3, 47, 31),
+			new ICircle(-2, 65, 37),
+			new ICircle(-4, 89, 31),
+			new ICircle(-4, 109, 37),
+			new ICircle(-2, -27, 30),
+			new ICircle(-1, -62, 36),
+			new ICircle(-2, -89, 32),
+			new ICircle(-2, -112, 34)],
+			[new ICircle(-4, 0, 29),
+			new Circle(0, 0, 20),
+			new ICircle(-2, 26, 34),
+			new ICircle(-2, 43, 40),
+			new ICircle(-5, 68, 33),
+			new ICircle(-2, 99, 39),
+			new ICircle(-1, -30, 34),
+			new ICircle(-2, -61, 35),
+			new ICircle(-3, -90, 30),
+			new ICircle(-2, -107, 31)],
+			[new ICircle(-1, 0, 26),
+			new Circle(0, 0, 20),
+			new ICircle(-4, 29, 26),
+			new ICircle(-3, 59, 33),
+			new ICircle(0, 82, 32),
+			new ICircle(1, 106, 31),
+			new ICircle(1, -19, 30),
+			new ICircle(4, -46, 37),
+			new ICircle(5, -75, 36),
+			new ICircle(5, -104, 39)],
+			[new ICircle(3, -1, 28),
+			new Circle(0, 0, 20),
+			new ICircle(3, 29, 28),
+			new ICircle(4, 57, 31),
+			new ICircle(6, 85, 35),
+			new ICircle(4, 108, 30),
+			new ICircle(22, 114, 17),
+			new ICircle(7, -17, 33),
+			new ICircle(10, -47, 40),
+			new ICircle(12, -74, 46),
+			new ICircle(14, -104, 48)],
+			[new ICircle(35, 0, 60),
+			new Circle(0, 0, 20),
+			new ICircle(77, 1, 90),
+			new ICircle(109, -37, 29),
+			new ICircle(108, 36, 29)],
+			[new ICircle(35, 0, 60),
+			new Circle(0, 0, 20),
+			new ICircle(77, 1, 90),
+			new ICircle(109, -37, 29),
+			new ICircle(108, 36, 29)],
+			[new ICircle(26, -2, 49),
+			new Circle(-1, -2, 20),
+			new ICircle(54, 0, 65),
+			new ICircle(93, -14, 62),
+			new ICircle(96, 18, 55)],
+			[new ICircle(-19, 0, 21),
+			new Circle(0, 0, 20),
+			new ICircle(21, -3, 27),
+			new ICircle(43, -3, 35),
+			new ICircle(66, -1, 45),
+			new ICircle(107, -18, 37),
+			new ICircle(95, 0, 57),
+			new ICircle(111, 23, 25)],
+			[new ICircle(38, -1, 44),
+			new Circle(0, 0, 20),
+			new ICircle(9, -2, 32),
+			new ICircle(-13, 0, 28),
+			new ICircle(-35, 1, 17),
+			new ICircle(-51, 1, 15)],
+			[new ICircle(-19, -12, 44),
+			new Circle(-6, 0, 20),
+			new ICircle(-16, 14, 42),
+			new ICircle(-43, 3, 25)],
+			[new ICircle(-22, -16, 41),
+			new Circle(-11, 0, 20),
+			new ICircle(-21, 17, 40),
+			new ICircle(-45, -1, 24)],
+			[new ICircle(-10, -8, 48),
+			new Circle(0, 0, 20),
+			new ICircle(-10, 11, 44),
+			new ICircle(-41, -1, 26)],
+			[new ICircle(-9, 0, 56),
+			new Circle(0, 0, 20),
+			new ICircle(-45, 0, 19)]
+		];
+
+		this.hurtboxes["SPS"] = [
+			[new ICircle(2, 13, 39),
+			new Circle(0, 0, 20),
+			new ICircle(1, -18, 42),
+			new ICircle(-22, -2, 40)],
+			[new ICircle(1, -30, 30),
+			new Circle(-17, 0, 20),
+			new ICircle(-17, -19, 29),
+			new ICircle(-23, 5, 24),
+			new ICircle(-15, 21, 29),
+			new ICircle(2, 27, 29)],
+			[new ICircle(1, 5, 67),
+			new Circle(-7, 0, 20),
+			new ICircle(7, -21, 47)],
+			[new ICircle(0, 9, 65),
+			new Circle(0, 0, 20),
+			new ICircle(3, -9, 63)],
+			[new ICircle(1, 5, 65),
+			new Circle(0, 0, 20),
+			new ICircle(2, -6, 67)],
+			[new ICircle(1, 3, 68),
+			new Circle(0, 0, 20),
+			new ICircle(-7, -14, 45),
+			new ICircle(14, -21, 38)],
+			[new ICircle(0, 0, 71),
+			new Circle(0, 0, 20),
+			new ICircle(14, -18, 41)],
+			[new ICircle(1, -2, 67),
+			new Circle(0, 0, 20)],
+			[new ICircle(3, -3, 61),
+			new Circle(0, 0, 20),
+			new ICircle(-22, 0, 31)],
+			[new ICircle(-1, -1, 58),
+			new Circle(0, 0, 20)]
+		];
+
+		this.hurtboxes["RPS"] = [
+			[new ICircle(0, 0, 60),
+			new Circle(0, 0, 20)],
+			[new ICircle(0, 0, 60),
+			new Circle(0, 0, 20)],
+			[new ICircle(0, 0, 60),
+			new Circle(0, 0, 20)]
+		];
+
+		this.hurtboxes["LPS"] = [
+			[new ICircle(0, 0, 60),
+			new Circle(0, 0, 20)],
+			[new ICircle(0, 0, 60),
+			new Circle(0, 0, 20)],
+			[new ICircle(0, 0, 60),
+			new Circle(0, 0, 20)]
+		];
+
+		this.hurtboxes["MPS"] = [
+			[new ICircle(0, 0, 54),
+			new Circle(0, 0, 20)],
+			[new ICircle(0, 0, 54),
+			new Circle(0, 0, 20)],
+			[new ICircle(0, 0, 54),
+			new Circle(0, 0, 20)],
+			[new ICircle(0, 0, 54),
+			new Circle(0, 0, 20)],
+			[new ICircle(0, 0, 198),
+			new Circle(0, 0, 20)],
+			[new ICircle(0, 0, 198),
+			new Circle(0, 0, 20)],
+			[new ICircle(0, 0, 53),
+			new Circle(0, 0, 20)],
+			[new ICircle(0, 0, 54),
+			new Circle(0, 0, 20)],
+			[new ICircle(0, 0, 54),
+			new Circle(0, 0, 20)],
+			[new ICircle(0, 0, 54),
+			new Circle(0, 0, 20)],
+			[new ICircle(0, 0, 54),
+			new Circle(0, 0, 20)],
+			[new ICircle(0, 0, 54),
+			new Circle(0, 0, 20)],
+			[new ICircle(0, 0, 54),
+			new Circle(0, 0, 20)]
+		];
+
+		this.hurtboxes["NN"] = [
+			[new ICircle(0, 0, 60),
+			new Circle(0, 0, 20)],
+			[new ICircle(0, 0, 60),
+			new Circle(0, 0, 20)],
+			[new ICircle(0, 0, 60),
+			new Circle(0, 0, 20)],
+			[new ICircle(0, 0, 60),
+			new Circle(0, 0, 20)],
+			[new ICircle(0, 0, 60),
+			new Circle(0, 0, 20)]
+		];
 
 		this.collideRadius = 60;
 
@@ -1801,15 +1879,24 @@ class AsakamiPuppet extends Player {
 
 		this.sheet = Spritesheet.copy(assetManager.spritesheets.asakamiGhostSheet);
 
+		this.states.NN = State.copyState(State.NN).addTag("rotateable");
+		this.states.REVIVE = new State("revive", "BASE", "rotateable");
+		this.states.REVIVE_ACTIONS = [];
+
 		this.controls = new Controls();
 
 		this.maxHealth = 3;
 		this.health = this.maxHealth;
 
+		this.reviveCharges = 0;
+		this.reviveChargeMax = 3;
+
 		this.deathCountdown = 0;
 	}
 
 	setAttacks() {
+		this.DASH_ATTACK = AsakamiPuppetDashAttack;
+
 		this.NPL = AsakamiNPL;
 		this.SPL = AsakamiSPL;
 		this.RPL = AsakamiRPL;
@@ -1823,13 +1910,15 @@ class AsakamiPuppet extends Player {
 		this.MPS = AsakamiMPS;
 
 		this.NN = AsakamiPuppetNN;
-		//this.SN = AsakamiSN;//Puppet;
+		this.SN = AsakamiPuppetSN;//Puppet;
 		this.RN = AsakamiPuppetRN;
 		this.LN = AsakamiPuppetLN;
 		this.MN = AsakamiPuppetMN;
 	}
 
 	generalLogic() {
+		if (this.currentState.name === "revive")
+			this.attackEndable();
 		if (this.deathCountdown > 0)
 			this.deathCountdown--;
 	}
@@ -1848,6 +1937,24 @@ class AsakamiPuppet extends Player {
 	}
 
 	startPowerDash() { }
+
+	startDashAttack() {
+		this.forceChangeState(this.states.DASH_ATTACK, this.states.DASH_ATTACK_ACTIONS);
+		this.sheet.setAnimation("PDA");
+		this.iFrames = 0;
+
+		let attack = this.DASH_ATTACK.createAttack(this);
+		this.addCurrentAttack(attack);
+
+		attack.rotateTo(this.dir);
+
+		this.world.addAttack(attack);
+
+		this.setActionLag(attack);
+
+		if (this.DASH_ATTACK.startAttack)
+			this.DASH_ATTACK.startAttack(this, attack);
+	}
 
 	startNL() { }
 	startSL() { }
@@ -1984,7 +2091,7 @@ class AsakamiPuppet extends Player {
 		let bufferInfo = this.SPS.bufferInfo ? this.SPS.bufferInfo.bind(this)() : {};
 
 		this.buffer.bufferStateChange(this.states.SPS, this.states.SPS_ACTIONS, bufferInfo, () => {
-			this.sheet.setAnimation("NPS");
+			this.sheet.setAnimation("SPS");
 
 			let attack = this.SPS.createAttack(this);
 			this.addCurrentAttack(attack);
@@ -2075,6 +2182,26 @@ class AsakamiPuppet extends Player {
 
 			if (this.NN.startAttack)
 				this.NN.startAttack(this, attack, bufferInfo);
+
+			this.setActionLag(attack);
+		});
+	}
+
+	startSN() {
+		let bufferInfo = this.SN.bufferInfo ? this.SN.bufferInfo.bind(this)() : {};
+
+		this.buffer.bufferStateChange(this.states.SN, this.states.SN_ACTIONS, bufferInfo, () => {
+			this.sheet.setAnimation("SN");
+
+			let attack = this.SN.createAttack(this);
+			this.addCurrentAttack(attack);
+
+			attack.rotateTo(this.dir);
+
+			this.world.addAttack(attack);
+
+			if (this.SN.startAttack)
+				this.SN.startAttack(this, attack, bufferInfo);
 
 			this.setActionLag(attack);
 		});
@@ -2287,7 +2414,8 @@ class PuppetAttack extends Attack {
 
 	logic() {
 		this.followingPuppet();
-		this.puppetLogic();
+		if (this.player.puppet.stunFrames <= 0)
+			this.puppetLogic();
 	}
 
 	hitConfirmSetFrames() {
@@ -2306,52 +2434,99 @@ class AsakamiDashAttack extends Attack {
 		super(player, circles, props);
 		this.name = "dash attack";
 
-		//this.sheet = Spritesheet.copy(assetManager.spritesheets.AsakamiSeliNPL);
+		this.active = false;
 	}
 
 	static createAttack(player) {
-		let cancelOptions = ["dash"];
-		let hitCancelOptions = ["NL", "SL", "ML", "RS", "LS", "NPL"];
-
-		let sour1 = new PriorityCircle(0, 0, 70, 0).setVelocity(0.1, 0);
-		let sweet1 = new PriorityCircle(0, 0, 140, 1).setVelocity(0.1, 0);
-		let circles = [sour1, sweet1];
-
-		let sour = new AttackProperties().setDamage(60).setProration(-0.5).setCancelOptions(cancelOptions, hitCancelOptions).setAngleValue(player.dir.value).setLaunch(17, 9).setHitStun(20, 14).setStunFrames(13, 25).setWallPushback(5, 1).setWallLaunchMod(3);
-		let sweet = new AttackProperties().setDamage(65).setProration(-0.5).setCancelOptions(cancelOptions, hitCancelOptions).setAngleValue(player.dir.value).setLaunch(10, 8).setHitStun(21, 14).setStunFrames(15, 25).setWallPushback(5, 1.6).setWallLaunchMod(10);
-		let prop = [sour, sweet];
-
-		return new this(player, circles, prop).setClashPriority(2).setStartupF(21).setActiveF(6).setEndF(20);
+		return new this(player, [], []).setStartupF(30);
 	}
 
 	static startAttack(player, attack, bufferInfo) {
-		player.startMomentumMultiplyDash(1.25);
+		player.startMomentumMultiplyDash(1.5);
+		player.iFrames = 20;
+		player.invTo = ["grab"];
 	}
 
 	draw(g) {
 		if (this.currentlyActive()) {
-			/*let x = cos(this.dir.value);
-			let y = sin(this.dir.value);
-
-			g.push();
-			g.translate(this.x + 50 * x, this.y + 50 * y);
-			g.rotate(this.dir.value + PI / 2);
-
-			this.sheet.draw(g, -64, -64, 128, 128);
-			if (this.player.stunFrames <= 0)
-				this.sheet.run();
-
-			g.pop();*/
-
 			if (debug.displayHitboxes)
 				this.debugDraw(g);
 		}
 	}
 
 	logic() {
-		if (this.getFromStartupF() === 10) {
-			this.player.iFrames = 11;
-			this.player.invTo = ["attack"];
+		if (!this.active) {
+			this.player.timerPunishHealth += 1;
+			if (this.getStartupF() < 10) {
+				this.dx *= 0.89;
+				this.dy *= 0.89;
+			} else if (Hitcircle.collide(this.player, this.player.puppet) && this.player.puppet.health > 0) {
+				this.player.x = (this.player.puppet.x + this.player.x) / 2;
+				this.player.y = (this.player.puppet.y + this.player.y) / 2;
+				this.player.dx = 0;
+				this.player.dy = 0;
+				this.player.puppet.dx = 0;
+				this.player.puppet.dy = 0;
+
+				this.player.endPuppetAttacksLife();
+				this.player.puppet.startDashAttack();
+				this.player.sheet.setAnimation("PDA");
+				this.setStartupF(this.player.puppet.actionLag);
+				this.player.actionLag = this.player.puppet.actionLag;
+				this.player.iFrames = 18;
+				this.player.invTo = ["attack", "grab"];
+				this.player.puppet.iFrames = this.player.puppet.actionLag;
+				this.active = true;
+			}
+		} else {
+			this.player.puppet.x = this.player.x;
+			this.player.puppet.y = this.player.y;
+			this.player.puppet.dx = 0;
+			this.player.puppet.dy = 0;
+			this.player.dx = 0;
+			this.player.dy = 0;
+		}
+	}
+}
+
+class AsakamiPuppetDashAttack extends PuppetAttack {
+	constructor(player, circles = [], props = []) {
+		super(player, circles, props);
+		this.name = "DASH_ATTACKP";
+	}
+
+	static createAttack(player) {
+		let sweet1 = new PriorityCircle(0, 0, 220, 0);
+		let circles = [sweet1];
+
+		let sweet = new AttackProperties().setDamage(100, 50, 100).setProration(5, 2).setAngleValue(player.dir.value).setLaunch(20).setHitStun(34, 10).setAngleTypes("direct", "direct");
+		let prop = [sweet];
+
+		return new this(player.getParent(), circles, prop).setClashPriority(0).setStartupF(5).setActiveF(8).setEndF(30).setFollow(false);
+	}
+
+	static startAttack(player, attack, bufferInfo) {
+		player.dx = 0;
+		player.dy = 0;
+
+		attack.followingPuppet();
+		player.playSound(assetManager.sounds.explosion2);
+	}
+
+	draw(g) {
+		if (this.currentlyActive()) {
+			if (debug.displayHitboxes)
+				this.debugDraw(g);
+		}
+	}
+
+	puppetLogic() {
+		if (this.getEndF() === 1) {
+			this.player.puppet.health--;
+			if (this.player.puppet.health <= 0)
+				this.player.finishPuppet();
+			this.player.puppet.x -= this.player.dir.getX() * 25;
+			this.player.puppet.y -= this.player.dir.getY() * 25;
 		}
 	}
 }
@@ -2365,16 +2540,18 @@ class AsakamiNL extends Attack {
 			new ScytheFrame(-10, -50, -1.2 * PI / 4),
 			new ScytheFrame(0, -40, -1.4 * PI / 4),
 			new ScytheFrame(10, -20, -1.8 * PI / 4),
-			new ScytheFrame(10, -5, -2.8 * PI / 4),
-			new ScytheFrame(0, 0, -3 * PI / 4),
+			new ScytheFrame(10, 0, -2.8 * PI / 4),
+			new ScytheFrame(0, 5, -3 * PI / 4),
 			new ScytheFrame(20, -50, PI / 16),
 			new ScytheFrame(-10, 0, 3 * PI / 4),
 			new ScytheFrame(-10, 0, 3 * PI / 4),
 			new ScytheFrame(-15, 0, 2.4 * PI / 4),
-			new ScytheFrame(-24, 0, 1.5 * PI / 4),
-			new ScytheFrame(-38, -10, 0 * PI / 4),
-			new ScytheFrame(-36, -20, -0.5 * PI / 4)
+			new ScytheFrame(-24, -15, 1.2 * PI / 4),
+			new ScytheFrame(-10, -40, 0 * PI / 4),
+			new ScytheFrame(-8, -40, -0.8 * PI / 4)
 		];
+
+		this.sheet = Spritesheet.copy(assetManager.spritesheets.scytheTrail);
 	}
 
 	static createAttack(player) {
@@ -2385,13 +2562,13 @@ class AsakamiNL extends Attack {
 		let sweet5 = new PriorityCircle(0, 50, 100, 0).setVelocity(0.1, 0);
 		let circles = [sweet1, sweet2, sweet3, sweet4, sweet5];
 
-		let sweet = new AttackProperties().setDamage(20).setProration(0.5, 0.2).setAngleValue(player.dir.value).setLaunch(4.5, 3, 1.1).setHitStun(27, 17).setStunFrames(13).setWallPushback(1.2, 1).setBlockLeniency(17);
+		let sweet = new AttackProperties().setDamage(20).setProration(0.5, 0.2).setAngleValue(player.dir.value).setLaunch(6.5, 3, 1.1).setHitStun(27, 17).setStunFrames(13).setWallPushback(1.2, 1).setBlockLeniency(17);
 		let prop = [sweet];
 
 		sweet.setHitSound(assetManager.sounds["8BitHit"]);
 		//sweet.setBlockSound(assetManager.sounds["8BitHit"]);
 
-		return new this(player, circles, prop).setClashPriority(3).setStartupF(22).setActiveF(4).setEndF(22).setRotateable();
+		return new this(player, circles, prop).setClashPriority(3).setStartupF(22).setActiveF(4).setEndF(21).setRotateable();
 	}
 
 	static startAttack(player, attack, bufferInfo) {
@@ -2400,6 +2577,15 @@ class AsakamiNL extends Attack {
 	}
 
 	draw(g) {
+		if (!this.currentlyStartup() && this.getFromEndF() < 4) {
+			g.push();
+			g.translate(this.x, this.y);
+			g.rotate(this.dir.value);
+
+			this.sheet.draw(g, -188, -188, 376, 376);
+
+			g.pop();
+		}
 		if (this.currentlyActive()) {
 			if (debug.displayHitboxes)
 				this.debugDraw(g);
@@ -2410,12 +2596,9 @@ class AsakamiNL extends Attack {
 		this.player.animateScythe(this.scytheAnimation);
 		this.player.autoActiveScythe(this);
 		this.player.turnSpeedModifier = this.player.nlTurnSpeedBoost;
-	}
 
-	hitConfirmSetFrames() {
-		super.hitConfirmSetFrames();
-		print(this.player.targetPlayer.hitStun);
-		print(this.player.targetPlayer.currentState.name);
+		if (!this.currentlyStartup() && this.getFromEndF() < 4)
+			this.sheet.run();
 	}
 }
 
@@ -2441,6 +2624,9 @@ class AsakamiSL extends Attack {
 			new ScytheFrame(-8, -15, 0),
 			new ScytheFrame(-10, -30, -PI / 5),
 		];
+
+		this.sheet = Spritesheet.copy(assetManager.spritesheets.scytheTrail);
+		this.sheet.setAnimation("SL");
 	}
 
 	static createAttack(player) {
@@ -2462,6 +2648,15 @@ class AsakamiSL extends Attack {
 	}
 
 	draw(g) {
+		if (!this.currentlyStartup() && this.getFromEndF() < 4) {
+			g.push();
+			g.translate(this.x, this.y);
+			g.rotate(this.dir.value);
+
+			this.sheet.draw(g, -188, -188, 376, 376);
+
+			g.pop();
+		}
 		if (this.currentlyActive()) {
 			if (debug.displayHitboxes)
 				this.debugDraw(g);
@@ -2480,6 +2675,9 @@ class AsakamiSL extends Attack {
 		}
 		this.player.animateScythe(this.scytheAnimation);
 		this.player.autoActiveScythe(this);
+
+		if (!this.currentlyStartup() && this.getFromEndF() < 4)
+			this.sheet.run();
 	}
 }
 
@@ -2502,6 +2700,8 @@ class AsakamiRL extends Attack {
 			new ScytheFrame(-38, -10, 0 * PI / 4 + PI / 6),
 			new ScytheFrame(-36, -20, -0.5 * PI / 4 + PI / 6)
 		];
+
+		this.sheet = Spritesheet.copy(assetManager.spritesheets.scytheTrail);
 	}
 
 	static createAttack(player) {
@@ -2512,7 +2712,7 @@ class AsakamiRL extends Attack {
 		let sweet5 = new PriorityCircle(-25, 43, 100, 0).setVelocity(0.08, 0.05);
 		let circles = [sweet1, sweet2, sweet3, sweet4, sweet5];
 
-		let sweet = new AttackProperties().setDamage(20).setProration(-0.2, 0.9).setAngleValue(player.dir.value + PI / 4).setLaunch(3, 3, 1.1).setHitStun(27, 17).setStunFrames(13).setWallPushback(1.2, 1).setBlockLeniency(17);
+		let sweet = new AttackProperties().setDamage(20).setProration(-0.2, 0.9).setAngleValue(player.dir.value + PI / 4).setLaunch(5, 3, 1.1).setHitStun(27, 17).setStunFrames(13).setWallPushback(1.2, 1).setBlockLeniency(17);
 		let prop = [sweet];
 
 		sweet.setHitSound(assetManager.sounds["8BitHit"]);
@@ -2527,6 +2727,15 @@ class AsakamiRL extends Attack {
 	}
 
 	draw(g) {
+		if (!this.currentlyStartup() && this.getFromEndF() < 4) {
+			g.push();
+			g.translate(this.x, this.y);
+			g.rotate(this.dir.value + PI / 6);
+
+			this.sheet.draw(g, -188, -188, 376, 376);
+
+			g.pop();
+		}
 		if (this.currentlyActive()) {
 			if (debug.displayHitboxes)
 				this.debugDraw(g);
@@ -2536,6 +2745,9 @@ class AsakamiRL extends Attack {
 	logic() {
 		this.player.animateScythe(this.scytheAnimation);
 		this.player.autoActiveScythe(this);
+
+		if (!this.currentlyStartup() && this.getFromEndF() < 4)
+			this.sheet.run();
 	}
 }
 
@@ -2558,6 +2770,8 @@ class AsakamiLL extends Attack {
 			new ScytheFrame(-38, -10, 0 * PI / 4 - PI / 6),
 			new ScytheFrame(-36, -20, -0.5 * PI / 4 - PI / 6)
 		];
+
+		this.sheet = Spritesheet.copy(assetManager.spritesheets.scytheTrail);
 	}
 
 	static createAttack(player) {
@@ -2568,7 +2782,7 @@ class AsakamiLL extends Attack {
 		let sweet5 = new PriorityCircle(-25, -43, 100, 0).setVelocity(0.08, -0.05);
 		let circles = [sweet1, sweet2, sweet3, sweet4, sweet5];
 
-		let sweet = new AttackProperties().setDamage(20).setProration(-0.2, 0.9).setAngleValue(player.dir.value - PI / 4).setLaunch(3, 3, 1.1).setHitStun(27, 17).setStunFrames(13).setWallPushback(1.2, 1).setBlockLeniency(17);
+		let sweet = new AttackProperties().setDamage(20).setProration(-0.2, 0.9).setAngleValue(player.dir.value - PI / 4).setLaunch(5, 3, 1.1).setHitStun(27, 17).setStunFrames(13).setWallPushback(1.2, 1).setBlockLeniency(17);
 		let prop = [sweet];
 
 		sweet.setHitSound(assetManager.sounds["8BitHit"]);
@@ -2583,6 +2797,15 @@ class AsakamiLL extends Attack {
 	}
 
 	draw(g) {
+		if (!this.currentlyStartup() && this.getFromEndF() < 4) {
+			g.push();
+			g.translate(this.x, this.y);
+			g.rotate(this.dir.value - PI / 6);
+
+			this.sheet.draw(g, -188, -188, 376, 376);
+
+			g.pop();
+		}
 		if (this.currentlyActive()) {
 			if (debug.displayHitboxes)
 				this.debugDraw(g);
@@ -2592,6 +2815,9 @@ class AsakamiLL extends Attack {
 	logic() {
 		this.player.animateScythe(this.scytheAnimation);
 		this.player.autoActiveScythe(this);
+
+		if (!this.currentlyStartup() && this.getFromEndF() < 4)
+			this.sheet.run();
 	}
 }
 
@@ -2619,7 +2845,7 @@ class AsakamiML extends Attack {
 		let sweet1 = new PriorityCircle(0, 0, 230, 0);
 		let circles = [sweet1];
 
-		let sweet = new AttackProperties().setDamage(20).setProration(0, 0.5).setAngleValue(player.dir.value).setLaunch(3, 4).setHitStun(28, 10).setStunFrames(13).setWallPushback(2, 1).setAngleTypes("direct", "direct").setRotateVel(-3, -3, true);
+		let sweet = new AttackProperties().setDamage(20).setProration(0, 0.5).setAngleValue(player.dir.value).setLaunch(3, 4).setHitStun(28, 10).setStunFrames(13).setWallPushback(2, 1).setAngleTypes("direct", "direct").setRotateVel(-4, -4, true);
 		let prop = [sweet];
 
 		return new this(player, circles, prop).setClashPriority(2).setStartupF(20).setActiveF(8).setEndF(14);
@@ -2647,45 +2873,88 @@ class AsakamiNS extends Attack {
 	constructor(player, circles = [], props = []) {
 		super(player, circles, props);
 		this.name = "NS";
+
+		this.scytheAnimation = [
+			new ScytheFrame(-10, 0, -1.0 * PI / 3),
+			new ScytheFrame(-12, 10, -1.5 * PI / 3),
+			new ScytheFrame(-15, 20, -2.0 * PI / 3),
+			new ScytheFrame(-22, 25, -2.3 * PI / 3),
+			new ScytheFrame(-30, 30, -2.7 * PI / 3),
+			new ScytheFrame(-30, 30, -2.8 * PI / 3),
+			new ScytheFrame(-30, 30, -2.8 * PI / 3),
+			new ScytheFrame(-30, 30, -2.7 * PI / 3),
+			new ScytheFrame(-30, 30, -2.7 * PI / 3),
+			new ScytheFrame(-30, 30, -2.7 * PI / 3),
+			new ScytheFrame(-40, 30, -2.6 * PI / 3),
+			new ScytheFrame(-40, 10, -0.5 * PI / 3),
+			new ScytheFrame(-45, -20, 1 * PI / 3),
+			new ScytheFrame(-45, -20, -3 * PI / 3),
+			new ScytheFrame(-45, -20, -1 * PI / 3),
+			new ScytheFrame(-45, -20, 1 * PI / 3),
+			new ScytheFrame(-45, -20, -3 * PI / 3),
+			new ScytheFrame(-45, -20, -1 * PI / 3),
+			new ScytheFrame(-45, -20, 1 * PI / 3),
+			new ScytheFrame(-10, -20, 1.9 * PI / 3),
+			new ScytheFrame(-10, -20, 2.7 * PI / 3),
+			new ScytheFrame(-11, -21, -2.6 * PI / 3),
+			new ScytheFrame(-11, -40, -1.6 * PI / 3),
+			new ScytheFrame(-12, -45, -1.5 * PI / 3)
+		];
 	}
 
 	static createAttack(player) {
-		let cancelOptions = ["RL", "LL", "ML", "LS", "RS", "MS", "SPL", "NPS", "NN", "MN"];
+		let cancelOptions = [];
 
-		let sweet1 = new PriorityCircle(30, 30, 40, 0).setVelocity(3, -0.5);
-		let sweet2 = new PriorityCircle(45, 20, 30, 0).setVelocity(3, -0.5);
-		let sweet3 = new PriorityCircle(35, 5, 30, 0).setVelocity(1, 0);
-		let circles = [sweet1, sweet2, sweet3];
+		let sweet1 = new PriorityCircle(0, 0, 150, 0).setVelocity(64, 0);
+		let circles = [sweet1];
 
-		let sweet = new AttackProperties().setDamage(35).setProration(0.4).setCancelOptions(cancelOptions).setAngleValue(player.dir.value).setLaunch(3.5, 3, 1.1).setHitStun(20, 10).setStunFrames(11).setWallPushback(4, 1).setCancelWait(5).setNormalizeHitStun();
+		let sweet = new AttackProperties().setDamage(35).setProration(-1, 2).setCancelOptions(cancelOptions).setAngleValue(player.dir.value).setLaunch(24, 0, 1.2).setLaunchDampening(0, 30, 0, 30).setHitStun(25, 15).setStunFrames(6).setWallLaunchMod(-20, -20);
 		let prop = [sweet];
 
-		return new this(player, circles, prop).setClashPriority(4).setStartupF(10).setActiveF(8).setEndF(12).setRotateable();
+		return new this(player, circles, prop).setClashPriority(1).setStartupF(45).setActiveF(30).setEndF(18).setRotateable();
 	}
 
 	static startAttack(player, attack, bufferInfo) {
 		player.startMomentumMultiply(0);
-		player.startMomentumMultiplyDash(0.2);
+		player.startMomentumMultiplyDash(0);
+		player.scythe.held = false;
+		attack.multiConst = 3;
 	}
 
 	draw(g) {
 		if (this.currentlyActive()) {
-			if (debug.displayHitboxes)
+			//if (debug.displayHitboxes)
 				this.debugDraw(g);
 		}
 	}
 
 	logic() {
+		this.player.animateScythe(this.scytheAnimation);
 		this.player.autoActiveScythe(this);
-		if (this.getFromStartupF() === 4) {
-			let speed = 4;
-			this.player.dx += this.player.dir.getX() * speed;
-			this.player.dy += this.player.dir.getY() * speed;
+
+		if (this.getFromActiveF() % 11 === 10) {
+			this.resetHits();
+			this.properties[0].launch = 4;
+			this.properties[0].setWallLaunchMod(0, 0);
 		}
-		if (this.getFromStartupF() > 14) {
-			this.player.dx *= 0.75;
-			this.player.dy *= 0.75;
+
+		if (this.currentlyActive()) {
+			this.circles[0].dx *= 0.7;
+			this.circles[0].dy *= 0.7;
 		}
+
+		if (this.currentlyActive()) {
+			this.player.scythe.x = this.circles[0].x;
+			this.player.scythe.y = this.circles[0].y;
+		}
+		if (this.getFromEndF() > 0) {
+			this.player.scythe.x *= Math.min(1, sqrt(this.getEndF() / 64 + 0.75));
+			this.player.scythe.y *= Math.min(1, sqrt(this.getEndF() / 64 + 0.75));
+		}
+	}
+
+	cleanup() {
+		this.player.scythe.held = true;
 	}
 }
 
@@ -2694,23 +2963,48 @@ class AsakamiSS extends Attack {
 		super(player, circles, props);
 		this.name = "SS";
 
-		//this.sheet = Spritesheet.copy(assetManager.spritesheets.konSike);
+		this.scytheAnimation = [
+			new ScytheFrame(-10, -50, -1.2 * PI / 4),
+			new ScytheFrame(-10, -40, -1.4 * PI / 4),
+			new ScytheFrame(-10, -20, -1.8 * PI / 4),
+			new ScytheFrame(-10, 0, -2.8 * PI / 4),
+			new ScytheFrame(-10, 5, -3 * PI / 4),
+			new ScytheFrame(-10, 5, -3 * PI / 4),
+			new ScytheFrame(-10, 5, -3 * PI / 4),
+			new ScytheFrame(-10, 5, -2.7 * PI / 4),
+			new ScytheFrame(-10, 5, -0.8 * PI / 4),
+			new ScytheFrame(-10, 5, 1.5 * PI / 4),
+			new ScytheFrame(-10, 5, 3.7 * PI / 4),
+			new ScytheFrame(-10, 5, -2 * PI / 4),
+			new ScytheFrame(220, -85, PI / 16),
+			new ScytheFrame(220, -85, PI / 16),
+			new ScytheFrame(-10, 0, 3 * PI / 4),
+			new ScytheFrame(-15, 0, 2.4 * PI / 4),
+			new ScytheFrame(-24, -15, 1.2 * PI / 4),
+			new ScytheFrame(-10, -40, 0 * PI / 4),
+			new ScytheFrame(-8, -40, -0.8 * PI / 4)
+		];
+
+		this.sheet = Spritesheet.copy(assetManager.spritesheets.scytheTrail);
 	}
 
 	static createAttack(player) {
-		let cancelOptions = ["ML", "SL", "NPL", "LPL", "RPL", "NN", "RN", "LN", "MN"];
+		let cancelOptions = [];
 
-		let sweet1 = new PriorityCircle(50, 0, 70, 0).setVelocity(1, 0);
-		let sweet2 = new PriorityCircle(80, 0, 65, 0).setVelocity(1, 0);
-		let circles = [sweet1, sweet2];
+		let sweet1 = new PriorityCircle(260, 0, 96, 0).setVelocity(0.1, 0);
+		let sweet2 = new PriorityCircle(290, 0, 80, 0).setVelocity(0.1, 0);
+		let sweet3 = new PriorityCircle(330, 0, 55, 0).setVelocity(0.1, 0);
+		let sour1 = new PriorityCircle(50, 0, 110, 1).setVelocity(0.1, 0);
+		let sour2 = new PriorityCircle(110, 0, 110, 1).setVelocity(0.1, 0);
+		let sour3 = new PriorityCircle(165, 0, 108, 1).setVelocity(0.1, 0);
+		let sour4 = new PriorityCircle(215, 0, 104, 1).setVelocity(0.1, 0);
+		let circles = [sweet1, sweet2, sweet3, sour1, sour2, sour3, sour4];
 
-		let sweet = new AttackProperties().setDamage(20, -3).setProration(-1).setChip(0.35).setCancelOptions(cancelOptions).setAngleValue(player.dir.value).setLaunch(3, 5, 0.5).setHitStun(28, 28).setStunFrames(6).setNormalizeHitStun().setCancelWait(5).setWallPushback(2, 4);
-		let prop = [sweet];
+		let sweet = new AttackProperties().setDamage(100, undefined, 100).setProration(5).setCancelOptions(cancelOptions).setAngleValue(player.dir.value + PI).setLaunch(16, 5, 0.2).setHitStun(48, 12).setStunFrames(15).setLaunchDampening(0.1);
+		let sour = new AttackProperties().setDamage(100, undefined, 100).setProration(5).setCancelOptions(cancelOptions).setAngleValue(player.dir.value + PI).setLaunch(10, 5, 0.2).setHitStun(48, 12).setStunFrames(15).setLaunchDampening(0.1);
+		let prop = [sweet, sour];
 
-		sweet.setHitSound(assetManager.sounds.fanTP);
-		sweet.setBlockSound(assetManager.sounds.fanTP);
-
-		return new this(player, circles, prop).setClashPriority(false).setStartupF(23).setActiveF(12).setEndF(24).setMulti(4, 2, 1);
+		return new this(player, circles, prop).setClashPriority(1).setStartupF(50).setActiveF(3).setEndF(20).setRotateable();
 	}
 
 	static startAttack(player, attack, bufferInfo) {
@@ -2719,12 +3013,12 @@ class AsakamiSS extends Attack {
 	}
 
 	draw(g) {
-		if (this.getStartupF() < 16 && this.getFromEndF() < 8) {
+		if (this.startupOver() && this.getFromEndF() < 4) {
 			g.push();
 			g.translate(this.x, this.y);
 			g.rotate(this.dir.value);
 
-			//this.sheet.draw(g, 20, -90, 130, 180);
+			this.sheet.draw(g, -290, -120, 720, 240);
 
 			g.pop();
 		}
@@ -2734,20 +3028,17 @@ class AsakamiSS extends Attack {
 		}
 	}
 
-	applyModifiers() {
-		this.player.counterHittable = true;
-	}
-
 	logic() {
-		if (this.getStartupF() < 16 && this.getFromEndF() < 8) {
-			//this.sheet.run();
+		this.player.animateScythe(this.scytheAnimation);
+		this.player.autoActiveScythe(this);
+
+		if (this.startupOver() && this.getFromEndF() < 4) {
+			this.sheet.run();
 		}
-		if (this.getStartupF() < 5 && this.getStartupF() > 0) {
-			this.player.dx = this.player.dir.getX() * 6;
-			this.player.dy = this.player.dir.getY() * 6;
-		} else {
-			this.player.dx *= 0.94;
-			this.player.dy *= 0.94;
+
+		this.player.turnSpeedModifier = -0.005;
+		if (this.activeOver()) {
+			this.player.turnSpeedModifier = -1;
 		}
 	}
 }
@@ -2757,25 +3048,39 @@ class AsakamiRS extends Attack {
 		super(player, circles, props);
 		this.name = "RS";
 
-		//this.sheet = Spritesheet.copy(assetManager.spritesheets.teloLonPokaLen);
+		this.scytheAnimation = [
+			new ScytheFrame(-10, -50, -1.2 * PI / 4),
+			new ScytheFrame(-10, -40, -1.4 * PI / 4),
+			new ScytheFrame(-10, -20, -1.8 * PI / 4),
+			new ScytheFrame(-10, 0, -2.8 * PI / 4),
+			new ScytheFrame(-10, 5, -3 * PI / 4),
+			new ScytheFrame(-10, 5, -3 * PI / 4),
+			new ScytheFrame(-10, 5, 0 * PI / 4),
+			new ScytheFrame(-10, 5, 3.5 * PI / 4),
+			new ScytheFrame(-10, 5, 3.9 * PI / 4),
+			new ScytheFrame(-10, 5, 3.5 * PI / 4),
+			new ScytheFrame(-10, 5, 1.1 * PI / 4),
+			new ScytheFrame(-10, 5, -1 * PI / 4)
+		];
+
+		this.sheet = Spritesheet.copy(assetManager.spritesheets.scytheTrail);
 	}
 
 	static createAttack(player) {
-		let cancelOptions = ["NN"];
-		let hitCancelOptions = ["LS"];
+		let cancelOptions = [];
+		let hitCancelOptions = [];
 
-		let sweet1 = new PriorityCircle(30, 75, 30, 0).setVelocity(1.5, -6);
-		let sweet2 = new PriorityCircle(45, 75, 30, 0).setVelocity(1.5, -6);
-		let sweet3 = new PriorityCircle(60, 75, 30, 0).setVelocity(1.5, -6);
-		let sweet4 = new PriorityCircle(75, 75, 30, 0).setVelocity(1.5, -6);
-		let circles = [sweet1, sweet2, sweet3, sweet4];
+		let sweet1 = new PriorityCircle(0, 60, 140, 0).setVelocity(0.1, 0);
+		let sweet2 = new PriorityCircle(-65, 45, 100, 0).setVelocity(0.1, 0);
+		let sweet3 = new PriorityCircle(65, 45, 100, 0).setVelocity(0.1, 0);
+		let circles = [sweet1, sweet2, sweet3];
 
-		let sweet = new AttackProperties().setDamage(55).setCancelOptions(cancelOptions, hitCancelOptions).setAngleValue(player.dir.value - PI / 3).setLaunch(6).setHitStun(25, 25).setStunFrames(13).setRotateVel(7, 7, true).setRotateSlowDown(0.25, 60, true).setNormalizeHitStun();
+		let sweet = new AttackProperties().setDamage(55).setCancelOptions(cancelOptions, hitCancelOptions).setAngleValue(player.dir.value + PI / 6).setLaunch(10, 1, 1).setHitStun(25, 25).setStunFrames(13).setRotateVel(-7, -7, true).setRotateSlowDown(0.25, 60, true);
 		let prop = [sweet];
 
 		sweet.setHitSound(assetManager.sounds.teloLukaPakala);
 
-		return new this(player, circles, prop).setClashPriority(3).setStartupF(20).setActiveF(10).setEndF(20).setRotateable();
+		return new this(player, circles, prop).setClashPriority(1).setStartupF(30).setActiveF(3).setEndF(10);
 	}
 
 	static startAttack(player, attack, bufferInfo) {
@@ -2784,47 +3089,28 @@ class AsakamiRS extends Attack {
 	}
 
 	draw(g) {
-		if (this.getStartupF() < 4 && this.getFromEndF() < 15) {
+		if (this.startupOver() && this.getFromEndF() < 4) {
 			g.push();
 			g.translate(this.x, this.y);
 			g.rotate(this.dir.value);
 
-			//this.sheet.draw(g, -128, -128, 256, 256);
+			//this.sheet.draw(g, -290, -120, 720, 240);
 
 			g.pop();
 		}
-		//this.player.turnSpeedModifier = -0.02;
 		if (this.currentlyActive()) {
-
 			if (debug.displayHitboxes)
 				this.debugDraw(g);
 		}
 	}
 
 	logic() {
-		this.player.turnSpeedModifier = -0.01;
-		if (this.getStartupF() === 4) {
-			this.properties[0].playSound(this.world, assetManager.sounds.teloLuka);
-		}
-		if (this.getFromStartupF() > 0 && this.getFromStartupF() < 12) {
-			let angle = new Angle(this.player.dir.value + PI / 3.9);
-			this.player.dx = angle.getX() * 7;
-			this.player.dy = angle.getY() * 7;
-		} else if (this.getFromStartupF() > 16 && this.getFromStartupF() < 30) {
-			let angle = new Angle(this.player.dir.value - PI / 4);
-			this.player.dx = angle.getX() * 5;
-			this.player.dy = angle.getY() * 5;
-		} else {
-			this.player.dx *= 0.95;
-			this.player.dy *= 0.95;
-		}
-		/*if (this.getFromActiveF() === 1) {
-			this.player.iFrames = 8;
-			this.player.invTo = ["attack"];
-		}*/
+		this.player.animateScythe(this.scytheAnimation);
+		this.player.autoActiveScythe(this);
 
-		//if (this.getStartupF() < 4 && this.getFromEndF() < 15)
-			//this.sheet.run();
+		if (this.startupOver() && this.getFromEndF() < 4) {
+			this.sheet.run();
+		}
 	}
 }
 
@@ -2833,25 +3119,39 @@ class AsakamiLS extends Attack {
 		super(player, circles, props);
 		this.name = "LS";
 
-		//this.sheet = Spritesheet.copy(assetManager.spritesheets.teloLonPokaLen);
+		this.scytheAnimation = [
+			new ScytheFrame(-10, -50, -1.2 * PI / 4),
+			new ScytheFrame(-10, -40, -2.4 * PI / 4),
+			new ScytheFrame(-10, -20, -3.8 * PI / 4),
+			new ScytheFrame(-10, 0, -4.2 * PI / 4),
+			new ScytheFrame(-10, 5, -4.2 * PI / 4),
+			new ScytheFrame(-10, 5, -4 * PI / 4),
+			new ScytheFrame(-10, 5, -3.9 * PI / 4),
+			new ScytheFrame(-10, 5, 0 * PI / 4),
+			new ScytheFrame(-10, 5, 0.4 * PI / 4),
+			new ScytheFrame(-10, 5, 0 * PI / 4),
+			new ScytheFrame(-10, 5, -0.2 * PI / 4),
+			new ScytheFrame(-10, 5, -1.6 * PI / 4)
+		];
+
+		this.sheet = Spritesheet.copy(assetManager.spritesheets.scytheTrail);
 	}
 
 	static createAttack(player) {
-		let cancelOptions = ["NN"];
+		let cancelOptions = [];
 		let hitCancelOptions = [];
 
-		let sweet1 = new PriorityCircle(30, -75, 30, 0).setVelocity(1.5, 6);
-		let sweet2 = new PriorityCircle(45, -75, 30, 0).setVelocity(1.5, 6);
-		let sweet3 = new PriorityCircle(60, -75, 30, 0).setVelocity(1.5, 6);
-		let sweet4 = new PriorityCircle(75, -75, 30, 0).setVelocity(1.5, 6);
-		let circles = [sweet1, sweet2, sweet3, sweet4];
+		let sweet1 = new PriorityCircle(0, -60, 140, 0).setVelocity(0.1, 0);
+		let sweet2 = new PriorityCircle(-65, -45, 100, 0).setVelocity(0.1, 0);
+		let sweet3 = new PriorityCircle(65, -45, 100, 0).setVelocity(0.1, 0);
+		let circles = [sweet1, sweet2, sweet3];
 
-		let sweet = new AttackProperties().setDamage(50).setCancelOptions(cancelOptions, hitCancelOptions).setAngleValue(player.dir.value + PI / 6).setLaunch(7).setHitStun(35, 27).setStunFrames(13).setRotateVel(-7, -7, true).setRotateSlowDown(0.25, 60, true).setNormalizeHitStun();
+		let sweet = new AttackProperties().setDamage(55).setCancelOptions(cancelOptions, hitCancelOptions).setAngleValue(player.dir.value - PI / 6).setLaunch(10, 1, 1).setHitStun(25, 25).setStunFrames(13).setRotateVel(-7, -7, true).setRotateSlowDown(0.25, 60, true);
 		let prop = [sweet];
 
 		sweet.setHitSound(assetManager.sounds.teloLukaPakala);
 
-		return new this(player, circles, prop).setClashPriority(3).setStartupF(30).setActiveF(11).setEndF(22).setRotateable();
+		return new this(player, circles, prop).setClashPriority(1).setStartupF(30).setActiveF(3).setEndF(10);
 	}
 
 	static startAttack(player, attack, bufferInfo) {
@@ -2860,13 +3160,12 @@ class AsakamiLS extends Attack {
 	}
 
 	draw(g) {
-		if (this.getStartupF() < 4 && this.getFromEndF() < 14) {
+		if (this.startupOver() && this.getFromEndF() < 4) {
 			g.push();
 			g.translate(this.x, this.y);
 			g.rotate(this.dir.value);
-			g.scale(1, -1);
 
-			//this.sheet.draw(g, -128, -128, 256, 256);
+			//this.sheet.draw(g, -290, -120, 720, 240);
 
 			g.pop();
 		}
@@ -2877,28 +3176,12 @@ class AsakamiLS extends Attack {
 	}
 
 	logic() {
-		this.player.turnSpeedModifier = -0.01;
-		if (this.getStartupF() === 4) {
-			this.properties[0].playSound(this.world, assetManager.sounds.teloLuka);
+		this.player.animateScythe(this.scytheAnimation);
+		this.player.autoActiveScythe(this);
+
+		if (this.startupOver() && this.getFromEndF() < 4) {
+			this.sheet.run();
 		}
-		if (this.getFromStartupF() > 0 && this.getFromStartupF() < 12) {
-			let angle = new Angle(this.player.dir.value - PI / 3.5);
-			this.player.dx = angle.getX() * 8;
-			this.player.dy = angle.getY() * 8;
-		} else if (this.getFromStartupF() > 19 && this.getFromStartupF() < 33) {
-			let angle = new Angle(this.player.dir.value + PI / 3.5);
-			this.player.dx = angle.getX() * 7;
-			this.player.dy = angle.getY() * 7;
-		} else {
-			this.player.dx *= 0.92;
-			this.player.dy *= 0.92;
-		}
-		/*if (this.getFromActiveF() === 1) {
-			this.player.iFrames = 8;
-			this.player.invTo = ["attack"];
-		}*/
-		//if (this.getStartupF() < 4 && this.getFromEndF() < 14)
-			//this.sheet.run();
 	}
 }
 
@@ -2907,22 +3190,60 @@ class AsakamiMS extends Attack {
 		super(player, circles, props);
 		this.name = "MS";
 
-		//this.sheet = Spritesheet.copy(assetManager.spritesheets.sikeSeli);
+		this.scytheAnimation = [
+			new ScytheFrame(-10, -50, -1.2 * PI / 4),
+			new ScytheFrame(-10, -40, -1.4 * PI / 4),
+			new ScytheFrame(-10, -20, -1.8 * PI / 4),
+			new ScytheFrame(-10, 0, -2.8 * PI / 4),
+			new ScytheFrame(-10, 5, -3 * PI / 4),
+			new ScytheFrame(-10, 5, -3 * PI / 4),
+			new ScytheFrame(-10, 5, -3 * PI / 4),
+			new ScytheFrame(-10, 5, -2.7 * PI / 4),
+			new ScytheFrame(-10, 5, -0.8 * PI / 4),
+			new ScytheFrame(-10, 5, 1.5 * PI / 4),
+			new ScytheFrame(-10, 5, 3.7 * PI / 4),
+			new ScytheFrame(-10, 5, -2 * PI / 4),
+			new ScytheFrame(220, -30, -PI / 6),
+			new ScytheFrame(220, -30, -PI / 6),
+			new ScytheFrame(-25, 45, -1 * PI / 4),
+			new ScytheFrame(-15, 0, 2.4 * PI / 4),
+			new ScytheFrame(-24, -15, 1.2 * PI / 4),
+			new ScytheFrame(-10, -40, 0 * PI / 4),
+			new ScytheFrame(-8, -40, -0.8 * PI / 4)
+		];
+
+		this.sheet = Spritesheet.copy(assetManager.spritesheets.scytheTrail);
+
+		this.second = false;
 	}
 
 	static createAttack(player) {
-		let cancelOptions = ["SL", "SS", "SPL", "SPS", "NN"];
-		let hitCancelOptions = [];
+		let cancelOptions = [];
 
-		let sour1 = new PriorityCircle(20, 0, 80, 1).setVelocity(1, 0);
-		let sweet1 = new PriorityCircle(40, 0, 50, 0).setVelocity(1, 0);
-		let circles = [sweet1, sour1];
+		let sweet1 = new PriorityCircle(213, -149, 96, 0).setVelocity(0.1, 0);
+		let sweet2 = new PriorityCircle(238, -166, 80, 0).setVelocity(0.1, 0);
+		let sweet3 = new PriorityCircle(270, -189, 55, 0).setVelocity(0.1, 0);
+		let sour1 = new PriorityCircle(41, -29, 110, 1).setVelocity(0.1, 0);
+		let sour2 = new PriorityCircle(90, -63, 110, 1).setVelocity(0.1, 0);
+		let sour3 = new PriorityCircle(135, -95, 108, 1).setVelocity(0.1, 0);
+		let sour4 = new PriorityCircle(176, -123, 104, 1).setVelocity(0.1, 0);
 
-		let sweet = new AttackProperties().setDamage(44, 14, 8).setProration(-0.25).setCancelOptions(cancelOptions, hitCancelOptions).setAngleValue(player.dir.value + PI).setLaunch(4, 2).setHitStun(21, 20).setStunFrames(14).setCancelWait(4);
-		let sour = new AttackProperties().setDamage(38, 11, 8).setProration(-0.25).setCancelOptions(cancelOptions, hitCancelOptions).setAngleValue(player.dir.value + PI).setLaunch(5, 2).setHitStun(21, 20).setStunFrames(14).setCancelWait(4);
-		let prop = [sweet, sour];
+		let sweet6 = new PriorityCircle(213, 149, 0, 2).setVelocity(0.1, 0);
+		let sweet7 = new PriorityCircle(238, 166, 0, 2).setVelocity(0.1, 0);
+		let sweet8 = new PriorityCircle(270, 189, 0, 2).setVelocity(0.1, 0);
+		let sour5 = new PriorityCircle(41, 29, 0, 3).setVelocity(0.1, 0);
+		let sour6 = new PriorityCircle(90, 63, 0, 3).setVelocity(0.1, 0);
+		let sour7 = new PriorityCircle(135, 95, 0, 3).setVelocity(0.1, 0);
+		let sour8 = new PriorityCircle(176, 123, 0, 3).setVelocity(0.1, 0);
+		let circles = [sweet1, sweet2, sweet3, sour1, sour2, sour3, sour4, sweet6, sweet7, sweet8, sour5, sour6, sour7, sour8];
 
-		return new this(player, circles, prop).setClashPriority(false).setStartupF(14).setActiveF(5).setEndF(30).setFollow(false);
+		let sweet = new AttackProperties().setDamage(80, undefined, 100).setProration(1).setCancelOptions(cancelOptions).setAngleValue(player.dir.value + PI - PI / 5.5).setLaunch(16, 5, 0.2).setHitStun(46, 12).setStunFrames(15).setLaunchDampening(0.1);
+		let sour = new AttackProperties().setDamage(80, undefined, 100).setProration(1).setCancelOptions(cancelOptions).setAngleValue(player.dir.value + PI - PI / 5.5).setLaunch(10, 5, 0.2).setHitStun(46, 12).setStunFrames(15).setLaunchDampening(0.1);
+		let sweetP2 = new AttackProperties().setDamage(80, undefined, 100).setProration(1).setCancelOptions(cancelOptions).setAngleValue(player.dir.value + PI + PI / 5.5).setLaunch(16, 5, 0.2).setHitStun(46, 12).setStunFrames(15).setLaunchDampening(0.1);
+		let sourP2 = new AttackProperties().setDamage(80, undefined, 100).setProration(1).setCancelOptions(cancelOptions).setAngleValue(player.dir.value + PI + PI / 5.5).setLaunch(10, 5, 0.2).setHitStun(46, 12).setStunFrames(15).setLaunchDampening(0.1);
+		let prop = [sweet, sour, sweetP2, sourP2];
+
+		return new this(player, circles, prop).setClashPriority(1).setStartupF(50).setActiveF(3).setEndF(20);
 	}
 
 	static startAttack(player, attack, bufferInfo) {
@@ -2931,17 +3252,16 @@ class AsakamiMS extends Attack {
 	}
 
 	draw(g) {
-		if (this.getStartupF() <= 4 && this.getFromEndF() < 7) {
+		if (this.startupOver() && this.getFromEndF() < 4) {
 			g.push();
 			g.translate(this.x, this.y);
-			g.rotate(this.dir.value);
-			g.translate(20, 0);
+			let rot = this.second ? 7 * PI / 36 : -7 * PI / 36;
+			g.rotate(this.dir.value + rot);
 
-			//this.sheet.draw(g, -45, -45, 90, 90);
+			this.sheet.draw(g, -290, -120, 720, 240);
 
 			g.pop();
 		}
-
 		if (this.currentlyActive()) {
 			if (debug.displayHitboxes)
 				this.debugDraw(g);
@@ -2949,24 +3269,57 @@ class AsakamiMS extends Attack {
 	}
 
 	logic() {
-		if (this.getFromStartupF() < 10) {
-			this.x = this.player.x + this.player.dir.getX() * 10;
-			this.y = this.player.y + this.player.dir.getY() * 10;
+		this.player.animateScythe(this.scytheAnimation);
+		this.player.autoActiveScythe(this);
+
+		if (this.startupOver() && this.getFromEndF() < 4) {
+			this.sheet.run();
 		}
-		if (this.getStartupF() <= 4 && this.getFromEndF() < 7) {
-			//this.sheet.run();
-		}
-		if (this.getFromStartupF() === 6) {
-			this.player.invTo = ["grab", "attack"];
-			this.player.iFrames = 15;
-		}
-		if (this.getFromStartupF() === 10) {
-			this.player.dx = this.player.dir.getX() * -10;
-			this.player.dy = this.player.dir.getY() * -10;
-		}
-		if (this.getFromStartupF() === 18) {
-			this.player.dx = 0;
-			this.player.dy = 0;
+
+		if (this.getFromEndF() === 4 && !this.hitPlayerBool && !this.second) {
+			this.second = true;
+			this.setActiveF(3);
+			this.setEndF(this.getEndF() - 3);
+			this.sheet.setAnimation("Main");
+
+			this.scytheAnimation = [
+				new ScytheFrame(-10, -50, -1.2 * PI / 4),
+				new ScytheFrame(-10, -40, -1.4 * PI / 4),
+				new ScytheFrame(-10, -20, -1.8 * PI / 4),
+				new ScytheFrame(-10, 0, -2.8 * PI / 4),
+				new ScytheFrame(-10, 5, -3 * PI / 4),
+				new ScytheFrame(-10, 5, -3 * PI / 4),
+				new ScytheFrame(-10, 5, -3 * PI / 4),
+				new ScytheFrame(-10, 5, -2.7 * PI / 4),
+				new ScytheFrame(-10, 5, -0.8 * PI / 4),
+				new ScytheFrame(-10, 5, 1.5 * PI / 4),
+				new ScytheFrame(-10, 5, 3.7 * PI / 4),
+				new ScytheFrame(-10, 5, -2 * PI / 4),
+				undefined,
+				undefined,
+				new ScytheFrame(220, -30, PI / 6),
+				new ScytheFrame(220, -30, PI / 6),
+				new ScytheFrame(-10, 0, 3 * PI / 4),
+				new ScytheFrame(-15, 0, 2.4 * PI / 4),
+				new ScytheFrame(-24, -15, 1.2 * PI / 4),
+				new ScytheFrame(-10, -40, 0 * PI / 4),
+				new ScytheFrame(-8, -40, -0.8 * PI / 4)
+			];
+
+			this.circles[7].diameter = this.circles[0].diameter;
+			this.circles[8].diameter = this.circles[1].diameter;
+			this.circles[9].diameter = this.circles[2].diameter;
+			this.circles[10].diameter = this.circles[3].diameter;
+			this.circles[11].diameter = this.circles[4].diameter;
+			this.circles[12].diameter = this.circles[5].diameter;
+			this.circles[13].diameter = this.circles[6].diameter;
+			this.circles[0].diameter = 0;
+			this.circles[1].diameter = 0;
+			this.circles[2].diameter = 0;
+			this.circles[3].diameter = 0;
+			this.circles[4].diameter = 0;
+			this.circles[5].diameter = 0;
+			this.circles[6].diameter = 0;
 		}
 	}
 }
@@ -2987,7 +3340,7 @@ class AsakamiNPL extends PuppetAttack {
 		let sour1 = new PriorityCircle(50, 0, 65, 0).setVelocity(0.1, 0);
 		let circles = [sweet1, sour1];
 
-		let sweet = new AttackProperties().setDamage(30).setProration(1, 1).setAngleValue(player.dir.value).setLaunch(5).setHitStun(24, 24);
+		let sweet = new AttackProperties().setDamage(15).setProration(1, 1).setAngleValue(player.dir.value).setLaunch(5).setHitStun(24, 24);
 		let prop = [sweet];
 
 		return new this(player.getParent(), circles, prop).setClashPriority(5).setStartupF(7).setActiveF(5).setEndF(10).setFollow(false);
@@ -3031,10 +3384,10 @@ class AsakamiSPL extends PuppetAttack {
 		let sour1 = new PriorityCircle(30, 0, 65, 0).setVelocity(0.1, 0);
 		let circles = [sweet1, sour1];
 
-		let sweet = new AttackProperties().setDamage(30).setProration(0.5, 0.6).setAngleValue(player.dir.value).setLaunch(7).setHitStun(28, 20);
+		let sweet = new AttackProperties().setDamage(20).setProration(0.5, 0.6).setAngleValue(player.dir.value).setLaunch(7).setHitStun(28, 20);
 		let prop = [sweet];
 
-		return new this(player.getParent(), circles, prop).setClashPriority(5).setStartupF(12).setActiveF(8).setEndF(12).setFollow(false);
+		return new this(player.getParent(), circles, prop).setClashPriority(5).setStartupF(12).setActiveF(8).setEndF(14).setFollow(false);
 	}
 
 	static startAttack(player, attack, bufferInfo) {
@@ -3071,47 +3424,37 @@ class AsakamiRPL extends PuppetAttack {
 		super(player, circles, props);
 		this.name = "RPL";
 
-		//this.sheet = Spritesheet.copy(assetManager.spritesheets.sikeSeli);
+		this.puppetStunFrames = 15;
 	}
 
 	static createAttack(player) {
-		let sour1 = new PriorityCircle(70, 55, 80, 0).setVelocity(1, -1);
-		let sweet1 = new PriorityCircle(70, 55, 50, 1).setVelocity(1, -1);
-		let circles = [sour1, sweet1];
+		let sweet1 = new PriorityCircle(70, 0, 80, 0).setVelocity(0.1, 0.02);
+		let sweet2 = new PriorityCircle(30, 30, 80, 0).setVelocity(0.1, 0.02);
+		let circles = [sweet1, sweet2];
 
-		let sweet = new AttackProperties().setDamage(50).setLaunch(3, 2, 0.9).setHitStun(25, 20).setCancelWait(5).setStunFrames(15).setAngleTypes("direct", "vel");
-		let sour = new AttackProperties().setDamage(48).setLaunch(3, 2, 0.9).setHitStun(25, 20).setCancelWait(5).setStunFrames(15).setAngleTypes("direct", "vel");
-		let prop = [sour, sweet];
+		let sweet = new AttackProperties().setDamage(25).setProration(0.8, 0).setLaunch(7).setHitStun(33, 28).setAngleValue(player.dir.value + PI / 2.1);
+		let prop = [sweet];
 
-		return new this(player.getParent(), [], []).setClashPriority(4).setStartupF(14).setActiveF(5).setEndF(18).setFollow(false);
+		return new this(player.getParent(), circles, prop).setClashPriority(4).setStartupF(8).setActiveF(3).setEndF(15).setFollow(false);
 	}
 
 	static startAttack(player, attack, bufferInfo) {
 		player.startMomentumMultiply(0);
-		player.startMomentumMultiplyDash(1);
+
+		attack.followingPuppet();
 	}
 
 	draw(g) {
-		if (this.getStartupF() <= 4 && this.getFromEndF() <= 7) {
-			/*g.push();
-			g.translate(this.x, this.y);
-			g.rotate(this.dir.value);
-			g.translate(70, 55);
-
-			this.sheet.draw(g, -45, -45, 90, 90);
-
-			g.pop();*/
-		}
-
 		if (this.currentlyActive()) {
-			//if (debug.displayHitboxes)
+			if (debug.displayHitboxes)
 				this.debugDraw(g);
 		}
 	}
 
 	puppetLogic() {
-		if (this.getStartupF() <= 4 && this.getFromEndF() <= 7) {
-			//this.sheet.run();
+		if (this.hitPlayerBool) {
+			this.player.puppet.x -= this.properties[0].angle.getX() * 4.5;
+			this.player.puppet.y -= this.properties[0].angle.getY() * 4.5;
 		}
 	}
 }
@@ -3121,47 +3464,37 @@ class AsakamiLPL extends PuppetAttack {
 		super(player, circles, props);
 		this.name = "LPL";
 
-		//this.sheet = Spritesheet.copy(assetManager.spritesheets.sikeSeli);
+		this.puppetStunFrames = 15;
 	}
 
 	static createAttack(player) {
-		let sour1 = new PriorityCircle(70, -55, 80, 0).setVelocity(1, 0.7);
-		let sweet1 = new PriorityCircle(70, -55, 50, 1).setVelocity(1, 0.7);
-		let circles = [sour1, sweet1];
+		let sweet1 = new PriorityCircle(70, 0, 80, 0).setVelocity(0.1, -0.02);
+		let sweet2 = new PriorityCircle(30, -30, 80, 0).setVelocity(0.1, -0.02);
+		let circles = [sweet1, sweet2];
 
-		let sweet = new AttackProperties().setDamage(70).setLaunch(3, 4, 0.8).setHitStun(25, 16).setCancelWait(12).setStunFrames(15).setAngleTypes("direct", "vel");
-		let sour = new AttackProperties().setDamage(68).setLaunch(3, 4, 0.8).setHitStun(25, 16).setCancelWait(12).setStunFrames(15).setAngleTypes("direct", "vel");
-		let prop = [sour, sweet];
+		let sweet = new AttackProperties().setDamage(25).setProration(0.8, 0).setLaunch(7).setHitStun(33, 28).setAngleValue(player.dir.value - PI / 2.1);
+		let prop = [sweet];
 
-		return new this(player.getParent(), circles, prop).setClashPriority(4).setStartupF(15).setActiveF(5).setEndF(19).setFollow(false);
+		return new this(player.getParent(), circles, prop).setClashPriority(4).setStartupF(8).setActiveF(3).setEndF(15).setFollow(false);
 	}
 
 	static startAttack(player, attack, bufferInfo) {
 		player.startMomentumMultiply(0);
-		player.startMomentumMultiplyDash(1);
+
+		attack.followingPuppet();
 	}
 
 	draw(g) {
-		if (this.getStartupF() <= 4 && this.getFromEndF() <= 7) {
-			g.push();
-			g.translate(this.x, this.y);
-			g.rotate(this.dir.value);
-			g.translate(70, -55);
-
-			//this.sheet.draw(g, -45, -45, 90, 90);
-
-			g.pop();
-		}
-
 		if (this.currentlyActive()) {
-			//if (debug.displayHitboxes)
+			if (debug.displayHitboxes)
 				this.debugDraw(g);
 		}
 	}
 
 	puppetLogic() {
-		if (this.getStartupF() <= 4 && this.getFromEndF() <= 7) {
-			//this.sheet.run();
+		if (this.hitPlayerBool) {
+			this.player.puppet.x -= this.properties[0].angle.getX() * 4.5;
+			this.player.puppet.y -= this.properties[0].angle.getY() * 4.5;
 		}
 	}
 }
@@ -3171,57 +3504,34 @@ class AsakamiMPL extends PuppetAttack {
 		super(player, circles, props);
 		this.name = "MPL";
 
-		//this.sheet = Spritesheet.copy(assetManager.spritesheets.teloSike);
+		this.puppetStunFrames = 15;
 	}
 
 	static createAttack(player) {
-		let sour1 = new PriorityCircle(55, 55, 50, 0).setCircleVelocity(64, -1);
-		let sour2 = new PriorityCircle(-55, -55, 50, 0).setCircleVelocity(64, -1);
-		let sour3 = new PriorityCircle(-77, 0, 50, 0).setCircleVelocity(64, -1);
-		let sour4 = new PriorityCircle(77, 0, 50, 0).setCircleVelocity(64, -1);
-		let sour5 = new PriorityCircle(55, -55, 50, 0).setCircleVelocity(64, -1);
-		let sour6 = new PriorityCircle(-55, 55, 50, 0).setCircleVelocity(64, -1);
-		let sour7 = new PriorityCircle(0, 77, 50, 0).setCircleVelocity(64, -1);
-		let sour8 = new PriorityCircle(0, -77, 50, 0).setCircleVelocity(64, -1);
-		let circles = [sour1, sour2, sour3, sour4, sour5, sour6, sour7, sour8];
+		let sour1 = new PriorityCircle(0, 0, 150, 0);
+		let circles = [sour1];
 
-		let sour = new AttackProperties().setDamage(49).setAngleValue(player.dir.value - PI / 4).setLaunch(6, 0, 0.85).setHitStun(25, 18).setStunFrames(13).setAngleTypes("vel", "vel").setRotateVel(4, 3, true).setRotateSlowDown(0.25, 60, true).setCancelWait(0, 5);
+		let sour = new AttackProperties().setDamage(10, -30).setProration(-2).setAngleValue(player.dir.value).setLaunch(6, 0, 0.85).setHitStun(26, 5).setAngleTypes("direct", "direct");
 		let prop = [sour];
 
-		return new this(player.getParent(), circles, prop).setClashPriority(3).setClashPriority(4).setStartupF(12).setActiveF(6).setEndF(17).setFollow(false);
+		return new this(player.getParent(), circles, prop).setClashPriority(3).setClashPriority(4).setStartupF(12).setActiveF(4).setEndF(18).setFollow(false);
 	}
 
 	static startAttack(player, attack, bufferInfo) {
 		player.startMomentumMultiply(0);
-		player.startMomentumMultiplyDash(0.5);
+
+		attack.followingPuppet();
 	}
 
 	draw(g) {
-		if (this.startupOver() && this.getFromEndF() < 7) {
-			g.push();
-			g.translate(this.x, this.y);
-			//g.rotate(this.dir.value);
-
-			let size = 215;
-			//this.sheet.draw(g, -size / 2, -size / 2, size, size);
-
-			g.pop();
-		}
-
 		if (this.currentlyActive()) {
-			//if (debug.displayHitboxes)
+			if (debug.displayHitboxes)
 				this.debugDraw(g);
 		}
 	}
 
 	puppetLogic() {
-		if (this.currentlyActive()) {
-			this.player.dir.changeValue(-PI / 10);
-		} else if (this.getFromEndF() < 4 && this.getFromEndF() > 0) {
-			this.player.dir.changeValue(-PI / 18);
-		}
-		//if (this.player.stunFrames <= 0 && this.startupOver() && this.getFromEndF() < 7)
-			//this.sheet.run();
+		
 	}
 }
 
@@ -3230,20 +3540,22 @@ class AsakamiNPS extends PuppetAttack {
 		super(player, circles, props);
 		this.name = "NPS";
 
+		this.puppetStunFrames = 15;
 	}
 
 	static createAttack(player) {
-		let sweet1 = new PriorityCircle(50, 0, 20, 0);
-		let sour1 = new PriorityCircle(60, 0, 20, 1).setVelocity(6, 0);
-		let sour2 = new PriorityCircle(60, 10, 20, 1).setVelocity(4.8, 1.8);
-		let sour3 = new PriorityCircle(60, -10, 20, 1).setVelocity(4.8, -1.8);
-		let circles = [sweet1, sour1, sour2, sour3];
+		let sweet1 = new PriorityCircle(70, 0, 100, 0).setVelocity(0.1, 0);
+		let sour1 = new PriorityCircle(75, -45, 90, 1).setVelocity(0.1, 0);
+		let sour2 = new PriorityCircle(75, 45, 90, 1).setVelocity(0.1, 0);
+		let sour3 = new PriorityCircle(30, -80, 80, 1).setVelocity(0.1, 0);
+		let sour4 = new PriorityCircle(30, 80, 80, 1).setVelocity(0.1, 0);
+		let circles = [sweet1, sour1, sour2, sour3, sour4];
 
-		let sweet = new AttackProperties().setDamage(80).setProration(-0.125).setAngleValue(player.dir.value).setLaunch(4, 3.1).setHitStun(50, 14).setStunFrames(15);
-		let sour = new AttackProperties().setDamage(73).setProration(-0.125).setAngleValue(player.dir.value).setLaunch(5, 3).setHitStun(48, 12).setStunFrames(13);
+		let sweet = new AttackProperties().setDamage(80, undefined, 15).setProration(2).setAngleValue(player.dir.value).setLaunch(5).setHitStun(35, 14);
+		let sour = new AttackProperties().setDamage(70, undefined, 15).setProration(2).setAngleValue(player.dir.value).setLaunch(5).setHitStun(35, 13);
 		let prop = [sweet, sour];
 
-		return new this(player.getParent(), circles, prop).setClashPriority(2).setClashPriority(2).setStartupF(19).setActiveF(16).setEndF(10).setFollow(false);
+		return new this(player.getParent(), circles, prop).setClashPriority(2).setStartupF(30).setActiveF(4).setEndF(29).setFollow(false);
 	}
 
 	static startAttack(player, attack, bufferInfo) {
@@ -3253,14 +3565,48 @@ class AsakamiNPS extends PuppetAttack {
 
 	draw(g) {
 		if (this.currentlyActive()) {
-			let x = cos(this.dir.value);
-			let y = sin(this.dir.value);
+			if (debug.displayHitboxes)
+				this.debugDraw(g);
+		}
+	}
 
+	puppetLogic() {
+		this.rotateTo(this.player.puppet.dir);
+		this.properties[0].setAngleValue(this.player.puppet.dir.value);
+		this.properties[1].setAngleValue(this.player.puppet.dir.value);
+	}
+}
+
+class AsakamiSPS extends PuppetAttack {
+	constructor(player, circles = [], props = []) {
+		super(player, circles, props);
+		this.name = "SPS";
+
+		this.sheet = Spritesheet.copy(assetManager.spritesheets.konSeli);
+	}
+
+	static createAttack(player) {
+		let sweet1 = new PriorityCircle(0, 0, 60, 0).setVelocity(0.2, 0);
+		let circles = [sweet1];
+
+		let sweet = new AttackProperties().setDamage(40).setProration(1).setAngleValue(player.dir.value).setLaunch(3).setHitStun(20, 15).setStunFrames(15).setAngleTypes("vel", "direct");
+		let prop = [sweet];
+
+		return new this(player.getParent(), circles, prop).setClashPriority(5).setClashPriority(0).setStartupF(28).setActiveF(60).setEndF(10).setProjectile().setFollow(false);
+	}
+
+	static startAttack(player, attack, bufferInfo) {
+		player.startMomentumMultiply(0);
+		player.startMomentumMultiplyDash(1);
+	}
+
+	draw(g) {
+		if (this.currentlyActive()) {
 			g.push();
-			g.translate(this.x + 50 * x, this.y + 50 * y);
-			g.rotate(this.dir.value + PI / 2);
+			g.translate(this.circleX(0), this.circleY(0));
+			g.rotate(this.player.puppet.dir.value - PI / 2);
 
-			//this.sheet.draw(g, -96, -96, 192, 192);
+			this.sheet.draw(g, -35, -35, 70, 70);
 
 			g.pop();
 
@@ -3270,72 +3616,25 @@ class AsakamiNPS extends PuppetAttack {
 	}
 
 	puppetLogic() {
-		//if (this.player.stunFrames <= 0 && this.currentlyActive())
-			//this.sheet.run();
-
-		if (this.getActiveF() <= 6) {
-			this.circles[1].dx = 0;
-			this.circles[1].dy = 0;
-
-			this.circles[2].dx = 0;
-			this.circles[2].dy = 0;
-
-			this.circles[3].dx = 0;
-			this.circles[3].dy = 0;
+		if (this.currentlyActive() && this.getActiveF() % 2 === 0) {
+			this.properties[0].hitStun++;
 		}
 
-		if (this.player.actionLag <= 1) {
-			this.player.dx = 0;
-			this.player.dy = 0;
-		}
-	}
-}
+		this.sheet.run();
 
-class AsakamiSPS extends PuppetAttack {
-	constructor(player, circles = [], props = []) {
-		super(player, circles, props);
-		this.name = "SPS";
-
-		//this.sheet = Spritesheet.copy(assetManager.spritesheets.konNasa);
-	}
-
-	static createAttack(player) {
-		let sweet1 = new PriorityCircle(60, 30, 50, 0).setVelocity(2, 1, -0.08);
-		let circles = [sweet1];
-
-		let sweet = new AttackProperties().setDamage(50).setProration(0.625).setAngleValue(player.dir.value).setLaunch(3).setHitStun(35, 25).setStunFrames(15).setAngleTypes("vel", "direct");
-		let prop = [sweet];
-
-		return new this(player.getParent(), circles, prop).setClashPriority(2).setClashPriority(0).setStartupF(29).setActiveF(90).setEndF(23).setProjectile();
-	}
-
-	static startAttack(player, attack, bufferInfo) {
-		player.startMomentumMultiply(0);
-		player.startMomentumMultiplyDash(1);
-	}
-
-	draw(g) {
-		if (this.currentlyActive()) {
-
-			if (debug.displayHitboxes)
-				this.debugDraw(g);
+		if (!this.hitPlayerBool) {
+			this.player.puppet.dx *= 0.5;
+			this.player.puppet.dy *= 0.5;
+			this.player.puppet.dx += (this.circleX(0) - this.player.puppet.x);
+			this.player.puppet.dy += (this.circleY(0) - this.player.puppet.y);
 		}
 	}
 
-	puppetLogic() {
-		/*if (this.player.actionLag <= 1) {
-			this.player.dx = 0;
-			this.player.dy = 0;
-		}*/
-		//if (this.player.stunFrames <= 0 && this.currentlyActive())
-			//this.sheet.run();
-		if (this.getFromStartupF() === 32) {
-			this.player.addAction("block");
-		}
-		if (this.getStartupF() > 0) {
-			this.x = this.player.x;
-			this.y = this.player.y;
-		}
+	hitConfirmSetFrames() {
+		super.hitConfirmSetFrames();
+
+		this.player.puppet.dx = 0;
+		this.player.puppet.dy = 0;
 	}
 }
 
@@ -3370,20 +3669,11 @@ class AsakamiRPS extends PuppetAttack {
 		if (this.getFromEndF() < 10 && this.startupOver()) {
 			if (debug.displayHitboxes)
 				this.debugDraw(g);
-
-			g.push();
-			g.translate(this.x, this.y);
-			g.rotate(this.dir.value + PI * 0.11);
-
-			//this.sheet.draw(g, 10, 15, 180, 50);
-
-			g.pop();
 		}
 	}
 
 	puppetLogic() {
-		//if (this.player.stunFrames <= 0 && this.getFromEndF() < 10 && this.startupOver())
-			//this.sheet.run();
+		this.rotateTo(this.player.puppet.dir);
 	}
 }
 
@@ -3416,22 +3706,13 @@ class AsakamiLPS extends PuppetAttack {
 
 	draw(g) {
 		if (this.getFromEndF() < 10 && this.startupOver()) {
-			if (debug.displayHitboxes)
+			//if (debug.displayHitboxes)
 				this.debugDraw(g);
-
-			g.push();
-			g.translate(this.x, this.y);
-			g.rotate(this.dir.value - PI * 0.22);
-
-			//this.sheet.draw(g, 30, -45, 180, 50);
-
-			g.pop();
 		}
 	}
 
 	puppetLogic() {
-		//if (this.player.stunFrames <= 0 && this.getFromEndF() < 10 && this.startupOver())
-			//this.sheet.run();
+		this.rotateTo(this.player.puppet.dir);
 	}
 }
 
@@ -3440,50 +3721,37 @@ class AsakamiMPS extends PuppetAttack {
 		super(player, circles, props);
 		this.name = "MPS";
 
-		//this.sheet = Spritesheet.copy(assetManager.spritesheets.kalamaSuli);
+		this.puppetStunFrames = 15;
 	}
 
 	static createAttack(player) {
 		let cancelOptions = [];
 		let hitCancelOptions = ["NN", "dash"];
 
-		let sour1 = new PriorityCircle(0, 0, 250, 1);
-		let sweet1 = new PriorityCircle(0, 0, 150, 0);
-		let circles = [sweet1, sour1];
+		let sour1 = new PriorityCircle(0, 0, 200, 0);
+		let circles = [sour1];
 
-		let sour = new AttackProperties().setDamage(19, 19, 6).setCancelOptions(cancelOptions, hitCancelOptions).setAngleValue(player.dir.value).setLaunch(14, 0.1, 0.25).setHitStun(27, 7).setCancelWait(5).setStunFrames(15).setAngleTypes("direct", "direct");
-		let sweet = new AttackProperties().setDamage(20, 19, 6).setCancelOptions(cancelOptions, hitCancelOptions).setAngleValue(player.dir.value).setLaunch(16, 0.1, 0.5).setHitStun(30, 7).setCancelWait(5).setStunFrames(15).setAngleTypes("direct", "direct");
-		let prop = [sweet, sour];
+		let sour = new AttackProperties().setDamage(20, 22).setCancelOptions(cancelOptions, hitCancelOptions).setAngleValue(player.dir.value).setLaunch(12, 0.1, 0.5).setHitStun(30, 3).setAngleTypes("direct", "direct");
+		let prop = [sour];
 
-		return new this(player.getParent(), circles, prop).setClashPriority(0).setStartupF(17).setActiveF(4).setEndF(30).setFollow(false);
+		return new this(player.getParent(), circles, prop).setClashPriority(false).setStartupF(18).setActiveF(4).setEndF(29).setFollow(false);
 	}
 
 	static startAttack(player, attack, bufferInfo) {
 		player.startMomentumMultiply(0);
 		player.startMomentumMultiplyDash(0);
-		player.invTo = ["grab"];
-		player.iFrames = 20;
+		player.iFrames = 24;
 	}
 
 	draw(g) {
 		if (this.startupOver() && this.getFromEndF() < 14) {
-			g.push();
-			g.translate(this.x, this.y);
-			//g.rotate(this.dir.value);
-
-			let size = 250;
-			//this.sheet.draw(g, -size / 2, -size / 2, size, size);
-
-			g.pop();
-
-			if (debug.displayHitboxes)
+			//if (debug.displayHitboxes)
 				this.debugDraw(g);
 		}
 	}
 
 	puppetLogic() {
-		//if (this.player.stunFrames <= 0 && this.startupOver() && this.getFromEndF() < 14)
-			//this.sheet.run();
+		this.rotateTo(this.player.puppet.dir);
 	}
 }
 
@@ -3505,8 +3773,8 @@ class AsakamiNN extends Attack {
 		player.startMomentumMultiplyDash(1);
 
 		if (player.puppet.health <= 0) {
-			attack.setStartupF(60);
-			player.actionLag = 60;
+			attack.setStartupF(57);
+			player.actionLag = 57;
 			attack.revive = true;
 		}
 	}
@@ -3522,19 +3790,26 @@ class AsakamiNN extends Attack {
 
 		if (!this.player.controls.pressed("nasa"))
 			this.held = false;
-		if (this.getStartupF() === 1) {
+		if (this.getStartupF() === (this.revive ? 15 : 1)) {
 			if (this.revive) {
-				this.player.puppet.health = this.player.puppet.maxHealth;
+				this.player.puppet.reviveCharges++;
+				if (this.player.puppet.reviveCharges >= this.player.puppet.reviveChargeMax) {
+					this.player.puppet.health = this.player.puppet.maxHealth;
+					this.player.puppet.reviveCharges = 0;
+				}
 			}
-			if (this.revive || this.held) {
+			if (this.player.puppet.health > 0 && (this.revive || this.held)) {
 				let angle = this.player.right;
-				if (this.player.controls.joystickPressed(0) && !this.revive)
+				if (this.player.controls.joystickPressed(0))
 					angle = this.player.controls.angle(0);
 				this.player.puppet.x = this.player.x + angle.getX() * this.player.puppetStartDistance;
 				this.player.puppet.y = this.player.y + angle.getY() * this.player.puppetStartDistance;
-				this.player.puppet.forceChangeState(this.player.puppet.states.NEUTRAL, this.player.puppet.states.NEUTRAL_ACTIONS);
-				this.player.puppet.sheet.setAnimation("Idle");
+				this.player.puppet.dx = 0;
+				this.player.puppet.dy = 0;
+				this.player.puppet.forceChangeState(this.player.puppet.states.REVIVE, this.player.puppet.states.REVIVE_ACTIONS);
+				this.player.puppet.sheet.setAnimation("Revive");
 				this.player.endPuppetAttacksLife();
+				this.player.puppet.actionLag = 15;
 			}
 		}
 	}
@@ -3583,6 +3858,7 @@ class AsakamiPuppetNN extends PuppetAttack {
 		this.player.puppet.dy *= 0.75;
 
 		if (this.getFromStartupF() === 7 && this.held) {
+			this.player.puppet.iFrames = 22;
 			this.endLife();
 		}
 	}
@@ -3597,9 +3873,9 @@ class AsakamiSN extends Attack {
 	static createAttack(player) {
 		let cancelOptions = [];
 
-		let sour1 = new PriorityCircle(40, -10, 30, 0);
-		let sour2 = new PriorityCircle(35, -30, 30, 0);
-		let sour3 = new PriorityCircle(35, 10, 30, 0);
+		let sour1 = new PriorityCircle(55, 10, 30, 0);
+		let sour2 = new PriorityCircle(50, 30, 30, 0);
+		let sour3 = new PriorityCircle(55, -10, 30, 0);
 		let circles = [sour1, sour2, sour3];
 
 		let sour = new AttackProperties().setDamage(40).setGrab(55).setCancelOptions(cancelOptions).setAngleValue(player.dir.value).setLaunch(8, 0.1).setHitStun(31).setStunFrames(4).setWallPushback(300);
@@ -3635,106 +3911,10 @@ class AsakamiSN extends Attack {
 	}
 }
 
-class AsakamiRN extends Attack {
+class AsakamiPuppetSN extends PuppetAttack {
 	constructor(player, circles = [], props = []) {
 		super(player, circles, props);
-		this.name = "RN";
-
-		//this.sheet = Spritesheet.copy(assetManager.spritesheets.AsakamiIlo);
-		//this.trail = Spritesheet.copy(assetManager.spritesheets.janTPTawaIlo);
-
-		this.held = true;
-
-		this.power = 30;
-	}
-
-	static createAttack(player) {
-		let cancelOptions = [];
-
-		let sweet1 = new PriorityCircle(75, 0, 60, 0).setVelocity(1, -0.6);
-		let sweet2 = new PriorityCircle(60, 40, 60, 0).setVelocity(1, -0.6);
-		let sweet3 = new PriorityCircle(60, -40, 60, 0).setVelocity(1, -0.6);
-		let sweet4 = new PriorityCircle(30, 65, 60, 0).setVelocity(1, -0.6);
-		let sweet5 = new PriorityCircle(30, -65, 60, 0).setVelocity(1, -0.6);
-		let circles = [sweet1, sweet2, sweet3, sweet4, sweet5];
-
-		let sweet = new AttackProperties().setDamage(65).setCancelOptions(cancelOptions).setAngleValue(player.dir.value).setLaunch(7, 3, 1.1).setHitStun(30, 20).setStunFrames(14).setNormalizeHitStun();
-		let prop = [sweet];
-
-		return new this(player, circles, prop).setClashPriority(1).setStartupF(20).setActiveF(6).setEndF(22).setRotateable();
-	}
-
-	static startAttack(player, attack, bufferInfo) {
-		player.startMomentumMultiply(0);
-		player.startMomentumMultiplyDash(0.45);
-	}
-
-	draw(g) {
-		if (this.getStartupF() > 0) {
-			g.push();
-			g.translate(this.x, this.y);
-			g.rotate(this.dir.value + PI * 0.45);
-			g.translate(80, 0);
-
-			//this.sheet.draw(g, -40, -40, 80, 80);
-
-			g.pop();
-		} else if (this.getFromEndF() < 8) {
-			g.push();
-			g.translate(this.x, this.y);
-			g.rotate(this.dir.value - PI * 0.55);
-			g.translate(80, 0);
-
-			//this.sheet.draw(g, -40, -40, 80, 80);
-
-			g.pop();
-		}
-		if (this.getFromActiveF() < 8 && this.getStartupF() <= 0) {
-			g.push();
-			g.translate(this.x, this.y);
-			g.rotate(this.dir.value);
-
-			//this.trail.draw(g, -10, -112, 144, 224);
-
-			g.pop();
-		}
-		if (this.currentlyActive()) {
-			if (debug.displayHitboxes)
-				this.debugDraw(g);
-		}
-	}
-
-	logic() {
-		//if (this.getFromActiveF() < 8 && this.getStartupF() <= 0)
-			//this.trail.run();
-		if (!this.player.controls.held("nasa"))
-			this.held = false;
-		if (this.getStartupF() === 5 && this.held && this.power < 60) {
-			this.setStartupF(this.getStartupF() + 1);
-			this.player.actionLag++;
-			this.power += 2;
-			this.properties[0].setDamage(this.properties[0].damage + 1);
-		}
-		if (this.getStartupF() === 4) {
-			this.player.sheet.setAnimation("RNF");//This is the animation for the actual swing
-			this.player.sheet.currentSubFrames += this.player.sheet.frameRate;
-			let angle = this.player.dir;
-			if (this.player.controls.joystickHeld(0))
-				angle = this.player.controls.angle(0);
-			this.player.dx += angle.getX() * (this.power + 6) / 3.5;
-			this.player.dy += angle.getY() * (this.power + 6) / 3.5;
-		}
-		if (this.activeOver()) {
-			this.player.dx *= 0.86;
-			this.player.dy *= 0.86;
-		}
-	}
-}
-
-class AsakamiPuppetRN extends PuppetAttack {
-	constructor(player, circles = [], props = []) {
-		super(player, circles, props);
-		this.name = "RNP";
+		this.name = "SNP";
 
 		this.revive = false;
 	}
@@ -3746,7 +3926,7 @@ class AsakamiPuppetRN extends PuppetAttack {
 		let sweet = new AttackProperties().setDamage(15).setAngleValue(player.dir.value).setLaunch(7, 3, 1.1).setHitStun(30, 20).setStunFrames(14);
 		let prop = [sweet];
 
-		return new this(player.getParent(), circles, prop).setClashPriority(1).setStartupF(20).setActiveF(4).setEndF(20).setFollow(false);
+		return new this(player.getParent(), circles, prop).setClashPriority(1).setStartupF(21).setActiveF(4).setEndF(20).setFollow(false);
 	}
 
 	static startAttack(player, attack, bufferInfo) {
@@ -3762,28 +3942,87 @@ class AsakamiPuppetRN extends PuppetAttack {
 	}
 
 	puppetLogic() {
-		
+
 	}
 }
 
-class AsakamiLN extends Attack {
+class AsakamiRN extends Attack {
 	constructor(player, circles = [], props = []) {
 		super(player, circles, props);
-		this.name = "LN";
+		this.name = "RN";
 
-		//this.sheet = Spritesheet.copy(assetManager.spritesheets.konNasaLanpan);
+		this.throw = false;
 	}
 
 	static createAttack(player) {
 		let cancelOptions = [];
 
-		let sweet1 = new PriorityCircle(55, -50, 70, 0).setVelocity(0.1, 0);
+		let sweet1 = new PriorityCircle(-15, 60, 50, 0).setVelocity(0.1, 0).setSubVelocity(20, 0.5, -2);
 		let circles = [sweet1];
 
-		let sweet = new AttackProperties().setDamage(10, 0).setCancelOptions(cancelOptions).setAngleValue(player.dir.value).setLaunch(0.5, 0).setHitStun(23, 15).setStunFrames(0).setNormalizeHitStun().setRotateSlowDown(0.25, 420).setAngleTypes("direct", "direct");
+		let sweet = new AttackProperties().setDamage(15).setCancelOptions(cancelOptions).setAngleValue(player.dir.value - PI / 10).setLaunch(5, 1, 0.3).setHitStun(22, 16).setStunFrames(8);
 		let prop = [sweet];
 
-		return new this(player, circles, prop).setClashPriority(false).setStartupF(17).setActiveF(8).setEndF(30).setFollow(false).setProjectile();
+		return new this(player, circles, prop).setClashPriority(5).setStartupF(10).setActiveF(5).setEndF(14);
+	}
+
+	static startAttack(player, attack, bufferInfo) {
+		player.startMomentumMultiply(0);
+		player.startMomentumMultiplyDash(0.3);
+
+		let angle = new Angle(player.dir.value + PI / 2);
+		if (player.puppet.health > 0 && player.puppet.currentState.name !== "RN" && dist(player.x + angle.getX() * 60, player.y + angle.getY() * 60, player.puppet.x, player.puppet.y) <= 100) {
+			attack.throw = true;
+			player.puppet.forceChangeState(player.puppet.states.NEUTRAL, player.puppet.states.NEUTRAL_ACTIONS);
+			player.puppet.startRN();
+		}
+	}
+
+	draw(g) {
+		if (this.currentlyActive()) {
+			//if (debug.displayHitboxes)
+				this.debugDraw(g);
+		}
+	}
+
+	logic() {
+		if (this.throw && this.currentlyStartup()) {
+			let angle = new Angle(this.player.dir.value + PI / 2);
+			let targetX = this.player.x + angle.getX() * 60;
+			let targetY = this.player.y + angle.getY() * 60;
+			this.player.puppet.x = (this.player.puppet.x * 7 + targetX) / 8;
+			this.player.puppet.y = (this.player.puppet.y * 7 + targetY) / 8;
+		}
+		if (this.throw && this.currentlyActive()) {
+			this.player.puppet.x = (this.player.puppet.x * 4 + this.circleX(0)) / 5;
+			this.player.puppet.y = (this.player.puppet.y * 4 + this.circleY(0)) / 5;
+		}
+		if (this.throw && this.getFromEndF() === 1) {
+			let throwAngle = new Angle(this.player.dir.value + PI / 8);
+			this.player.puppet.dx = throwAngle.getX() * 13;
+			this.player.puppet.dy = throwAngle.getY() * 13;
+		}
+	}
+}
+
+class AsakamiPuppetRN extends PuppetAttack {
+	constructor(player, circles = [], props = []) {
+		super(player, circles, props);
+		this.name = "RNP";
+
+		this.revive = false;
+
+		this.puppetStunFrames = 10;
+	}
+
+	static createAttack(player) {
+		let sweet1 = new PriorityCircle(45, 0, 90, 0).setVelocity(0.1, 0);
+		let circles = [sweet1];
+
+		let sweet = new AttackProperties().setDamage(10, 10).setProration(-2.5, 4).setAngleValue(player.dir.value).setLaunch(4, 0).setHitStun(5, 5);
+		let prop = [sweet];
+
+		return new this(player.getParent(), circles, prop).setClashPriority(1).setStartupF(13).setActiveF(18).setEndF(20).setFollow(false).setMulti(4, 4, 2);
 	}
 
 	static startAttack(player, attack, bufferInfo) {
@@ -3792,24 +4031,84 @@ class AsakamiLN extends Attack {
 	}
 
 	draw(g) {
-		if (this.getStartupF() <= 8 && this.getFromEndF() <= 11) {
-			g.push();
-			g.translate(this.x, this.y);
-			g.rotate(this.dir.value);
-
-			//this.sheet.draw(g, 0, -115, 120, 120);
-
-			g.pop();
-		}
 		if (this.currentlyActive()) {
-			if (debug.displayHitboxes)
+			//if (debug.displayHitboxes)
 				this.debugDraw(g);
 		}
 	}
 
+	puppetLogic() {
+		this.player.puppet.dx *= 0.98;
+		this.player.puppet.dy *= 0.98;
+	}
+
+	hitConfirmSetFrames() {
+		super.hitConfirmSetFrames();
+
+		this.player.puppet.dx *= 0.4;
+		this.player.puppet.dy *= 0.4;
+
+		if (this.multi === 1) {
+			this.properties[0].setHitStun(20, 5);
+		}
+	}
+}
+
+class AsakamiLN extends Attack {
+	constructor(player, circles = [], props = []) {
+		super(player, circles, props);
+		this.name = "LN";
+
+		this.throw = false;
+	}
+
+	static createAttack(player) {
+		let cancelOptions = [];
+
+		let sweet1 = new PriorityCircle(-15, 60, 50, 0).setVelocity(0.1, 0).setSubVelocity(20, 0.5, -2);
+		let circles = [sweet1];
+
+		let sweet = new AttackProperties().setDamage(15).setCancelOptions(cancelOptions).setAngleValue(player.dir.value - PI / 10).setLaunch(5, 1, 0.3).setHitStun(22, 16).setStunFrames(8);
+		let prop = [sweet];
+
+		return new this(player, circles, prop).setClashPriority(5).setStartupF(10).setActiveF(5).setEndF(14);
+	}
+
+	static startAttack(player, attack, bufferInfo) {
+		player.startMomentumMultiply(0);
+		player.startMomentumMultiplyDash(0.3);
+
+		let angle = new Angle(player.dir.value + PI / 2);
+		if (player.puppet.health > 0 && player.puppet.currentState.name !== "RN" && dist(player.x + angle.getX() * 60, player.y + angle.getY() * 60, player.puppet.x, player.puppet.y) <= 100) {
+			attack.throw = true;
+			player.puppet.forceChangeState(player.puppet.states.NEUTRAL, player.puppet.states.NEUTRAL_ACTIONS);
+			player.puppet.startRN();
+		}
+	}
+
+	draw(g) {
+		if (this.currentlyActive()) {
+			//if (debug.displayHitboxes)
+			this.debugDraw(g);
+		}
+	}
+
 	logic() {
-		if (this.getStartupF() <= 8 && this.getFromEndF() <= 11) {
-			//this.sheet.run();
+		if (this.throw && this.currentlyStartup()) {
+			let angle = new Angle(this.player.dir.value + PI / 2);
+			let targetX = this.player.x + angle.getX() * 60;
+			let targetY = this.player.y + angle.getY() * 60;
+			this.player.puppet.x = (this.player.puppet.x * 7 + targetX) / 8;
+			this.player.puppet.y = (this.player.puppet.y * 7 + targetY) / 8;
+		}
+		if (this.throw && this.currentlyActive()) {
+			this.player.puppet.x = this.circleX(0);
+			this.player.puppet.y = this.circleY(0);
+		}
+		if (this.throw && this.getFromEndF() === 1) {
+			let throwAngle = new Angle(this.player.dir.value - PI / 8);
+			this.player.puppet.dx = throwAngle.getX() * 13;
+			this.player.puppet.dy = throwAngle.getY() * 13;
 		}
 	}
 }
@@ -3829,7 +4128,7 @@ class AsakamiPuppetLN extends PuppetAttack {
 		let sweet = new AttackProperties().setDamage(15).setAngleValue(player.dir.value).setLaunch(7, 3, 1.1).setHitStun(30, 20).setStunFrames(14);
 		let prop = [sweet];
 
-		return new this(player.getParent(), circles, prop).setClashPriority(1).setStartupF(20).setActiveF(4).setEndF(20).setFollow(false);
+		return new this(player.getParent(), circles, prop).setClashPriority(1).setStartupF(21).setActiveF(4).setEndF(20).setFollow(false);
 	}
 
 	static startAttack(player, attack, bufferInfo) {
@@ -3854,23 +4153,37 @@ class AsakamiMN extends Attack {
 		super(player, circles, props);
 		this.name = "MN";
 
-		//this.sheet = Spritesheet.copy(assetManager.spritesheets.janTPIlo);
+		this.scytheAnimation = [
+			new ScytheFrame(-10, -50, -1.2 * PI / 4),
+			new ScytheFrame(-3, -40, -1.24 * PI / 4),
+			new ScytheFrame(10, -20, -1.3 * PI / 4),
+			new ScytheFrame(23, -15, -1.38 * PI / 4),
+			new ScytheFrame(20, -10, -1.8 * PI / 4),
+			new ScytheFrame(10, 35, 1.2 * PI / 4),
+			new ScytheFrame(10, 35, 1.2 * PI / 4),
+			new ScytheFrame(10, 20, 1.3 * PI / 4),
+			new ScytheFrame(8, 5, 0.8 * PI / 4),
+			new ScytheFrame(0, -10, 0.2 * PI / 4),
+			new ScytheFrame(-5, -30, -0.8 * PI / 4),
+			new ScytheFrame(-10, -50, -1.2 * PI / 4)
+		];
 	}
 
 	static createAttack(player) {
-		let cancelOptions = [];
-		let hitCancelOptions = [];
+		let sweet1 = new PriorityCircle(58, 0, 119, 0);
+		let sweet2 = new PriorityCircle(52, 39, 121, 0);
+		let sweet3 = new PriorityCircle(53, 80, 76, 0);
+		let sweet4 = new PriorityCircle(57, -48, 102, 0);
+		let sweet5 = new PriorityCircle(45, -111, 50, 0);
+		let sour1 = new PriorityCircle(20, 122, 39, 1);
+		let sour2 = new PriorityCircle(-24, 139, 39, 1);
+		let circles = [sweet1, sweet2, sweet3, sweet4, sweet5, sour1, sour2];
 
-		let sour1 = new PriorityCircle(0, 60, 40, 0).setVelocity(0.01, 0);/*.setCircleVelocity(16, -1)*/;//20, 60
-		let sweet1 = new PriorityCircle(20, 95, 40, 1).setVelocity(0.01, 0);/*.setCircleVelocity(16, -1)*/;//20, 95
-		let sweet2 = new PriorityCircle(-20, 95, 40, 1).setVelocity(0.01, 0);/*.setCircleVelocity(16, -1)*/;//-20, 95
-		let circles = [sour1, sweet1, sweet2];
+		let sweet = new AttackProperties().setDamage(30, 30, 10).setAngleValue(player.dir.value).setLaunch(16).setHitStun(24, 4).setStunFrames(15, 19);
+		let sour = new AttackProperties().setDamage(25, 30, 10).setAngleValue(player.dir.value).setLaunch(12).setHitStun(18, 4).setStunFrames(15, 19);
+		let prop = [sweet, sour];
 
-		let sweet = new AttackProperties().setDamage(80).setCancelOptions(cancelOptions, hitCancelOptions).setAngleValue(player.dir.value + PI / 6, -PI / 8).setLaunch(18).setHitStun(33, 5).setStunFrames(15, 19);
-		let sour = new AttackProperties().setDamage(70).setCancelOptions(cancelOptions, hitCancelOptions).setAngleValue(player.dir.value + PI / 6, -PI / 8).setLaunch(17).setHitStun(32, 5).setStunFrames(15, 20);
-		let prop = [sour, sweet];
-
-		return new this(player, circles, prop).setClashPriority(0).setStartupF(15).setActiveF(17).setEndF(20).setRotateable();
+		return new this(player, circles, prop).setClashPriority(0).setStartupF(20).setActiveF(4).setEndF(23);
 	}
 
 	static startAttack(player, attack, bufferInfo) {
@@ -3879,19 +4192,6 @@ class AsakamiMN extends Attack {
 	}
 
 	draw(g) {
-		if (this.currentlyActive() || this.getStartupF() > 0) {
-			let x = cos(this.dir.value + PI / 2);
-			let y = sin(this.dir.value + PI / 2);
-
-			g.push();
-			g.translate(this.x + 90 * x, this.y + 90 * y);
-			g.rotate(this.dir.value + PI / 2);
-
-			//this.sheet.draw(g, -40, -40, 80, 80);
-
-			g.pop();
-		}
-
 		if (this.currentlyActive()) {
 			if (debug.displayHitboxes)
 				this.debugDraw(g);
@@ -3903,17 +4203,26 @@ class AsakamiMN extends Attack {
 	}
 
 	logic() {
-		if (this.currentlyActive()) {
-			//if (this.player.stunFrames <= 0)
-				//this.sheet.run();
-			if (this.getActiveF() > 0)
-				this.dir.value -= PI / 8;
+		if (this.getStartupF() > 10) {
+			this.player.dir.changeValue(2 * PI * this.getStartupF() / 155);
 		}
-		this.player.dx *= 0.5;
-		this.player.dy *= 0.5;
-		if (this.getFromStartupF() === 8) {
+
+		this.player.animateScythe(this.scytheAnimation);
+		this.player.autoActiveScythe(this);
+
+		this.player.dx *= 0.85;
+		this.player.dy *= 0.85;
+		if (this.getStartupF() < 8 && this.getStartupF() > 0) {
+			this.player.dx = this.player.dir.getX() * 7;
+			this.player.dy = this.player.dir.getY() * 7;
+		}
+		if (this.hitPlayerBool) {
+			this.player.dx *= 0.7;
+			this.player.dy *= 0.7;
+		}
+		if (this.getFromStartupF() === 10) {
 			this.player.invTo = ["attack"];
-			this.player.iFrames = 12;
+			this.player.iFrames = 14;
 		}
 	}
 }
@@ -3933,7 +4242,7 @@ class AsakamiPuppetMN extends PuppetAttack {
 		let sweet = new AttackProperties().setDamage(15).setAngleValue(player.dir.value).setLaunch(7, 3, 1.1).setHitStun(30, 20).setStunFrames(14);
 		let prop = [sweet];
 
-		return new this(player.getParent(), circles, prop).setClashPriority(1).setStartupF(20).setActiveF(4).setEndF(20).setFollow(false);
+		return new this(player.getParent(), circles, prop).setClashPriority(1).setStartupF(21).setActiveF(4).setEndF(20).setFollow(false);
 	}
 
 	static startAttack(player, attack, bufferInfo) {
@@ -3969,5 +4278,10 @@ class ScytheFrame {
 		scythe.dr = 0;
 	}
 }
+
+Asakami.setupHitboxEdit = () => {
+	debug.displayHurtboxes = true;
+	currentScreen.players[0] = currentScreen.players[0].puppet;
+};
 
 characters.push(Asakami);

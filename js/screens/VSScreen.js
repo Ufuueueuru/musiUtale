@@ -36,7 +36,7 @@ class VSScreen extends Screen {
             let fake = false;
             if (this.player1.controls === null && this.player2.controls === null) {
                 fake = true;
-                this.player1.controls = controls[i];
+                this.player1.controls = this.pausedPlayer;
             }
             currentScreen.setControls([this.player1.controls, this.player2.controls], fake);
         });
@@ -57,6 +57,11 @@ class VSScreen extends Screen {
         this.pauseMenu.addMenuItems(backButton, playerSelectButton, editControlsButton, characterSelectButton, exitButton);
 
         this.pauseMenu.setTarget(backButton);
+
+        assetManager.loadAssetsWithScreen();
+
+        if (autoReplay)
+            this.replay = new Replay();
     }
 
     draw(g) {
@@ -106,6 +111,8 @@ class VSScreen extends Screen {
         if (!this.paused) {
             let max = debug.negateDraw ? debug.throttleRun : 1;
             for (let i = 0; i < max; i++) {
+                if (this.replay)
+                    this.replay.record(this.world);
                 this.world.run(this);
             }
         } else {
@@ -207,6 +214,8 @@ class VSScreen extends Screen {
         if (this.player2.controls.computer)
             this.player2.controls = null;
         Howler.stop();
+
+        assetManager.resetAssets();
     }
 
     initLater() {
@@ -258,7 +267,7 @@ class VSScreen extends Screen {
 
         this.canSkipFrames = true;
 
-        this.world.playMusic();
+        this.world.addShouldLoad();
 
         //let randArr = [
         //    [0, 0, 0, 0, 0, 0, 0],
@@ -274,5 +283,10 @@ class VSScreen extends Screen {
         //    randArr[this.world.random(0, 6)][this.world.random(0, 6)]++;
         //}
         //print(...randArr);
+    }
+
+    loaded() {
+        this.world.copyAssets();
+        this.world.playMusic();
     }
 }

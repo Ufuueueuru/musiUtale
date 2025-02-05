@@ -14,6 +14,8 @@ class TutorialScreen extends Screen {
         this.paused = false;
 
         this.tutorial = new Tutorial(this.world);
+
+        assetManager.loadAssetsWithScreen();
     }
 
     draw(g) {
@@ -161,6 +163,8 @@ class TutorialScreen extends Screen {
         if (this.player2.controls.computer)
             this.player2.controls = null;
         Howler.stop();
+
+        assetManager.resetAssets();
     }
 
     initLater() {
@@ -205,13 +209,13 @@ class TutorialScreen extends Screen {
 
         this.canSkipFrames = true;
 
-        this.world.playMusic();
-
         this.world.startCountdown = -1;
         this.world.players[0].canMove = true;
         this.world.players[0].canAttack = true;
         this.world.players[1].canMove = true;
         this.world.players[1].canAttack = true;
+
+        this.world.addShouldLoad();
 
         //let randArr = [
         //    [0, 0, 0, 0, 0, 0, 0],
@@ -227,5 +231,10 @@ class TutorialScreen extends Screen {
         //    randArr[this.world.random(0, 6)][this.world.random(0, 6)]++;
         //}
         //print(...randArr);
+    }
+
+    loaded() {
+        this.world.copyAssets();
+        this.world.playMusic();
     }
 }

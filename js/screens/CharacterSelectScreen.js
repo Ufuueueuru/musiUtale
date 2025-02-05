@@ -55,11 +55,15 @@ class CharacterSelectScreen extends Screen {
                     g.rect(256 - 75 * charWidth / 2 + 75 * x + 3, 192 - 75 * charHeight / 2 + 75 * y + 3, 69, 69);
                 }
 
+                let selectScreenSizeOffset = 0;
+                let selectScreenYOffset = 0;
                 g.push();
-                g.translate(75/2 + this.characters[i].selectScreenSizeOffset/2, 75/2 + this.characters[i].selectScreenSizeOffset/2);
-                g.translate(256 - 75 * charWidth / 2 + 75 * x - this.characters[i].selectScreenSizeOffset / 2, 192 - 75 * charHeight / 2 + 75 * y - this.characters[i].selectScreenSizeOffset / 2);
+                g.translate(75/2 + selectScreenSizeOffset/2, 75/2 + selectScreenSizeOffset/2);
+                g.translate(256 - 75 * charWidth / 2 + 75 * x - selectScreenSizeOffset / 2, 192 - 75 * charHeight / 2 + 75 * y - selectScreenSizeOffset / 2);
                 g.rotate(this.characters[i].selectScreenRotation);
-                this.characters[i].sheet.drawFrame(g, 0, -75/2 - this.characters[i].selectScreenSizeOffset/2, -75/2 - this.characters[i].selectScreenSizeOffset/2 + this.characters[i].selectScreenYOffset, 75 + this.characters[i].selectScreenSizeOffset, 75 + this.characters[i].selectScreenSizeOffset);
+
+                Player.drawMenu(g, this.characters[i], -75 / 2 - selectScreenSizeOffset / 2, -75 / 2 - selectScreenSizeOffset / 2 + selectScreenYOffset, 75 + selectScreenSizeOffset, 75 + selectScreenSizeOffset);
+
                 g.pop();
 
                 g.fill(15, 0, 0);
@@ -67,7 +71,7 @@ class CharacterSelectScreen extends Screen {
                 g.strokeWeight(2);
                 g.textSize(15);
                 g.textAlign(CENTER, CENTER);
-                g.text(this.characters[i].name, 256 - 75 * charWidth / 2 + 75 * x + 38, 192 - 75 * charHeight / 2 + 75 * y + 65);
+                g.text(this.characterNames[i], 256 - 75 * charWidth / 2 + 75 * x + 38, 192 - 75 * charHeight / 2 + 75 * y + 65);
 
                 i++;
                 x++;
@@ -146,11 +150,11 @@ class CharacterSelectScreen extends Screen {
                             this.selected[o] = false;
                     }
                     break;
-                } else if (!this.selected[0] && !this.selected[1]) {
-                    let screen = new MenuDebugScreen();
+                }/* else if (!this.selected[0] && !this.selected[1]) {
+                    let screen = new this.menu.backScreenClass();
                     currentScreen = screen;
                     break;
-                }
+                }*/
             }
             if (this.playerControls[u].clickedAbsolute("start")) {
                 controlsManager.openScreen();
@@ -203,7 +207,7 @@ class CharacterSelectScreen extends Screen {
         }
         for (let i in controls) {
             if (!controls[i].computer && controls[i].heldFrames("back") > 60) {
-                let screen = new MenuDebugScreen();
+                let screen = new this.menu.backScreenClass();
                 currentScreen = screen;
                 break;
             }
@@ -246,9 +250,10 @@ class CharacterSelectScreen extends Screen {
 
         this.playerControls = [null, null];
 
-        this.characters = [];
+        this.characters = characters;
+        this.characterNames = {};
         for (let i in characters) {
-            this.characters.push(new characters[i](true));
+            this.characterNames[i] = new characters[i]().name;
         }
 
         /** @type {boolean} Used to indicate that both players are supposed to be computers */

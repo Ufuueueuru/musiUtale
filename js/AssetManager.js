@@ -1,9 +1,20 @@
 class AssetManager {
     constructor() {
         this.images = {};
+        this.imageNames = {};
+        this.imagesImp = {};
+        this.shouldLoadImages = {};
         this.spritesheets = {};
+        this.spritesheetsImp = {};
+        this.shouldLoadSpritesheets = {};
         this.fonts = {};
+        this.fontNames = {};
+        this.fontsImp = {};
+        this.shouldLoadFonts = {};
         this.sounds = {};
+        this.soundNames = {};
+        this.soundsImp = {};
+        this.shouldLoadSounds = {};
         this.jsons = {};
 
         this.loadFuncs = [];
@@ -11,6 +22,8 @@ class AssetManager {
         this.loadedFonts = 0;
         this.totalFonts = 0;
 
+        this._shouldTotal = 0;
+        this._totalImp = 0;
         this._total = 0;
         this._loaded = 0;
 
@@ -19,43 +32,180 @@ class AssetManager {
 
         this._smallLoadPercents = [];
 
+        this._jsonsLoaded = false;
+        this._jsonsParsed = false;
+        this._sheetsSplit = false;
+
         this._split = false;
     }
 
+    addShouldImage(name) {
+        if (!this.shouldLoadImages[name] && this.images[name] === undefined) {
+            this._shouldTotal++;
+            this.shouldLoadImages[name] = true;
+        }
+    }
+    removeShouldImage(name) {
+        if (this.shouldLoadImages[name] && !this.imagesImp[name]) {
+            this._shouldTotal--;
+            this._loaded--;
+            this.images[name] = undefined;
+            delete this.shouldLoadImages[name];
+        }
+    }
+    addShouldSpritesheet(name) {
+        if (!this.shouldLoadSpritesheets[name] && !this.spritesheets[name].imageLoaded) {
+            this._shouldTotal++;
+            this._splitTotal++;
+            this.shouldLoadSpritesheets[name] = true;
+        }
+    }
+    removeShouldSpritesheet(name) {
+        if (this.shouldLoadSpritesheets[name] && !this.spritesheetsImp[name]) {
+            this._shouldTotal--;
+            this._loaded--;
+            this._splitTotal--;
+            this._splitLoaded--;
+            this.spritesheets[name].resetImage();
+            delete this.shouldLoadSpritesheets[name];
+        }
+    }
+    addShouldFont(name) {
+        if (!this.shouldLoadFonts[name] && this.fonts[name] === undefined) {
+            this._shouldTotal++;
+            this.shouldLoadFont[name] = true;
+        }
+    }
+    removeShouldFont(name) {
+        if (this.shouldLoadFonts[name] && !this.fontsImp[name]) {
+            this._shouldTotal--;
+            this._loaded--;
+            this.fonts[name] = undefined;
+            delete this.shouldLoadFonts[name];
+        }
+    }
+    addShouldSound(name) {
+        if (!this.shouldLoadSounds[name] && this.sounds[name] === undefined) {
+            this._shouldTotal++;
+            this.shouldLoadSounds[name] = true;
+        }
+    }
+    removeShouldSound(name) {
+        if (this.shouldLoadSounds[name] && !this.soundsImp[name]) {
+            this._shouldTotal--;
+            this._loaded--;
+            this.sounds[name].deload();
+            this.sounds[name] = undefined;
+            delete this.shouldLoadSounds[name];
+        }
+    }
+
+    resetAssets() {
+        this._sheetsSplit = false;
+        this._splitTotal = 0;
+        this._splitLoaded = 0;
+        this._shouldTotal = 0;
+        this._loaded = this._totalImp;
+        this.shouldLoadImages = {};
+        this.shouldLoadSpritesheets = {};
+        this.shouldLoadFonts = {};
+        this.shouldLoadSounds = {};
+        for (let u in this.fonts) {
+            if (!this.fontsImp[u])
+                this.fonts[u] = undefined;
+        }
+        for (let u in this.images) {
+            if (!this.imagesImp[u])
+                this.images[u] = undefined;
+        }
+        for (let u in this.spritesheets) {
+            if (!this.spritesheetsImp[u])
+                this.spritesheets[u].resetImage();
+        }
+        for (let u in this.sounds) {
+            if (!this.soundsImp[u])
+                this.sounds[u] = undefined;
+        }
+    }
+
+    loadAssetsWithScreen() {
+        this.loadAssets();
+        dynamicLoadingDisplay = true;
+        forceDynamicLoadingDisplay = false;
+    }
+
     loadAssets() {
-        let time = millis();
-        let wait = 0;
-        for (let u in this.fonts) {//Load all fonts
-            setTimeout(((i) => {
-                this.fonts[i] = loadFont(this.fonts[i], this.onLoadFont.bind(this), this.onError);
-            }).bind(this, u));
+        //let time = millis();
+        //let wait = 0;
+        for (let u in this.fontNames) {//Load all fonts
+            if ((this.fontsImp[u] || this.shouldLoadFonts[u]) && this.fonts[u] === undefined) {
+                setTimeout(((i) => {
+                    this.fonts[i] = loadFont(this.fontNames[i], this.onLoadFont.bind(this), this.onError);
+                }).bind(this, u));
+            }
         }
-        for (let u in this.images) {//Load all images
-            setTimeout(((i) => {
-                this.images[i] = loadImage(this.images[i], this.onLoad.bind(this), this.onError);
-            }).bind(this, u));
+        for (let u in this.imageNames) {//Load all images
+            if ((this.imagesImp[u] || this.shouldLoadImages[u]) && this.images[u] === undefined) {
+                setTimeout(((i) => {
+                    this.images[i] = loadImage(this.imageNames[i], this.onLoad.bind(this), this.onError.bind(this, i));
+                }).bind(this, u));
+            }
         }
-        for (let u in this.spritesheets) {//Load all spritesheets
+        let imageNames = Object.keys(this.spritesheets);//Sequential image loading
+        function loadImages(i, imageNames) {
+            if (i >= imageNames.length)
+                return;
+
+            if (!this.spritesheets[imageNames[i]].initSprite) {
+                let current = new Spritesheet(this.spritesheets[imageNames[i]].src, this.spritesheets[imageNames[i]].jsonsrc, this.spritesheets[imageNames[i]].width, this.spritesheets[imageNames[i]].height);
+                if (!this.spritesheets[imageNames[i]].jsonParsed)
+                    current.loadJSON(this.onLoad.bind(this), this.onError);
+                this.spritesheets[imageNames[i]] = current;
+            }
+
+            if ((!this.spritesheetsImp[imageNames[i]] && !this.shouldLoadSpritesheets[imageNames[i]]) || this.spritesheets[imageNames[i]].imageLoaded) {
+                loadImages(i + 1, imageNames);
+                return;
+            }
+            //print(imageNames[i], i);
+            this.spritesheets[imageNames[i]].loadImage((() => { loadImages(i + 1, imageNames); this.onLoad.bind(this)(); }).bind(this), this.onError);
+        }
+        loadImages = loadImages.bind(this);
+        loadImages(0, imageNames);
+        /*for (let u in this.spritesheets) {//Load all spritesheets LEGACY
             setTimeout(((i) => {
                 let current = new Spritesheet(this.spritesheets[i].src, this.spritesheets[i].jsonsrc, this.spritesheets[i].width, this.spritesheets[i].height);
                 current.loadImage(this.onLoad.bind(this), this.onError);
                 current.loadJSON(this.onLoad.bind(this), this.onError);
                 this.spritesheets[i] = current;
             }).bind(this, u));
-        }
-        for (let u in this.sounds) {//Load all sounds (This is different because we are using howler.js)
-            setTimeout(((j) => {
-                this.sounds[j] = new Howl(this.sounds[j]);
+        }*/
+        for (let u in this.soundNames) {//Load all sounds (This is different because we are using howler.js)
+            if ((this.soundsImp[u] || this.shouldLoadSounds[u]) && this.sounds[u] === undefined) {
+                setTimeout(((j) => {
+                    this.sounds[j] = new Howl(this.soundNames[j]);
 
-                this.sounds[j].once("load", this.onLoad.bind(this));
-                this.sounds[j].once("loaderror", this.onHowlError);
-            }).bind(this, u));
+                    this.sounds[j].once("load", this.onLoad.bind(this));
+                    this.sounds[j].once("loaderror", this.onHowlError);
+                }).bind(this, u));
+            }
         }
-        for (let u in this.jsons) {
-            setTimeout(((o) => {
-                this.jsons[o] = loadStrings(this.jsons[o], this.onLoad.bind(this), this.onError);
-            }).bind(this, u));
+        if (!this._jsonsLoaded) {
+            for (let u in this.jsons) {
+                setTimeout(((o) => {
+                    this.jsons[o] = loadStrings(this.jsons[o], this.onLoad.bind(this), this.onError);
+                }).bind(this, u));
+            }
+            this._jsonsLoaded = true;
         }
+    }
+
+    /**
+     * This will force the loading screen to show up (until another loadAssetsWithScreen is called)
+     */
+    forceDynamicLoadingDisplay() {
+        dynamicLoadingDisplay = true;
+        forceDynamicLoadingDisplay = true;
     }
 
     loadSpritesheet(sheetName) {
@@ -69,7 +219,7 @@ class AssetManager {
 
     loadSound(soundName) {
         setTimeout(((j) => {
-            this.sounds[j] = new Howl(this.sounds[j]);
+            this.sounds[j] = new Howl(this.soundNames[j]);
 
             this.sounds[j].once("load", this.onLoad.bind(this));
             this.sounds[j].once("loaderror", this.onHowlError);
@@ -79,20 +229,26 @@ class AssetManager {
     splitSheets() {
 
         for (let i in this.spritesheets) {
-            setTimeout(((u) => {
-                this.spritesheets[u].splitImage(this);
-                //this._splitLoaded++;
-            }).bind(this, i));
+            if ((this.spritesheetsImp[i] || this.shouldLoadSpritesheets[i]) && !this.spritesheets[i].sheetSplit) {
+                setTimeout(((u) => {
+                    this.spritesheets[u].splitImage(this);
+                    //this._splitLoaded++;
+                }).bind(this, i));
+            }
         }
+        this._sheetsSplit = true;
     }
     parseJSONs() {
-        for (let i in this.spritesheets) {
-            this.spritesheets[i].parseJSON();
-            this._splitLoaded++;
-        }
-        for (let i in this.jsons) {
-            this.jsons[i] = JSON.parse(this.jsons[i].join(""));
-            this._splitLoaded++;
+        if (!this._jsonsParsed) {
+            for (let i in this.spritesheets) {
+                this.spritesheets[i].parseJSON();
+                this._splitLoaded++;
+            }
+            for (let i in this.jsons) {
+                this.jsons[i] = JSON.parse(this.jsons[i].join(""));
+                this._splitLoaded++;
+            }
+            this._jsonsParsed = true;
         }
     }
 
@@ -108,16 +264,31 @@ class AssetManager {
         return 100 * this._loaded / this._total;
     }
 
+    getRealLoadedPercent() {
+        return 100 * this._loaded / (this._totalImp + this._shouldTotal);
+    }
+
     getDisplayPercentNonsmall() {
         return 100 * (this._loaded + this._splitLoaded) / (this._total + this._splitTotal);
     }
 
     getDisplayPercent() {
-        return 100 * (this._loaded + this._splitLoaded + this.smallLoadCurrent()) / (this._total + this._splitTotal + this.smallLoadTotal());
+        return 100 * (this._loaded * 9 + this._splitLoaded + this.smallLoadCurrent() * 9) / (this._total * 9 + this._splitTotal + this.smallLoadTotal() * 9);
     }
 
-    addImage(imageStr, name) {
-        this.images[name] = imageStr;
+    getRealDisplayPercent() {
+        return 100 * ((this._loaded) * 9 + this._splitLoaded + this.smallLoadCurrent() * 9) / ((this._totalImp + this._shouldTotal) * 9 + this._splitTotal + this.smallLoadTotal() * 9);
+    }
+
+    getNonImpDisplayPercent() {
+        return 100 * ((this._loaded - this._totalImp) * 9 + this._splitLoaded + this.smallLoadCurrent() * 9 + 1) / ((this._shouldTotal) * 9 + this._splitTotal + this.smallLoadTotal() * 9 + 1);
+    }
+
+    addImage(imageStr, name, imp = false) {
+        this.imageNames[name] = imageStr;
+        this.imagesImp[name] = imp;
+        if (imp)
+            this._totalImp++;
         this._total++;
     }
     addSpritesheet(sheetStr, name, jsonStr = undefined, width = 0, height = 0) {
@@ -133,26 +304,40 @@ class AssetManager {
             jsonsrc: jsonStr
         }
         this._total++;
-        this._splitTotal++;
         if (jsonStr !== undefined) {
+            this._totalImp++;
             this._total++;
             this._splitTotal++;
         }
+        this.spritesheetsImp[name] = false;
     }
-    addFont(fontsStr, name) {
-        this.fonts[name] = fontsStr;
+    addSpritesheetImp(sheetStr, name, jsonStr = undefined, width = 0, height = 0) {
+        this.addSpritesheet(sheetStr, name, jsonStr, width, height);
+        this._totalImp++;
+        this._splitTotal++;
+        this.spritesheetsImp[name] = true;
+    }
+    addFont(fontsStr, name, imp = false) {
+        this.fontNames[name] = fontsStr;
+        if (imp)
+            this._totalImp++;
         this._total++;
         this.totalFonts++;
+        this.fontsImp[name] = imp;
     }
-    addSound(soundStr, name, options = { }) {
+    addSound(soundStr, name, options = { }, imp = true) {
         if (typeof soundStr === "string")
             soundStr = [soundStr];
-        this.sounds[name] = options;
-        this.sounds[name].src = soundStr;
+        this.soundNames[name] = options;
+        this.soundNames[name].src = soundStr;
+        if (imp)
+            this._totalImp++;
         this._total++;
+        this.soundsImp[name] = imp;
     }
     addJSON(jsonStr, name) {
         this.jsons[name] = jsonStr;
+        this._totalImp++;
         this._total++;
         this._splitTotal++;
     }
@@ -186,7 +371,7 @@ class AssetManager {
     onLoad() {
         this._loaded++;
 
-        if (!this._split && this.getLoadedPercent() === 100) {
+        if (!this._split && this.getRealLoadedPercent() >= 100) {
             this.parseJSONs();
             this.splitSheets();
         }
@@ -198,10 +383,17 @@ class AssetManager {
     }
 
     onError(event) {
-        alert("There was an error loading the file:\n" + event);
+        print(event);
+        totalAlerts += "\n" + "There was an error loading the file:\n" + event;
+        if (timesAlerted < 3)
+            alert("There was an error loading the file:\n" + event);
+        timesAlerted++;
     }
 
     onHowlError(id, code) {
-        alert("There was an error loading a sound file:\nID: " + id + "\nDetails/code: " + code)
+        totalAlerts += "\n" + "There was an error loading a sound file:\nID: " + id + "\nDetails/code: " + code;
+        if (timesAlerted < 3)
+            alert("There was an error loading a sound file:\nID: " + id + "\nDetails/code: " + code);
+        timesAlerted++;
     }
 }

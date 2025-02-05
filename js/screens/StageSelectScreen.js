@@ -201,7 +201,7 @@ class StageSelectScreen extends Screen {
             this.stages.push(new stages[i](512, 384));
             this.stages[i].drawGrounds();
             this.stages[i].camera.zoom = 0.8;
-            this.stages[i].camera.setCenter(this.stages[i].getCenterStageX(), this.stages[i].getCenterStageY());
+            this.stages[i].camera.setCenter(this.stages[i].getCenterStageX() + this.stages[i].displayOffX, this.stages[i].getCenterStageY() + this.stages[i].displayOffY);
         }
 
         /** @type {boolean} Used to indicate that both players are supposed to be computers */

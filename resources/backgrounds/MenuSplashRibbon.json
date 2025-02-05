@@ -1,0 +1,78 @@
+{ "frames": {
+   "MenuSplashRibbon 0.aseprite": {
+    "frame": { "x": 0, "y": 0, "w": 176, "h": 160 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 176, "h": 160 },
+    "sourceSize": { "w": 176, "h": 160 },
+    "duration": 67
+   },
+   "MenuSplashRibbon 1.aseprite": {
+    "frame": { "x": 176, "y": 0, "w": 176, "h": 160 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 176, "h": 160 },
+    "sourceSize": { "w": 176, "h": 160 },
+    "duration": 67
+   },
+   "MenuSplashRibbon 2.aseprite": {
+    "frame": { "x": 352, "y": 0, "w": 176, "h": 160 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 176, "h": 160 },
+    "sourceSize": { "w": 176, "h": 160 },
+    "duration": 67
+   },
+   "MenuSplashRibbon 3.aseprite": {
+    "frame": { "x": 528, "y": 0, "w": 176, "h": 160 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 176, "h": 160 },
+    "sourceSize": { "w": 176, "h": 160 },
+    "duration": 67
+   },
+   "MenuSplashRibbon 4.aseprite": {
+    "frame": { "x": 0, "y": 160, "w": 176, "h": 160 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 176, "h": 160 },
+    "sourceSize": { "w": 176, "h": 160 },
+    "duration": 67
+   },
+   "MenuSplashRibbon 5.aseprite": {
+    "frame": { "x": 176, "y": 160, "w": 176, "h": 160 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 176, "h": 160 },
+    "sourceSize": { "w": 176, "h": 160 },
+    "duration": 67
+   },
+   "MenuSplashRibbon 6.aseprite": {
+    "frame": { "x": 352, "y": 160, "w": 176, "h": 160 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 176, "h": 160 },
+    "sourceSize": { "w": 176, "h": 160 },
+    "duration": 67
+   },
+   "MenuSplashRibbon 7.aseprite": {
+    "frame": { "x": 528, "y": 160, "w": 176, "h": 160 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 176, "h": 160 },
+    "sourceSize": { "w": 176, "h": 160 },
+    "duration": 67
+   }
+ },
+ "meta": {
+  "app": "https://www.aseprite.org/",
+  "version": "1.3.12-beta1-x64",
+  "image": "MenuSplashRibbon.png",
+  "format": "RGBA8888",
+  "size": { "w": 704, "h": 320 },
+  "scale": "1",
+  "frameTags": [
+   { "name": "Main", "from": 0, "to": 7, "direction": "forward", "color": "#000000ff" }
+  ]
+ }
+}

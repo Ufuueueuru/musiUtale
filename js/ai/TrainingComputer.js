@@ -52,13 +52,13 @@ class TrainingComputer extends Controls {
                 actions: ["SN", "SN", "SN", "SN", "SN", "MN", "M", "M", "M", "M", "M"]
             },
             {
-                names: ["hitstun"],
+                names: ["block"],
                 isMashing: false,
                 wait: 0,
                 count: 0,
                 hold: 1,
                 offset: 0,
-                actions: ["MPS"]
+                actions: ["MPS", "MN"]
             }
         ];
     }
@@ -96,7 +96,7 @@ class TrainingComputer extends Controls {
         }
 
         //Blocking attacks
-        for (let i in this.world.attacks) {
+        for (let i = this.world.attacks.length - 1; i >= 0; i--) {
             let collideInfo;
             if (this.player !== this.world.attacks[i].player && this.world.attacks[i].currentlyActive() && !this.world.attacks[i].hitPlayerBool)
                 collideInfo = this.world.attacks[i].getCollideInformation(this.player);

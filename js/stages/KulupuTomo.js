@@ -7,6 +7,9 @@
         this.background.image(assetManager.images.kulupuTomo, 0, 0, this.background.width, this.background.height);
 
         this.foreground.background(0, 0, 0, 50);
+
+        this.displayOffX = -170;
+        this.displayOffY = -100;
     }
 
     drawGrounds() {
@@ -34,7 +37,7 @@
     }
 
     static addAssets() {
-        assetManager.addImage("resources/backgrounds/kulupu_tomo.png", "kulupuTomo");
+        assetManager.addImage("resources/backgrounds/kulupu_tomo.png", "kulupuTomo", true);
     }
 }
 

@@ -2306,7 +2306,7 @@
         this.dash.invTo = ["attack"];
         this.dash.dashAttackLastFrame = this.dash.frames - 8;
 		this.dash.attackCancelFrame = this.dash.frames - 13;
-		this.dash.grabCancelFrame = this.dash.frames - 25;
+		this.dash.grabCancelFrame = this.dash.frames - 18;
 		this.dash.blockCancelFrame = this.dash.frames - 17;
 
 		this.dash.comboDashFrame = this.dash.frames - 8;
@@ -2891,7 +2891,29 @@
 		}
 	}
 
-    static addAssets() {
+	copyAssets() {
+		this.sheet = Spritesheet.copy(assetManager.spritesheets.janLipaSheet);
+		this.dashDisplays = [];
+		for (let i = 0; i < this.dashCancelsMax; i++) {
+			this.dashDisplays.push(Spritesheet.copy(assetManager.spritesheets.tawaEnKama));
+			this.dashDisplays[i].currentFrame = i % 6;
+		}
+	}
+
+	getShouldLoadSpritesheets() {
+		return ["janLipaSheet", "tawaEnKama"];
+	}
+	getShouldLoadSounds() {
+		return ["spearHit", "spearBlock"];
+	}
+
+	static getMenuImage() {
+		return assetManager.images.janLipaMenuImage;
+	}
+
+	static addAssets() {
+		assetManager.addImage("resources/jan_LipaAWEN.png", "janLipaMenuImage", true);
+
 		assetManager.addSpritesheet("resources/jan_Lipa.png", "janLipaSheet", "//");
 
 		assetManager.addSpritesheet("resources/TawaEnKama.png", "tawaEnKama", "//");
@@ -3475,7 +3497,7 @@ class LipaMS extends Attack {
 	}
 
 	static createAttack(player) {
-		let cancelOptions = ["RN", "SPS", "NN", "dash"];
+		let cancelOptions = ["SPS", "RPS", "NN", "RN", "dash"];
 
 		let ultraSour1 = new PriorityCircle(60, 22, 30, 0).setVelocity(0.1, 0);
 		let ultraSour2 = new PriorityCircle(30, 28, 30, 0).setVelocity(0.1, 0);

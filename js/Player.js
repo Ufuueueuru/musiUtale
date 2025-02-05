@@ -37,6 +37,8 @@ class Player extends Hitcircle {
 
 		/** @type {Spritesheet} */
 		this.sheet = Spritesheet.copy(assetManager.spritesheets.hitEffect);//DEBUG (I think)
+		/** @type {string} Should be a string exactly the same as the images name in assetManager */
+		this.menuImage = "";
 
 		/** @type {World} */
 		this.world = world;
@@ -63,7 +65,7 @@ class Player extends Hitcircle {
 		/** @type {number} */
 		this.maxHealth = 800;
 		/** @type {number} Says how skewed the health is displayed (higher number = have more health than looks) */
-		this.healthSkew = 2;
+		this.healthSkew = 1.5;
 		/** @type {number} The red part of your health bar */
 		this.tempDamageCount = 0;
 		/** @type {number} How much health you lose when the timer hits 0 */
@@ -301,6 +303,8 @@ class Player extends Hitcircle {
 		this.parryCooldown = 0;
 		/** @type {number} Number of frames after starting moving where a parry cannot be performed */
 		this.maxParryCooldown = 22;
+		/** @type {number} Whether the parry cooldown should be buffered or not */
+		this.bufferCooldown = false;
 		/** @type {number} Used for knowing whether something was a parry or not */
 		this.moveCount = 0;
 
@@ -463,6 +467,47 @@ class Player extends Hitcircle {
 		this.charSpecificReset();
 	}
 
+	getShouldLoadImages() {
+		return [];
+	}
+	getShouldLoadSpritesheets() {
+		return [];
+	}
+	getShouldLoadFonts() {
+		return [];
+	}
+	getShouldLoadSounds() {
+		return [];
+	}
+	addShouldLoad() {
+		for (let i of this.getShouldLoadImages()) {
+			assetManager.addShouldImage(i);
+		}
+		for (let i of this.getShouldLoadSpritesheets()) {
+			assetManager.addShouldSpritesheet(i);
+		}
+		for (let i of this.getShouldLoadFonts()) {
+			assetManager.addShouldFont(i);
+		}
+		for (let i of this.getShouldLoadSounds()) {
+			assetManager.addShouldSound(i);
+		}
+	}
+	deload() {
+		for (let i of this.getShouldLoadImages()) {
+			assetManager.removeShouldImage(i);
+		}
+		for (let i of this.getShouldLoadSpritesheets()) {
+			assetManager.removeShouldSpritesheet(i);
+		}
+		for (let i of this.getShouldLoadFonts()) {
+			assetManager.removeShouldFont(i);
+		}
+		for (let i of this.getShouldLoadSounds()) {
+			assetManager.removeShouldSound(i);
+		}
+	}
+
 	setBlockLeniencyModifier(num) {
 		if (num > this.blockLeniencyModifier)
 			this.blockLeniencyModifier = num;
@@ -585,11 +630,21 @@ class Player extends Hitcircle {
 		if (this.stunFrames > 0) {
 			if (this.controls.joystickHeld(0)) {
 				this.moveCount++;
-				if (this.moveCount === this.parryLeniency + 1)
+				if (this.moveCount === this.parryLeniency + 1) {
 					this.parryCooldown = this.maxParryCooldown;
+				} else if (this.moveCount <= this.parryLeniency) {
+					this.bufferCooldown = true;
+				} else if (this.bufferCooldown) {
+					this.bufferCooldown = false;
+					this.parryCooldown = this.maxParryCooldown;
+				}
 			} else {
+				if (this.bufferCooldown) {
+					this.bufferCooldown = false;
+					this.parryCooldown = this.maxParryCooldown;
+				}
 				//if (this.moveCount > 0 && this.parryCooldown <= 0)
-					//this.parryCooldown = this.maxParryCooldown;
+				//this.parryCooldown = this.maxParryCooldown;
 				this.moveCount = 0;
 			}
 		}
@@ -870,9 +925,9 @@ class Player extends Hitcircle {
 
 		g.noStroke();
 		if (playerID % 2 === 0) {
-			g.fill(170, 40, 60, 200);
+			g.fill(200, 70, 90);
 		} else {
-			g.fill(47, 31, 171, 200);
+			g.fill(77, 61, 201);
 		}
 		g.triangle(-63, 0, -77, 10, -77, -10);
 
@@ -1166,11 +1221,21 @@ class Player extends Hitcircle {
 
 		if (this.controls.joystickHeld(0)) {
 			this.moveCount++;
-			if (this.moveCount === this.parryLeniency + 1)
+			if (this.moveCount === this.parryLeniency + 1) {
 				this.parryCooldown = this.maxParryCooldown;
+			} else if (this.moveCount <= this.parryLeniency) {
+				this.bufferCooldown = true;
+			} else if (this.bufferCooldown) {
+				this.bufferCooldown = false;
+				this.parryCooldown = this.maxParryCooldown;
+			}
 		} else {
+			if (this.bufferCooldown) {
+				this.bufferCooldown = false;
+				this.parryCooldown = this.maxParryCooldown;
+			}
 			//if (this.moveCount > 0 && this.parryCooldown <= 0)
-				//this.parryCooldown = this.maxParryCooldown;
+			//this.parryCooldown = this.maxParryCooldown;
 			this.moveCount = 0;
 		}
 	}
@@ -2813,6 +2878,10 @@ class Player extends Hitcircle {
 
 	pressedMonsi() {
 		return this.controls.joystickPressed(0) && Angle.distance(this.controls.angle(0), this.monsi) <= PI / 4;
+	}
+
+	static drawMenu(g, characterClass, x, y, width = characterClass.getMenuImage().width, height = characterClass.getMenuImage().height) {
+		g.image(characterClass.getMenuImage(), x, y, width, height);
 	}
 
 	serialize() {

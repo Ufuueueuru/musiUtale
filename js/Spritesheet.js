@@ -50,6 +50,18 @@ class Spritesheet {
 
 		/** @type {number} Lets the sprite know if its resolution has been changed */
 		this.resolutionMult = 1;
+
+		/** @type {boolean} True if the json animation data has been added to this object */
+		this.jsonParsed = false;
+
+		/** @type {boolean} True if the image is loaded in memory */
+		this.imageLoaded = false;
+
+		/** @type {boolean} True if the image has been split */
+		this.sheetSplit = false;
+
+		/** @type {boolean} This should always be true for AssetManager to know that the variable is a Spritesheet */
+		this.initSprite = true;
 	}
 
 	setWorldFrameRate(num) {
@@ -67,6 +79,7 @@ class Spritesheet {
 					this.image.resize(this.image.width * graphicsSettings.spriteResolutionMult, 0);
 				this.resolutionMult = graphicsSettings.spriteResolutionMult;
 			}
+			this.imageLoaded = true;
 			onLoad();
 		}).bind(this, onLoad), onError);
 	}
@@ -78,7 +91,8 @@ class Spritesheet {
 
 	parseJSON() {
 		if (this.animationData !== undefined) {
-			this.animationData = JSON.parse(this.animationData.join(""));
+			let data = JSON.parse(this.animationData.join(""));
+			this.animationData = data;
 			for (let i in this.animationData.meta.frameTags) {
 				this.animations[this.animationData.meta.frameTags[i].name] = {
 					from: this.animationData.meta.frameTags[i].from,
@@ -95,7 +109,15 @@ class Spritesheet {
 			this.height = this.animationData.frames[first].frame.h;
 			this.noResize = this.animationData.noResize;
 			this.animationData = undefined;
+			this.jsonParsed = true;
 		}
+	}
+
+	resetImage() {
+		this.image = undefined;
+		this.images = [];
+		this.imageLoaded = false;
+		this.sheetSplit = false;
 	}
 
 	splitImage(assetManager, finishFunc = () => { }) {
@@ -123,6 +145,7 @@ class Spritesheet {
 				x = 0;
 			}
 		}
+		this.sheetSplit = true;
 	}
 
 	_splitImageHelp(x, y, i, loaded, assetManager, finishFunc = () => { }) {
@@ -286,6 +309,11 @@ class Spritesheet {
 			images,
 			worldFrameRate,
 			frameRate,
+			resolutionMult,
+			jsonParsed,
+			imageLoaded,
+			sheetSplit,
+			initSprite,
 			...o
 		}) => defaultSerialize(o))(this);
 	}

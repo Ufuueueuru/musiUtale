@@ -10,6 +10,8 @@
         this.foreground.background(0, 0, 0, 40);
 
         this.loopBackground = true;
+
+        this.displayOffY = -100;
     }
 
     drawGrounds() {
@@ -26,7 +28,7 @@
     }
 
     static addAssets() {
-        assetManager.addImage("resources/backgrounds/nasin_noka.png", "nasinNoka");
+        assetManager.addImage("resources/backgrounds/nasin_noka.png", "nasinNoka", true);
     }
 }
 

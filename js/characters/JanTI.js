@@ -1344,7 +1344,25 @@
 			this.book.sheet.run();
 	}
 
+	copyAssets() {
+		this.sheet = Spritesheet.copy(assetManager.spritesheets.janTISheet);
+		this.book.sheet = Spritesheet.copy(assetManager.spritesheets.lipuNasaIke);
+	}
+
+	getShouldLoadSpritesheets() {
+		return ["janTISheet", "janTPSeliNPL", "janTPIlo", "lipuNasaIke", "janTPUtalaLipu", "konNasa", "teloSike", "kalamaSuli", "sikeSeli", "wawaPalisa", "konNasaLanpan", "konSike", "teloLonPokaLen", "janTPTawaIlo"];
+	}
+	getShouldLoadSound() {
+		return ["fanTP", "fireBad", "teloLuka", "teloLukaPakala", "miKepekenEIlo"];
+	}
+
+	static getMenuImage() {
+		return assetManager.images.janTIMenuImage;
+	}
+
 	static addAssets() {
+		assetManager.addImage("resources/jan_pi_toki_ikeAWEN.png", "janTIMenuImage", true);
+
 		assetManager.addSpritesheet("resources/jan_pi_toki_ike.png", "janTISheet", "//");
 
 		assetManager.addSpritesheet("resources/LipuNasaIke.png", "lipuNasaIke", "//");

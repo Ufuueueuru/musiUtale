@@ -10,7 +10,7 @@ class MaKasi extends World {
     }
 
     static addAssets() {
-        assetManager.addImage("resources/backgrounds/ma_kasi.png", "maKasi");
+        assetManager.addImage("resources/backgrounds/ma_kasi.png", "maKasi", true);
     }
 }
 

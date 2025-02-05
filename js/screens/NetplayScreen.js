@@ -248,6 +248,11 @@ class NetplayScreen extends Screen {
             this.startCountdown = 180;
 
             this.breakdownEvents();
+
+            new characters[this.characterSelections[0]]().addShouldLoad();
+            new characters[this.characterSelections[1]]().addShouldLoad();
+            new stages[this.selection]().addShouldLoad();
+            assetManager.loadAssetsWithScreen();
         };
         this.connection.on("data", (incomingData) => {
             //if (incomingData.stage !== undefined)
@@ -302,8 +307,8 @@ class NetplayScreen extends Screen {
                         }
                     }
                 }
-                if (!success && currentScreen.paused && currentScreen.world.frameCount > currentScreen.rollbackFrames) {
-                    errorDisplayFrames = 600;
+                if (!success && currentScreen.paused && currentScreen.world.frameCount > currentScreen.rollbackFrames && !(currentScreen.world.startCountdown < currentScreen.world.countdownMax - 60 && currentScreen.world.startCountdown >= 0) && !currentScreen.world.winScreen) {
+                    errorDisplayFrames = 240;
                     errorDisplayMessage = "󱤩󱤟󱤧󱥈" + ": " + errorOutput;//linja kulupu li pakala
                     //this.connectionOpen = false;//Not sure if this is the right thing to do or not
                 }
@@ -428,7 +433,7 @@ class NetplayScreen extends Screen {
                         currentScreen.playerControls[0] = currentScreen.playerControls[1];
                         currentScreen.playerControls[1] = tempControls;
 
-                        if (incomingData.stage)
+                        if (incomingData.stage !== undefined)
                             currentScreen.selection = incomingData.stage;
 
                         currentScreen.rSeed = incomingData.rSeed;
@@ -436,6 +441,11 @@ class NetplayScreen extends Screen {
                         currentScreen.startCountdown = 180;
 
                         currentScreen.breakdownEvents();
+
+                        new characters[currentScreen.characterSelections[0]]().addShouldLoad();
+                        new characters[currentScreen.characterSelections[1]]().addShouldLoad();
+                        new stages[currentScreen.selection]().addShouldLoad();
+                        assetManager.loadAssetsWithScreen();
                     };
                     currentScreen.connection.on("data", (incomingData) => {
                         //if (incomingData.stage)

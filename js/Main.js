@@ -10,6 +10,8 @@ if (!window.electronAPI) {
 		readdir: async (name) => [],
 		setMods: (data) => { },
 		getMods: (name) => { return []; },
+		saveReplay: async (name, data) => { },
+		getReplay: async (name) => { },
 		writeSave: (data) => {
 			localStorage.setItem("saveFile", JSON.stringify(data));
 		},
@@ -19,12 +21,15 @@ if (!window.electronAPI) {
 				if (localStorage.getItem("saveFile") !== null && file.defaultKeyboardControls1)
 					return file;
 			} catch { }
-			return { "defaultKeyboardControls1": { "keys": [["dash", "KeyY"], ["powerDash", "KeyJ"], ["pokaLili", "KeyT"], ["pokaSuli", "KeyG"], ["lili", "KeyR"], ["suli", "KeyF"], ["nasa", "KeyH"], ["frameAdvance", "Space"], ["select", "KeyR"], ["back", "KeyT"], ["start", "Escape"]], "arrows": [["KeyD", "KeyW", "KeyA", "KeyS"]], "deadzones": [0.25] }, "defaultKeyboardControls2": { "keys": [["dash", "KeyO"], ["powerDash", "KeyK"], ["pokaLili", "KeyP"], ["pokaSuli", "Semicolon"], ["lili", "BracketLeft"], ["suli", "Quote"], ["nasa", "KeyL"], ["frameAdvance", "Space"], ["select", "Enter"], ["back", "KeyP"], ["start", "Escape"]], "arrows": [["ArrowRight", "ArrowUp", "ArrowLeft", "ArrowDown"]], "deadzones": [0.25] }, "defaultGamepadControls": { "keys": [["dash", 4], ["powerDash", 7], ["pokaLili", 3], ["pokaSuli", 1], ["lili", 2], ["suli", 0], ["nasa", 5], ["frameAdvance", 6], ["select", 0], ["back", 1], ["start", 9], ["up", 12], ["down", 13], ["left", 14], ["right", 15]], "arrows": [0], "deadzones": [0.35] }, "graphicsSettings": { "resolutionMult": 0.5, "spriteResolutionMult": 0.25, antiAliasing: false, "noSplitSheets": true }, "currentLanguage": "tp", "promptTutorial": true, "version": "0.0.4" }
+			return { "autoReplay": false, "maxReplays": 10, "defaultKeyboardControls1": { "keys": [["dash", "KeyY"], ["powerDash", "KeyJ"], ["pokaLili", "KeyT"], ["pokaSuli", "KeyG"], ["lili", "KeyR"], ["suli", "KeyF"], ["nasa", "KeyH"], ["frameAdvance", "Space"], ["select", "KeyR"], ["back", "KeyT"], ["start", "Escape"]], "arrows": [["KeyD", "KeyW", "KeyA", "KeyS"]], "deadzones": [0.25] }, "defaultKeyboardControls2": { "keys": [["dash", "KeyO"], ["powerDash", "KeyK"], ["pokaLili", "KeyP"], ["pokaSuli", "Semicolon"], ["lili", "BracketLeft"], ["suli", "Quote"], ["nasa", "KeyL"], ["frameAdvance", "Space"], ["select", "Enter"], ["back", "KeyP"], ["start", "Escape"]], "arrows": [["ArrowRight", "ArrowUp", "ArrowLeft", "ArrowDown"]], "deadzones": [0.25] }, "defaultGamepadControls": { "keys": [["dash", 4], ["powerDash", 7], ["pokaLili", 3], ["pokaSuli", 1], ["lili", 2], ["suli", 0], ["nasa", 5], ["frameAdvance", 6], ["select", 0], ["back", 1], ["start", 9], ["up", 12], ["down", 13], ["left", 14], ["right", 15]], "arrows": [0], "deadzones": [0.35] }, "graphicsSettings": { "resolutionMult": 0.5, "spriteResolutionMult": 0.25, antiAliasing: false, "noSplitSheets": true, capFPS: 2 }, "currentLanguage": "tp", "promptTutorial": true, "version": "0.1.0" }
 		},
 		getSavesPath: () => { },
-		getAppVersion: async () => "0.4.4"
+		getAppVersion: async () => { appVersion = "0.4.4"; }
 	};
 }
+
+let timesAlerted = 0;
+let totalAlerts = "";
 
 let appVersion = "";
 
@@ -64,6 +69,12 @@ let controlsManager;
 
 let playersManager;
 
+let savingReplayDisplay = false;
+
+let dynamicLoadingDisplay = false;
+let forceDynamicLoadingDisplay = false;
+let loadingImages = undefined;
+
 let errorDisplayMessage = "";
 let errorDisplayFrames = 0;
 
@@ -81,8 +92,12 @@ let graphicsSettings = {
 	resolutionMult: 1,
 	spriteResolutionMult: 1,
 	antiAliasing: true,
-	noSplitSheets: true
+	noSplitSheets: true,
+	capFPS: 2//Will skip drawing one of however many frames this number is
 }
+
+let maxReplays = 10;
+let autoReplay = false;
 
 function preload() {
 	//asuki = loadFont("resources/sitelenselikiwenasuki.ttf");
@@ -103,37 +118,39 @@ function setup() {
 
 	assetManager = new AssetManager();
 
-	assetManager.addFont("resources/sitelenselikiwenjuniko.ttf", "asuki");
+	assetManager.addFont("resources/sitelenselikiwenjuniko.ttf", "asuki", true);
 
-	assetManager.addImage("resources/backgrounds/MenuSplash.png", "menuSplash");
-	assetManager.addImage("resources/button_unpressed.png", "buttonUnpressed");
-	assetManager.addImage("resources/button_pressed.png", "buttonPressed");
-	assetManager.addImage("resources/language_button_unpressed.png", "buttonUnpressedLanguage");
-	assetManager.addImage("resources/language_button_pressed.png", "buttonPressedLanguage");
-	assetManager.addImage("resources/genericButtonOn.png", "buttonOn");
-	assetManager.addImage("resources/genericButtonOff.png", "buttonOff");
+	assetManager.addImage("resources/backgrounds/MenuSplash.png", "menuSplash", true);
+	assetManager.addImage("resources/backgrounds/MenuSplashTraining.png", "menuSplashTraining", true);
+	assetManager.addImage("resources/button_unpressed.png", "buttonUnpressed", true);
+	assetManager.addImage("resources/button_pressed.png", "buttonPressed", true);
+	assetManager.addImage("resources/language_button_unpressed.png", "buttonUnpressedLanguage", true);
+	assetManager.addImage("resources/language_button_pressed.png", "buttonPressedLanguage", true);
+	assetManager.addImage("resources/genericButtonOn.png", "buttonOn", true);
+	assetManager.addImage("resources/genericButtonOff.png", "buttonOff", true);
 
-	assetManager.addImage("resources/backgrounds/PlayerSelect.png", "playerSelect");
-	assetManager.addImage("resources/keyboardIcon.png", "keyboardIcon");
-	assetManager.addImage("resources/gamepadIcon.png", "gamepadIcon");
-	assetManager.addImage("resources/keyboard.png", "keyboard");
-	assetManager.addImage("resources/PerspectiveToggleAbsolute.png", "perspectiveToggleAbsolute");
-	assetManager.addImage("resources/PerspectiveToggleRelative.png", "perspectiveToggleRelative");
-	assetManager.addImage("resources/PowerDashMacro.png", "powerDashMacro");
+	assetManager.addImage("resources/backgrounds/PlayerSelect.png", "playerSelect", true);
+	assetManager.addImage("resources/keyboardIcon.png", "keyboardIcon", true);
+	assetManager.addImage("resources/gamepadIcon.png", "gamepadIcon", true);
+	assetManager.addImage("resources/keyboard.png", "keyboard", true);
+	assetManager.addImage("resources/PerspectiveToggleAbsolute.png", "perspectiveToggleAbsolute", true);
+	assetManager.addImage("resources/PerspectiveToggleRelative.png", "perspectiveToggleRelative", true);
+	assetManager.addImage("resources/PowerDashMacro.png", "powerDashMacro", true);
 
-	assetManager.addSpritesheet("resources/backgrounds/MenuSplashScarf.png", "menuSplashScarf", "//");
-	assetManager.addSpritesheet("resources/menuFire.png", "menuFire", "//");
-	assetManager.addSpritesheet("resources/keys.png", "keys", "//");
-	assetManager.addSpritesheet("resources/nena.png", "nena", "//");
-	assetManager.addSpritesheet("resources/HitEffect.png", "hitEffect", "//");
-	assetManager.addSpritesheet("resources/HitBlockEffect.png", "hitBlockEffect", "//");
-	assetManager.addSpritesheet("resources/HitParryEffect.png", "hitParryEffect", "//");
-	assetManager.addSpritesheet("resources/CounterHitEffect.png", "counterHitEffect", "//");
-	assetManager.addSpritesheet("resources/PunishHitEffect.png", "punishHitEffect", "//");
-	assetManager.addSpritesheet("resources/PowerDashEffect.png", "powerDashEffect", "//");
-	assetManager.addSpritesheet("resources/PowerDashSlow.png", "powerDashSlow", "//");
-	assetManager.addSpritesheet("resources/sike_wawa_blue.png", "sikeWawaBlue", "//");
-	assetManager.addSpritesheet("resources/sike_wawa_red.png", "sikeWawaRed", "//");
+	assetManager.addSpritesheetImp("resources/backgrounds/MenuSplashScarf.png", "menuSplashScarf", "//");
+	assetManager.addSpritesheetImp("resources/backgrounds/MenuSplashRibbon.png", "menuSplashRibbon", "//");
+	assetManager.addSpritesheetImp("resources/menuFire.png", "menuFire", "//");
+	assetManager.addSpritesheetImp("resources/keys.png", "keys", "//");
+	assetManager.addSpritesheetImp("resources/nena.png", "nena", "//");
+	assetManager.addSpritesheetImp("resources/HitEffect.png", "hitEffect", "//");
+	assetManager.addSpritesheetImp("resources/HitBlockEffect.png", "hitBlockEffect", "//");
+	assetManager.addSpritesheetImp("resources/HitParryEffect.png", "hitParryEffect", "//");
+	assetManager.addSpritesheetImp("resources/CounterHitEffect.png", "counterHitEffect", "//");
+	assetManager.addSpritesheetImp("resources/PunishHitEffect.png", "punishHitEffect", "//");
+	assetManager.addSpritesheetImp("resources/PowerDashEffect.png", "powerDashEffect", "//");
+	assetManager.addSpritesheetImp("resources/PowerDashSlow.png", "powerDashSlow", "//");
+	assetManager.addSpritesheetImp("resources/sike_wawa_blue.png", "sikeWawaBlue", "//");
+	assetManager.addSpritesheetImp("resources/sike_wawa_red.png", "sikeWawaRed", "//");
 
 	assetManager.addSound("resources/music/telo nasa lon ilo.wav", "teloNasaLonIlo", {
 		loop: true,
@@ -162,28 +179,30 @@ function setup() {
 
 	assetManager.addSound("resources/sfx/8bithit.wav", "8BitHit", {
 		volume: 0.3
-	});
+	}, true);
 
 	assetManager.addSound("resources/sfx/grab.wav", "grab", {
 		volume: 1
-	});
+	}, true);
 
-	assetManager.addSound("resources/sfx/explosion.wav", "explosion");
+	assetManager.addSound("resources/sfx/explosion.wav", "explosion", {}, true);
+
+	assetManager.addSound("resources/sfx/explosion2.wav", "explosion2", {}, true);
 
 	assetManager.addSound("resources/sfx/awen.wav", "awen", {
 		volume: 0.9
-	});
+	}, true);
 
 	assetManager.addSound("resources/sfx/ParrySound.wav", "parry", {
 		volume: 1.0
-	});
+	}, true);
 
 	assetManager.addSound("resources/sfx/PowerDash.wav", "powerDash", {
 		volume: 0.7
-	});
+	}, true);
 	assetManager.addSound("resources/sfx/PowerDashSlow.wav", "powerDashSlow", {
 		volume: 0.8
-	});
+	}, true);
 
 	assetManager.addJSON("resources/misc/text.json", "text");
 
@@ -248,55 +267,71 @@ function draw() {
 
 	if (currentScreen) {
 
-		let lostDrawCurrent = 0;
-		if (!debug.noSkipDraw) {
-			if (deltaTime > 100 / 6)
-				lostDrawCurrent = Math.min(0.5, deltaTime * 6 / 100 - 1);
-			lostDrawFrames += lostDrawCurrent;
-			lostDrawFrames = constrain(lostDrawFrames, 0, 4);
-		}
+		if (!dynamicLoadingDisplay) {
+			let lostDrawCurrent = 0;
+			if (!debug.noSkipDraw) {
+				if (deltaTime > 100 / 6)
+					lostDrawCurrent = Math.min(0.5, deltaTime * 6 / 100 - 1);
+				lostDrawFrames += lostDrawCurrent;
+				lostDrawFrames = constrain(lostDrawFrames, 0, 4);
+			}
 
-		if (controlsManager.overrideScreen) {
-			controlsManager.run();
-		} else if (playersManager.overrideScreen) {
-			playersManager.run();
-		} else if (frameAdvance && !controlsManager.overrideScreen && !playersManager.overrideScreen) {
-			currentScreen.run();
+			if (controlsManager.overrideScreen) {
+				controlsManager.run();
+			} else if (playersManager.overrideScreen) {
+				playersManager.run();
+			} else if (frameAdvance && !controlsManager.overrideScreen && !playersManager.overrideScreen) {
+				currentScreen.run();
 
-			if (!debug.noSkipFrames && currentScreen.canSkipFrames) {
-				if (deltaTime > 100 / 6 + lostDrawCurrent)
-					lostFrames += deltaTime * 6 / 100 - 1 - lostDrawCurrent;
-				lostFrames = constrain(lostFrames, 0, 4);
+				if (!debug.noSkipFrames && currentScreen.canSkipFrames) {
+					if (deltaTime > 100 / 6 + lostDrawCurrent)
+						lostFrames += deltaTime * 6 / 100 - 1 - lostDrawCurrent;
+					lostFrames = constrain(lostFrames, 0, 4);
 
-				let i = 0;
-				while (lostFrames >= 1 && i < 2) {//This is an attempt to make the game feel less stuttery - it's possible that this could break the consistency of frame perfect stuff, IDK
-					if (!debug.noUpdateControls) {
-						for (let c in controls) {
-							controls[c].update();
+					let i = 0;
+					while (lostFrames >= 1 && i < 2) {//This is an attempt to make the game feel less stuttery - it's possible that this could break the consistency of frame perfect stuff, IDK
+						if (!debug.noUpdateControls) {
+							for (let c in controls) {
+								controls[c].update();
+							}
 						}
-					}
-					currentScreen.run();
-					lostFrames--;
-					i++;
+						currentScreen.run();
+						lostFrames--;
+						i++;
 
-					if (debug.displayFrameRate) {
-						debug.effectiveFrameRates[debug.effectiveFrameRates.length - 1]++;
+						if (debug.displayFrameRate) {
+							debug.effectiveFrameRates[debug.effectiveFrameRates.length - 1]++;
+						}
 					}
 				}
 			}
 		}
 
 		//let drawStartTime = performance.now();
-		if (!debug.noSkipDraw && lostDrawFrames > 1 && currentScreen.canSkipFrames) {
-			lostDrawFrames -= 0.5;//Prevent the frame from being drawn if the framerate is lagging behind
-		} else if (!debug.negateDraw) {//If the debug option to negate drawing is toggled off
-			if (!playersManager.overrideScreen)
-				currentScreen.draw(g);
+		if (graphicsSettings.capFPS <= 1 || frameCount % graphicsSettings.capFPS < graphicsSettings.capFPS - 1) {
+			if (!debug.noSkipDraw && lostDrawFrames > 1 && currentScreen.canSkipFrames) {
+				lostDrawFrames -= 0.5;//Prevent the frame from being drawn if the framerate is lagging behind
+			} else if (!debug.negateDraw) {//If the debug option to negate drawing is toggled off
+				if (dynamicLoadingDisplay) {
+					//TODO add loading screen visuals here
+					drawLoadingScreen(g);
+					if (assetManager.getRealDisplayPercent() >= 100 && !forceDynamicLoadingDisplay) {
+						dynamicLoadingDisplay = false;
+						if (currentScreen.loaded)
+							currentScreen.loaded();
+						else
+							print("Current screen does not have a \"loaded\" function");
+					}
+				} else {
+					if (!playersManager.overrideScreen)
+						currentScreen.draw(g);
 
-			if (controlsManager.overrideScreen) {
-				controlsManager.draw(g);
-			} else if (playersManager.overrideScreen) {
-				playersManager.draw(g);
+					if (controlsManager.overrideScreen) {
+						controlsManager.draw(g);
+					} else if (playersManager.overrideScreen) {
+						playersManager.draw(g);
+					}
+				}
 			}
 		}
 		//previousDrawTime = performance.now() - drawStartTime;
@@ -335,6 +370,17 @@ function draw() {
 	g.rect(0, 0, 512, 384);*/
 
 	image(g, 0, 0);
+
+	if (savingReplayDisplay) {
+		stroke(0, 0, 14);
+		fill(195, 10, 20);
+		textFont(assetManager.fonts.asuki);
+		textAlign(LEFT, BASELINE);
+		textSize(30 * width / 512);
+		let savingText = gt("savingReplay");
+		text(savingText.substring(0, savingText.length - 3 + (frameCount % 4)), 10 * width / 512, height - 30 * width / 512);
+		textAlign(LEFT, BASELINE);
+	}
 
 	if (errorDisplayFrames > 0) {
 		errorDisplayFrames--;
@@ -540,6 +586,29 @@ function loadSaveObject(saveFile) {
 			}
 			debug.noSplit = graphicsSettings.noSplitSheets;
 			break;
+		case "0.1.0":
+			controlsManager.defaultKeyboardControls1 = saveFile.defaultKeyboardControls1;
+			controlsManager.defaultKeyboardControls2 = saveFile.defaultKeyboardControls2;
+			controlsManager.defaultGamepadControls = saveFile.defaultGamepadControls;
+
+			keyboard1 = new Controls("keyboard", keys, controlsManager.defaultKeyboardControls1.keys, controlsManager.defaultKeyboardControls1.arrows, controlsManager.defaultKeyboardControls1.deadzones);
+			keyboard2 = new Controls("keyboard", keys, controlsManager.defaultKeyboardControls2.keys, controlsManager.defaultKeyboardControls2.arrows, controlsManager.defaultKeyboardControls2.deadzones);
+			controls.push(keyboard1);
+			controls.push(keyboard2);
+			controlsManager.keyboardControls.push(keyboard1);
+			controlsManager.keyboardControls.push(keyboard2);
+			currentLanguage = saveFile.currentLanguage;
+			promptTutorial = saveFile.promptTutorial;
+
+			for (let i in saveFile.graphicsSettings) {
+				graphicsSettings[i] = saveFile.graphicsSettings[i];
+			}
+			debug.noSplit = graphicsSettings.noSplitSheets;
+
+			maxReplays = saveFile.maxReplays;
+			autoReplay = saveFile.autoReplay;
+
+			break;
 	}
 }
 
@@ -587,6 +656,9 @@ function writeSaveFile() {
 		arrows: [0],
 		deadzones: [0.25]
 	};*/
+	saveFile.autoReplay = autoReplay;
+	saveFile.maxReplays = maxReplays;
+
 	saveFile.defaultKeyboardControls1 = controlsManager.defaultKeyboardControls1;
 	saveFile.defaultKeyboardControls2 = controlsManager.defaultKeyboardControls2;
 	saveFile.defaultGamepadControls = controlsManager.defaultGamepadControls;
@@ -597,9 +669,53 @@ function writeSaveFile() {
 
 	saveFile.promptTutorial = promptTutorial;
 
-	saveFile.version = "0.0.4";
+	saveFile.version = "0.1.0";
 
 	window.electronAPI.writeSave(saveFile);
+}
+
+function drawLoadingScreen(g) {
+	g.background(0);
+
+	if (assetManager.getFontLoadedFraction() >= 1 && !forceDynamicLoadingDisplay) {
+		/*let text = [];
+		g.textFont(assetManager.fonts.asuki);
+		text = ["󱤴", "󱤬", "󱤉", "󱤰"];
+		g.fill(255);
+		g.textSize(30);
+		g.textAlign(CENTER, CENTER);
+		let displayText = text;*/
+		if (loadingImages) {
+			for (let i in loadingImages) {
+				let offset = 0;
+				if ((floor(frameCount / 10) - i + 4) % 4 < 1)
+					offset = 7;
+				g.image(loadingImages[i], width / 2 - 45 + 20 * i, height / 2 - offset - 50);
+				//g.text(displayText[i], width / 2 - 30 + 20 * i, height / 2 - offset - 35);
+			}
+			g.textFont(assetManager.fonts.asuki);
+			g.fill(255);
+			g.noStroke();
+			g.textSize(30);
+			g.textAlign(CENTER, CENTER);
+			g.text(floor(max(assetManager.getNonImpDisplayPercent(), /*assetManager.getRealDisplayPercentNonsmall()*/0)) + "%", windowWidth / 2, windowHeight / 2);
+		} else {
+			loadingImages = [];
+			let g = createGraphics(30, 30);
+			let displayText = ["󱤴", "󱤬", "󱤉", "󱤰"];
+			for (let i = 0; i < text.length; i++) {
+				g.textFont(assetManager.fonts.asuki);
+				g.fill(255);
+				g.noStroke();
+				g.textSize(30);
+				g.textAlign(CENTER, CENTER);
+				g.text(displayText[i], 15, 15);
+				loadingImages.push(g.get());
+				g.clear();
+			}
+			g.remove();
+		}
+	}
 }
 
 function reloadGame() {
@@ -748,8 +864,13 @@ function defaultSerialize(obj) {
 	return outputObject;
 }
 
-window.onerror = function (msg, url, linenumber) {
-	alert('Error message: ' + msg + '\nURL: ' + url + '\nLine Number: ' + linenumber);
-	console.log('Error message: ' + msg + '\nURL: ' + url + '\nLine Number: ' + linenumber);
-	return true;
+window.onerror = function (msg, url, linenumber, colno, error) {
+	totalAlerts += '\n' + 'Error message ' + timesAlerted + ': ' + msg + '\nURL: ' + url + '\nLine Number: ' + linenumber + '\n' + colno;
+	if (timesAlerted < 3)
+		alert('Error message ' + timesAlerted + ': ' + msg + '\nURL: ' + url + '\nLine Number: ' + linenumber + '\n' + colno);
+	if (timesAlerted === 3)
+		alert('Too many errors - please send this error message to Ufuueueuru:' + totalAlerts);
+	timesAlerted++;
+	//console.log('Error message: ' + msg + '\nURL: ' + url + '\nLine Number: ' + linenumber);
+	return false;
 }

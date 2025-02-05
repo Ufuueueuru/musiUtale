@@ -22,8 +22,8 @@ class Camera {
      * @param {number} y
      */
     setCenter(x, y) {
-        this.x = x - this.width / 2 / this.zoom / this.zoom;
-        this.y = y - this.height / 2 / this.zoom / this.zoom;
+        this.x = x - this.width / 2 / this.zoom;
+        this.y = y - this.height / 2 / this.zoom;
     }
 
     /**
@@ -39,8 +39,9 @@ class Camera {
      * @param {Graphics} g
      */
     transform(g) {
-        g.translate(-this.x, -this.y);
+        g.translate(this.width / 2 * this.zoom, this.height / 2 * this.zoom);
         g.scale(this.zoom);
+        g.translate(-this.x - this.width / 2, -this.y - this.height / 2);
     }
 
     /**
@@ -65,7 +66,7 @@ class Camera {
                 zoom = 1;
                 break;
             case "close":
-                zoom = 1;
+                zoom = 0.75;
                 break;
             case "far":
                 zoom = 1.25;

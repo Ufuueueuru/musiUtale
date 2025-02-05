@@ -129,6 +129,15 @@
     }
   },
 
+  "savingReplay": {
+    "en": {
+      "text": "Saving replay..."
+    },
+    "tp": {
+      "text": "󱤴󱤖󱤓󱤉󱥠󱥱..."
+    }
+  },
+
   "neutral": {
     "en": {
       "text": "neutral"
@@ -314,6 +323,14 @@
       "text": "󱥱󱤬󱤝"
     }
   },
+  "mainMenuLearn": {
+    "en": {
+      "text": "Learn"
+    },
+    "tp": {
+      "text": "󱤖󱥡"
+    }
+  },
   "mainMenuOther": {
     "en": {
       "text": "Other"
@@ -352,6 +369,15 @@
     },
     "tp": {
       "text": "󱤂"
+    }
+  },
+
+  "menuKamaWawaReplays": {
+    "en": {
+      "text": "Replays"
+    },
+    "tp": {
+      "text": "󱥠󱥩"
     }
   },
 
@@ -400,7 +426,7 @@
       "text": "Credits"
     },
     "tp": {
-      "text": "󱥧󱤑"
+      "text": "󱥧󱥉"
     }
   },
   "otherMenuBack": {
@@ -551,6 +577,15 @@
     },
     "tp": {
       "text": "󱥸󱤂󱤧󱤬󱤪\"mods\""
+    }
+  },
+
+  "noReplays": {
+    "en": {
+      "text": "No replays"
+    },
+    "tp": {
+      "text": "󱥠󱥩󱥱󱤂󱤧󱤬"
     }
   },
 
