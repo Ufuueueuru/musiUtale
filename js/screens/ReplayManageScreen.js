@@ -137,12 +137,13 @@ class ReplayManageScreen extends Screen {
         read.addEventListener(
             "load",
             (() => {
-                this.replay.jsonData = read.result;
-                this.replay.onLoad();
+                let replay = new Replay("");
+                replay.jsonData = read.result;
+                replay.onLoad();
 
                 currentScreen.destruct();
-                currentScreen = new ReplayScreen("WebReplay", this.replay.characters, [undefined, undefined], this.replay.stage, this.replay.firstTo);
-                currentScreen.replay = this.replay;
+                currentScreen = new ReplayScreen("WebReplay", replay.characters, [undefined, undefined], replay.stage, replay.firstTo);
+                currentScreen.replay = replay;
 
                 currentScreen.replay.deserialize(currentScreen.replay.jsonData);
                 currentScreen.replay.initLoad(currentScreen);
