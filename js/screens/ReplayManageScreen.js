@@ -133,7 +133,6 @@ class ReplayManageScreen extends Screen {
 
     receiveWebFile(file) {
         let read = new FileReader();
-        read.readAsText(file);
 
         read.addEventListener(
             "load",
