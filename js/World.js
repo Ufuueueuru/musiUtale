@@ -139,6 +139,47 @@ class World {
         return randomized;
     }
 
+    resetAndLoad(parentScreen) {
+        this.player1Score = 0;
+        this.player2Score = 0;
+        this.winScreen = false;
+        this.savedReplay = false;
+        let randomizedFirst = this.completeReset();
+        if (randomizedFirst) {
+            assetManager.resetAssets();
+            this.addShouldLoad();
+        }
+        if (parentScreen) {
+            parentScreen.player1 = this.players[0];
+            parentScreen.player2 = this.players[1];
+            this.stopMusic();
+            if (this.randomizeStage) {
+                parentScreen.world = new stages[floor(random(0, stages.length - 1))](512 * graphicsSettings.resolutionMult, 384 * graphicsSettings.resolutionMult);
+                parentScreen.world.randomizeStage = true;
+                parentScreen.world.setFirstTo(this.firstTo);
+                parentScreen.world.addPlayer(this.players[0]);
+                parentScreen.world.addPlayer(this.players[1]);
+                parentScreen.world.sikeWawa.setPlayers(this.players[0], this.players[1]);
+                let randomized = parentScreen.world.completeReset();
+                if (randomized) {
+                    assetManager.resetAssets();
+                    parentScreen.world.addShouldLoad();
+                }
+                //parentScreen.world.playMusic();
+                if (parentScreen.player1.controls.world)
+                    parentScreen.player1.controls.world = this.world;
+                if (parentScreen.player2.controls.world)
+                    parentScreen.player2.controls.world = this.world;
+            } else {
+                this.playMusic();
+            }
+            if (parentScreen.replay) {
+                parentScreen.replay = new Replay();
+            }
+        }
+        assetManager.loadAssetsWithScreen();
+    }
+
     randomizeCharacter(i) {
         let out = floor(random(0, characters.length - 1));
         let controls = this.players[i].controls;
@@ -480,7 +521,7 @@ class World {
             this.drawHUD(this.g);
         }
 
-        if (this.winScreen) {
+        /*if (this.winScreen) {
             this.g.background(0, 0, 15, 130);
             this.g.fill(179, 156, 196);
             this.g.textFont(assetManager.fonts.asuki);
@@ -490,7 +531,7 @@ class World {
             this.g.textAlign(LEFT, BASELINE);
 
             assetManager.spritesheets.nena.drawFrame(this.g, 31, 236, 196, 40, 40);
-        }
+        }*/
 
         this.g.pop();
 
@@ -670,7 +711,7 @@ class World {
             this._run();
 
         if (this.winScreen) {
-            for (let i in controls) {
+            /*for (let i in controls) {
                 if (!controls[i].computer && !controls[i].netplay) {
                     if (controls[i].clickedAbsolute("select") || debug.skipWinScreen) {
                         this.player1Score = 0;
@@ -715,7 +756,7 @@ class World {
                         break;
                     }
                 }
-            }
+            }*/
         }
 
         //This should always be here (It might actually need to go at the very end of this._run)
@@ -747,7 +788,7 @@ class World {
             } else {
                 this.winScreen = true;
                 this.resetCounter++;
-                if (parentScreen?.replay && !this.savedReplay) {
+                if (parentScreen?.replay && !this.savedReplay && autoReplay) {
                     savingReplayDisplay = true;
                     saveReplay(parentScreen.replay, () => {
                         savingReplayDisplay = false;

@@ -47,6 +47,12 @@ class ReplayManageScreen extends Screen {
     }
 
     init() {
+        if (webVersion) {
+            keyPressedHelper = (event) => {
+                promptFile.click();
+            };
+        }
+
         this.loaded = false;
 
         this.scroll = 0;
@@ -58,6 +64,10 @@ class ReplayManageScreen extends Screen {
         this.replayList = [];
 
         this.menu = new Menu(KamaWawaScreen);
+
+        if (webVersion) {
+            let newButton = new MenuItem(20, 75 + this.menu.menus.length * 40, assetManager.images.buttonPressed, assetManager.images.buttonUnpressed, undefined, gt("replayUploadFile"));
+        }
 
         (async () => {
             this.savedList = await window.electronAPI.readdir("/replays");
@@ -89,6 +99,7 @@ class ReplayManageScreen extends Screen {
                     if (this.totalList[i].substring(this.totalList[i].length - 8, this.totalList[i].length) === ".jsonhlp")
                         jsonFileName = "replays/" + this.totalList[i].substring(0, this.totalList[i].length - 3);
                     let pressFunc = (function (id, src) {
+                        currentScreen.destruct();
                         currentScreen = new ReplayScreen(src, this.replayList[id].characters, [undefined, undefined], this.replayList[id].stage, this.replayList[id].firstTo);
                     }).bind(this, this.replayList.length - 1, "replays/" + this.totalList[i].substring(0, this.totalList[i].length - 3));
                     let pressedFunc = (function (id) {
@@ -114,5 +125,14 @@ class ReplayManageScreen extends Screen {
         for (let i in characters) {
             this.characterNames[i] = new characters[i]().name;
         }
+    }
+
+    destruct() {
+        keyPressedHelper = () => { };
+    }
+
+    receiveWebFile(file) {
+        currentScreen.destruct();
+        currentScreen = new ReplayScreen(file, file.characters, [undefined, undefined], file.stage, file.firstTo);
     }
 }

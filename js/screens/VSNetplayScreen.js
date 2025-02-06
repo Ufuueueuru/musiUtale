@@ -115,6 +115,57 @@ class VSNetplayScreen extends Screen {
 
         debug.noUpdateControls = true;
         debug.noSkipFrames = false;
+
+        this.netplayAutoSavedReplay = false;
+        this.world.savedReplay = false;
+        this.replay = new Replay();
+        this.currentReplayFrame = 0;
+
+        this.winScreenMenuOn = false;
+        this.winScreenMenu = new Menu();
+
+        let playAgainButton = new MenuItem(128, 90, select, deselect, undefined, gt("battlePlayAgain"), () => {
+            this.world.player1Score = 0;
+            this.world.player2Score = 0;
+            this.world.winScreen = false;
+            this.world.stopMusic();
+            //this.reRandomize();
+            this.world.playMusic();
+            this.world.completeReset();
+            this.player1 = this.world.players[0];
+            this.player2 = this.world.players[1];
+
+            //this.resetWorld();
+            this.replay = new Replay();
+            this.netplayAutoSavedReplay = false;
+        });
+        //let playerSelectWinButton = new MenuItem(128, 140, select, deselect, undefined, gt("battlePlayerSelect"), playerSelectButton.pressFunction);
+        //let editControlsWinButton = new MenuItem(128, 190, select, deselect, undefined, gt("battleEditControls"), editControlsButton.pressFunction);
+        let characterSelectWinButton = new MenuItem(128, 240, select, deselect, undefined, gt("battleCharacterSelect"), characterSelectButton.pressFunction);
+        let saveReplayButton = new MenuItem(128, 290, select, deselect, undefined, gt("battleSaveReplay"), () => {
+            savingReplayDisplay = true;
+            saveReplayManual(this.replay, () => {
+                savingReplayDisplay = false;
+            }, () => {//If the replays are maxed out
+                savingReplayDisplay = false;
+            });
+        });
+        let exitWinButton = new MenuItem(128, 340, select, deselect, undefined, gt("battleExit"), exitButton.pressFunction);
+
+        playAgainButton.addMoves(new MenuMove(characterSelectWinButton, Angle.DOWN));
+        //playerSelectWinButton.addMoves(new MenuMove(playAgainButton, Angle.UP));
+        //playerSelectWinButton.addMoves(new MenuMove(editControlsWinButton, Angle.DOWN));
+        //editControlsWinButton.addMoves(new MenuMove(playerSelectWinButton, Angle.UP));
+        //editControlsWinButton.addMoves(new MenuMove(characterSelectWinButton, Angle.DOWN));
+        characterSelectWinButton.addMoves(new MenuMove(playAgainButton, Angle.UP));
+        characterSelectWinButton.addMoves(new MenuMove(saveReplayButton, Angle.DOWN));
+        saveReplayButton.addMoves(new MenuMove(characterSelectWinButton, Angle.UP));
+        saveReplayButton.addMoves(new MenuMove(exitWinButton, Angle.DOWN));
+        exitWinButton.addMoves(new MenuMove(saveReplayButton, Angle.UP));
+
+        this.winScreenMenu.addMenuItems(playAgainButton, characterSelectWinButton, saveReplayButton, exitWinButton);
+
+        this.winScreenMenu.setTarget(playAgainButton);
     }
 
     getNextData() {
@@ -147,6 +198,10 @@ class VSNetplayScreen extends Screen {
         //while (lostFrames > 1 && ifCount < 3) {
             //if (this.paused && ifCount > 1)
                 //break;
+        while (this.farPast[this.currentReplayFrame] && this.farPast[this.currentReplayFrame].dataReceived) {
+            this.replay.recordControls(this.farPast[this.currentReplayFrame].gameState, [this.farPast[this.currentReplayFrame].player1Inputs, this.farPast[this.currentReplayFrame].player2Inputs]);
+            this.currentReplayFrame++;
+        }
 
         this.updateControls();
         this.testShouldPause();
@@ -183,6 +238,26 @@ class VSNetplayScreen extends Screen {
         if (this.endRun)
             return;
 
+        if (this.world.winScreen) {
+            this.leaveMenu = false;
+            if (!this.winScreenMenuOn) {
+                this.winScreenMenuOn = true;
+                this.winScreenMenu.transitioning = 30;
+            }
+        }
+        if (this.winScreenMenuOn) {
+            this.winScreenMenu.run();
+            if (this.replay && !this.netplayAutoSavedReplay && autoReplay && this.currentReplayFrame >= this.farPast.length) {
+                savingReplayDisplay = true;
+                saveReplay(parentScreen.replay, () => {
+                    savingReplayDisplay = false;
+                }, () => {//If the replays are maxed out
+                    savingReplayDisplay = false;
+                });
+                this.savedReplay = true;
+            }
+        }
+
         if (this.leaveMenu) {
             if (this.pauseMenu.transitioning <= 0) {
                 this.pauseMenu.run();
@@ -207,7 +282,7 @@ class VSNetplayScreen extends Screen {
     }
 
     runControls(control) {
-        if (control.clickedAbsolute("start")) {
+        if (control.clickedAbsolute("start") && !this.winScreenMenuOn) {
             this.leaveMenu = !this.leaveMenu;
             this.pausedControls = control;
         }
@@ -232,7 +307,7 @@ class VSNetplayScreen extends Screen {
         if (this.pausedControls === control && this.leaveMenu && control.clickedAbsolute("back")) {//Leave the menu by pressing back
             this.leaveMenu = false;
         }
-        if (this.world.winScreen && (control.clickedAbsolute("select") || debug.skipWinScreen)) {
+        /*if (this.world.winScreen && (control.clickedAbsolute("select") || debug.skipWinScreen)) {
             this.world.player1Score = 0;
             this.world.player2Score = 0;
             this.world.winScreen = false;
@@ -244,7 +319,7 @@ class VSNetplayScreen extends Screen {
             this.player2 = this.world.players[1];
 
             //this.resetWorld();
-        }
+        }*/
     }
 
     updateControls() {
@@ -496,6 +571,8 @@ class VSNetplayScreen extends Screen {
         this.farPast = [];
         this.future = [];
         this.dataQueue = [];
+
+        this.currentReplayFrame = 0;
     }
 
     reRandomize() {
@@ -570,6 +647,20 @@ class VSNetplayScreen extends Screen {
         let canvasSlope = this.world.height / this.world.width;
         let minSize = min(windowWidth, windowHeight / canvasSlope);
         this.world.draw(g, (windowWidth - minSize) / 2, (windowHeight - minSize * canvasSlope) / 2, minSize, minSize * canvasSlope);
+
+        if (this.winScreenMenuOn) {
+            g.textFont(assetManager.fonts.asuki);
+            g.background(15, 0, 0, 50);
+            g.textAlign(CENTER, CENTER);
+            g.textSize(80 * minSize / 512);
+            g.stroke(15, 0, 0);
+            g.strokeWeight(5);
+            g.fill(170, 40, 60);
+            if (this.pausedPlayer === this.player2Controls)
+                g.fill(47, 31, 171);
+            g.text(gt("gameFinishWinScreen"), windowWidth / 2, (windowHeight - minSize * canvasSlope) / 2 + 40 * minSize / 512);//musi li awen
+            this.winScreenMenu.draw(g, minSize, minSize * 384 / 512, minSize * 0.5, minSize * canvasSlope * 0.1);
+        }
 
         if (this.leaveMenu) {
             g.textFont(assetManager.fonts.asuki);

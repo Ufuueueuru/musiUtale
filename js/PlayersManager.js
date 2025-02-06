@@ -127,9 +127,10 @@ class PlayersManager {
                             currentScreen.setNetplay();
                         currentScreen.setControls(this.chosenControls, fakeControls);
                     }
-                } else if (this.controls[i].clickedAbsolute("back") && this.backScreen) {
+                } else if (this.controls[i].clickedAbsolute("back")) {
                     this.overrideScreen = false;
-                    currentScreen = new this.backScreen();
+                    if (this.backScreen)
+                        currentScreen = new this.backScreen();
                 }
             }
         }

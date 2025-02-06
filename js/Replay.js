@@ -119,6 +119,11 @@ class Replay {
         this.appVersion = appVersion;
     }
 
+    /**
+     * Records the current state data of the world
+     * @param {World} world
+     * @param {number} frameCount
+     */
     record(world, frameCount = world.frameCount) {
         if (!this.initialized) {
             this.initRecord(world);
@@ -127,6 +132,23 @@ class Replay {
         this.inputs[frameCount] = [];
         for (let i = 0; i < world.players.length; i++) {
             this.inputs[frameCount].push(world.players[i].controls.serialize());
+        }
+    }
+
+    /**
+     * This function is specifically for saving replay data while in netplay (the passed in controls array expects the data to be already-serialized controls data)
+     * @param {World} world
+     * @param {Object} controlsArray
+     * @param {number} frameCount
+     */
+    recordControls(world, controlsArray, frameCount = world.frameCount) {
+        if (!this.initialized) {
+            this.initRecord(world);
+        }
+
+        this.inputs[frameCount] = [];
+        for (let i = 0; i < controls.length; i++) {
+            this.inputs[frameCount].push(controlsArray[i]);
         }
     }
 
@@ -183,7 +205,7 @@ function saveReplay(replay, finish = () => { }, fail = () => { }) {
         //let timey = Date.now();
         let files = await window.electronAPI.readdir("/replays/auto");
         files = files.filter((s) => s.substring(s.length - 5, 5) === ".json");
-        print(files);
+        //print(files);
         //print("readdir: " + (Date.now() - timey) + "ms");
         //timey = Date.now();
         let data = defaultSerialize(replay);
@@ -192,7 +214,45 @@ function saveReplay(replay, finish = () => { }, fail = () => { }) {
             addReplay = await window.electronAPI.deleteReplay("auto/" + files[0]);
         }
         if (addReplay) {
-            let fileName = "auto/autoReplay " + (new Date().toLocaleString("sv-SE").replaceAll("/", "-").replaceAll(":", "_"));
+            let fileName = "auto/replay " + (new Date().toLocaleString("sv-SE").replaceAll("/", "-").replaceAll(":", "_"));
+            setTimeout(async () => {
+                await window.electronAPI.resetReplay();
+                function addData(i, keys) {
+                    setTimeout(async () => {
+                        if (i >= keys.length) {
+                            window.electronAPI.saveCurrentReplay(fileName + ".json");
+                            window.electronAPI.saveReplay(fileName + ".jsonhlp", replay.serializeHLP());
+                            finish();
+                            return;
+                        }
+                        await window.electronAPI.addReplayData(keys[i], data[keys[i]]);
+                        addData(i + 1, keys);
+                    });
+                }
+                addData(0, Object.keys(data));
+            });
+            //window.electronAPI.saveReplay(fileName, data);//sync method
+        }
+        //print("saveReplay: " + (Date.now() - timey) + "ms");
+    })();
+}
+
+function saveReplayManual(replay, finish = () => { }, fail = () => { }) {
+    if (webVersion) return;
+    (async () => {
+        //let timey = Date.now();
+        //let files = await window.electronAPI.readdir("/replays/auto");
+        //files = files.filter((s) => s.substring(s.length - 5, 5) === ".json");
+        //print(files);
+        //print("readdir: " + (Date.now() - timey) + "ms");
+        //timey = Date.now();
+        let data = defaultSerialize(replay);
+        let addReplay = true;
+        //if (files.length >= maxReplays) {
+        //    addReplay = await window.electronAPI.deleteReplay("auto/" + files[0]);
+        //}
+        if (addReplay) {
+            let fileName = "replay " + (new Date().toLocaleString("sv-SE").replaceAll("/", "-").replaceAll(":", "_"));
             setTimeout(async () => {
                 await window.electronAPI.resetReplay();
                 function addData(i, keys) {

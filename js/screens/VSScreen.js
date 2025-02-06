@@ -58,10 +58,46 @@ class VSScreen extends Screen {
 
         this.pauseMenu.setTarget(backButton);
 
-        assetManager.loadAssetsWithScreen();
 
-        if (autoReplay)
+        this.replay = new Replay();
+
+
+        this.winScreenMenuOn = false;
+        this.winScreenMenu = new Menu();
+
+        let playAgainButton = new MenuItem(128, 90, select, deselect, undefined, gt("battlePlayAgain"), () => {
+            this.world.resetAndLoad(currentScreen);
             this.replay = new Replay();
+        });
+        let playerSelectWinButton = new MenuItem(128, 140, select, deselect, undefined, gt("battlePlayerSelect"), playerSelectButton.pressFunction);
+        let editControlsWinButton = new MenuItem(128, 190, select, deselect, undefined, gt("battleEditControls"), editControlsButton.pressFunction);
+        let characterSelectWinButton = new MenuItem(128, 240, select, deselect, undefined, gt("battleCharacterSelect"), characterSelectButton.pressFunction);
+        let saveReplayButton = new MenuItem(128, 290, select, deselect, undefined, gt("battleSaveReplay"), () => {
+            savingReplayDisplay = true;
+            saveReplayManual(this.replay, () => {
+                savingReplayDisplay = false;
+            }, () => {//If the replays are maxed out
+                savingReplayDisplay = false;
+            });
+        });
+        let exitWinButton = new MenuItem(128, 340, select, deselect, undefined, gt("battleExit"), exitButton.pressFunction);
+
+        playAgainButton.addMoves(new MenuMove(playerSelectWinButton, Angle.DOWN));
+        playerSelectWinButton.addMoves(new MenuMove(playAgainButton, Angle.UP));
+        playerSelectWinButton.addMoves(new MenuMove(editControlsWinButton, Angle.DOWN));
+        editControlsWinButton.addMoves(new MenuMove(playerSelectWinButton, Angle.UP));
+        editControlsWinButton.addMoves(new MenuMove(characterSelectWinButton, Angle.DOWN));
+        characterSelectWinButton.addMoves(new MenuMove(editControlsWinButton, Angle.UP));
+        characterSelectWinButton.addMoves(new MenuMove(saveReplayButton, Angle.DOWN));
+        saveReplayButton.addMoves(new MenuMove(characterSelectWinButton, Angle.UP));
+        saveReplayButton.addMoves(new MenuMove(exitWinButton, Angle.DOWN));
+        exitWinButton.addMoves(new MenuMove(saveReplayButton, Angle.UP));
+
+        this.winScreenMenu.addMenuItems(playAgainButton, playerSelectWinButton, editControlsWinButton, characterSelectWinButton, saveReplayButton, exitWinButton);
+
+        this.winScreenMenu.setTarget(playAgainButton);
+
+        assetManager.loadAssetsWithScreen();
     }
 
     draw(g) {
@@ -74,6 +110,19 @@ class VSScreen extends Screen {
         let minSize = min(windowWidth, windowHeight / canvasSlope);
         this.world.draw(g, (windowWidth - minSize) / 2, (windowHeight - minSize * canvasSlope) / 2, minSize, minSize * canvasSlope);
 
+        if (this.winScreenMenuOn) {
+            g.textFont(assetManager.fonts.asuki);
+            g.background(15, 0, 0, 50);
+            g.textAlign(CENTER, CENTER);
+            g.textSize(80 * minSize / 512);
+            g.stroke(15, 0, 0);
+            g.strokeWeight(5);
+            g.fill(170, 40, 60);
+            if (this.pausedPlayer === this.player2Controls)
+                g.fill(47, 31, 171);
+            g.text(gt("gameFinishWinScreen"), windowWidth / 2, (windowHeight - minSize * canvasSlope) / 2 + 40 * minSize / 512);//musi li awen
+            this.winScreenMenu.draw(g, minSize, minSize * 384 / 512, minSize * 0.5, minSize * canvasSlope * 0.1);
+        }
 
         if (this.paused) {
             g.textFont(assetManager.fonts.asuki);
@@ -107,6 +156,17 @@ class VSScreen extends Screen {
         }**/
         //this.player1.controls = this.computer1;
         //this.player2.controls = this.computer2;
+
+        if (this.world.winScreen) {
+            this.paused = false;
+            if (!this.winScreenMenuOn) {
+                this.winScreenMenuOn = true;
+                this.winScreenMenu.transitioning = 30;
+            }
+        }
+        if (this.winScreenMenuOn) {
+            this.winScreenMenu.run();
+        }
 
         if (!this.paused) {
             let max = debug.negateDraw ? debug.throttleRun : 1;
@@ -142,7 +202,7 @@ class VSScreen extends Screen {
             if (controls[i].computer)
                 continue;
             if (controls[i].clickedAbsolute("start")) {
-                if (!this.paused) {
+                if (!this.paused && !this.winScreenMenuOn) {
                     this.paused = true;
                     this.pauseMenu.transitioning = 30;
                     this.pausedPlayer = controls[i];

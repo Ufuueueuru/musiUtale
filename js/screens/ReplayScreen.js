@@ -23,13 +23,20 @@ class ReplayScreen extends Screen {
         let backButton = new MenuItem(128, 90, select, deselect, undefined, gt("battleBack"), () => {
             this.bufferUnpause = 4;
         });
-        let playerSelectButton = new MenuItem(128, 150, select, deselect, undefined, gt("battlePlayerSelect"), () => {
-            
+        let playerSelectButton = new MenuItem(128, 150, select, deselect, undefined, gt("replayTools"), () => {
+            this.replayToolsOn = !this.replayToolsOn;
+            if (this.replayToolsOn) {
+                this.setControls([null, null]);
+                this.bufferUnpause = 4;
+            }
         });
-        let editControlsButton = new MenuItem(128, 210, select, deselect, undefined, gt("battleEditControls"), () => {
-            
+        let editControlsButton = new MenuItem(128, 210, select, deselect, undefined, gt("replayTakeover"), () => {
+            this.playingReplay = true;
+            this.replayToolsOn = false;
+            playersManager.openScreen();
+            playersManager.resetPositions(undefined);
         });
-        let characterSelectButton = new MenuItem(128, 270, select, deselect, undefined, gt("battleCharacterSelect"), () => {
+        let characterSelectButton = new MenuItem(128, 270, select, deselect, undefined, "", () => {
             
         });
         let exitButton = new MenuItem(128, 330, select, deselect, undefined, gt("battleExit"), () => {
@@ -49,20 +56,39 @@ class ReplayScreen extends Screen {
         this.pauseMenu.addMenuItems(backButton, playerSelectButton, editControlsButton, characterSelectButton, exitButton);
 
         this.pauseMenu.setTarget(backButton);
-
+        
         this.replay = new Replay(replayDest);
+        this.playingReplay = true;
+        this.currentPlayback = 0;
+        this.playbackSpeed = 1;
 
-        this.replay.loadJSON((() => {
-            this.replay.deserialize(this.replay.jsonData);
+        this.replayTotalFrames = undefined;
+
+        this.replayToolsOn = true;
+
+        if (webVersion) {
+            this.replay.deserialize(this.replay.jsonSRC);
             this.replay.initLoad(this);
 
             this.world.savedReplay = true;
             this.world.addShouldLoad();
 
             assetManager.loadAssetsWithScreen();
-        }).bind(this));
+        } else {
+            this.replay.loadJSON((() => {
+                this.replay.deserialize(this.replay.jsonData);
+                this.replay.initLoad(this);
+
+                this.world.savedReplay = true;
+                this.world.addShouldLoad();
+
+                assetManager.loadAssetsWithScreen();
+            }).bind(this));
+        }
 
         assetManager.forceDynamicLoadingDisplay();
+
+        this.farPast = {};
     }
 
     draw(g) {
@@ -75,6 +101,26 @@ class ReplayScreen extends Screen {
         let minSize = min(windowWidth, windowHeight / canvasSlope);
         this.world.draw(g, (windowWidth - minSize) / 2, (windowHeight - minSize * canvasSlope) / 2, minSize, minSize * canvasSlope);
 
+        if (this.replayToolsOn) {
+            g.push();
+            g.translate(windowWidth / 2, 0);
+            g.scale(windowHeight / 384);
+            g.translate(-256, 0);
+
+            g.fill(175);
+            g.stroke(220, 220, 235);
+            g.strokeWeight(3);
+            g.triangle(47, 340, 47, 365, 25, 352.5);
+            g.triangle(512 - 47, 340, 512 - 47, 365, 512 - 25, 352.5);
+            g.stroke(175);
+            g.line(55, 353.5, 512 - 55, 353.5);
+            g.stroke(175, 0, 14);
+            g.line(55, 353.5, 55 + (this.world.frameCount - this.replay.minFrameCount) / (this.replayTotalFrames - this.replay.minFrameCount) * 402, 353.5);
+            g.stroke(220, 220, 235);
+            g.ellipse(55 + (this.world.frameCount - this.replay.minFrameCount) / (this.replayTotalFrames - this.replay.minFrameCount) * 402, 352.5, 25, 25);
+
+            g.pop();
+        }
 
         if (this.paused) {
             g.textFont(assetManager.fonts.asuki);
@@ -111,12 +157,26 @@ class ReplayScreen extends Screen {
 
         if (!this.replay.loaded)
             this.paused = true;
+        else if (this.replayTotalFrames === undefined)
+            this.replayTotalFrames = Object.keys(this.replay.inputs).length;
 
         if (!this.paused) {
-            let max = debug.negateDraw ? debug.throttleRun : 1;
-            for (let i = 0; i < max; i++) {
-                this.replay.load(this.world);
-                this.world.run(this);
+            if (this.playingReplay) {
+                this.currentPlayback += this.playbackSpeed;
+                while (this.currentPlayback > 1) {
+                    let pastFrame = {
+                        gameState: this.world.serialize(),
+                        player1Inputs: this.world.players[0].controls.serialize(),
+                        player2Inputs: this.world.players[1].controls.serialize()
+                    };
+                    if (this.replay.load(this.world)) {
+                        this.world.run(this);
+                        this.farPast[this.world.frameCount] = pastFrame;
+                        this.currentPlayback--;
+                    } else {
+                        this.currentPlayback = 0;
+                    }
+                }
             }
         } else {
             if (this.pauseMenu.transitioning <= 0) {
@@ -158,6 +218,43 @@ class ReplayScreen extends Screen {
                     break;
                 }
             }
+
+            if (!this.paused && this.replayToolsOn) {
+                if (controls[i].joystickPressedMenu(0)) {
+                    if (Angle.distance(controls[i].angle(0), Angle.RIGHT) < PI / 2 && this.farPast[Math.max(0, this.world.frameCount - 1)]) {
+                        //Skip forward in playback
+                        let currentFrame = this.farPast[Math.max(0, this.world.frameCount - 1)];
+                        this.world.deserialize(currentFrame.gameState);
+                        defaultDeserialize(this.world.players[0].controls, currentFrame.player1Inputs);
+                        defaultDeserialize(this.world.players[1].controls, currentFrame.player2Inputs);
+
+                        for (let i = 0; i < Math.max(this.playbackSpeed * 60, 1); i++) {
+                            let pastFrame = {
+                                gameState: this.world.serialize(),
+                                player1Inputs: this.world.players[0].controls.serialize(),
+                                player2Inputs: this.world.players[1].controls.serialize()
+                            };
+                            if (this.replay.load(this.world)) {
+                                this.world.run(this);
+                                this.farPast[this.world.frameCount] = pastFrame;
+                            } else {
+                                break;
+                            }
+                        }
+                    }
+                    if (Angle.distance(controls[i].angle(0), Angle.LEFT) < PI / 2 && this.farPast[Math.max(0, this.world.frameCount - Math.ceil(this.playbackSpeed * 60))]) {
+                        //Skip backward in playback
+                        let currentFrame = this.farPast[Math.max(0, this.world.frameCount - Math.ceil(this.playbackSpeed * 60))];
+                        this.world.deserialize(currentFrame.gameState);
+                        defaultDeserialize(this.world.players[0].controls, currentFrame.player1Inputs);
+                        defaultDeserialize(this.world.players[1].controls, currentFrame.player2Inputs);
+                    }
+                }
+
+                if (controls[i].clickedAbsolute("select")) {
+                    this.playingReplay = !this.playingReplay;
+                }
+            }
             /*if (controls[i].clickedAbsolute("back") && this.paused) {
                 this.destruct();
                 currentScreen = new CharacterSelectScreen();
@@ -182,7 +279,7 @@ class ReplayScreen extends Screen {
         }
         if (this.player1?.controls) {
             if ((fake || !this.player1Controls)) {
-                this.player1.controls = new ComputerControlsTree(this.player1);
+                this.player1.controls = new NetplayControls(this.player1);
                 this.player1Controls = this.player1.controls;
                 controls.push(this.player1.controls);
             } else {
@@ -191,7 +288,7 @@ class ReplayScreen extends Screen {
         }
         if (this.player2?.controls) {
             if ((fake || !this.player2Controls)) {
-                this.player2.controls = new ComputerControlsTree(this.player2);
+                this.player2.controls = new NetplayControls(this.player2);
                 this.player2Controls = this.player2.controls;
                 controls.push(this.player2.controls);
             } else {

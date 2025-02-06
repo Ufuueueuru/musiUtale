@@ -486,6 +486,14 @@
       "text": "󱤻󱤧󱤈"
     }
   },
+  "gameFinishWinScreen": {
+    "en": {
+      "text": "Game Finish"
+    },
+    "tp": {
+      "text": "󱥱󱤧󱥐"
+    }
+  },
 
   "netBackToExit": {
     "en": {
@@ -496,6 +504,14 @@
     }
   },
 
+  "battlePlayAgain": {
+    "en": {
+      "text": "Play Again"
+    },
+    "tp": {
+      "text": "󱥱󱥝"
+    }
+  },
   "battleBack": {
     "en": {
       "text": "Back"
@@ -528,12 +544,45 @@
       "text": "󱤆󱤉󱤑󱤤"
     }
   },
+  "battleSaveReplay": {
+    "en": {
+      "text": "Save Replay"
+    },
+    "tp": {
+      "text": "󱥄󱤈󱤉󱥠󱥩󱥍󱥱󱥁"
+    }
+  },
   "battleExit": {
     "en": {
       "text": "Exit to menu"
     },
     "tp": {
       "text": "󱥶󱥧󱥱"
+    }
+  },
+
+  "replayTools": {
+    "en": {
+      "text": "Playback tools"
+    },
+    "tp": {
+      "text": "󱤤󱥍󱥠󱥩"
+    }
+  },
+  "replayTakeover": {
+    "en": {
+      "text": "Replay Takeover"
+    },
+    "tp": {
+      "text": "󱥄󱤤󱤉󱤑"
+    }
+  },
+  "replayUploadFile": {
+    "en": {
+      "text": "Upload Replay File"
+    },
+    "tp": {
+      "text": "󱥄󱥌󱤉󱤪󱥍󱥠󱥩"
     }
   },
 

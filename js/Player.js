@@ -2888,7 +2888,6 @@ class Player extends Hitcircle {
 		let copy = (({
 			hurtboxes,
 			headNoun,
-			name,
 			selectScreenSizeOffset,
 			selectScreenYOffset,
 			selectScreenRotation,

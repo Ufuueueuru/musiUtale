@@ -2,6 +2,15 @@
 
 let webVersion = false;
 
+let promptFile = document.getElementById("promptFile");
+promptFile.addEventListener(
+	"change",
+	() => {
+		if (currentScreen.receiveWebFile)
+			currentScreen.receiveWebFile(promptFile.files[0]);
+	}
+);
+
 if (!window.electronAPI) {
 	webVersion = true;
 	window.electronAPI = {
