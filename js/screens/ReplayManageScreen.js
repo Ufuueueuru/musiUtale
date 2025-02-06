@@ -5,7 +5,7 @@ class ReplayManageScreen extends Screen {
         let imageWidth = max(width, height * assetManager.images.menuSplash.width / assetManager.images.menuSplash.height);
         let imageHeight = max(height, width * assetManager.images.menuSplash.height / assetManager.images.menuSplash.width);
 
-        for (let u in this.menu.menus) {
+        for (let u = 0; u < this.menu.menus.length; u++) {
             if (this.menu.target === this.menu.menus[u])
                 this.scroll = Math.max(u - 3, 0);
         }
@@ -49,7 +49,12 @@ class ReplayManageScreen extends Screen {
     init() {
         if (webVersion) {
             keyPressedHelper = (event) => {
-                promptFile.click();
+                for (let i in controls) {
+                    if (controls[i].buttons.select.code === event.code) {
+                        promptFile.click();
+                        break;
+                    }
+                }
             };
         }
 
@@ -66,60 +71,66 @@ class ReplayManageScreen extends Screen {
         this.menu = new Menu(KamaWawaScreen);
 
         if (webVersion) {
-            let newButton = new MenuItem(20, 75 + this.menu.menus.length * 40, assetManager.images.buttonPressed, assetManager.images.buttonUnpressed, undefined, gt("replayUploadFile"));
-        }
+            let newButton = new MenuItem(70, 115, assetManager.images.buttonPressed, assetManager.images.buttonUnpressed, undefined, gt("replayUploadFile"));
 
-        (async () => {
-            this.savedList = await window.electronAPI.readdir("/replays");
-            const tempAutoList = await window.electronAPI.readdir("/replays/auto");
-            this.autoList = tempAutoList.map(a => "auto/" + a);
-            this.totalList = this.autoList.concat(this.savedList);
+            this.menu.addMenuItems(newButton);
 
-            for (let i = modFiles.length; i >= 0; i--) {
-                if (!this.totalList.includes(modFiles[i])) {
-                    modFiles.splice(i, 1);
-                }
-            }
+            this.menu.setTarget(newButton);
 
-            let select = assetManager.images.buttonPressed;
-            let deselect = assetManager.images.buttonUnpressed;
-            for (let i = 0; i < this.totalList.length; i++) {
-                let single = this.totalList[i].substring(this.totalList[i].length - 5, this.totalList[i].length) === ".json" && !this.totalList.includes(this.totalList[i] + "hlp");
-                if (this.totalList[i].substring(this.totalList[i].length - 8, this.totalList[i].length) === ".jsonhlp" || (single && this.totalList[i].substring(this.totalList[i].length - 5, this.totalList[i].length) === ".json")) {
-                    const response = await fetch("replays/" + this.totalList[i]);
-                    const json = await response.json();
-                    this.replayList.push(json);
-
-                    if (single) {
-                        let helperFile = (({ inputs, ...o }) => o)(json);
-                        electronAPI.saveReplay(this.totalList[i] + "hlp", helperFile);
-                    }
-
-                    let jsonFileName = "replays/" + this.totalList[i];
-                    if (this.totalList[i].substring(this.totalList[i].length - 8, this.totalList[i].length) === ".jsonhlp")
-                        jsonFileName = "replays/" + this.totalList[i].substring(0, this.totalList[i].length - 3);
-                    let pressFunc = (function (id, src) {
-                        currentScreen.destruct();
-                        currentScreen = new ReplayScreen(src, this.replayList[id].characters, [undefined, undefined], this.replayList[id].stage, this.replayList[id].firstTo);
-                    }).bind(this, this.replayList.length - 1, "replays/" + this.totalList[i].substring(0, this.totalList[i].length - 3));
-                    let pressedFunc = (function (id) {
-                        
-                    }).bind(this, this.replayList.length - 1);
-                    let newButton = new MenuItem(20, 35 + this.menu.menus.length * 40, select, deselect, undefined, this.totalList[i].substring(0, this.totalList[0].length - 8), pressFunc, pressedFunc);
-
-                    if (this.menu.menus.length > 0) {
-                        this.menu.menus[this.menu.menus.length - 1].addMoves(new MenuMove(newButton, Angle.DOWN));
-                        newButton.addMoves(new MenuMove(this.menu.menus[this.menu.menus.length - 1], Angle.UP));
-                    }
-
-                    this.menu.addMenuItems(newButton);
-
-                    if (this.menu.menus.length === 1)
-                        this.menu.setTarget(newButton);
-                }
-            }
             this.loaded = true;
-        })();
+        } else {
+            (async () => {
+                this.savedList = await window.electronAPI.readdir("/replays");
+                const tempAutoList = await window.electronAPI.readdir("/replays/auto");
+                this.autoList = tempAutoList.map(a => "auto/" + a);
+                this.totalList = this.autoList.concat(this.savedList);
+
+                for (let i = modFiles.length; i >= 0; i--) {
+                    if (!this.totalList.includes(modFiles[i])) {
+                        modFiles.splice(i, 1);
+                    }
+                }
+
+                let select = assetManager.images.buttonPressed;
+                let deselect = assetManager.images.buttonUnpressed;
+                for (let i = 0; i < this.totalList.length; i++) {
+                    let single = this.totalList[i].substring(this.totalList[i].length - 5, this.totalList[i].length) === ".json" && !this.totalList.includes(this.totalList[i] + "hlp");
+                    if (this.totalList[i].substring(this.totalList[i].length - 8, this.totalList[i].length) === ".jsonhlp" || (single && this.totalList[i].substring(this.totalList[i].length - 5, this.totalList[i].length) === ".json")) {
+                        const response = await fetch("replays/" + this.totalList[i]);
+                        const json = await response.json();
+                        this.replayList.push(json);
+
+                        if (single) {
+                            let helperFile = (({ inputs, ...o }) => o)(json);
+                            electronAPI.saveReplay(this.totalList[i] + "hlp", helperFile);
+                        }
+
+                        let jsonFileName = "replays/" + this.totalList[i];
+                        if (this.totalList[i].substring(this.totalList[i].length - 8, this.totalList[i].length) === ".jsonhlp")
+                            jsonFileName = "replays/" + this.totalList[i].substring(0, this.totalList[i].length - 3);
+                        let pressFunc = (function (id, src) {
+                            currentScreen.destruct();
+                            currentScreen = new ReplayScreen(src, this.replayList[id].characters, [undefined, undefined], this.replayList[id].stage, this.replayList[id].firstTo);
+                        }).bind(this, this.replayList.length - 1, "replays/" + this.totalList[i].substring(0, this.totalList[i].length - 3));
+                        let pressedFunc = (function (id) {
+
+                        }).bind(this, this.replayList.length - 1);
+                        let newButton = new MenuItem(20, 35 + this.menu.menus.length * 40, select, deselect, undefined, this.totalList[i].substring(0, this.totalList[0].length - 8), pressFunc, pressedFunc);
+
+                        if (this.menu.menus.length > 0) {
+                            this.menu.menus[this.menu.menus.length - 1].addMoves(new MenuMove(newButton, Angle.DOWN));
+                            newButton.addMoves(new MenuMove(this.menu.menus[this.menu.menus.length - 1], Angle.UP));
+                        }
+
+                        this.menu.addMenuItems(newButton);
+
+                        if (this.menu.menus.length === 1)
+                            this.menu.setTarget(newButton);
+                    }
+                }
+                this.loaded = true;
+            })();
+        }
 
         this.characterNames = {};
         for (let i in characters) {
@@ -132,13 +143,16 @@ class ReplayManageScreen extends Screen {
     }
 
     receiveWebFile(file) {
+        if (!file)
+            return;
+
         let read = new FileReader();
 
         read.addEventListener(
             "load",
             (() => {
                 let replay = new Replay("");
-                replay.jsonData = read.result;
+                replay.jsonData = [read.result];
                 replay.onLoad();
 
                 currentScreen.destruct();

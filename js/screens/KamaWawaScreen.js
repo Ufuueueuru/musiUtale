@@ -52,7 +52,7 @@ class KamaWawaScreen extends Screen {
     }
 
     init() {
-        this.menu = new Menu();
+        this.menu = new Menu(MenuDebugScreen);
 
         let buttonTraining = new MenuItem(146, 60, assetManager.images.buttonPressed, assetManager.images.buttonUnpressed, CharacterSelectScreen, gt("mainMenuTraining"), () => { playersManager.openScreen(); playersManager.resetPositions(KamaWawaScreen); currentScreen.menu.setBackScreen(KamaWawaScreen); print(currentScreen); currentScreen.setTraining(); });//kama wawa
         let buttonTutorial = new MenuItem(126, 110, assetManager.images.buttonPressed, assetManager.images.buttonUnpressed, TutorialScreen, gt("tutorial"), () => { playersManager.openScreen(); playersManager.resetPositions(KamaWawaScreen); playersManager.disableP2(); /*currentScreen = new TutorialScreen([0, 0], [controls[0], null], 0);*/ });
