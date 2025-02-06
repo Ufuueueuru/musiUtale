@@ -132,7 +132,29 @@ class ReplayManageScreen extends Screen {
     }
 
     receiveWebFile(file) {
-        currentScreen.destruct();
-        currentScreen = new ReplayScreen(file, file.characters, [undefined, undefined], file.stage, file.firstTo);
+        let read = new FileReader();
+        read.readAsText(file);
+
+        read.addEventListener(
+            "load",
+            () => {
+                this.replay.jsonData = read.result;
+                this.replay.onLoad();
+
+                currentScreen.destruct();
+                currentScreen = new ReplayScreen(file.name, this.replay.characters, [undefined, undefined], this.replay.stage, this.replay.firstTo);
+                currentScreen.replay = this.replay;
+                
+                currentScreen.replay.deserialize(currentScreen.replay.jsonData);
+                currentScreen.replay.initLoad(currentScreen);
+
+                currentScreen.world.savedReplay = true;
+                currentScreen.world.addShouldLoad();
+
+                assetManager.loadAssetsWithScreen();
+            }
+        );
+
+        read.readAsText(file);
     }
 }

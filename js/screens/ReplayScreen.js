@@ -67,13 +67,7 @@ class ReplayScreen extends Screen {
         this.replayToolsOn = true;
 
         if (webVersion) {
-            this.replay.deserialize(this.replay.jsonSRC);
-            this.replay.initLoad(this);
-
-            this.world.savedReplay = true;
-            this.world.addShouldLoad();
-
-            assetManager.loadAssetsWithScreen();
+            
         } else {
             this.replay.loadJSON((() => {
                 this.replay.deserialize(this.replay.jsonData);
