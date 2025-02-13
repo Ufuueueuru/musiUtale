@@ -1,4 +1,4 @@
-/** The screen for debugging anything/testing menu stuff */
+/** The screen for choosing a stage */
 class StageSelectScreen extends Screen {
     draw(g) {
         g.background(45, 55, 85);
@@ -48,113 +48,107 @@ class StageSelectScreen extends Screen {
         }
         g.pop();
 
+        drawBackHold(g, 60);
+
         if (this.menu.transitioning > 0) {
             g.fill(0);
             g.noStroke();
-            g.rect((32 - this.menu.transitioning) / 30 * width - width, 0, width, height);
-
-            g.push();
-            g.translate((32 - this.menu.transitioning) / 30 * width, 0);
-            g.rotate(PI / 4);
-
-            g.rect(0, 0, height / 1.4, height / 1.4);
-
-            g.pop();
+            g.rect((32 - this.menu.transitioning) / 30 * width - width * 3 / 2, 0, width, height);
+            g.rect(-(32 - this.menu.transitioning) / 30 * width + width * 3 / 2, 0, width, height);
         }
         if (this.menu.transitioning < 0) {
             g.fill(0);
             g.noStroke();
-            g.rect((this.menu.transitioning) / 30 * width + width, 0, width, height);
-
-            g.push();
-            g.translate((this.menu.transitioning) / 30 * width + width, 0);
-            g.rotate(PI / 4);
-
-            g.rect(0, 0, height / 1.4, height / 1.4);
-
-            g.pop();
+            g.rect((-this.menu.transitioning) / 30 * width - width * 3 / 2, 0, width, height);
+            g.rect(-(-this.menu.transitioning) / 30 * width + width * 3 / 2, 0, width, height);
         }
     }
 
     run() {
         this.menu.run();
 
-        for (let u in controls) {
-            if (!controls[u].computer && controls[u].heldFrames("back") > 60) {
-                let screen = new MenuDebugScreen();
-                currentScreen = screen;
-                break;
+        if (this.menu.transitioning <= 0) {
+            for (let i = 0; i < this.playerControls.length; i++) {
+                if (this.playerControls[i] === null || this.playerControls[i].netplay)
+                    continue;
+                if (this.playerControls[i].clickedAbsolute("back")) {
+                    if (this.selected) {
+                        this.selected = false;
+                        break;
+                    } else {
+                        this.menu.backOut();
+                        break;
+                    }
+                }
+                if (this.playerControls[i] !== null && this.playerControls[i].clickedAbsolute("select")) {
+                    if (!this.selected) {
+                        this.selected = true;
+                        break;
+                    } else {
+                        if (this.fakeControls)
+                            this.playerControls[0] = null;
+                        if (this.netplay) {
+                            let randomChoices = [false, false, false];
+                            if (this.characterSelections[0] === characters.length - 1) {
+                                this.characterSelections[0] = floor(random(0, characters.length - 2));
+                                randomChoices[0] = true;
+                            }
+                            if (this.characterSelections[1] === characters.length - 1) {
+                                this.characterSelections[1] = floor(random(0, characters.length - 2));
+                                randomChoices[1] = true;
+                            }
+                            if (this.selection === stages.length - 1) {
+                                this.selection = floor(random(0, stages.length - 2));
+                                randomChoices[2] = true;
+                            }
+                            this.menu.goTo(NetplayScreen, (screen) => {
+                                screen.setRandom(randomChoices);
+                                screen.setSelections(this.characterSelections, this.selection);
+                                screen.setControls(this.playerControls, this.fakeControls);
+                            }, [this.peer, this.connectionID]);
+                            /*let screen = new NetplayScreen(this.peer, this.connectionID);
+                            screen.setRandom(randomChoices);
+                            screen.setSelections(this.characterSelections, this.selection);
+                            screen.setControls(this.playerControls, this.fakeControls);
+                            currentScreen = screen;*/
+                        } else if (this.training) {
+                            this.menu.goTo(TrainingScreen, () => { }, [this.characterSelections, this.playerControls, this.selection, 0]);
+                            //let screen = new TrainingScreen(this.characterSelections, this.playerControls, this.selection, 0);
+                            //currentScreen = screen;
+                        } else {
+                            this.menu.goTo(VSScreen, () => { }, [this.characterSelections, this.playerControls, this.selection, 2]);
+                            //let screen = new VSScreen(this.characterSelections, this.playerControls, this.selection, 2);
+                            //currentScreen = screen;
+                        }
+                        break;
+                    }
+                }
+                if (this.playerControls[i].joystickPressedMenu(0) && !this.selected) {
+                    let characterWidth = ceil(sqrt(this.stages.length));
+                    if (this.selection % characterWidth > 0 && Angle.distance(this.playerControls[i].angle(0), Angle.LEFT) <= 2.5 * PI / 8) {
+                        this.selection--;
+                    }
+                    if (this.selection >= characterWidth && Angle.distance(this.playerControls[i].angle(0), Angle.UP) <= 2.5 * PI / 8) {
+                        this.selection -= characterWidth;
+                        this.selection = max(0, this.selection);
+                    }
+                    if (this.selection % characterWidth < characterWidth - 1 && this.selection < this.stages.length - 1 && Angle.distance(this.playerControls[i].angle(0), Angle.RIGHT) <= 2.5 * PI / 8) {
+                        this.selection++;
+                    }
+                    if (this.selection < ceil(this.stages.length / characterWidth) * characterWidth - characterWidth && Angle.distance(this.playerControls[i].angle(0), Angle.DOWN) <= 2.5 * PI / 8) {
+                        this.selection += characterWidth;
+                        this.selection = min(this.stages.length - 1, this.selection);
+                    }
+                }
             }
         }
 
-        for (let i = 0; i < this.playerControls.length; i++) {
-            if (this.playerControls[i] === null || this.playerControls[i].netplay)
-                continue;
-            if (this.playerControls[i].clickedAbsolute("back")) {
-                if (this.selected) {
-                    this.selected = false;
-                    break;
-                } else {
-                    let screen = new CharacterSelectScreen();
-                    if (this.netplay)
-                        screen.setNetplay();
-                    screen.setControls(this.playerControls, this.fakeControls);
-                    currentScreen = screen;
-                    break;
-                }
-            }
-            if (this.playerControls[i] !== null && this.playerControls[i].clickedAbsolute("select")) {
-                if (!this.selected) {
-                    this.selected = true;
-                    break;
-                } else {
-                    if (this.fakeControls)
-                        this.playerControls[0] = null;
-                    if (this.netplay) {
-                        let randomChoices = [false, false, false];
-                        if (this.characterSelections[0] === characters.length - 1) {
-                            this.characterSelections[0] = floor(random(0, characters.length - 2));
-                            randomChoices[0] = true;
-                        }
-                        if (this.characterSelections[1] === characters.length - 1) {
-                            this.characterSelections[1] = floor(random(0, characters.length - 2));
-                            randomChoices[1] = true;
-                        }
-                        if (this.selection === stages.length - 1) {
-                            this.selection = floor(random(0, stages.length - 2));
-                            randomChoices[2] = true;
-                        }
-                        let screen = new NetplayScreen(this.peer, this.connectionID);
-                        screen.setRandom(randomChoices);
-                        screen.setSelections(this.characterSelections, this.selection);
-                        screen.setControls(this.playerControls, this.fakeControls);
-                        currentScreen = screen;
-                    } else if (this.training) {
-                        let screen = new TrainingScreen(this.characterSelections, this.playerControls, this.selection, 0);
-                        currentScreen = screen;
-                    } else {
-                        let screen = new VSScreen(this.characterSelections, this.playerControls, this.selection, 2);
-                        currentScreen = screen;
-                    }
-                    break;
-                }
-            }
-            if (this.playerControls[i].joystickPressedMenu(0) && !this.selected) {
-                let characterWidth = ceil(sqrt(this.stages.length));
-                if (this.selection % characterWidth > 0 && Angle.distance(this.playerControls[i].angle(0), Angle.LEFT) <= 2.5 * PI / 8) {
-                    this.selection--;
-                }
-                if (this.selection >= characterWidth && Angle.distance(this.playerControls[i].angle(0), Angle.UP) <= 2.5 * PI / 8) {
-                    this.selection -= characterWidth;
-                    this.selection = max(0, this.selection);
-                }
-                if (this.selection % characterWidth < characterWidth - 1 && this.selection < this.stages.length - 1 && Angle.distance(this.playerControls[i].angle(0), Angle.RIGHT) <= 2.5 * PI / 8) {
-                    this.selection++;
-                }
-                if (this.selection < ceil(this.stages.length / characterWidth) * characterWidth - characterWidth && Angle.distance(this.playerControls[i].angle(0), Angle.DOWN) <= 2.5 * PI / 8) {
-                    this.selection += characterWidth;
-                    this.selection = min(this.stages.length - 1, this.selection);
-                }
+        for (let u in controls) {
+            if (!controls[u].computer && controls[u].heldFrames("back") > 60) {
+                this.menu.goTo(MenuDebugScreen);
+                //let screen = new MenuDebugScreen();
+                //currentScreen = screen;
+                break;
             }
         }
     }
@@ -181,7 +175,11 @@ class StageSelectScreen extends Screen {
     }
 
     init() {
-        this.menu = new Menu();
+        this.menu = new Menu(CharacterSelectScreen, (screen) => {
+            if (this.netplay)
+                screen.setNetplay();
+            screen.setControls(this.playerControls, this.fakeControls);
+        }, false);
 
         this.netplay = false;
 

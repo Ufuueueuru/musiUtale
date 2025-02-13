@@ -1888,7 +1888,8 @@
 
 		//this.drawArrow(g);
 
-		if (debug.displayHurtboxes) {
+		this.debugDrawDefault(g);
+		/*if (debug.displayHurtboxes) {
 			let red = 200;
 			let green = 210;
 			let blue = 220;
@@ -1909,7 +1910,7 @@
 			}
 
 			this.debugDraw(g, red, green, blue);
-		}
+		}*/
 	}
 
 	charSpecificReset() {

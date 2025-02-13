@@ -1307,7 +1307,8 @@
 
 		//this.drawArrow(g);
 
-		if (debug.displayHurtboxes) {
+		this.debugDrawDefault(g);
+		/*if (debug.displayHurtboxes) {
 			let red = 200;
 			let green = 210;
 			let blue = 220;
@@ -1328,7 +1329,7 @@
 			}
 
 			this.debugDraw(g, red, green, blue);
-		}
+		}*/
 	}
 
 	charSpecificReset() {
@@ -1716,7 +1717,7 @@ class JanTISS extends Attack {
 		let sweet2 = new PriorityCircle(80, 0, 65, 0).setVelocity(1, 0);
 		let circles = [sweet1, sweet2];
 
-		let sweet = new AttackProperties().setDamage(18, -3).setProration(-1.1).setChip(0.15).setCancelOptions(cancelOptions).setAngleValue(player.dir.value).setLaunch(3, 5, 0.5).setHitStun(32, 20).setStunFrames(6).setNormalizeHitStun().setWallPushback(2, 4);
+		let sweet = new AttackProperties().setDamage(18, -3).setProration(-0.5).setChip(0.15).setCancelOptions(cancelOptions).setAngleValue(player.dir.value).setLaunch(3, 5, 0.5).setHitStun(32, 20).setStunFrames(6).setNormalizeHitStun().setWallPushback(2, 4);
 		let prop = [sweet];
 
 		sweet.setHitSound(assetManager.sounds.fanTP);

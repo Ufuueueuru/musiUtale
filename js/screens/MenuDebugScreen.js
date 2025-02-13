@@ -1,4 +1,4 @@
-﻿/** The screen for debugging anything/testing menu stuff */
+﻿/** Despite its name, this Screen is not a debug menu, but rather it is the main menu for the whole game */
 class MenuDebugScreen extends Screen {
     draw(g) {
         g.background(35, 65, 35);
@@ -41,7 +41,7 @@ class MenuDebugScreen extends Screen {
         if (this.menu.transitioning > 0) {
             g.noFill();
             g.stroke(0);
-            g.strokeWeight(12 * width / 512 * (30 - this.menu.transitioning));
+            g.strokeWeight(15 * width / 512 * (30 - this.menu.transitioning));
             g.ellipse(width / 2, height / 2, width / 3 + (30 - this.menu.transitioning) * width / 120, width / 3 + (30 - this.menu.transitioning) * width / 120);
         }
         if (this.menu.transitioning < 0) {

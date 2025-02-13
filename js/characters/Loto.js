@@ -134,7 +134,7 @@
 
 		this.defense = 1;
 
-		this.turnSpeed = 0.025;
+		this.turnSpeed = 0.035;
 
 		this.dash.speed = 17;
 		this.dash.frames = 35;
@@ -214,8 +214,8 @@
 
 		//this.NS = LotoNS;
 		//this.SS = LotoSS;
-		//this.RS = LotoRS;
-		//this.LS = LotoLS;
+		this.RS = LotoRS;
+		this.LS = LotoLS;
 		//this.MS = LotoMS;
 
 		this.NPL = LotoNPL;
@@ -291,7 +291,7 @@
 			this.defense = 1.15;
 			this.dash.speed = 17;
 			this.dash.maxCombos = 2;
-			this.attackMult = 0.9;
+			this.attackMult = 0.8;
 
 			this.sheet.image = assetManager.spritesheets.akesiLotoLasoSheet.image;
 			this.sheet.images = assetManager.spritesheets.akesiLotoLasoSheet.images;
@@ -309,6 +309,8 @@
 			this.sheet.images = assetManager.spritesheets.akesiLotoJeloSheet.images;
 		}
 		if (this.stance === this.stances.OFFENSE) {
+			this.movementSpeed = 1.5;
+			this.forwardSpeedBoost = 1.5;
 			this.weight = 1.1;
 			this.bufferHitStunModifier = 3;
 			this.defense = 1.3;
@@ -322,6 +324,14 @@
 	moveStanceDashCancel(options) {
 		if (this.stance === this.stances.MOVE)
 			options.push("dash");
+	}
+
+	defenseStanceIncreaseSafety(properties, amount = 10) {
+		if (this.stance === this.stances.DEFENSE) {
+			for (let i in properties) {
+				properties[i].blockStun += amount;
+			}
+		}
 	}
 
 	/**
@@ -349,7 +359,8 @@
 
 		g.pop();
 
-		if (debug.displayHurtboxes) {
+		this.debugDrawDefault(g);
+		/*if (debug.displayHurtboxes) {
 			let red = 200;
 			let green = 210;
 			let blue = 220;
@@ -370,7 +381,7 @@
 			}
 
 			this.debugDraw(g, red, green, blue);
-		}
+		}*/
 	}
 
 	drawExtraHUD(g, i, x, y) {
@@ -621,13 +632,13 @@ class LotoDashAttackK extends Attack {
 
 	draw(g) {
 		if (this.currentlyActive()) {
-			if (debug.displayHitboxes)
+			//if (debug.displayHitboxes)
 				this.debugDraw(g);
 		}
 	}
 
 	logic() {
-
+		
 	}
 }
 
@@ -648,7 +659,12 @@ class LotoDashAttackU extends Attack {
 		player.startMomentumMultiplyDash(0);
 	}
 
-	draw(g) { }
+	draw(g) {
+		if (this.currentlyActive()) {
+			//if (debug.displayHitboxes)
+			this.debugDraw(g);
+		}
+	}
 
 	logic() {
 		if (State.stateIs(this.player.currentState, "dash attack")) {
@@ -682,17 +698,17 @@ class LotoDashAttackT extends Attack {
 
 	static createAttack(player) {
 		let cancelOptions = ["dash"];
-		let hitCancelOptions = [];
+		let hitCancelOptions = ["NL", "SL", "RL", "LL", "NPL", "SPL", "RPL", "LPL"];
 
 		let sour1 = new PriorityCircle(0, 0, 70, 0);
 		let sweet1 = new PriorityCircle(0, 0, 140, 1);
 		let circles = [sour1, sweet1];
 
-		let sour = new AttackProperties().setDamage(60).setProration(-0.5).setCancelOptions(cancelOptions, hitCancelOptions).setAngleValue(player.dir.value).setLaunch(17, 9).setHitStun(20, 14).setStunFrames(13, 25).setWallPushback(5, 1).setWallLaunchMod(3).setAngleTypes("direct", "direct");
-		let sweet = new AttackProperties().setDamage(65).setProration(-0.5).setCancelOptions(cancelOptions, hitCancelOptions).setAngleValue(player.dir.value).setLaunch(10, 8).setHitStun(21, 14).setStunFrames(15, 25).setWallPushback(5, 1.6).setWallLaunchMod(10).setAngleTypes("direct", "direct");
+		let sour = new AttackProperties().setDamage(35, 20, 15).setProration(0.5).setCancelOptions(cancelOptions, hitCancelOptions).setAngleValue(player.dir.value).setLaunch(12, 9).setHitStun(30, 4).setStunFrames(13, 20).setCancelWait(0, 8).setAngleTypes("vel", "direct");
+		let sweet = new AttackProperties().setDamage(35, 20, 15).setProration(0.5).setCancelOptions(cancelOptions, hitCancelOptions).setAngleValue(player.dir.value).setLaunch(12, 8).setHitStun(31, 4).setStunFrames(14, 20).setCancelWait(0, 8).setAngleTypes("vel", "direct");
 		let prop = [sour, sweet];
 
-		return new this(player, circles, prop).setClashPriority(5).setStartupF(17).setActiveF(6).setEndF(26);
+		return new this(player, circles, prop).setClashPriority(5).setStartupF(14).setActiveF(6).setEndF(20);
 	}
 
 	static startAttack(player, attack, bufferInfo) {
@@ -701,13 +717,14 @@ class LotoDashAttackT extends Attack {
 
 	draw(g) {
 		if (this.currentlyActive()) {
-			if (debug.displayHitboxes)
+			//if (debug.displayHitboxes)
 				this.debugDraw(g);
 		}
 	}
 
 	logic() {
-
+		this.player.dx *= 1.04;
+		this.player.dy *= 1.04;
 	}
 }
 
@@ -729,7 +746,7 @@ class LotoDashAttackA extends Attack {
 		let sweet = new AttackProperties().setDamage(65).setProration(-0.5).setCancelOptions(cancelOptions, hitCancelOptions).setAngleValue(player.dir.value).setLaunch(10, 8).setHitStun(21, 14).setStunFrames(15, 25).setWallPushback(5, 1.6).setWallLaunchMod(10);
 		let prop = [sour, sweet];
 
-		return new this(player, circles, prop).setClashPriority(2).setStartupF(21).setActiveF(6).setEndF(20);
+		return new this(player, circles, prop).setClashPriority(2).setStartupF(21).setActiveF(6).setEndF(10);
 	}
 
 	static startAttack(player, attack, bufferInfo) {
@@ -738,13 +755,14 @@ class LotoDashAttackA extends Attack {
 
 	draw(g) {
 		if (this.currentlyActive()) {
-			if (debug.displayHitboxes)
+			//if (debug.displayHitboxes)
 				this.debugDraw(g);
 		}
 	}
 
 	logic() {
-
+		this.player.dx *= 1.1;
+		this.player.dy *= 1.1;
 	}
 }
 
@@ -765,6 +783,7 @@ class LotoNL extends Attack {
 
 		let sweet = new AttackProperties().setDamage(20 * player.attackMult).setProration(0.5, 1.5).setCancelOptions(cancelOptions).setAngleValue(player.dir.value).setLaunch(7, 7, 1.1).setHitStun(19, 18).setStunFrames(11).setWallPushback(8, 8).setCancelWait(1);
 		let prop = [sweet];
+		player.defenseStanceIncreaseSafety(prop);
 
 		//sweet.setHitSound(assetManager.sounds["8BitHit"]);
 		//sweet.setBlockSound(assetManager.sounds["8BitHit"]);
@@ -818,6 +837,7 @@ class LotoSL extends Attack {
 
 		let sweet = new AttackProperties().setDamage(23 * player.attackMult).setProration(0.5, 1.5).setCancelOptions(cancelOptions).setAngleValue(player.dir.value).setLaunch(7, 7, 1.1).setHitStun(25, 10).setStunFrames(11).setWallPushback(8, 8).setCancelWait(3);
 		let prop = [sweet];
+		player.defenseStanceIncreaseSafety(prop);
 
 		//sweet.setHitSound(assetManager.sounds["8BitHit"]);
 		//sweet.setBlockSound(assetManager.sounds["8BitHit"]);
@@ -863,15 +883,16 @@ class LotoRL extends Attack {
 		let cancelOptions = ["RL", "ML"];
 		player.moveStanceDashCancel(cancelOptions);
 
-		let sweet1 = new PriorityCircle(-60, 0, 60, 0).setVelocity(1, 0);
-		let sweet2 = new PriorityCircle(-90, -30, 60, 0).setVelocity(1, 0);
-		let sweet3 = new PriorityCircle(-90, 30, 60, 0).setVelocity(1, 0);
-		let sweet4 = new PriorityCircle(-45, -45, 60, 0).setVelocity(1, 0);
-		let sweet5 = new PriorityCircle(-45, 45, 60, 0).setVelocity(1, 0);
+		let sweet1 = new PriorityCircle(-60, 0, 60, 0).setVelocity(0, 1);
+		let sweet2 = new PriorityCircle(-90, -30, 60, 0).setVelocity(0, 1);
+		let sweet3 = new PriorityCircle(-90, 30, 60, 0).setVelocity(0, 1);
+		let sweet4 = new PriorityCircle(-45, -45, 60, 0).setVelocity(0, 1);
+		let sweet5 = new PriorityCircle(-45, 45, 60, 0).setVelocity(0, 1);
 		let circles = [sweet1, sweet2, sweet3, sweet4, sweet5];
 
 		let sweet = new AttackProperties().setDamage(20 * player.attackMult).setProration(0.5, 1.5).setCancelOptions(cancelOptions).setAngleValue(player.dir.value + PI / 4).setLaunch(7, 7, 1.1).setHitStun(19, 18).setStunFrames(11).setWallPushback(8, 8).setCancelWait(1);
 		let prop = [sweet];
+		player.defenseStanceIncreaseSafety(prop);
 
 		//sweet.setHitSound(assetManager.sounds["8BitHit"]);
 		//sweet.setBlockSound(assetManager.sounds["8BitHit"]);
@@ -923,15 +944,16 @@ class LotoLL extends Attack {
 		let cancelOptions = ["LL", "ML"];
 		player.moveStanceDashCancel(cancelOptions);
 
-		let sweet1 = new PriorityCircle(-60, 0, 60, 0).setVelocity(1, 0);
-		let sweet2 = new PriorityCircle(-90, -30, 60, 0).setVelocity(1, 0);
-		let sweet3 = new PriorityCircle(-90, 30, 60, 0).setVelocity(1, 0);
-		let sweet4 = new PriorityCircle(-45, -45, 60, 0).setVelocity(1, 0);
-		let sweet5 = new PriorityCircle(-45, 45, 60, 0).setVelocity(1, 0);
+		let sweet1 = new PriorityCircle(-60, 0, 60, 0).setVelocity(0, -1);
+		let sweet2 = new PriorityCircle(-90, -30, 60, 0).setVelocity(0, -1);
+		let sweet3 = new PriorityCircle(-90, 30, 60, 0).setVelocity(0, -1);
+		let sweet4 = new PriorityCircle(-45, -45, 60, 0).setVelocity(0, -1);
+		let sweet5 = new PriorityCircle(-45, 45, 60, 0).setVelocity(0, -1);
 		let circles = [sweet1, sweet2, sweet3, sweet4, sweet5];
 
 		let sweet = new AttackProperties().setDamage(20 * player.attackMult).setProration(0.5, 1.5).setCancelOptions(cancelOptions).setAngleValue(player.dir.value - PI / 4).setLaunch(7, 7, 1.1).setHitStun(19, 18).setStunFrames(11).setWallPushback(8, 8).setCancelWait(1);
 		let prop = [sweet];
+		player.defenseStanceIncreaseSafety(prop);
 
 		//sweet.setHitSound(assetManager.sounds["8BitHit"]);
 		//sweet.setBlockSound(assetManager.sounds["8BitHit"]);
@@ -990,6 +1012,7 @@ class LotoML extends Attack {
 
 		let sweet = new AttackProperties().setDamage(20 * player.attackMult).setProration(0.4, -1.5).setCancelOptions(cancelOptions).setAngleValue(player.dir.value + PI).setLaunch(4, 2, 1.1).setHitStun(25, 12).setStunFrames(11).setWallPushback(4, 3);
 		let prop = [sweet];
+		player.defenseStanceIncreaseSafety(prop);
 
 		//sweet.setHitSound(assetManager.sounds["8BitHit"]);
 		//sweet.setBlockSound(assetManager.sounds["8BitHit"]);
@@ -1027,16 +1050,108 @@ class LotoML extends Attack {
 	}
 }
 
+class LotoRS extends Attack {
+	constructor(player, circles = [], props = []) {
+		super(player, circles, props);
+		this.name = "RS";
+	}
+
+	static createAttack(player) {
+		let cancelOptions = ["RL", "NPL", "RPL", "RPS", "LPS"];
+		player.moveStanceDashCancel(cancelOptions);
+
+		let sweet1 = new PriorityCircle(-80, 20, 60, 0).setVelocity(0, -0.1);
+		let sweet2 = new PriorityCircle(-75, 55, 90, 1).setVelocity(0, -0.1);
+		let sweet3 = new PriorityCircle(-35, 85, 100, 2).setVelocity(0, -0.1);
+		let circles = [sweet1, sweet2, sweet3];
+
+		let back = new AttackProperties().setDamage(30 * player.attackMult).setProration(0, -4).setCancelOptions(cancelOptions).setAngleValue(player.dir.value + PI / 10).setLaunch(10, 0.1, 1.1).setHitStun(25, 18).setStunFrames(13);
+		let sweet = new AttackProperties().setDamage(30 * player.attackMult).setProration(0, -4).setCancelOptions(cancelOptions).setAngleValue(player.dir.value + PI / 8).setLaunch(7, 0.1, 1.1).setHitStun(25, 18).setStunFrames(13);
+		let far = new AttackProperties().setDamage(30 * player.attackMult).setProration(0, -4).setCancelOptions(cancelOptions).setAngleValue(player.dir.value - PI / 8).setLaunch(3, 0.1, 1.1).setHitStun(25, 18).setStunFrames(13);
+		let prop = [back, sweet, far];
+		player.defenseStanceIncreaseSafety(prop);
+
+		//sweet.setHitSound(assetManager.sounds["8BitHit"]);
+		//sweet.setBlockSound(assetManager.sounds["8BitHit"]);
+
+		return new this(player, circles, prop).setClashPriority(4).setStartupF(10).setActiveF(4).setEndF(15).setRotateable();
+	}
+
+	static startAttack(player, attack, bufferInfo) {
+		player.startMomentumMultiply(0);
+		player.startMomentumMultiplyDash(1);
+	}
+
+	draw(g) {
+		if (this.currentlyActive()) {
+			//if (debug.displayHitboxes)
+			this.debugDraw(g);
+		}
+	}
+
+	logic() {
+		
+	}
+}
+
+class LotoLS extends Attack {
+	constructor(player, circles = [], props = []) {
+		super(player, circles, props);
+		this.name = "LS";
+	}
+
+	static createAttack(player) {
+		let cancelOptions = ["LL", "NPL", "LPL", "RPS", "LPS"];
+		player.moveStanceDashCancel(cancelOptions);
+
+		let sweet1 = new PriorityCircle(-80, -20, 60, 0).setVelocity(0, 0.1);
+		let sweet2 = new PriorityCircle(-75, -55, 90, 1).setVelocity(0, 0.1);
+		let sweet3 = new PriorityCircle(-35, -85, 100, 2).setVelocity(0, 0.1);
+		let circles = [sweet1, sweet2, sweet3];
+
+		let back = new AttackProperties().setDamage(30 * player.attackMult).setProration(0, -4).setCancelOptions(cancelOptions).setAngleValue(player.dir.value - PI / 10).setLaunch(10, 0.1, 1.1).setHitStun(25, 18).setStunFrames(13);
+		let sweet = new AttackProperties().setDamage(30 * player.attackMult).setProration(0, -4).setCancelOptions(cancelOptions).setAngleValue(player.dir.value - PI / 8).setLaunch(7, 0.1, 1.1).setHitStun(25, 18).setStunFrames(13);
+		let far = new AttackProperties().setDamage(30 * player.attackMult).setProration(0, -4).setCancelOptions(cancelOptions).setAngleValue(player.dir.value + PI / 8).setLaunch(3, 0.1, 1.1).setHitStun(25, 18).setStunFrames(13);
+		let prop = [back, sweet, far];
+		player.defenseStanceIncreaseSafety(prop);
+
+		//sweet.setHitSound(assetManager.sounds["8BitHit"]);
+		//sweet.setBlockSound(assetManager.sounds["8BitHit"]);
+
+		return new this(player, circles, prop).setClashPriority(4).setStartupF(10).setActiveF(4).setEndF(15).setRotateable();
+	}
+
+	static startAttack(player, attack, bufferInfo) {
+		player.startMomentumMultiply(0);
+		player.startMomentumMultiplyDash(1);
+	}
+
+	draw(g) {
+		if (this.currentlyActive()) {
+			//if (debug.displayHitboxes)
+			this.debugDraw(g);
+		}
+	}
+
+	logic() {
+
+	}
+}
+
 class LotoNPL extends Attack {
 	constructor(player, circles = [], props = []) {
 		super(player, circles, props);
 		this.name = "NPL";
 
 		this.held = true;
+
+		this.rehitCountdown = 0;
+		this.maxRehit = 40;
 	}
 
 	static createAttack(player) {
-		let cancel = ["dash"];
+		let cancel = ["LL", "RL"];
+		player.moveStanceDashCancel(cancel);
 
 		let left1 = new PriorityCircle(0, -50, 70, 0).setVelocity(0, -1).setSubVelocity(0, 1);
 		let left2 = new PriorityCircle(0, -100, 70, 0).setVelocity(0, -1).setSubVelocity(0, 1);
@@ -1044,16 +1159,17 @@ class LotoNPL extends Attack {
 		let right2 = new PriorityCircle(0, 100, 70, 1).setVelocity(0, 1).setSubVelocity(0, -1);
 		let circles = [left1, left2, right1, right2];
 
-		let left = new AttackProperties().setDamage(15 * player.attackMult, 10, 10).setProration(-1.5).setCancelOptions(cancel).setAngleValue(player.dir.value - PI / 2).setLaunch(8).setHitStun(36, 4).setStunFrames(8).setRotateSlowDown(0.7, 60);
-		let right = new AttackProperties().setDamage(15 * player.attackMult, 10, 10).setProration(-1.5).setCancelOptions(cancel).setAngleValue(player.dir.value + PI / 2).setLaunch(8).setHitStun(36, 4).setStunFrames(8).setRotateSlowDown(0.7, 60);
+		let left = new AttackProperties().setDamage(25 * player.attackMult, 30, 10).setProration(-1.5).setCancelOptions(cancel).setAngleValue(player.dir.value - PI / 2).setLaunch(8).setHitStun(36, 4).setStunFrames(8).setRotateSlowDown(0.7, 60);
+		let right = new AttackProperties().setDamage(25 * player.attackMult, 30, 10).setProration(-1.5).setCancelOptions(cancel).setAngleValue(player.dir.value + PI / 2).setLaunch(8).setHitStun(36, 4).setStunFrames(8).setRotateSlowDown(0.7, 60);
 		let prop = [left, right];
+		player.defenseStanceIncreaseSafety(prop);
 
 		return new this(player, circles, prop).setClashPriority(6).setStartupF(6).setActiveF(8).setEndF(17);
 	}
 
 	static startAttack(player, attack, bufferInfo) {
 		player.startMomentumMultiply(0);
-		player.startMomentumMultiplyDash(1);
+		player.startMomentumMultiplyDash(0.4);
 	}
 
 	draw(g) {
@@ -1067,8 +1183,21 @@ class LotoNPL extends Attack {
 		if (!this.player.controls.pressed("pokaLili"))
 			this.held = false;
 		if (this.held && this.getActiveF() === 1) {
+			this.rehitCountdown--;
+			if (this.rehitCountdown === 0 && this.hitPlayerBool) {
+				this.resetHits();
+			}
+			this.player.actionLag++;
 			this.setActiveF(this.getActiveF() + 1);
+
+			this.player.walkMovement(0.5, true);
 		}
+		this.player.dx *= 0.95;
+		this.player.dy *= 0.95;
+	}
+
+	hitConfirmSetFrames() {
+		this.rehitCountdown = this.maxRehit;
 	}
 }
 
@@ -1084,8 +1213,9 @@ class LotoSPL extends Attack {
 		let sweet1 = new PriorityCircle(55, 0, 20, 0).setVelocity(15, 0);
 		let circles = [sweet1];
 
-		let sweet = new AttackProperties().setDamage(10 * player.attackMult, undefined, 10).setProration(0.5).setAngleValue(player.dir.value).setLaunch(4).setHitStun(6, 4).setStunFrames(10).setRotateSlowDown(0.5, 120);
+		let sweet = new AttackProperties().setDamage(10 * player.attackMult, undefined, 10).setProration(0.5).setAngleValue(player.dir.value).setLaunch(4).setHitStun(6, 4).setStunFrames(10).setRotateSlowDown(0.4, 180);
 		let prop = [sweet];
+		player.defenseStanceIncreaseSafety(prop);
 
 		return new this(player, circles, prop).setClashPriority(5).setStartupF(13).setActiveF(16).setEndF(18).setProjectile().setFollow(false);
 	}
@@ -1138,8 +1268,9 @@ class LotoRPL extends Attack {
 		let sweet4 = new PriorityCircle(50, 20, 50, 0).setVelocity(0.1, 0);
 		let circles = [sweet1, sweet2, sweet3, sweet4];
 
-		let sweet = new AttackProperties().setDamage(6 * player.attackMult).setProration(-0.9).setCancelOptions(cancelOptions).setAngleValue(player.dir.value + PI / 6).setLaunch(3, 2, 0.5).setLaunchDampening(0.8, 8).setHitStun(35, 11).setStunFrames(0).setWallPushback(4, 3).setRotateSlowDown(0.8, 300);
+		let sweet = new AttackProperties().setDamage(6 * player.attackMult).setProration(-0.9).setCancelOptions(cancelOptions).setAngleValue(player.dir.value + PI / 6).setLaunch(3, 2, 0.5).setLaunchDampening(0.8, 8).setHitStun(38, 34).setStunFrames(1).setWallPushback(4, 5).setRotateSlowDown(0.6, 300);
 		let prop = [sweet];
+		player.defenseStanceIncreaseSafety(prop);
 
 		sweet.setHitSound(undefined);
 		sweet.setBlockSound(undefined);
@@ -1194,8 +1325,9 @@ class LotoLPL extends Attack {
 		let sweet4 = new PriorityCircle(50, 20, 50, 0).setVelocity(0.1, 0);
 		let circles = [sweet1, sweet2, sweet3, sweet4];
 
-		let sweet = new AttackProperties().setDamage(6 * player.attackMult).setProration(-0.9).setCancelOptions(cancelOptions).setAngleValue(player.dir.value - PI / 6).setLaunch(3, 2, 0.5).setLaunchDampening(0.8, 8).setHitStun(35, 11).setStunFrames(0).setWallPushback(4, 3).setRotateSlowDown(0.8, 300);
+		let sweet = new AttackProperties().setDamage(6 * player.attackMult).setProration(-0.9).setCancelOptions(cancelOptions).setAngleValue(player.dir.value - PI / 6).setLaunch(3, 2, 0.5).setLaunchDampening(0.8, 8).setHitStun(38, 34).setStunFrames(1).setWallPushback(4, 5).setRotateSlowDown(0.6, 300);
 		let prop = [sweet];
+		player.defenseStanceIncreaseSafety(prop);
 
 		sweet.setHitSound(undefined);
 		sweet.setBlockSound(undefined);
@@ -1248,8 +1380,9 @@ class LotoMPL extends Attack {
 		let sweet3 = new PriorityCircle(-100, 0, 40, 0).setVelocity(-5, 2, -0.5);
 		let circles = [sweet1, sweet2, sweet3];
 
-		let sweet = new AttackProperties().setDamage(30 * player.attackMult).setProration(0, -1.5).setCancelOptions(cancelOptions).setAngleValue(player.dir.value + PI * 0.95).setLaunch(9, 4, 1.5).setHitStun(45, 7).setStunFrames(13);
+		let sweet = new AttackProperties().setDamage(30 * player.attackMult).setProration(0, -1.5).setCancelOptions(cancelOptions).setAngleValue(player.dir.value + PI * 0.65).setLaunch(9, 4, 1.5).setHitStun(45, 7).setStunFrames(13);
 		let prop = [sweet];
+		player.defenseStanceIncreaseSafety(prop);
 
 		//sweet.setHitSound(assetManager.sounds["8BitHit"]);
 		//sweet.setBlockSound(assetManager.sounds["8BitHit"]);
@@ -1272,6 +1405,9 @@ class LotoMPL extends Attack {
 	logic() {
 		if (this.getStartupF() === 1) {
 			this.player.dir.changeValue(PI / 8);
+			if (this.player.backStance) {
+				this.player.dir.changeValue(PI / 8);
+			}
 		}
 		this.player.dx *= 0.7;
 		this.player.dy *= 0.7;
@@ -1292,12 +1428,13 @@ class LotoRPS extends Attack {
 		let sweet2 = new PriorityCircle(-10, -55, 80, 0).setVelocity(0, -0.1);
 		let sweet3 = new PriorityCircle(20, -55, 80, 0).setVelocity(0, -0.1);
 		let sweet4 = new PriorityCircle(50, -50, 70, 0).setVelocity(0, -0.1);
-		let sour1 = new PriorityCircle(40, -50, 40, 1).setVelocity(18, 3);
+		let sour1 = new PriorityCircle(40, -50, 40, 1).setVelocity(20, 3);
 		let circles = [sweet1, sweet2, sweet3, sweet4, sour1];
 
-		let sweet = new AttackProperties().setDamage(30 * player.attackMult).setProration(0).setCancelOptions(cancelOptions).setAngleValue(player.dir.value - PI / 3).setLaunch(5, 2, 1.2).setHitStun(39, 30).setStunFrames(15).setWallPushback(4, 3);
-		let sour = new AttackProperties().setDamage(10 * player.attackMult).setProration(1).setCancelOptions(cancelOptions).setAngleValue(player.dir.value).setLaunch(3, 0, 0.5).setHitStun(18, 5).setStunFrames(5);
+		let sweet = new AttackProperties().setDamage(45 * player.attackMult).setProration(0).setCancelOptions(cancelOptions).setAngleValue(player.dir.value - PI / 4).setLaunch(5, 2, 2).setHitStun(39, 33).setStunFrames(15).setWallPushback(4, 3);
+		let sour = new AttackProperties().setDamage(10 * player.attackMult).setProration(1).setCancelOptions(cancelOptions).setAngleValue(player.dir.value).setLaunch(3, 0, 0.5).setHitStun(25, 5).setStunFrames(5);
 		let prop = [sweet, sour];
+		player.defenseStanceIncreaseSafety(prop);
 
 		//sweet.setHitSound(undefined);
 		//sweet.setBlockSound(undefined);
@@ -1353,12 +1490,13 @@ class LotoLPS extends Attack {
 		let sweet2 = new PriorityCircle(-10, 55, 80, 0).setVelocity(0, 0.1);
 		let sweet3 = new PriorityCircle(20, 55, 80, 0).setVelocity(0, 0.1);
 		let sweet4 = new PriorityCircle(50, 50, 70, 0).setVelocity(0, 0.1);
-		let sour1 = new PriorityCircle(40, 50, 40, 1).setVelocity(18, -3);
+		let sour1 = new PriorityCircle(40, 50, 40, 1).setVelocity(20, -3);
 		let circles = [sweet1, sweet2, sweet3, sweet4, sour1];
 
-		let sweet = new AttackProperties().setDamage(30 * player.attackMult).setProration(0).setCancelOptions(cancelOptions).setAngleValue(player.dir.value + PI / 3).setLaunch(5, 2, 1.2).setHitStun(39, 30).setStunFrames(15).setWallPushback(4, 3);
-		let sour = new AttackProperties().setDamage(10 * player.attackMult).setProration(1).setCancelOptions(cancelOptions).setAngleValue(player.dir.value).setLaunch(3, 0, 0.5).setHitStun(18, 5).setStunFrames(5);
+		let sweet = new AttackProperties().setDamage(45 * player.attackMult).setProration(0).setCancelOptions(cancelOptions).setAngleValue(player.dir.value + PI / 4).setLaunch(5, 2, 2).setHitStun(39, 33).setStunFrames(15).setWallPushback(4, 3);
+		let sour = new AttackProperties().setDamage(10 * player.attackMult).setProration(1).setCancelOptions(cancelOptions).setAngleValue(player.dir.value).setLaunch(3, 0, 0.5).setHitStun(25, 5).setStunFrames(5);
 		let prop = [sweet, sour];
+		player.defenseStanceIncreaseSafety(prop);
 
 		//sweet.setHitSound(undefined);
 		//sweet.setBlockSound(undefined);
@@ -1573,6 +1711,7 @@ class LotoMNK extends Attack {
 	static startAttack(player, attack, bufferInfo) {
 		player.dx = 0;
 		player.dy = 0;
+		player.dir.changeValue(PI);
 	}
 
 	draw(g) {
@@ -1589,6 +1728,12 @@ class LotoMNK extends Attack {
 	logic() {
 		this.player.dx *= 0.5;
 		this.player.dy *= 0.5;
+		if (this.getFromStartupF() === 3) {
+			this.player.addAction("lili", "suli", "poka lili", "poka suli");
+		}
+		if (this.getFromStartupF() === 7) {
+			this.player.removeAction("lili", "suli", "poka lili", "poka suli");
+		}
 		if (this.getFromStartupF() === 8) {
 			this.player.invTo = ["attack"];
 			this.player.iFrames = 12;
@@ -1608,7 +1753,7 @@ class LotoMNU extends Attack {
 
 	static startAttack(player, attack, bufferInfo) {
 		player.startMomentumMultiply(0);
-		player.startMomentumMultiply(1);
+		player.startMomentumMultiplyDash(1);
 	}
 
 	draw(g) { }
@@ -1683,7 +1828,7 @@ class LotoMNA extends Attack {
 
 		let prop = [new AttackProperties()];
 
-		return new this(player, circles, prop).setClashPriority(false).setEndF(45);
+		return new this(player, circles, prop).setClashPriority(false).setEndF(40);
 	}
 
 	static startAttack(player, attack, bufferInfo) {

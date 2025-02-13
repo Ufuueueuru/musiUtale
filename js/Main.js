@@ -1,6 +1,7 @@
 "use strict";
 
 let webVersion = false;
+let webgl = true;
 
 let promptFile = document.getElementById("promptFile");
 promptFile.addEventListener(
@@ -113,7 +114,7 @@ function preload() {
 }
 
 function setup() {
-	canvas = createCanvas(windowWidth, windowHeight);//512x384
+	canvas = createCanvas(windowWidth, windowHeight, (webgl ? WEBGL : undefined));//512x384
 	//g = createGraphics(512, 384);
 	g = createGraphics(windowWidth, windowHeight);
 
@@ -378,7 +379,7 @@ function draw() {
 	g.strokeWeight(3);
 	g.rect(0, 0, 512, 384);*/
 
-	image(g, 0, 0);
+	image(g, (webgl ? -width / 2 : 0), (webgl ? -height / 2 : 0));
 
 	if (savingReplayDisplay) {
 		stroke(0, 0, 14);
@@ -418,10 +419,11 @@ function draw() {
 			sum += a;
 		});
 
+		textFont(assetManager.fonts.asuki);
 		fill(255, 0, 0, 170);
 		noStroke();
-		textSize(15);
-		text("Framerate: " + (round(sum / debug.frameRates.length * 10) / 10), 10, 20);
+		textSize(25);
+		text("Framerate: " + (round(sum / debug.frameRates.length * 10) / 10), 10 - width / 2, 20 - height / 2);
 
 		sum = 0;
 		debug.effectiveFrameRates.forEach((a) => {
@@ -430,8 +432,8 @@ function draw() {
 
 		fill(255, 0, 0, 170);
 		noStroke();
-		textSize(15);
-		text("Effective Framerate: " + (round(sum / debug.effectiveFrameRates.length * 10) / 10), 10, 40);
+		textSize(25);
+		text("Effective Framerate: " + (round(sum / debug.effectiveFrameRates.length * 10) / 10), 10 - width / 2, 40 - height / 2);
     }
 }
 

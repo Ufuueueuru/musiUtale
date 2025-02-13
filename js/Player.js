@@ -865,6 +865,31 @@ class Player extends Hitcircle {
 		//this.drawArrow(g);
 	}
 
+	debugDrawDefault(g) {
+		if (debug.displayHurtboxes) {
+			let red = 200;
+			let green = 210;
+			let blue = 220;
+			if (this.iFrames > 0 && this.invTo.includes("attack")) {
+				red = 40;
+				green = 0
+				blue = 255;
+			}
+			if (this.iFrames > 0 && this.invTo.includes("grab")) {
+				red = 255;
+				green = 200;
+				blue = 0;
+			}
+			if (this.iFrames > 0 && this.invTo.includes("attack") && this.invTo.includes("grab")) {
+				red = 0;
+				green = 255;
+				blue = 40;
+			}
+
+			this.debugDraw(g, red, green, blue);
+		}
+	}
+
 	drawBlock(g) {
 		g.push();
 		g.translate(this.x, this.y);
@@ -1418,6 +1443,12 @@ class Player extends Hitcircle {
 		}
 	}
 
+	/**
+	 * Moves the player with walk speed times mult. When set is true the velocity is set every frame as opposed to being added every frame. When bool is true the joystick does not need to be pressed to move
+	 * @param {number} mult
+	 * @param {boolean} set
+	 * @param {boolean} bool
+	 */
 	walkMovement(mult = 1, set = false, bool = false) {
 		if (bool || this.controls.joystickPressed(0)) {
 			let xBoost = cos(this.controls.angle(0).value) * this.forwardSpeedBoost * (1 - Angle.distance(this.controls.angle(0), this.dir) / PI);

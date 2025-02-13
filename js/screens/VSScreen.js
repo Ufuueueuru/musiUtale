@@ -60,7 +60,7 @@ class VSScreen extends Screen {
 
 
         this.replay = new Replay();
-
+        this.currentReplaySaved = false;
 
         this.winScreenMenuOn = false;
         this.winScreenMenu = new Menu();
@@ -68,17 +68,22 @@ class VSScreen extends Screen {
         let playAgainButton = new MenuItem(128, 90, select, deselect, undefined, gt("battlePlayAgain"), () => {
             this.world.resetAndLoad(currentScreen);
             this.replay = new Replay();
+            this.currentReplaySaved = false;
+            this.winScreenMenuOn = false;
         });
         let playerSelectWinButton = new MenuItem(128, 140, select, deselect, undefined, gt("battlePlayerSelect"), playerSelectButton.pressFunction);
         let editControlsWinButton = new MenuItem(128, 190, select, deselect, undefined, gt("battleEditControls"), editControlsButton.pressFunction);
         let characterSelectWinButton = new MenuItem(128, 240, select, deselect, undefined, gt("battleCharacterSelect"), characterSelectButton.pressFunction);
         let saveReplayButton = new MenuItem(128, 290, select, deselect, undefined, gt("battleSaveReplay"), () => {
-            savingReplayDisplay = true;
-            saveReplayManual(this.replay, () => {
-                savingReplayDisplay = false;
-            }, () => {//If the replays are maxed out
-                savingReplayDisplay = false;
-            });
+            if (!this.currentReplaySaved) {
+                this.currentReplaySaved = true;
+                savingReplayDisplay = true;
+                saveReplayManual(this.replay, () => {
+                    savingReplayDisplay = false;
+                }, () => {//If the replays are maxed out
+                    savingReplayDisplay = false;
+                });
+            }
         });
         let exitWinButton = new MenuItem(128, 340, select, deselect, undefined, gt("battleExit"), exitButton.pressFunction);
 
@@ -164,9 +169,6 @@ class VSScreen extends Screen {
                 this.winScreenMenu.transitioning = 30;
             }
         }
-        if (this.winScreenMenuOn) {
-            this.winScreenMenu.run();
-        }
 
         if (!this.paused) {
             let max = debug.negateDraw ? debug.throttleRun : 1;
@@ -182,6 +184,9 @@ class VSScreen extends Screen {
                 this.pauseMenu.controlMenu(this.pausedPlayer);
                 this.pauseMenu.transitioning--;
             }
+        }
+        if (this.winScreenMenuOn) {
+            this.winScreenMenu.run();
         }
 
         /*if (!this.world.players[0]?.controls.valid() || !this.world.players[1]?.controls.valid()) {

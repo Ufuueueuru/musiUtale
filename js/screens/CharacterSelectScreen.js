@@ -1,4 +1,4 @@
-﻿/** The screen for debugging anything/testing menu stuff */
+﻿/** The screen for choosing a character */
 class CharacterSelectScreen extends Screen {
     draw(g) {
         //g.background(160, 95, 135);
@@ -98,6 +98,8 @@ class CharacterSelectScreen extends Screen {
             nonCPUCount++;
         }
 
+        drawBackHold(g, 60);
+
         if (this.menu.transitioning > 0) {
             g.fill(0);
             g.noStroke();
@@ -114,101 +116,106 @@ class CharacterSelectScreen extends Screen {
         if (this.menu.transitioning < 0) {
             g.fill(0);
             g.noStroke();
-            g.rect((this.menu.transitioning) / 30 * width + width, 0, width, height);
+            g.rect((this.menu.transitioning) / 30 * width * 1.5 + width * 1.5, 0, width, height);
 
             g.push();
-            g.translate((this.menu.transitioning) / 30 * width + width, 0);
+            g.translate((this.menu.transitioning) / 30 * width * 1.5 + width * 1.5, 0);
             g.rotate(PI / 4);
 
             g.rect(0, 0, height / 1.4, height / 1.4);
 
             g.pop();
         }
-
-        drawBackHold(g, 60);
     }
 
     run() {
         this.menu.run();
-        
-        for (let i = 0; i < this.playerControls.length; i++) {
-            let u = i;
-            let o = (i + 1) % 2;
-            if (!this.playerControls[u] || this.playerControls[u].netplay)
-                u = (u + 1) % 2;
-            if (u !== i && !this.selected[u])
-                continue;
-            if (this.playerControls[u].clickedAbsolute("back")) {
-                if (this.selected[i]) {
-                    if (this.playerControls[o] === null && this.selected[o]) {
-                        this.selected[o] = false;
-                        if (this.netplay)
-                            this.selected[i] = false;
-                    } else {
-                        this.selected[i] = false;
-                        if (this.netplay)
+
+        //Only control the menu if it is not transitioning out (can still control while menu is fading in)
+        if (this.menu.transitioning <= 0) {
+            for (let i = 0; i < this.playerControls.length; i++) {
+                let u = i;
+                let o = (i + 1) % 2;
+                if (!this.playerControls[u] || this.playerControls[u].netplay)
+                    u = (u + 1) % 2;
+                if (u !== i && !this.selected[u])
+                    continue;
+                if (this.playerControls[u].clickedAbsolute("back")) {
+                    if (this.selected[i]) {
+                        if (this.playerControls[o] === null && this.selected[o]) {
                             this.selected[o] = false;
+                            if (this.netplay)
+                                this.selected[i] = false;
+                        } else {
+                            this.selected[i] = false;
+                            if (this.netplay)
+                                this.selected[o] = false;
+                        }
+                        break;
+                    } else if (!this.selected[0] && !this.selected[1]) {
+                        //let screen = new this.menu.backScreenClass();
+                        //currentScreen = screen;
+                        this.menu.backOut();
+                        break;
                     }
+                }
+                if (this.playerControls[u].clickedAbsolute("start")) {
+                    controlsManager.openScreen();
                     break;
-                }/* else if (!this.selected[0] && !this.selected[1]) {
-                    let screen = new this.menu.backScreenClass();
-                    currentScreen = screen;
-                    break;
-                }*/
-            }
-            if (this.playerControls[u].clickedAbsolute("start")) {
-                controlsManager.openScreen();
-                break;
-            }
-            if (this.playerControls[u] !== null && this.playerControls[u].clickedAbsolute("select")) {
-                if (!this.selected[i]) {
-                    if (this.netplay) {
-                        this.selected[o] = true;
+                }
+                if (this.playerControls[u] !== null && this.playerControls[u].clickedAbsolute("select")) {
+                    if (!this.selected[i]) {
+                        if (this.netplay) {
+                            this.selected[o] = true;
+                        }
+                        this.selected[i] = true;
+                        break;
+                    } else if (this.selected[0] && this.selected[1]) {
+                        /*if (this.fakeControls)
+                            this.playerControls[0] = null;
+                        let screen = new VSScreen(this.selections, this.playerControls, 0);
+                        currentScreen = screen;*/
+                        this.menu.goTo(StageSelectScreen, (screen) => {
+                            if (this.netplay)
+                                screen.setNetplay(this.peer, this.connectionID);
+                            if (this.training)
+                                screen.setTraining();
+                            screen.setSelections(this.selections);
+                            screen.setControls(this.playerControls, this.fakeControls);
+                        });
+                        //let screen = new StageSelectScreen();
+                        //currentScreen = screen;
+                        break;
                     }
-                    this.selected[i] = true;
-                    break;
-                } else if (this.selected[0] && this.selected[1]) {
-                    /*if (this.fakeControls)
-                        this.playerControls[0] = null;
-                    let screen = new VSScreen(this.selections, this.playerControls, 0);
-                    currentScreen = screen;*/
-                    let screen = new StageSelectScreen();
-                    if (this.netplay)
-                        screen.setNetplay(this.peer, this.connectionID);
-                    if (this.training)
-                        screen.setTraining();
-                    screen.setSelections(this.selections);
-                    screen.setControls(this.playerControls, this.fakeControls);
-                    currentScreen = screen;
-                    break;
                 }
-            }
-            if (u === i && this.selected[i])
-                continue;
-            if (this.selected[i])
-                continue;
-            if (this.playerControls[u].joystickPressedMenu(0)) {
-                let characterWidth = ceil(sqrt(this.characters.length));
-                if (this.selections[i] % characterWidth > 0 && Angle.distance(this.playerControls[u].angle(0), Angle.LEFT) <= 2.5 * PI / 8) {
-                    this.selections[i]--;
-                }
-                if (this.selections[i] >= characterWidth && Angle.distance(this.playerControls[u].angle(0), Angle.UP) <= 2.5 * PI / 8) {
-                    this.selections[i] -= characterWidth;
-                    this.selections[i] = max(0, this.selections[i]);
-                }
-                if (this.selections[i] % characterWidth < characterWidth - 1 && this.selections[i] < this.characters.length - 1 && Angle.distance(this.playerControls[u].angle(0), Angle.RIGHT) <= 2.5 * PI / 8) {
-                    this.selections[i]++;
-                }
-                if (this.selections[i] < ceil(this.characters.length / characterWidth) * characterWidth - characterWidth && Angle.distance(this.playerControls[u].angle(0), Angle.DOWN) <= 2.5 * PI / 8) {
-                    this.selections[i] += characterWidth;
-                    this.selections[i] = min(this.characters.length - 1, this.selections[i]);
+                if (u === i && this.selected[i])
+                    continue;
+                if (this.selected[i])
+                    continue;
+                if (this.playerControls[u].joystickPressedMenu(0)) {
+                    let characterWidth = ceil(sqrt(this.characters.length));
+                    if (this.selections[i] % characterWidth > 0 && Angle.distance(this.playerControls[u].angle(0), Angle.LEFT) <= 2.5 * PI / 8) {
+                        this.selections[i]--;
+                    }
+                    if (this.selections[i] >= characterWidth && Angle.distance(this.playerControls[u].angle(0), Angle.UP) <= 2.5 * PI / 8) {
+                        this.selections[i] -= characterWidth;
+                        this.selections[i] = max(0, this.selections[i]);
+                    }
+                    if (this.selections[i] % characterWidth < characterWidth - 1 && this.selections[i] < this.characters.length - 1 && Angle.distance(this.playerControls[u].angle(0), Angle.RIGHT) <= 2.5 * PI / 8) {
+                        this.selections[i]++;
+                    }
+                    if (this.selections[i] < ceil(this.characters.length / characterWidth) * characterWidth - characterWidth && Angle.distance(this.playerControls[u].angle(0), Angle.DOWN) <= 2.5 * PI / 8) {
+                        this.selections[i] += characterWidth;
+                        this.selections[i] = min(this.characters.length - 1, this.selections[i]);
+                    }
                 }
             }
         }
         for (let i in controls) {
             if (!controls[i].computer && controls[i].heldFrames("back") > 60) {
-                let screen = new this.menu.backScreenClass();
-                currentScreen = screen;
+                //let screen = new this.menu.backScreenClass();
+                //currentScreen = screen;
+                this.menu.backOut();
                 break;
             }
         }
@@ -237,7 +244,7 @@ class CharacterSelectScreen extends Screen {
     }
 
     init() {
-        this.menu = new Menu();
+        this.menu = new Menu(MenuDebugScreen, () => { }, false);
 
         this.netplay = false;
 

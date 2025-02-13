@@ -1,5 +1,5 @@
 class Menu {
-    constructor(backScreenClass) {
+    constructor(backScreenClass, backout = (screen) => { }, defaultBackout = true) {
         this.menus = [];
 
         this.target = undefined;
@@ -9,6 +9,13 @@ class Menu {
         this.transitioning = -30;
 
         this.back = false;
+
+        this.backoutFunction = backout;
+        this.debaultBackout = defaultBackout;
+
+        this.goToScreen = undefined;
+        this.goToFunction = () => { };
+        this.goToParam = [];
     }
 
     setBackScreen(back) {
@@ -32,7 +39,7 @@ class Menu {
         if (control.clickedAbsolute("select")) {
             this.selectItem();
             return;
-        } else if (control.clickedAbsolute("back")) {
+        } else if (control.clickedAbsolute("back") && this.defaultBackout) {
             this.backOut();
             return;
         }
@@ -52,6 +59,12 @@ class Menu {
                     if (currentScreen.destruct)
                         currentScreen.destruct();
                     currentScreen = new this.backScreenClass();
+                    this.backoutFunction(currentScreen);
+                } else if (this.goToScreen !== undefined) {
+                    if (currentScreen.destruct)
+                        currentScreen.destruct();
+                    currentScreen = new this.goToScreen(...this.goToParam);
+                    this.goToFunction(currentScreen);
                 } else if (this.target?.targetScreenClass) {
                     if (currentScreen.destruct)
                         currentScreen.destruct();
@@ -59,6 +72,8 @@ class Menu {
                     this.target.pressFunction();
                 }
             }
+            if (Math.abs(this.transitioning) === 1)
+                this.transitioning = 0;
             if (this.transitioning > 0)
                 this.transitioning -= 2;
             if (this.transitioning < 0)
@@ -101,9 +116,18 @@ class Menu {
     }
 
     backOut() {
-        if (this.backScreenClass) {
+        if (this.backScreenClass && this.transitioning === 0) {
             this.transitioning = 30;
             this.back = true;
+        }
+    }
+
+    goTo(screenClass, goToFunc = (screen) => { }, params = []) {
+        if (this.transitioning === 0) {
+            this.goToScreen = screenClass;
+            this.goToFunction = goToFunc;
+            this.goToParam = params;
+            this.transitioning = 30;
         }
     }
 

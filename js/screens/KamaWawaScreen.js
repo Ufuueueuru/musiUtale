@@ -12,7 +12,7 @@ class KamaWawaScreen extends Screen {
         //g.image(assetManager.images.buttonUnpressed, width/2 + imageWidth * 0.05, height/2 - imageHeight * 0.05, imageWidth * 0.2, imageHeight * 0.1);
         //g.image(assetManager.images.buttonUnpressed, width/2 + imageWidth * 0.0, height/2 - imageHeight * 0.2, imageWidth * 0.2, imageHeight * 0.1);
 
-        this.menu.draw(g, imageWidth, imageHeight, imageWidth * 0.21, imageHeight * 0.1);
+        this.menu.draw(g, imageWidth, imageHeight, imageWidth * 0.25, imageHeight * 0.1);
 
         /*g.textFont(assetManager.fonts.asuki);
         g.textFont("Comic Sans");
@@ -54,9 +54,9 @@ class KamaWawaScreen extends Screen {
     init() {
         this.menu = new Menu(MenuDebugScreen);
 
-        let buttonTraining = new MenuItem(146, 60, assetManager.images.buttonPressed, assetManager.images.buttonUnpressed, CharacterSelectScreen, gt("mainMenuTraining"), () => { playersManager.openScreen(); playersManager.resetPositions(KamaWawaScreen); currentScreen.menu.setBackScreen(KamaWawaScreen); print(currentScreen); currentScreen.setTraining(); });//kama wawa
-        let buttonTutorial = new MenuItem(126, 110, assetManager.images.buttonPressed, assetManager.images.buttonUnpressed, TutorialScreen, gt("tutorial"), () => { playersManager.openScreen(); playersManager.resetPositions(KamaWawaScreen); playersManager.disableP2(); /*currentScreen = new TutorialScreen([0, 0], [controls[0], null], 0);*/ });
-        let buttonReplays = new MenuItem(106, 160, assetManager.images.buttonPressed, assetManager.images.buttonUnpressed, ReplayManageScreen, gt("menuKamaWawaReplays"), () => { });
+        let buttonTraining = new MenuItem(161, 60, assetManager.images.buttonPressed, assetManager.images.buttonUnpressed, CharacterSelectScreen, gt("mainMenuTraining"), () => { playersManager.openScreen(); playersManager.resetPositions(KamaWawaScreen); currentScreen.menu.setBackScreen(KamaWawaScreen); currentScreen.setTraining(); });//kama wawa
+        let buttonTutorial = new MenuItem(136, 110, assetManager.images.buttonPressed, assetManager.images.buttonUnpressed, TutorialScreen, gt("tutorial"), () => { playersManager.openScreen(); playersManager.resetPositions(KamaWawaScreen); playersManager.disableP2(); /*currentScreen = new TutorialScreen([0, 0], [controls[0], null], 0);*/ });
+        let buttonReplays = new MenuItem(111, 160, assetManager.images.buttonPressed, assetManager.images.buttonUnpressed, ReplayManageScreen, gt("menuKamaWawaReplays"), () => { });
         let buttonBack = new MenuItem(86, 210, assetManager.images.buttonPressed, assetManager.images.buttonUnpressed, MenuDebugScreen, gt("otherMenuBack"));
 
         buttonTraining.addMoves(new MenuMove(buttonTutorial, Angle.DOWN));
