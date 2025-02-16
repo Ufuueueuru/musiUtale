@@ -255,8 +255,9 @@ class World {
     drawForegroundManual(g, width, height) { }
 
     stopMusic() {
-        if (this.currentMusic?.howl)
-            this.currentMusic.howl.stop(this.currentMusic.id);
+        /*if (this.currentMusic?.howl)
+            this.currentMusic.howl.stop(this.currentMusic.id);*/
+        Howler.stop();
     }
 
     playSong(howl) {

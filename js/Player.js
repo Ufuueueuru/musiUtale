@@ -328,7 +328,7 @@ class Player extends Hitcircle {
 		this.mostRecentAttackReference = null;
 
 		/** @type {Staling} */
-		this.moveStaling = new Staling(600, 8);//Staling duration = 600, max stale = 8
+		this.moveStaling = new Staling(1200, 8);//Staling duration = 600, max stale = 8
 		this.stalePenalty = 0.92;
 
 		/** @type {number} */
@@ -353,6 +353,9 @@ class Player extends Hitcircle {
 
 		/** @type {number} */
 		this.largestDiameter = 0;
+
+		/** @type {BlockDistExtension[]} Use BlockDistExtensions to make particle effects when getting hit/blocking change their distance from the player relative to what side of the player they are on (useful for non-circular characters) */
+		this.blockDistExtensions = [];
 
 		/** @type {Player} */
 		this.targetPlayer = null;

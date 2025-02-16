@@ -119,6 +119,7 @@ class VSNetplayScreen extends Screen {
         this.netplayAutoSavedReplay = false;
         this.world.savedReplay = false;
         this.replay = new Replay();
+        this.currentReplaySaved = false;
         this.currentReplayFrame = 0;
 
         this.winScreenMenuOn = false;
@@ -137,18 +138,24 @@ class VSNetplayScreen extends Screen {
 
             //this.resetWorld();
             this.replay = new Replay();
+            this.currentReplaySaved = false;
             this.netplayAutoSavedReplay = false;
+
+            this.winScreenMenuOn = false;
         });
         //let playerSelectWinButton = new MenuItem(128, 140, select, deselect, undefined, gt("battlePlayerSelect"), playerSelectButton.pressFunction);
         //let editControlsWinButton = new MenuItem(128, 190, select, deselect, undefined, gt("battleEditControls"), editControlsButton.pressFunction);
         let characterSelectWinButton = new MenuItem(128, 240, select, deselect, undefined, gt("battleCharacterSelect"), characterSelectButton.pressFunction);
         let saveReplayButton = new MenuItem(128, 290, select, deselect, undefined, gt("battleSaveReplay"), () => {
-            savingReplayDisplay = true;
-            saveReplayManual(this.replay, () => {
-                savingReplayDisplay = false;
-            }, () => {//If the replays are maxed out
-                savingReplayDisplay = false;
-            });
+            if (!this.currentReplaySaved) {
+                this.currentReplaySaved = true;
+                savingReplayDisplay = true;
+                saveReplayManual(this.replay, () => {
+                    savingReplayDisplay = false;
+                }, () => {//If the replays are maxed out
+                    savingReplayDisplay = false;
+                });
+            }
         });
         let exitWinButton = new MenuItem(128, 340, select, deselect, undefined, gt("battleExit"), exitButton.pressFunction);
 

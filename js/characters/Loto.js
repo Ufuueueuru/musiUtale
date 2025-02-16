@@ -172,6 +172,11 @@
 		this.maxHealth = 650;
 		this.timerPunishMult = 0.7;
 
+		this.blockDistExtensions = [
+			new BlockDistExtension(0, 2.5),
+			new BlockDistExtension(PI, 3, PI / 3)
+		];
+
 		this.arrowOffset = 25;
 
 		this.stances = {

@@ -1,7 +1,7 @@
 "use strict";
 
 let webVersion = false;
-let webgl = true;
+let webgl = false;
 
 let promptFile = document.getElementById("promptFile");
 promptFile.addEventListener(
@@ -16,6 +16,7 @@ if (!window.electronAPI) {
 	webVersion = true;
 	window.electronAPI = {
 		toggleFullscreen: () => { },
+		toggleMenuBar: () => { },
 		closeWindow: () => { },
 		readdir: async (name) => [],
 		setMods: (data) => { },
@@ -116,7 +117,8 @@ function preload() {
 function setup() {
 	canvas = createCanvas(windowWidth, windowHeight, (webgl ? WEBGL : undefined));//512x384
 	//g = createGraphics(512, 384);
-	g = createGraphics(windowWidth, windowHeight);
+	//g = createGraphics(windowWidth, windowHeight);
+	g = window;
 
 	getAppVersion();
 
@@ -323,7 +325,6 @@ function draw() {
 				lostDrawFrames -= 0.5;//Prevent the frame from being drawn if the framerate is lagging behind
 			} else if (!debug.negateDraw) {//If the debug option to negate drawing is toggled off
 				if (dynamicLoadingDisplay) {
-					//TODO add loading screen visuals here
 					drawLoadingScreen(g);
 					if (assetManager.getRealDisplayPercent() >= 100 && !forceDynamicLoadingDisplay) {
 						dynamicLoadingDisplay = false;
@@ -379,7 +380,7 @@ function draw() {
 	g.strokeWeight(3);
 	g.rect(0, 0, 512, 384);*/
 
-	image(g, (webgl ? -width / 2 : 0), (webgl ? -height / 2 : 0));
+	//image(g, (webgl ? -width / 2 : 0), (webgl ? -height / 2 : 0));
 
 	if (savingReplayDisplay) {
 		stroke(0, 0, 14);
@@ -419,11 +420,12 @@ function draw() {
 			sum += a;
 		});
 
+		textAlign(LEFT, BASELINE);
 		textFont(assetManager.fonts.asuki);
 		fill(255, 0, 0, 170);
 		noStroke();
 		textSize(25);
-		text("Framerate: " + (round(sum / debug.frameRates.length * 10) / 10), 10 - width / 2, 20 - height / 2);
+		text("Framerate: " + (round(sum / debug.frameRates.length * 10) / 10), 10, 20);
 
 		sum = 0;
 		debug.effectiveFrameRates.forEach((a) => {
@@ -433,7 +435,7 @@ function draw() {
 		fill(255, 0, 0, 170);
 		noStroke();
 		textSize(25);
-		text("Effective Framerate: " + (round(sum / debug.effectiveFrameRates.length * 10) / 10), 10 - width / 2, 40 - height / 2);
+		text("Effective Framerate: " + (round(sum / debug.effectiveFrameRates.length * 10) / 10), 10, 45);
     }
 }
 
@@ -491,6 +493,9 @@ function keyPressed(e) {
 	if (keys.F11) {
 		window.electronAPI.toggleFullscreen();
 	}
+	if (keys.F3) {
+		window.electronAPI.toggleMenuBar();
+	}
 
 	return false;
 }
@@ -502,9 +507,10 @@ function keyReleased(e) {
 }
 
 function windowResized() {
-	resizeCanvas(windowWidth, windowHeight);
-	g.remove();
-	g = createGraphics(windowWidth, windowHeight);
+	resizeCanvas(windowWidth, windowHeight, (webgl ? WEBGL : undefined));
+	//g.remove();
+	//g = createGraphics(windowWidth, windowHeight);
+	g = window;
 }
 
 function mouseMoved() {

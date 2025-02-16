@@ -283,9 +283,15 @@ class Attack extends Hitcircle {
 				let angleDif = Angle.distance(joystickAngle, attackAngle);
 				let standingAngleDif = Angle.distance(new Angle(p.dir.value + PI), attackAngle);//Not sure if this should be p.dir or just use playerAngle (might have to 180 swap playerAngle)
 
+				let currentHitEffectMagMod = 1;
+				for (let b in p.blockDistExtensions) {
+					if (p.blockDistExtensions[b].leniency !== 0)
+						currentHitEffectMagMod += constrain(Angle.distance(attackAngle, new Angle(p.dir.value + p.blockDistExtensions[b].dirValue)) - PI + p.blockDistExtensions[b].leniency, 0, PI) / p.blockDistExtensions[b].leniency * p.blockDistExtensions[b].magnitudeMult;
+				}
+
 				//let particleAngle = new Angle().setFromPoint(angleX, angleY);
-				let px = p.x - attackAngle.getX() * (p.largestDiameter / 2 - 5);
-				let py = p.y - attackAngle.getY() * (p.largestDiameter / 2 - 5);
+				let px = p.x - attackAngle.getX() * (p.largestDiameter / 2 - 5) * currentHitEffectMagMod;
+				let py = p.y - attackAngle.getY() * (p.largestDiameter / 2 - 5) * currentHitEffectMagMod;
 
 				let playerAngle = new Angle().setFromPoint(p.x - this.player.x, p.y - this.player.y);
 

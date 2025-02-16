@@ -1563,7 +1563,7 @@ class JanLukeNS extends Attack {
 	}
 
 	static createAttack(player) {
-		let cancelOptions = ["SL", "RS", "LS", "SS", "NPL", "MN"];
+		let cancelOptions = ["SL", "SS", "RS", "LS", "NPL", "MN"];
 
 		let sour1 = new PriorityCircle(30, -40, 30, 0).setVelocity(1, 0.6);
 		let sweet1 = new PriorityCircle(57, -35, 40, 1).setVelocity(1, 0.6);
@@ -1856,7 +1856,7 @@ class JanLukeMS extends Attack {
 				speed *= 0.95 ** (40 - this.getActiveF());
 			if (distance < this.player.targetPlayer.collideRadius + 100) {
 				if (this.player.targetPlayer.currentState.name === "hitstun") {
-					this.player.targetPlayer.damageHealthAbs(0.3, 0, true);
+					this.player.targetPlayer.damageHealthAbs(0.5, 0, true);
 					speed *= 1.2;
 				} else {
 					this.player.targetPlayer.damageHealthAbs(0.1, 0, true);

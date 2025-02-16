@@ -1142,6 +1142,8 @@
 		this.maxHealth = 700;
 		this.timerPunishMult = 0.65;
 
+		this.stalePenalty -= 0.03;
+
 		this.arrowOffset = -15;
 
 		this.pastX = this.x;
@@ -2203,7 +2205,7 @@ class KaSPL extends Attack {
 		this.sheet.run();
 
 		if (this.getFromStartupF() === 4) {
-			let angle = new Angle(this.player.dir.value + PI / 4);
+			let angle = new Angle(this.player.dir.value + PI / 6);
 			let speed = 8;
 			if (this.fromAttack) {
 				angle.changeValue(PI / 8);
@@ -2278,8 +2280,8 @@ class KaRPL extends Attack {
 		this.sheet.run();
 
 		if (this.getActiveF() > 0 && !this.hitPlayerBool) {
-			let mag = dist(0, 0, this.player.dx, this.player.dy);
-			let angle = new Angle().setFromPoint(this.player.dx, this.player.dy).changeValue(0.13);
+			let mag = min(dist(0, 0, this.player.dx, this.player.dy) * 1.05, 10);
+			let angle = new Angle().setFromPoint(this.player.dx, this.player.dy).changeValue(0.14);
 			this.player.dx = mag * angle.getX();
 			this.player.dy = mag * angle.getY();
 		}
@@ -2340,8 +2342,8 @@ class KaLPL extends Attack {
 		this.sheet.run();
 
 		if (this.getActiveF() > 0 && !this.hitPlayerBool) {
-			let mag = dist(0, 0, this.player.dx, this.player.dy);
-			let angle = new Angle().setFromPoint(this.player.dx, this.player.dy).changeValue(-0.13);
+			let mag = min(dist(0, 0, this.player.dx, this.player.dy) * 1.05, 10);
+			let angle = new Angle().setFromPoint(this.player.dx, this.player.dy).changeValue(-0.14);
 			this.player.dx = mag * angle.getX();
 			this.player.dy = mag * angle.getY();
 		}

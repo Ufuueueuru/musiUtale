@@ -11,7 +11,7 @@ class Menu {
         this.back = false;
 
         this.backoutFunction = backout;
-        this.debaultBackout = defaultBackout;
+        this.defaultBackout = defaultBackout;
 
         this.goToScreen = undefined;
         this.goToFunction = () => { };
