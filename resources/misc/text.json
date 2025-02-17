@@ -561,6 +561,14 @@
     }
   },
 
+  "errorSavingReplay": {
+    "en": {
+      "text": "Error saving replay"
+    },
+    "tp": {
+      "text": "󱤃󱥍󱥠󱥩󱤧󱥈"
+    }
+  },
   "replayTools": {
     "en": {
       "text": "Playback tools"
@@ -617,6 +625,23 @@
     },
     "tp": {
       "text": "󱥵󱥍󱥠󱤨:"
+    }
+  },
+  "graphicsSkipFrames": {
+    "en": {
+      "text": "Rendered Frames:"
+    },
+    "tp": {
+      "text": "󱥫󱥙󱤡󱤴󱥠󱤉󱤻:"
+    }
+  },
+
+  "globalVolume": {
+    "en": {
+      "text": "Global Volume:"
+    },
+    "tp": {
+      "text": "󱥣󱥍󱤕󱤄:"
     }
   },
 
@@ -735,6 +760,14 @@
     }
   },
 
+  "netplayTitle": {
+    "en": {
+      "text": "Netplay"
+    },
+    "tp": {
+      "text": "󱥱󱤬󱤝"
+    }
+  },
   "copiedToClipboard": {
     "en": {
       "text": "Copied to clipboard"
@@ -751,6 +784,38 @@
       "text": "󱤴󱤖󱥡󱤉󱤽󱥧󱤪󱤥"
     }
   },
+  "yourID": {
+    "en": {
+      "text": "Your ID:\n"
+    },
+    "tp": {
+      "text": "󱤽󱥞:\n"
+    }
+  },
+  "friendID": {
+    "en": {
+      "text": "Friend ID:\n"
+    },
+    "tp": {
+      "text": "󱤽󱤝:\n"
+    }
+  },
+  "copyID": {
+    "en": {
+      "text": "Copy ^ ID to clipboard"
+    },
+    "tp": {
+      "text": "󱥄󱤖󱤓󱤉󱤽󱥖󱤿[ctrl+c]"
+    }
+  },
+  "pasteID": {
+    "en": {
+      "text": "Paste ID from clipboard"
+    },
+    "tp": {
+      "text": "󱥄󱥌󱤉󱤽󱥖󱤿[ctrl+v]"
+    }
+  },
   "netplayStartFight": {
     "en": {
       "text": "Start fight"
@@ -759,6 +824,23 @@
       "text": "󱥇󱥱"
     }
   },
+  "acquirePeerID": {
+    "en": {
+      "text": "Getting netplay ID..."
+    },
+    "tp": {
+      "text": "󱤽󱥞󱤧󱤖..."
+    }
+  },
+  "acquireFriendID": {
+    "en": {
+      "text": "Friend ID: none"
+    },
+    "tp": {
+      "text": "󱤽󱤝:󱤬󱤂"
+    }
+  },
+
   "tutorial": {
     "en": {
       "text": "Tutorial"

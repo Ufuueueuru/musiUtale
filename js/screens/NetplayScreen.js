@@ -28,12 +28,22 @@ class NetplayScreen extends Screen {
 
         this.menu.draw(g, imageWidth, imageHeight, imageWidth * 0.43, imageHeight * 0.15);
 
-        g.textSize(20 * width / 384);
+        g.textSize(20 * imageWidth / 384);
         g.fill(200, 215, 205, this.clipboard.displayFrames * 4);
         g.noStroke();
         g.text(this.clipboard.text, width / 2 - imageWidth / 4, height / 2 + 30 * height / 512 + max(0, 30 - this.clipboard.displayFrames) * height / 512);
 
-        g.textSize(100 * width / 384);
+        g.textSize(10 * imageWidth / 384);
+        g.fill(200, 215, 205);
+        let myID = this.myID ? gt("yourID") + this.myID : gt("acquirePeerID");
+        g.text(myID, width / 2 - imageWidth / 4 + width / 25, height / 2 - 170 * height / 512);
+        let theirID = this.theirID ? gt("friendID") + this.theirID : gt("acquireFriendID");
+        g.text(theirID, width / 2 + imageWidth / 4 + width / 75, height / 2 - 170 * height / 512);
+
+        //g.textSize(70 * width / 384);
+        //g.text(gt("netplayTitle"), width / 2, height / 50);
+
+        g.textSize(100 * imageWidth / 384);
         g.fill(200, 215, 205, (this.startCountdown % 60) * 6);
         g.stroke(0, 15, 0, (this.startCountdown % 60) * 6);
         g.text(ceil(this.startCountdown / 60), width / 2, height / 2);
@@ -98,7 +108,10 @@ class NetplayScreen extends Screen {
 
     run() {
         if (this.startCountdown === -1 && !this.keyboardActive) {
-            this.menu.run();
+            if (this.tempDeactivateMenu <= 0)
+                this.menu.run();
+            else
+                this.tempDeactivateMenu--;
         } else {
             for (let i in this.playerControls) {
                 if (this.playerControls[i] && this.playerControls[i].layout === "gamepad" && this.keyboardActive) {
@@ -124,7 +137,7 @@ class NetplayScreen extends Screen {
                             this.theirID += this.keyboardValues[this.keyboardY][this.keyboardX];
                         if (this.theirID.length > 0 && !this.keyboardValues[this.keyboardY][this.keyboardX])
                             this.theirID = this.theirID.substring(0, this.theirID.length - 1);
-                        this.setIDButton.text = "󱤽󱤝:\n" + this.theirID;//nanpa kon:
+                        //this.setIDButton.text = "󱤽󱤝:\n" + this.theirID;//nanpa kon:
                     }
                     if (this.playerControls[i].clickedAbsolute("back")) {
                         this.deactivateKeyboard();
@@ -208,7 +221,7 @@ class NetplayScreen extends Screen {
             this.theirID = clipText;
             if (this.theirID.length > 50)
                 this.theirID = this.theirID.substring(0, 50);
-            this.setIDButton.text = "󱤽󱤝:\n" + this.theirID;
+            //this.setIDButton.text = "󱤽󱤝:\n" + this.theirID;
             this.clipboard.displayFrames = 540;
             this.clipboard.text = gt("clipboardPasted");//mi kama sona e nanpa tan lipu len
         });
@@ -325,17 +338,18 @@ class NetplayScreen extends Screen {
     activateKeyboard() {
         this.keyboardActive = true;
         keyPressedHelper = (e) => {
-            if (e.key.length === 1 && this.theirID.length < 50)
+            if (e.key.length === 1 && this.theirID.length < 40)
                 this.theirID += e.key;
             if (e.key === "Backspace" && this.theirID.length > 0)
                 this.theirID = this.theirID.substring(0, this.theirID.length - 1);
-            if (e.key === "Enter")
+            if (e.key === "Enter" || e.key === "Escape")
                 this.deactivateKeyboard();
-            this.setIDButton.text = "󱤽󱤝:\n" + this.theirID;
+            //this.setIDButton.text = "󱤽󱤝:\n" + this.theirID;
         };
     }
 
     deactivateKeyboard() {
+        this.tempDeactivateMenu = 4;
         this.keyboardActive = false;
         keyPressedHelper = (e) => { };
     }
@@ -347,6 +361,7 @@ class NetplayScreen extends Screen {
 
     initLater() {
         this.menu = new Menu(MenuDebugScreen);
+        this.tempDeactivateMenu = 0;
 
         let gg = createGraphics(800, 300);
         gg.image(assetManager.images.keyboardIcon, 162, 50);
@@ -358,8 +373,8 @@ class NetplayScreen extends Screen {
         let keyboardPressedImage = gg.get();
         gg.remove();
 
-        this.getIDButton = new MenuItem(46, 130, assetManager.images.buttonPressed, assetManager.images.buttonUnpressed, undefined, "󱤽󱥞󱤧󱤖...", () => { this.copyToClipboard(); }).setTextSize(10);//nanpa sina li kama...
-        this.setIDButton = new MenuItem(246, 130, assetManager.images.buttonPressed, assetManager.images.buttonUnpressed, undefined, "󱤽󱤝:", () => { this.setFromClipboard(); }).setTextSize(10);//nanpa kon:
+        this.getIDButton = new MenuItem(46, 130, assetManager.images.buttonPressed, assetManager.images.buttonUnpressed, undefined, gt("copyID"), () => { this.copyToClipboard(); }).setTextSize(20);//nanpa sina li kama...
+        this.setIDButton = new MenuItem(246, 130, assetManager.images.buttonPressed, assetManager.images.buttonUnpressed, undefined, gt("pasteID"), () => { this.setFromClipboard(); }).setTextSize(20);//nanpa kon:
         this.keyboardButton = new MenuItem(246, 180, keyboardPressedImage, keyboardUnpressedImage, undefined, "", () => { this.activateKeyboard(); });
         this.startButton = new MenuItem(146, 240, assetManager.images.buttonPressed, assetManager.images.buttonUnpressed, undefined, gt("netplayStartFight"), () => { if (this.theirID !== "" && this.myID !== "") this.establishConnection(); });//open utala
 
@@ -408,7 +423,7 @@ class NetplayScreen extends Screen {
             });
             this.peer.on("open", (id) => {
                 this.myID = id;
-                this.getIDButton.text = "󱤽󱥞:\n" + this.myID;//nanpa sina
+                //this.getIDButton.text = "󱤽󱥞:\n" + this.myID;//nanpa sina
             });
             this.peer.on("connection", (conn) => {
                 if (!currentScreen.connection) {
@@ -456,9 +471,9 @@ class NetplayScreen extends Screen {
             });
         } else {
             this.myID = this.peer.id;
-            this.getIDButton.text = "󱤽󱥞:\n" + this.myID;//nanpa sina
+            //this.getIDButton.text = "󱤽󱥞:\n" + this.myID;//nanpa sina
             //this.theirID is already set in the constructor
-            this.setIDButton.text = "󱤽󱤝:\n" + this.theirID;//nanpa kon
+            //this.setIDButton.text = "󱤽󱤝:\n" + this.theirID;//nanpa kon
         }
 
         this.rSeed = floor(random(0, 1000000));

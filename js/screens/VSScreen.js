@@ -171,11 +171,13 @@ class VSScreen extends Screen {
         }
 
         if (!this.paused) {
-            let max = debug.negateDraw ? debug.throttleRun : 1;
-            for (let i = 0; i < max; i++) {
-                if (this.replay)
-                    this.replay.record(this.world);
-                this.world.run(this);
+            if (!this.winScreenMenuOn) {
+                let max = debug.negateDraw ? debug.throttleRun : 1;
+                for (let i = 0; i < max; i++) {
+                    if (this.replay)
+                        this.replay.record(this.world);
+                    this.world.run(this);
+                }
             }
         } else {
             if (this.pauseMenu.transitioning <= 0) {

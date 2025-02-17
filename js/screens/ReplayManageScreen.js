@@ -115,7 +115,11 @@ class ReplayManageScreen extends Screen {
                         let pressedFunc = (function (id) {
 
                         }).bind(this, this.replayList.length - 1);
-                        let newButton = new MenuItem(20, 35 + this.menu.menus.length * 40, select, deselect, undefined, this.totalList[i].substring(0, this.totalList[0].length - 8), pressFunc, pressedFunc);
+                        let buttonText = this.totalList[i];
+                        buttonText = buttonText.substring(0, buttonText.length - 8);
+                        if (buttonText.length > 31)
+                            buttonText = buttonText.substring(0, 28) + "...";
+                        let newButton = new MenuItem(20, 35 + this.menu.menus.length * 40, select, deselect, undefined, buttonText, pressFunc, pressedFunc);
 
                         if (this.menu.menus.length > 0) {
                             this.menu.menus[this.menu.menus.length - 1].addMoves(new MenuMove(newButton, Angle.DOWN));

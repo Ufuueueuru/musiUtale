@@ -119,6 +119,7 @@ class VSNetplayScreen extends Screen {
         this.netplayAutoSavedReplay = false;
         this.world.savedReplay = false;
         this.replay = new Replay();
+        this.replay.characters = [this.player1CharacterID, this.player2CharacterID];
         this.currentReplaySaved = false;
         this.currentReplayFrame = 0;
 
@@ -212,7 +213,7 @@ class VSNetplayScreen extends Screen {
 
         this.updateControls();
         this.testShouldPause();
-        if (!this.paused) {
+        if (!this.paused && !this.winScreenMenuOn) {
             this.addFramePast();
             if (!debug.noSendData)
                 this.connection.send(this.getExports());

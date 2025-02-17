@@ -1075,7 +1075,7 @@
 	}
 
 	generalLogic() {
-		if (((this.bullets <= 1 && this.currentState.name === "SPS") || (this.bullets <= 0 && (State.stateIsTag(this.currentState, "poka lili") || this.currentState.name === "NN"))) && this.frameDataRef.getFromStartupF() === 1) {
+		if (((this.bullets <= 1 && this.currentState.name === "SPS") || (this.bullets <= 0 && (State.stateIsTag(this.currentState, "poka lili") || this.currentState.name === "NN"))) && this.frameDataRef?.attack && this.frameDataRef.getFromStartupF() === 1) {
 			this.forceChangeState(this.states.MISFIRE, this.states.MISFIRE_ACTIONS);
 			this.sheet.setAnimation("Misfire");
 			this.playSound(assetManager.sounds.e);

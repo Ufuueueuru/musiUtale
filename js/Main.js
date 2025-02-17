@@ -626,6 +626,31 @@ function loadSaveObject(saveFile) {
 			autoReplay = saveFile.autoReplay;
 
 			break;
+		case "0.2.0":
+			controlsManager.defaultKeyboardControls1 = saveFile.defaultKeyboardControls1;
+			controlsManager.defaultKeyboardControls2 = saveFile.defaultKeyboardControls2;
+			controlsManager.defaultGamepadControls = saveFile.defaultGamepadControls;
+
+			keyboard1 = new Controls("keyboard", keys, controlsManager.defaultKeyboardControls1.keys, controlsManager.defaultKeyboardControls1.arrows, controlsManager.defaultKeyboardControls1.deadzones);
+			keyboard2 = new Controls("keyboard", keys, controlsManager.defaultKeyboardControls2.keys, controlsManager.defaultKeyboardControls2.arrows, controlsManager.defaultKeyboardControls2.deadzones);
+			controls.push(keyboard1);
+			controls.push(keyboard2);
+			controlsManager.keyboardControls.push(keyboard1);
+			controlsManager.keyboardControls.push(keyboard2);
+			currentLanguage = saveFile.currentLanguage;
+			promptTutorial = saveFile.promptTutorial;
+
+			for (let i in saveFile.graphicsSettings) {
+				graphicsSettings[i] = saveFile.graphicsSettings[i];
+			}
+			debug.noSplit = graphicsSettings.noSplitSheets;
+
+			maxReplays = saveFile.maxReplays;
+			autoReplay = saveFile.autoReplay;
+
+			Howler.volume(saveFile.globalVolume);
+
+			break;
 	}
 }
 
@@ -686,7 +711,9 @@ function writeSaveFile() {
 
 	saveFile.promptTutorial = promptTutorial;
 
-	saveFile.version = "0.1.0";
+	saveFile.globalVolume = Howler.volume();
+
+	saveFile.version = "0.2.0";
 
 	window.electronAPI.writeSave(saveFile);
 }

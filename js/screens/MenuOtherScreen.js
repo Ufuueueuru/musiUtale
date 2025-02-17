@@ -25,9 +25,15 @@ class MenuOtherScreen extends Screen {
             if (graphicsSettings.spriteResolutionMult === 0.25)
                 spriteResText = "1/4";
             this.drawMenuText(g, spriteResText, 300, 130, 30, imageWidth, imageHeight, imageWidth * 0.4, imageHeight * 0.15);
+            let capFPSText = (graphicsSettings.capFPS-1) + "/" + (graphicsSettings.capFPS);
+            if (graphicsSettings.capFPS <= 1)
+                capFPSText = "60/60";
+            this.drawMenuText(g, capFPSText, 300, 190, 30, imageWidth, imageHeight, imageWidth * 0.4, imageHeight * 0.15);
         } else if (this.volumeMenuOn) {
             g.background(0, 0, 14, 50);
             this.volumeMenu.draw(g, imageWidth, imageHeight, imageWidth * 0.4, imageHeight * 0.15);
+
+            this.drawMenuText(g, (Howler.volume() * 100) + "%", 300, 70, 30, imageWidth, imageHeight, imageWidth * 0.4, imageHeight * 0.15);
         }
 
         /*g.textFont(assetManager.fonts.asuki);
@@ -136,14 +142,38 @@ class MenuOtherScreen extends Screen {
             }
             writeSaveFile();
         });
+        let gButton3 = new MenuItem(130, 190, assetManager.images.buttonPressedLanguage, assetManager.images.buttonUnpressedLanguage, undefined, gt("graphicsSkipFrames"), () => {
+            let dx = 1;
+            if (graphicsSettings.capFPS > 10)
+                dx = 5;
+            if (graphicsSettings.capFPS > 30)
+                dx = 15;
+            graphicsSettings.capFPS = graphicsSettings.capFPS - dx;
+            if (graphicsSettings.capFPS < 1)
+                graphicsSettings.capFPS = 60;
+            writeSaveFile();
+        });
 
         gButton1.addMoves(new MenuMove(gButton2, Angle.DOWN));
         gButton2.addMoves(new MenuMove(gButton1, Angle.UP));
+        gButton2.addMoves(new MenuMove(gButton3, Angle.DOWN));
+        gButton3.addMoves(new MenuMove(gButton2, Angle.UP));
 
-        this.graphicsMenu.addMenuItems(gButton1, gButton2);
+        this.graphicsMenu.addMenuItems(gButton1, gButton2, gButton3);
         this.graphicsMenu.setTarget(gButton1);
 
         this.volumeMenuOn = false;
         this.volumeMenu = new Menu();
+
+        let vButton1 = new MenuItem(130, 70, assetManager.images.buttonPressedLanguage, assetManager.images.buttonUnpressedLanguage, undefined, gt("globalVolume"), () => {
+            let newVolume = Howler.volume() - 0.125;
+            if (newVolume < 0)
+                newVolume = 1;
+            Howler.volume(newVolume);
+            writeSaveFile();
+        });
+
+        this.volumeMenu.addMenuItems(vButton1);
+        this.volumeMenu.setTarget(vButton1);
     }
 }

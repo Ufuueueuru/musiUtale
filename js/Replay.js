@@ -107,10 +107,12 @@ class Replay {
         }
     }
 
-    initRecord(world) {
+    initRecord(world, recordCharacters = true, recordStage = true) {
         this.rSeed = world.rSeed;
-        this.recordCharacters(world);
-        this.recordStage(world);
+        if (recordCharacters)
+            this.recordCharacters(world);
+        if (recordStage)
+            this.recordStage(world);
         this.firstTo = world.firstTo;
 
         this.minFrameCount = world.frameCount;
@@ -143,7 +145,7 @@ class Replay {
      */
     recordControls(world, controlsArray, frameCount = world.frameCount) {
         if (!this.initialized) {
-            this.initRecord(world);
+            this.initRecord(world, false);
         }
 
         this.inputs[frameCount] = [];
@@ -220,8 +222,12 @@ function saveReplay(replay, finish = () => { }, fail = () => { }) {
                 function addData(i, keys) {
                     setTimeout(async () => {
                         if (i >= keys.length) {
-                            window.electronAPI.saveCurrentReplay(fileName + ".json");
-                            window.electronAPI.saveReplay(fileName + ".jsonhlp", replay.serializeHLP());
+                            let bigSuccess = await window.electronAPI.saveCurrentReplay(fileName + ".json");
+                            let smallSuccess = await window.electronAPI.saveReplay(fileName + ".jsonhlp", replay.serializeHLP());
+                            if (!bigSuccess || !smallSuccess) {
+                                errorDisplayFrames = 600;
+                                errorDisplayMessage = gt("errorSavingReplay");
+                            }
                             finish();
                             return;
                         }
@@ -258,8 +264,12 @@ function saveReplayManual(replay, finish = () => { }, fail = () => { }) {
                 function addData(i, keys) {
                     setTimeout(async () => {
                         if (i >= keys.length) {
-                            window.electronAPI.saveCurrentReplay(fileName + ".json");
-                            window.electronAPI.saveReplay(fileName + ".jsonhlp", replay.serializeHLP());
+                            let bigSuccess = await window.electronAPI.saveCurrentReplay(fileName + ".json");
+                            let smallSuccess = await window.electronAPI.saveReplay(fileName + ".jsonhlp", replay.serializeHLP());
+                            if (!bigSuccess || !smallSuccess) {
+                                errorDisplayFrames = 600;
+                                errorDisplayMessage = gt("errorSavingReplay");
+                            }
                             finish();
                             return;
                         }

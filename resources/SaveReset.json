@@ -1,6 +1,6 @@
 {
-  "autoReplay": true,
-  "maxReplays": 50,
+  "autoReplay": false,
+  "maxReplays": 10,
   "defaultKeyboardControls1": {
     "keys": [
       [ "dash", "KeyY" ],
@@ -60,10 +60,11 @@
     "resolutionMult": 1,
     "spriteResolutionMult": 1,
     "antiAliasing": true,
-    "noSplitSheets": false,
-    "cap30FPS": 4
+    "noSplitSheets": true,
+    "capFPS": 1
   },
-  "currentLanguage": "en",
-  "promptTutorial": false,
-  "version": "0.1.0"
+  "currentLanguage": "tp",
+  "promptTutorial": true,
+  "globalVolume": 1,
+  "version": "0.2.0"
 }
