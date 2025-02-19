@@ -423,8 +423,9 @@ class Attack extends Hitcircle {
 							p.dx *= multiple;
 							p.dy *= multiple;
 						}
-						p.dx += (launchIncludeMulti + wallLaunchMod) * property.angle.getX() / sqrt(p.weight) / further * counterVel;
-						p.dy += (launchIncludeMulti + wallLaunchMod) * property.angle.getY() / sqrt(p.weight) / further * counterVel;
+						let weightValue = (property.ignoreWeight || this.multi > 0) ? 1 : sqrt(p.weight);
+						p.dx += (launchIncludeMulti + wallLaunchMod) * property.angle.getX() / weightValue / further * counterVel;
+						p.dy += (launchIncludeMulti + wallLaunchMod) * property.angle.getY() / weightValue / further * counterVel;
 
 						if (this.follow || wallPushback !== 1) {
 							if (this.player.dx * -property.counterLaunch * playerAngle.getX() / sqrt(this.player.weight) / 5 * wallPushback / further + this.player.dy * -property.counterLaunch * playerAngle.getY() / sqrt(this.player.weight) / 5 * wallPushback / further < 0) {
@@ -476,8 +477,10 @@ class Attack extends Hitcircle {
 
 					if (this.multi === 0) {
 						this.world.sikeWawa.subtractMeter(-1.5, -0.6, p);//Add meter to opponent when they block but only if they already control the slice
-						if (!p.controls.joystickPressed(0))
-							this.world.sikeWawa.subtractMeter(-4.0, -3.6, p);
+						if (parried)
+							this.world.sikeWawa.addMeter(4.0, 3.6, p);
+						else if (!p.controls.joystickPressed(0))
+							this.world.sikeWawa.subtractMeter(-3.5, -3.1, p);
 						/* else {
 							this.world.sikeWawa.addMeter(1.2, 0.48, p);
 						}*/
@@ -529,8 +532,9 @@ class Attack extends Hitcircle {
 						p.dx *= multiple;
 						p.dy *= multiple;
 					}
-					p.dx += (launchIncludeMulti + wallLaunchMod) * property.blockLaunchMult * property.angle.getX() / sqrt(p.weight) / 3 / further;
-					p.dy += (launchIncludeMulti + wallLaunchMod) * property.blockLaunchMult * property.angle.getY() / sqrt(p.weight) / 3 / further;
+					let weightValue = (property.ignoreWeightBlock || this.multi > 0) ? 1 : sqrt(p.weight);
+					p.dx += (launchIncludeMulti + wallLaunchMod) * property.blockLaunchMult * property.angle.getX() / weightValue / 3 / further;
+					p.dy += (launchIncludeMulti + wallLaunchMod) * property.blockLaunchMult * property.angle.getY() / weightValue / 3 / further;
 
 					if (this.follow || wallPushback !== 1) {
 						/*if (this.player.dx * -property.counterLaunch * playerAngle.getX() / sqrt(this.player.weight) / 5 * wallPushback / further + this.player.dy * -property.counterLaunch * playerAngle.getY() / sqrt(this.player.weight) / 5 * wallPushback / further < 0) {
@@ -553,12 +557,13 @@ class Attack extends Hitcircle {
 					property.playBlockSound(this.world, this.multiConst);
 
 					if (parried) {//p.controls.joystickHeld(0) <= 4
-						this.player.dx /= 1.5;
-						this.player.dy /= 1.5;
+						this.player.dx /= 2;
+						this.player.dy /= 2;
 						this.player.stunFrames += 23;
+						this.player.iFrames = 0;
 
-						p.dx /= 1.5;
-						p.dy /= 1.5;
+						p.dx /= 2;
+						p.dy /= 2;
 						p.stunFrames += 23 - p.parryFrameBuff;
 
 						p.parryCooldown = 0;
@@ -1221,6 +1226,11 @@ class AttackProperties {
 		/** @type {number} The speed cap at which the launch dampening multiplier with never exceed (when blocked) */
 		this.launchDampeningMaxSpeedBlock = 20;
 
+		/** @type {boolean} Whether a hit attack's launch should ignore weight of the opponent */
+		this.ignoreWeight = false;
+		/** @type {boolean} Whether a blocked attack's launch should ignore weight of the opponent */
+		this.ignoreWeightBlock = false;
+
 		/** @type {number} */
 		this.wallLaunchMod = 0;
 		/** @type {number} */
@@ -1496,6 +1506,19 @@ class AttackProperties {
 		this.launch = num;
 		this.counterLaunch = counter;
 		this.blockLaunchMult = blockLaunch;
+
+		return this;
+	}
+
+	/**
+	 * 
+	 * @param {boolean} onHit
+	 * @param {boolean} onBlock
+	 * @returns
+	 */
+	setIgnoreWeight(onHit=true, onBlock=onHit) {
+		this.ignoreWeight = onHit;
+		this.ignoreWeightBlock = onBlock;
 
 		return this;
 	}

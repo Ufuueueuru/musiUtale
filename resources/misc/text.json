@@ -743,12 +743,52 @@
       "text": "󱤈󱤬󱥟󱥨"
     }
   },
+  "opponentParryButton": {
+    "en": {
+      "text": "Parry on Block"
+    },
+    "tp": {
+      "text": "󱤈󱤧󱥵"
+    }
+  },
   "opponentCounterButton": {
     "en": {
       "text": "Counter Hit"
     },
     "tp": {
       "text": "󱥱󱤧󱥎󱥈"
+    }
+  },
+  "meterButton": {
+    "en": {
+      "text": "Meter Settings"
+    },
+    "tp": {
+      "text": "󱤽󱤧󱤈"
+    }
+  },
+  "resetSikeWawaButton": {
+    "en": {
+      "text": "Reset Power Circle"
+    },
+    "tp": {
+      "text": "󱥄󱤈󱤉󱤽󱥍󱥜󱥵"
+    }
+  },
+  "autoAttackButton": {
+    "en": {
+      "text": "Auto Attack Settings"
+    },
+    "tp": {
+      "text": "󱥱󱥍󱤑󱤆"
+    }
+  },
+  "reversalButton": {
+    "en": {
+      "text": "Reversal:"
+    },
+    "tp": {
+      "text": "󱥄󱥱󱤬󱥫󱤈:"
     }
   },
   "trainingExitButton": {

@@ -574,6 +574,8 @@
 		this.states.DASH_ATTACK = State.copyState(State.DASH_ATTACK).removeTag("rotateable");
 		this.states.SS = State.copyState(State.SS).addTag("rotateable");
 
+		this.sikeWawaGainMult = 0.5;
+
 		this.movementSpeed = 1.5;
 		this.forwardSpeedBoost = 1.5;
 
@@ -1225,10 +1227,6 @@
 		this.runPuppet();
 		this.puppet.canMove = this.canMove;
 		//this.puppet.canAttack = this.canAttack;
-
-		if (this.targetPlayer && this.targetPlayer.currentState.name !== "hitstun" && this.puppet.health > 0) {
-			this.world.sikeWawa.addMeter(-0.02, -0.01, this);
-		}
 	}
 
 	//Character specific attacks
@@ -1547,6 +1545,22 @@
 		assetManager.addSpritesheet("resources/konSeli.png", "konSeli", "//");
 
 		//assetManager.addSound("resources/sfx/Fan.wav", "fanTP");
+
+		assetManager.addFunc(() => {
+			let tempG = createGraphics(assetManager.images.asakamiMenuImage.width, assetManager.images.asakamiMenuImage.height);
+			tempG.image(assetManager.images.asakamiMenuImage, 0, 0);
+			tempG.fill(255, 0, 0);
+			tempG.stroke(0, 0, 14);
+			tempG.strokeWeight(8);
+			tempG.textSize(80);
+			tempG.textAlign(CENTER, CENTER);
+			tempG.textFont(assetManager.fonts.asuki);
+			tempG.text("󱥐󱤂/\nUnfinished", assetManager.images.asakamiMenuImage.width / 2, assetManager.images.asakamiMenuImage.height / 2);
+
+			assetManager.images.asakamiMenuImage = tempG.get();
+
+			tempG.remove();
+		});
 	}
 }
 

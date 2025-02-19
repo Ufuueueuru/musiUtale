@@ -1825,6 +1825,8 @@
 		this.states.NN = State.copyState(State.NN).addTag("rotateable");
 		this.states.RN_ACTIONS = ["power dash", "block"];
 
+		this.sikeWawaGainMult = 1.2;
+
 		this.collideRadius = 50;
 
 		this.movementSpeed = 1;
@@ -1925,7 +1927,7 @@
 
 		this.defense = 1;
 		if (this.greenDisplay)
-			this.defense = 1.5;
+			this.defense = 1.3;
 
 		this.dash.speed = 10;
 		this.dash.cancelSpeed = 19;
@@ -2875,7 +2877,7 @@ class SelanNPS extends Attack {
 			let sweet1 = new PriorityCircle(0, 0, 300, 0);
 			let circles = [sweet1];
 
-			let sweet = new AttackProperties().setDamage((this.player.powerupGrabFrames ? 275 : 225) * (this.weak ? 0.4 : 1), 30, 2).setProration(this.player.powerupGrabFrames ? 0 : 1).setCancelOptions(cancelOptions).setAngleValue(this.player.dir.value).setLaunch(16, 0.1).setHitStun(26).setStunFrames(15).setNoKill(this.weak);
+			let sweet = new AttackProperties().setDamage((this.player.powerupGrabFrames ? 275 : 225) * (this.weak ? 0.6 : 1), 30, 2).setProration(this.player.powerupGrabFrames ? 0 : 1).setCancelOptions(cancelOptions).setAngleValue(this.player.dir.value).setLaunch(16, 0.1).setHitStun(26).setStunFrames(15).setNoKill(this.weak);
 			let prop = [sweet];
 
 			//sweet.setHitSound(assetManager.sounds.fanTP);
@@ -2906,23 +2908,25 @@ class SelanSPS extends Attack {
 	constructor(player, circles = [], props = []) {
 		super(player, circles, props);
 		this.name = "SPS";
+
+		this.first = true;
 	}
 
 	static createAttack(player) {
 		let cancelOptions = ["attack", "dash"];
 
-		let sweet1 = new PriorityCircle(50, 0, 80, 0).setVelocity(0.1, 0);
+		let sweet1 = new PriorityCircle(40, 0, 80, 0).setVelocity(0.1, 0);
 		let other1 = new PriorityCircle(80, 0, 80, 1).setVelocity(0.1, 0);
 		let circles = [sweet1, other1];
 
-		let sweet = new AttackProperties().setDamage(player.powerupGrabFrames ? 45 : 40).setProration(player.powerupGrabFrames ? -0.5 : 0).setCancelOptions(cancelOptions).setAngleValue(player.dir.value).setLaunch(14, 1, 2.7).setHitStun(40, 15).setStunFrames(13).setNormalizeHitStun().setCancelWait(4);
-		let other = new AttackProperties().setDamage(player.powerupGrabFrames ? 45 : 40).setProration(player.powerupGrabFrames ? -0.5 : 0).setCancelOptions(cancelOptions).setAngleValue(player.dir.value).setLaunch(7, 1, 2.5).setHitStun(40, 15).setStunFrames(13).setNormalizeHitStun().setCancelWait(4);
+		let sweet = new AttackProperties().setDamage(player.powerupGrabFrames ? 45 : 40).setProration(player.powerupGrabFrames ? -0.5 : 0).setCancelOptions(cancelOptions).setAngleValue(player.dir.value).setLaunch(14, 1, 2.7).setHitStun(40, 15).setStunFrames(13).setNormalizeHitStun().setCancelWait(6).setIgnoreWeight().setLaunchDampening(0.5);
+		let other = new AttackProperties().setDamage(player.powerupGrabFrames ? 45 : 40).setProration(player.powerupGrabFrames ? -0.5 : 0).setCancelOptions(cancelOptions).setAngleValue(player.dir.value).setLaunch(7, 1, 2.5).setHitStun(40, 15).setStunFrames(13).setNormalizeHitStun().setCancelWait(6).setIgnoreWeight().setLaunchDampening(0.5);
 		let prop = [sweet, other];
 
 		//sweet.setHitSound(assetManager.sounds.fanTP);
 		//sweet.setBlockSound(assetManager.sounds.fanTP);
 
-		return new this(player, circles, prop).setClashPriority(false).setStartupF(28).setActiveF(4).setEndF(40);
+		return new this(player, circles, prop).setClashPriority(false).setStartupF(28).setActiveF(4).setEndF(40-8);
 	}
 
 	static startAttack(player, attack, bufferInfo) {
@@ -2938,15 +2942,34 @@ class SelanSPS extends Attack {
 	}
 
 	logic() {
-		if (this.getFromStartupF() === 24) {
-			this.player.invTo = ["attack"];
-			this.player.iFrames = 16;
+		if (this.first) {
+			if (this.getFromStartupF() === 24) {
+				this.player.invTo = ["attack"];
+				this.player.iFrames = 16;
+			}
+
+			if (this.getStartupF() < 4 && this.getFromEndF() < 2) {
+				this.player.dx += this.player.dir.getX() * 15;
+				this.player.dy += this.player.dir.getY() * 15;
+			}
+
+			if (this.hitPlayerBool && this.player.targetPlayer && this.getFromActiveF() > 0 && this.getFromEndF() < 10) {
+				this.player.targetPlayer.x = (this.player.targetPlayer.x * 4 + this.player.x + this.player.targetPlayer.dx * 5) / 5;
+				this.player.targetPlayer.y = (this.player.targetPlayer.y * 4 + this.player.y + this.player.targetPlayer.dy * 5) / 5;
+			}
+
+			if (this.getFromEndF() === 5) {
+				this.resetHits();
+				this.setActiveF(8);
+				this.circles[0].diameter = 105;
+				this.circles[1].diameter = 10;
+				this.properties[0].setLaunch(4, 1, 1);
+				this.properties[0].setCancelOptions([]);
+				this.properties[1].setCancelOptions([]);
+				this.first = false;
+			}
 		}
 
-		if (this.getStartupF() < 4 && this.getFromEndF() < 2) {
-			this.player.dx += this.player.dir.getX() * 15;
-			this.player.dy += this.player.dir.getY() * 15;
-		}
 		this.player.dx *= 0.6;
 		this.player.dy *= 0.6;
 	}
@@ -3363,9 +3386,9 @@ class SelanMN extends Attack {
 			this.setClashPriority(5);
 			this.circles[1].diameter = 150;
 		}
-		if (this.getFromStartupF() === 6) {
+		if (this.getFromStartupF() === 4) {
 			this.player.invTo = ["attack"];
-			this.player.iFrames = 16;
+			this.player.iFrames = 20;
 		}
 	}
 }

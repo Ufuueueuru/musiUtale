@@ -1018,6 +1018,8 @@
 		this.states.MISFIRE = new State("misfire");
 		this.states.MISFIRE_ACTIONS = ["power dash"];
 
+		this.sikeWawaGainMult = 0.9;
+
 		this.selectScreenSizeOffset = 25;
 
 		this.movementSpeed = 1.5;
@@ -2961,7 +2963,7 @@ class JanLukeLN extends Attack {
 			this.player.sheet.setAnimation("LNF");
 		}
 		if (this.getStartupF() < 26 && this.getStartupF() > 5) {
-			this.world.sikeWawa.addMeter(0.19, 0.16, this.player);
+			this.world.sikeWawa.addMeter(0.20, 0.17, this.player);
 		}
 		if (this.held && this.getStartupF() === 20) {
 			this.player.actionLag++;

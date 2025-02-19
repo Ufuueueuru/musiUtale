@@ -38,7 +38,9 @@ class TrainingComputer extends Controls {
             fromHit: false,//Should the dummy mash out of hit?
             isThreshold: false,//Should the dummy take frame advantage in account on whether to mash or not?
             advantageMode: "oob",//Either "standard", "cancel", "oob", "oobCancel"
-            frameAdvantageThreshold: 4
+            frameAdvantageThreshold: 4,
+            count: 0,
+            hold: 5
         };
 
         this.trainingSettings.mash = [
@@ -75,6 +77,11 @@ class TrainingComputer extends Controls {
         let threshold = (this.trainingSettings.reversal.isThreshold && playerAdvantage >= this.trainingSettings.reversal.frameAdvantageThreshold) || !this.trainingSettings.reversal.isThreshold;
         if (this.trainingSettings.reversal.isReversal && (fromBlock || fromHit) && threshold) {
             this.clickAction(this.trainingSettings.reversal.action);
+            this.trainingSettings.reversal.count = 0;
+        }
+        if (this.trainingSettings.reversal.isReversal && this.player.currentState.name === this.trainingSettings.reversal.action && this.trainingSettings.reversal.count < this.trainingSettings.reversal.hold) {
+            this.pressAction(this.trainingSettings.reversal.action);
+            this.trainingSettings.reversal.count++;
         }
 
         //Mashing
@@ -98,8 +105,9 @@ class TrainingComputer extends Controls {
         //Blocking attacks
         for (let i = this.world.attacks.length - 1; i >= 0; i--) {
             let collideInfo;
-            if (this.player !== this.world.attacks[i].player && this.world.attacks[i].currentlyActive() && !this.world.attacks[i].hitPlayerBool)
+            if (this.player !== this.world.attacks[i].player && this.world.attacks[i].currentlyActive() && (!this.world.attacks[i].alreadyHitPlayer(this.player))) {
                 collideInfo = this.world.attacks[i].getCollideInformation(this.player);
+            }
             if (collideInfo?.collided) {
                 if (this.trainingSettings.block.isBlocking) {
                     this.resetButtons();
@@ -114,6 +122,7 @@ class TrainingComputer extends Controls {
                     }
                     if (this.trainingSettings.block.isParry) {
                         this.player.moveCount = 1;
+                        this.player.parryCooldown = 0;
                     } else {
                         this.player.moveCount = 10;
                     }

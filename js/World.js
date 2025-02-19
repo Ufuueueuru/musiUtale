@@ -1016,7 +1016,7 @@ class World {
 
             //this.removeAttack(max(acs[i].aid, acs[i].bid));
             //this.removeAttack(min(acs[i].aid, acs[i].bid));
-            if (a.clashable && b.clashable) {
+            if (a.clashable && b.clashable && !a.alreadyHitPlayer(b.player) && !b.alreadyHitPlayer(a.player)) {
                 if (a.clashPriority >= b.clashPriority) {
                     a.endLife();
                     if (a.player.hitStun <= 0)

@@ -1092,12 +1092,14 @@
 		this.states.RN = State.copyState(State.RN).addTag("rotateable");
 		this.states.MN_ACTIONS = ["block", "power dash"];
 
+		this.sikeWawaGainMult = 0.7;
+
 		this.collideRadius = 36;
 
 		this.movementSpeed = 3;
 		this.forwardSpeedBoost = 2;
 
-		this.OOBBlockFrames = 0;
+		this.OOBBlockFrame = 0;
 
 		this.dash.speed = 16;
 		this.dash.frames = 25;

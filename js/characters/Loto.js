@@ -481,6 +481,22 @@
 		assetManager.addSpritesheet("resources/TeloTonsi.png", "teloTonsi", "//");
 
 		assetManager.addSpritesheet("resources/teloLili.png", "teloLili", "//");
+
+		assetManager.addFunc(() => {
+			let tempG = createGraphics(assetManager.images.akesiLotoMenuImage.width, assetManager.images.akesiLotoMenuImage.height);
+			tempG.image(assetManager.images.akesiLotoMenuImage, 0, 0);
+			tempG.fill(255, 0, 0);
+			tempG.stroke(0, 0, 14);
+			tempG.strokeWeight(8);
+			tempG.textSize(100);
+			tempG.textAlign(CENTER, CENTER);
+			tempG.textFont(assetManager.fonts.asuki);
+			tempG.text("󱥐󱤂/\nUnfinished", assetManager.images.akesiLotoMenuImage.width / 2, assetManager.images.akesiLotoMenuImage.height / 2);
+
+			assetManager.images.akesiLotoMenuImage = tempG.get();
+
+			tempG.remove();
+		});
 	}
 
 	startDashAttack() {

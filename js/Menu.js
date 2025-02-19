@@ -48,8 +48,11 @@ class Menu {
     run() {
         if (this.transitioning === 0) {
             for (let i in controls) {
-                if (!controls[i].computer && !controls[i].netplay)
+                if (!controls[i].computer && !controls[i].netplay) {
                     this.controlMenu(controls[i]);
+                    if (this.target)
+                        this.target.awenControlFunction(controls[i]);
+                }
             }
             if (this.target)
                 this.target.awenFunction();

@@ -276,6 +276,9 @@ class Player extends Hitcircle {
 		/** @type {number} How much leniency you get to block mids via standing instead of moving */
 		this.standingBlockLeniency = PI / 8;
 
+		/** @type {number} Multiplies how much meter you gain from actions */
+		this.sikeWawaGainMult = 1;
+
 		/** @type {number} Frames where the player does not further their animation state */
 		this.stunFrames = 0;
 

@@ -923,6 +923,8 @@
 		this.states.KEPEKEN = new State("kepeken");
 		this.states.KEPEKEN_ACTIONS = ["power dash"];
 
+		this.sikeWawaGainMult = 0.9;
+
 		this.movementSpeed = 1.9;
 		this.forwardSpeedBoost = 1.7;
 

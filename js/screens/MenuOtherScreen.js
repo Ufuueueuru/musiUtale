@@ -18,7 +18,7 @@ class MenuOtherScreen extends Screen {
             this.graphicsMenu.draw(g, imageWidth, imageHeight, imageWidth * 0.4, imageHeight * 0.15);
 
             let resText = ["1/8", "1/4", "3/8", "1/2", "5/8", "3/4", "7/8", "1"];
-            this.drawMenuText(g, resText[graphicsSettings.resolutionMult * 8 - 1], 300, 70, 30, imageWidth, imageHeight, imageWidth * 0.4, imageHeight * 0.15);
+            this.drawMenuText(g, resText[graphicsSettings.resolutionMult * 4 - 1], 300, 70, 30, imageWidth, imageHeight, imageWidth * 0.4, imageHeight * 0.15);
             let spriteResText = "1";
             if (graphicsSettings.spriteResolutionMult === 0.5)
                 spriteResText = "1/2";
@@ -129,9 +129,9 @@ class MenuOtherScreen extends Screen {
         this.graphicsMenu = new Menu();
 
         let gButton1 = new MenuItem(130, 70, assetManager.images.buttonPressedLanguage, assetManager.images.buttonUnpressedLanguage, undefined, gt("graphicsResolution"), () => {
-            graphicsSettings.resolutionMult -= 0.125;
+            graphicsSettings.resolutionMult -= 0.25;
             if (graphicsSettings.resolutionMult <= 0) {
-                graphicsSettings.resolutionMult = 1;
+                graphicsSettings.resolutionMult = 2;
             }
             writeSaveFile();
         });

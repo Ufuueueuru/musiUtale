@@ -1,5 +1,5 @@
 class MenuItem {
-    constructor(x, y, pressedImage, unpressedImage, targetScreenClass, text = "", pressFunction = () => { }, awenFunction = () => { }) {
+    constructor(x, y, pressedImage, unpressedImage, targetScreenClass, text = "", pressFunction = () => { }, awenFunction = () => { }, awenControlFunction = (control) => { }) {
         this.x = x;
         this.y = y;
 
@@ -14,6 +14,7 @@ class MenuItem {
 
         this.pressFunction = pressFunction;
         this.awenFunction = awenFunction;
+        this.awenControlFunction = awenControlFunction;
 
         this.textSize = 30;
     }

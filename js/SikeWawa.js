@@ -61,6 +61,12 @@ class SikeWawa {
     }
 
     addMeter(value, sideValue, player) {
+        let mult = 1;
+        let sideMult = 1;
+        if (value > 0)
+            mult = player.sikeWawaGainMult;
+        if (sideValue > 0)
+            sideMult = player.sikeWawaGainMult;
         let signV = this.player1 === player ? 1 : -1;
 
         let sliceID;
@@ -73,9 +79,9 @@ class SikeWawa {
         let leftID = (sliceID + 7) % 8;
         let rightID = (sliceID + 1) % 8;
 
-        this.slices[sliceID].value += value * signV;
-        this.slices[leftID].value += sideValue * signV;
-        this.slices[rightID].value += sideValue * signV;
+        this.slices[sliceID].value += value * signV * mult;
+        this.slices[leftID].value += sideValue * signV * sideMult;
+        this.slices[rightID].value += sideValue * signV * sideMult;
 
         let frameID = floor(min(abs(this.slices[sliceID].value), 16));
         this.slices[sliceID].positiveSheet.requestAnimationChange(frameID);
@@ -95,6 +101,12 @@ class SikeWawa {
      * @param {any} player
      */
     subtractMeter(value, sideValue, player) {
+        let mult = 1;
+        let sideMult = 1;
+        if (value < 0)
+            mult = player.sikeWawaGainMult;
+        if (sideValue < 0)
+            sideMult = player.sikeWawaGainMult;
         let signV = this.player1 === player ? 1 : -1;
 
         let sliceID;
@@ -108,11 +120,11 @@ class SikeWawa {
         let rightID = (sliceID + 1) % 8;
 
         if (this.slices[sliceID].ownerIs(player))
-            this.slices[sliceID].value -= value * signV;
+            this.slices[sliceID].value -= value * signV * mult;
         if (this.slices[leftID].ownerIs(player))
-            this.slices[leftID].value -= sideValue * signV;
+            this.slices[leftID].value -= sideValue * signV * sideMult;
         if (this.slices[rightID].ownerIs(player))
-            this.slices[rightID].value -= sideValue * signV;
+            this.slices[rightID].value -= sideValue * signV * sideMult;
 
         let frameID = floor(min(abs(this.slices[sliceID].value), 16));
         this.slices[sliceID].positiveSheet.requestAnimationChange(frameID);
@@ -126,11 +138,14 @@ class SikeWawa {
     }
 
     addMeterAll(value, minusValue, player) {
+        let mult = 1;
+        if (value > 0)
+            mult = player.sikeWawaGainMult;
         let signV = this.player1 === player ? 1 : -1;
 
         for (let i in this.slices) {
             if (signV * this.slices[i].value >= 0) {
-                this.slices[i].value += value * signV;
+                this.slices[i].value += value * signV * mult;
             } else {
                 this.slices[i].value += minusValue * signV;
             }
