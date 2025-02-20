@@ -96,8 +96,9 @@ class ReplayManageScreen extends Screen {
                 for (let i = 0; i < this.totalList.length; i++) {
                     let single = this.totalList[i].substring(this.totalList[i].length - 5, this.totalList[i].length) === ".json" && !this.totalList.includes(this.totalList[i] + "hlp");
                     if (this.totalList[i].substring(this.totalList[i].length - 8, this.totalList[i].length) === ".jsonhlp" || (single && this.totalList[i].substring(this.totalList[i].length - 5, this.totalList[i].length) === ".json")) {
-                        const response = await fetch("replays/" + this.totalList[i]);
-                        const json = await response.json();
+                        //const response = await fetch("replays/" + this.totalList[i]);
+                        //const json = await response.json();
+                        const json = await electronAPI.getReplay(this.totalList[i]);
                         this.replayList.push(json);
 
                         if (single) {
