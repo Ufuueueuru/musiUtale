@@ -1,5 +1,7 @@
 "use strict";
 
+p5.disableFriendlyErrors = true;
+
 let webVersion = false;
 let webgl = false;
 
@@ -12,8 +14,13 @@ promptFile.addEventListener(
 	}
 );
 
+if (!window.currentDir) {
+	window.currentDir = "";
+	console.log("oop");
+}
 if (!window.electronAPI) {
 	webVersion = true;
+	dirLoaded = true;
 	window.electronAPI = {
 		toggleFullscreen: () => { },
 		toggleMenuBar: () => { },
@@ -35,7 +42,7 @@ if (!window.electronAPI) {
 			return { "autoReplay": false, "maxReplays": 10, "defaultKeyboardControls1": { "keys": [["dash", "KeyY"], ["powerDash", "KeyJ"], ["pokaLili", "KeyT"], ["pokaSuli", "KeyG"], ["lili", "KeyR"], ["suli", "KeyF"], ["nasa", "KeyH"], ["frameAdvance", "Space"], ["select", "KeyR"], ["back", "KeyT"], ["start", "Escape"]], "arrows": [["KeyD", "KeyW", "KeyA", "KeyS"]], "deadzones": [0.25] }, "defaultKeyboardControls2": { "keys": [["dash", "KeyO"], ["powerDash", "KeyK"], ["pokaLili", "KeyP"], ["pokaSuli", "Semicolon"], ["lili", "BracketLeft"], ["suli", "Quote"], ["nasa", "KeyL"], ["frameAdvance", "Space"], ["select", "Enter"], ["back", "KeyP"], ["start", "Escape"]], "arrows": [["ArrowRight", "ArrowUp", "ArrowLeft", "ArrowDown"]], "deadzones": [0.25] }, "defaultGamepadControls": { "keys": [["dash", 4], ["powerDash", 7], ["pokaLili", 3], ["pokaSuli", 1], ["lili", 2], ["suli", 0], ["nasa", 5], ["frameAdvance", 6], ["select", 0], ["back", 1], ["start", 9], ["up", 12], ["down", 13], ["left", 14], ["right", 15]], "arrows": [0], "deadzones": [0.35] }, "graphicsSettings": { "resolutionMult": 0.5, "spriteResolutionMult": 0.25, antiAliasing: false, "noSplitSheets": true, capFPS: 2 }, "currentLanguage": "tp", "promptTutorial": true, "globalVolume": 1, "version": "0.2.0" }
 		},
 		getSavesPath: () => { },
-		getAppVersion: async () => { appVersion = "0.4.4"; }
+		getAppVersion: async () => { appVersion = "0.5.0"; return appVersion; }
 	};
 }
 
@@ -163,6 +170,7 @@ function setup() {
 	assetManager.addSpritesheetImp("resources/PowerDashSlow.png", "powerDashSlow", "//");
 	assetManager.addSpritesheetImp("resources/sike_wawa_blue.png", "sikeWawaBlue", "//");
 	assetManager.addSpritesheetImp("resources/sike_wawa_red.png", "sikeWawaRed", "//");
+	assetManager.addSpritesheetImp("resources/arrowPakala.png", "arrowPakala", "//");
 
 	assetManager.addSound("resources/music/telo nasa lon ilo.wav", "teloNasaLonIlo", {
 		loop: true,
@@ -217,6 +225,10 @@ function setup() {
 	}, true);
 
 	assetManager.addJSON("resources/misc/text.json", "text");
+
+	for (let i in modFuncs) {
+		modFuncs[i]();
+	}
 
 	for (let i in characters) {
 		characters[i].addAssets();
@@ -441,6 +453,7 @@ function draw() {
 
 async function getAppVersion() {
 	appVersion = await window.electronAPI.getAppVersion();
+	return appVersion;
 }
 
 function drawBackHold(g, hold = 60) {
@@ -762,12 +775,129 @@ function drawLoadingScreen(g) {
 	}
 }
 
+/**
+ * For use after specific contexts where you want something to be guarunteed smooth or noSmooth to reset to what it was before
+ */
+function resetSmoothingToSave() {
+	if (graphicsSettings.antiAliasing) {
+		smooth();
+	} else {
+		noSmooth();
+	}
+}
+
 function reloadGame() {
 	if (webVersion) {
 		location.reload();
 	} else {
 		window.electronAPI.reloadWindow();
 	}
+}
+
+function drawControlsKeyImage(g, controls, name, x, y, width, height) {
+	let keySheet = controls.layout === "keyboard" ? assetManager.spritesheets.keys : assetManager.spritesheets.nena;
+	//let langOff = (currentLanguage === "en" ? 10 : 0);
+	let buttonID = (controls.layout === "keyboard" ? (keyImageID[controls.buttons[name].code] !== undefined ? keyImageID[controls.buttons[name].code] : keyImageIDLength) : min(18, controls.buttons[name].code));
+
+	//assetManager.spritesheets.nena.drawFrame(g, num + 25 + langOff, 108.5 + 30 * id, 135 + 100 * ud, 25, 25);
+	keySheet.drawFrame(g, buttonID, x, y, width, height);
+}
+
+function drawGameKeyImage(g, name, x, y, width, height) {
+	let buttonArray = ["lili", "suli", "pokaLili", "pokaSuli", "nasa", "dash", "select", "back", "start", "frameAdvance"];
+	let num = buttonArray.indexOf(name);
+	//let keySheet = controls.layout === "keyboard" ? assetManager.spritesheets.keys : assetManager.spritesheets.nena;
+	let langOff = (currentLanguage === "en" ? 10 : 0);
+	//let buttonID = (controls.layout === "keyboard" ? (keyImageID[controls.buttons[name].code] !== undefined ? keyImageID[controls.buttons[name].code] : keyImageIDLength) : min(18, controls.buttons[name].code));
+	
+	assetManager.spritesheets.nena.drawFrame(g, num + 25 + langOff, x, y, width, height);
+	//keySheet.drawFrame(g, buttonID, 108.5 + 30 * id, 135 + 100 * ud + 26, 25, 25);
+}
+
+/**
+ * 
+ * @param {Graphics} g
+ * @param {Spritesheet} sheet
+ * @param {number} x
+ * @param {number} y
+ */
+function drawHologram(g, sheet, x, y, rotValue = 0, width = sheet.width, height = sheet.height) {
+	let rShearX = random(-0.4, 0.4);
+	let rShearY = random(-0.4, 0.4);
+	if (random(0, 1) < 0.9) {
+		rShearX = 0;
+		rShearY = 0;
+	}
+
+	g.push();
+	g.translate(x, y);
+	//g.shearX(mouseX / 512 - 0.5);
+	//g.shearY(mouseY / 384 - 0.5);
+	g.rotate(rotValue);
+	g.shearX(rShearX);
+	g.shearY(rShearY);
+
+	sheet.draw(g, -width / 2 + random(-0.5, 0.5), -height / 2 + random(-0.5, 0.5), width, height);
+
+	g.pop();
+}
+
+/**
+ * 
+ * @param {Graphics} g
+ * @param {Spritesheet} sheet
+ * @param {number} x
+ * @param {number} y
+ */
+function drawHologramImage(g, img, x, y, rotValue = 0, width = img.width, height = img.height) {
+	let rShearX = random(-0.4, 0.4);
+	let rShearY = random(-0.4, 0.4);
+	if (random(0, 1) < 0.9) {
+		rShearX = 0;
+		rShearY = 0;
+	}
+
+	g.push();
+	g.translate(x, y);
+	//g.shearX(mouseX / 512 - 0.5);
+	//g.shearY(mouseY / 384 - 0.5);
+	g.rotate(rotValue);
+	g.shearX(rShearX);
+	g.shearY(rShearY);
+
+	g.image(img, -width / 2 + random(-0.5, 0.5), -height / 2 + random(-0.5, 0.5), width, height);
+
+	g.pop();
+}
+
+/**
+ * 
+ * @param {Graphics} g
+ * @param {Spritesheet} sheet
+ * @param {number} x
+ * @param {number} y
+ */
+function drawHologramFunc(g, func, x, y, rotValue = 0) {
+	let rShearX = random(-0.4, 0.4);
+	let rShearY = random(-0.4, 0.4);
+	if (random(0, 1) < 0.9) {
+		rShearX = 0;
+		rShearY = 0;
+	}
+
+	g.push();
+	g.translate(x, y);
+	//g.shearX(mouseX / 512 - 0.5);
+	//g.shearY(mouseY / 384 - 0.5);
+	g.rotate(rotValue);
+	g.shearX(rShearX);
+	g.shearY(rShearY);
+
+	g.translate(random(-0.5, 0.5), random(-0.5, 0.5));
+
+	func(g);
+
+	g.pop();
 }
 
 /**

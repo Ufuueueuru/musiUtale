@@ -1292,38 +1292,40 @@
 			new Circle(-11, 164, 56),
 			new Circle(-15, -165, 50)],
 			[new Circle(-6, -1, 66),
-			new Circle(-6, 57, 61),
-			new Circle(-9, -58, 59),
-			new Circle(-5, 109, 54),
-			new Circle(-10, -112, 53),
-			new Circle(-9, 153, 50),
-			new Circle(-11, -152, 45)],
+			new Circle(-9, 58, 41),
+			new Circle(-9, -60, 41),
+			new Circle(-6, 109, 47),
+			new Circle(-10, -114, 48),
+			new Circle(-10, 169, 38),
+			new Circle(-12, -170, 35)],
 			[new Circle(-6, -3, 67),
-			new Circle(-7, 55, 57),
-			new Circle(-6, -59, 57),
-			new Circle(-8, 104, 56),
-			new Circle(-8, -109, 53),
-			new Circle(-10, 139, 44),
-			new Circle(-9, -144, 37)],
+			new Circle(-9, 68, 41),
+			new Circle(-9, -70, 44),
+			new Circle(-7, 117, 51),
+			new Circle(-9, -126, 45),
+			new Circle(-10, 176, 41),
+			new Circle(-13, -177, 38)],
 			[new Circle(-5, -4, 69),
-			new Circle(-8, 47, 58),
-			new Circle(-9, -56, 61),
-			new Circle(-6, 99, 58),
-			new Circle(-9, -107, 53),
-			new Circle(-6, 125, 39),
-			new Circle(-8, -131, 34)],
+			new Circle(-9, 78, 49),
+			new Circle(-9, -81, 51),
+			new Circle(-8, 131, 53),
+			new Circle(-11, -135, 53),
+			new Circle(-9, 180, 39),
+			new Circle(-14, -181, 34)],
 			[new Circle(-6, 0, 73),
-			new Circle(-5, 42, 59),
-			new Circle(-5, -52, 58),
-			new Circle(-7, 87, 56),
-			new Circle(-7, -99, 56),
-			new Circle(-6, 117, 31),
-			new Circle(-6, -121, 30)],
+			new Circle(-8, 91, 57),
+			new Circle(-10, -94, 59),
+			new Circle(-7, 136, 51),
+			new Circle(-12, -144, 46),
+			new Circle(-8, 179, 31),
+			new Circle(-10, -181, 30)],
 			[new Circle(-6, -1, 73),
-			new Circle(-7, 39, 56),
-			new Circle(-4, -48, 55),
-			new Circle(-7, 84, 70),
-			new Circle(-7, -96, 71)],
+			new Circle(-6, 48, 56),
+			new Circle(-6, -44, 59),
+			new Circle(-7, 122, 53),
+			new Circle(-12, -121, 54),
+			new Circle(-6, 168, 29),
+			new Circle(-12, -160, 35)],
 			[new Circle(-5, 0, 73),
 			new Circle(-7, 34, 60),
 			new Circle(-5, -41, 56),
@@ -1805,6 +1807,7 @@
 		this.selectScreenSizeOffset = 0;
 
 		//this.sheet = Spritesheet.copy(assetManager.spritesheets.iloPakalaSheet);
+		//this.arrowSheet = Spritesheet.copy(assetManager.spritesheets.arrowPakala);
 
 		this.states.BLOCK = State.copyState(State.BLOCK).removeTag("BASE").addTag("loop hurtbox");
 		this.states.HITSTUN = State.copyState(State.HITSTUN).removeTag("BASE").addTag("loop hurtbox");
@@ -1813,6 +1816,7 @@
 		this.states.DASH = State.copyState(State.DASH).removeTag("BASE");
 		this.states.DASH_CANCEL = State.copyState(State.DASH_CANCEL).removeTag("BASE").removeTag("rotateable");
 		this.states.POWER_DASH = State.copyState(State.POWER_DASH).removeTag("BASE").addTag("loop hurtbox");
+		this.states.MS = State.copyState(State.MS).addTag("no collide");
 		this.states.NPL = State.copyState(State.NPL).addTag("no collide");
 		this.states.RPL = State.copyState(State.RPL).addTag("no collide").addTag("rotateable");
 		this.states.LPL = State.copyState(State.LPL).addTag("no collide").addTag("rotateable");
@@ -1885,6 +1889,11 @@
 		this.powerupGrabFrames = 0;
 
 		this.greenDisplay = 0;
+
+		this.nplRand = 0;
+		this.nplCounter = 0;
+		this.nplCounterCooldown = 0;
+		this.nplCounterMax = 90;
 	}
 
 	setAttacks() {
@@ -1922,6 +1931,22 @@
 	}
 
 	generalLogic() {
+		if (this.nplCounter > 0) {
+			this.nplCounterCooldown++;
+			this.nplRand += 2;
+			if (random(0, this.nplRand) > 120) {
+				this.nplRand %= 2;
+				this.nplRand++;
+			}
+		} else {
+			this.nplCounterCooldown = 0;
+		}
+		if (this.nplCounterCooldown > this.nplCounterMax) {
+			this.nplCounter = 0;
+			this.nplCounterCooldown = 0;
+		}
+
+
 		if (this.currentState.name === "walk" || this.currentState.name === "neutral")
 			this.greenDisplay = 0;
 
@@ -2029,18 +2054,25 @@
 		}*/
 	}
 
-	charSpecificReset() {
-		this.powerupGrabFrames = 0;
-	}
-
-	runSheets() {
-		if (this.stunFrames <= 0) {
-			//this.sheet.run();
+	drawTop(g) {
+		if (this.targetPlayer && this.nplCounter >= 3) {
+			this.targetPlayer.drawGrabReversalPrompt(g, this.nplRand);
 		}
 	}
 
+	charSpecificReset() {
+		this.powerupGrabFrames = 0;
+
+		this.nplCounter = 0;
+		this.nplCounterCooldown = 0;
+	}
+
+	getShouldLoadSpritesheets() {
+		return ["wawaSelan"];
+	}
+
 	getShouldLoadSounds() {
-		return ["nullPointerException", "pakalaSelan"];
+		return ["nullPointerException", "pakalaSelan", "wawaSelan"];
 	}
 
 	static getMenuImage() {
@@ -2050,7 +2082,13 @@
 	static addAssets() {
 		assetManager.addImage("resources/ilo_pakala_4892.png", "iloPakalaSheet", true);
 
+		assetManager.addSpritesheet("resources/wawaSelan.png", "wawaSelan", "//");
+
 		assetManager.addSound("resources/sfx/nullPointerException.wav", "nullPointerException");
+
+		assetManager.addSound("resources/sfx/wawaSelan.wav", "wawaSelan", {
+			volume: 0.2
+		});
 
 		assetManager.addSound("resources/sfx/PAKALA.wav", "pakalaSelan");
     }
@@ -2351,7 +2389,7 @@ class SelanNS extends Attack {
 		let sweet2 = new PriorityCircle(25, 0, 70, 0).setVelocity(0.1, 0);
 		let circles = [sweet1, sweet2];
 
-		let sweet = new AttackProperties().setDamage(player.powerupGrabFrames ? 25 : 15).setProration(player.powerupGrabFrames ? -2 : -1).setCancelOptions(cancelOptions).setAngleValue(player.dir.value).setLaunch(4, 2, 3.5).setHitStun(player.powerupGrabFrames ? 34 : 30, 21).setStunFrames(12).setCancelWait(15);
+		let sweet = new AttackProperties().setDamage(player.powerupGrabFrames ? 25 : 15).setProration(player.powerupGrabFrames ? -2 : -1).setCancelOptions(cancelOptions).setAngleValue(player.dir.value).setLaunch(4, 2, 3.5).setHitStun(player.powerupGrabFrames ? 38 : 34, 21).setStunFrames(12).setCancelWait(15);
 		let prop = [sweet];
 
 		return new this(player, circles, prop).setClashPriority(player.powerupGrabFrames ? 2 : 3).setStartupF(8).setActiveF(4).setEndF(18);
@@ -2553,6 +2591,8 @@ class SelanNPL extends Attack {
 	constructor(player, circles = [], props = []) {
 		super(player, circles, props);
 		this.name = "NPL";
+
+		this.sheet = Spritesheet.copy(assetManager.spritesheets.wawaSelan);
 	}
 
 	static createAttack(player) {
@@ -2576,6 +2616,15 @@ class SelanNPL extends Attack {
 	}
 
 	draw(g) {
+		if (this.getFromEndF() > 2 && this.getFromEndF() < 26 && this.hitPlayerBool) {
+			g.push();
+			g.translate(this.x, this.y);
+			g.rotate(this.dir.value);
+
+			this.sheet.draw(g, -200, -100, 200, 200);
+
+			g.pop();
+		}
 		if (this.currentlyActive()) {
 			if (debug.displayHitboxes)
 				this.debugDraw(g);
@@ -2589,6 +2638,9 @@ class SelanNPL extends Attack {
 	}
 
 	logic() {
+		if (this.getFromEndF() > 2 && this.getFromEndF() < 26 && this.hitPlayerBool)
+			this.sheet.run();
+
 		this.player.greenDisplay = 150;
 		if (this.getStartupF() === 1 && this.player.targetPlayer?.currentState.name === "block" && this.player.targetPlayer?.actionLag >= 1) {
 			this.properties[0].setNoKill();
@@ -2606,10 +2658,14 @@ class SelanNPL extends Attack {
 	}
 
 	hitConfirmSetFrames() {
+		this.player.nplCounter++;
+		this.player.nplCounterCooldown = 0;
 		if (this.player.targetPlayer) {
 			this.player.targetPlayer.x = this.player.x + this.player.dir.getX() * 70;
 			this.player.targetPlayer.y = this.player.y + this.player.dir.getY() * 70;
 		}
+
+		this.properties[0].playSound(this.world, assetManager.sounds.wawaSelan, 1);
 	}
 }
 
@@ -2877,7 +2933,7 @@ class SelanNPS extends Attack {
 			let sweet1 = new PriorityCircle(0, 0, 300, 0);
 			let circles = [sweet1];
 
-			let sweet = new AttackProperties().setDamage((this.player.powerupGrabFrames ? 275 : 225) * (this.weak ? 0.6 : 1), 30, 2).setProration(this.player.powerupGrabFrames ? 0 : 1).setCancelOptions(cancelOptions).setAngleValue(this.player.dir.value).setLaunch(16, 0.1).setHitStun(26).setStunFrames(15).setNoKill(this.weak);
+			let sweet = new AttackProperties().setDamage((this.player.powerupGrabFrames ? 300 : 250) * (this.weak ? 0.6 : 1), 30, 2).setProration(this.player.powerupGrabFrames ? 0 : 1).setCancelOptions(cancelOptions).setAngleValue(this.player.dir.value).setLaunch(16, 0.1).setHitStun(26).setStunFrames(15).setNoKill(this.weak);
 			let prop = [sweet];
 
 			//sweet.setHitSound(assetManager.sounds.fanTP);
@@ -3071,6 +3127,8 @@ class SelanMPS extends Attack {
 	constructor(player, circles = [], props = []) {
 		super(player, circles, props);
 		this.name = "MPS";
+
+		this.sheet = Spritesheet.copy(assetManager.spritesheets.wawaSelan);
 	}
 
 	static createAttack(player) {
@@ -3084,15 +3142,16 @@ class SelanMPS extends Attack {
 		let sweet6 = new PriorityCircle(0, -120, 80, 0).setVelocity(0.1, 0);
 		let sweet7 = new PriorityCircle(0, 160, 80, 0).setVelocity(0.1, 0);
 		let sweet8 = new PriorityCircle(0, -160, 80, 0).setVelocity(0.1, 0);
-		let circles = [sweet1, sweet2, sweet3, sweet4, sweet5, sweet6, sweet7, sweet8];
+		let sweet9 = new PriorityCircle(0, 0, 80, 0).setVelocity(0.1, 0);
+		let circles = [sweet1, sweet2, sweet3, sweet4, sweet5, sweet6, sweet7, sweet8, sweet9];
 
-		let sweet = new AttackProperties().setDamage(20, player.powerupGrabFrames ? 10 : 3).setProration(player.powerupGrabFrames ? 0 : 1).setCancelOptions(cancelOptions).setAngleValue(player.dir.value).setLaunch(21, 0.1, 0.5).setHitStun(48, 28).setStunFrames(4).setNormalizeHitStun();
+		let sweet = new AttackProperties().setDamage(30, player.powerupGrabFrames ? 25 : 6).setProration(player.powerupGrabFrames ? 0 : 2).setCancelOptions(cancelOptions).setAngleValue(player.dir.value).setLaunch(21, 0.1, 0.5).setHitStun(48, 28).setStunFrames(8).setNormalizeHitStun();
 		let prop = [sweet];
 
-		//sweet.setHitSound(assetManager.sounds.fanTP);
-		//sweet.setBlockSound(assetManager.sounds.fanTP);
+		sweet.setHitSound(assetManager.sounds.wawaSelan);
+		sweet.setBlockSound(assetManager.sounds.wawaSelan);
 
-		return new this(player, circles, prop).setClashPriority(false).setStartupF(9).setActiveF(12).setEndF(40).setMulti(8, 1, -1);
+		return new this(player, circles, prop).setClashPriority(false).setStartupF(9).setActiveF(12).setEndF(40).setMulti(4, 2, -1);
 	}
 
 	static startAttack(player, attack, bufferInfo) {
@@ -3100,10 +3159,27 @@ class SelanMPS extends Attack {
 		player.startMomentumMultiplyDash(0.1);
 
 		player.invTo = ["grab"];
-		player.iFrames = 40;
+		player.iFrames = 42;
 	}
 
 	draw(g) {
+		if (this.currentlyActive() || (this.activeOver() && this.getFromEndF() < 12)) {
+			g.push();
+			g.translate(this.x, this.y);
+			g.rotate(this.dir.value);
+
+			this.sheet.draw(g, -45, -45 - 160, 90, 90);
+			this.sheet.draw(g, -45, -45 - 120, 90, 90);
+			this.sheet.draw(g, -45, -45 - 80, 90, 90);
+			this.sheet.draw(g, -45, -45 - 40, 90, 90);
+			this.sheet.draw(g, -45, -45, 90, 90);
+			this.sheet.draw(g, -45, -45 + 40, 90, 90);
+			this.sheet.draw(g, -45, -45 + 80, 90, 90);
+			this.sheet.draw(g, -45, -45 + 120, 90, 90);
+			this.sheet.draw(g, -45, -45 + 160, 90, 90);
+
+			g.pop();
+		}
 		if (this.currentlyActive()) {
 			if (debug.displayHitboxes)
 				this.debugDraw(g);
@@ -3111,7 +3187,14 @@ class SelanMPS extends Attack {
 	}
 
 	logic() {
-		
+		if (this.getFromActiveF() === 1) {
+			this.properties[0].playHitSound(this.world, 1);
+		}
+	}
+
+	logicNoStun() {
+		if (this.currentlyActive() || (this.activeOver() && this.getFromEndF() < 12))
+			this.sheet.run();
 	}
 }
 

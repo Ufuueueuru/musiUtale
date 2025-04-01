@@ -1461,6 +1461,27 @@
 		}*/
 	}
 
+	drawGrabReversalPrompt(g, rand) {
+		let dx = this.dir.getX() * 120;
+		let dy = this.dir.getY() * 120;
+
+		g.stroke(32, 192, 40, 180);
+		g.fill(43, 115, 61, 90);
+		g.strokeWeight(4);
+		g.rect(this.x + dx * 0.9 - 50 + random(-1, 1), this.y + dy * 0.9 - 25 + random(-1, 1), 100, 50, 10);
+
+		//drawHologram(g, this.arrowSheet, this.x + dx, this.y + dy, this.monsi.value, 40, 40);
+		drawHologramFunc(g, () => {
+			if (rand % 2 === 0) {
+				drawGameKeyImage(g/*, this.targetPlayer.controls*/, "dash", -45, -20, 40, 40);
+				drawGameKeyImage(g/*, this.targetPlayer.controls*/, "lili", 5, -20, 40, 40);
+			} else {
+				drawControlsKeyImage(g, this.controls, "dash", -45, -20, 40, 40);
+				drawControlsKeyImage(g, this.controls, "lili", 5, -20, 40, 40);
+			}
+		}, this.x + dx * 0.9, this.y + dy * 0.9);
+	}
+
 	drawExtraHUD(g, i, x, y) {
 		let leftX = 512 * 0.12 + 512 * 0.81 * i - 35 + (this.puppet.reviveChargeMax - 3) * 0.035;
 
@@ -3931,17 +3952,17 @@ class AsakamiPuppetSN extends PuppetAttack {
 		super(player, circles, props);
 		this.name = "SNP";
 
-		this.revive = false;
+		this.puppetStunFrames = 14;
 	}
 
 	static createAttack(player) {
-		let sweet1 = new PriorityCircle(75, 0, 60, 0).setVelocity(1, 0);
+		let sweet1 = new PriorityCircle(45, 0, 90, 0).setVelocity(1, 0);
 		let circles = [sweet1];
 
-		let sweet = new AttackProperties().setDamage(15).setAngleValue(player.dir.value).setLaunch(7, 3, 1.1).setHitStun(30, 20).setStunFrames(14);
+		let sweet = new AttackProperties().setDamage(15).setAngleValue(player.dir.value).setLaunch(3, 1).setHitStun(10).setBlockBreak();
 		let prop = [sweet];
 
-		return new this(player.getParent(), circles, prop).setClashPriority(1).setStartupF(21).setActiveF(4).setEndF(20).setFollow(false);
+		return new this(player.getParent(), circles, prop).setClashPriority(false).setStartupF(21).setActiveF(4).setEndF(20).setFollow(false);
 	}
 
 	static startAttack(player, attack, bufferInfo) {
@@ -4031,13 +4052,13 @@ class AsakamiPuppetRN extends PuppetAttack {
 	}
 
 	static createAttack(player) {
-		let sweet1 = new PriorityCircle(45, 0, 90, 0).setVelocity(0.1, 0);
+		let sweet1 = new PriorityCircle(55, 0, 80, 0).setVelocity(0.1, 0);
 		let circles = [sweet1];
 
 		let sweet = new AttackProperties().setDamage(10, 10).setProration(-2.5, 4).setAngleValue(player.dir.value).setLaunch(4, 0).setHitStun(5, 5);
 		let prop = [sweet];
 
-		return new this(player.getParent(), circles, prop).setClashPriority(1).setStartupF(13).setActiveF(18).setEndF(20).setFollow(false).setMulti(4, 4, 2);
+		return new this(player.getParent(), circles, prop).setClashPriority(2).setStartupF(13).setActiveF(18).setEndF(20).setFollow(false).setMulti(4, 4, 2);
 	}
 
 	static startAttack(player, attack, bufferInfo) {
@@ -4047,12 +4068,14 @@ class AsakamiPuppetRN extends PuppetAttack {
 
 	draw(g) {
 		if (this.currentlyActive()) {
-			//if (debug.displayHitboxes)
+			if (debug.displayHitboxes)
 				this.debugDraw(g);
 		}
 	}
 
 	puppetLogic() {
+		this.rotateTo(this.player.puppet.dir);
+
 		this.player.puppet.dx *= 0.98;
 		this.player.puppet.dy *= 0.98;
 	}
@@ -4060,8 +4083,8 @@ class AsakamiPuppetRN extends PuppetAttack {
 	hitConfirmSetFrames() {
 		super.hitConfirmSetFrames();
 
-		this.player.puppet.dx *= 0.4;
-		this.player.puppet.dy *= 0.4;
+		this.player.puppet.dx *= 0.3;
+		this.player.puppet.dy *= 0.3;
 
 		if (this.multi === 1) {
 			this.properties[0].setHitStun(20, 5);

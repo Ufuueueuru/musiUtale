@@ -36,7 +36,7 @@ class ReplayScreen extends Screen {
             playersManager.openScreen();
             playersManager.resetPositions(undefined);
         });
-        let characterSelectButton = new MenuItem(128, 270, select, deselect, undefined, "", () => {
+        let saveStateButton = new MenuItem(128, 270, select, deselect, undefined, "", () => {
             
         });
         let exitButton = new MenuItem(128, 330, select, deselect, undefined, gt("battleExit"), () => {
@@ -48,12 +48,12 @@ class ReplayScreen extends Screen {
         playerSelectButton.addMoves(new MenuMove(backButton, Angle.UP));
         playerSelectButton.addMoves(new MenuMove(editControlsButton, Angle.DOWN));
         editControlsButton.addMoves(new MenuMove(playerSelectButton, Angle.UP));
-        editControlsButton.addMoves(new MenuMove(characterSelectButton, Angle.DOWN));
-        characterSelectButton.addMoves(new MenuMove(editControlsButton, Angle.UP));
-        characterSelectButton.addMoves(new MenuMove(exitButton, Angle.DOWN));
-        exitButton.addMoves(new MenuMove(characterSelectButton, Angle.UP));
+        editControlsButton.addMoves(new MenuMove(saveStateButton, Angle.DOWN));
+        saveStateButton.addMoves(new MenuMove(editControlsButton, Angle.UP));
+        saveStateButton.addMoves(new MenuMove(exitButton, Angle.DOWN));
+        exitButton.addMoves(new MenuMove(saveStateButton, Angle.UP));
 
-        this.pauseMenu.addMenuItems(backButton, playerSelectButton, editControlsButton, characterSelectButton, exitButton);
+        this.pauseMenu.addMenuItems(backButton, playerSelectButton, editControlsButton, saveStateButton, exitButton);
 
         this.pauseMenu.setTarget(backButton);
         
@@ -83,6 +83,8 @@ class ReplayScreen extends Screen {
         assetManager.forceDynamicLoadingDisplay();
 
         this.farPast = {};
+
+        this.HUD = true;
     }
 
     draw(g) {
@@ -93,7 +95,7 @@ class ReplayScreen extends Screen {
 
         let canvasSlope = this.world.height / this.world.width;
         let minSize = min(windowWidth, windowHeight / canvasSlope);
-        this.world.draw(g, (windowWidth - minSize) / 2, (windowHeight - minSize * canvasSlope) / 2, minSize, minSize * canvasSlope);
+        this.world.draw(g, (windowWidth - minSize) / 2, (windowHeight - minSize * canvasSlope) / 2, minSize, minSize * canvasSlope, this.HUD);
 
         if (this.replayToolsOn) {
             g.push();

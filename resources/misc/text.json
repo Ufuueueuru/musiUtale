@@ -676,7 +676,7 @@
       "text": "Display Settings"
     },
     "tp": {
-      "text": "󱥠"
+      "text": "󱥠󱤽"
     }
   },
   "displayFrameDataButton": {
@@ -685,6 +685,14 @@
     },
     "tp": {
       "text": "󱥄󱤮󱤉󱥫󱥱"
+    }
+  },
+  "displayHUDButton": {
+    "en": {
+      "text": "Display HUD"
+    },
+    "tp": {
+      "text": "󱥄󱤮󱤉󱥠󱥘"
     }
   },
   "displayHurtboxesButton": {
@@ -773,6 +781,22 @@
     },
     "tp": {
       "text": "󱥄󱤈󱤉󱤽󱥍󱥜󱥵"
+    }
+  },
+  "resetNanpaLipuButton": {
+    "en": {
+      "text": "Reset Wall Stick Meter"
+    },
+    "tp": {
+      "text": "󱥄󱤈󱤉󱤽󱥍󱤖󱤪󱥟"
+    }
+  },
+  "resetHealthButton": {
+    "en": {
+      "text": "Reset Health"
+    },
+    "tp": {
+      "text": "󱥄󱤈󱤉󱤽󱤷"
     }
   },
   "autoAttackButton": {

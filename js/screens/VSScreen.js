@@ -66,10 +66,7 @@ class VSScreen extends Screen {
         this.winScreenMenu = new Menu();
 
         let playAgainButton = new MenuItem(128, 90, select, deselect, undefined, gt("battlePlayAgain"), () => {
-            this.world.resetAndLoad(currentScreen);
-            this.replay = new Replay();
-            this.currentReplaySaved = false;
-            this.winScreenMenuOn = false;
+            this.playAgain();
         });
         let playerSelectWinButton = new MenuItem(128, 140, select, deselect, undefined, gt("battlePlayerSelect"), playerSelectButton.pressFunction);
         let editControlsWinButton = new MenuItem(128, 190, select, deselect, undefined, gt("battleEditControls"), editControlsButton.pressFunction);
@@ -103,6 +100,13 @@ class VSScreen extends Screen {
         this.winScreenMenu.setTarget(playAgainButton);
 
         assetManager.loadAssetsWithScreen();
+    }
+
+    playAgain() {
+        this.world.resetAndLoad(currentScreen);
+        this.replay = new Replay();
+        this.currentReplaySaved = false;
+        this.winScreenMenuOn = false;
     }
 
     draw(g) {
@@ -168,7 +172,11 @@ class VSScreen extends Screen {
                 this.winScreenMenuOn = true;
                 this.winScreenMenu.transitioning = 30;
             }
+            if (debug.skipWinScreen) {
+                this.playAgain();
+            }
         }
+
 
         if (!this.paused) {
             if (!this.winScreenMenuOn) {

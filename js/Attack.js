@@ -55,8 +55,11 @@ class Attack extends Hitcircle {
 
 		/** @type {Player} */
 		this.player = player;
-		/** @type {boolean} */
-		this.follow = true;//If the hitbox is locked onto the player position
+		/** @type {boolean} If the hitbox is locked onto the player position */
+		this.follow = true;
+
+		/** @type {boolean} If true, the attack will remain on the field even if the user gets hit during startup */
+		this.uninterruptible = false;
 
 		/** @type {boolean} */
 		this.rotateable = false;
@@ -165,8 +168,8 @@ class Attack extends Hitcircle {
 				this.multi = 0;
 			}
 		}
-		let counterHit = p.combo === 0 && (p.counterHittable || p.mostRecentAttackReference?.getActiveF() > 0 || p.mostRecentAttackReference?.getStartupF() > 0);
-		let punishHit = p.combo === 0 && ((p.mostRecentAttackReference?.getStartupF() <= 0 && p.mostRecentAttackReference?.getActiveF() <= 0) || p.currentState.name === "rightRoll" || p.currentState.name === "leftRoll" || p.currentState.name === "neutralRoll" || p.currentState.name === "power dash");
+		let counterHit = p.combo === 0 && (p.counterHittable || p.mostRecentAttackReference?.getActiveF() > 0 || p.mostRecentAttackReference?.getStartupF() > 0) && !property.noLaunch;
+		let punishHit = p.combo === 0 && ((p.mostRecentAttackReference?.getStartupF() <= 0 && p.mostRecentAttackReference?.getActiveF() <= 0) || p.currentState.name === "rightRoll" || p.currentState.name === "leftRoll" || p.currentState.name === "neutralRoll" || p.currentState.name === "power dash") && !property.noLaunch;
 		let dealtDamage;
 		let hitBool = false;
 		if (property.grab) {
@@ -312,7 +315,7 @@ class Attack extends Hitcircle {
 				if ((p.controls.joystickPressed(0) && !(angleDif < effectiveLeniency) && !parried) || (!p.controls.joystickPressed(0) && (!(standingAngleDif < standLeniency) || debug.noNeutralBlock)) || !(p.canChangeState(p.states.BLOCK) || (State.stateIsTag(p.currentState, "parry override") && parried)) || ((property.blockBreak && !property.blockBreakParriable) || (property.blockBreak && property.blockBreakParriable && !parried))) {//Standard hit
 					p.iFrames = 0;
 
-					if (!property.commandGrab)
+					if (!property.commandGrab && !property.noHitEffect)
 						this.player.world.ps.createParticle("hitEffect", p, px, py, 220, 220, attackAngle, true);
 					
 					if (p.atEdge(3)) {
@@ -386,7 +389,7 @@ class Attack extends Hitcircle {
 					}
 
 					if (property.rotateOnHit) {
-						p.rotateVel = property.rotateVel / property.hitStun;
+						p.rotateVel = property.rotateVel / max(1, property.hitStun);
 					}
 					if (property.rotateSlowDownOnHit) {
 						if (p.rotateSlowDownFrames <= 0) {
@@ -460,6 +463,8 @@ class Attack extends Hitcircle {
 					this.player.cancelWait = property.cancelWait;
 					this.player.cancelActions.push(...property.hitCancelOptions);
 
+					if (property.commandGrab && !this.hitPlayerBool)
+						p.playSound(assetManager.sounds.grab, 1);
 					property.playHitSound(this.world, this.multiConst);
 
 					this.hitConfirmSetFrames();
@@ -502,7 +507,7 @@ class Attack extends Hitcircle {
 					property.cancelWait = property.cancelWaitBlock;
 
 					if (property.rotateOnBlock) {
-						p.rotateVel = property.rotateVelBlock / property.blockStun;
+						p.rotateVel = property.rotateVelBlock / max(1, property.blockStun);
 					}
 					if (property.rotateSlowDownOnBlock) {
 						if (p.rotateSlowDownFrames <= 0) {
@@ -571,7 +576,8 @@ class Attack extends Hitcircle {
 						//Add a fancy particle effect here
 						this.player.world.ps.createParticle("hitParryEffect", p, px, py, 250, 250, attackAngle, true);
 
-						assetManager.sounds.parry.play();
+						p.playSound(assetManager.sounds.parry, 2);
+						//assetManager.sounds.parry.play();
 
 						p.sheet.setAnimation("Parry");
 					} else {
@@ -580,8 +586,9 @@ class Attack extends Hitcircle {
 							let staledDamage = property.damage * (this.player.stalePenalty ** this.player.moveStaling.getStaling(this.name));
 							dealtDamage = p.damageHealth(staledDamage * property.chip, p.combo + p.comboProration, true, property.scaling);
 						}
-						
-						this.player.world.ps.createParticle("hitBlockEffect", p, px, py, 200, 200, attackAngle, true);
+
+						if (!property.noHitBlockEffect)
+							this.player.world.ps.createParticle("hitBlockEffect", p, px, py, 200, 200, attackAngle, true);
 
 						p.sheet.setAnimation("Block");
 					}
@@ -633,7 +640,12 @@ class Attack extends Hitcircle {
 	/** @override */
 	logic() {
 
-    }
+	}
+
+	/** @override */
+	logicNoStun() {
+
+	}
 
 	/**
 	 * @override
@@ -927,6 +939,17 @@ class Attack extends Hitcircle {
 		} else {
 			this.dir = new Angle(this.player.dir.value);
 		}
+
+		return this;
+	}
+
+	/**
+	 * An uninterruptible attack will still remain on the field even when it's player is hit during startup frames
+	 * @param {boolean} uninterruptible
+	 * @returns
+	 */
+	setUninterruptible(uninterruptible = true) {
+		this.uninterruptible = uninterruptible;
 
 		return this;
 	}
@@ -1285,6 +1308,11 @@ class AttackProperties {
 		this.grab = false;
 
 		/** @type {boolean} */
+		this.noHitEffect = false;
+		/** @type {boolean} */
+		this.noHitBlockEffect = false;
+
+		/** @type {boolean} */
 		this.commandGrab = false;
 
 		/** @type {number} */
@@ -1425,6 +1453,18 @@ class AttackProperties {
 	setGrab(damage = this.grabInitialDamage, bool = true) {
 		this.grabInitialDamage = damage;
 		this.grab = bool;
+
+		return this;
+	}
+
+	/**
+	 * Removes the hit effect indicator from an attack
+	 * @param {boolean} bool
+	 * @returns
+	 */
+	setNoHitEffect(bool = true, blockBool = bool) {
+		this.noHitEffect = bool;
+		this.noHitBlockEffect = blockBool;
 
 		return this;
 	}

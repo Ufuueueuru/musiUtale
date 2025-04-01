@@ -35,8 +35,8 @@ class StageSelectScreen extends Screen {
                 }
                 //g.image(this.stages[i].background, 259 - 75 * charWidth / 2 + 75 * x, 195 - 75 * charHeight / 2 + 75 * y, 69, 69, this.stages[i].getCenterStageX() - 256, this.stages[i].background.height/2 - 192, 512, 384);
                 this.stages[i].draw(g, 259 - 98 * charWidth / 2 + 98 * x, 195 - 75 * charHeight / 2 + 75 * y, 92, 69, false);
-                g.fill(15, 0, 60);
-                g.noStroke();
+                g.fill(220, 220, 230);
+                g.stroke(15, 0, 60);
                 g.textSize(15);
                 g.textAlign(CENTER, CENTER);
                 g.text(this.stages[i].name, 257.5 - 98 * charWidth / 2 + 98 * x + 46, 193.5 - 75 * charHeight / 2 + 75 * y + 60);

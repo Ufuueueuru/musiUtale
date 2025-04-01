@@ -216,6 +216,20 @@ class AssetManager {
             this.spritesheets[i] = current;
         }).bind(this, sheetName));
     }
+    loadSpritesheetJSON(sheetName) {
+        setTimeout(((i) => {
+            let current = new Spritesheet(this.spritesheets[i].src, this.spritesheets[i].jsonsrc, this.spritesheets[i].width, this.spritesheets[i].height);
+            //current.loadImage(this.onLoad.bind(this), this.onError);
+            current.loadJSON(this.onLoad.bind(this), this.onError);
+            this.spritesheets[i] = current;
+        }).bind(this, sheetName));
+    }
+
+    loadImage(imageName) {
+        setTimeout(((i) => {
+            this.images[i] = loadImage(this.imageNames[i], this.onLoad.bind(this), this.onError.bind(this, i));
+        }).bind(this, imageName));
+    }
 
     loadSound(soundName) {
         setTimeout(((j) => {
@@ -291,9 +305,12 @@ class AssetManager {
             this._totalImp++;
         this._total++;
     }
+    addImageMod(imageStr, name, imp = false) {
+        this.addImage(currentDir + imageStr, name, imp);
+    }
     addSpritesheet(sheetStr, name, jsonStr = undefined, width = 0, height = 0) {
         if (jsonStr === "//") {
-            sheetStr = sheetStr.replace(".png", "");
+            sheetStr = sheetStr.replace(/\.png$/, "");
             jsonStr = sheetStr + ".json";
             sheetStr += ".png";
         }
@@ -311,11 +328,17 @@ class AssetManager {
         }
         this.spritesheetsImp[name] = false;
     }
+    addSpritesheetMod(sheetStr, name, jsonStr = undefined, width = 0, height = 0) {
+        this.addSpritesheet(currentDir + sheetStr, name, jsonStr, width, height);
+    }
     addSpritesheetImp(sheetStr, name, jsonStr = undefined, width = 0, height = 0) {
         this.addSpritesheet(sheetStr, name, jsonStr, width, height);
         this._totalImp++;
         this._splitTotal++;
         this.spritesheetsImp[name] = true;
+    }
+    addSpritesheetModImp(sheetStr, name, jsonStr = undefined, width = 0, height = 0) {
+        this.addSpritesheetImp(currentDir + sheetStr, name, jsonStr, width, height);
     }
     addFont(fontsStr, name, imp = false) {
         this.fontNames[name] = fontsStr;
@@ -325,7 +348,10 @@ class AssetManager {
         this.totalFonts++;
         this.fontsImp[name] = imp;
     }
-    addSound(soundStr, name, options = { }, imp = true) {
+    addFontMod(fontsStr, name, imp = false) {
+        this.addFont(currentDir + fontsStr, name, imp);
+    }
+    addSound(soundStr, name, options = {}, imp = true) {
         if (typeof soundStr === "string")
             soundStr = [soundStr];
         this.soundNames[name] = options;
@@ -335,13 +361,18 @@ class AssetManager {
         this._total++;
         this.soundsImp[name] = imp;
     }
+    addSoundMod(soundStr, name, options = {}, imp = true) {
+        this.addSound(currentDir + soundStr, name, options, imp);
+    }
     addJSON(jsonStr, name) {
         this.jsons[name] = jsonStr;
         this._totalImp++;
         this._total++;
         this._splitTotal++;
     }
-
+    addJSONMod(jsonStr, name) {
+        this.addJSON(currentDir + jsonStr, name);
+    }
     addFunc(func) {
         this.loadFuncs.push(func.bind(this));
     }

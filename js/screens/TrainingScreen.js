@@ -44,6 +44,7 @@ class TrainingScreen extends VSScreen {
 
         this.trainingSettings.display = {
             isVisible: true,
+            HUD: true,
             dealtDamage: 0,
             percentDamage: 0,
             proration: 0,
@@ -117,32 +118,36 @@ class TrainingScreen extends VSScreen {
         let displayFrameDataButton = new MenuItem(150, 25, select, deselect, undefined, gt("displayFrameDataButton"), () => {
             this.trainingSettings.display.isVisible = !this.trainingSettings.display.isVisible;
         });
+        let displayHUDButton = new MenuItem(150, 60, select, deselect, undefined, gt("displayHUDButton"), () => {
+            this.trainingSettings.display.HUD = !this.trainingSettings.display.HUD;
+        });
         if (currentLanguage === "en")
             displayFrameDataButton.textSize = 23;
-        let displayHurtboxesButton = new MenuItem(150, 60, select, deselect, undefined, gt("displayHurtboxesButton"), () => {
+        let displayHurtboxesButton = new MenuItem(150, 96, select, deselect, undefined, gt("displayHurtboxesButton"), () => {
             debug.displayHurtboxes = !debug.displayHurtboxes;
         });
         if (currentLanguage === "en")
             displayHurtboxesButton.textSize = 28;
-        let displayHitboxesButton = new MenuItem(150, 95, select, deselect, undefined, gt("displayHitboxesButton"), () => {
+        let displayHitboxesButton = new MenuItem(150, 130, select, deselect, undefined, gt("displayHitboxesButton"), () => {
             debug.displayHitboxes = !debug.displayHitboxes;
         });
-        let displayBlockingButton = new MenuItem(150, 130, select, deselect, undefined, gt("displayBlockingButton"), () => {
+        let displayBlockingButton = new MenuItem(150, 165, select, deselect, undefined, gt("displayBlockingButton"), () => {
             debug.displayBlocking = !debug.displayBlocking;
         });
         if (currentLanguage === "en")
             displayBlockingButton.textSize = 20;
-        let displayWallsButton = new MenuItem(150, 165, select, deselect, undefined, gt("displayWallsButton"), () => {
+        let displayWallsButton = new MenuItem(150, 200, select, deselect, undefined, gt("displayWallsButton"), () => {
             debug.displayWalls = !debug.displayWalls;
         });
 
-        displayFrameDataButton.addMoves(new MenuMove(displayHurtboxesButton, Angle.DOWN));
-        displayHurtboxesButton.addMoves(new MenuMove(displayFrameDataButton, Angle.UP), new MenuMove(displayHitboxesButton, Angle.DOWN));
+        displayFrameDataButton.addMoves(new MenuMove(displayHUDButton, Angle.DOWN));
+        displayHUDButton.addMoves(new MenuMove(displayFrameDataButton, Angle.UP), new MenuMove(displayHurtboxesButton, Angle.DOWN));
+        displayHurtboxesButton.addMoves(new MenuMove(displayHUDButton, Angle.UP), new MenuMove(displayHitboxesButton, Angle.DOWN));
         displayHitboxesButton.addMoves(new MenuMove(displayHurtboxesButton, Angle.UP), new MenuMove(displayBlockingButton, Angle.DOWN));
         displayBlockingButton.addMoves(new MenuMove(displayHitboxesButton, Angle.UP), new MenuMove(displayWallsButton, Angle.DOWN));
         displayWallsButton.addMoves(new MenuMove(displayBlockingButton, Angle.UP));
 
-        this.displayMenu.addMenuItems(displayFrameDataButton, displayHurtboxesButton, displayHitboxesButton, displayBlockingButton, displayWallsButton);
+        this.displayMenu.addMenuItems(displayFrameDataButton, displayHUDButton, displayHurtboxesButton, displayHitboxesButton, displayBlockingButton, displayWallsButton);
 
         this.displayMenu.setTarget(displayFrameDataButton);
 
@@ -157,18 +162,29 @@ class TrainingScreen extends VSScreen {
         this.meterMenu = new Menu();
         this.meterMenuOppn = false;
 
-        let resetSikeWawaButton = new MenuItem(150, 25, select, deselect, undefined, gt("resetSikeWawaButton"), () => {
+        let resetHealthButton = new MenuItem(150, 25, select, deselect, undefined, gt("resetHealthButton"), () => {
+            this.trainingSettings.meter.staticHealth = !this.trainingSettings.meter.staticHealth;
+        });
+        let resetSikeWawaButton = new MenuItem(150, 60, select, deselect, undefined, gt("resetSikeWawaButton"), () => {
             this.trainingSettings.meter.staticSikeWawa = !this.trainingSettings.meter.staticSikeWawa;
         });
         resetSikeWawaButton.textSize = 25;
         if (currentLanguage === "en")
             resetSikeWawaButton.textSize = 23;
+        let resetNanpaLipuButton = new MenuItem(150, 95, select, deselect, undefined, gt("resetNanpaLipuButton"), () => {
+            this.trainingSettings.meter.staticNanpaLipu = !this.trainingSettings.meter.staticNanpaLipu;
+        });
+        resetNanpaLipuButton.textSize = 25;
+        if (currentLanguage === "en")
+            resetNanpaLipuButton.textSize = 23;
 
-        //resetSikeWawaButton.addMoves(new MenuMove(sampleButton, Angle.DOWN));
+        resetHealthButton.addMoves(new MenuMove(resetSikeWawaButton, Angle.DOWN));
+        resetSikeWawaButton.addMoves(new MenuMove(resetHealthButton, Angle.UP), new MenuMove(resetNanpaLipuButton, Angle.DOWN));
+        resetNanpaLipuButton.addMoves(new MenuMove(resetSikeWawaButton, Angle.UP));
 
-        this.meterMenu.addMenuItems(resetSikeWawaButton);
+        this.meterMenu.addMenuItems(resetHealthButton, resetSikeWawaButton, resetNanpaLipuButton);
 
-        this.meterMenu.setTarget(resetSikeWawaButton);
+        this.meterMenu.setTarget(resetHealthButton);
 
 
         //Meter menu
@@ -240,6 +256,7 @@ class TrainingScreen extends VSScreen {
         if (this.trainingSettings.meter.staticHealth && this.trainingSettings.meter.healthResetFunction()) {
             for (let i in this.world.players) {
                 this.world.players[i].health = this.trainingSettings.meter.healthMeters[i] * this.world.players[i].maxHealth;
+                this.world.players[i].tempDamageCount = 0;
             }
         }
 
@@ -430,7 +447,7 @@ class TrainingScreen extends VSScreen {
 
         let canvasSlope = this.world.height / this.world.width;
         let minSize = min(windowWidth, windowHeight / canvasSlope);
-        this.world.draw(g, (windowWidth - minSize) / 2, (windowHeight - minSize * canvasSlope) / 2, minSize, minSize * canvasSlope);
+        this.world.draw(g, (windowWidth - minSize) / 2, (windowHeight - minSize * canvasSlope) / 2, minSize, minSize * canvasSlope, this.trainingSettings.display.HUD);
 
         this.drawDisplay(g, (windowWidth - minSize) / 2, (windowHeight - minSize * canvasSlope) / 2, minSize, minSize * canvasSlope);
 
@@ -481,10 +498,11 @@ class TrainingScreen extends VSScreen {
                 g.translate(-256, 0);
 
                 this.drawButton(g, this.trainingSettings.display.isVisible, 400, 25, 60);
-                this.drawButton(g, debug.displayHurtboxes, 400, 60, 60);
-                this.drawButton(g, debug.displayHitboxes, 400, 95, 60);
-                this.drawButton(g, debug.displayBlocking, 400, 130, 60);
-                this.drawButton(g, debug.displayWalls, 400, 165, 60);
+                this.drawButton(g, this.trainingSettings.display.HUD, 400, 60, 60);
+                this.drawButton(g, debug.displayHurtboxes, 400, 95, 60);
+                this.drawButton(g, debug.displayHitboxes, 400, 130, 60);
+                this.drawButton(g, debug.displayBlocking, 400, 165, 60);
+                this.drawButton(g, debug.displayWalls, 400, 200, 60);
 
                 g.pop();
             }
@@ -499,7 +517,9 @@ class TrainingScreen extends VSScreen {
                 g.scale(windowHeight / 384);
                 g.translate(-256, 0);
 
-                this.drawButton(g, this.trainingSettings.meter.staticSikeWawa, 400, 25, 60);
+                this.drawButton(g, this.trainingSettings.meter.staticHealth, 400, 25, 60);
+                this.drawButton(g, this.trainingSettings.meter.staticSikeWawa, 400, 60, 60);
+                this.drawButton(g, this.trainingSettings.meter.staticNanpaLipu, 400, 95, 60);
 
                 g.pop();
             }

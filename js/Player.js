@@ -40,6 +40,14 @@ class Player extends Hitcircle {
 		/** @type {string} Should be a string exactly the same as the images name in assetManager */
 		this.menuImage = "";
 
+		/** @type {Spritesheet} Used for displaying an arrow to direct the player */
+		this.arrowSheet = Spritesheet.copy(assetManager.spritesheets.arrowPakala);
+		/** @type {boolean} This value keeps track of when the arrow should be animated vs when it is not being drawn */
+		this.arrowSheetActive = false;
+
+		/** @type {boolean} Whether the arrows in front and behind the player should be drawn or not NOT RELATED TO arrowSheet or arrowSheetActive */
+		this.drawArrows = true;
+
 		/** @type {World} */
 		this.world = world;
 
@@ -829,7 +837,7 @@ class Player extends Hitcircle {
 
 	endAttacks() {
 		for (let i in this.currentAttackReferences) {
-			if (this.currentAttackReferences[i].follow || this.currentAttackReferences[i].getStartupF() > 0) {
+			if ((this.currentAttackReferences[i].follow || this.currentAttackReferences[i].getStartupF() > 0) && !this.currentAttackReferences[i].uninterruptible) {
 				this.currentAttackReferences[i].endLife();
 			}
 		}
@@ -869,6 +877,37 @@ class Player extends Hitcircle {
 			g.background(255, 0, 0);
 		}*/
 		//this.drawArrow(g);
+	}
+
+	/**
+	 * Used for drawing something that will go on top of the opponent (use this sparingly)
+	 * @override
+	 * @param {Graphics} g
+	 */
+	drawTop(g) { }
+
+	drawGrabReversalPrompt(g, rand) {
+		this.arrowSheetActive = true;
+		let dx = this.monsi.getX() * 120;
+		let dy = this.monsi.getY() * 120;
+
+		g.stroke(32, 192, 40, 180);
+		g.fill(43, 115, 61, 90);
+		g.strokeWeight(4);
+		let left = min(this.x + dx * 0.7 - 25, this.x + dx - 25) + random(-1, 1);
+		let right = max(this.x + dx * 0.7 + 25, this.x + dx + 25) + random(-1, 1);
+		let top = min(this.y + dy * 0.7 - 25, this.y + dy - 25) + random(-1, 1);
+		let down = max(this.y + dy * 0.7 + 25, this.y + dy + 25) + random(-1, 1);
+		g.rect(left, top, right - left, down - top, 10);
+
+		drawHologram(g, this.arrowSheet, this.x + dx, this.y + dy, this.monsi.value, 40, 40);
+		drawHologramFunc(g, () => {
+			if (rand % 2 === 0) {
+				drawGameKeyImage(g/*, this.targetPlayer.controls*/, "pokaSuli", -20, -20, 40, 40);
+			} else {
+				drawControlsKeyImage(g, this.controls, "pokaSuli", -20, -20, 40, 40);
+			}
+		}, this.x + dx * 0.7, this.y + dy * 0.7);
 	}
 
 	debugDrawDefault(g) {
@@ -935,44 +974,46 @@ class Player extends Hitcircle {
 	}
 
 	drawArrow(g, playerID) {
-		g.push();
-		g.translate(this.x, this.y);
-		g.rotate(this.dir.value);
-		g.push();
+		if (this.drawArrows) {
+			g.push();
+			g.translate(this.x, this.y);
+			g.rotate(this.dir.value);
+			g.push();
 
-		g.translate(this.arrowOffset, 0);
+			g.translate(this.arrowOffset, 0);
 
-		let red = (this.rotateSlowDownFrames > 0 ? 200 : 0);
-		let blue = (this.slowWalkFrames > 0 ? 150 : 0);
-		g.stroke(red, 0, 15 + blue, 50 + red / 2);
-		g.strokeWeight(1);
-		g.noFill();
-		g.triangle(65, 0, 60, 3, 60, -3);
+			let red = (this.rotateSlowDownFrames > 0 ? 200 : 0);
+			let blue = (this.slowWalkFrames > 0 ? 150 : 0);
+			g.stroke(red, 0, 15 + blue, 50 + red / 2);
+			g.strokeWeight(1);
+			g.noFill();
+			g.triangle(65, 0, 60, 3, 60, -3);
 
-		g.pop();
+			g.pop();
 
-		g.push();
-		g.translate(-this.arrowOffsetBack, 0);
+			g.push();
+			g.translate(-this.arrowOffsetBack, 0);
 
-		g.noStroke();
-		if (playerID % 2 === 0) {
-			g.fill(200, 70, 90);
-		} else {
-			g.fill(77, 61, 201);
+			g.noStroke();
+			if (playerID % 2 === 0) {
+				g.fill(200, 70, 90);
+			} else {
+				g.fill(77, 61, 201);
+			}
+			g.triangle(-63, 0, -77, 10, -77, -10);
+
+			g.pop();
+
+			//g.noStroke();
+			//if (playerID % 2 === 0) {
+			//	g.fill(170, 40, 60, 50);
+			//} else {
+			//	g.fill(47, 31, 171, 50);
+			//}
+			//g.ellipse(0, 0, this.collideRadius * 2, this.collideRadius * 2);
+
+			g.pop();
 		}
-		g.triangle(-63, 0, -77, 10, -77, -10);
-
-		g.pop();
-
-		//g.noStroke();
-		//if (playerID % 2 === 0) {
-		//	g.fill(170, 40, 60, 50);
-		//} else {
-		//	g.fill(47, 31, 171, 50);
-		//}
-		//g.ellipse(0, 0, this.collideRadius * 2, this.collideRadius * 2);
-
-		g.pop();
 	}
 
 	/**
@@ -1354,8 +1395,8 @@ class Player extends Hitcircle {
 			this.dx = wallDir.getX() * speed;
 			this.dy = wallDir.getY() * speed;
 
-			if (this.actionLag === 0) {
-				this.iFrames = 8;
+			if (this.actionLag === 1) {
+				this.iFrames = 9;
 				this.invTo = ["grab"];
 			}
 
@@ -1367,8 +1408,8 @@ class Player extends Hitcircle {
 
 	neutralRollLogic() {
 		if (this.currentState.name === "neutralRoll") {
-			if (this.actionLag === 0) {
-				this.iFrames = 8;
+			if (this.actionLag === 1) {
+				this.iFrames = 9;
 				this.invTo = ["grab"];
 			}
 
@@ -1386,8 +1427,8 @@ class Player extends Hitcircle {
 			this.dx = wallDir.getX() * speed;
 			this.dy = wallDir.getY() * speed;
 
-			if (this.actionLag === 0) {
-				this.iFrames = 8;
+			if (this.actionLag === 1) {
+				this.iFrames = 9;
 				this.invTo = ["grab"];
 			}
 
@@ -2555,7 +2596,7 @@ class Player extends Hitcircle {
 	attackEndable() {
 		if (this.actionLag === 0 && this.currentState.name !== "neutral") {
 			this.forceChangeState(this.states.NEUTRAL, this.states.NEUTRAL_ACTIONS);
-			this.sheet.setAnimation("neutral");
+			this.sheet.setAnimation("Idle");
 		}
     }
 
@@ -2698,6 +2739,10 @@ class Player extends Hitcircle {
 			this._updateHurtbox();
 
 		this.runSheets();
+		if (this.arrowSheetActive) {
+			this.arrowSheet.run();
+			this.arrowSheetActive = false;
+		}
 	}
 
 	/** @override */

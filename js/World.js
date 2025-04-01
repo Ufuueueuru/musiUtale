@@ -171,7 +171,7 @@ class World {
                 if (parentScreen.player2.controls.world)
                     parentScreen.player2.controls.world = this.world;
             } else {
-                this.playMusic();
+                //this.playMusic();
             }
             if (parentScreen.replay) {
                 parentScreen.replay = new Replay();
@@ -317,6 +317,10 @@ class World {
         for (let i = 0; i < this.players.length; i++) {
             let p = this.players[i];
             p.drawArrow(this.g, i);
+        }
+        for (let i = 0; i < this.players.length; i++) {
+            let p = this.players[i];
+            p.drawTop(this.g);
         }
 
         this.g.push();
@@ -697,6 +701,7 @@ class World {
                     this.removeAttack(i);
                 }
             }
+            a.logicNoStun();
         }
 
         this.ps.run();

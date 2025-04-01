@@ -1030,7 +1030,7 @@
 		this.OOBBlockFrame = 4;
 
 		this.dash.turnSpeedBoost = 0.01;
-		this.dash.backPenalty = 4;
+		this.dash.backPenalty = 5;
 		this.dash.cancelBackPenaltyMult = 2;
 		this.dash.regularFrictionFrame = this.dash.frames - 16;
 

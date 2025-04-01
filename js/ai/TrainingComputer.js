@@ -113,7 +113,8 @@ class TrainingComputer extends Controls {
                     this.resetButtons();
                     let parryOffset = (this.trainingSettings.block.isParry ? PI : 0);
                     if (this.trainingSettings.block.dynamicAngle) {
-                        this.pressJoystick(0, new Angle(this.world.attacks[i].getAttackAngle(this.player, collideInfo.circle, collideInfo.playerCircle, collideInfo.property).value + parryOffset));
+                        if (!collideInfo.property.blockBreak || (collideInfo.property.blockBreakParriable && this.trainingSettings.block.isParry))
+                            this.pressJoystick(0, new Angle(this.world.attacks[i].getAttackAngle(this.player, collideInfo.circle, collideInfo.playerCircle, collideInfo.property).value + parryOffset));
                     } else {
                         let rotation = 0;
                         if (this.player.targetPlayer && this.trainingSettings.block.staticRelative)
@@ -132,8 +133,10 @@ class TrainingComputer extends Controls {
                     if (this.trainingSettings.block.isCounter)
                         this.player.bufferCounterHittable = true;
 
-                    this.player.moveCount = 10;
-                    this.pressJoystick(0, this.world.attacks[i].getAttackAngle(this.player, collideInfo.circle, collideInfo.playerCircle, collideInfo.property).changeValue(PI));
+                    if (!collideInfo.property.blockBreak) {
+                        this.player.moveCount = 10;
+                        this.pressJoystick(0, this.world.attacks[i].getAttackAngle(this.player, collideInfo.circle, collideInfo.playerCircle, collideInfo.property).changeValue(PI));
+                    }
                 }
             }
         }

@@ -384,6 +384,7 @@ class HitboxEditScreen extends Screen {
         this.players[this.currentPlayerID].rotateTo(this.players[this.currentPlayerID].dir);
         for (let i in this.fakeWorld.attacks) {
             this.fakeWorld.attacks[i].run();
+            this.fakeWorld.attacks[i].logicNoStun();
         }
         let attackCount = this.fakeWorld.attacks.length;
         this.fakeWorld.removeFinishedAttacks();

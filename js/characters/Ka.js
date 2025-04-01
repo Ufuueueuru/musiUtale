@@ -1250,10 +1250,9 @@
 			this.risk--;
 		if (this.targetPlayer && this.targetPlayer.currentState.name === "block" && this.targetPlayer.hitStun % 3 > 0)
 			this.risk += 2;
-		if (this.risk > 300 && this.mostRecentAttackReference?.hitPlayerBool) {
-			this.slowDownFrames = 2;
-			this.slowDownMax = 1;
-			this.slowDownMod = 5;
+		if (this.risk > 300 && this.targetPlayer && State.stateIs(this.targetPlayer.currentState, "block")) {
+			this.targetPlayer.actionLag--;
+			this.targetPlayer.hitStun--;
 		}
 		if (this.risk > 600) {
 			this.timerPunishHealth++;
@@ -1763,15 +1762,15 @@ class KaML extends Attack {
 		sweet.setHitSound(assetManager.sounds["8BitHit"]);
 		//sweet.setBlockSound(assetManager.sounds["8BitHit"]);
 
-		return new this(player, circles, prop).setClashPriority(3).setStartupF(10).setActiveF(4).setEndF(16);
+		return new this(player, circles, prop).setClashPriority(0).setStartupF(10).setActiveF(4).setEndF(16);
 	}
 
 	static startAttack(player, attack, bufferInfo) {
 		player.startMomentumMultiply(0);
 		player.startMomentumMultiplyDash(1);
 		if (player.currentState.name === "NN" && dist(0, 0, player.dx, player.dy) < 10) {
-			player.dx *= 1.5;
-			player.dy *= 1.5;
+			player.dx *= 1.75;
+			player.dy *= 1.75;
 		}
 	}
 
@@ -1784,6 +1783,13 @@ class KaML extends Attack {
 
 	logic() {
 		
+	}
+
+	hitConfirmSetFrames() {
+		if (this.targetPlayer) {
+			this.player.dx = (this.player.dx + this.player.targetPlayer.x - this.player.x) / 2;
+			this.player.dy = (this.player.dy + this.player.targetPlayer.y - this.player.y) / 2;
+		}
 	}
 }
 
@@ -2797,7 +2803,7 @@ class KaNN extends Attack {
 		player.dy *= 1.3;
 
 		attack.startAngle.setFromPoint(-player.dx, -player.dy);
-		attack.magnitude = min(10, dist(0, 0, player.dx, player.dy));
+		attack.magnitude = min(8, dist(0, 0, player.dx * 2, player.dy * 2));
 
 		if (attack.magnitude > 0.125) {
 			player.airRotValue = attack.startAngle.value;
@@ -2811,13 +2817,16 @@ class KaNN extends Attack {
 	}
 
 	logic() {
+		if (dist(0, 0, this.player.dx, this.player.dy) > 0.125 && this.getFromStartupF() > 8) {
+			this.player.airRotValue = atan2(this.player.dy, this.player.dx);
+		}
 		if (this.getStartupF() > 4) {
 			let frames = this.getStartupF() + 20;
 			this.player.dx += this.startAngle.getX() * this.magnitude * frames / 300;
 			this.player.dy += this.startAngle.getY() * this.magnitude * frames / 300;
 		}
 
-		if (this.getStartupF() === 3) {
+		if (this.getStartupF() === 5) {
 			this.player.dx *= 0.8;
 			this.player.dy *= 0.8;
 			this.player.addAction("attack");
