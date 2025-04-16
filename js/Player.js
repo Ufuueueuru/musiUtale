@@ -1495,6 +1495,7 @@ class Player extends Hitcircle {
 	 * @param {number} mult
 	 * @param {boolean} set
 	 * @param {boolean} bool
+	 * @returns {boolean}
 	 */
 	walkMovement(mult = 1, set = false, bool = false) {
 		if (bool || this.controls.joystickPressed(0)) {
@@ -1508,7 +1509,9 @@ class Player extends Hitcircle {
 				this.x += this.slowWalk * (cos(this.controls.angle(0).value) * this.movementSpeed + xBoost) * mult;
 				this.y += this.slowWalk * (sin(this.controls.angle(0).value) * this.movementSpeed + yBoost) * mult;
 			}
+			return true;
 		}
+		return false;
 	}
 
 	startStand() {
@@ -2540,6 +2543,9 @@ class Player extends Hitcircle {
 		if (this.currentState.name === "grab") {
 			if (this.targetPlayer?.currentState.name !== "grabbed") {
 				this.endAttacks();
+				if (State.stateIs(this.targetPlayer.currentState, "hitstun") && this.actionLag > 10) {
+					this.actionLag = 0;
+				}
 			}
 
 			this.turnSpeedModifier = 0.5;

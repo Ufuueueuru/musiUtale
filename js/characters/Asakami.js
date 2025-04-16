@@ -130,344 +130,425 @@
 		];
 
 		this.hurtboxes["SL"] = [
-			[new Circle(-1, -3, 82),
-			new Circle(10, 34, 26),
-			new Circle(10, -40, 20)],
-			[new Circle(-2, -5, 83),
-			new Circle(2, 34, 26),
-			new Circle(15, -35, 25)],
-			[new Circle(-2, -6, 82),
-			new Circle(-3, 32, 27),
-			new Circle(15, -40, 20)],
-			[new Circle(6, -2, 85),
-			new ICircle(42, 26, 25),
-			new Circle(14, -37, 20)],
-			[new Circle(10, 4, 86),
-			new ICircle(65, 20, 30),
-			new Circle(14, -35, 24)],
-			[new Circle(10, 4, 86),
-			new ICircle(66, 17, 30),
-			new Circle(14, -35, 24)],
-			[new Circle(15, 1, 73),
-			new Circle(65, 10, 28),
-			new Circle(8, -29, 24)],
-			[new Circle(13, 2, 77),
-			new Circle(64, 4, 30),
-			new Circle(8, -31, 20)],
-			[new Circle(12, 2, 78),
-			new Circle(64, 4, 30),
-			new Circle(8, -31, 20)],
-			[new Circle(13, 2, 79),
-			new Circle(61, 21, 26),
-			new Circle(13, -37, 20)],
-			[new Circle(11, 3, 83),
-			new Circle(50, 28, 27),
-			new Circle(10, -31, 31)],
-			[new Circle(6, 1, 80),
-			new Circle(39, 34, 22),
-			new Circle(14, -33, 27)]
+			[new Circle(-5, 8, 78),
+			new ICircle(11, 61, 28),
+			new ICircle(17, -43, 28)],
+			[new Circle(-16, 10, 78),
+			new ICircle(-4, 60, 28),
+			new ICircle(14, -32, 28)],
+			[new Circle(-23, 2, 77),
+			new ICircle(-34, 52, 28),
+			new ICircle(16, -29, 28)],
+			[new Circle(-18, -13, 76),
+			new ICircle(-65, -25, 28),
+			new ICircle(30, -13, 28)],
+			[new Circle(-9, -16, 76),
+			new ICircle(-59, -34, 30),
+			new ICircle(32, -10, 28)],
+			[new Circle(-5, -17, 78),
+			new ICircle(-43, -48, 31),
+			new ICircle(33, -10, 28)],
+			[new Circle(-15, -13, 75),
+			new ICircle(-41, -61, 30),
+			new ICircle(33, -4, 28)],
+			[new Circle(-18, -7, 77),
+			new ICircle(26, -23, 30),
+			new ICircle(-52, 34, 28)],
+			[new Circle(-26, 11, 77),
+			new ICircle(-59, -23, 30),
+			new ICircle(-12, 66, 28)],
+			[new Circle(-40, 11, 77),
+			new ICircle(-90, -14, 30),
+			new ICircle(-12, 67, 28)],
+			[new Circle(-48, 8, 77),
+			new ICircle(-97, 7, 30),
+			new ICircle(-13, 67, 29)],
+			[new Circle(-40, 10, 77),
+			new ICircle(-81, 37, 30),
+			new ICircle(13, 52, 31)],
+			[new Circle(-24, 14, 79),
+			new ICircle(-51, 56, 30),
+			new ICircle(34, 18, 31)],
+			[new Circle(-14, 11, 79),
+			new ICircle(-27, 63, 30),
+			new ICircle(29, -15, 31)],
+			[new Circle(-4, 5, 77),
+			new ICircle(28, 49, 30),
+			new ICircle(24, -53, 31)]
 		];
 
 		this.hurtboxes["RL"] = [
-			[new Circle(0, 0, 80),
-			new Circle(10, 40, 20),
-			new Circle(10, -40, 20)],
-			[new Circle(0, -2, 80),
-			new ICircle(26, 27, 36),
-			new Circle(10, -32, 33)],
-			[new Circle(2, 0, 79),
-			new ICircle(40, 18, 39),
-			new Circle(11, -33, 26)],
-			[new Circle(8, -3, 84),
-			new Circle(37, 11, 48),
-			new ICircle(68, 14, 30)],
-			[new Circle(9, -3, 79),
-			new Circle(40, 13, 45),
-			new ICircle(66, 15, 30)],
-			[new Circle(7, -2, 84),
-			new Circle(37, 17, 40),
-			new ICircle(59, 23, 31)],
-			[new Circle(4, -5, 79),
-			new Circle(26, 18, 41),
-			new ICircle(48, 24, 31)],
-			[new Circle(2, -5, 81),
-			new Circle(27, 23, 34),
-			new ICircle(45, 25, 25)],
-			[new Circle(4, 0, 79),
-			new ICircle(34, 27, 33),
-			new Circle(12, -29, 37)],
-			[new Circle(2, 0, 80),
-			new Circle(30, 27, 34),
-			new Circle(12, -29, 37)]
+			[new Circle(0, 0, 78),
+			new ICircle(-13, 52, 29),
+			new ICircle(25, -58, 28)],
+			[new Circle(0, 8, 78),
+			new ICircle(-8, 57, 29),
+			new ICircle(22, -57, 28)],
+			[new Circle(1, 17, 78),
+			new ICircle(0, 69, 29),
+			new ICircle(16, -50, 28)],
+			[new Circle(-1, 21, 78),
+			new ICircle(2, 79, 29),
+			new ICircle(-4, -48, 29)],
+			[new Circle(-1, 21, 77),
+			new ICircle(2, 79, 29),
+			new ICircle(-7, -47, 28)],
+			[new Circle(-17, -10, 77),
+			new ICircle(-53, 32, 29),
+			new ICircle(24, -20, 28)],
+			[new Circle(-34, -44, 76),
+			new ICircle(-85, -67, 29),
+			new ICircle(-38, 14, 28)],
+			[new Circle(-34, -44, 76),
+			new ICircle(-85, -67, 29),
+			new ICircle(-38, 14, 28)],
+			[new Circle(-34, -38, 74),
+			new ICircle(-88, -56, 29),
+			new ICircle(-19, 23, 28)],
+			[new Circle(-27, -29, 74),
+			new ICircle(-84, -17, 29),
+			new ICircle(15, 14, 28)],
+			[new Circle(-20, -23, 75),
+			new ICircle(-52, 26, 29),
+			new ICircle(40, -15, 28)],
+			[new Circle(0, 0, 76),
+			new ICircle(-14, 51, 29),
+			new ICircle(25, -58, 28)]
 		];
 
 		this.hurtboxes["LL"] = [
 			[new Circle(0, 0, 80),
-			new Circle(10, 40, 20),
-			new Circle(10, -40, 20)],
-			[new Circle(-4, 3, 83),
-			new Circle(13, 29, 34),
-			new ICircle(4, -33, 32)],
-			[new Circle(-1, 7, 79),
-			new Circle(20, 30, 31),
-			new ICircle(4, -28, 35)],
-			[new Circle(0, -3, 85),
-			new Circle(14, 27, 32),
-			new ICircle(30, -36, 32)],
-			[new Circle(6, -6, 86),
-			new Circle(28, -26, 50),
-			new ICircle(51, -40, 29)],
-			[new Circle(10, -10, 85),
-			new Circle(35, -33, 39),
-			new ICircle(55, -38, 29)],
-			[new Circle(8, -8, 84),
-			new ICircle(43, -36, 29)],
-			[new Circle(6, -7, 79),
-			new Circle(19, 18, 37),
-			new ICircle(38, -34, 30)],
-			[new Circle(4, -7, 80),
-			new Circle(18, 22, 34),
-			new ICircle(34, -37, 31)],
-			[new Circle(2, -4, 78),
-			new Circle(15, 25, 33),
-			new ICircle(28, -30, 37)],
-			[new Circle(0, -3, 80),
-			new Circle(12, 25, 33),
-			new ICircle(21, -35, 32)],
-			[new Circle(1, -1, 75),
-			new Circle(12, 30, 29),
-			new Circle(5, -33, 29)]
+			new Circle(10, -40, 20),
+			new Circle(10, 40, 20)],
+			[new Circle(-4, -3, 83),
+			new Circle(13, -29, 34),
+			new ICircle(4, 33, 32)],
+			[new Circle(-1, -7, 79),
+			new Circle(20, -30, 31),
+			new ICircle(4, 28, 35)],
+			[new Circle(0, 3, 85),
+			new Circle(14, -27, 32),
+			new ICircle(30, 36, 32)],
+			[new Circle(6, 6, 86),
+			new Circle(28, 26, 50),
+			new ICircle(51, 40, 29)],
+			[new Circle(10, 10, 85),
+			new Circle(35, 33, 39),
+			new ICircle(55, 38, 29)],
+			[new Circle(8, 8, 84),
+			new ICircle(43, 36, 29)],
+			[new Circle(6, 7, 79),
+			new Circle(19, -18, 37),
+			new ICircle(38, 34, 30)],
+			[new Circle(4, 7, 80),
+			new Circle(18, -22, 34),
+			new ICircle(34, 37, 31)],
+			[new Circle(2, 4, 78),
+			new Circle(15, -25, 33),
+			new ICircle(28, 30, 37)],
+			[new Circle(0, 3, 80),
+			new Circle(12, -25, 33),
+			new ICircle(21, 35, 32)],
+			[new Circle(1, 1, 75),
+			new Circle(12, -30, 29),
+			new Circle(5, 33, 29)]
 		];
 
 		this.hurtboxes["ML"] = [
-			[new Circle(0, 0, 80),
-			new Circle(10, 40, 20),
-			new Circle(10, -40, 20)],
-			[new Circle(0, 0, 85),
-			new Circle(16, 37, 27),
-			new Circle(15, -38, 20)],
-			[new Circle(-1, -1, 82),
-			new ICircle(37, 31, 74),
-			new Circle(15, -37, 22)],
-			[new Circle(-2, -1, 83),
-			new Circle(24, 31, 32),
-			new ICircle(35, -15, 103)],
-			[new Circle(-2, 0, 84),
-			new Circle(24, 28, 34),
-			new ICircle(18, -13, 86)],
-			[new Circle(-1, -1, 84),
-			new Circle(25, 30, 31),
-			new Circle(19, -38, 31)],
-			[new Circle(-1, -1, 83),
-			new Circle(17, 31, 32),
-			new Circle(17, -30, 40)]
+			[new Circle(0, 10, 77),
+			new ICircle(9, 64, 25),
+			new ICircle(27, -48, 27)],
+			[new Circle(-9, 11, 75),
+			new ICircle(11, 61, 24),
+			new ICircle(-12, -52, 28)],
+			[new Circle(-15, 16, 78),
+			new ICircle(4, 66, 26),
+			new ICircle(-39, -45, 28)],
+			[new Circle(-19, 20, 76),
+			new ICircle(-21, 75, 25),
+			new ICircle(-12, -39, 30)],
+			[new Circle(-14, 7, 76),
+			new ICircle(-65, 0, 25),
+			new ICircle(45, 11, 30)],
+			[new Circle(10, 17, 78),
+			new ICircle(61, 25, 25),
+			new ICircle(-52, 10, 27)],
+			[new Circle(-14, -7, 74),
+			new ICircle(-66, 4, 26),
+			new ICircle(38, -24, 29)],
+			[new Circle(-16, 4, 76),
+			new ICircle(-22, 54, 26),
+			new ICircle(33, -26, 29)],
+			[new Circle(-27, 11, 76),
+			new ICircle(-18, 63, 26),
+			new ICircle(8, -36, 28)],
+			[new Circle(-27, 5, 77),
+			new ICircle(-9, 59, 26),
+			new ICircle(-15, -57, 28)],
+			[new Circle(-17, 3, 76),
+			new ICircle(7, 54, 26),
+			new ICircle(-8, -60, 28)]
 		];
 
 		this.hurtboxes["NS"] = [
-			[new Circle(0, 0, 80),
-			new Circle(10, 40, 30),
-			new Circle(10, -40, 20)],
-			[new Circle(0, 0, 80),
-			new ICircle(30, 30, 30),
-			new Circle(10, -40, 20)],
-			[new Circle(5, 5, 85),
-			new ICircle(45, 20, 30),
-			new Circle(10, -40, 20)],
-			[new Circle(10, 10, 90),
-			new ICircle(65, 20, 30),
-			new Circle(10, -40, 20)],
-			[new Circle(10, 10, 90),
-			new ICircle(65, 20, 30),
-			new Circle(10, -40, 20)],
-			[new Circle(10, 10, 90),
-			new ICircle(55, 20, 30),
-			new Circle(10, -40, 20)],
-			[new Circle(0, 0, 80),
-			new ICircle(45, 30, 30),
-			new Circle(10, -40, 20)],
+			[new Circle(1, 5, 80),
+			new ICircle(11, 52, 30),
+			new ICircle(28, -49, 30)],
+			[new Circle(6, 8, 80),
+			new ICircle(20, 57, 30),
+			new ICircle(5, -52, 30)],
+			[new Circle(2, 11, 77),
+			new ICircle(19, 61, 30),
+			new ICircle(-8, -50, 30)],
+			[new Circle(0, 13, 78),
+			new ICircle(13, 63, 28),
+			new ICircle(-18, -41, 31)],
+			[new Circle(0, 24, 77),
+			new ICircle(19, 74, 27),
+			new ICircle(-32, -29, 30)],
+			[new Circle(1, 24, 78),
+			new ICircle(19, 75, 28),
+			new ICircle(-32, -29, 29)],
+			[new Circle(1, 25, 78),
+			new ICircle(17, 74, 28),
+			new ICircle(-32, -28, 28)],
+			[new Circle(1, 25, 78),
+			new ICircle(17, 74, 28),
+			new ICircle(-32, -28, 28)],
+			[new Circle(1, 25, 78),
+			new ICircle(17, 74, 28),
+			new ICircle(-32, -28, 28)],
+			[new Circle(1, 25, 78),
+			new ICircle(17, 74, 28),
+			new ICircle(-32, -28, 28)],
+			[new Circle(-11, 23, 77),
+			new ICircle(3, 74, 27),
+			new ICircle(-19, -37, 28)],
+			[new Circle(-3, -1, 78),
+			new ICircle(-40, 38, 27),
+			new ICircle(49, -28, 28)],
+			[new Circle(-3, -2, 77),
+			new ICircle(-40, 38, 27),
+			new ICircle(49, -28, 28)],
+			[new Circle(-3, -2, 77),
+			new ICircle(-40, 38, 27),
+			new ICircle(49, -28, 28)],
+			[new Circle(-3, -1, 77),
+			new ICircle(-40, 38, 27),
+			new ICircle(49, -28, 28)],
+			[new Circle(-3, -1, 77),
+			new ICircle(-39, 40, 27),
+			new ICircle(49, -26, 29)],
+			[new Circle(-3, -1, 77),
+			new ICircle(-40, 41, 28),
+			new ICircle(49, -28, 29)],
+			[new Circle(-3, -1, 77),
+			new ICircle(-39, 40, 28),
+			new ICircle(48, -28, 28)],
+			[new Circle(-3, -1, 77),
+			new ICircle(-39, 40, 28),
+			new ICircle(49, -27, 28)],
+			[new Circle(-3, -1, 77),
+			new ICircle(-39, 40, 28),
+			new ICircle(49, -27, 28)],
+			[new Circle(0, 0, 78),
+			new ICircle(-37, 45, 28),
+			new ICircle(49, -29, 28)],
+			[new Circle(0, 0, 78),
+			new ICircle(-37, 45, 28),
+			new ICircle(49, -29, 28)],
+			[new Circle(0, 0, 78),
+			new ICircle(-35, 44, 28),
+			new ICircle(49, -29, 28)],
+			[new Circle(0, 2, 78),
+			new ICircle(3, 58, 26),
+			new ICircle(29, -50, 28)]
 		];
 
 		this.hurtboxes["SS"] = [
-			[new Circle(0, 0, 80),
-			new Circle(21, 31, 30),
-			new Circle(14, -31, 36)],
-			[new Circle(3, 0, 79),
-			new Circle(27, 26, 37),
-			new Circle(15, -34, 35)],
-			[new Circle(6, -2, 80),
-			new Circle(34, 22, 38),
-			new Circle(18, -33, 38)],
-			[new Circle(5, -1, 79),
-			new Circle(31, 24, 39),
-			new Circle(23, -32, 36)],
-			[new Circle(5, -2, 82),
-			new Circle(36, 24, 36),
-			new Circle(34, -28, 39)],
-			[new Circle(3, -1, 82),
-			new Circle(33, 23, 40),
-			new Circle(31, -30, 39)],
-			[new Circle(4, -1, 83),
-			new Circle(36, 22, 40),
-			new Circle(33, -29, 40)],
-			[new Circle(4, -1, 81),
-			new Circle(30, 23, 42),
-			new Circle(29, -30, 38)],
-			[new Circle(7, -3, 83),
-			new Circle(35, 26, 34),
-			new Circle(33, -30, 35)],
-			[new Circle(6, -2, 81),
-			new Circle(31, 25, 37),
-			new Circle(31, -30, 39)],
-			[new Circle(7, -1, 83),
-			new Circle(35, 24, 35),
-			new Circle(36, -30, 35)],
-			[new Circle(5, -1, 81),
-			new Circle(33, 27, 35),
-			new Circle(31, -27, 40)],
-			[new Circle(8, -2, 82),
-			new Circle(36, 25, 34),
-			new Circle(35, -24, 40)],
-			[new Circle(6, -2, 80),
-			new Circle(33, 26, 35),
-			new Circle(31, -28, 36)],
-			[new Circle(5, -2, 77),
-			new Circle(28, 25, 40),
-			new Circle(24, -28, 36)]
+			[new Circle(-1, 0, 78),
+			new ICircle(23, 49, 28),
+			new ICircle(-15, -62, 29)],
+			[new Circle(-1, 4, 77),
+			new ICircle(28, 48, 28),
+			new ICircle(-15, -60, 29)],
+			[new Circle(1, 7, 77),
+			new ICircle(35, 47, 26),
+			new ICircle(-14, -54, 28)],
+			[new Circle(-4, 17, 78),
+			new ICircle(21, 63, 26),
+			new ICircle(-33, -40, 28)],
+			[new Circle(-6, 12, 77),
+			new ICircle(17, 59, 26),
+			new ICircle(-25, -47, 28)],
+			[new Circle(1, -1, 77),
+			new ICircle(16, 52, 26),
+			new ICircle(-4, -64, 28)],
+			[new Circle(1, -1, 77),
+			new ICircle(16, 52, 26),
+			new ICircle(-4, -64, 28)],
+			[new Circle(4, 2, 77),
+			new ICircle(14, 51, 26),
+			new ICircle(9, -60, 28)],
+			[new Circle(-1, 5, 77),
+			new ICircle(-52, 16, 26),
+			new ICircle(58, 6, 28)],
+			[new Circle(-10, -4, 77),
+			new ICircle(-20, 57, 27),
+			new ICircle(-14, -52, 28)],
+			[new Circle(-3, -2, 77),
+			new ICircle(-58, -28, 27),
+			new ICircle(41, 3, 37)],
+			[new Circle(8, 0, 77),
+			new ICircle(40, -51, 27),
+			new ICircle(-4, 47, 27)],
+			[new Circle(9, 4, 76),
+			new ICircle(70, -6, 27),
+			new ICircle(-32, 36, 27)],
+			[new Circle(9, 4, 76),
+			new ICircle(70, -6, 27),
+			new ICircle(-40, 19, 27)],
+			[new Circle(-2, 4, 77),
+			new ICircle(-63, 11, 27),
+			new ICircle(37, -31, 27)],
+			[new Circle(-2, 10, 77),
+			new ICircle(-41, 58, 27),
+			new ICircle(2, -40, 27)],
+			[new Circle(-3, 9, 77),
+			new ICircle(49, 43, 27),
+			new ICircle(-55, 4, 26)],
+			[new Circle(5, -1, 77),
+			new ICircle(50, -41, 27),
+			new ICircle(-6, 49, 26)]
 		];
 
 		this.hurtboxes["RS"] = [
-			[new Circle(2, 0, 80),
-			new Circle(21, 37, 23),
-			new Circle(10, -38, 21)],
-			[new Circle(4, 1, 82),
-			new Circle(22, 31, 32),
-			new Circle(10, -21, 50)],
-			[new Circle(4, 0, 81),
-			new Circle(17, 29, 33),
-			new Circle(12, -31, 29)],
-			[new Circle(5, -2, 80),
-			new Circle(9, 33, 29),
-			new Circle(18, -30, 35)],
-			[new Circle(7, -3, 82),
-			new Circle(9, 31, 32),
-			new Circle(25, -32, 31)],
-			[new Circle(8, -2, 81),
-			new Circle(15, 35, 33),
-			new Circle(21, -33, 29)],
-			[new Circle(6, 0, 85),
-			new Circle(24, 33, 35),
-			new Circle(11, -23, 50)],
-			[new Circle(6, 4, 85),
-			new Circle(31, 37, 34),
-			new Circle(10, -33, 27)],
-			[new Circle(12, 3, 81),
-			new Circle(45, 28, 30),
-			new Circle(9, -24, 41)],
-			[new Circle(13, 2, 79),
-			new Circle(45, 29, 29),
-			new Circle(8, -21, 47)],
-			[new Circle(13, 2, 79),
-			new Circle(42, 29, 28),
-			new Circle(8, -21, 47)],
-			[new Circle(7, 0, 79),
-			new Circle(26, 32, 29),
-			new Circle(7, -33, 28)],
-			[new Circle(3, -1, 76),
-			new Circle(12, 33, 29),
-			new Circle(8, -34, 31)]
+			[new Circle(-3, -2, 78),
+			new ICircle(26, 43, 23),
+			new ICircle(-14, -66, 27)],
+			[new Circle(-4, 1, 76),
+			new ICircle(27, 47, 23),
+			new ICircle(-14, -63, 27)],
+			[new Circle(-2, 9, 77),
+			new ICircle(30, 44, 25),
+			new ICircle(-16, -52, 27)],
+			[new Circle(6, 13, 78),
+			new ICircle(43, 30, 25),
+			new ICircle(-32, -38, 29)],
+			[new Circle(8, 12, 78),
+			new ICircle(46, 28, 25),
+			new ICircle(-32, -37, 29)],
+			[new Circle(8, 12, 78),
+			new ICircle(48, 27, 25),
+			new ICircle(-32, -37, 29)],
+			[new Circle(-11, 5, 78),
+			new ICircle(-59, 15, 25),
+			new ICircle(37, 2, 29)],
+			[new Circle(8, -17, 78),
+			new ICircle(33, -65, 25),
+			new ICircle(-42, 8, 29)],
+			[new Circle(8, -17, 78),
+			new ICircle(35, -64, 25),
+			new ICircle(-42, 0, 29)],
+			[new Circle(15, -12, 78),
+			new ICircle(68, -2, 25),
+			new ICircle(-39, -33, 29)],
+			[new Circle(10, -3, 78),
+			new ICircle(44, 38, 25),
+			new ICircle(-27, -53, 29)]
 		];
 
 		this.hurtboxes["LS"] = [
-			[new Circle(3, -5, 84),
-			new Circle(9, 37, 20),
-			new Circle(18, -37, 20)],
-			[new Circle(7, -5, 85),
-			new Circle(7, 37, 20),
-			new Circle(26, -37, 20)],
-			[new Circle(7, -3, 85),
-			new Circle(7, 36, 20),
-			new Circle(26, -36, 20)],
-			[new Circle(6, -4, 82),
-			new Circle(8, 33, 25),
-			new Circle(21, -33, 26)],
-			[new Circle(4, 0, 79),
-			new Circle(14, 33, 25),
-			new Circle(15, -34, 31)],
-			[new Circle(4, 4, 81),
-			new Circle(20, 35, 26),
-			new Circle(9, -31, 30)],
-			[new Circle(6, 1, 83),
-			new Circle(21, 30, 38),
-			new Circle(9, -21, 50)],
-			[new Circle(6, -1, 82),
-			new Circle(19, 25, 39),
-			new Circle(16, -37, 31)],
-			[new Circle(7, -1, 84),
-			new Circle(16, 28, 39),
-			new Circle(24, -34, 33)],
-			[new Circle(7, -2, 82),
-			new Circle(14, 27, 36),
-			new Circle(34, -33, 36)],
-			[new Circle(12, -5, 84),
-			new Circle(7, 30, 28),
-			new Circle(46, -28, 28)],
-			[new Circle(14, -5, 82),
-			new Circle(4, 33, 26),
-			new Circle(45, -28, 28)],
-			[new Circle(13, -3, 82),
-			new Circle(4, 31, 27),
-			new Circle(46, -31, 21)],
-			[new Circle(8, -1, 77),
-			new Circle(7, 34, 27),
-			new Circle(27, -29, 33)],
-			[new Circle(8, 1, 78),
-			new Circle(9, 34, 31),
-			new Circle(17, -30, 31)],
-			[new Circle(2, 2, 75),
-			new Circle(9, 33, 31),
-			new Circle(11, -28, 36)]
+			[new Circle(-4, 0, 76),
+			new ICircle(22, 49, 24),
+			new ICircle(-12, -65, 29)],
+			[new Circle(4, 5, 76),
+			new ICircle(39, 21, 24),
+			new ICircle(-52, -26, 26)],
+			[new Circle(12, 12, 77),
+			new ICircle(49, 10, 24),
+			new ICircle(-45, 13, 26)],
+			[new Circle(13, 7, 76),
+			new ICircle(49, 6, 24),
+			new ICircle(-45, 7, 26)],
+			[new Circle(13, 4, 76),
+			new ICircle(49, 9, 24),
+			new ICircle(-44, -1, 26)],
+			[new Circle(14, 6, 76),
+			new ICircle(49, 12, 24),
+			new ICircle(-41, -6, 26)],
+			[new Circle(14, 6, 76),
+			new ICircle(49, 12, 24),
+			new ICircle(-41, -6, 26)],
+			[new Circle(-18, 9, 76),
+			new ICircle(-36, 58, 24),
+			new ICircle(18, -15, 26)],
+			[new Circle(-23, 2, 76),
+			new ICircle(-48, 51, 24),
+			new ICircle(32, -16, 26)],
+			[new Circle(-14, 3, 77),
+			new ICircle(-34, 53, 24),
+			new ICircle(35, -33, 26)],
+			[new Circle(-7, 1, 77),
+			new ICircle(-9, 55, 24),
+			new ICircle(23, -54, 26)]
 		];
 
 		this.hurtboxes["MS"] = [
-			[new Circle(0, 0, 80),
-			new Circle(14, 38, 27),
-			new Circle(14, -41, 26)],
-			[new Circle(0, 0, 79),
-			new Circle(8, 39, 30),
-			new Circle(9, -40, 30)],
-			[new Circle(0, 0, 79),
-			new Circle(6, 40, 23),
-			new Circle(9, -42, 28)],
-			[new Circle(0, 0, 78),
-			new Circle(27, -18, 45),
-			new Circle(27, 18, 45)],
-			[new Circle(0, 0, 78),
-			new Circle(26, 17, 47),
-			new Circle(25, -19, 44)],
-			[new Circle(0, 0, 78),
-			new Circle(28, 18, 47),
-			new Circle(26, -18, 46)],
-			[new Circle(0, 0, 77),
-			new Circle(29, 17, 46),
-			new Circle(27, -18, 46)],
-			[new Circle(0, 0, 77),
-			new Circle(28, 22, 41),
-			new Circle(27, -19, 43)],
-			[new Circle(0, 0, 76),
-			new Circle(25, 27, 36),
-			new Circle(27, -24, 40)],
-			[new Circle(0, 0, 75),
-			new Circle(22, 30, 33),
-			new Circle(23, -27, 34)],
-			[new Circle(0, 0, 75),
-			new Circle(23, 29, 37),
-			new Circle(23, -28, 37)],
-			[new Circle(2, 0, 76),
-			new Circle(17, 30, 37),
-			new Circle(20, -30, 39)],
-			[new Circle(2, 0, 75),
-			new Circle(17, 30, 39),
-			new Circle(17, -30, 40)]
+			[new Circle(-2, 2, 77),
+			new ICircle(23, 50, 27),
+			new ICircle(-14, -66, 26)],
+			[new Circle(-4, 4, 77),
+			new ICircle(26, 47, 27),
+			new ICircle(-14, -61, 26)],
+			[new Circle(-12, 10, 77),
+			new ICircle(24, 51, 27),
+			new ICircle(-16, -55, 26)],
+			[new Circle(-29, 19, 77),
+			new ICircle(3, 49, 27),
+			new ICircle(-26, -40, 26)],
+			[new Circle(-29, 19, 77),
+			new ICircle(1, 60, 27),
+			new ICircle(-29, -41, 26)],
+			[new Circle(-29, 19, 77),
+			new ICircle(1, 61, 27),
+			new ICircle(-29, -41, 26)],
+			[new Circle(-29, 19, 77),
+			new ICircle(2, 62, 27),
+			new ICircle(-29, -41, 26)],
+			[new Circle(-19, 5, 77),
+			new ICircle(4, 54, 27),
+			new ICircle(-21, -53, 26)],
+			[new Circle(-15, -26, 77),
+			new ICircle(-32, 24, 27),
+			new ICircle(41, -34, 26)],
+			[new Circle(28, -19, 77),
+			new ICircle(-13, -47, 27),
+			new ICircle(19, 37, 26)],
+			[new Circle(18, 31, 77),
+			new ICircle(45, -13, 27),
+			new ICircle(-27, 1, 26)],
+			[new Circle(-40, 11, 77),
+			new ICircle(-18, 53, 27),
+			new ICircle(2, -48, 26)],
+			[new Circle(-4, -14, 77),
+			new ICircle(-28, 35, 27),
+			new ICircle(35, -42, 26)],
+			[new Circle(3, 5, 77),
+			new ICircle(1, 62, 27),
+			new ICircle(50, -23, 26)],
+			[new Circle(-2, -6, 77),
+			new ICircle(32, 32, 27),
+			new ICircle(-16, -57, 26)],
+			[new Circle(-12, 3, 77),
+			new ICircle(26, 43, 27),
+			new ICircle(-17, -58, 26)],
+			[new Circle(-35, -20, 77),
+			new ICircle(-36, 32, 27),
+			new ICircle(10, -19, 26)],
+			[new Circle(-7, -7, 77),
+			new ICircle(-28, -41, 50),
+			new ICircle(-31, 23, 48)]
 		];
 
 		this.hurtboxes["NN"] = [
@@ -477,84 +558,95 @@
 		];
 
 		this.hurtboxes["SN"] = [
-			[new Circle(0, 0, 80),
-			new Circle(10, 40, 20),
-			new Circle(19, -34, 28)],
-			[new Circle(1, 0, 78),
-			new Circle(8, 21, 50),
-			new Circle(24, -26, 36)],
+			[new Circle(-3, 1, 78),
+			new ICircle(6, 56, 26),
+			new ICircle(-3, -62, 28)],
+			[new Circle(-1, 1, 77),
+			new ICircle(7, 56, 26),
+			new ICircle(-3, -62, 28)],
+			[new Circle(0, 0, 76),
+			new ICircle(25, 54, 24),
+			new ICircle(-3, -63, 28)],
 			[new Circle(0, 0, 79),
-			new Circle(7, 22, 50),
-			new Circle(27, -17, 50)],
-			[new Circle(0, 0, 79),
-			new Circle(6, 22, 50),
-			new Circle(27, -15, 50)],
-			[new Circle(2, 1, 75),
-			new Circle(4, 20, 50),
-			new Circle(34, -11, 42)],
-			[new Circle(2, 0, 75),
-			new Circle(6, 19, 50),
-			new Circle(32, -12, 43)],
-			[new Circle(4, 0, 72),
-			new Circle(7, 19, 50),
-			new Circle(36, -13, 39)],
-			[new Circle(3, 0, 73),
-			new Circle(5, 20, 50),
-			new Circle(32, -16, 41)],
-			[new Circle(2, 0, 76),
-			new Circle(5, 20, 50),
-			new Circle(30, -21, 35)],
-			[new Circle(0, 0, 80),
-			new Circle(4, 22, 50),
-			new Circle(20, -27, 37)]
+			new ICircle(44, 21, 51),
+			new ICircle(47, -3, 50),
+			new ICircle(-4, -63, 28)],
+			[new Circle(9, -6, 75),
+			new ICircle(54, -21, 38),
+			new ICircle(-11, -59, 28)],
+			[new Circle(9, -7, 75),
+			new ICircle(58, -26, 27),
+			new ICircle(-17, -57, 29)],
+			[new Circle(3, -18, 78),
+			new ICircle(40, -66, 25),
+			new ICircle(-48, -23, 29)],
+			[new Circle(-8, -18, 76),
+			new ICircle(-34, 14, 37),
+			new ICircle(-22, -75, 24)],
+			[new Circle(-8, -10, 76),
+			new ICircle(-64, 2, 24),
+			new ICircle(34, 24, 28)],
+			[new Circle(2, 2, 76),
+			new ICircle(-17, 51, 26),
+			new ICircle(48, -33, 28)]
 		];
 
 		this.hurtboxes["RN"] = [
-			[new Circle(0, 0, 80),
-			new Circle(4, 47, 26),
-			new Circle(36, -24, 36)],
-			[new Circle(0, 0, 85),
-			new Circle(5, 43, 34),
-			new Circle(30, -17, 50)]
+			[new Circle(0, 2, 77),
+			new ICircle(7, 59, 27),
+			new ICircle(-1, -65, 26)],
+			[new Circle(-2, 5, 77),
+			new ICircle(-6, 62, 27),
+			new ICircle(-4, -63, 25)],
+			[new Circle(-2, 5, 77),
+			new ICircle(3, 56, 42),
+			new ICircle(32, 41, 52),
+			new ICircle(-11, -59, 27)],
+			[new Circle(1, -8, 77),
+			new ICircle(41, 34, 50),
+			new ICircle(53, 5, 52),
+			new ICircle(-27, -57, 28)],
+			[new Circle(1, -8, 77),
+			new ICircle(47, -27, 35),
+			new ICircle(-27, -54, 28)],
+			[new Circle(1, -8, 77),
+			new ICircle(47, -27, 35),
+			new ICircle(-27, -54, 28)],
+			[new Circle(1, -4, 77),
+			new ICircle(56, 1, 27),
+			new ICircle(-19, -60, 28)],
+			[new Circle(2, -3, 77),
+			new ICircle(42, 35, 27),
+			new ICircle(-8, -61, 29)]
 		];
 
 		this.hurtboxes["LN"] = [
-			[new Circle(0, 0, 80),
-			new Circle(10, 40, 20),
-			new Circle(19, -27, 38)],
-			[new Circle(0, 0, 80),
-			new Circle(10, 40, 20),
-			new Circle(24, -30, 33)],
-			[new Circle(0, 0, 80),
-			new Circle(10, 40, 20),
-			new Circle(27, -31, 33)],
-			[new Circle(0, 0, 79),
-			new Circle(9, 25, 44),
-			new Circle(36, -34, 31)],
-			[new Circle(-2, 1, 74),
-			new Circle(6, 26, 50),
-			new Circle(28, -30, 31)],
-			[new Circle(-3, 2, 71),
-			new Circle(7, 28, 48),
-			new Circle(22, -26, 34)],
-			[new Circle(-2, 2, 73),
-			new Circle(9, 25, 50),
-			new Circle(24, -32, 32)],
-			[new Circle(-1, 3, 74),
-			new Circle(10, 29, 39),
-			new Circle(25, -30, 35)],
-			[new Circle(1, 0, 77),
-			new Circle(8, 22, 50),
-			new Circle(31, -31, 36)],
-			[new Circle(1, 0, 78),
-			new Circle(6, 23, 50),
-			new Circle(27, -30, 35)],
-			[new Circle(1, 0, 78),
-			new Circle(5, 25, 46),
-			new Circle(20, -27, 36)],
-			[new Circle(1, 0, 78),
-			new Circle(6, 27, 41),
-			new Circle(20, -28, 35)]
+			[new Circle(0, 2, 77),
+			new ICircle(7, 59, 27),
+			new ICircle(-1, -65, 26)],
+			[new Circle(-2, 5, 77),
+			new ICircle(-6, 62, 27),
+			new ICircle(-4, -63, 25)],
+			[new Circle(-2, 5, 77),
+			new ICircle(3, 56, 42),
+			new ICircle(32, 41, 52),
+			new ICircle(-11, -59, 27)],
+			[new Circle(1, -8, 77),
+			new ICircle(41, 34, 50),
+			new ICircle(53, 5, 52),
+			new ICircle(-27, -57, 28)],
+			[new Circle(1, -8, 77),
+			new ICircle(47, -27, 35),
+			new ICircle(-27, -54, 28)],
+			[new Circle(1, -8, 77),
+			new ICircle(47, -27, 35),
+			new ICircle(-27, -54, 28)],
+			[new Circle(1, -4, 77),
+			new ICircle(56, 1, 27),
+			new ICircle(-19, -60, 28)],
+			[new Circle(2, -3, 77),
+			new ICircle(42, 35, 27),
+			new ICircle(-8, -61, 29)]
 		];
 
 		this.hurtboxes["MN"] = [
@@ -595,6 +687,7 @@
 			dy: 0,
 			dr: 0,
 			dir: new Angle(),
+			dirOff: new Angle(),
 			active: false,
 			held: true,
 			tracking: false,
@@ -623,6 +716,21 @@
 			powerDash: [
 				new ScytheFrame(0, -35, -1.8 * PI / 4),
 				new ScytheFrame(0, -35, -2 * PI / 4)
+			],
+			grab: [
+				new ScytheFrame(-10, -50, -0.9 * PI / 3.7),
+				new ScytheFrame(-10, -50, -0.9 * PI / 3.7),
+				new ScytheFrame(-10, -50, -1.2 * PI / 3.7),
+				new ScytheFrame(-10, -50, -1.2 * PI / 3.7),
+				new ScytheFrame(-10, -50, -1.2 * PI / 3.7),
+				new ScytheFrame(-10, -50, -1.2 * PI / 3.7),
+				new ScytheFrame(-10, -50, -1.2 * PI / 3.7),
+				new ScytheFrame(-10, -50, -1.2 * PI / 3.7),
+				new ScytheFrame(-10, -50, -1.2 * PI / 3.7),
+				new ScytheFrame(-10, -50, -1.1 * PI / 3.7),
+				new ScytheFrame(-10, -50, 1.0 * PI / 3.7),
+				new ScytheFrame(-10, -50, 0.4 * PI / 3.7),
+				new ScytheFrame(-10, -50, -0.5 * PI / 3.7)
 			]
 		}
 
@@ -1203,10 +1311,12 @@
 		this.scythe.x += this.scythe.dx;
 		this.scythe.y += this.scythe.dy;
 		this.scythe.dir.changeValue(this.scythe.dr);
+		this.sheetRotation.value = 0;
 
 		if (this.scythe.held) {
 			this.scythe.x = 0;
 			this.scythe.y = 0;
+			this.scythe.dir.value = 0;
 
 			if (this.currentState.name === "walk") {
 				this.animateScytheLoop(this.scytheAnimations.walk);
@@ -1220,6 +1330,9 @@
 			if (this.currentState.name === "power dash") {
 				this.animateScytheLoop(this.scytheAnimations.powerDash);
 			}
+			if (this.currentState.name === "grab") {
+				this.animateScytheLoop(this.scytheAnimations.grab);
+			}
 		}
 	}
 
@@ -1227,6 +1340,11 @@
 		this.runPuppet();
 		this.puppet.canMove = this.canMove;
 		//this.puppet.canAttack = this.canAttack;
+	}
+
+	canGrabPuppet() {
+		let angle = new Angle(this.dir.value + PI / 4);
+		return this.puppet.health > 0 && dist(this.x + angle.getX() * 60, this.y + angle.getY() * 60, this.puppet.x, this.puppet.y) <= 100;
 	}
 
 	//Character specific attacks
@@ -1395,6 +1513,14 @@
 	 * @param {Graphics} g
 	 */
 	draw(g) {
+		if (this.canGrabPuppet() && this.canChangeState(this.states.RN)) {//Draw the connection line when the puppet can be thrown
+			g.strokeWeight(10 + 5 * Math.sin(frameCount / 8));
+			g.stroke(172, 50, 50, 100);
+			g.noFill();
+			g.line(this.x, this.y, this.puppet.x, this.puppet.y);
+			g.strokeWeight(1);
+		}
+
 		g.push();
 		g.translate(this.x, this.y);
 		g.rotate(this.dir.value - PI / 2 + this.sheetRotation.value);
@@ -1419,8 +1545,12 @@
 		}
 
 		g.push();
-		g.translate(this.scythe.x + this.x, this.scythe.y + this.y);
-		g.rotate(this.dir.value + this.sheetRotation.value + this.scythe.dir.value);
+		g.translate(this.scythe.x, this.scythe.y);
+		if (this.scythe.held)
+			g.translate(this.x, this.y);
+		g.rotate(this.scythe.dir.value + this.scythe.dirOff.value);
+		if (this.scythe.held)
+			g.rotate(this.dir.value + this.sheetRotation.value);
 		g.translate(this.scythe.offX, this.scythe.offY);
 
 		rumbleX = 0;
@@ -1844,63 +1974,194 @@ class AsakamiPuppet extends Player {
 		];
 
 		this.hurtboxes["RPS"] = [
-			[new ICircle(0, 0, 60),
-			new Circle(0, 0, 20)],
-			[new ICircle(0, 0, 60),
-			new Circle(0, 0, 20)],
-			[new ICircle(0, 0, 60),
-			new Circle(0, 0, 20)]
+			[new ICircle(-3, 5, 60),
+			new Circle(0, 0, 20),
+			new ICircle(-37, 13, 28)],
+			[new ICircle(-2, 8, 58),
+			new Circle(0, 0, 20),
+			new ICircle(-32, 25, 27)],
+			[new ICircle(-19, 44, 60),
+			new Circle(0, 19, 20),
+			new ICircle(5, 36, 50),
+			new ICircle(-33, 103, 50),
+			new ICircle(13, 100, 50),
+			new ICircle(-11, 72, 80)],
+			[new ICircle(-19, 44, 60),
+			new Circle(0, 19, 20),
+			new ICircle(5, 36, 50),
+			new ICircle(6, 63, 50),
+			new ICircle(-24, 64, 50)],
+			[new ICircle(-19, 44, 66),
+			new Circle(0, 19, 20),
+			new ICircle(5, 36, 56)],
+			[new ICircle(5, 17, 54),
+			new Circle(0, 6, 20),
+			new ICircle(-24, 16, 27)],
+			[new ICircle(4, 8, 50),
+			new Circle(0, 1, 20),
+			new ICircle(-19, 6, 27)]
 		];
 
 		this.hurtboxes["LPS"] = [
-			[new ICircle(0, 0, 60),
-			new Circle(0, 0, 20)],
-			[new ICircle(0, 0, 60),
-			new Circle(0, 0, 20)],
-			[new ICircle(0, 0, 60),
-			new Circle(0, 0, 20)]
+			[new ICircle(-3, -5, 60),
+			new Circle(0, 0, -20),
+			new ICircle(-37, -13, 28)],
+			[new ICircle(-2, -8, 58),
+			new Circle(0, -0, 20),
+			new ICircle(-32, -25, 27)],
+			[new ICircle(-19, -44, 60),
+			new Circle(0, -19, 20),
+			new ICircle(5, -36, 50),
+			new ICircle(-33, -103, 50),
+			new ICircle(13, -100, 50),
+			new ICircle(-11, -72, 80)],
+			[new ICircle(-19, -44, 60),
+			new Circle(0, -19, 20),
+			new ICircle(5, -36, 50),
+			new ICircle(6, -63, 50),
+			new ICircle(-24, -64, 50)],
+			[new ICircle(-19, -44, 66),
+			new Circle(0, -19, 20),
+			new ICircle(5, -36, 56)],
+			[new ICircle(5, -17, 54),
+			new Circle(0, -6, 20),
+			new ICircle(-24, -16, 27)],
+			[new ICircle(4, -8, 50),
+			new Circle(0, -1, 20),
+			new ICircle(-19, -6, 27)]
 		];
 
 		this.hurtboxes["MPS"] = [
-			[new ICircle(0, 0, 54),
+			[new ICircle(-16, 9, 60),
 			new Circle(0, 0, 20)],
-			[new ICircle(0, 0, 54),
+			[new ICircle(-20, -9, 73),
 			new Circle(0, 0, 20)],
-			[new ICircle(0, 0, 54),
+			[new ICircle(-1, -20, 67),
 			new Circle(0, 0, 20)],
-			[new ICircle(0, 0, 54),
-			new Circle(0, 0, 20)],
-			[new ICircle(0, 0, 198),
+			[new ICircle(20, -2, 54),
 			new Circle(0, 0, 20)],
 			[new ICircle(0, 0, 198),
 			new Circle(0, 0, 20)],
-			[new ICircle(0, 0, 53),
+			[new ICircle(0, 0, 198),
 			new Circle(0, 0, 20)],
-			[new ICircle(0, 0, 54),
+			[new ICircle(-9, 3, 149),
+			new Circle(0, 0, 20),
+			new ICircle(12, -12, 133)],
+			[new ICircle(-1, 0, 153),
+			new Circle(0, 0, 20),
+			new ICircle(-19, -21, 113)],
+			[new ICircle(-7, -9, 129),
 			new Circle(0, 0, 20)],
-			[new ICircle(0, 0, 54),
+			[new ICircle(-2, -1, 98),
 			new Circle(0, 0, 20)],
-			[new ICircle(0, 0, 54),
+			[new ICircle(1, 3, 72),
 			new Circle(0, 0, 20)],
-			[new ICircle(0, 0, 54),
+			[new ICircle(3, 2, 59),
 			new Circle(0, 0, 20)],
-			[new ICircle(0, 0, 54),
-			new Circle(0, 0, 20)],
-			[new ICircle(0, 0, 54),
+			[new ICircle(2, 4, 57),
 			new Circle(0, 0, 20)]
 		];
 
 		this.hurtboxes["NN"] = [
-			[new ICircle(0, 0, 60),
+			[new ICircle(0, 0, 22),
 			new Circle(0, 0, 20)],
-			[new ICircle(0, 0, 60),
+			[new ICircle(0, 0, 35),
 			new Circle(0, 0, 20)],
-			[new ICircle(0, 0, 60),
+			[new ICircle(0, 0, 65),
 			new Circle(0, 0, 20)],
-			[new ICircle(0, 0, 60),
+			[new ICircle(0, 0, 66),
 			new Circle(0, 0, 20)],
 			[new ICircle(0, 0, 60),
 			new Circle(0, 0, 20)]
+		];
+
+		this.hurtboxes["RN"] = [
+			[new ICircle(0, 0, 53),
+			new Circle(0, 0, 20)],
+			[new ICircle(-6, 0, 56),
+			new Circle(0, 0, 20)],
+			[new ICircle(-9, -1, 57),
+			new Circle(0, 0, 20)],
+			[new ICircle(8, 0, 51),
+			new Circle(0, 0, 20),
+			new ICircle(-25, 1, 26)],
+			[new ICircle(9, 0, 52),
+			new Circle(0, 0, 20),
+			new ICircle(-25, 1, 26)],
+			[new ICircle(9, 0, 52),
+			new Circle(0, 0, 20),
+			new ICircle(-25, 1, 26)],
+			[new ICircle(9, 0, 52),
+			new Circle(0, 0, 20),
+			new ICircle(-25, 1, 26)],
+			[new ICircle(10, -1, 46),
+			new Circle(0, 0, 20),
+			new ICircle(-23, -1, 26)],
+			[new ICircle(12, -2, 44),
+			new Circle(0, 0, 20),
+			new ICircle(-23, -1, 26)],
+			[new ICircle(-9, -2, 37),
+			new Circle(0, 0, 20),
+			new ICircle(-34, -1, 26),
+			new ICircle(15, -3, 31)],
+			[new ICircle(-18, -1, 51),
+			new Circle(-4, 0, 20),
+			new ICircle(-37, -1, 26)],
+			[new ICircle(-17, -1, 51),
+			new Circle(-3, 0, 20),
+			new ICircle(-35, -1, 26)],
+			[new ICircle(-10, -1, 51),
+			new Circle(-2, 0, 20),
+			new ICircle(-34, 0, 26)]
+		];
+
+		this.hurtboxes["SN"] = [
+			[new ICircle(-4, 0, 61),
+			new Circle(0, 0, 20)],
+			[new ICircle(4, 0, 46),
+			new Circle(0, 0, 20),
+			new ICircle(-13, 0, 47),
+			new ICircle(-42, 0, 27),
+			new ICircle(-62, 0, 14)],
+			[new ICircle(18, 0, 38),
+			new Circle(0, 0, 20),
+			new ICircle(-14, 2, 35),
+			new ICircle(-48, 2, 27),
+			new ICircle(-76, 0, 14)],
+			[new ICircle(28, 0, 29),
+			new Circle(0, 0, 20),
+			new ICircle(-29, 1, 25),
+			new ICircle(-56, 1, 22),
+			new ICircle(-87, 1, 14),
+			new ICircle(1, 0, 28)],
+			[new ICircle(18, 0, 49),
+			new Circle(0, 0, 20),
+			new ICircle(-3, 1, 51),
+			new ICircle(-29, 1, 36),
+			new ICircle(-51, 1, 16)],
+			[new ICircle(13, 0, 45),
+			new Circle(0, 0, 20),
+			new ICircle(50, 0, 29),
+			new ICircle(76, 0, 24),
+			new ICircle(98, 1, 13)],
+			[new ICircle(13, 0, 46),
+			new Circle(0, 0, 20),
+			new ICircle(43, 2, 24),
+			new ICircle(64, 2, 21),
+			new ICircle(82, 1, 13)],
+			[new ICircle(15, 0, 50),
+			new Circle(0, 0, 20)],
+			[new ICircle(-4, 0, 46),
+			new Circle(0, 0, 20),
+			new ICircle(-16, 10, 47),
+			new ICircle(-46, 5, 19)],
+			[new ICircle(-8, 1, 48),
+			new Circle(0, 0, 20),
+			new ICircle(-31, 12, 43),
+			new ICircle(-56, 3, 19)],
+			[new ICircle(0, 3, 41),
+			new Circle(0, 0, 20),
+			new ICircle(-26, 8, 34)]
 		];
 
 		this.collideRadius = 60;
@@ -1946,13 +2207,16 @@ class AsakamiPuppet extends Player {
 		this.MPS = AsakamiMPS;
 
 		this.NN = AsakamiPuppetNN;
-		this.SN = AsakamiPuppetSN;//Puppet;
+		this.SN = AsakamiPuppetSN;
 		this.RN = AsakamiPuppetRN;
-		this.LN = AsakamiPuppetLN;
-		this.MN = AsakamiPuppetMN;
+		this.LN = AsakamiPuppetLN;//Nothing
+		this.MN = AsakamiPuppetMN;//Nothing
 	}
 
 	generalLogic() {
+		if (State.stateIs(this.getParent().currentState, "dead")) {
+			this.health = 0;
+		}
 		if (this.currentState.name === "revive")
 			this.attackEndable();
 		if (this.deathCountdown > 0)
@@ -2316,7 +2580,9 @@ class AsakamiPuppet extends Player {
 				this.x += this.slowWalk * (cos(controls.angle(0).value) * this.movementSpeed + xBoost) * mult;
 				this.y += this.slowWalk * (sin(controls.angle(0).value) * this.movementSpeed + yBoost) * mult;
 			}
+			return true;
 		}
+		return false;
 	}
 
 	damageHealth(num) {
@@ -2652,11 +2918,11 @@ class AsakamiSL extends Attack {
 			new ScytheFrame(-45, -45, 1.2 * PI / 3),
 			new ScytheFrame(-30, -50, 2.5 * PI / 4),
 			new ScytheFrame(40, -10, -PI / 16),
-			new ScytheFrame(-10, 0, PI / 4),
-			new ScytheFrame(-5, 5, PI / 3.2),
-			new ScytheFrame(0, 10, PI / 2.8),
-			new ScytheFrame(-3, 10, PI / 4.8),
-			new ScytheFrame(-6, -6, PI / 8),
+			new ScytheFrame(-20, 70, PI / 4),
+			new ScytheFrame(0, 60, PI / 3.2),
+			new ScytheFrame(0, 47, PI / 2.8),
+			new ScytheFrame(-5, 30, PI / 4.8),
+			new ScytheFrame(-6, 6, PI / 8),
 			new ScytheFrame(-8, -15, 0),
 			new ScytheFrame(-10, -30, -PI / 5),
 		];
@@ -2865,12 +3131,12 @@ class AsakamiML extends Attack {
 		this.scytheAnimation = [
 			new ScytheFrame(-10, 0, -1.0 * PI / 3),
 			new ScytheFrame(-15, 20, -2.0 * PI / 3),
-			new ScytheFrame(-30, 30, -2.7 * PI / 3),
+			new ScytheFrame(-20, 30, -2.7 * PI / 3),
 			new ScytheFrame(-40, 30, -2.6 * PI / 3),
 			new ScytheFrame(-40, 30, -0.5 * PI / 3),
-			new ScytheFrame(-40, 30, 2 * PI / 3),
-			new ScytheFrame(-40, 30, -1.5 * PI / 3),
-			new ScytheFrame(-30, 20, -1.3 * PI / 3),
+			new ScytheFrame(-40, 30, 2.1 * PI / 3),
+			new ScytheFrame(-40, 30, -1.4 * PI / 3),
+			new ScytheFrame(-30, 20, -1.2 * PI / 3),
 			new ScytheFrame(-20, -10, -1.1 * PI / 3),
 			new ScytheFrame(-15, -40, -1.0 * PI / 3),
 			new ScytheFrame(-12, -45, -0.9 * PI / 3)
@@ -2922,7 +3188,7 @@ class AsakamiNS extends Attack {
 			new ScytheFrame(-30, 30, -2.7 * PI / 3),
 			new ScytheFrame(-30, 30, -2.7 * PI / 3),
 			new ScytheFrame(-40, 30, -2.6 * PI / 3),
-			new ScytheFrame(-40, 10, -0.5 * PI / 3),
+			new ScytheFrame(-45, -20, -1 * PI / 3),
 			new ScytheFrame(-45, -20, 1 * PI / 3),
 			new ScytheFrame(-45, -20, -3 * PI / 3),
 			new ScytheFrame(-45, -20, -1 * PI / 3),
@@ -2936,38 +3202,53 @@ class AsakamiNS extends Attack {
 			new ScytheFrame(-11, -40, -1.6 * PI / 3),
 			new ScytheFrame(-12, -45, -1.5 * PI / 3)
 		];
+
+		this.sheet = Spritesheet.copy(assetManager.spritesheets.scytheTrail);
+		this.sheet.setAnimation("NS");
+		this.sheet.run();
+
+		this.walkFrames = 0;
 	}
 
 	static createAttack(player) {
 		let cancelOptions = [];
 
-		let sweet1 = new PriorityCircle(0, 0, 150, 0).setVelocity(64, 0);
+		let sweet1 = new PriorityCircle(1, 0, 150, 0).setVelocity(64, 0);
 		let circles = [sweet1];
 
-		let sweet = new AttackProperties().setDamage(35).setProration(-1, 2).setCancelOptions(cancelOptions).setAngleValue(player.dir.value).setLaunch(24, 0, 1.2).setLaunchDampening(0, 30, 0, 30).setHitStun(25, 15).setStunFrames(6).setWallLaunchMod(-20, -20);
+		let sweet = new AttackProperties().setDamage(35).setProration(-1, 2).setCancelOptions(cancelOptions).setAngleValue(player.dir.value).setLaunch(18, 0, 1.2).setLaunchDampening(0, 30, 0, 30).setHitStun(25, 15).setStunFrames(4).setWallLaunchMod(-20, -20).setIgnoreWeight();
 		let prop = [sweet];
 
-		return new this(player, circles, prop).setClashPriority(1).setStartupF(45).setActiveF(30).setEndF(18).setRotateable();
+		return new this(player, circles, prop).setClashPriority(1).setStartupF(45).setActiveF(30).setEndF(18).setRotateable().setFollow(false);
 	}
 
 	static startAttack(player, attack, bufferInfo) {
 		player.startMomentumMultiply(0);
 		player.startMomentumMultiplyDash(0);
 		player.scythe.held = false;
+		player.scythe.x = player.x;
+		player.scythe.y = player.y;
+		player.scythe.dir.value = player.dir.value;
 		attack.multiConst = 3;
 	}
 
 	draw(g) {
+		if (!this.currentlyStartup() && this.getFromEndF() < 4) {
+			g.push();
+			g.translate(this.circleX(0), this.circleY(0));
+			g.rotate(this.dir.value);
+
+			this.sheet.draw(g, -115, -115, 230, 230);
+
+			g.pop();
+		}
 		if (this.currentlyActive()) {
-			//if (debug.displayHitboxes)
+			if (debug.displayHitboxes)
 				this.debugDraw(g);
 		}
 	}
 
 	logic() {
-		this.player.animateScythe(this.scytheAnimation);
-		this.player.autoActiveScythe(this);
-
 		if (this.getFromActiveF() % 11 === 10) {
 			this.resetHits();
 			this.properties[0].launch = 4;
@@ -2978,19 +3259,48 @@ class AsakamiNS extends Attack {
 			this.circles[0].dx *= 0.7;
 			this.circles[0].dy *= 0.7;
 		}
-
-		if (this.currentlyActive()) {
-			this.player.scythe.x = this.circles[0].x;
-			this.player.scythe.y = this.circles[0].y;
+		if (this.currentlyStartup()) {
+			this.player.scythe.x = this.player.x;
+			this.player.scythe.y = this.player.y;
+		}
+		if (this.getActiveF() > 0 && this.getStartupF() < 3) {
+			this.player.scythe.x = this.circleX(0) + this.circles[0].dx;
+			this.player.scythe.y = this.circleY(0) + this.circles[0].dy;
+		}
+		if (this.getStartupF() <= 0) {
+			this.setRotateable(false);
+			let walked = this.player.walkMovement(0.5);
+			if (walked)
+				this.walkFrames++;
+			else
+				this.walkFrames = 0;
+			this.player.sheetRotation.value = Math.sin(-this.walkFrames / 5) * 0.08;
+			this.player.dir.value = new Angle().setFromPoint(this.player.scythe.x - this.player.x, this.player.scythe.y - this.player.y).value;
 		}
 		if (this.getFromEndF() > 0) {
-			this.player.scythe.x *= Math.min(1, sqrt(this.getEndF() / 64 + 0.75));
-			this.player.scythe.y *= Math.min(1, sqrt(this.getEndF() / 64 + 0.75));
+			this.player.scythe.x = (this.player.scythe.x - this.player.x) * Math.min(1, sqrt(this.getEndF() / 64 + 0.75)) + this.player.x;
+			this.player.scythe.y = (this.player.scythe.y - this.player.y) * Math.min(1, sqrt(this.getEndF() / 64 + 0.75)) + this.player.y;
 		}
+
+		if (!this.currentlyStartup() && this.getFromEndF() < 4)
+			this.sheet.run();
+
+		this.player.animateScythe(this.scytheAnimation);
+		this.player.autoActiveScythe(this);
+	}
+
+	hitConfirmSetFrames() {
+		this.circles[0].dx *= 0.5;
+		this.circles[0].dy *= 0.5;
 	}
 
 	cleanup() {
 		this.player.scythe.held = true;
+		this.player.scythe.x = 0;
+		this.player.scythe.y = 0;
+		this.player.scythe.dir.value = PI / 8;
+		this.player.scythe.offX = 10;
+		this.player.scythe.offY = 15;
 	}
 }
 
@@ -3004,21 +3314,21 @@ class AsakamiSS extends Attack {
 			new ScytheFrame(-10, -40, -1.4 * PI / 4),
 			new ScytheFrame(-10, -20, -1.8 * PI / 4),
 			new ScytheFrame(-10, 0, -2.8 * PI / 4),
-			new ScytheFrame(-10, 5, -3 * PI / 4),
-			new ScytheFrame(-10, 5, -3 * PI / 4),
-			new ScytheFrame(-10, 5, -3 * PI / 4),
-			new ScytheFrame(-10, 5, -2.7 * PI / 4),
-			new ScytheFrame(-10, 5, -0.8 * PI / 4),
-			new ScytheFrame(-10, 5, 1.5 * PI / 4),
-			new ScytheFrame(-10, 5, 3.7 * PI / 4),
-			new ScytheFrame(-10, 5, -2 * PI / 4),
+			new ScytheFrame(-10, 20, -3 * PI / 4),
+			new ScytheFrame(-10, 40, -3 * PI / 4),
+			new ScytheFrame(-10, 40, -3 * PI / 4),
+			new ScytheFrame(-10, 40, -2.7 * PI / 4),
+			new ScytheFrame(-10, 40, -0.8 * PI / 4),
+			new ScytheFrame(-10, 40, 1.5 * PI / 4),
+			new ScytheFrame(-10, 40, 3.7 * PI / 4),
+			new ScytheFrame(-10, 40, -2 * PI / 4),
 			new ScytheFrame(220, -85, PI / 16),
 			new ScytheFrame(220, -85, PI / 16),
-			new ScytheFrame(-10, 0, 3 * PI / 4),
-			new ScytheFrame(-15, 0, 2.4 * PI / 4),
-			new ScytheFrame(-24, -15, 1.2 * PI / 4),
-			new ScytheFrame(-10, -40, 0 * PI / 4),
-			new ScytheFrame(-8, -40, -0.8 * PI / 4)
+			new ScytheFrame(10, 40, 3 * PI / 4),
+			new ScytheFrame(20, 20, 2.4 * PI / 4),
+			new ScytheFrame(34, -15, 1.2 * PI / 4),
+			new ScytheFrame(15, -40, 0 * PI / 4),
+			new ScytheFrame(-10, -40, -0.8 * PI / 4)
 		];
 
 		this.sheet = Spritesheet.copy(assetManager.spritesheets.scytheTrail);
@@ -3040,7 +3350,7 @@ class AsakamiSS extends Attack {
 		let sour = new AttackProperties().setDamage(100, undefined, 100).setProration(5).setCancelOptions(cancelOptions).setAngleValue(player.dir.value + PI).setLaunch(10, 5, 0.2).setHitStun(48, 12).setStunFrames(15).setLaunchDampening(0.1);
 		let prop = [sweet, sour];
 
-		return new this(player, circles, prop).setClashPriority(1).setStartupF(50).setActiveF(3).setEndF(20).setRotateable();
+		return new this(player, circles, prop).setClashPriority(1).setStartupF(48).setActiveF(3).setEndF(20).setRotateable();
 	}
 
 	static startAttack(player, attack, bufferInfo) {
@@ -3093,10 +3403,9 @@ class AsakamiRS extends Attack {
 			new ScytheFrame(-10, 5, -3 * PI / 4),
 			new ScytheFrame(-10, 5, 0 * PI / 4),
 			new ScytheFrame(-10, 5, 3.5 * PI / 4),
-			new ScytheFrame(-10, 5, 3.9 * PI / 4),
-			new ScytheFrame(-10, 5, 3.5 * PI / 4),
-			new ScytheFrame(-10, 5, 1.1 * PI / 4),
-			new ScytheFrame(-10, 5, -1 * PI / 4)
+			new ScytheFrame(-10, -12, -3.7 * PI / 4),
+			new ScytheFrame(-10, -25, -2.5 * PI / 4),
+			new ScytheFrame(-10, -39, -1.8 * PI / 4)
 		];
 
 		this.sheet = Spritesheet.copy(assetManager.spritesheets.scytheTrail);
@@ -3116,7 +3425,7 @@ class AsakamiRS extends Attack {
 
 		sweet.setHitSound(assetManager.sounds.teloLukaPakala);
 
-		return new this(player, circles, prop).setClashPriority(1).setStartupF(30).setActiveF(3).setEndF(10);
+		return new this(player, circles, prop).setClashPriority(1).setStartupF(29).setActiveF(3).setEndF(10);
 	}
 
 	static startAttack(player, attack, bufferInfo) {
@@ -3163,11 +3472,10 @@ class AsakamiLS extends Attack {
 			new ScytheFrame(-10, 5, -4.2 * PI / 4),
 			new ScytheFrame(-10, 5, -4 * PI / 4),
 			new ScytheFrame(-10, 5, -3.9 * PI / 4),
-			new ScytheFrame(-10, 5, 0 * PI / 4),
-			new ScytheFrame(-10, 5, 0.4 * PI / 4),
-			new ScytheFrame(-10, 5, 0 * PI / 4),
-			new ScytheFrame(-10, 5, -0.2 * PI / 4),
-			new ScytheFrame(-10, 5, -1.6 * PI / 4)
+			new ScytheFrame(-10, 5, -0.7 * PI / 4),
+			new ScytheFrame(-20, -6-20, 0.3 * PI / 4),
+			new ScytheFrame(-15, -28-10, 0.2 * PI / 4),
+			new ScytheFrame(-10, -41, -0.5 * PI / 4)
 		];
 
 		this.sheet = Spritesheet.copy(assetManager.spritesheets.scytheTrail);
@@ -3180,14 +3488,16 @@ class AsakamiLS extends Attack {
 		let sweet1 = new PriorityCircle(0, -60, 140, 0).setVelocity(0.1, 0);
 		let sweet2 = new PriorityCircle(-65, -45, 100, 0).setVelocity(0.1, 0);
 		let sweet3 = new PriorityCircle(65, -45, 100, 0).setVelocity(0.1, 0);
-		let circles = [sweet1, sweet2, sweet3];
+		let sour1 = new PriorityCircle(85, 10, 80, 1).setVelocity(0.1, 0);
+		let circles = [sweet1, sweet2, sweet3, sour1];
 
-		let sweet = new AttackProperties().setDamage(55).setCancelOptions(cancelOptions, hitCancelOptions).setAngleValue(player.dir.value - PI / 6).setLaunch(10, 1, 1).setHitStun(25, 25).setStunFrames(13).setRotateVel(-7, -7, true).setRotateSlowDown(0.25, 60, true);
-		let prop = [sweet];
+		let sweet = new AttackProperties().setDamage(55).setProration(-1, -3).setCancelOptions(cancelOptions, hitCancelOptions).setAngleValue(player.dir.value - PI / 6).setLaunch(10, 1, 1).setHitStun(25, 25).setStunFrames(13).setRotateVel(-7, -7, true).setRotateSlowDown(0.25, 60, true);
+		let sour = new AttackProperties().setDamage(55).setProration(-1, 0).setCancelOptions(cancelOptions, hitCancelOptions).setAngleValue(player.dir.value).setLaunch(10, 1, 1).setHitStun(25, 25).setStunFrames(13).setRotateVel(-5, -5, true).setRotateSlowDown(0.25, 60, true);
+		let prop = [sweet, sour];
 
 		sweet.setHitSound(assetManager.sounds.teloLukaPakala);
 
-		return new this(player, circles, prop).setClashPriority(1).setStartupF(30).setActiveF(3).setEndF(10);
+		return new this(player, circles, prop).setClashPriority(1).setStartupF(29).setActiveF(3).setEndF(10);
 	}
 
 	static startAttack(player, attack, bufferInfo) {
@@ -3239,13 +3549,13 @@ class AsakamiMS extends Attack {
 			new ScytheFrame(-10, 5, 1.5 * PI / 4),
 			new ScytheFrame(-10, 5, 3.7 * PI / 4),
 			new ScytheFrame(-10, 5, -2 * PI / 4),
-			new ScytheFrame(220, -30, -PI / 6),
-			new ScytheFrame(220, -30, -PI / 6),
+			new ScytheFrame(220, -85, -0.5 * PI / 4),
+			new ScytheFrame(220, -85, -0.5 * PI / 4),
 			new ScytheFrame(-25, 45, -1 * PI / 4),
 			new ScytheFrame(-15, 0, 2.4 * PI / 4),
-			new ScytheFrame(-24, -15, 1.2 * PI / 4),
-			new ScytheFrame(-10, -40, 0 * PI / 4),
-			new ScytheFrame(-8, -40, -0.8 * PI / 4)
+			new ScytheFrame(-24, -15, -3.4 * PI / 4),
+			new ScytheFrame(-18, -40, -2.0 * PI / 4),
+			new ScytheFrame(-12, -45, -1.4 * PI / 4)
 		];
 
 		this.sheet = Spritesheet.copy(assetManager.spritesheets.scytheTrail);
@@ -3273,13 +3583,13 @@ class AsakamiMS extends Attack {
 		let sour8 = new PriorityCircle(176, 123, 0, 3).setVelocity(0.1, 0);
 		let circles = [sweet1, sweet2, sweet3, sour1, sour2, sour3, sour4, sweet6, sweet7, sweet8, sour5, sour6, sour7, sour8];
 
-		let sweet = new AttackProperties().setDamage(80, undefined, 100).setProration(1).setCancelOptions(cancelOptions).setAngleValue(player.dir.value + PI - PI / 5.5).setLaunch(16, 5, 0.2).setHitStun(46, 12).setStunFrames(15).setLaunchDampening(0.1);
-		let sour = new AttackProperties().setDamage(80, undefined, 100).setProration(1).setCancelOptions(cancelOptions).setAngleValue(player.dir.value + PI - PI / 5.5).setLaunch(10, 5, 0.2).setHitStun(46, 12).setStunFrames(15).setLaunchDampening(0.1);
-		let sweetP2 = new AttackProperties().setDamage(80, undefined, 100).setProration(1).setCancelOptions(cancelOptions).setAngleValue(player.dir.value + PI + PI / 5.5).setLaunch(16, 5, 0.2).setHitStun(46, 12).setStunFrames(15).setLaunchDampening(0.1);
-		let sourP2 = new AttackProperties().setDamage(80, undefined, 100).setProration(1).setCancelOptions(cancelOptions).setAngleValue(player.dir.value + PI + PI / 5.5).setLaunch(10, 5, 0.2).setHitStun(46, 12).setStunFrames(15).setLaunchDampening(0.1);
+		let sweet = new AttackProperties().setDamage(80, undefined, 100).setProration(1).setCancelOptions(cancelOptions).setAngleValue(player.dir.value + PI - PI / 5.5).setLaunch(16, 5, 0.2).setHitStun(46, 23).setStunFrames(15).setLaunchDampening(0.1);
+		let sour = new AttackProperties().setDamage(80, undefined, 100).setProration(1).setCancelOptions(cancelOptions).setAngleValue(player.dir.value + PI - PI / 5.5).setLaunch(10, 5, 0.2).setHitStun(46, 23).setStunFrames(15).setLaunchDampening(0.1);
+		let sweetP2 = new AttackProperties().setDamage(80, undefined, 100).setProration(1).setCancelOptions(cancelOptions).setAngleValue(player.dir.value + PI + PI / 5.5).setLaunch(16, 5, 0.2).setHitStun(46, 23).setStunFrames(15).setLaunchDampening(0.1);
+		let sourP2 = new AttackProperties().setDamage(80, undefined, 100).setProration(1).setCancelOptions(cancelOptions).setAngleValue(player.dir.value + PI + PI / 5.5).setLaunch(10, 5, 0.2).setHitStun(46, 23).setStunFrames(15).setLaunchDampening(0.1);
 		let prop = [sweet, sour, sweetP2, sourP2];
 
-		return new this(player, circles, prop).setClashPriority(1).setStartupF(50).setActiveF(3).setEndF(20);
+		return new this(player, circles, prop).setClashPriority(1).setStartupF(48).setActiveF(3).setEndF(20);
 	}
 
 	static startAttack(player, attack, bufferInfo) {
@@ -3305,9 +3615,6 @@ class AsakamiMS extends Attack {
 	}
 
 	logic() {
-		this.player.animateScythe(this.scytheAnimation);
-		this.player.autoActiveScythe(this);
-
 		if (this.startupOver() && this.getFromEndF() < 4) {
 			this.sheet.run();
 		}
@@ -3333,13 +3640,10 @@ class AsakamiMS extends Attack {
 				new ScytheFrame(-10, 5, -2 * PI / 4),
 				undefined,
 				undefined,
-				new ScytheFrame(220, -30, PI / 6),
-				new ScytheFrame(220, -30, PI / 6),
+				new ScytheFrame(225, -75, 1.0 * PI / 4),
+				new ScytheFrame(225, -75, 1.0 * PI / 4),
 				new ScytheFrame(-10, 0, 3 * PI / 4),
-				new ScytheFrame(-15, 0, 2.4 * PI / 4),
-				new ScytheFrame(-24, -15, 1.2 * PI / 4),
-				new ScytheFrame(-10, -40, 0 * PI / 4),
-				new ScytheFrame(-8, -40, -0.8 * PI / 4)
+				new ScytheFrame(-15, -50, -2 * PI / 4)
 			];
 
 			this.circles[7].diameter = this.circles[0].diameter;
@@ -3357,6 +3661,9 @@ class AsakamiMS extends Attack {
 			this.circles[5].diameter = 0;
 			this.circles[6].diameter = 0;
 		}
+
+		this.player.animateScythe(this.scytheAnimation);
+		this.player.autoActiveScythe(this);
 	}
 }
 
@@ -3376,7 +3683,7 @@ class AsakamiNPL extends PuppetAttack {
 		let sour1 = new PriorityCircle(50, 0, 65, 0).setVelocity(0.1, 0);
 		let circles = [sweet1, sour1];
 
-		let sweet = new AttackProperties().setDamage(15).setProration(1, 1).setAngleValue(player.dir.value).setLaunch(5).setHitStun(24, 24);
+		let sweet = new AttackProperties().setDamage(15).setProration(1, 1).setAngleValue(player.dir.value).setLaunch(5).setHitStun(24, 10);
 		let prop = [sweet];
 
 		return new this(player.getParent(), circles, prop).setClashPriority(5).setStartupF(7).setActiveF(5).setEndF(10).setFollow(false);
@@ -3420,7 +3727,7 @@ class AsakamiSPL extends PuppetAttack {
 		let sour1 = new PriorityCircle(30, 0, 65, 0).setVelocity(0.1, 0);
 		let circles = [sweet1, sour1];
 
-		let sweet = new AttackProperties().setDamage(20).setProration(0.5, 0.6).setAngleValue(player.dir.value).setLaunch(7).setHitStun(28, 20);
+		let sweet = new AttackProperties().setDamage(20).setProration(0.5, 0.6).setAngleValue(player.dir.value).setLaunch(7).setHitStun(28, 6);
 		let prop = [sweet];
 
 		return new this(player.getParent(), circles, prop).setClashPriority(5).setStartupF(12).setActiveF(8).setEndF(14).setFollow(false);
@@ -3468,7 +3775,7 @@ class AsakamiRPL extends PuppetAttack {
 		let sweet2 = new PriorityCircle(30, 30, 80, 0).setVelocity(0.1, 0.02);
 		let circles = [sweet1, sweet2];
 
-		let sweet = new AttackProperties().setDamage(25).setProration(0.8, 0).setLaunch(7).setHitStun(33, 28).setAngleValue(player.dir.value + PI / 2.1);
+		let sweet = new AttackProperties().setDamage(25).setProration(0.8, 0).setLaunch(7).setHitStun(33, 5).setAngleValue(player.dir.value + PI / 2.1);
 		let prop = [sweet];
 
 		return new this(player.getParent(), circles, prop).setClashPriority(4).setStartupF(8).setActiveF(3).setEndF(15).setFollow(false);
@@ -3508,7 +3815,7 @@ class AsakamiLPL extends PuppetAttack {
 		let sweet2 = new PriorityCircle(30, -30, 80, 0).setVelocity(0.1, -0.02);
 		let circles = [sweet1, sweet2];
 
-		let sweet = new AttackProperties().setDamage(25).setProration(0.8, 0).setLaunch(7).setHitStun(33, 28).setAngleValue(player.dir.value - PI / 2.1);
+		let sweet = new AttackProperties().setDamage(25).setProration(0.8, 0).setLaunch(7).setHitStun(33, 5).setAngleValue(player.dir.value - PI / 2.1);
 		let prop = [sweet];
 
 		return new this(player.getParent(), circles, prop).setClashPriority(4).setStartupF(8).setActiveF(3).setEndF(15).setFollow(false);
@@ -3547,7 +3854,7 @@ class AsakamiMPL extends PuppetAttack {
 		let sour1 = new PriorityCircle(0, 0, 150, 0);
 		let circles = [sour1];
 
-		let sour = new AttackProperties().setDamage(10, -30).setProration(-2).setAngleValue(player.dir.value).setLaunch(6, 0, 0.85).setHitStun(26, 5).setAngleTypes("direct", "direct");
+		let sour = new AttackProperties().setDamage(10, -30).setProration(-2).setAngleValue(player.dir.value).setLaunch(6, 0, 0.85).setHitStun(26, 10).setAngleTypes("direct", "direct");
 		let prop = [sour];
 
 		return new this(player.getParent(), circles, prop).setClashPriority(3).setClashPriority(4).setStartupF(12).setActiveF(4).setEndF(18).setFollow(false);
@@ -3625,7 +3932,7 @@ class AsakamiSPS extends PuppetAttack {
 		let sweet1 = new PriorityCircle(0, 0, 60, 0).setVelocity(0.2, 0);
 		let circles = [sweet1];
 
-		let sweet = new AttackProperties().setDamage(40).setProration(1).setAngleValue(player.dir.value).setLaunch(3).setHitStun(20, 15).setStunFrames(15).setAngleTypes("vel", "direct");
+		let sweet = new AttackProperties().setDamage(40).setProration(1).setAngleValue(player.dir.value).setLaunch(3).setHitStun(20, 5).setStunFrames(15).setAngleTypes("vel", "direct");
 		let prop = [sweet];
 
 		return new this(player.getParent(), circles, prop).setClashPriority(5).setClashPriority(0).setStartupF(28).setActiveF(60).setEndF(10).setProjectile().setFollow(false);
@@ -3680,20 +3987,79 @@ class AsakamiRPS extends PuppetAttack {
 		this.name = "RPS";
 
 		//this.sheet = Spritesheet.copy(assetManager.spritesheets.wawaPalisa);
+		this.puppetStunFrames = 30;
 	}
 
 	static createAttack(player) {
-		let sweet1 = new PriorityCircle(20, 50, 40, 0).setVelocity(0.1, 0);
-		let sweet2 = new PriorityCircle(60, 65, 40, 0).setVelocity(0.1, 0);
-		let sweeter1 = new PriorityCircle(100, 80, 40, 1).setVelocity(0.1, 0);
-		let sweeter2 = new PriorityCircle(140, 95, 40, 1).setVelocity(0.1, 0);
-		let circles = [sweet1, sweet2, sweeter1, sweeter2];
+		let sweet2 = new PriorityCircle(-30, 40, 50, 0).setVelocity(0, 0.1);
+		let sweet3 = new PriorityCircle(-40, 75, 50, 0).setVelocity(0, 0.1);
+		let sweet4 = new PriorityCircle(-12, 75, 50, 0).setVelocity(0, 0.1);
+		let sweet5 = new PriorityCircle(15, 75, 50, 0).setVelocity(0, 0.1);
 
-		let sweet = new AttackProperties().setDamage(45).setProration(-0.5).setAngleValue(player.dir.value - PI * 0.8).setLaunch(5, 0.5).setHitStun(43, 13).setStunFrames(15).setCancelWait(20);
-		let sweeter = new AttackProperties().setDamage(45).setProration(-0.5).setAngleValue(player.dir.value - PI * 0.8).setLaunch(6, 0.5).setHitStun(43, 13).setStunFrames(15).setCancelWait(20);
-		let prop = [sweet, sweeter];
+		let sweet6 = new PriorityCircle(-40, 105, 60, 0).setVelocity(0, 0.1);
+		let sweet7 = new PriorityCircle(-12, 105, 60, 0).setVelocity(0, 0.1);
+		let sweet8 = new PriorityCircle(15, 105, 60, 0).setVelocity(0, 0.1);
 
-		return new this(player.getParent(), circles, prop).setClashPriority(2).setStartupF(18).setActiveF(6).setEndF(34).setFollow(false);
+		let sour1 = new PriorityCircle(7, 32, 50, 1).setVelocity(0, 0.1);
+		let circles = [sweet2, sweet3, sweet4, sweet5, sweet6, sweet7, sweet8, sour1];
+
+		let sweet = new AttackProperties().setDamage(45).setProration(-1).setAngleValue(player.dir.value + PI / 2).setLaunch(4, 0.1, 0.1).setHitStun(23, 4).setStunFrames(30);
+		let sour = new AttackProperties().setDamage(15).setProration(-1).setAngleValue(player.dir.value + PI / 2).setLaunch(4, 0.1, 0.1).setHitStun(23, 4).setStunFrames(30);
+		let prop = [sweet, sour];
+
+		return new this(player.getParent(), circles, prop).setClashPriority(5).setStartupF(8).setActiveF(7).setEndF(12).setFollow(false);
+	}
+
+	static startAttack(player, attack, bufferInfo) {
+		player.startMomentumMultiply(0);
+		player.startMomentumMultiplyDash(1);
+	}
+
+	draw(g) {
+		if (this.currentlyActive()) {
+			if (debug.displayHitboxes)
+				this.debugDraw(g);
+		}
+	}
+
+	puppetLogic() {
+		this.rotateTo(this.player.puppet.dir);
+
+		if (this.getFromActiveF() === 4) {
+			this.circles[4].diameter = 0;
+			this.circles[5].diameter = 0;
+			this.circles[6].diameter = 0;
+		}
+	}
+}
+
+class AsakamiLPS extends PuppetAttack {
+	constructor(player, circles = [], props = []) {
+		super(player, circles, props);
+		this.name = "LPS";
+
+		//this.sheet = Spritesheet.copy(assetManager.spritesheets.wawaPalisa);
+		this.puppetStunFrames = 30;
+	}
+
+	static createAttack(player) {
+		let sweet2 = new PriorityCircle(-30, -40, 50, 0).setVelocity(0, 0.1);
+		let sweet3 = new PriorityCircle(-40, -75, 50, 0).setVelocity(0, 0.1);
+		let sweet4 = new PriorityCircle(-12, -75, 50, 0).setVelocity(0, 0.1);
+		let sweet5 = new PriorityCircle(15, -75, 50, 0).setVelocity(0, 0.1);
+
+		let sweet6 = new PriorityCircle(-40, -105, 60, 0).setVelocity(0, 0.1);
+		let sweet7 = new PriorityCircle(-12, -105, 60, 0).setVelocity(0, 0.1);
+		let sweet8 = new PriorityCircle(15, -105, 60, 0).setVelocity(0, 0.1);
+
+		let sour1 = new PriorityCircle(7, -32, 50, 1).setVelocity(0, 0.1);
+		let circles = [sweet2, sweet3, sweet4, sweet5, sweet6, sweet7, sweet8, sour1];
+
+		let sweet = new AttackProperties().setDamage(45).setProration(-1).setAngleValue(player.dir.value - PI / 2).setLaunch(4, 0.1, 0.1).setHitStun(23, 4).setStunFrames(30);
+		let sour = new AttackProperties().setDamage(15).setProration(-1).setAngleValue(player.dir.value - PI / 2).setLaunch(4, 0.1, 0.1).setHitStun(23, 4).setStunFrames(30);
+		let prop = [sweet, sour];
+
+		return new this(player.getParent(), circles, prop).setClashPriority(5).setStartupF(8).setActiveF(7).setEndF(12).setFollow(false);
 	}
 
 	static startAttack(player, attack, bufferInfo) {
@@ -3710,45 +4076,12 @@ class AsakamiRPS extends PuppetAttack {
 
 	puppetLogic() {
 		this.rotateTo(this.player.puppet.dir);
-	}
-}
 
-class AsakamiLPS extends PuppetAttack {
-	constructor(player, circles = [], props = []) {
-		super(player, circles, props);
-		this.name = "LPS";
-
-		//this.sheet = Spritesheet.copy(assetManager.spritesheets.wawaPalisa);
-	}
-
-	static createAttack(player) {
-		let sweet1 = new PriorityCircle(35, -58, 40, 0).setVelocity(0.1, 0);
-		let sweet2 = new PriorityCircle(65, -83, 40, 0).setVelocity(0.1, 0);
-		let sweeter1 = new PriorityCircle(95, -108, 40, 1).setVelocity(0.1, 0);
-		let sweeter2 = new PriorityCircle(125, -133, 40, 1).setVelocity(0.1, 0);
-		let circles = [sweet1, sweet2, sweeter1, sweeter2];
-
-		let sweet = new AttackProperties().setDamage(30).setProration(-0.5).setAngleValue(player.dir.value + PI * 0.6).setLaunch(6, 2).setHitStun(39, 13).setStunFrames(15).setCancelWait(20);
-		let sweeter = new AttackProperties().setDamage(30).setProration(-0.5).setAngleValue(player.dir.value + PI * 0.6).setLaunch(9, 2).setHitStun(39, 13).setStunFrames(15).setCancelWait(20);
-		let prop = [sweet, sweeter];
-
-		return new this(player.getParent(), circles, prop).setClashPriority(2).setStartupF(19).setActiveF(6).setEndF(34).setFollow(false);
-	}
-
-	static startAttack(player, attack, bufferInfo) {
-		player.startMomentumMultiply(0);
-		player.startMomentumMultiplyDash(1);
-	}
-
-	draw(g) {
-		if (this.getFromEndF() < 10 && this.startupOver()) {
-			//if (debug.displayHitboxes)
-				this.debugDraw(g);
+		if (this.getFromActiveF() === 4) {
+			this.circles[4].diameter = 0;
+			this.circles[5].diameter = 0;
+			this.circles[6].diameter = 0;
 		}
-	}
-
-	puppetLogic() {
-		this.rotateTo(this.player.puppet.dir);
 	}
 }
 
@@ -3781,7 +4114,7 @@ class AsakamiMPS extends PuppetAttack {
 
 	draw(g) {
 		if (this.startupOver() && this.getFromEndF() < 14) {
-			//if (debug.displayHitboxes)
+			if (debug.displayHitboxes)
 				this.debugDraw(g);
 		}
 	}
@@ -3796,12 +4129,30 @@ class AsakamiNN extends Attack {
 		super(player, circles, props);
 		this.name = "NN";
 
+		this.scytheAnimation = [
+			new ScytheFrame(-10, -50, -1 * PI / 3.7),
+			new ScytheFrame(-10, -50, -1 * PI / 3.7),
+			new ScytheFrame(0, -40, -1.3 * PI / 3.7),
+			new ScytheFrame(5, -35, -1.4 * PI / 3.7),
+			new ScytheFrame(5, -35, -1.4 * PI / 3.7),
+			new ScytheFrame(5, -35, -1.4 * PI / 3.7),
+			new ScytheFrame(5, -35, -1.4 * PI / 3.7),
+			new ScytheFrame(5, -35, -1.4 * PI / 3.7),
+			new ScytheFrame(5, -35, -1.4 * PI / 3.7),
+			new ScytheFrame(5, -35, -1.4 * PI / 3.7),
+			new ScytheFrame(5, -35, -1.4 * PI / 3.7),
+			new ScytheFrame(5, -35, -1.4 * PI / 3.7),
+			new ScytheFrame(5, -35, -1.4 * PI / 3.7),
+			new ScytheFrame(5, -35, -1.4 * PI / 3.7),
+			new ScytheFrame(-3, -45, -1.2 * PI / 3.7),
+		];
+
 		this.revive = false;
 		this.held = true;
 	}
 
 	static createAttack(player) {
-		return new this(player, [], []).setStartupF(8);
+		return new this(player, [], []).setStartupF(7);
 	}
 
 	static startAttack(player, attack, bufferInfo) {
@@ -3827,17 +4178,21 @@ class AsakamiNN extends Attack {
 		if (!this.player.controls.pressed("nasa"))
 			this.held = false;
 		if (this.getStartupF() === (this.revive ? 15 : 1)) {
+			let revived = false;
 			if (this.revive) {
 				this.player.puppet.reviveCharges++;
 				if (this.player.puppet.reviveCharges >= this.player.puppet.reviveChargeMax) {
 					this.player.puppet.health = this.player.puppet.maxHealth;
 					this.player.puppet.reviveCharges = 0;
+					revived = true;
 				}
 			}
 			if (this.player.puppet.health > 0 && (this.revive || this.held)) {
-				let angle = this.player.right;
+				let angle = new Angle(this.player.dir.value + PI / 2);
 				if (this.player.controls.joystickPressed(0))
-					angle = this.player.controls.angle(0);
+					angle.value = this.player.controls.angle(0).value;
+				if (revived)
+					angle.value = this.player.dir.value + PI;
 				this.player.puppet.x = this.player.x + angle.getX() * this.player.puppetStartDistance;
 				this.player.puppet.y = this.player.y + angle.getY() * this.player.puppetStartDistance;
 				this.player.puppet.dx = 0;
@@ -3848,6 +4203,8 @@ class AsakamiNN extends Attack {
 				this.player.puppet.actionLag = 15;
 			}
 		}
+
+		this.player.animateScythe(this.scytheAnimation);
 	}
 }
 
@@ -3904,6 +4261,19 @@ class AsakamiSN extends Attack {
 	constructor(player, circles = [], props = []) {
 		super(player, circles, props);
 		this.name = "SN";
+
+		this.scytheAnimation = [
+			new ScytheFrame(-10, -50, -1 * PI / 4),
+			new ScytheFrame(-8, -45, -1.1 * PI / 4),
+			new ScytheFrame(-4, -37, -1.2 * PI / 4),
+			new ScytheFrame(0, -30, -1.4 * PI / 4),
+			new ScytheFrame(0, -30, -1.5 * PI / 4),
+			new ScytheFrame(0, -30, -1.7 * PI / 4),
+			new ScytheFrame(0, -30, -2.5 * PI / 4),
+			new ScytheFrame(0, -30, -3.4 * PI / 4),
+			new ScytheFrame(0, -30, 2.3 * PI / 4),
+			new ScytheFrame(-5, -30, 0.0 * PI / 4)
+		];
 	}
 
 	static createAttack(player) {
@@ -3914,10 +4284,10 @@ class AsakamiSN extends Attack {
 		let sour3 = new PriorityCircle(55, -10, 30, 0);
 		let circles = [sour1, sour2, sour3];
 
-		let sour = new AttackProperties().setDamage(40).setGrab(55).setCancelOptions(cancelOptions).setAngleValue(player.dir.value).setLaunch(8, 0.1).setHitStun(31).setStunFrames(4).setWallPushback(300);
+		let sour = new AttackProperties().setDamage(40).setGrab(10).setCancelOptions(cancelOptions).setAngleValue(player.dir.value).setLaunch(8, 0.1).setHitStun(31).setStunFrames(4).setWallPushback(300);
 		let prop = [sour];
 
-		return new this(player, circles, prop).setClashPriority(6).setStartupF(5).setActiveF(6).setEndF(27).setRotateable();
+		return new this(player, circles, prop).setClashPriority(6).setStartupF(12).setActiveF(1).setEndF(26).setRotateable();
 	}
 
 	static startAttack(player, attack, bufferInfo) {
@@ -3944,6 +4314,8 @@ class AsakamiSN extends Attack {
 				this.player.dir.value += 0.15;
 			}
 		}
+
+		this.player.animateScythe(this.scytheAnimation);
 	}
 }
 
@@ -3952,17 +4324,22 @@ class AsakamiPuppetSN extends PuppetAttack {
 		super(player, circles, props);
 		this.name = "SNP";
 
-		this.puppetStunFrames = 14;
+		this.puppetStunFrames = 10;
 	}
 
 	static createAttack(player) {
-		let sweet1 = new PriorityCircle(45, 0, 90, 0).setVelocity(1, 0);
-		let circles = [sweet1];
+		let sweet1 = new PriorityCircle(25, 0, 40, 0).setVelocity(0.1, 0);
+		let sweet2 = new PriorityCircle(46, 0, 40, 0).setVelocity(0.1, 0);
+		let sweet3 = new PriorityCircle(67, 0, 30, 0).setVelocity(0.1, 0);
+		let sour1 = new PriorityCircle(88, 0, 20, 1).setVelocity(0.1, 0);
+		let sour2 = new PriorityCircle(110, 0, 10, 1).setVelocity(0.1, 0);
+		let circles = [sweet1, sweet2, sweet3, sour1, sour2];
 
-		let sweet = new AttackProperties().setDamage(15).setAngleValue(player.dir.value).setLaunch(3, 1).setHitStun(10).setBlockBreak();
-		let prop = [sweet];
+		let sweet = new AttackProperties().setDamage(15, 10).setAngleValue(player.dir.value).setLaunch(5, 1).setHitStun(5);
+		let sour = new AttackProperties().setDamage(10, 10).setAngleValue(player.dir.value).setLaunch(3, 1).setHitStun(5);
+		let prop = [sweet, sour];
 
-		return new this(player.getParent(), circles, prop).setClashPriority(false).setStartupF(21).setActiveF(4).setEndF(20).setFollow(false);
+		return new this(player.getParent(), circles, prop).setClashPriority(false).setStartupF(21).setActiveF(3).setEndF(19).setFollow(false);
 	}
 
 	static startAttack(player, attack, bufferInfo) {
@@ -3987,13 +4364,24 @@ class AsakamiRN extends Attack {
 		super(player, circles, props);
 		this.name = "RN";
 
+		this.scytheAnimation = [
+			new ScytheFrame(-10, -50, -PI / 3.7),
+			new ScytheFrame(-10, -50, -PI / 3.7),
+			new ScytheFrame(-15, -50, 1.1 * -PI / 3.7),
+			new ScytheFrame(-15, -50, 1.4 * -PI / 3.7),
+			new ScytheFrame(-15, -50, 1.4 * -PI / 3.7),
+			new ScytheFrame(-15, -50, 1.4 * -PI / 3.7),
+			new ScytheFrame(-10, -50, 1.2 * -PI / 3.7),
+			new ScytheFrame(-10, -50, 1.1 * -PI / 3.7)
+		];
+
 		this.throw = false;
 	}
 
 	static createAttack(player) {
 		let cancelOptions = [];
 
-		let sweet1 = new PriorityCircle(-15, 60, 50, 0).setVelocity(0.1, 0).setSubVelocity(20, 0.5, -2);
+		let sweet1 = new PriorityCircle(-15, 60, 45, 0).setVelocity(0.1, 0).setSubVelocity(20, 0.5, -2);
 		let circles = [sweet1];
 
 		let sweet = new AttackProperties().setDamage(15).setCancelOptions(cancelOptions).setAngleValue(player.dir.value - PI / 10).setLaunch(5, 1, 0.3).setHitStun(22, 16).setStunFrames(8);
@@ -4006,8 +4394,7 @@ class AsakamiRN extends Attack {
 		player.startMomentumMultiply(0);
 		player.startMomentumMultiplyDash(0.3);
 
-		let angle = new Angle(player.dir.value + PI / 2);
-		if (player.puppet.health > 0 && player.puppet.currentState.name !== "RN" && dist(player.x + angle.getX() * 60, player.y + angle.getY() * 60, player.puppet.x, player.puppet.y) <= 100) {
+		if (player.puppet.currentState.name !== "RN" && player.canGrabPuppet()) {
 			attack.throw = true;
 			player.puppet.forceChangeState(player.puppet.states.NEUTRAL, player.puppet.states.NEUTRAL_ACTIONS);
 			player.puppet.startRN();
@@ -4016,7 +4403,7 @@ class AsakamiRN extends Attack {
 
 	draw(g) {
 		if (this.currentlyActive()) {
-			//if (debug.displayHitboxes)
+			if (debug.displayHitboxes)
 				this.debugDraw(g);
 		}
 	}
@@ -4030,14 +4417,16 @@ class AsakamiRN extends Attack {
 			this.player.puppet.y = (this.player.puppet.y * 7 + targetY) / 8;
 		}
 		if (this.throw && this.currentlyActive()) {
-			this.player.puppet.x = (this.player.puppet.x * 4 + this.circleX(0)) / 5;
-			this.player.puppet.y = (this.player.puppet.y * 4 + this.circleY(0)) / 5;
+			this.player.puppet.x = (this.player.puppet.x + this.circleX(0) + 2 * this.circles[0].dx) / 2;
+			this.player.puppet.y = (this.player.puppet.y + this.circleY(0) + 2 * this.circles[0].dy) / 2;
 		}
 		if (this.throw && this.getFromEndF() === 1) {
 			let throwAngle = new Angle(this.player.dir.value + PI / 8);
 			this.player.puppet.dx = throwAngle.getX() * 13;
 			this.player.puppet.dy = throwAngle.getY() * 13;
 		}
+
+		this.player.animateScythe(this.scytheAnimation);
 	}
 }
 
@@ -4048,7 +4437,7 @@ class AsakamiPuppetRN extends PuppetAttack {
 
 		this.revive = false;
 
-		this.puppetStunFrames = 10;
+		this.puppetStunFrames = 6;
 	}
 
 	static createAttack(player) {
@@ -4087,7 +4476,7 @@ class AsakamiPuppetRN extends PuppetAttack {
 		this.player.puppet.dy *= 0.3;
 
 		if (this.multi === 1) {
-			this.properties[0].setHitStun(20, 5);
+			this.properties[0].setHitStun(10, 5);
 		}
 	}
 }
@@ -4097,13 +4486,24 @@ class AsakamiLN extends Attack {
 		super(player, circles, props);
 		this.name = "LN";
 
+		this.scytheAnimation = [
+			new ScytheFrame(-10, -50, -PI / 3.7),
+			new ScytheFrame(-10, -50, -PI / 3.7),
+			new ScytheFrame(-15, -50, 1.1 * -PI / 3.7),
+			new ScytheFrame(-15, -50, 1.4 * -PI / 3.7),
+			new ScytheFrame(-15, -50, 1.4 * -PI / 3.7),
+			new ScytheFrame(-15, -50, 1.4 * -PI / 3.7),
+			new ScytheFrame(-10, -50, 1.2 * -PI / 3.7),
+			new ScytheFrame(-10, -50, 1.1 * -PI / 3.7)
+		];
+
 		this.throw = false;
 	}
 
 	static createAttack(player) {
 		let cancelOptions = [];
 
-		let sweet1 = new PriorityCircle(-15, 60, 50, 0).setVelocity(0.1, 0).setSubVelocity(20, 0.5, -2);
+		let sweet1 = new PriorityCircle(-15, 60, 45, 0).setVelocity(0.1, 0).setSubVelocity(20, 0.5, -2);
 		let circles = [sweet1];
 
 		let sweet = new AttackProperties().setDamage(15).setCancelOptions(cancelOptions).setAngleValue(player.dir.value - PI / 10).setLaunch(5, 1, 0.3).setHitStun(22, 16).setStunFrames(8);
@@ -4116,8 +4516,7 @@ class AsakamiLN extends Attack {
 		player.startMomentumMultiply(0);
 		player.startMomentumMultiplyDash(0.3);
 
-		let angle = new Angle(player.dir.value + PI / 2);
-		if (player.puppet.health > 0 && player.puppet.currentState.name !== "RN" && dist(player.x + angle.getX() * 60, player.y + angle.getY() * 60, player.puppet.x, player.puppet.y) <= 100) {
+		if (player.puppet.currentState.name !== "RN" && player.canGrabPuppet()) {
 			attack.throw = true;
 			player.puppet.forceChangeState(player.puppet.states.NEUTRAL, player.puppet.states.NEUTRAL_ACTIONS);
 			player.puppet.startRN();
@@ -4126,8 +4525,8 @@ class AsakamiLN extends Attack {
 
 	draw(g) {
 		if (this.currentlyActive()) {
-			//if (debug.displayHitboxes)
-			this.debugDraw(g);
+			if (debug.displayHitboxes)
+				this.debugDraw(g);
 		}
 	}
 
@@ -4148,6 +4547,8 @@ class AsakamiLN extends Attack {
 			this.player.puppet.dx = throwAngle.getX() * 13;
 			this.player.puppet.dy = throwAngle.getY() * 13;
 		}
+
+		this.player.animateScythe(this.scytheAnimation);
 	}
 }
 
@@ -4163,7 +4564,7 @@ class AsakamiPuppetLN extends PuppetAttack {
 		let sweet1 = new PriorityCircle(75, 0, 60, 0).setVelocity(1, 0);
 		let circles = [sweet1];
 
-		let sweet = new AttackProperties().setDamage(15).setAngleValue(player.dir.value).setLaunch(7, 3, 1.1).setHitStun(30, 20).setStunFrames(14);
+		let sweet = new AttackProperties().setDamage(100).setAngleValue(player.dir.value).setLaunch(7, 3, 1.1).setHitStun(30, 20).setStunFrames(14);
 		let prop = [sweet];
 
 		return new this(player.getParent(), circles, prop).setClashPriority(1).setStartupF(21).setActiveF(4).setEndF(20).setFollow(false);
@@ -4192,7 +4593,7 @@ class AsakamiMN extends Attack {
 		this.name = "MN";
 
 		this.scytheAnimation = [
-			new ScytheFrame(-10, -50, -1.2 * PI / 4),
+			new ScytheFrame(-3, -40, -1.24 * PI / 4),
 			new ScytheFrame(-3, -40, -1.24 * PI / 4),
 			new ScytheFrame(10, -20, -1.3 * PI / 4),
 			new ScytheFrame(23, -15, -1.38 * PI / 4),
@@ -4310,7 +4711,7 @@ class ScytheFrame {
 	setFrame(scythe) {
 		scythe.offX = this.x;
 		scythe.offY = this.y;
-		scythe.dir.value = this.dirValue;
+		scythe.dirOff.value = this.dirValue;
 		scythe.dx = 0;
 		scythe.dy = 0;
 		scythe.dr = 0;
