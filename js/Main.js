@@ -16,11 +16,9 @@ promptFile.addEventListener(
 
 if (!window.currentDir) {
 	window.currentDir = "";
-	console.log("oop");
 }
 if (!window.electronAPI) {
 	webVersion = true;
-	dirLoaded = true;
 	window.electronAPI = {
 		toggleFullscreen: () => { },
 		toggleMenuBar: () => { },
