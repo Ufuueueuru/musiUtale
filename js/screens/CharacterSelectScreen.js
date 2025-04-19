@@ -194,10 +194,16 @@ class CharacterSelectScreen extends Screen {
                     continue;
                 if (this.playerControls[u].joystickPressedMenu(0)) {
                     let characterWidth = ceil(sqrt(this.characters.length));
+                    let bottomLineWidth = (this.characters.length-1) % characterWidth + 1;
+                    let bottomOverflow = (this.selections[i]) % characterWidth + 1;
+                    let bottomMissing = characterWidth - bottomLineWidth;
                     if (this.selections[i] % characterWidth > 0 && Angle.distance(this.playerControls[u].angle(0), Angle.LEFT) <= 2.5 * PI / 8) {
                         this.selections[i]--;
                     }
                     if (this.selections[i] >= characterWidth && Angle.distance(this.playerControls[u].angle(0), Angle.UP) <= 2.5 * PI / 8) {
+                        if (this.selections[i] >= this.characters.length - bottomLineWidth) {
+                            this.selections[i] += Math.round(bottomMissing / 2 - bottomOverflow / bottomLineWidth + 0.5);
+                        }
                         this.selections[i] -= characterWidth;
                         this.selections[i] = max(0, this.selections[i]);
                     }
@@ -205,7 +211,11 @@ class CharacterSelectScreen extends Screen {
                         this.selections[i]++;
                     }
                     if (this.selections[i] < ceil(this.characters.length / characterWidth) * characterWidth - characterWidth && Angle.distance(this.playerControls[u].angle(0), Angle.DOWN) <= 2.5 * PI / 8) {
-                        this.selections[i] += characterWidth;
+                        if (this.selections[i] >= this.characters.length - characterWidth - bottomLineWidth) {
+                            this.selections[i] += Math.max(characterWidth - bottomOverflow + 1, round(characterWidth - bottomMissing / 2 + 0.5 - bottomOverflow / characterWidth));
+                        } else {
+                            this.selections[i] += characterWidth;
+                        }
                         this.selections[i] = min(this.characters.length - 1, this.selections[i]);
                     }
                 }

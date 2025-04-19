@@ -4341,7 +4341,7 @@ class LipaLN extends Attack {
 		let sweet2 = new PriorityCircle(65, 12, 30, 0);
 		let circles = [sweet1, sweet2];
 
-		let sweet = new AttackProperties().setDamage(0).setProration(-4).setCancelOptions(cancelOptions).setAngleValue(player.dir.value + PI / 16).setLaunch(0, 0.1).setHitStun(25).setStunFrames(36).setCommandGrab().setNoComboCounter();
+		let sweet = new AttackProperties().setDamage(0).setProration(-4).setCancelOptions(cancelOptions).setAngleValue(player.dir.value + PI / 16).setLaunch(0, 0.1).setHitStun(25).setStunFrames(36).setCommandGrab().setNoComboCounter().setZoom(34);
 		let prop = [sweet];
 
 		//sweet.setHitSound(assetManager.sounds.fanTP);

@@ -2258,8 +2258,8 @@ class JanLukeNPS extends Attack {
 	static createAttack(player) {
 		let cancelOptions = [];
 
-		let sweet1 = new PriorityCircle(50, 0, 10, 0).setVelocity(18, 0);
-		let sweet2 = new PriorityCircle(40, 0, 10, 0).setVelocity(18, 0);
+		let sweet1 = new PriorityCircle(50, 0, 20, 0).setVelocity(18, 0);
+		let sweet2 = new PriorityCircle(40, 0, 20, 0).setVelocity(18, 0);
 		let circles = [sweet1, sweet2];
 
 		let sweet = new AttackProperties().setDamage(0).setCancelOptions(cancelOptions).setAngleValue(player.dir.value).setLaunch(0, 0.1).setHitStun(30).setStunFrames(24).setCommandGrab().setNoComboCounter();
@@ -2761,7 +2761,7 @@ class JanLukeNN extends Attack {
 			circles.push(new PriorityCircle(x, 0, 30, 0).setVelocity(1, 0));
 		}
 
-		let sweet = new AttackProperties().setDamage(player.getDamageMult() * 125).setProration(1).setCancelOptions(cancelOptions).setAngleValue(player.dir.value).setLaunch(8, 0).setHitStun(40).setStunFrames(15).setBlockBreak();
+		let sweet = new AttackProperties().setDamage(player.getDamageMult() * 125).setProration(1).setCancelOptions(cancelOptions).setAngleValue(player.dir.value).setLaunch(8, 0).setHitStun(40).setStunFrames(15).setBlockBreak().setZoom(25, "farL");
 		let prop = [sweet];
 
 		sweet.setHitSound(undefined);

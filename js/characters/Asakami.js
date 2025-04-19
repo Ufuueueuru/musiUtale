@@ -1697,7 +1697,7 @@
 
 		//assetManager.addSound("resources/sfx/Fan.wav", "fanTP");
 
-		assetManager.addFunc(() => {
+		/*assetManager.addFunc(() => {//Only for unfinished characters - moli Asakami is FINISHED YAYYYY
 			let tempG = createGraphics(assetManager.images.asakamiMenuImage.width, assetManager.images.asakamiMenuImage.height);
 			tempG.image(assetManager.images.asakamiMenuImage, 0, 0);
 			tempG.fill(255, 0, 0);
@@ -1711,7 +1711,7 @@
 			assetManager.images.asakamiMenuImage = tempG.get();
 
 			tempG.remove();
-		});
+		});*/
 	}
 }
 

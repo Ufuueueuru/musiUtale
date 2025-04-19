@@ -28,8 +28,8 @@
 
     drawForegroundManual(g, width, height) {
         if (this.players[0] && this.players[1]) {
-            this.offsetX = (99 * this.offsetX + constrain((this.players[0].x + this.players[1].x + this.camera.x) / 3 - this.camera.x - 170, -100, 100)) / 100;
-            this.offsetY = (99 * this.offsetY + constrain((this.players[0].y + this.players[1].y + this.camera.y) / 3 - this.camera.y - 128, -100, 100)) / 100;
+            this.offsetX = (99 * this.offsetX + constrain((this.players[0].x + this.players[1].x + this.camera.x) / 3 - this.camera.x, -100, 100)) / 100;
+            this.offsetY = (99 * this.offsetY + constrain((this.players[0].y + this.players[1].y + this.camera.y) / 3 - this.camera.y, -100, 100)) / 100;
         }
         g.image(this.helperForeground, this.offsetX - 100, this.offsetY - 100, width + 200, height + 200);
     }

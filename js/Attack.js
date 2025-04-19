@@ -337,6 +337,14 @@ class Attack extends Hitcircle {
 						}
 					}
 
+					this.world.camera.shake = property.screenShake;
+					this.world.camera.shakeTime = property.screenShakeTime;
+
+					this.world.cameraZoomTime = property.zoomTime;
+					this.world.cameraSpeed = property.camSpeed;
+					this.world.cameraZoomSpeed = property.zoomSpeed;
+					this.world.camera.options = property.zoomOptions;
+
 					p.stunFrames = max(p.stunFrames, property.stunFrames);
 					if (this.follow || wallPushback !== 1) {
 						if (!property.commandGrab) {
@@ -379,9 +387,18 @@ class Attack extends Hitcircle {
 							p.nanpaLipu -= 30;
 						if (!property.commandGrab) {
 							p.stunFrames += 10;
+							this.world.camera.shakeTime += 10;
 						} else {
 							p.damageHealthAbs(30, 0, property.noKill);
 						}
+
+						this.world.cameraZoomTime = Math.max(10, this.world.cameraZoomTime + 10);
+						if (property.zoomTime === 0) {
+							this.world.cameraSpeed = 5;
+							this.world.cameraZoomSpeed = 0.3;
+							this.world.camera.options = "closeL";
+						}
+
 						this.player.world.ps.createParticle("counterHitEffect", p, px - 80, py - 40, 80, 40);
 					}
 					if (punishHit) {
@@ -572,6 +589,11 @@ class Attack extends Hitcircle {
 						p.stunFrames += 23 - p.parryFrameBuff;
 
 						p.parryCooldown = 0;
+
+						this.world.cameraZoomTime = Math.max(20, this.world.cameraZoomTime + 20);
+						this.world.cameraSpeed = 5;
+						this.world.cameraZoomSpeed = 0.3;
+						this.world.camera.options = "close";
 
 						//Add a fancy particle effect here
 						this.player.world.ps.createParticle("hitParryEffect", p, px, py, 250, 250, attackAngle, true);
@@ -1223,6 +1245,19 @@ class AttackProperties {
 		/** @type {boolean} If the combo counter should go up or down */
 		this.comboCounter = true;
 
+		/** @type {number} */
+		this.screenShake = 1.5;
+		/** @type {number} */
+		this.screenShakeTime = 30;
+		/** @type {number} */
+		this.zoomTime = 0;
+		/** @type {number} */
+		this.camSpeed = 5;
+		/** @type {number} */
+		this.zoomSpeed = 0.3;
+		/** @type {string} */
+		this.zoomOptions = "close";
+
 		/** @type {boolean} The attack will not launch the opponent if noLaunch is true (only works for unblockables) */
 		this.noLaunch = false;
 
@@ -1361,13 +1396,57 @@ class AttackProperties {
 	 * 
 	 * @param {number} num
 	 * @param {number} lipu
+	 * @param {number} scaling
+	 * @returns
 	 */
 	setDamage(num, lipu = min(30, num / 3), scaling=this.scaling) {
 		this.damage = num;
 		this.nanpaLipu = lipu;
 		this.scaling = scaling;
 
+		this._setScreenShakeAuto();
+
 		return this;
+	}
+
+	/**
+	 * 
+	 * @param {number} zoomTime
+	 * @param {string} zoomOptions
+	 * @param {number} camSpeed
+	 * @param {number} zoomSpeed
+	 * @returns
+	 */
+	setZoom(zoomTime = 0, zoomOptions = "close", camSpeed = 5, zoomSpeed = 0.3) {
+		this.zoomTime = zoomTime;
+		this.camSpeed = camSpeed;
+		this.zoomSpeed = zoomSpeed;
+		this.zoomOptions = zoomOptions;
+
+		return this;
+	}
+
+	/**
+	 * 
+	 * 
+	 * @param {number} magnitude
+	 * @param {number} time
+	 * @returns
+	 */
+	setScreenShake(magnitude = Math.max(1, Math.min(Math.floor(this.damage / 5), 8)), time = Math.max(5, this.stunFrames * 1.5), manualScreenShake=true) {
+		this.manualScreenShake = manualScreenShake;
+		this.screenShake = magnitude;
+		this.screenShakeTime = time;
+
+		return this;
+	}
+
+	/**
+	 * Sets the screen shake to default values ONLY if it hasn't been manually set
+	 */
+	_setScreenShakeAuto() {
+		if (!this.manualScreenShake)
+			this.setScreenShake(undefined, undefined, false);
 	}
 
 	/**
@@ -1487,6 +1566,8 @@ class AttackProperties {
 	setStunFrames(num, block = ceil(9 * num / 10)) {
 		this.stunFrames = num;
 		this.blockStunFrames = block;
+
+		this._setScreenShakeAuto();
 
 		return this;
 	}

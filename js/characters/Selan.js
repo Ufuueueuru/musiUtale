@@ -2601,7 +2601,7 @@ class SelanNPL extends Attack {
 		let sweet1 = new PriorityCircle(70, 0, 80, 0);
 		let circles = [sweet1];
 
-		let sweet = new AttackProperties().setDamage(player.powerupGrabFrames ? 90 : 70).setProration(player.powerupGrabFrames ? -0.5 : 0).setCancelOptions(cancelOptions).setAngleValue(player.dir.value).setLaunch(2, 0).setHitStun(30).setStunFrames(22).setCommandGrab().setRotateSlowDown(0.5, player.powerupGrabFrames ? 360 : 300);
+		let sweet = new AttackProperties().setDamage(player.powerupGrabFrames ? 90 : 70).setProration(player.powerupGrabFrames ? -0.5 : 0).setCancelOptions(cancelOptions).setAngleValue(player.dir.value).setLaunch(2, 0).setHitStun(30).setStunFrames(22).setCommandGrab().setRotateSlowDown(0.5, player.powerupGrabFrames ? 360 : 300).setScreenShake(undefined, 25);
 		let prop = [sweet];
 
 		//sweet.setHitSound(assetManager.sounds.fanTP);
@@ -2882,7 +2882,7 @@ class SelanNPS extends Attack {
 		let sweet1 = new PriorityCircle(0, 0, 50, 0);
 		let circles = [sweet1];
 
-		let sweet = new AttackProperties().setDamage(0).setCancelOptions(cancelOptions).setAngleValue(player.dir.value).setLaunch(0, 0.1).setHitStun(30).setStunFrames(70).setCommandGrab().setNoComboCounter();
+		let sweet = new AttackProperties().setDamage(0).setCancelOptions(cancelOptions).setAngleValue(player.dir.value).setLaunch(0, 0.1).setHitStun(30).setStunFrames(70).setCommandGrab().setNoComboCounter().setZoom(30);
 		let prop = [sweet];
 
 		sweet.setHitSound(assetManager.sounds.nullPointerException);
@@ -2933,7 +2933,7 @@ class SelanNPS extends Attack {
 			let sweet1 = new PriorityCircle(0, 0, 300, 0);
 			let circles = [sweet1];
 
-			let sweet = new AttackProperties().setDamage((this.player.powerupGrabFrames ? 300 : 250) * (this.weak ? 0.6 : 1), 30, 2).setProration(this.player.powerupGrabFrames ? 0 : 1).setCancelOptions(cancelOptions).setAngleValue(this.player.dir.value).setLaunch(16, 0.1).setHitStun(26).setStunFrames(15).setNoKill(this.weak);
+			let sweet = new AttackProperties().setDamage((this.player.powerupGrabFrames ? 300 : 250) * (this.weak ? 0.6 : 1), 30, 2).setProration(this.player.powerupGrabFrames ? 0 : 1).setCancelOptions(cancelOptions).setAngleValue(this.player.dir.value).setLaunch(16, 0.1).setHitStun(26).setStunFrames(15).setNoKill(this.weak).setZoom(25);
 			let prop = [sweet];
 
 			//sweet.setHitSound(assetManager.sounds.fanTP);

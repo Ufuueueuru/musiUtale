@@ -1807,7 +1807,7 @@ class KaSS extends Attack {
 		let sweet1 = new PriorityCircle(30, 0, 70, 0);
 		let circles = [sweet1];
 
-		let sweet = new AttackProperties().setDamage(10).setProration(-4).setCancelOptions(cancelOptions).setAngleValue(player.dir.value).setLaunch(0, 0.1).setHitStun(25).setStunFrames(36).setCommandGrab().setNoComboCounter();
+		let sweet = new AttackProperties().setDamage(10).setProration(-4).setCancelOptions(cancelOptions).setAngleValue(player.dir.value).setLaunch(0, 0.1).setHitStun(25).setStunFrames(36).setCommandGrab().setNoComboCounter().setZoom(38);
 		let prop = [sweet];
 
 		//sweet.setHitSound(assetManager.sounds.fanTP);

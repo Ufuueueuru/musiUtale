@@ -49,6 +49,12 @@ class World {
 		//print(Camera);
 		/** @type {Camera} */
         this.camera = new Camera();
+        /** @type {number} */
+        this.cameraSpeed = 3;
+        /** @type {number} */
+        this.cameraZoomSpeed = 0.01;
+        /** @type {number} */
+        this.cameraZoomTime = 0;
 
         /** @type {ParticleSystem} */
         this.ps = new ParticleSystem();
@@ -288,10 +294,10 @@ class World {
         this.g.push();
         this.g.scale(512 / this.width, 384 / this.height);
         if (this.loopBackground) {
-            this.g.image(this.background, floor(this.camera.x * this.camera.zoom / this.background.width * graphicsSettings.resolutionMult) * this.background.width, floor(this.camera.y * this.camera.zoom / this.background.height * graphicsSettings.resolutionMult) * this.background.height);
-            this.g.image(this.background, floor(this.camera.x * this.camera.zoom / this.background.width * graphicsSettings.resolutionMult) * this.background.width + this.background.width, floor(this.camera.y * this.camera.zoom / this.background.height * graphicsSettings.resolutionMult) * this.background.height);
-            this.g.image(this.background, floor(this.camera.x * this.camera.zoom / this.background.width * graphicsSettings.resolutionMult) * this.background.width, floor(this.camera.y * this.camera.zoom / this.background.height * graphicsSettings.resolutionMult) * this.background.height + this.background.height);
-            this.g.image(this.background, floor(this.camera.x * this.camera.zoom / this.background.width * graphicsSettings.resolutionMult) * this.background.width + this.background.width, floor(this.camera.y * this.camera.zoom / this.background.height * graphicsSettings.resolutionMult) * this.background.height + this.background.height);
+            this.g.image(this.background, Math.round(this.camera.x / this.background.width * graphicsSettings.resolutionMult) * this.background.width, Math.round(this.camera.y / this.background.height * graphicsSettings.resolutionMult) * this.background.height);
+            this.g.image(this.background, Math.round(this.camera.x / this.background.width * graphicsSettings.resolutionMult) * this.background.width - this.background.width, Math.round(this.camera.y / this.background.height * graphicsSettings.resolutionMult) * this.background.height);
+            this.g.image(this.background, Math.round(this.camera.x / this.background.width * graphicsSettings.resolutionMult) * this.background.width, Math.round(this.camera.y / this.background.height * graphicsSettings.resolutionMult) * this.background.height - this.background.height);
+            this.g.image(this.background, Math.round(this.camera.x / this.background.width * graphicsSettings.resolutionMult) * this.background.width - this.background.width, Math.round(this.camera.y / this.background.height * graphicsSettings.resolutionMult) * this.background.height - this.background.height);
         } else {
             this.g.image(this.background, 0, 0);
         }
@@ -299,6 +305,19 @@ class World {
 
         if (debug.displayWalls) {
             this.drawWalls(this.g);
+        }
+
+        for (let i = 0; i < this.players.length; i++) {
+            for (let u = i+1; u < this.players.length; u++) {
+                let distance = dist(this.players[i].x, this.players[i].y, this.players[u].x, this.players[u].y);
+                if (distance > this.maxPlayerDist - 10) {
+                    this.g.noFill();
+                    this.g.stroke(0, 0, 14, (distance - this.maxPlayerDist + 10));
+                    this.g.strokeWeight(2);
+                    this.g.line(this.players[i].x, this.players[i].y, this.players[u].x, this.players[u].y);
+                    this.g.strokeWeight(1);
+                }
+            }
         }
 
 		for (let i in this.players) {
@@ -326,10 +345,10 @@ class World {
         this.g.push();
         this.g.scale(512 / this.width, 384 / this.height);
         if (this.loopBackground) {
-            this.g.image(this.foreground, floor(this.camera.x * this.camera.zoom / this.foreground.width * graphicsSettings.resolutionMult) * this.foreground.width, floor(this.camera.y * this.camera.zoom / this.foreground.height * graphicsSettings.resolutionMult) * this.foreground.height);
-            this.g.image(this.foreground, floor(this.camera.x * this.camera.zoom / this.foreground.width * graphicsSettings.resolutionMult) * this.foreground.width + this.foreground.width, floor(this.camera.y * this.camera.zoom / this.foreground.height * graphicsSettings.resolutionMult) * this.foreground.height);
-            this.g.image(this.foreground, floor(this.camera.x * this.camera.zoom / this.foreground.width * graphicsSettings.resolutionMult) * this.foreground.width, floor(this.camera.y * this.camera.zoom / this.foreground.height * graphicsSettings.resolutionMult) * this.foreground.height + this.foreground.height);
-            this.g.image(this.foreground, floor(this.camera.x * this.camera.zoom / this.foreground.width * graphicsSettings.resolutionMult) * this.foreground.width + this.foreground.width, floor(this.camera.y * this.camera.zoom / this.foreground.height * graphicsSettings.resolutionMult) * this.foreground.height + this.foreground.height);
+            this.g.image(this.foreground, Math.round(this.camera.x / this.foreground.width * graphicsSettings.resolutionMult) * this.foreground.width, Math.round(this.camera.y / this.foreground.height * graphicsSettings.resolutionMult) * this.foreground.height);
+            this.g.image(this.foreground, Math.round(this.camera.x / this.foreground.width * graphicsSettings.resolutionMult) * this.foreground.width - this.foreground.width, Math.round(this.camera.y / this.foreground.height * graphicsSettings.resolutionMult) * this.foreground.height);
+            this.g.image(this.foreground, Math.round(this.camera.x / this.foreground.width * graphicsSettings.resolutionMult) * this.foreground.width, Math.round(this.camera.y / this.foreground.height * graphicsSettings.resolutionMult) * this.foreground.height - this.foreground.height);
+            this.g.image(this.foreground, Math.round(this.camera.x / this.foreground.width * graphicsSettings.resolutionMult) * this.foreground.width - this.foreground.width, Math.round(this.camera.y / this.foreground.height * graphicsSettings.resolutionMult) * this.foreground.height - this.foreground.height);
         } else {
             this.g.image(this.foreground, 0, 0);
         }
@@ -567,8 +586,24 @@ class World {
         let middleX = 0;
         let middleY = 0;
         
-        for (let i in this.players) {
+        for (let i = 0; i < this.players.length; i++) {
             let p = this.players[i];
+
+            if (this.cameraZoomTime <= 0) {
+                for (let u = i+1; u < this.players.length; u++) {
+                    let p2 = this.players[u];
+                    let distance = dist(p2.x, p2.y, p.x, p.y);
+                    if (distance > this.maxPlayerDist - 70) {
+                        this.camera.options = "custom";
+                        this.camera.defaultTargetZoom = Math.max(1 - (distance - this.maxPlayerDist + 70) / 50 / 8, 0.85);
+                    } else if (distance < 150) {
+                        this.camera.options = "custom";
+                        this.camera.defaultTargetZoom = Math.max(Math.min(1.05, 1.1 - distance / 1500), 1);
+                    } else {
+                        this.camera.options = "follow";
+                    }
+                }
+            }
 
             //Old wall collision method
             //p.x = constrain(p.x, 100, this.background.width/1.3 - 100);
@@ -656,8 +691,12 @@ class World {
 
                 if (suli) {
                     p.startLipu(p.states.LIPU_SULI, p.states.LIPU_SULI_ACTIONS, p.lipuSuliFrames, "LipuSuli", p.lipuHeavyDamage);
+                    this.camera.shake = 2;
+                    this.camera.shakeTime = 45;
                 } else {
                     p.startLipu(p.states.LIPU_LILI, p.states.LIPU_LILI_ACTIONS, p.lipuLiliFrames, "LipuLili", p.lipuDamage);
+                    this.camera.shake = 1;
+                    this.camera.shakeTime = 30;
                 }
             }
 
@@ -709,6 +748,8 @@ class World {
         middleX /= this.players.length;
         middleY /= this.players.length;
         this.followCamera(middleX, middleY);
+        if (!this.loopBackground)
+            this.camera.bindPosition(0, this.background.width, 0, this.background.height);
     }
 
 	/** */
@@ -867,7 +908,13 @@ class World {
     }
 
     followCamera(x, y) {
-        this.camera.follow(x, y, 3);
+        if (this.cameraZoomTime > 0) {
+            this.cameraZoomTime--;
+        } else {
+            this.cameraZoomSpeed = 0.1;
+            this.cameraSpeed = 3;
+        }
+        this.camera.follow(x, y, this.cameraSpeed, this.cameraZoomSpeed);
     }
 
     copyAssets() {
