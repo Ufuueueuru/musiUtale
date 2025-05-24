@@ -749,7 +749,7 @@ class World {
         middleY /= this.players.length;
         this.followCamera(middleX, middleY);
         if (!this.loopBackground)
-            this.camera.bindPosition(0, this.background.width, 0, this.background.height);
+            this.camera.bindPosition(0, this.background.width / graphicsSettings.resolutionMult, 0, this.background.height / graphicsSettings.resolutionMult);
     }
 
 	/** */
