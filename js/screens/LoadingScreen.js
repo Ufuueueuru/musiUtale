@@ -2,7 +2,7 @@
     draw(g) {
         g.background(0);
 
-        if (assetManager.getFontLoadedFraction() >= 1) {
+        if (assetManager.getFontLoadedFraction() >= 1 && assetManager.fonts.asuki !== undefined) {
             /*let text = [];
             g.textFont(assetManager.fonts.asuki);
             text = ["󱤴", "󱤬", "󱤉", "󱤰"];
@@ -13,7 +13,7 @@
             if (this.images) {
                 for (let i in this.images) {
                     let offset = 0;
-                    if ((floor(frameCount/2) - i + 4) % 4 < 1)
+                    if ((floor(frameCount / 2) - i + 4) % 4 < 1)
                         offset = 7;
                     g.image(this.images[i], width / 2 - 45 + 20 * i, height / 2 - offset - 50);
                     //g.text(displayText[i], width / 2 - 30 + 20 * i, height / 2 - offset - 35);
@@ -28,7 +28,7 @@
                 this.images = [];
                 let g = createGraphics(30, 30);
                 let displayText = ["󱤴", "󱤬", "󱤉", "󱤰"];
-                for (let i = 0; i < text.length; i++) {
+                for (let i = 0; i < displayText.length; i++) {
                     g.textFont(assetManager.fonts.asuki);
                     g.fill(255);
                     g.noStroke();
@@ -52,7 +52,7 @@
             if (debug.hitboxEditScreen) {
                 currentScreen = new HitboxEditScreen();
             } else {
-                currentScreen = new LanguageSelectScreen();
+                currentScreen = new MenuDebugScreen();
                 assetManager.resetAssets();
             }
             frameRate(60);

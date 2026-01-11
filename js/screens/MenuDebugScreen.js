@@ -41,8 +41,8 @@ class MenuDebugScreen extends Screen {
         if (this.menu.transitioning > 0) {
             g.noFill();
             g.stroke(0);
-            g.strokeWeight(15 * width / 512 * (30 - this.menu.transitioning));
-            g.ellipse(width / 2, height / 2, width / 3 + (30 - this.menu.transitioning) * width / 120, width / 3 + (30 - this.menu.transitioning) * width / 120);
+            g.strokeWeight(12 * width / 512 * (30 - this.menu.transitioning));
+            g.ellipse(width / 2, height / 2, width / 3 + (30 - this.menu.transitioning) * width / 90, width / 3 + (30 - this.menu.transitioning) * width / 90);
         }
         if (this.menu.transitioning < 0) {
             g.background(0, 0, 0, -this.menu.transitioning * 9);
@@ -70,7 +70,7 @@ class MenuDebugScreen extends Screen {
         let button1 = new MenuItem(236, 66, assetManager.images.buttonPressed, assetManager.images.buttonUnpressed, CharacterSelectScreen, gt("mainMenuFight"), () => { playersManager.openScreen(); playersManager.resetPositions(MenuDebugScreen); });
         let button2 = new MenuItem(256, 103, assetManager.images.buttonPressed, assetManager.images.buttonUnpressed, undefined, gt("mainMenuControls"), () => { controlsManager.openScreen(); });
         let buttonTraining = new MenuItem(276, 140, assetManager.images.buttonPressed, assetManager.images.buttonUnpressed, CharacterSelectScreen, gt("mainMenuTraining"), () => { playersManager.openScreen(); playersManager.resetPositions(MenuDebugScreen); currentScreen.setTraining(); });//kama wawa
-        let buttonNetplay = new MenuItem(296, 177, assetManager.images.buttonPressed, assetManager.images.buttonUnpressed, CharacterSelectScreen, gt("mainMenuOnline"), () => { playersManager.openScreen(); playersManager.resetPositionsNetplay(MenuDebugScreen); currentScreen.setNetplay(); });
+        let buttonNetplay = new MenuItem(296, 177, assetManager.images.buttonPressed, assetManager.images.buttonUnpressed, NetplayModeScreen, gt("mainMenuOnline"), () => { /*playersManager.openScreen(); playersManager.resetPositionsNetplay(MenuDebugScreen); currentScreen.setNetplay();*/ });
         let buttonTutorial = new MenuItem(316, 214, assetManager.images.buttonPressed, assetManager.images.buttonUnpressed, KamaWawaScreen, gt("mainMenuLearn"));
         //let buttonTutorial = new MenuItem(316, 214, assetManager.images.buttonPressed, assetManager.images.buttonUnpressed, TutorialScreen, gt("tutorial"), () => { playersManager.openScreen(); playersManager.resetPositions(MenuDebugScreen); playersManager.disableP2(); /*currentScreen = new TutorialScreen([0, 0], [controls[0], null], 0);*/ });
         let button3 = new MenuItem(336, 251, assetManager.images.buttonPressed, assetManager.images.buttonUnpressed, MenuOtherScreen, gt("mainMenuOther"));

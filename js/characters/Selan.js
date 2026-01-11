@@ -2882,7 +2882,7 @@ class SelanNPS extends Attack {
 		let sweet1 = new PriorityCircle(0, 0, 50, 0);
 		let circles = [sweet1];
 
-		let sweet = new AttackProperties().setDamage(0).setCancelOptions(cancelOptions).setAngleValue(player.dir.value).setLaunch(0, 0.1).setHitStun(30).setStunFrames(70).setCommandGrab().setNoComboCounter().setZoom(30);
+		let sweet = new AttackProperties().setDamage(0).setCancelOptions(cancelOptions).setAngleValue(player.dir.value).setLaunch(0, 0.1).setHitStun(30).setStunFrames(70).setCommandGrab().setZoom(30);
 		let prop = [sweet];
 
 		sweet.setHitSound(assetManager.sounds.nullPointerException);
@@ -2933,7 +2933,7 @@ class SelanNPS extends Attack {
 			let sweet1 = new PriorityCircle(0, 0, 300, 0);
 			let circles = [sweet1];
 
-			let sweet = new AttackProperties().setDamage((this.player.powerupGrabFrames ? 300 : 250) * (this.weak ? 0.6 : 1), 30, 2).setProration(this.player.powerupGrabFrames ? 0 : 1).setCancelOptions(cancelOptions).setAngleValue(this.player.dir.value).setLaunch(16, 0.1).setHitStun(26).setStunFrames(15).setNoKill(this.weak).setZoom(25);
+			let sweet = new AttackProperties().setDamage((this.player.powerupGrabFrames ? 300 : 250) * (this.weak ? 0.6 : 1), 30, 2).setProration(this.player.powerupGrabFrames ? 0 : 1).setCancelOptions(cancelOptions).setAngleValue(this.player.dir.value).setLaunch(16, 0.1).setHitStun(26).setStunFrames(15).setNoKill(this.weak).setZoom(25).setNoComboCounter();
 			let prop = [sweet];
 
 			//sweet.setHitSound(assetManager.sounds.fanTP);
@@ -2969,7 +2969,7 @@ class SelanSPS extends Attack {
 	}
 
 	static createAttack(player) {
-		let cancelOptions = ["attack", "dash"];
+		let cancelOptions = ["lili", "suli", "pokaLili", "NPS", "RPS", "LPS", "MPS", "nasa", "dash"];
 
 		let sweet1 = new PriorityCircle(40, 0, 80, 0).setVelocity(0.1, 0);
 		let other1 = new PriorityCircle(80, 0, 80, 1).setVelocity(0.1, 0);
@@ -3363,7 +3363,7 @@ class SelanLN extends Attack {
 		//sweet.setHitSound(assetManager.sounds.fanTP);
 		//sweet.setBlockSound(assetManager.sounds.fanTP);
 
-		return new this(player, circles, prop).setClashPriority(5).setStartupF(12).setActiveF(8).setEndF(28).setMulti(15, 2, 0.1);
+		return new this(player, circles, prop).setClashPriority(false).setStartupF(12).setActiveF(8).setEndF(28).setMulti(15, 2, 0.1);
 	}
 
 	static startAttack(player, attack, bufferInfo) {

@@ -74,6 +74,23 @@ class Hitcircle {
 		return this._main.height;
     }
 
+	/** */
+	averageX() {
+		let sum = 0;
+		for (let i in this.circles) {
+			sum += this.circles[i].x;
+		}
+		return sum / this.circles.length + this.x;
+	}
+	/** */
+	averageY() {
+		let sum = 0;
+		for (let i in this.circles) {
+			sum += this.circles[i].y;
+		}
+		return sum / this.circles.length + this.y;
+	}
+
 	/**
 	 * 
 	 * @param {number} i The index of the desired circle in this.circles array

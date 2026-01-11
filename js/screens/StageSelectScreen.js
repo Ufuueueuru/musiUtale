@@ -34,12 +34,13 @@ class StageSelectScreen extends Screen {
                     g.rect(257.5 - 98 * charWidth / 2 + 98 * x, 193.5 - 75 * charHeight / 2 + 75 * y, 95, 72);
                 }
                 //g.image(this.stages[i].background, 259 - 75 * charWidth / 2 + 75 * x, 195 - 75 * charHeight / 2 + 75 * y, 69, 69, this.stages[i].getCenterStageX() - 256, this.stages[i].background.height/2 - 192, 512, 384);
-                this.stages[i].draw(g, 259 - 98 * charWidth / 2 + 98 * x, 195 - 75 * charHeight / 2 + 75 * y, 92, 69, false);
+                //this.stages[i].draw(g, 259 - 98 * charWidth / 2 + 98 * x, 195 - 75 * charHeight / 2 + 75 * y, 92, 69, false);
+                g.image(this.stages[i], 259 - 98 * charWidth / 2 + 98 * x, 195 - 75 * charHeight / 2 + 75 * y, 92, 69);
                 g.fill(220, 220, 230);
                 g.stroke(15, 0, 60);
                 g.textSize(15);
                 g.textAlign(CENTER, CENTER);
-                g.text(this.stages[i].name, 257.5 - 98 * charWidth / 2 + 98 * x + 46, 193.5 - 75 * charHeight / 2 + 75 * y + 60);
+                g.text(this.names[i], 257.5 - 98 * charWidth / 2 + 98 * x + 46, 193.5 - 75 * charHeight / 2 + 75 * y + 60);
 
                 i++;
                 x++;
@@ -101,11 +102,18 @@ class StageSelectScreen extends Screen {
                                 this.selection = floor(random(0, stages.length - 2));
                                 randomChoices[2] = true;
                             }
-                            this.menu.goTo(NetplayScreen, (screen) => {
+                            this.menu.goTo(NetplaySetupScreen, (screen) => {
+                                screen.setPlayerNumber(this.playerNumber);
                                 screen.setRandom(randomChoices);
                                 screen.setSelections(this.characterSelections, this.selection);
                                 screen.setControls(this.playerControls, this.fakeControls);
-                            }, [this.peer, this.connectionID]);
+                                screen.sendInitialMessage();
+                            }, [this.peer, this.connection]);
+                            /*this.menu.goTo(NetplayScreen, (screen) => {//Old system that recreated 
+                                screen.setRandom(randomChoices);
+                                screen.setSelections(this.characterSelections, this.selection);
+                                screen.setControls(this.playerControls, this.fakeControls);
+                            }, [this.peer, this.connectionID]);*/
                             /*let screen = new NetplayScreen(this.peer, this.connectionID);
                             screen.setRandom(randomChoices);
                             screen.setSelections(this.characterSelections, this.selection);
@@ -160,14 +168,18 @@ class StageSelectScreen extends Screen {
         this.fakeControls = fake;
     }
 
+    setPlayerNumber(number) {
+        this.playerNumber = number;
+    }
+
     setSelections(selections) {
         this.characterSelections = selections;
     }
 
-    setNetplay(peer, connectionID) {
+    setNetplay(peer, connection) {
         this.netplay = true;
         this.peer = peer;
-        this.connectionID = connectionID;
+        this.connection = connection;
     }
 
     setTraining() {
@@ -177,7 +189,7 @@ class StageSelectScreen extends Screen {
     init() {
         this.menu = new Menu(CharacterSelectScreen, (screen) => {
             if (this.netplay)
-                screen.setNetplay();
+                screen.setNetplay(this.peer, this.connection);
             screen.setControls(this.playerControls, this.fakeControls);
         }, false);
 
@@ -188,6 +200,8 @@ class StageSelectScreen extends Screen {
         //Which stage has been selected
         this.selection = 0;
 
+        this.playerNumber = -1;
+
         this.characterSelections = [0, 0];
 
         this.selected = false;
@@ -195,14 +209,27 @@ class StageSelectScreen extends Screen {
         this.playerControls = [null, null];
 
         this.stages = [];
+        this.names = [];
         for (let i in stages) {
-            this.stages.push(new stages[i](512, 384));
-            this.stages[i].drawGrounds();
-            this.stages[i].camera.zoom = 0.8;
-            this.stages[i].camera.setCenter(this.stages[i].getCenterStageX() + this.stages[i].displayOffX, this.stages[i].getCenterStageY() + this.stages[i].displayOffY);
+            let stage = new stages[i](512, 384);
+            stage.drawGrounds();
+            stage.camera.zoom = 0.8;
+            stage.camera.setCenter(stage.getCenterStageX() + stage.displayOffX, stage.getCenterStageY() + stage.displayOffY);
+            let stageG = createGraphics(256, 192);
+            stage.draw(stageG, 0, 0, 256, 192, false);
+            this.names[i] = stage.name;
+            this.stages[i] = stageG.get();
+            stageG.remove();
+            stage.destruct();
         }
 
         /** @type {boolean} Used to indicate that both players are supposed to be computers */
         this.fakeControls = false;
     }
+
+    /*destruct() {
+        for (let i in this.stages) {
+            this.stages[i].destruct();
+        }
+    }*/
 }

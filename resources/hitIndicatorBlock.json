@@ -1,0 +1,64 @@
+{ "frames": {
+   "hitIndicator #Block 0.aseprite": {
+    "frame": { "x": 0, "y": 0, "w": 416, "h": 416 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 416, "h": 416 },
+    "sourceSize": { "w": 416, "h": 416 },
+    "duration": 67
+   },
+   "hitIndicator #Block 1.aseprite": {
+    "frame": { "x": 416, "y": 0, "w": 416, "h": 416 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 416, "h": 416 },
+    "sourceSize": { "w": 416, "h": 416 },
+    "duration": 67
+   },
+   "hitIndicator #Block 2.aseprite": {
+    "frame": { "x": 832, "y": 0, "w": 416, "h": 416 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 416, "h": 416 },
+    "sourceSize": { "w": 416, "h": 416 },
+    "duration": 67
+   },
+   "hitIndicator #Block 3.aseprite": {
+    "frame": { "x": 1248, "y": 0, "w": 416, "h": 416 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 416, "h": 416 },
+    "sourceSize": { "w": 416, "h": 416 },
+    "duration": 67
+   },
+   "hitIndicator #Block 4.aseprite": {
+    "frame": { "x": 1664, "y": 0, "w": 416, "h": 416 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 416, "h": 416 },
+    "sourceSize": { "w": 416, "h": 416 },
+    "duration": 67
+   },
+   "hitIndicator #Block 5.aseprite": {
+    "frame": { "x": 2080, "y": 0, "w": 416, "h": 416 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 416, "h": 416 },
+    "sourceSize": { "w": 416, "h": 416 },
+    "duration": 67
+   }
+ },
+ "meta": {
+  "app": "https://www.aseprite.org/",
+  "version": "1.3.14-beta1-x64",
+  "image": "hitIndicatorBlock.png",
+  "format": "I8",
+  "size": { "w": 2496, "h": 416 },
+  "scale": "1",
+  "frameTags": [
+   { "name": "Block", "from": 0, "to": 5, "direction": "forward", "color": "#000000ff" },
+   { "name": "Hit", "from": 6, "to": 11, "direction": "forward", "color": "#000000ff" },
+   { "name": "Parry", "from": 12, "to": 17, "direction": "forward", "color": "#000000ff" }
+  ]
+ }
+}

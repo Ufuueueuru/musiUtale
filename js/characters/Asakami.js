@@ -691,6 +691,7 @@
 			active: false,
 			held: true,
 			tracking: false,
+			trackHitstun: 0,
 			sheet: Spritesheet.copy(assetManager.spritesheets.iloMoliSheet)
 		};
 
@@ -1314,9 +1315,43 @@
 		this.sheetRotation.value = 0;
 
 		if (this.scythe.held) {
-			this.scythe.x = 0;
-			this.scythe.y = 0;
-			this.scythe.dir.value = 0;
+			if (this.currentState.name === "hitstun") {
+				//let speed = dist(0, 0, this.dx, this.dy);
+				//this.scythe.x -= Math.cos(atan2(this.dy, this.dx) - this.scythe.dir.value) * speed;
+				//this.scythe.y -= Math.sin(atan2(this.dy, this.dx) - this.scythe.dir.value) * speed;
+				this.scythe.x -= this.dx;
+				this.scythe.y -= this.dy;
+				this.scythe.x *= max(0.7, (this.hitStun * 30 + 10) / (this.hitStun * 30 + 20));
+				this.scythe.y *= max(0.7, (this.hitStun * 30 + 10) / (this.hitStun * 30 + 20));
+				if (!this.scythe.tracking) {
+					this.scythe.trackHitstun = this.hitStun;
+					this.scythe.trackHitstunSmall = this.hitStun;
+					this.scythe.tracking = true;
+				}
+				if (this.hitStun < 10) {
+					this.scythe.dirOff.value += (((Angle.compare(this.scythe.dirOff, new Angle(-PI / 3.7))) + 2 * PI) % (2 * PI)) * 0.3;
+				} else {
+					if (this.scythe.trackHitstun >= 20)
+						this.scythe.dirOff.value += 2 * PI * (2 * this.scythe.trackHitstunSmall - 1) / this.scythe.trackHitstun / this.scythe.trackHitstun;
+				}
+				this.scythe.offX = (this.scythe.offX - 10 * 9) / 10;
+				this.scythe.offY = (this.scythe.offY - 50 * 9) / 10;
+
+				if (this.scythe.trackHitstunSmall > 0)
+					this.scythe.trackHitstunSmall--;
+				//this.scythe.offX *= (this.hitStun + 19) / (this.hitStun + 20);
+				//this.scythe.offY *= (this.hitStun + 19) / (this.hitStun + 20);
+				//this.scythe.dir.changeValue(this.dr);
+			} else {
+				this.scythe.tracking = false;
+				this.scythe.x = 0;
+				this.scythe.y = 0;
+				this.scythe.dir.value = 0;
+				//this.scythe.dir.value = -PI / 3.7;
+				//this.scythe.x = 0;
+				//this.scythe.y = 0;
+				//this.scythe.dir.value = 0;
+			}
 
 			if (this.currentState.name === "walk") {
 				this.animateScytheLoop(this.scytheAnimations.walk);
@@ -1449,10 +1484,19 @@
 					if (!a.clashNegate) {
 						p.health--;
 						a.playHitSoundDefault(this.world);
+						a.whiffSoundPlayed = true;
 						let projectileCheck = a.projectile && p.iFrames <= 0;
 						if (p.health <= 0) {
 							this.endPuppetAttacks();
 							this.finishPuppet(a);
+
+							this.world.camera.shake = 1.5;
+							this.world.camera.shakeTime = 15;
+
+							this.world.cameraZoomTime = 15;
+							this.world.cameraSpeed = 5;
+							this.world.cameraZoomSpeed = 0.3;
+							this.world.camera.options = "close";
 						} else {
 							let collided;
 							if (Hitcircle.collideMain(a, p)) {
@@ -1478,6 +1522,14 @@
 								p.dy = constrain(property.launch * 3, 8, 18) * property.angle.getY();
 								p.forceChangeState(p.states.HITSTUN, p.states.HITSTUN_ACTIONS);
 								p.sheet.setAnimation("Hurt");
+
+								this.world.camera.shake = property.screenShake;
+								this.world.camera.shakeTime = Math.ceil(property.screenShakeTime / 2);
+
+								this.world.cameraZoomTime = Math.ceil(property.zoomTime / 2);
+								this.world.cameraSpeed = property.camSpeed;
+								this.world.cameraZoomSpeed = property.zoomSpeed;
+								this.world.camera.options = property.zoomOptions;
 							}
 						}
 
@@ -2223,6 +2275,8 @@ class AsakamiPuppet extends Player {
 			this.deathCountdown--;
 	}
 
+	updateBlockAngleVisual() {}
+
 	startWalk() {
 		if (this.getControls().joystickPressed(0) && this.currentState.name !== "walk") {
 			this.changeState(this.states.WALK, this.states.WALK_ACTIONS);
@@ -2864,7 +2918,10 @@ class AsakamiNL extends Attack {
 		let sweet5 = new PriorityCircle(0, 50, 100, 0).setVelocity(0.1, 0);
 		let circles = [sweet1, sweet2, sweet3, sweet4, sweet5];
 
-		let sweet = new AttackProperties().setDamage(20).setProration(0.5, 0.2).setAngleValue(player.dir.value).setLaunch(6.5, 3, 1.1).setHitStun(27, 17).setStunFrames(13).setWallPushback(1.2, 1).setBlockLeniency(17);
+		let sweet = new AttackProperties().setDamage(20).setProration(-0.9, -0.5).setAngleValue(player.dir.value).setLaunch(6.5, 3, 2).setHitStun(27, 20).setStunFrames(13).setWallPushback(1.2, 1).setBlockLeniency(17);
+		if (player.puppet.health <= 0) {
+			sweet.setLaunch(10, 3, 1.5);
+		}
 		let prop = [sweet];
 
 		sweet.setHitSound(assetManager.sounds["8BitHit"]);
@@ -2938,7 +2995,10 @@ class AsakamiSL extends Attack {
 		let sweet4 = new PriorityCircle(-50, 45, 80, 0).setVelocity(0.1, 0);
 		let circles = [sweet1, sweet2, sweet3, sweet4];
 
-		let sweet = new AttackProperties().setDamage(40).setProration(-0.1, 1.1).setAngleValue(player.dir.value + PI).setLaunch(1, -1).setHitStun(30, 15).setStunFrames(14);
+		let sweet = new AttackProperties().setDamage(40).setProration(-1.3, 1.1).setAngleValue(player.dir.value + PI).setLaunch(1, -1).setHitStun(30, 15).setStunFrames(14);
+		if (player.puppet.health <= 0) {
+			sweet.setCancelOptions(["ML"], ["ML"]);
+		}
 		let prop = [sweet];
 
 		return new this(player, circles, prop).setClashPriority(3).setStartupF(28).setActiveF(2).setEndF(28);
@@ -3014,7 +3074,10 @@ class AsakamiRL extends Attack {
 		let sweet5 = new PriorityCircle(-25, 43, 100, 0).setVelocity(0.08, 0.05);
 		let circles = [sweet1, sweet2, sweet3, sweet4, sweet5];
 
-		let sweet = new AttackProperties().setDamage(20).setProration(-0.2, 0.9).setAngleValue(player.dir.value + PI / 4).setLaunch(5, 3, 1.1).setHitStun(27, 17).setStunFrames(13).setWallPushback(1.2, 1).setBlockLeniency(17);
+		let sweet = new AttackProperties().setDamage(20).setProration(-1.4, 0.9).setAngleValue(player.dir.value + PI / 4).setLaunch(5, 3, 2).setHitStun(27, 17).setStunFrames(13).setWallPushback(1.2, 1).setBlockLeniency(17);
+		if (player.puppet.health <= 0) {
+			sweet.setLaunch(9, 3, 1.5);
+		}
 		let prop = [sweet];
 
 		sweet.setHitSound(assetManager.sounds["8BitHit"]);
@@ -3084,7 +3147,10 @@ class AsakamiLL extends Attack {
 		let sweet5 = new PriorityCircle(-25, -43, 100, 0).setVelocity(0.08, -0.05);
 		let circles = [sweet1, sweet2, sweet3, sweet4, sweet5];
 
-		let sweet = new AttackProperties().setDamage(20).setProration(-0.2, 0.9).setAngleValue(player.dir.value - PI / 4).setLaunch(5, 3, 1.1).setHitStun(27, 17).setStunFrames(13).setWallPushback(1.2, 1).setBlockLeniency(17);
+		let sweet = new AttackProperties().setDamage(20).setProration(-1.4, 0.9).setAngleValue(player.dir.value - PI / 4).setLaunch(5, 3, 2).setHitStun(27, 17).setStunFrames(13).setWallPushback(1.2, 1).setBlockLeniency(17);
+		if (player.puppet.health <= 0) {
+			sweet.setLaunch(9, 3, 1.5);
+		}
 		let prop = [sweet];
 
 		sweet.setHitSound(assetManager.sounds["8BitHit"]);
@@ -3147,7 +3213,10 @@ class AsakamiML extends Attack {
 		let sweet1 = new PriorityCircle(0, 0, 230, 0);
 		let circles = [sweet1];
 
-		let sweet = new AttackProperties().setDamage(20).setProration(0, 0.5).setAngleValue(player.dir.value).setLaunch(3, 4).setHitStun(28, 10).setStunFrames(13).setWallPushback(2, 1).setAngleTypes("direct", "direct").setRotateVel(-4, -4, true);
+		let sweet = new AttackProperties().setDamage(20).setProration(-1.2, 0.5).setAngleValue(player.dir.value).setLaunch(3, 4).setHitStun(28, 10).setStunFrames(13).setWallPushback(2, 1).setAngleTypes("direct", "direct").setRotateVel(-4, -4, true);
+		if (player.puppet.health <= 0) {
+			sweet.setLaunch(10, 5);
+		}
 		let prop = [sweet];
 
 		return new this(player, circles, prop).setClashPriority(2).setStartupF(20).setActiveF(8).setEndF(14);
@@ -3213,10 +3282,10 @@ class AsakamiNS extends Attack {
 	static createAttack(player) {
 		let cancelOptions = [];
 
-		let sweet1 = new PriorityCircle(1, 0, 150, 0).setVelocity(64, 0);
+		let sweet1 = new PriorityCircle(1, 0, 150, 0).setVelocity(74, 0);
 		let circles = [sweet1];
 
-		let sweet = new AttackProperties().setDamage(35).setProration(-1, 2).setCancelOptions(cancelOptions).setAngleValue(player.dir.value).setLaunch(18, 0, 1.2).setLaunchDampening(0, 30, 0, 30).setHitStun(25, 15).setStunFrames(4).setWallLaunchMod(-20, -20).setIgnoreWeight();
+		let sweet = new AttackProperties().setDamage(35).setProration(-1.7, 2).setCancelOptions(cancelOptions).setAngleValue(player.dir.value).setLaunch(14, 0, 1.2).setLaunchDampening(0, 30, 0, 30).setHitStun(25, 15).setStunFrames(4).setWallLaunchMod(-14, -14).setIgnoreWeight();
 		let prop = [sweet];
 
 		return new this(player, circles, prop).setClashPriority(1).setStartupF(45).setActiveF(30).setEndF(18).setRotateable().setFollow(false);
@@ -3249,9 +3318,16 @@ class AsakamiNS extends Attack {
 	}
 
 	logic() {
-		if (this.getFromActiveF() % 11 === 10) {
+		if (this.player.targetPlayer && dist(0, 0, this.circles[0].x, this.circles[0].y) > dist(this.player.x, this.player.y, this.player.targetPlayer.x, this.player.targetPlayer.y) + 70) {
+			this.circles[0].x -= this.player.dir.getX() * 10;
+			this.circles[0].y -= this.player.dir.getY() * 10;
+		}
+		if (this.getFromActiveF() === 1) {
+			this.properties[0].launch = 1;
+		}
+		if (this.getFromActiveF() % 11 === 10 && this.currentlyActive()) {
 			this.resetHits();
-			this.properties[0].launch = 4;
+			this.properties[0].launch = 1;
 			this.properties[0].setWallLaunchMod(0, 0);
 		}
 
@@ -3269,7 +3345,7 @@ class AsakamiNS extends Attack {
 		}
 		if (this.getStartupF() <= 0) {
 			this.setRotateable(false);
-			let walked = this.player.walkMovement(0.5);
+			let walked = this.player.walkMovement(0.75);
 			if (walked)
 				this.walkFrames++;
 			else
@@ -3290,8 +3366,8 @@ class AsakamiNS extends Attack {
 	}
 
 	hitConfirmSetFrames() {
-		this.circles[0].dx *= 0.5;
-		this.circles[0].dy *= 0.5;
+		this.circles[0].dx *= 0.6;
+		this.circles[0].dy *= 0.6;
 	}
 
 	cleanup() {
@@ -3346,8 +3422,12 @@ class AsakamiSS extends Attack {
 		let sour4 = new PriorityCircle(215, 0, 104, 1).setVelocity(0.1, 0);
 		let circles = [sweet1, sweet2, sweet3, sour1, sour2, sour3, sour4];
 
-		let sweet = new AttackProperties().setDamage(100, undefined, 100).setProration(5).setCancelOptions(cancelOptions).setAngleValue(player.dir.value + PI).setLaunch(16, 5, 0.2).setHitStun(48, 12).setStunFrames(15).setLaunchDampening(0.1);
-		let sour = new AttackProperties().setDamage(100, undefined, 100).setProration(5).setCancelOptions(cancelOptions).setAngleValue(player.dir.value + PI).setLaunch(10, 5, 0.2).setHitStun(48, 12).setStunFrames(15).setLaunchDampening(0.1);
+		let sweet = new AttackProperties().setDamage(100, undefined, 100).setProration(-1, -1).setCancelOptions(cancelOptions).setAngleValue(player.dir.value + PI).setLaunch(16, 5, 0.2).setHitStun(48, 12).setStunFrames(15).setLaunchDampening(0.1);
+		let sour = new AttackProperties().setDamage(100, undefined, 100).setProration(-1, -1).setCancelOptions(cancelOptions).setAngleValue(player.dir.value + PI).setLaunch(10, 5, 0.2).setHitStun(48, 12).setStunFrames(15).setLaunchDampening(0.1);
+		if (player.puppet.health <= 0) {
+			sweet.setHitStun(60, 30);
+			sour.setHitStun(60, 30);
+		}
 		let prop = [sweet, sour];
 
 		return new this(player, circles, prop).setClashPriority(1).setStartupF(48).setActiveF(3).setEndF(20).setRotateable();
@@ -3420,7 +3500,10 @@ class AsakamiRS extends Attack {
 		let sweet3 = new PriorityCircle(65, 45, 100, 0).setVelocity(0.1, 0);
 		let circles = [sweet1, sweet2, sweet3];
 
-		let sweet = new AttackProperties().setDamage(55).setCancelOptions(cancelOptions, hitCancelOptions).setAngleValue(player.dir.value + PI / 6).setLaunch(10, 1, 1).setHitStun(25, 25).setStunFrames(13).setRotateVel(-7, -7, true).setRotateSlowDown(0.25, 60, true);
+		let sweet = new AttackProperties().setDamage(55).setProration(-1).setCancelOptions(cancelOptions, hitCancelOptions).setAngleValue(player.dir.value + PI / 6).setLaunch(10, 1, 1).setHitStun(25, 25).setStunFrames(13).setRotateVel(-7, -7, true).setRotateSlowDown(0.25, 60, true);
+		if (player.puppet.health <= 0) {
+			sweet.setLaunch(15, 1, 1);
+		}
 		let prop = [sweet];
 
 		sweet.setHitSound(assetManager.sounds.teloLukaPakala);
@@ -3493,6 +3576,10 @@ class AsakamiLS extends Attack {
 
 		let sweet = new AttackProperties().setDamage(55).setProration(-1, -3).setCancelOptions(cancelOptions, hitCancelOptions).setAngleValue(player.dir.value - PI / 6).setLaunch(10, 1, 1).setHitStun(25, 25).setStunFrames(13).setRotateVel(-7, -7, true).setRotateSlowDown(0.25, 60, true);
 		let sour = new AttackProperties().setDamage(55).setProration(-1, 0).setCancelOptions(cancelOptions, hitCancelOptions).setAngleValue(player.dir.value).setLaunch(10, 1, 1).setHitStun(25, 25).setStunFrames(13).setRotateVel(-5, -5, true).setRotateSlowDown(0.25, 60, true);
+		if (player.puppet.health <= 0) {
+			sweet.setLaunch(15, 1, 1);
+			sour.setLaunch(15, 1, 1);
+		}
 		let prop = [sweet, sour];
 
 		sweet.setHitSound(assetManager.sounds.teloLukaPakala);
@@ -3583,10 +3670,16 @@ class AsakamiMS extends Attack {
 		let sour8 = new PriorityCircle(176, 123, 0, 3).setVelocity(0.1, 0);
 		let circles = [sweet1, sweet2, sweet3, sour1, sour2, sour3, sour4, sweet6, sweet7, sweet8, sour5, sour6, sour7, sour8];
 
-		let sweet = new AttackProperties().setDamage(80, undefined, 100).setProration(1).setCancelOptions(cancelOptions).setAngleValue(player.dir.value + PI - PI / 5.5).setLaunch(16, 5, 0.2).setHitStun(46, 23).setStunFrames(15).setLaunchDampening(0.1);
-		let sour = new AttackProperties().setDamage(80, undefined, 100).setProration(1).setCancelOptions(cancelOptions).setAngleValue(player.dir.value + PI - PI / 5.5).setLaunch(10, 5, 0.2).setHitStun(46, 23).setStunFrames(15).setLaunchDampening(0.1);
-		let sweetP2 = new AttackProperties().setDamage(80, undefined, 100).setProration(1).setCancelOptions(cancelOptions).setAngleValue(player.dir.value + PI + PI / 5.5).setLaunch(16, 5, 0.2).setHitStun(46, 23).setStunFrames(15).setLaunchDampening(0.1);
-		let sourP2 = new AttackProperties().setDamage(80, undefined, 100).setProration(1).setCancelOptions(cancelOptions).setAngleValue(player.dir.value + PI + PI / 5.5).setLaunch(10, 5, 0.2).setHitStun(46, 23).setStunFrames(15).setLaunchDampening(0.1);
+		let sweet = new AttackProperties().setDamage(80, undefined, 100).setProration(-1, -1).setCancelOptions(cancelOptions).setAngleValue(player.dir.value + PI - PI / 5.5).setLaunch(16, 5, 0.2).setHitStun(46, 23).setStunFrames(15).setLaunchDampening(0.1);
+		let sour = new AttackProperties().setDamage(80, undefined, 100).setProration(-1, -1).setCancelOptions(cancelOptions).setAngleValue(player.dir.value + PI - PI / 5.5).setLaunch(10, 5, 0.2).setHitStun(46, 23).setStunFrames(15).setLaunchDampening(0.1);
+		let sweetP2 = new AttackProperties().setDamage(80, undefined, 100).setProration(-1, -1).setCancelOptions(cancelOptions).setAngleValue(player.dir.value + PI + PI / 5.5).setLaunch(16, 5, 0.2).setHitStun(46, 23).setStunFrames(15).setLaunchDampening(0.1);
+		let sourP2 = new AttackProperties().setDamage(80, undefined, 100).setProration(-1, -1).setCancelOptions(cancelOptions).setAngleValue(player.dir.value + PI + PI / 5.5).setLaunch(10, 5, 0.2).setHitStun(46, 23).setStunFrames(15).setLaunchDampening(0.1);
+		if (player.puppet.health <= 0) {
+			sweet.setHitStun(75, 30);
+			sour.setHitStun(75, 30);
+			sweetP2.setHitStun(75, 30);
+			sourP2.setHitStun(75, 30);
+		}
 		let prop = [sweet, sour, sweetP2, sourP2];
 
 		return new this(player, circles, prop).setClashPriority(1).setStartupF(48).setActiveF(3).setEndF(20);
@@ -3683,7 +3776,7 @@ class AsakamiNPL extends PuppetAttack {
 		let sour1 = new PriorityCircle(50, 0, 65, 0).setVelocity(0.1, 0);
 		let circles = [sweet1, sour1];
 
-		let sweet = new AttackProperties().setDamage(15).setProration(1, 1).setAngleValue(player.dir.value).setLaunch(5).setHitStun(24, 10);
+		let sweet = new AttackProperties().setDamage(15).setProration(0, 1).setAngleValue(player.dir.value).setLaunch(5).setHitStun(24, 15);
 		let prop = [sweet];
 
 		return new this(player.getParent(), circles, prop).setClashPriority(5).setStartupF(7).setActiveF(5).setEndF(10).setFollow(false);
@@ -3727,7 +3820,7 @@ class AsakamiSPL extends PuppetAttack {
 		let sour1 = new PriorityCircle(30, 0, 65, 0).setVelocity(0.1, 0);
 		let circles = [sweet1, sour1];
 
-		let sweet = new AttackProperties().setDamage(20).setProration(0.5, 0.6).setAngleValue(player.dir.value).setLaunch(7).setHitStun(28, 6);
+		let sweet = new AttackProperties().setDamage(20).setProration(-0.5, 0.6).setAngleValue(player.dir.value).setLaunch(7).setHitStun(28, 11);
 		let prop = [sweet];
 
 		return new this(player.getParent(), circles, prop).setClashPriority(5).setStartupF(12).setActiveF(8).setEndF(14).setFollow(false);
@@ -3775,7 +3868,7 @@ class AsakamiRPL extends PuppetAttack {
 		let sweet2 = new PriorityCircle(30, 30, 80, 0).setVelocity(0.1, 0.02);
 		let circles = [sweet1, sweet2];
 
-		let sweet = new AttackProperties().setDamage(25).setProration(0.8, 0).setLaunch(7).setHitStun(33, 5).setAngleValue(player.dir.value + PI / 2.1);
+		let sweet = new AttackProperties().setDamage(25).setProration(-0.2, 0).setLaunch(7).setHitStun(33, 10).setAngleValue(player.dir.value + PI / 2.1);
 		let prop = [sweet];
 
 		return new this(player.getParent(), circles, prop).setClashPriority(4).setStartupF(8).setActiveF(3).setEndF(15).setFollow(false);
@@ -3815,7 +3908,7 @@ class AsakamiLPL extends PuppetAttack {
 		let sweet2 = new PriorityCircle(30, -30, 80, 0).setVelocity(0.1, -0.02);
 		let circles = [sweet1, sweet2];
 
-		let sweet = new AttackProperties().setDamage(25).setProration(0.8, 0).setLaunch(7).setHitStun(33, 5).setAngleValue(player.dir.value - PI / 2.1);
+		let sweet = new AttackProperties().setDamage(25).setProration(-0.2, 0).setLaunch(7).setHitStun(33, 10).setAngleValue(player.dir.value - PI / 2.1);
 		let prop = [sweet];
 
 		return new this(player.getParent(), circles, prop).setClashPriority(4).setStartupF(8).setActiveF(3).setEndF(15).setFollow(false);
@@ -3854,7 +3947,7 @@ class AsakamiMPL extends PuppetAttack {
 		let sour1 = new PriorityCircle(0, 0, 150, 0);
 		let circles = [sour1];
 
-		let sour = new AttackProperties().setDamage(10, -30).setProration(-2).setAngleValue(player.dir.value).setLaunch(6, 0, 0.85).setHitStun(26, 10).setAngleTypes("direct", "direct");
+		let sour = new AttackProperties().setDamage(10, -30).setProration(-2).setAngleValue(player.dir.value).setLaunch(6, 0, 0.85).setHitStun(26, 15).setAngleTypes("direct", "direct");
 		let prop = [sour];
 
 		return new this(player.getParent(), circles, prop).setClashPriority(3).setClashPriority(4).setStartupF(12).setActiveF(4).setEndF(18).setFollow(false);
@@ -3894,8 +3987,8 @@ class AsakamiNPS extends PuppetAttack {
 		let sour4 = new PriorityCircle(30, 80, 80, 1).setVelocity(0.1, 0);
 		let circles = [sweet1, sour1, sour2, sour3, sour4];
 
-		let sweet = new AttackProperties().setDamage(80, undefined, 15).setProration(2).setAngleValue(player.dir.value).setLaunch(5).setHitStun(35, 14);
-		let sour = new AttackProperties().setDamage(70, undefined, 15).setProration(2).setAngleValue(player.dir.value).setLaunch(5).setHitStun(35, 13);
+		let sweet = new AttackProperties().setDamage(80, undefined, 15).setProration(-1.2).setAngleValue(player.dir.value).setLaunch(5).setHitStun(35, 29);
+		let sour = new AttackProperties().setDamage(70, undefined, 15).setProration(-1.2).setAngleValue(player.dir.value).setLaunch(5).setHitStun(35, 28);
 		let prop = [sweet, sour];
 
 		return new this(player.getParent(), circles, prop).setClashPriority(2).setStartupF(30).setActiveF(4).setEndF(29).setFollow(false);
@@ -3932,7 +4025,7 @@ class AsakamiSPS extends PuppetAttack {
 		let sweet1 = new PriorityCircle(0, 0, 60, 0).setVelocity(0.2, 0);
 		let circles = [sweet1];
 
-		let sweet = new AttackProperties().setDamage(40).setProration(1).setAngleValue(player.dir.value).setLaunch(3).setHitStun(20, 5).setStunFrames(15).setAngleTypes("vel", "direct");
+		let sweet = new AttackProperties().setDamage(40).setProration(-0.5).setAngleValue(player.dir.value).setLaunch(3).setHitStun(20, 5).setStunFrames(15).setAngleTypes("vel", "direct");
 		let prop = [sweet];
 
 		return new this(player.getParent(), circles, prop).setClashPriority(5).setClashPriority(0).setStartupF(28).setActiveF(60).setEndF(10).setProjectile().setFollow(false);
@@ -4003,8 +4096,8 @@ class AsakamiRPS extends PuppetAttack {
 		let sour1 = new PriorityCircle(7, 32, 50, 1).setVelocity(0, 0.1);
 		let circles = [sweet2, sweet3, sweet4, sweet5, sweet6, sweet7, sweet8, sour1];
 
-		let sweet = new AttackProperties().setDamage(45).setProration(-1).setAngleValue(player.dir.value + PI / 2).setLaunch(4, 0.1, 0.1).setHitStun(23, 4).setStunFrames(30);
-		let sour = new AttackProperties().setDamage(15).setProration(-1).setAngleValue(player.dir.value + PI / 2).setLaunch(4, 0.1, 0.1).setHitStun(23, 4).setStunFrames(30);
+		let sweet = new AttackProperties().setDamage(45).setProration(-1).setAngleValue(player.dir.value + PI / 2).setLaunch(4, 0.1, 0.1).setHitStun(23, 9).setStunFrames(30);
+		let sour = new AttackProperties().setDamage(15).setProration(-1).setAngleValue(player.dir.value + PI / 2).setLaunch(4, 0.1, 0.1).setHitStun(23, 9).setStunFrames(30);
 		let prop = [sweet, sour];
 
 		return new this(player.getParent(), circles, prop).setClashPriority(5).setStartupF(8).setActiveF(7).setEndF(12).setFollow(false);
@@ -4055,8 +4148,8 @@ class AsakamiLPS extends PuppetAttack {
 		let sour1 = new PriorityCircle(7, -32, 50, 1).setVelocity(0, 0.1);
 		let circles = [sweet2, sweet3, sweet4, sweet5, sweet6, sweet7, sweet8, sour1];
 
-		let sweet = new AttackProperties().setDamage(45).setProration(-1).setAngleValue(player.dir.value - PI / 2).setLaunch(4, 0.1, 0.1).setHitStun(23, 4).setStunFrames(30);
-		let sour = new AttackProperties().setDamage(15).setProration(-1).setAngleValue(player.dir.value - PI / 2).setLaunch(4, 0.1, 0.1).setHitStun(23, 4).setStunFrames(30);
+		let sweet = new AttackProperties().setDamage(45).setProration(-1).setAngleValue(player.dir.value - PI / 2).setLaunch(4, 0.1, 0.1).setHitStun(23, 9).setStunFrames(30);
+		let sour = new AttackProperties().setDamage(15).setProration(-1).setAngleValue(player.dir.value - PI / 2).setLaunch(4, 0.1, 0.1).setHitStun(23, 9).setStunFrames(30);
 		let prop = [sweet, sour];
 
 		return new this(player.getParent(), circles, prop).setClashPriority(5).setStartupF(8).setActiveF(7).setEndF(12).setFollow(false);
@@ -4472,8 +4565,8 @@ class AsakamiPuppetRN extends PuppetAttack {
 	hitConfirmSetFrames() {
 		super.hitConfirmSetFrames();
 
-		this.player.puppet.dx *= 0.3;
-		this.player.puppet.dy *= 0.3;
+		this.player.puppet.dx *= 0.2;
+		this.player.puppet.dy *= 0.2;
 
 		if (this.multi === 1) {
 			this.properties[0].setHitStun(10, 5);

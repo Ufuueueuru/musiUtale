@@ -809,10 +809,34 @@
   },
   "reversalButton": {
     "en": {
-      "text": "Reversal:"
+      "text": "Reversal On Block:"
     },
     "tp": {
       "text": "󱥄󱥱󱤬󱥫󱤈:"
+    }
+  },
+  "reversalHitButton": {
+    "en": {
+      "text": "Reversal On Hit:"
+    },
+    "tp": {
+      "text": "󱥄󱥱󱤬󱥫󱥈:"
+    }
+  },
+  "reversalDirSelector": {
+    "en": {
+      "text": "Dir:"
+    },
+    "tp": {
+      "text": "󱤮󱥩󿬂"
+    }
+  },
+  "reversalDirResetButton": {
+    "en": {
+      "text": "Reset\nDir"
+    },
+    "tp": {
+      "text": "󱥄󱤏󱤉\n󱤮󿬀"
     }
   },
   "trainingExitButton": {
@@ -823,7 +847,86 @@
       "text": "󱥶"
     }
   },
-
+  "netplayModeQuickplay": {
+    "en": {
+      "text": "Matchmaking"
+    },
+    "tp": {
+      "text": "󱥄󱤃󱤉󱤑󱤙󱤎󱤤"
+    }
+  },
+  "netplayModeLobby": {
+    "en": {
+      "text": "Lobbies"
+    },
+    "tp": {
+      "text": "󱥄󱤃󱤉󱤑󱤙󱤽󱤬󱥭"
+    }
+  },
+  "netplayModeBack": {
+    "en": {
+      "text": "Back"
+    },
+    "tp": {
+      "text": "󱥶"
+    }
+  },
+  "quickplayConnecting": {
+    "en": {
+      "text": "Connecting to main server"
+    },
+    "tp": {
+      "text": "󱤴󱤃󱤉󱤎󱤤󱥣"
+    }
+  },
+  "quickplaySearching": {
+    "en": {
+      "text": "Searching for existing server"
+    },
+    "tp": {
+      "text": "󱤴󱤃󱤉󱤎󱤆󱤤󱤨"
+    }
+  },
+  "quickplayFoundServer": {
+    "en": {
+      "text": "Found server! Connecting"
+    },
+    "tp": {
+      "text": "󱤃󱤧󱥔󱤀　󱤴󱤃󱥬󱥩󱥆"
+    }
+  },
+  "quickplayNoServer": {
+    "en": {
+      "text": "No server - establishing new server"
+    },
+    "tp": {
+      "text": "󱤃󱤧󱤍󱤀　󱤴󱤖󱤎󱤤"
+    }
+  },
+  "quickplayBecomeServer": {
+    "en": {
+      "text": "New server established! Searching for opponent"
+    },
+    "tp": {
+      "text": "󱤖󱤎󱤧󱥔󱤀　󱤴󱤈󱥩󱦙󱤎󱤆"
+    }
+  },
+  "quickplayFoundOpponent": {
+    "en": {
+      "text": "Found opponent! Establishing connection"
+    },
+    "tp": {
+      "text": "󱤎󱤆󱤧󱤬󱤀　󱤴󱥇󱤉󱥱"
+    }
+  },
+  "quickplayStartGame": {
+    "en": {
+      "text": "Starting game"
+    },
+    "tp": {
+      "text": "󱤴󱥇󱤉󱥱"
+    }
+  },
   "netplayTitle": {
     "en": {
       "text": "Netplay"

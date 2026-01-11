@@ -36,6 +36,10 @@
         }
     }
 
+    getShouldLoadSounds() {
+        return ["kenKulupuTomo", "teloNasaLonIlo", "konWawa"];
+    }
+
     static addAssets() {
         assetManager.addImage("resources/backgrounds/kulupu_tomo.png", "kulupuTomo", true);
     }

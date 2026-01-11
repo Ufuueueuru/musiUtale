@@ -92,6 +92,12 @@ class World {
         this.savedReplay = false;
     }
 
+    destruct() {
+        this.g.remove();
+        this.background.remove();
+        this.foreground.remove();
+    }
+
     resetCountdown() {
         for (let i in this.players) {
             this.players[i].canAttack = false;
@@ -121,6 +127,7 @@ class World {
         centerY /= this.players.length;
 
         this.camera.setCenter(centerX, centerY);
+        this.camera.zoom = 1;
 
         this.resetCountdown();
 
@@ -166,11 +173,13 @@ class World {
                 parentScreen.world.addPlayer(this.players[0]);
                 parentScreen.world.addPlayer(this.players[1]);
                 parentScreen.world.sikeWawa.setPlayers(this.players[0], this.players[1]);
-                let randomized = parentScreen.world.completeReset();
-                if (randomized) {
-                    assetManager.resetAssets();
-                    parentScreen.world.addShouldLoad();
-                }
+                parentScreen.world.resetPositions();
+                //let randomized = parentScreen.world.completeReset();
+                //if (randomized) {
+                assetManager.resetAssets();
+                parentScreen.world.initHUDNames();
+                parentScreen.world.addShouldLoad();
+                //}
                 //parentScreen.world.playMusic();
                 if (parentScreen.player1.controls.world)
                     parentScreen.player1.controls.world = this.world;
@@ -278,10 +287,19 @@ class World {
         this.ps.addParticleTemplate("hitEffect", assetManager.spritesheets.hitEffect);
         this.ps.addParticleTemplate("hitBlockEffect", assetManager.spritesheets.hitBlockEffect);
         this.ps.addParticleTemplate("hitParryEffect", assetManager.spritesheets.hitParryEffect);
+        this.ps.addParticleTemplate("clashEffect", assetManager.spritesheets.clashEffect);
+        this.ps.addParticleTemplate("clashEffectBad", assetManager.spritesheets.clashEffectBad);
         this.ps.addParticleTemplate("counterHitEffect", assetManager.spritesheets.counterHitEffect);
         this.ps.addParticleTemplate("punishHitEffect", assetManager.spritesheets.punishHitEffect);
         this.ps.addParticleTemplate("powerDashEffect", assetManager.spritesheets.powerDashEffect);
         this.ps.addParticleTemplate("powerDashSlow", assetManager.spritesheets.powerDashSlow);
+        this.ps.addParticleTemplate("arrowHitHit", assetManager.spritesheets.arrowHitHit);
+        this.ps.addParticleTemplate("arrowHitBlock", assetManager.spritesheets.arrowHitBlock);
+        this.ps.addParticleTemplate("arrowHitParry", assetManager.spritesheets.arrowHitParry);
+        this.ps.addParticleTemplate("arrowHitForceParry", assetManager.spritesheets.arrowHitForceParry);
+        this.ps.addParticleTemplate("hitIndicatorHit", assetManager.spritesheets.hitIndicatorHit);
+        this.ps.addParticleTemplate("hitIndicatorBlock", assetManager.spritesheets.hitIndicatorBlock);
+        this.ps.addParticleTemplate("hitIndicatorParry", assetManager.spritesheets.hitIndicatorParry);
     }
 
 	/** */
@@ -320,8 +338,11 @@ class World {
             }
         }
 
-		for (let i in this.players) {
-			let p = this.players[i];
+        let hitstunSortedPlayers = [...this.players].sort((a, b) => {
+            return b.hitStun - a.hitStun;
+        });
+		for (let i in hitstunSortedPlayers) {
+            let p = hitstunSortedPlayers[i];
             p.draw(this.g);
             if (debug.displayBlocking) {
                 p.drawBlock(this.g);
@@ -336,6 +357,10 @@ class World {
         for (let i = 0; i < this.players.length; i++) {
             let p = this.players[i];
             p.drawArrow(this.g, i);
+        }
+        for (let i = 0; i < this.players.length; i++) {
+            let p = this.players[i];
+            p.drawBlockArc(this.g, i);
         }
         for (let i = 0; i < this.players.length; i++) {
             let p = this.players[i];
@@ -725,12 +750,14 @@ class World {
             let a = this.attacks[i];
             a.applyModifiers();
         }
+        
         for (let i = this.attacks.length - 1; i >= 0; i--) {//Loop through all of the attacks currently in the world for collisions
             let a = this.attacks[i];
             if (a.notStun()) {
                 this.collideAttacks();
             }
         }
+        
         for (let i = this.attacks.length - 1; i >= 0; i--) {//Loop through all of the attacks currently in the world for standard logic
             let a = this.attacks[i];
             if (a.notStun()) {
@@ -946,7 +973,9 @@ class World {
         for (let i of this.getShouldLoadFonts()) {
             assetManager.addShouldFont(i);
         }
+        //print("" + this.getShouldLoadSounds());
         for (let i of this.getShouldLoadSounds()) {
+            //print("trying to should!! " + i);
             assetManager.addShouldSound(i);
         }
     }
@@ -1033,9 +1062,9 @@ class World {
     collideAttacks() {
         let attackCollisions = [];
         let playerCollisions = [];
-        for (let i in this.attacks) {
+        for (let i = 0; i < this.attacks.length; i++) {
             let a = this.attacks[i];
-            for (let u in this.attacks) {
+            for (let u = i + 1; u < this.attacks.length; u++) {
                 let b = this.attacks[u];
                 if (a !== b) {
                     if (a.currentlyActive() && b.currentlyActive() && Hitcircle.collide(a, b) && a.player !== b.player) {
@@ -1081,6 +1110,9 @@ class World {
                     }
                     if (b.clashPriority !== a.clashPriority) {
                         a.clashNegate = true;
+
+                        a.player.playSound(assetManager.sounds.clashBad);
+                        this.ps.createParticle("clashEffectBad", null, a.averageX(), a.averageY(), 128, 128, new Angle(random(-PI, PI)), false);
                     }
                 }
 
@@ -1096,7 +1128,15 @@ class World {
                     }
                     if (b.clashPriority !== a.clashPriority) {
                         b.clashNegate = true;
+
+                        b.player.playSound(assetManager.sounds.clashBad);
+                        this.ps.createParticle("clashEffectBad", null, b.averageX(), b.averageY(), 128, 128, new Angle(random(-PI, PI)), false);
                     }
+                }
+
+                if (b.clashPriority === a.clashPriority) {
+                    a.player.playSound(assetManager.sounds.clash);
+                    this.ps.createParticle("clashEffect", null, (a.averageX() + b.averageX()) / 2, (a.averageY() + b.averageY()) / 2, 128, 128, new Angle(random(-PI, PI)), false);
                 }
 
                 if (a.follow)
@@ -1111,7 +1151,6 @@ class World {
 
             if(!a.clashNegate)
                 a.attack(p);
-
 
             if (a.projectile && (p.iFrames <= 0 || !p.invTo.includes("attack")) && a.multi <= 0) {
                 a.endLife();
@@ -1162,7 +1201,7 @@ class World {
             startPoints,
             currentMusic,
             firstTo,
-            ps,
+            ps,//Perhaps in the future particles will become serializable, but not for now
             rollbacking,
             rollbackingFrames,
             ...o
@@ -1184,7 +1223,9 @@ class World {
             this.attacks[i].deserialize(obj.attacks[i], this);
         }
 
-        defaultCopyValues(this, obj, ["attacks"]);
+        defaultCopyValues(this, obj, ["attacks"]);//, "ps"]);
+
+        //this.ps.deserialize(obj.ps, this);
 
         /*this.attacks = [];
         for (let i in obj.attacks) {

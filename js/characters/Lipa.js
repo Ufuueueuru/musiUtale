@@ -2330,6 +2330,12 @@
 		this.arrowOffset = 45;
 		this.arrowOffsetBack = -25;
 
+		this.blockDistExtensions = [
+			new BlockDistExtension(0, 2, PI * 0.7),
+			new BlockDistExtension(-PI / 2, 0.3, PI * 0.3),
+			new BlockDistExtension(PI / 2, 0.3, PI * 0.3)
+		];
+
 		this.dashFailFrames = 32;
 		this.dashFailIFrames = 18;
 		this.dashFailIFrameStart = this.dashFailFrames - 6;
@@ -2402,8 +2408,9 @@
 			this.attackEndable();
 		}
 		if (this.dashCancels < this.dashCancelsMax) {
-			if (this.actionLag <= 0)
-				this.dashCancelRegen++;
+			let regenAmount = State.stateIs(this.currentState, "RN") ? 2 : 1;
+			if (this.actionLag <= 0 || regenAmount > 1)
+				this.dashCancelRegen += regenAmount;
 			if (this.dashCancelRegen >= this.dashCancelRegenFull * (this.dashCancels <= 0 ? this.dashPunishModifier : 1)) {
 				this.dashCancelRegen = 0;
 				if (this.dashCancels <= 0)
@@ -3017,8 +3024,8 @@ class LipaDashAttack extends Attack {
 		let sweet1 = new PriorityCircle(0, 10, 210, 1).setVelocity(0.1, 0.02);
 		let circles = [sour1, sweet1];
 
-		let sour = new AttackProperties().setDamage(40, -20, 8).setProration(-1.5, 2).setCancelOptions(cancelOptions).setAngleValue(player.dir.value).setLaunch(10, 1, 0.5).setHitStun(25, 18).setStunFrames(15).setWallPushback(1, 1).setWallLaunchMod(10).setNormalizeHitStun().setChip(0.1).setAngleTypes("vel", "direct");
-		let sweet = new AttackProperties().setDamage(45, -22, 8).setProration(-1.5, 2).setCancelOptions(cancelOptions).setAngleValue(player.dir.value).setLaunch(10, 1, 0.5).setHitStun(26, 18).setStunFrames(15).setWallPushback(1, 1).setWallLaunchMod(10).setNormalizeHitStun().setChip(0.1).setAngleTypes("vel", "direct");
+		let sour = new AttackProperties().setDamage(40, -10, 8).setProration(-1.5, 2).setCancelOptions(cancelOptions).setAngleValue(player.dir.value).setLaunch(10, 1, 0.5).setHitStun(25, 18).setStunFrames(15).setWallPushback(1, 1).setWallLaunchMod(10).setNormalizeHitStun().setChip(0.1).setAngleTypes("vel", "direct");
+		let sweet = new AttackProperties().setDamage(45, -11, 8).setProration(-1.5, 2).setCancelOptions(cancelOptions).setAngleValue(player.dir.value).setLaunch(10, 1, 0.5).setHitStun(26, 18).setStunFrames(15).setWallPushback(1, 1).setWallLaunchMod(10).setNormalizeHitStun().setChip(0.1).setAngleTypes("vel", "direct");
 		let prop = [sour, sweet];
 
 		return new this(player, circles, prop).setClashPriority(2).setStartupF(13).setActiveF(6).setEndF(20).reflectHitboxes(player.rightHanded);
@@ -3048,9 +3055,9 @@ class LipaDashAttack extends Attack {
 	hitConfirmSetFrames() {
 		this.player.dx *= 0.2;
 		this.player.dy *= 0.2;
-		if (this.targetPlayer) {
-			this.player.dx += this.targetPlayer.dx * 0.8;
-			this.player.dy += this.targetPlayer.dy * 0.8;
+		if (this.player.targetPlayer) {
+			this.player.dx += this.player.targetPlayer.dx * 0.8;
+			this.player.dy += this.player.targetPlayer.dy * 0.8;
 		}
 	}
 }
@@ -3062,7 +3069,7 @@ class LipaNL extends Attack {
 	}
 
 	static createAttack(player) {
-		let cancelOptions = ["NS", "NPL", "NPS", "SPS", "NN", "dash"];
+		let cancelOptions = ["RL", "NS", "NPL", "NPS", "SPS", "NN", "dash"];
 
 		let ultraSour1 = new PriorityCircle(0, 32, 20, 0).setVelocity(7, -2);
 		let ultraSour2 = new PriorityCircle(-20, 38, 20, 0).setVelocity(7, -2);
@@ -3076,12 +3083,12 @@ class LipaNL extends Attack {
 		let circles = [ultraSour1, ultraSour2, ultraSour3, sour1, sour2, sour3, sweet1, sweet2];
 
 		let ultraSour = new AttackProperties().setDamage(12).setProration(-0.5, 0.5).setCancelOptions(cancelOptions).setAngleValue(player.dir.value + PI / 6).setLaunch(7, 0.1).setLaunchDampening(1).setHitStun(26, 20).setStunFrames(13).setWallPushback(13).setChip(0.25).setHitSound(assetManager.sounds.spearHit).setBlockSound(assetManager.sounds.spearBlock);
-		let sour = new AttackProperties().setDamage(13).setProration(-0.8, 1.2).setCancelOptions(cancelOptions).setAngleValue(player.dir.value + PI / 6).setLaunch(5, 0.1).setLaunchDampening(0.5).setHitStun(30, 22).setStunFrames(13).setWallPushback(13).setChip(0.25).setHitSound(assetManager.sounds.spearHit).setBlockSound(assetManager.sounds.spearBlock);
-		let sweet = new AttackProperties().setDamage(16).setProration(-0.9, 1.5).setCancelOptions(cancelOptions).setAngleValue(player.dir.value + PI / 6).setLaunch(2, 0.1).setLaunchDampening(0.2).setHitStun(32, 25).setStunFrames(13).setWallPushback(5).setChip(0.25).setHitSound(assetManager.sounds.spearHit).setBlockSound(assetManager.sounds.spearBlock);
+		let sour = new AttackProperties().setDamage(13).setProration(-0.8, 0.6).setCancelOptions(cancelOptions).setAngleValue(player.dir.value + PI / 6).setLaunch(5, 0.1).setLaunchDampening(0.5).setHitStun(30, 22).setStunFrames(13).setWallPushback(13).setChip(0.25).setHitSound(assetManager.sounds.spearHit).setBlockSound(assetManager.sounds.spearBlock);
+		let sweet = new AttackProperties().setDamage(16).setProration(-0.9, 0.6).setCancelOptions(cancelOptions).setAngleValue(player.dir.value + PI / 6).setLaunch(2, 0.1).setLaunchDampening(0.2).setHitStun(32, 25).setStunFrames(13).setWallPushback(5).setChip(0.25).setHitSound(assetManager.sounds.spearHit).setBlockSound(assetManager.sounds.spearBlock);
 
 		let prop = [ultraSour, sour, sweet];
 
-		return new this(player, circles, prop).setClashPriority(2).setStartupF(9).setActiveF(4).setEndF(19).setRotateable().reflectHitboxes(!player.rightHanded);
+		return new this(player, circles, prop).setClashPriority(2).setStartupF(9).setActiveF(8).setEndF(15).setRotateable().reflectHitboxes(!player.rightHanded);
 	}
 
 	draw(g) {
@@ -3099,6 +3106,12 @@ class LipaNL extends Attack {
 	logic() {
 		this.player.turnSpeedModifier = 0.05;
 		this.player.dir.changeValue((this.player.rightHanded ? -1 : 1) * PI / 256);
+
+		if (this.getFromActiveF() === 3) {
+			for (let i in this.circles) {
+				this.circles[i].setVelocity(0, 0);
+			}
+		}
 	}
 }
 
@@ -3122,9 +3135,9 @@ class LipaSL extends Attack {
 		let sweet2 = new PriorityCircle(160, 40, 30, 2).setVelocity(0.1, 0.05);
 		let circles = [ultraSour1, ultraSour2, ultraSour3, sour1, sour2, sour3, sour4, sweet1, sweet2];
 		
-		let ultraSour = new AttackProperties().setDamage(28).setProration(1.2).setCancelOptions(cancelOptions).setAngleValue(player.dir.value).setLaunch(5, 1).setHitStun(29, 8).setStunFrames(14).setWallPushback(15, 8).setCancelWait(0, 8).setChip(0.25).setHitSound(assetManager.sounds.spearHit).setBlockSound(assetManager.sounds.spearBlock);
-		let sour = new AttackProperties().setDamage(33).setProration(1.2).setCancelOptions(cancelOptions).setAngleValue(player.dir.value).setLaunch(4, 0.5).setHitStun(31, 9).setStunFrames(14).setWallPushback(15, 8).setCancelWait(0, 8).setChip(0.25).setHitSound(assetManager.sounds.spearHit).setBlockSound(assetManager.sounds.spearBlock);
-		let sweet = new AttackProperties().setDamage(33).setProration(0.9).setCancelOptions(cancelOptions).setAngleValue(player.dir.value).setLaunch(2, 0.1).setHitStun(34, 10).setStunFrames(14).setWallPushback(6, 4).setCancelWait(0, 8).setChip(0.25).setHitSound(assetManager.sounds.spearHit).setBlockSound(assetManager.sounds.spearBlock);
+		let ultraSour = new AttackProperties().setDamage(28).setProration(-0.2, 1.2).setCancelOptions(cancelOptions).setAngleValue(player.dir.value).setLaunch(5, 1).setHitStun(29, 8).setStunFrames(14).setWallPushback(15, 8).setCancelWait(0, 8).setChip(0.25).setHitSound(assetManager.sounds.spearHit).setBlockSound(assetManager.sounds.spearBlock);
+		let sour = new AttackProperties().setDamage(33).setProration(-0.2, 1.2).setCancelOptions(cancelOptions).setAngleValue(player.dir.value).setLaunch(4, 0.5).setHitStun(31, 9).setStunFrames(14).setWallPushback(15, 8).setCancelWait(0, 8).setChip(0.25).setHitSound(assetManager.sounds.spearHit).setBlockSound(assetManager.sounds.spearBlock);
+		let sweet = new AttackProperties().setDamage(33).setProration(-0.2, 0.9).setCancelOptions(cancelOptions).setAngleValue(player.dir.value).setLaunch(2, 0.1).setHitStun(34, 10).setStunFrames(14).setWallPushback(6, 4).setCancelWait(0, 8).setChip(0.25).setHitSound(assetManager.sounds.spearHit).setBlockSound(assetManager.sounds.spearBlock);
 		let prop = [ultraSour, sour, sweet];
 
 		return new this(player, circles, prop).setClashPriority(3).setStartupF(24).setActiveF(12).setEndF(24).setRotateable().reflectHitboxes(!player.rightHanded);
@@ -3322,12 +3335,12 @@ class LipaNS extends Attack {
 		let circles = [ultraSour1, ultraSour2, ultraSour3, sour1, sour2, sour3, sweet1, sweet2];
 
 		let ultraSour = new AttackProperties().setDamage(20).setProration(-0.6, 0.5).setCancelOptions(cancelOptions).setAngleValue(player.dir.value + PI / 6).setLaunch(7, 0.1).setLaunchDampening(1).setHitStun(26, 19).setStunFrames(13).setWallPushback(13).setChip(0.25).setHitSound(assetManager.sounds.spearHit).setBlockSound(assetManager.sounds.spearBlock);
-		let sour = new AttackProperties().setDamage(21).setProration(-0.8, 0.8).setCancelOptions(cancelOptions).setAngleValue(player.dir.value + PI / 6).setLaunch(6, 0.1).setLaunchDampening(0.5).setHitStun(30, 20).setStunFrames(13).setWallPushback(13).setChip(0.25).setHitSound(assetManager.sounds.spearHit).setBlockSound(assetManager.sounds.spearBlock);
-		let sweet = new AttackProperties().setDamage(25).setProration(-0.9, 0.9).setCancelOptions(cancelOptions).setAngleValue(player.dir.value + PI / 6).setLaunch(4, 0.1).setLaunchDampening(0.2).setHitStun(32, 23).setStunFrames(13).setWallPushback(5).setChip(0.25).setHitSound(assetManager.sounds.spearHit).setBlockSound(assetManager.sounds.spearBlock);
+		let sour = new AttackProperties().setDamage(21).setProration(-0.8, 0.6).setCancelOptions(cancelOptions).setAngleValue(player.dir.value + PI / 6).setLaunch(6, 0.1).setLaunchDampening(0.5).setHitStun(30, 20).setStunFrames(13).setWallPushback(13).setChip(0.25).setHitSound(assetManager.sounds.spearHit).setBlockSound(assetManager.sounds.spearBlock);
+		let sweet = new AttackProperties().setDamage(25).setProration(-0.9, 0.6).setCancelOptions(cancelOptions).setAngleValue(player.dir.value + PI / 6).setLaunch(4, 0.1).setLaunchDampening(0.2).setHitStun(32, 23).setStunFrames(13).setWallPushback(5).setChip(0.25).setHitSound(assetManager.sounds.spearHit).setBlockSound(assetManager.sounds.spearBlock);
 
 		let prop = [ultraSour, sour, sweet];
 
-		return new this(player, circles, prop).setClashPriority(2).setStartupF(16).setActiveF(4).setEndF(29).setRotateable().reflectHitboxes(!player.rightHanded);
+		return new this(player, circles, prop).setClashPriority(2).setStartupF(16).setActiveF(8).setEndF(25).setRotateable().reflectHitboxes(!player.rightHanded);
 	}
 
 	draw(g) {
@@ -3340,6 +3353,14 @@ class LipaNS extends Attack {
 	static startAttack(player, attack, bufferInfo) {
 		player.startMomentumMultiply(0);
 		player.startMomentumMultiplyDash(0.75);
+	}
+
+	logic() {
+		if (this.getFromActiveF() === 3) {
+			for (let i in this.circles) {
+				this.circles[i].setVelocity(0, 0);
+			}
+		}
 	}
 }
 
@@ -3544,7 +3565,7 @@ class LipaNPL extends Attack {
 	}
 
 	static createAttack(player) {
-		let cancelOptions = ["NS", "RPL", "LPL", "NPS", "SPS", "LPS", "NN", "dash"];
+		let cancelOptions = ["RL", "ML", "NS", "RPL", "LPL", "NPS", "SPS", "LPS", "NN", "dash"];
 
 		let ultraSour3 = new PriorityCircle(-40, 45, 20, 0).setVelocity(7, 0);
 		let ultraSour2 = new PriorityCircle(-21, 43, 20, 0).setVelocity(7, 0);
@@ -3557,13 +3578,13 @@ class LipaNPL extends Attack {
 		let sweet2 = new PriorityCircle(74, 25, 20, 2).setVelocity(11, 0);
 		let circles = [ultraSour1, ultraSour2, ultraSour3, sour1, sour2, sour3, sweet1, sweet2];
 
-		let ultraSour = new AttackProperties().setDamage(15).setProration(-0.5, 1.8).setCancelOptions(cancelOptions).setAngleValue(player.dir.value + PI / 16).setLaunch(7, 0.1).setLaunchDampening(1).setHitStun(26, 14).setStunFrames(13).setWallPushback(13).setChip(0.25).setHitSound(assetManager.sounds.spearHit).setBlockSound(assetManager.sounds.spearBlock);
-		let sour = new AttackProperties().setDamage(16).setProration(-0.8, 1.2).setCancelOptions(cancelOptions).setAngleValue(player.dir.value + PI / 16).setLaunch(5, 0.1).setLaunchDampening(0.5).setHitStun(30, 15).setStunFrames(13).setWallPushback(13).setChip(0.25).setHitSound(assetManager.sounds.spearHit).setBlockSound(assetManager.sounds.spearBlock);
-		let sweet = new AttackProperties().setDamage(21).setProration(-0.9, 1.2).setCancelOptions(cancelOptions).setAngleValue(player.dir.value + PI / 16).setLaunch(2, 0.1).setLaunchDampening(0.2).setHitStun(32, 20).setStunFrames(13).setWallPushback(5).setChip(0.25).setHitSound(assetManager.sounds.spearHit).setBlockSound(assetManager.sounds.spearBlock);
+		let ultraSour = new AttackProperties().setDamage(15).setProration(-0.5, 1).setCancelOptions(cancelOptions).setAngleValue(player.dir.value + PI / 16).setLaunch(7, 0.1).setLaunchDampening(1).setHitStun(26, 14).setStunFrames(13).setWallPushback(13).setChip(0.25).setHitSound(assetManager.sounds.spearHit).setBlockSound(assetManager.sounds.spearBlock);
+		let sour = new AttackProperties().setDamage(16).setProration(-0.8, 0.6).setCancelOptions(cancelOptions).setAngleValue(player.dir.value + PI / 16).setLaunch(5, 0.1).setLaunchDampening(0.5).setHitStun(30, 15).setStunFrames(13).setWallPushback(13).setChip(0.25).setHitSound(assetManager.sounds.spearHit).setBlockSound(assetManager.sounds.spearBlock);
+		let sweet = new AttackProperties().setDamage(21).setProration(-0.9, 0.6).setCancelOptions(cancelOptions).setAngleValue(player.dir.value + PI / 16).setLaunch(2, 0.1).setLaunchDampening(0.2).setHitStun(32, 20).setStunFrames(13).setWallPushback(5).setChip(0.25).setHitSound(assetManager.sounds.spearHit).setBlockSound(assetManager.sounds.spearBlock);
 
 		let prop = [ultraSour, sour, sweet];
 
-		return new this(player, circles, prop).setClashPriority(2).setStartupF(11).setActiveF(4).setEndF(21).setRotateable().reflectHitboxes(!player.rightHanded);
+		return new this(player, circles, prop).setClashPriority(2).setStartupF(11).setActiveF(8).setEndF(17).setRotateable().reflectHitboxes(!player.rightHanded);
 	}
 
 	draw(g) {
@@ -3580,6 +3601,12 @@ class LipaNPL extends Attack {
 
 	logic() {
 		this.player.walkMovement(0.5);
+
+		if (this.getFromActiveF() === 3) {
+			for (let i in this.circles) {
+				this.circles[i].setVelocity(0, 0);
+			}
+		}
 	}
 }
 
@@ -3590,7 +3617,7 @@ class LipaSPL extends Attack {
 	}
 
 	static createAttack(player) {
-		let cancelOptions = ["NS", "NPL", "RPL", "NPS", "SPS", "RPS", "NN", "MN", "dash"];
+		let cancelOptions = ["NL", "NS", "NPL", "RPL", "NPS", "SPS", "RPS", "NN", "MN", "dash"];
 
 		let ultraSour1 = new PriorityCircle(-48, 36, 25, 0).setVelocity(0.1, 0.03);
 		let ultraSour2 = new PriorityCircle(-20, 42, 25, 0).setVelocity(0.1, 0.03);
@@ -3778,7 +3805,7 @@ class LipaNPS extends Attack {
 	}
 
 	static createAttack(player) {
-		let cancelOptions = ["RPL", "SPS", "RPS", "LPS", "NN", "dash"];
+		let cancelOptions = ["RL", "RPL", "SPS", "RPS", "LPS", "NN", "dash"];
 
 		let ultraSour3 = new PriorityCircle(-40, 45, 20, 0).setVelocity(16, 1);
 		let ultraSour2 = new PriorityCircle(-21, 43, 20, 0).setVelocity(16, 2);
@@ -3797,7 +3824,7 @@ class LipaNPS extends Attack {
 
 		let prop = [ultraSour, sour, sweet];
 
-		return new this(player, circles, prop).setClashPriority(2).setStartupF(16).setActiveF(4).setEndF(21).setRotateable().reflectHitboxes(!player.rightHanded);
+		return new this(player, circles, prop).setClashPriority(2).setStartupF(16).setActiveF(8).setEndF(17).setRotateable().reflectHitboxes(!player.rightHanded);
 	}
 
 	draw(g) {
@@ -3814,6 +3841,12 @@ class LipaNPS extends Attack {
 
 	logic() {
 		this.player.walkMovement(0.3);
+
+		if (this.getFromActiveF() === 3) {
+			for (let i in this.circles) {
+				this.circles[i].setVelocity(0, 0);
+			}
+		}
 	}
 }
 
@@ -3833,7 +3866,7 @@ class LipaSPS extends Attack {
 		let sweet5 = new PriorityCircle(40, 18, 45, 0).setVelocity(0.1, 0).setSubVelocity(1, 1.2, 1.6);
 		let circles = [sweet1, sweet2, sweet3, sweet4, sweet5];
 
-		let sweet = new AttackProperties().setDamage(40, 30, 15).setProration(0, -2).setCancelOptions(cancelOptions).setAngleValue(player.dir.value).setLaunch(16, 5, 0.05).setHitStun(50, 20).setStunFrames(15).setWallPushback(1.5, 0.4).setChip(0.25).setHitSound(assetManager.sounds.spearHit).setBlockSound(assetManager.sounds.spearBlock);
+		let sweet = new AttackProperties().setDamage(60, 50, 15).setProration(0, -2).setCancelOptions(cancelOptions).setAngleValue(player.dir.value).setLaunch(16, 5, 0.05).setHitStun(50, 20).setStunFrames(15).setWallPushback(1.5, 0.4).setChip(0.25).setHitSound(assetManager.sounds.spearHit).setBlockSound(assetManager.sounds.spearBlock);
 		let prop = [sweet];
 
 		return new this(player, circles, prop).setClashPriority(1).setStartupF(24).setActiveF(16).setEndF(31).reflectHitboxes(!player.rightHanded);
@@ -4031,24 +4064,24 @@ class LipaNN extends Attack {
 	static createAttack(player) {
 		let cancelOptions = [];
 
-		let ultraSour1 = new PriorityCircle(0, 40, 20, 0);
-		let ultraSour2 = new PriorityCircle(20, 35, 20, 0);
-		let ultraSour3 = new PriorityCircle(40, 30, 20, 0);
-		let sour1 = new PriorityCircle(60, 25, 30, 1);
-		let sour2 = new PriorityCircle(75, 20, 30, 1);
+		let ultraSour1 = new PriorityCircle(0, 40, 30, 0);
+		let ultraSour2 = new PriorityCircle(20, 35, 30, 0);
+		let ultraSour3 = new PriorityCircle(40, 30, 30, 0);
+		let sour1 = new PriorityCircle(60, 25, 40, 1);
+		let sour2 = new PriorityCircle(75, 20, 40, 1);
 		let sour3 = new PriorityCircle(10, 0, 75, 1);
-		let sweet3 = new PriorityCircle(110, 10, 25, 2);
-		let sweet1 = new PriorityCircle(125, 5, 20, 2);
-		let sweet2 = new PriorityCircle(125, -5, 20, 2);
+		let sweet3 = new PriorityCircle(110, 10, 40, 2);
+		let sweet1 = new PriorityCircle(125, 5, 30, 2);
+		let sweet2 = new PriorityCircle(125, -5, 30, 2);
 		let circles = [ultraSour1, ultraSour2, ultraSour3, sour1, sour2, sour3, sweet3, sweet1, sweet2];
 
-		let ultraSour = new AttackProperties().setDamage(50, 10, 20).setCancelOptions(cancelOptions).setAngleValue(player.dir.value).setLaunch(13, 4, 0.5).setHitStun(36, 32).setStunFrames(13).setWallPushback(3).setChip(0.25);
-		let sour = new AttackProperties().setDamage(58, 10, 20).setCancelOptions(cancelOptions).setAngleValue(player.dir.value).setLaunch(13, 4, 0.5).setHitStun(37, 34).setStunFrames(13).setWallPushback(3).setChip(0.25);
-		let sweet = new AttackProperties().setDamage(60, 10, 20).setCancelOptions(cancelOptions).setAngleValue(player.dir.value).setLaunch(13, 4, 0.5).setHitStun(38, 35).setStunFrames(13).setWallPushback(3).setChip(0.25);
+		let ultraSour = new AttackProperties().setDamage(50, 40, 20).setCancelOptions(cancelOptions).setAngleValue(player.dir.value).setLaunch(13, 4, 0.5).setHitStun(36, 32).setStunFrames(13).setWallPushback(3).setChip(0.25);
+		let sour = new AttackProperties().setDamage(58, 40, 20).setCancelOptions(cancelOptions).setAngleValue(player.dir.value).setLaunch(13, 4, 0.5).setHitStun(37, 34).setStunFrames(13).setWallPushback(3).setChip(0.25);
+		let sweet = new AttackProperties().setDamage(60, 40, 20).setCancelOptions(cancelOptions).setAngleValue(player.dir.value).setLaunch(13, 4, 0.5).setHitStun(38, 35).setStunFrames(13).setWallPushback(3).setChip(0.25);
 
 		let prop = [ultraSour, sour, sweet];
 
-		return new this(player, circles, prop).setClashPriority(1).setStartupF(8).setActiveF(4).setEndF(29).setRotateable().reflectHitboxes(!player.rightHanded);
+		return new this(player, circles, prop).setClashPriority(1).setStartupF(8).setActiveF(8).setEndF(25).setRotateable().reflectHitboxes(!player.rightHanded);
 	}
 
 	draw(g) {
@@ -4075,8 +4108,8 @@ class LipaNN extends Attack {
 			this.player.dx += this.player.dir.getX() * 20;
 			this.player.dy += this.player.dir.getY() * 20;
 		}
-		if (this.getActiveF() <= 0) {
-			if (!this.held || this.getEndF() < 11) {
+		if (this.getActiveF() <= 4) {
+			if (!this.held || this.getActiveF() <= 0) {
 				this.player.dx *= 0.6;
 				this.player.dy *= 0.6;
 			} else {
@@ -4337,11 +4370,11 @@ class LipaLN extends Attack {
 	static createAttack(player) {
 		let cancelOptions = [];
 
-		let sweet1 = new PriorityCircle(48, 12, 30, 0);
-		let sweet2 = new PriorityCircle(65, 12, 30, 0);
+		let sweet1 = new PriorityCircle(48, 12, 45, 0);
+		let sweet2 = new PriorityCircle(65, 12, 45, 0);
 		let circles = [sweet1, sweet2];
 
-		let sweet = new AttackProperties().setDamage(0).setProration(-4).setCancelOptions(cancelOptions).setAngleValue(player.dir.value + PI / 16).setLaunch(0, 0.1).setHitStun(25).setStunFrames(36).setCommandGrab().setNoComboCounter().setZoom(34);
+		let sweet = new AttackProperties().setDamage(0).setProration(-4).setCancelOptions(cancelOptions).setAngleValue(player.dir.value + PI / 16).setLaunch(0, 0.1).setHitStun(25).setStunFrames(36).setCommandGrab().setZoom(34);
 		let prop = [sweet];
 
 		//sweet.setHitSound(assetManager.sounds.fanTP);
@@ -4380,7 +4413,7 @@ class LipaLN extends Attack {
 			let sweet1 = new PriorityCircle(60, 0, 200, 0);
 			let circles = [sweet1];
 
-			let sweet = new AttackProperties().setDamage(10).setProration(-1).setCancelOptions(cancelOptions).setAngleValue(this.player.dir.value).setLaunch(3, 0.1).setHitStun(50).setStunFrames(15).setWallPushback(50);
+			let sweet = new AttackProperties().setDamage(10).setProration(-1).setCancelOptions(cancelOptions).setAngleValue(this.player.dir.value).setLaunch(3, 0.1).setHitStun(50).setStunFrames(15).setWallPushback(50).setNoComboCounter();
 			let prop = [sweet];
 
 			//sweet.setHitSound(assetManager.sounds.fanTP);

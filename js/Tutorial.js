@@ -112,7 +112,10 @@
         g.noStroke();
         g.fill(0, 0, 14);
         g.textAlign(LEFT, TOP);
-        g.text(this.text.substring(0, this.text.length - this.textWait), 14, 238, 484, 138);
+        let roundTextAdd = 2;
+        if (currentLanguage === "en")
+            roundTextAdd = 1;
+        g.text(this.text.substring(0, Math.floor((this.text.length - this.textWait) / roundTextAdd) * roundTextAdd), 14, 238, 484, 138);
 
         this.tutorialDraw(g);
 

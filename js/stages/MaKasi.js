@@ -9,6 +9,10 @@ class MaKasi extends World {
         
     }
 
+    addShouldLoadSounds() {
+        return [];
+    }
+
     static addAssets() {
         assetManager.addImage("resources/backgrounds/ma_kasi.png", "maKasi", true);
     }

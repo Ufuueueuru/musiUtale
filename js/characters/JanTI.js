@@ -923,7 +923,9 @@
 		this.states.KEPEKEN = new State("kepeken");
 		this.states.KEPEKEN_ACTIONS = ["power dash"];
 
-		this.sikeWawaGainMult = 0.9;
+		this.sikeWawaGainMult = 0.8;
+
+		this.counterHitBuff = 8;
 
 		this.movementSpeed = 1.9;
 		this.forwardSpeedBoost = 1.7;
@@ -1355,7 +1357,7 @@
 	getShouldLoadSpritesheets() {
 		return ["janTISheet", "janTPSeliNPL", "janTPIlo", "lipuNasaIke", "janTPUtalaLipu", "konNasa", "teloSike", "kalamaSuli", "sikeSeli", "wawaPalisa", "konNasaLanpan", "konSike", "teloLonPokaLen", "janTPTawaIlo"];
 	}
-	getShouldLoadSound() {
+	getShouldLoadSounds() {
 		return ["fanTP", "fireBad", "teloLuka", "teloLukaPakala", "miKepekenEIlo"];
 	}
 
@@ -1392,8 +1394,8 @@ class JanTIDashAttack extends Attack {
 		let sweet1 = new PriorityCircle(0, 0, 140, 1).setVelocity(0.1, 0);
 		let circles = [sour1, sweet1];
 
-		let sour = new AttackProperties().setDamage(40, 20, 5).setProration(3.5).setCancelOptions(cancelOptions, hitCancelOptions).setAngleValue(player.dir.value).setLaunch(12, 9).setHitStun(20, 10).setStunFrames(13, 25).setWallPushback(5, 1).setWallLaunchMod(3);
-		let sweet = new AttackProperties().setDamage(45, 20, 5).setProration(3.5).setCancelOptions(cancelOptions, hitCancelOptions).setAngleValue(player.dir.value).setLaunch(6, 8).setHitStun(21, 10).setStunFrames(15, 25).setWallPushback(5, 1.6).setWallLaunchMod(10);
+		let sour = new AttackProperties().setDamage(40, 20, 5).setProration(3.5, 1).setCancelOptions(cancelOptions, hitCancelOptions).setAngleValue(player.dir.value).setLaunch(12, 9).setHitStun(20, 10).setStunFrames(13, 25).setWallPushback(5, 1).setWallLaunchMod(3);
+		let sweet = new AttackProperties().setDamage(45, 20, 5).setProration(3.5, 1).setCancelOptions(cancelOptions, hitCancelOptions).setAngleValue(player.dir.value).setLaunch(6, 8).setHitStun(21, 10).setStunFrames(15, 25).setWallPushback(5, 1.6).setWallLaunchMod(10);
 		let prop = [sour, sweet];
 
 		return new this(player, circles, prop).setClashPriority(2).setStartupF(16).setActiveF(6).setEndF(20);
@@ -1437,7 +1439,7 @@ class JanTINL extends Attack {
 		let sweet3 = new PriorityCircle(35, -5, 20, 0).setVelocity(1, 0);
 		let circles = [sweet1, sweet2, sweet3];
 
-		let sweet = new AttackProperties().setDamage(30).setProration(0.3).setCancelOptions(cancelOptions).setAngleValue(player.dir.value).setLaunch(1, 2, 1.1).setHitStun(17, 17).setStunFrames(11).setWallPushback(4, 2).setCancelWait(4);
+		let sweet = new AttackProperties().setDamage(30).setProration(0.3, 1).setCancelOptions(cancelOptions).setAngleValue(player.dir.value).setLaunch(1, 2, 1.1).setHitStun(17, 17).setStunFrames(11).setWallPushback(4, 2).setCancelWait(4);
 		let prop = [sweet];
 
 		sweet.setHitSound(assetManager.sounds["8BitHit"]);
@@ -1476,7 +1478,7 @@ class JanTISL extends Attack {
 		let sweet2 = new PriorityCircle(45, -40, 30, 0).setVelocity(4, 4);
 		let circles = [sweet1, sweet2];
 
-		let sweet = new AttackProperties().setDamage(33).setProration(0.125).setCancelOptions(cancelOptions).setAngleValue(player.dir.value).setLaunch(5, 1).setHitStun(21, 10).setStunFrames(14).setWallPushback(15, 4).setCancelWait(0, 4);
+		let sweet = new AttackProperties().setDamage(33).setProration(0.125, 1).setCancelOptions(cancelOptions).setAngleValue(player.dir.value).setLaunch(5, 1).setHitStun(21, 10).setStunFrames(14).setWallPushback(15, 4).setCancelWait(0, 4);
 		let prop = [sweet];
 
 		return new this(player, circles, prop).setClashPriority(5).setStartupF(15).setActiveF(9).setEndF(21).setRotateable();
@@ -1532,8 +1534,8 @@ class JanTIRL extends Attack {
 		let sour1 = new PriorityCircle(20, 0, 30, 1).setVelocity(5, 0);
 		let circles = [sweet1, sweet2, sour1];
 
-		let sweet = new AttackProperties().setDamage(44).setCancelOptions(cancelOptions, hitCancelOptions).setAngleValue(player.dir.value).setLaunch(3, 3, 1.1).setHitStun(29, 15).setStunFrames(11).setWallPushback(4, 1).setCancelWait(3).setRotateVel(2, 2, true).setCancelWait(9);
-		let sour = new AttackProperties().setDamage(35).setCancelOptions(cancelOptions, hitCancelOptions).setAngleValue(player.dir.value + PI / 16).setLaunch(3, 3, 1.1).setHitStun(29, 15).setStunFrames(11).setWallPushback(4, 1).setCancelWait(3).setRotateVel(2, 2, true).setCancelWait(9);
+		let sweet = new AttackProperties().setDamage(44).setProration(0, 1).setCancelOptions(cancelOptions, hitCancelOptions).setAngleValue(player.dir.value).setLaunch(3, 3, 1.1).setHitStun(29, 15).setStunFrames(11).setWallPushback(4, 1).setCancelWait(3).setRotateVel(2, 2, true).setCancelWait(9);
+		let sour = new AttackProperties().setDamage(35).setProration(0, 1).setCancelOptions(cancelOptions, hitCancelOptions).setAngleValue(player.dir.value + PI / 16).setLaunch(3, 3, 1.1).setHitStun(29, 15).setStunFrames(11).setWallPushback(4, 1).setCancelWait(3).setRotateVel(2, 2, true).setCancelWait(9);
 		let prop = [sweet, sour];
 
 		return new this(player, circles, prop).setClashPriority(4).setStartupF(14).setActiveF(4).setEndF(27);
@@ -1583,8 +1585,8 @@ class JanTILL extends Attack {
 		let sour1 = new PriorityCircle(20, 0, 30, 1).setVelocity(5, 1);
 		let circles = [sweet1, sweet2, sour1];
 
-		let sweet = new AttackProperties().setDamage(34).setCancelOptions(cancelOptions).setAngleValue(player.dir.value).setLaunch(2, 3, 1.1).setHitStun(30, 20).setStunFrames(13).setWallPushback(4, 1).setCancelWait(7);
-		let sour = new AttackProperties().setDamage(29).setCancelOptions(cancelOptions).setAngleValue(player.dir.value - PI / 16).setLaunch(2, 3, 1.1).setHitStun(30, 20).setStunFrames(13).setWallPushback(4, 1).setCancelWait(7);
+		let sweet = new AttackProperties().setDamage(34).setProration(0, 1).setCancelOptions(cancelOptions).setAngleValue(player.dir.value).setLaunch(2, 3, 1.1).setHitStun(30, 20).setStunFrames(13).setWallPushback(4, 1).setCancelWait(7);
+		let sour = new AttackProperties().setDamage(29).setProration(0, 1).setCancelOptions(cancelOptions).setAngleValue(player.dir.value - PI / 16).setLaunch(2, 3, 1.1).setHitStun(30, 20).setStunFrames(13).setWallPushback(4, 1).setCancelWait(7);
 		let prop = [sweet, sour];
 
 		return new this(player, circles, prop).setClashPriority(4).setStartupF(10).setActiveF(4).setEndF(24);
@@ -1633,8 +1635,8 @@ class JanTIML extends Attack {
 		let sweet1 = new PriorityCircle(10, -36, 45, 1).setCircleVelocity(13, 1, -10);
 		let circles = [sour1, sweet1];
 
-		let sweet = new AttackProperties().setDamage(36).setProration(1).setCancelOptions(cancelOptions).setAngleValue(player.dir.value + PI / 2.5).setLaunch(3, 1, 0.95).setHitStun(23, 10).setCancelWait(6).setStunFrames(11).setWallPushback(2, 1);
-		let sour = new AttackProperties().setDamage(28).setProration(1).setCancelOptions(cancelOptions).setAngleValue(player.dir.value + PI / 4).setLaunch(4, 1, 0.95).setHitStun(22, 10).setCancelWait(6).setStunFrames(10).setWallPushback(2, 1);
+		let sweet = new AttackProperties().setDamage(36).setProration(1, 1).setCancelOptions(cancelOptions).setAngleValue(player.dir.value + PI / 2.5).setLaunch(3, 1, 0.95).setHitStun(23, 10).setCancelWait(6).setStunFrames(11).setWallPushback(2, 1);
+		let sour = new AttackProperties().setDamage(28).setProration(1, 1).setCancelOptions(cancelOptions).setAngleValue(player.dir.value + PI / 4).setLaunch(4, 1, 0.95).setHitStun(22, 10).setCancelWait(6).setStunFrames(10).setWallPushback(2, 1);
 		let prop = [sour, sweet];
 
 		return new this(player, circles, prop).setClashPriority(2).setStartupF(9).setActiveF(4).setEndF(13);
@@ -1673,7 +1675,7 @@ class JanTINS extends Attack {
 		let sweet3 = new PriorityCircle(35, -5, 30, 0).setVelocity(1, 0);
 		let circles = [sweet1, sweet2, sweet3];
 
-		let sweet = new AttackProperties().setDamage(35).setProration(0.4).setCancelOptions(cancelOptions).setAngleValue(player.dir.value).setLaunch(3.5, 3, 1.1).setHitStun(25, 10).setStunFrames(11).setWallPushback(4, 1).setCancelWait(5, 8).setNormalizeHitStun();
+		let sweet = new AttackProperties().setDamage(35).setProration(0.4, 1).setCancelOptions(cancelOptions).setAngleValue(player.dir.value).setLaunch(3.5, 3, 1.1).setHitStun(25, 10).setStunFrames(11).setWallPushback(4, 1).setCancelWait(5, 8).setNormalizeHitStun();
 		let prop = [sweet];
 
 		return new this(player, circles, prop).setClashPriority(4).setStartupF(11).setActiveF(8).setEndF(11).setRotateable();
@@ -1719,7 +1721,7 @@ class JanTISS extends Attack {
 		let sweet2 = new PriorityCircle(80, 0, 65, 0).setVelocity(1, 0);
 		let circles = [sweet1, sweet2];
 
-		let sweet = new AttackProperties().setDamage(18, -3).setProration(-0.5).setChip(0.15).setCancelOptions(cancelOptions).setAngleValue(player.dir.value).setLaunch(3, 5, 0.5).setHitStun(32, 20).setStunFrames(6).setNormalizeHitStun().setWallPushback(2, 4);
+		let sweet = new AttackProperties().setDamage(18, -3).setProration(-0.5, 1).setChip(0.15).setCancelOptions(cancelOptions).setAngleValue(player.dir.value).setLaunch(3, 5, 0.5).setHitStun(32, 20).setStunFrames(6).setNormalizeHitStun().setWallPushback(2, 4);
 		let prop = [sweet];
 
 		sweet.setHitSound(assetManager.sounds.fanTP);
@@ -1782,7 +1784,7 @@ class JanTIRS extends Attack {
 		let sweet4 = new PriorityCircle(75, 75, 30, 0).setVelocity(1.5, -6);
 		let circles = [sweet1, sweet2, sweet3, sweet4];
 
-		let sweet = new AttackProperties().setDamage(50).setCancelOptions(cancelOptions, hitCancelOptions).setAngleValue(player.dir.value - PI / 6).setLaunch(7).setHitStun(35, 27).setStunFrames(13).setRotateVel(7, 7, true).setRotateSlowDown(0.25, 60, true).setNormalizeHitStun();
+		let sweet = new AttackProperties().setDamage(50).setProration(0, 1).setCancelOptions(cancelOptions, hitCancelOptions).setAngleValue(player.dir.value - PI / 6).setLaunch(7).setHitStun(35, 27).setStunFrames(13).setRotateVel(7, 7, true).setRotateSlowDown(0.25, 60, true).setNormalizeHitStun();
 		let prop = [sweet];
 
 		sweet.setHitSound(assetManager.sounds.teloLukaPakala);
@@ -1855,7 +1857,7 @@ class JanTILS extends Attack {
 		let sweet4 = new PriorityCircle(75, -75, 30, 0).setVelocity(1.5, 6);
 		let circles = [sweet1, sweet2, sweet3, sweet4];
 
-		let sweet = new AttackProperties().setDamage(55).setCancelOptions(cancelOptions, hitCancelOptions).setAngleValue(player.dir.value + PI / 3).setLaunch(6).setHitStun(25, 25).setStunFrames(13).setRotateVel(-7, -7, true).setRotateSlowDown(0.25, 60, true).setNormalizeHitStun();
+		let sweet = new AttackProperties().setDamage(55).setProration(0, 1).setCancelOptions(cancelOptions, hitCancelOptions).setAngleValue(player.dir.value + PI / 3).setLaunch(6).setHitStun(25, 25).setStunFrames(13).setRotateVel(-7, -7, true).setRotateSlowDown(0.25, 60, true).setNormalizeHitStun();
 		let prop = [sweet];
 
 		sweet.setHitSound(assetManager.sounds.teloLukaPakala);
@@ -1930,8 +1932,8 @@ class JanTIMS extends Attack {
 		let sweet1 = new PriorityCircle(40, 0, 50, 0).setVelocity(1, 0);
 		let circles = [sweet1, sour1];
 
-		let sweet = new AttackProperties().setDamage(40, 14, 8).setProration(-0.5).setCancelOptions(cancelOptions, hitCancelOptions).setAngleValue(player.dir.value + PI).setLaunch(4, 2).setHitStun(21, 20).setStunFrames(14).setCancelWait(4);
-		let sour = new AttackProperties().setDamage(34, 11, 8).setProration(-0.5).setCancelOptions(cancelOptions, hitCancelOptions).setAngleValue(player.dir.value + PI).setLaunch(5, 2).setHitStun(21, 20).setStunFrames(14).setCancelWait(4);
+		let sweet = new AttackProperties().setDamage(40, 14, 8).setProration(-0.5, 1).setCancelOptions(cancelOptions, hitCancelOptions).setAngleValue(player.dir.value + PI).setLaunch(4, 2).setHitStun(21, 20).setStunFrames(14).setCancelWait(4);
+		let sour = new AttackProperties().setDamage(34, 11, 8).setProration(-0.5, 1).setCancelOptions(cancelOptions, hitCancelOptions).setAngleValue(player.dir.value + PI).setLaunch(5, 2).setHitStun(21, 20).setStunFrames(14).setCancelWait(4);
 		let prop = [sweet, sour];
 
 		return new this(player, circles, prop).setClashPriority(false).setStartupF(14).setActiveF(5).setEndF(30).setFollow(false);
@@ -1998,8 +2000,8 @@ class JanTINPL extends Attack {
 		let sour3 = new PriorityCircle(65, -10, 10, 1).setVelocity(6.4, -2.6);
 		let circles = [sweet1, sour1, sour2, sour3];
 
-		let sweet = new AttackProperties().setDamage(30).setProration(-0.1).setCancelOptions(cancelOptions, hitCancelOptions).setCancelWait(3).setAngleValue(player.dir.value).setLaunch(4, 3).setHitStun(28, 16).setStunFrames(15).setWallPushback(2);
-		let sour = new AttackProperties().setDamage(23).setProration(-0.1).setCancelOptions(cancelOptions, hitCancelOptions).setCancelWait(3).setAngleValue(player.dir.value).setLaunch(5, 3.5).setHitStun(26, 15).setStunFrames(14).setWallPushback(2.1);
+		let sweet = new AttackProperties().setDamage(30).setProration(-0.1, 1).setCancelOptions(cancelOptions, hitCancelOptions).setCancelWait(3).setAngleValue(player.dir.value).setLaunch(4, 3).setHitStun(28, 16).setStunFrames(15).setWallPushback(2);
+		let sour = new AttackProperties().setDamage(23).setProration(-0.1, 1).setCancelOptions(cancelOptions, hitCancelOptions).setCancelWait(3).setAngleValue(player.dir.value).setLaunch(5, 3.5).setHitStun(26, 15).setStunFrames(14).setWallPushback(2.1);
 		let prop = [sweet, sour];
 
 		sweet.playSound(player.world, assetManager.sounds.fireBad);
@@ -2074,10 +2076,10 @@ class JanTISPL extends Attack {
 		let sweet1 = new PriorityCircle(50, -20, 35, 0).setVelocity(4.5, -4);
 		let circles = [sweet1];
 
-		let sweet = new AttackProperties().setDamage(35, undefined, 10).setProration(0.5).setCancelOptions(cancelOptions).setAngleValue(player.dir.value).setLaunch(2).setHitStun(21, 5).setStunFrames(10).setAngleTypes("vel", "direct");
+		let sweet = new AttackProperties().setDamage(35, undefined, 10).setProration(0.5, 1).setCancelOptions(cancelOptions).setAngleValue(player.dir.value).setLaunch(2).setHitStun(21, 5).setStunFrames(10).setAngleTypes("vel", "direct");
 		let prop = [sweet];
 
-		return new this(player, circles, prop).setClashPriority(1).setStartupF(15).setActiveF(60).setEndF(25).setProjectile().setFollow(false);
+		return new this(player, circles, prop).setClashPriority(3).setStartupF(15).setActiveF(60).setEndF(25).setProjectile().setFollow(false);
 	}
 
 	static startAttack(player, attack, bufferInfo) {
@@ -2151,8 +2153,8 @@ class JanTIRPL extends Attack {
 		let sweet1 = new PriorityCircle(70, 60, 50, 1).setVelocity(1, -0.7);
 		let circles = [sour1, sweet1];
 
-		let sweet = new AttackProperties().setDamage(70).setProration(0.3).setCancelOptions(cancelOptions, hitCancelOptions).setLaunch(3, 4, 0.8).setHitStun(25, 16).setCancelWait(12).setStunFrames(15).setAngleTypes("direct", "vel");
-		let sour = new AttackProperties().setDamage(68).setProration(0.3).setCancelOptions(cancelOptions, hitCancelOptions).setLaunch(3, 4, 0.8).setHitStun(25, 16).setCancelWait(12).setStunFrames(15).setAngleTypes("direct", "vel");
+		let sweet = new AttackProperties().setDamage(70).setProration(0.3, 1).setCancelOptions(cancelOptions, hitCancelOptions).setLaunch(3, 4, 0.8).setHitStun(25, 16).setCancelWait(12).setStunFrames(15).setAngleTypes("direct", "vel");
+		let sour = new AttackProperties().setDamage(68).setProration(0.3, 1).setCancelOptions(cancelOptions, hitCancelOptions).setLaunch(3, 4, 0.8).setHitStun(25, 16).setCancelWait(12).setStunFrames(15).setAngleTypes("direct", "vel");
 		let prop = [sour, sweet];
 
 		return new this(player, circles, prop).setStartupF(15).setActiveF(5).setEndF(19).setFollow(false);
@@ -2227,8 +2229,8 @@ class JanTILPL extends Attack {
 		let sweet1 = new PriorityCircle(70, -60, 50, 1).setVelocity(1, 1);
 		let circles = [sour1, sweet1];
 
-		let sweet = new AttackProperties().setDamage(50).setProration(0.1).setCancelOptions(cancelOptions, hitCancelOptions).setLaunch(3, 2, 0.9).setHitStun(25, 20).setCancelWait(5).setStunFrames(15).setAngleTypes("direct", "vel");
-		let sour = new AttackProperties().setDamage(48).setProration(0.1).setCancelOptions(cancelOptions, hitCancelOptions).setLaunch(3, 2, 0.9).setHitStun(25, 20).setCancelWait(5).setStunFrames(15).setAngleTypes("direct", "vel");
+		let sweet = new AttackProperties().setDamage(50).setProration(0.1, 1).setCancelOptions(cancelOptions, hitCancelOptions).setLaunch(3, 2, 0.9).setHitStun(25, 20).setCancelWait(5).setStunFrames(15).setAngleTypes("direct", "vel");
+		let sour = new AttackProperties().setDamage(48).setProration(0.1, 1).setCancelOptions(cancelOptions, hitCancelOptions).setLaunch(3, 2, 0.9).setHitStun(25, 20).setCancelWait(5).setStunFrames(15).setAngleTypes("direct", "vel");
 		let prop = [sour, sweet];
 
 		return new this(player, circles, prop).setClashPriority(3).setStartupF(14).setActiveF(5).setEndF(18).setFollow(false);
@@ -2309,7 +2311,7 @@ class JanTIMPL extends Attack {
 		let sour8 = new PriorityCircle(0, -77, 50, 0).setCircleVelocity(64, 1);
 		let circles = [sour1, sour2, sour3, sour4, sour5, sour6, sour7, sour8];
 
-		let sour = new AttackProperties().setDamage(49).setCancelOptions(cancelOptions, hitCancelOptions).setAngleValue(player.dir.value - PI / 4).setLaunch(6, 0, 0.85).setHitStun(25, 18).setStunFrames(13).setAngleTypes("vel", "vel").setRotateVel(-4, -3, true).setRotateSlowDown(0.25, 60, true).setCancelWait(0, 5);
+		let sour = new AttackProperties().setDamage(49).setProration(0, 1).setCancelOptions(cancelOptions, hitCancelOptions).setAngleValue(player.dir.value - PI / 4).setLaunch(6, 0, 0.85).setHitStun(25, 18).setStunFrames(13).setAngleTypes("vel", "vel").setRotateVel(-4, -3, true).setRotateSlowDown(0.25, 60, true).setCancelWait(0, 5);
 		let prop = [sour];
 
 		return new this(player, circles, prop).setClashPriority(4).setStartupF(12).setActiveF(6).setEndF(17);
@@ -2369,8 +2371,8 @@ class JanTINPS extends Attack {
 		let sour3 = new PriorityCircle(60, -10, 20, 1).setVelocity(4.8, -1.8);
 		let circles = [sweet1, sour1, sour2, sour3];
 
-		let sweet = new AttackProperties().setDamage(80).setProration(-0.725).setCancelOptions(cancelOptions).setAngleValue(player.dir.value).setLaunch(4, 3.1).setHitStun(50, 14).setStunFrames(15);
-		let sour = new AttackProperties().setDamage(73).setProration(-0.725).setCancelOptions(cancelOptions).setAngleValue(player.dir.value).setLaunch(5, 3).setHitStun(48, 12).setStunFrames(13);
+		let sweet = new AttackProperties().setDamage(80).setProration(-0.725, 1).setCancelOptions(cancelOptions).setAngleValue(player.dir.value).setLaunch(4, 3.1).setHitStun(50, 14).setStunFrames(15);
+		let sour = new AttackProperties().setDamage(73).setProration(-0.725, 1).setCancelOptions(cancelOptions).setAngleValue(player.dir.value).setLaunch(5, 3).setHitStun(48, 12).setStunFrames(13);
 		let prop = [sweet, sour];
 
 		return new this(player, circles, prop).setClashPriority(2).setStartupF(19).setActiveF(16).setEndF(10);
@@ -2441,10 +2443,10 @@ class JanTISPS extends Attack {
 		let sweet1 = new PriorityCircle(60, -30, 50, 0).setVelocity(2, -2);
 		let circles = [sweet1];
 
-		let sweet = new AttackProperties().setDamage(55).setProration(0.5).setCancelOptions(cancelOptions).setAngleValue(player.dir.value).setLaunch(3).setHitStun(36, 5).setStunFrames(15).setAngleTypes("vel", "direct");
+		let sweet = new AttackProperties().setDamage(55).setProration(0.5, 1).setCancelOptions(cancelOptions).setAngleValue(player.dir.value).setLaunch(3).setHitStun(36, 5).setStunFrames(15).setAngleTypes("vel", "direct");
 		let prop = [sweet];
 
-		return new this(player, circles, prop).setClashPriority(0).setStartupF(29).setActiveF(90).setEndF(23).setProjectile().setFollow(false);
+		return new this(player, circles, prop).setClashPriority(2).setStartupF(29).setActiveF(90).setEndF(23).setProjectile().setFollow(false);
 	}
 
 	static startAttack(player, attack, bufferInfo) {
@@ -2518,8 +2520,8 @@ class JanTIRPS extends Attack {
 		let sweeter2 = new PriorityCircle(125, 133, 40, 1).setVelocity(0.1, 0);
 		let circles = [sweet1, sweet2, sweeter1, sweeter2];
 
-		let sweet = new AttackProperties().setDamage(30).setProration(-0.5).setCancelOptions(cancelOptions).setAngleValue(player.dir.value - PI * 0.6).setLaunch(6, 2).setHitStun(39, 13).setStunFrames(15).setCancelWait(20);
-		let sweeter = new AttackProperties().setDamage(30).setProration(-0.5).setCancelOptions(cancelOptions).setAngleValue(player.dir.value - PI * 0.6).setLaunch(9, 2).setHitStun(39, 13).setStunFrames(15).setCancelWait(20);
+		let sweet = new AttackProperties().setDamage(30).setProration(-0.5, 1).setCancelOptions(cancelOptions).setAngleValue(player.dir.value - PI * 0.6).setLaunch(6, 2).setHitStun(39, 13).setStunFrames(15).setCancelWait(20);
+		let sweeter = new AttackProperties().setDamage(30).setProration(-0.5, 1).setCancelOptions(cancelOptions).setAngleValue(player.dir.value - PI * 0.6).setLaunch(9, 2).setHitStun(39, 13).setStunFrames(15).setCancelWait(20);
 		let prop = [sweet, sweeter];
 
 		return new this(player, circles, prop).setClashPriority(false).setStartupF(19).setActiveF(6).setEndF(34);
@@ -2570,8 +2572,8 @@ class JanTILPS extends Attack {
 		let sweeter2 = new PriorityCircle(140, -95, 40, 1).setVelocity(0.1, 0);
 		let circles = [sweet1, sweet2, sweeter1, sweeter2];
 
-		let sweet = new AttackProperties().setDamage(45).setProration(-0.5).setCancelOptions(cancelOptions).setAngleValue(player.dir.value + PI * 0.8).setLaunch(5, 0.5).setHitStun(43, 13).setStunFrames(15).setCancelWait(20);
-		let sweeter = new AttackProperties().setDamage(45).setProration(-0.5).setCancelOptions(cancelOptions).setAngleValue(player.dir.value + PI * 0.8).setLaunch(6, 0.5).setHitStun(43, 13).setStunFrames(15).setCancelWait(20);
+		let sweet = new AttackProperties().setDamage(45).setProration(-0.5, 1).setCancelOptions(cancelOptions).setAngleValue(player.dir.value + PI * 0.8).setLaunch(5, 0.5).setHitStun(43, 13).setStunFrames(15).setCancelWait(20);
+		let sweeter = new AttackProperties().setDamage(45).setProration(-0.5, 1).setCancelOptions(cancelOptions).setAngleValue(player.dir.value + PI * 0.8).setLaunch(6, 0.5).setHitStun(43, 13).setStunFrames(15).setCancelWait(20);
 		let prop = [sweet, sweeter];
 
 		return new this(player, circles, prop).setClashPriority(false).setStartupF(18).setActiveF(6).setEndF(34);
@@ -2621,8 +2623,8 @@ class JanTIMPS extends Attack {
 		let sweet1 = new PriorityCircle(0, 0, 150, 0);
 		let circles = [sweet1, sour1];
 
-		let sour = new AttackProperties().setDamage(19, 19, 6).setCancelOptions(cancelOptions, hitCancelOptions).setAngleValue(player.dir.value).setLaunch(13, 0.1, 0.25).setHitStun(29, 7).setCancelWait(5).setStunFrames(15).setAngleTypes("direct", "direct");
-		let sweet = new AttackProperties().setDamage(20, 19, 6).setCancelOptions(cancelOptions, hitCancelOptions).setAngleValue(player.dir.value).setLaunch(15, 0.1, 0.5).setHitStun(32, 7).setCancelWait(5).setStunFrames(15).setAngleTypes("direct", "direct");
+		let sour = new AttackProperties().setDamage(19, 19, 6).setProration(0, 1).setCancelOptions(cancelOptions, hitCancelOptions).setAngleValue(player.dir.value).setLaunch(13, 0.1, 0.25).setHitStun(29, 7).setCancelWait(5).setStunFrames(15).setAngleTypes("direct", "direct");
+		let sweet = new AttackProperties().setDamage(20, 19, 6).setProration(0, 1).setCancelOptions(cancelOptions, hitCancelOptions).setAngleValue(player.dir.value).setLaunch(15, 0.1, 0.5).setHitStun(32, 7).setCancelWait(5).setStunFrames(15).setAngleTypes("direct", "direct");
 		let prop = [sweet, sour];
 
 		return new this(player, circles, prop).setClashPriority(false).setStartupF(17).setActiveF(4).setEndF(30);
@@ -2842,7 +2844,7 @@ class JanTILN extends Attack {
 		let sweet5 = new PriorityCircle(30, -65, 60, 0).setVelocity(1, 0.6);
 		let circles = [sweet1, sweet2, sweet3, sweet4, sweet5];
 
-		let sweet = new AttackProperties().setDamage(45).setCancelOptions(cancelOptions).setAngleValue(player.dir.value).setLaunch(4, 6, 1.1).setHitStun(30, 19).setStunFrames(14).setNormalizeHitStun();
+		let sweet = new AttackProperties().setDamage(45).setProration(0, 1).setCancelOptions(cancelOptions).setAngleValue(player.dir.value).setLaunch(4, 6, 1.1).setHitStun(30, 9).setStunFrames(14).setNormalizeHitStun();
 		let prop = [sweet];
 
 		return new this(player, circles, prop).setClashPriority(1).setStartupF(20).setActiveF(6).setEndF(22).setRotateable();
@@ -2935,8 +2937,8 @@ class JanTIMN extends Attack {
 		let sweet2 = new PriorityCircle(-20, -85, 40, 1).setVelocity(0.01, 0);//.setCircleVelocity(16, -1);//-20, 95
 		let circles = [sour1, sweet1, sweet2];
 
-		let sweet = new AttackProperties().setDamage(60).setCancelOptions(cancelOptions, hitCancelOptions).setAngleValue(player.dir.value - PI / 6, PI / 6).setLaunch(15).setHitStun(33, 15).setStunFrames(15, 17);
-		let sour = new AttackProperties().setDamage(50).setCancelOptions(cancelOptions, hitCancelOptions).setAngleValue(player.dir.value - PI / 6, PI / 6).setLaunch(14).setHitStun(32, 15).setStunFrames(15, 18);
+		let sweet = new AttackProperties().setDamage(60).setProration(0.5, 1).setCancelOptions(cancelOptions, hitCancelOptions).setAngleValue(player.dir.value - PI / 6, PI / 6).setLaunch(15).setHitStun(33, 5).setStunFrames(15, 17).setStaggerFrames(0, 10);
+		let sour = new AttackProperties().setDamage(50).setProration(0.5, 1).setCancelOptions(cancelOptions, hitCancelOptions).setAngleValue(player.dir.value - PI / 6, PI / 6).setLaunch(14).setHitStun(32, 5).setStunFrames(15, 18).setStaggerFrames(0, 10);
 		let prop = [sour, sweet];
 
 		return new this(player, circles, prop).setClashPriority(0).setStartupF(15).setActiveF(12).setEndF(25).setRotateable();
@@ -2978,6 +2980,10 @@ class JanTIMN extends Attack {
 		if (this.getStartupF() <= 0 && this.getFromEndF() < 8) {
 			this.dir.value += (8 - this.getFromEndF()) / 13;
 		}
+		if (this.hitPlayerBool) {
+			this.player.dx *= 0.92;
+			this.player.dy *= 0.92;
+		}
 		if (this.getFromStartupF() === 8) {
 			this.player.invTo = ["attack"];
 			this.player.iFrames = 12;
@@ -3000,8 +3006,8 @@ class JanTIBook extends Attack {
 		let sweet1 = new PriorityCircle(70, 0, 10, 1);
 		let circles = [sour1, sour2, sour3, sweet1];
 
-		let sour = new AttackProperties().setDamage(54, 0, 8).setProration(-1.9375).setAngleValue(player.dir.value).setLaunch(0, 0).setHitStun(29, 23).setStunFrames(5);
-		let sweet = new AttackProperties().setDamage(59, 0, 8).setProration(-1.9375).setAngleValue(player.dir.value).setLaunch(0, 0).setHitStun(31, 25).setStunFrames(7);
+		let sour = new AttackProperties().setDamage(54, 0, 8).setProration(-1.9375, 1).setAngleValue(player.dir.value).setLaunch(0, 0).setHitStun(29, 23).setStunFrames(5);
+		let sweet = new AttackProperties().setDamage(59, 0, 8).setProration(-1.9375, 1).setAngleValue(player.dir.value).setLaunch(0, 0).setHitStun(31, 25).setStunFrames(7);
 		let prop = [sour, sweet];
 
 		let output = new this(player, circles, prop).setVelocity(0.1, 0).setClashPriority(6).setFollow(false).setStartupF(30).setActiveF(5).setEndF(5);

@@ -58,7 +58,7 @@ class MenuOtherScreen extends Screen {
             g.noFill();
             g.stroke(0);
             g.strokeWeight(12 * width / 512 * (30 - this.menu.transitioning));
-            g.ellipse(width / 2, height / 2, width / 3 + (30 - this.menu.transitioning) * width / 120, width / 3 + (30 - this.menu.transitioning) * width / 120);
+            g.ellipse(width / 2, height / 2, width / 3 + (30 - this.menu.transitioning) * width / 90, width / 3 + (30 - this.menu.transitioning) * width / 90);
         }
         if (this.menu.transitioning < 0) {
             g.background(0, 0, 0, -this.menu.transitioning * 9);

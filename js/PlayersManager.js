@@ -5,6 +5,10 @@ class PlayersManager {
         this.controls = globalControls;
 
         this.chosenControls = [null, null];
+        this.controlsAnim = [];
+        for (let i in this.controls) {
+            this.controlsAnim.push(0);
+        }
 
         this.overrideScreen = false;
         this.overrideBuffer = 0;
@@ -12,6 +16,8 @@ class PlayersManager {
         this.disableP2Bool = false;
 
         this.backScreen = undefined;
+
+        this.transitioning = 0;
     }
 
     disableP2() {
@@ -20,23 +26,32 @@ class PlayersManager {
 
     resetPositions(backScreen = undefined) {
         this.chosenControls = [null, null];
+        this.controlsAnim.fill(0);
         this.disableP2Bool = false;
         this.backScreen = backScreen;
+
+        this.transitioning = 15;
     }
 
     resetPositionsNetplay(backScreen = undefined) {
         this.chosenControls = [null, new NetplayControls()];
+        this.controlsAnim.fill(0);
         this.disableP2Bool = false;
         this.backScreen = backScreen;
+
+        this.transitioning = 15;
     }
 
-    openScreen(buffer = 4) {
+    openScreen(buffer = 8) {
         this.overrideScreen = true;
         this.overrideBuffer = buffer;
+
+        this.transitioning = -buffer;
     }
 
     reset() {
         this.chosenControls = [null, null];
+        this.controlsAnim.fill(0);
     }
 
     draw(g) {
@@ -49,10 +64,12 @@ class PlayersManager {
         let y = 0;
         for (let i = 0; i < this.controls.length; i++) {
             if (!this.controls[i].computer) {
-                let intercept = 0;
+                let mult = (typeof this.controlsAnim[i] === "number") ? this.controlsAnim[i] : 0;
+                let intercept = mult;
                 loop1: for (let u = 0; u < this.chosenControls.length; u++) {
                     if (this.chosenControls[u] === this.controls[i]) {
-                        intercept = 2 * u - 1;
+                        mult = (typeof this.controlsAnim[i] === "number") ? this.controlsAnim[i] : 1;
+                        intercept = (2 * u - 1) * Math.abs(mult);
                         break loop1;
                     }
                 }
@@ -86,15 +103,45 @@ class PlayersManager {
             g.text("󱤝", width / 2 + imageWidth * 0.2, height / 2 - imageHeight * 0.07);//kon
         }
         g.textAlign(LEFT, BASELINE);
+
+        if (this.transitioning > 0) {
+            g.background(0, this.transitioning * 17);
+        }
+        if (this.transitioning < 0) {
+            g.background(0, (this.transitioning + 8) * 86);
+        }
     }
 
     run() {
+        if (this.transitioning > 0)
+            this.transitioning--;
+        if (this.transitioning < 0)
+            this.transitioning++;
         if (this.overrideBuffer > 0)
             this.overrideBuffer--;
 
-        for (let u in this.chosenControls) {
+        while (this.controlsAnim.length < this.controls.length) {
+            this.controlsAnim.push(0);
+        }
+        while (this.controlsAnim.length > this.controls.length) {
+            this.controlsAnim.pop();
+        }
+        for (let u = 0; u < this.chosenControls.length; u++) {
             if (this.chosenControls[u] && this.chosenControls[u].layout === "gamepad" && !this.chosenControls[u].getGamepad()) {
                 this.chosenControls[u] = null;
+            }
+        }
+        for (let i in this.controlsAnim) {
+            let u = -1;
+            for (let o = 0; o < this.chosenControls.length; o++) {
+                if (this.chosenControls[o] === this.controls[i])
+                    u = o;
+            }
+            if (u !== -1) {
+                let intercept = u * 2 - 1;
+                this.controlsAnim[i] = (intercept + this.controlsAnim[i] * 2) / 3;
+            } else {
+                this.controlsAnim[i] *= 2 / 3;
             }
         }
         for (let i in this.controls) {

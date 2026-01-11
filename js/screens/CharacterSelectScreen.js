@@ -177,9 +177,10 @@ class CharacterSelectScreen extends Screen {
                         currentScreen = screen;*/
                         this.menu.goTo(StageSelectScreen, (screen) => {
                             if (this.netplay)
-                                screen.setNetplay(this.peer, this.connectionID);
+                                screen.setNetplay(this.peer, this.connection);
                             if (this.training)
                                 screen.setTraining();
+                            screen.setPlayerNumber(this.playerNumber);
                             screen.setSelections(this.selections);
                             screen.setControls(this.playerControls, this.fakeControls);
                         });
@@ -231,11 +232,15 @@ class CharacterSelectScreen extends Screen {
         }
     }
 
-    setNetplay(peer, connectionID) {
+    setNetplay(peer, connection) {
         this.netplay = true;
 
-        this.peer = peer;
-        this.connectionID = connectionID;
+        if (peer !== undefined)
+            this.peer = peer;
+        if (connection !== undefined)
+            this.connection = connection;
+
+        //print(peer, connectionID);
     }
 
     setTraining() {
@@ -253,8 +258,12 @@ class CharacterSelectScreen extends Screen {
         this.fakeControls = fake;
     }
 
+    setPlayerNumber(number) {
+        this.playerNumber = number;
+    }
+
     init() {
-        this.menu = new Menu(MenuDebugScreen, () => { }, false);
+        this.menu = new Menu(undefined, () => { playersManager.openScreen() }, false);
 
         this.netplay = false;
 
@@ -262,6 +271,8 @@ class CharacterSelectScreen extends Screen {
 
         //Which characters have been selected
         this.selections = [0, 0];
+
+        this.playerNumber = -1;
 
         this.selected = [false, false];
 

@@ -12,17 +12,26 @@
     }
 
     playMusic() {
-        this.playSong(assetManager.sounds.maPiKulupuIke);
+        if (random(0, 1) > 0.5) {
+            this.playSong(assetManager.sounds.maPiKulupuIke);
+        } else {
+            this.playSong(assetManager.sounds.utalaIke);
+        }
     }
 
     getShouldLoadSounds() {
-        return ["maPiKulupuIke"];
+        return ["maPiKulupuIke", "utalaIke"];
     }
 
     static addAssets() {
         assetManager.addImage("resources/backgrounds/kulupu_ike.png", "kulupuIke", true);
 
         assetManager.addSound("resources/music/ma pi kulupu ike.wav", "maPiKulupuIke", {
+            loop: true,
+            volume: 0.8
+        });
+
+        assetManager.addSound("resources/music/utala ike.wav", "utalaIke", {
             loop: true,
             volume: 0.8
         });

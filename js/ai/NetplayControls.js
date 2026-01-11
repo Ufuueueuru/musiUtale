@@ -18,6 +18,7 @@ class NetplayControls extends Controls {
         //this.startUpdateButtons();
         if (receivedData)
             defaultDeserialize(this, receivedData.inputs);
+        super.update();
         //this.endUpdateButtons();
     }
 

@@ -27,6 +27,14 @@
         }
     }
 
+    playMusic() {
+        this.playSong(assetManager.sounds.nasinNoka);
+    }
+
+    getShouldLoadSounds() {
+        return ["nasinNoka"];
+    }
+
     static addAssets() {
         assetManager.addImage("resources/backgrounds/nasin_noka.png", "nasinNoka", true);
     }

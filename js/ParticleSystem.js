@@ -14,15 +14,22 @@ class ParticleSystem {
 	}
 
 	createParticle(name, player, x, y, width, height, angle=Angle.RIGHT, follow = false, dx = 0, dy = 0, logic = () => { }, startup = 0) {
+		let particle;
 		if (name !== undefined) {
-			this.particles.push(Particle.fromTemplate(this.templates[name], player).setPosition(x, y).setSize(width, height).setVelocity(dx, dy).setLogic(logic).setStartup(startup).setAngle(angle).setFollow(follow));
+			particle = Particle.fromTemplate(this.templates[name], player).setPosition(x, y).setSize(width, height).setVelocity(dx, dy).setStartup(startup).setAngle(angle).setFollow(follow);
+			particle.setLogic(() => {logic(particle);});
+			this.particles.push(particle);
 		} else {
-			this.particles.push(new Particle(undefined).setPosition(x, y).setSize(width, height).setVelocity(dx, dy).setLogic(logic).setStartup(startup).setAngle(angle).setFollow(follow));
+			particle = new Particle(undefined).setPosition(x, y).setSize(width, height).setVelocity(dx, dy).setStartup(startup).setAngle(angle).setFollow(follow);
+			particle.setLogic(() => {logic(particle);});
+			this.particles.push(particle);
 		}
 	}
 
 	createManualParticle(player, x, y, angle, drawFunc, follow = false, dx = 0, dy = 0, logic = () => { }, startup = 0) {
-		this.particles.push(new Particle(undefined).setPlayer(player).setPosition(x, y).setVelocity(dx, dy).setLogic(logic).setStartup(startup).setAngle(angle).setFollow(follow).setDraw(drawFunc));
+		let particle = new Particle(undefined).setPlayer(player).setPosition(x, y).setVelocity(dx, dy).setStartup(startup).setAngle(angle).setFollow(follow).setDraw(drawFunc);
+		particle.setLogic(() => {logic(particle);});
+		this.particles.push(particle);
 	}
 
 	run() {
@@ -42,22 +49,19 @@ class ParticleSystem {
 	}
 
 	serialize() {
-		this.particles = [];
-		for (let i in obj._hitPlayers) {
-			if (obj._hitPlayers[i] === -1) {
-				this.currentAttackReferences.push(null);
-			} else {
-				this.currentAttackReferences.push(this.world.players[obj._hitPlayers[i]]);
-			}
-		}
-
-
+		return (({
+			templates,
+			...o
+		}) => defaultSerialize(o))(this);
 	}
 
-	deserialize(obj) {
+	deserialize(obj, world) {
+		defaultCopyValues(this, obj, ["particles"]);
 		this.particles = [];
 		for (let i in obj.particles) {
-			this.particles.push(new Particle().deserialize(obj.particles[i]))
+			let newParticle = new Particle();
+			newParticle.deserialize(obj.particles[i], world);
+			this.particles.push(newParticle);
 		}
 	}
 }
@@ -152,16 +156,16 @@ class Particle extends Spritesheet {
 	}
 
 	run() {
-		if (this.player.stunFrames <= 0) {
+		if (this.player === null || this.player.stunFrames <= 0) {
 			if (this.startup > 0)
 				this.startup++;
 
-			if (this.follow) {
+			if (this.follow && this.player !== null) {
 				this.dx = this.player.x - this.x - this.followX;
 				this.dy = this.player.y - this.y - this.followY;
 			}
 
-			if (this.player.slowDownFrames <= 0) {
+			if (this.player === null || this.player.slowDownFrames <= 0) {
 				this.x += this.dx;
 				this.y += this.dy;
 			} else {
@@ -251,9 +255,13 @@ class Particle extends Spritesheet {
 
 	setFollow(bool=true) {
 		this.follow = bool;
-
-		this.followX = this.player.x - this.x;
-		this.followY = this.player.y - this.y;
+		if (this.player === null) {
+			this.followX = 0;
+			this.followY = 0;
+		} else {
+			this.followX = this.player.x - this.x;
+			this.followY = this.player.y - this.y;
+		}
 
 		return this;
 	}
@@ -276,10 +284,21 @@ class Particle extends Spritesheet {
 		//TODO a ton of things need to be fixed here
 		//copy.spritesheet
 
+		copy.player = null;
+		print(this.player);
+		for (let i = 0; i < this.player.world.players.length; i++) {
+			if (this.player === this.player.world.players[i]) {
+				copy.player = i;
+			}
+		}
+
 		return copy;
 	}
 
-	deserialize(obj) {
+	deserialize(obj, world) {
+		defaultCopyValues(this, obj);
 
+		if (this.player !== null)
+			this.player = world.players[this.player];
 	}
 }

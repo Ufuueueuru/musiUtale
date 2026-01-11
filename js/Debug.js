@@ -5,7 +5,7 @@ let debug = {
     displayHurtboxes: false,
     displayHitboxes: false,
     displayFrameRate: false,
-    displayRollbackFrames: true,//Should always be true
+    displayRollbackFrames: false,
     displayNetplayPauses: false,
     displayLostFrames: false,
     displayWalls: false,
@@ -26,6 +26,10 @@ let debug = {
     //Debug Gameplay Settings
     negateHurtboxShifting: false,
     noNeutralBlock: false,
+
+    //Netplay simulation
+    manualOnlineDelay: false,
+    manualOnlineDelayMillis: 100,
 
     //Other
     noSplit: false,

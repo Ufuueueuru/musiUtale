@@ -6,19 +6,19 @@ class TrainingScreen extends VSScreen {
         /** @type {Object} */
         this.trainingSettings = {};
 
-        this.world.startCountdown = 0;
+        /*this.world.startCountdown = 0;
         this.world.timer = 100;
         this.player1.canMove = true;
         this.player1.canAttack = true;
         this.player2.canMove = true;
         this.player2.canAttack = true;
-        this.trainingSettings.positionReset = this.world.serialize();
+        this.trainingSettings.positionReset = this.world.serialize();*/
         this.world.addShouldLoad();
-        this.world.startCountdown = this.world.countdownMax;
+        /*this.world.startCountdown = this.world.countdownMax;
         this.player1.canMove = false;
         this.player1.canAttack = false;
         this.player2.canMove = false;
-        this.player2.canAttack = false;
+        this.player2.canAttack = false;*/
 
         this.trainingSettings.meter = {
             staticSikeWawa: false,//Should the sike wawa meter be stuck how it is?
@@ -28,7 +28,13 @@ class TrainingScreen extends VSScreen {
             staticHealth: true,//Should the health bars be stuck?
             healthMeters: [1, 1],
             resetFunctions: {
-                always: () => { return true; },
+                always: (p) => { return true; },
+                neutralPlayer: (p) => {
+                    return (p.currentState.name === "walk" || p.currentState.name === "neutral");
+                },
+                neutralAction: (p) => {
+                    return (State.stateIs(p.currentState, "neutral action"));
+                },
                 neutral: () => {
                     return (this.player1.currentState.name === "walk" || this.player1.currentState.name === "neutral") && 
                            (this.player2.currentState.name === "walk" || this.player2.currentState.name === "neutral");
@@ -36,11 +42,17 @@ class TrainingScreen extends VSScreen {
                 opponentNeutral: () => {
                     return (this.getNonTrainingPlayer().currentState.name === "walk" || this.getNonTrainingPlayer().currentState.name === "neutral");
                 }
-            }
+            },
+            sikeResetBuffer: 0,
+            sikeResetNeed: 1,//Reset 1 frame after the condition is fulfilled
+            lipuResetBuffer: [0, 0],
+            lipuResetNeed: 1,//Reset 1 frame after the condition is fulfilled
+            healthResetBuffer: [0, 0],
+            healthResetNeed: 1//Reset 1 frame after the condition is fulfilled
         };
         this.trainingSettings.meter.sikeResetFunction = this.trainingSettings.meter.resetFunctions.neutral;
-        this.trainingSettings.meter.lipuResetFunction = this.trainingSettings.meter.resetFunctions.neutral;
-        this.trainingSettings.meter.healthResetFunction = this.trainingSettings.meter.resetFunctions.opponentNeutral;
+        this.trainingSettings.meter.lipuResetFunction = this.trainingSettings.meter.resetFunctions.neutralPlayer;
+        this.trainingSettings.meter.healthResetFunction = this.trainingSettings.meter.resetFunctions.neutralAction;
 
         this.trainingSettings.display = {
             isVisible: true,
@@ -193,23 +205,142 @@ class TrainingScreen extends VSScreen {
             this.autoAttackMenuOn = true;
         });
         if (currentLanguage === "en")
-            autoAttackButton.textSize = 23;
+            autoAttackButton.textSize = 18;
         this.autoAttackMenu = new Menu();
         this.autoAttackMenuOn = false;
 
-        let reversalButton = new MenuItem(150, 25, select, deselect, undefined, gt("reversalButton") + (this.trainingControls?.trainingSettings.reversal.isReversal ? "󱥱" : "󱤂"), () => {
+        let reversalButton = new MenuItem(130, 25, select, deselect, undefined, gt("reversalButton") + (this.trainingControls?.trainingSettings.reversal.fromBlock ? "󱥱" : "󱤂"), () => {
             if (this.trainingControls) {
-                this.trainingControls.trainingSettings.reversal.isReversal = !this.trainingControls.trainingSettings.reversal.isReversal;
-                reversalButton.text = gt("reversalButton") + (this.trainingControls.trainingSettings.reversal.isReversal ? "󱥱" : "󱤂");
+                this.trainingControls.trainingSettings.reversal.fromBlock = !this.trainingControls.trainingSettings.reversal.fromBlock;
+                reversalButton.text = gt("reversalButton") + (this.trainingControls.trainingSettings.reversal.fromBlock ? "󱥱" : "󱤂");
             }
         });
         reversalButton.textSize = 25;
         if (currentLanguage === "en")
-            reversalButton.textSize = 23;
+            reversalButton.textSize = 18;
 
-        //resetSikeWawaButton.addMoves(new MenuMove(sampleButton, Angle.DOWN));
+        let reversalHitButton = new MenuItem(330, 25, select, deselect, undefined, gt("reversalHitButton") + (this.trainingControls?.trainingSettings.reversal.fromHit ? "󱥱" : "󱤂"), () => {
+            if (this.trainingControls) {
+                this.trainingControls.trainingSettings.reversal.fromHit = !this.trainingControls.trainingSettings.reversal.fromHit;
+                reversalHitButton.text = gt("reversalHitButton") + (this.trainingControls.trainingSettings.reversal.fromHit ? "󱥱" : "󱤂");
+            }
+        });
+        reversalHitButton.textSize = 25;
+        if (currentLanguage === "en")
+            reversalHitButton.textSize = 20;
 
-        this.autoAttackMenu.addMenuItems(reversalButton);
+        let reversalDirectionSelector = new MenuSelector(530, 25, select, deselect, ["n", "s", "r", "l", "m"], (selecting, text) => {
+            if (this.trainingControls && selecting) {
+                this.updateReversalAction(text.toUpperCase(), undefined, reversalDirectionSelector);
+            }
+        });
+        reversalDirectionSelector.widthMult = 0.15;
+        reversalDirectionSelector.setSelected(4);
+        reversalDirectionSelector.textSize = 22;
+
+        let reversalButtonSelector = new MenuSelector(560, 25, select, deselect, ["L", "S", "PL", "PS", "N", "UT", "T", "TW"], (selecting, text) => {
+            if (this.trainingControls && selecting) {
+                this.updateReversalAction(undefined, text, reversalDirectionSelector);
+            }
+        });
+        reversalButtonSelector.widthMult = 0.15;
+        reversalButtonSelector.setSelected(4);
+        reversalButtonSelector.textSize = 22;
+
+        let choices = [];
+        for (let i = 60; i > 0; i--) {
+            choices.push("󱥫" + i + "");
+        }
+        let reversalHoldSelector = new MenuSelector(590, 25, select, deselect, choices, (selecting, text) => {
+            if (this.trainingControls && selecting) {
+                this.trainingControls.trainingSettings.reversal.hold = parseInt(text.substring(1));
+            }
+        });
+        reversalHoldSelector.widthMult = 0.24;
+        reversalHoldSelector.setSelected(59);
+        reversalHoldSelector.textSize = 20;
+
+        let reversalDirSelector = new MenuDirSelector(130, 75, select, deselect, gt("reversalDirSelector"), (selecting, dirValue) => {
+            if (this.trainingControls && selecting) {
+                this.trainingControls.trainingSettings.reversal.dir = dirValue;
+            }
+        });
+        reversalDirSelector.widthMult = 0.40;
+        reversalDirSelector.textSize = 23;
+
+        let reversalDirResetButton = new MenuItem(280, 75, select, deselect, undefined, gt("reversalDirResetButton"), () => {
+            if (this.trainingControls) {
+                this.trainingControls.trainingSettings.reversal.dir = "N";
+                reversalDirSelector.selectedDirValue = "N";
+            }
+        });
+        reversalDirResetButton.textSize = 12;
+        reversalDirResetButton.widthMult = 0.25;
+
+        let choices2 = [];
+        for (let i = 60; i >= 0; i--) {
+            choices2.push("󱥫" + i + "");
+        }
+        let reversalDirHoldSelector = new MenuSelector(340, 75, select, deselect, choices2, (selecting, text) => {
+            if (this.trainingControls && selecting) {
+                this.trainingControls.trainingSettings.reversal.dirHold = parseInt(text.substring(1));
+            }
+        });
+        reversalDirHoldSelector.widthMult = 0.24;
+        reversalDirHoldSelector.setSelected(60);
+        reversalDirHoldSelector.textSize = 20;
+
+        let reversalThresholdTypeSelector = new MenuSelector(470, 75, undefined, undefined, ["󱥫", "󱥫󱥱", "󱥫/mN", "󱥫󱥱/mN"], (selecting, text, i) => {
+            if (this.trainingControls && selecting) {
+                this.trainingControls.trainingSettings.reversal.advantageMode = ["standard", "cancel", "oob", "oobCancel"][i];
+            }
+        });
+        reversalThresholdTypeSelector.widthMult = 0.25;
+        reversalThresholdTypeSelector.textSize = 20;
+
+        let reversalThresholdButton = new MenuItem(450, 75, select, deselect, undefined, "   --", () => {
+            if (this.trainingControls) {
+                this.trainingControls.trainingSettings.reversal.isThreshold = !this.trainingControls.trainingSettings.reversal.isThreshold;
+                if (this.trainingControls.trainingSettings.reversal.isThreshold) {
+                    reversalThresholdButton.text = "   <=";
+                } else {
+                    reversalThresholdButton.text = "   --";
+                }
+            }
+        });
+        reversalThresholdButton.textSize = 30;
+        reversalThresholdButton.widthMult = 0.9;
+        if (currentLanguage === "en")
+            reversalThresholdButton.textSize = 20;
+
+        let choices3 = [];
+        for (let i = 60; i >= -60; i--) {
+            choices3.push((i >= 0 ? "+" : "") + i);
+        }
+        let reversalThresholdSelector = new MenuSelector(570, 75, undefined, undefined, choices3, (selecting, text) => {
+            if (this.trainingControls && selecting) {
+                this.trainingControls.trainingSettings.reversal.frameAdvantageThreshold = -parseInt(text);
+            }
+        });
+        reversalThresholdSelector.widthMult = 0.15;
+        reversalThresholdSelector.setSelected(60);
+        reversalThresholdSelector.textSize = 22;
+
+        reversalButton.addMoves(new MenuMove(reversalHitButton, Angle.RIGHT), new MenuMove(reversalDirSelector, Angle.DOWN));
+        reversalHitButton.addMoves(new MenuMove(reversalButton, Angle.LEFT), new MenuMove(reversalDirectionSelector, Angle.RIGHT));
+        reversalDirectionSelector.addMoves(new MenuMove(reversalHitButton, Angle.LEFT), new MenuMove(reversalButtonSelector, Angle.RIGHT));
+        reversalButtonSelector.addMoves(new MenuMove(reversalDirectionSelector, Angle.LEFT), new MenuMove(reversalHoldSelector, Angle.RIGHT));
+        reversalHoldSelector.addMoves(new MenuMove(reversalButtonSelector, Angle.LEFT));
+
+        reversalDirSelector.addMoves(new MenuMove(reversalButton, Angle.UP));
+        reversalDirSelector.addMoves(new MenuMove(reversalDirResetButton, Angle.RIGHT));
+        reversalDirResetButton.addMoves(new MenuMove(reversalDirSelector, Angle.LEFT), new MenuMove(reversalDirHoldSelector, Angle.RIGHT));
+        reversalDirHoldSelector.addMoves(new MenuMove(reversalDirResetButton, Angle.LEFT), new MenuMove(reversalThresholdTypeSelector, Angle.RIGHT));
+        reversalThresholdTypeSelector.addMoves(new MenuMove(reversalDirHoldSelector, Angle.LEFT), new MenuMove(reversalThresholdButton, Angle.RIGHT));
+        reversalThresholdButton.addMoves(new MenuMove(reversalThresholdTypeSelector, Angle.LEFT), new MenuMove(reversalThresholdSelector, Angle.RIGHT));
+        reversalThresholdSelector.addMoves(new MenuMove(reversalThresholdButton, Angle.LEFT));
+
+        this.autoAttackMenu.addMenuItems(reversalButton, reversalHitButton, reversalDirectionSelector, reversalButtonSelector, reversalHoldSelector, reversalDirSelector, reversalDirResetButton, reversalDirHoldSelector, reversalThresholdButton, reversalThresholdTypeSelector, reversalThresholdSelector);
 
         this.autoAttackMenu.setTarget(reversalButton);
 
@@ -244,19 +375,38 @@ class TrainingScreen extends VSScreen {
 
     run() {
         if (this.trainingSettings.meter.staticSikeWawa && this.trainingSettings.meter.sikeResetFunction()) {
-            for (let i in this.world.sikeWawa.slices) {
-                this.world.sikeWawa.slices[i].setMeter(this.trainingSettings.meter.meters[i]);
+            this.trainingSettings.meter.sikeResetBuffer++;
+            if (this.trainingSettings.meter.sikeResetBuffer > this.trainingSettings.meter.sikeResetNeed) {
+                for (let i in this.world.sikeWawa.slices) {
+                    this.world.sikeWawa.slices[i].setMeter(this.trainingSettings.meter.meters[i]);
+                }
+            }
+        } else {
+            this.trainingSettings.meter.sikeResetBuffer = 0;
+        }
+        if (this.trainingSettings.meter.staticNanpaLipu) {
+            for (let i in this.world.players) {
+                if (this.trainingSettings.meter.lipuResetFunction(this.world.players[i])) {
+                    this.trainingSettings.meter.lipuResetBuffer[i]++;
+                } else {
+                    this.trainingSettings.meter.lipuResetBuffer[i] = 0;
+                }
+                if (this.trainingSettings.meter.lipuResetBuffer[i] > this.trainingSettings.meter.lipuResetNeed) {
+                    this.world.players[i].nanpaLipu = this.trainingSettings.meter.lipuMeters[i];
+                }
             }
         }
-        if (this.trainingSettings.meter.staticNanpaLipu && this.trainingSettings.meter.lipuResetFunction()) {
+        if (this.trainingSettings.meter.staticHealth) {
             for (let i in this.world.players) {
-                this.world.players[i].nanpaLipu = this.trainingSettings.meter.lipuMeters[i];
-            }
-        }
-        if (this.trainingSettings.meter.staticHealth && this.trainingSettings.meter.healthResetFunction()) {
-            for (let i in this.world.players) {
-                this.world.players[i].health = this.trainingSettings.meter.healthMeters[i] * this.world.players[i].maxHealth;
-                this.world.players[i].tempDamageCount = 0;
+                if (this.trainingSettings.meter.healthResetFunction(this.world.players[i])) {
+                    this.trainingSettings.meter.healthResetBuffer[i]++;
+                } else {
+                    this.trainingSettings.meter.healthResetBuffer[i] = 0;
+                }
+                if (this.trainingSettings.meter.healthResetBuffer[i] > this.trainingSettings.meter.healthResetNeed) {
+                    this.world.players[i].health = this.trainingSettings.meter.healthMeters[i] * this.world.players[i].maxHealth;
+                    this.world.players[i].tempDamageCount = 0;
+                }
             }
         }
 
@@ -307,8 +457,12 @@ class TrainingScreen extends VSScreen {
             }
             if (controls[i].clickedAbsolute("back") && this.paused) {
                 if (this.currentMenu !== this.pauseMenu) {
-                    this.currentMenu = this.pauseMenu;
-                    this.closeMenus();
+                    if (!this.currentMenu.target.negateMove) {
+                        this.currentMenu = this.pauseMenu;
+                        this.closeMenus();
+                    } else {
+                        this.currentMenu.selectItem();
+                    }
                 } else {
                     this.bufferUnpause = 4;
                     controls[i].clickedInGame = 0;
@@ -321,6 +475,27 @@ class TrainingScreen extends VSScreen {
             if (controls[i].pressed("nasa") && controls[i].pressed("suli") && controls[i].pressed("pokaSuli") && !this.paused) {
                 this.trainingSettings.positionReset = this.world.serialize();
                 break;
+            }
+        }
+    }
+
+    updateReversalAction(dir = undefined, button = undefined, menuItem) {
+        if (this.trainingControls) {
+            if (dir !== undefined)
+                this.trainingControls.trainingSettings.reversal.actionDir = dir;
+            if (button !== undefined)
+                this.trainingControls.trainingSettings.reversal.actionButton = button;
+            if (this.trainingControls.trainingSettings.reversal.actionButton === "UT") {
+                this.trainingControls.trainingSettings.reversal.action = "dash attack";
+                menuItem.text = "";
+            } else if (this.trainingControls.trainingSettings.reversal.actionButton === "T") {
+                this.trainingControls.trainingSettings.reversal.action = "dash";
+                menuItem.text = "";
+            } else {
+                this.trainingControls.trainingSettings.reversal.action = this.trainingControls.trainingSettings.reversal.actionDir + this.trainingControls.trainingSettings.reversal.actionButton;
+                if (menuItem.text === "") {
+                    menuItem.text = menuItem.texts[menuItem.selectedText];
+                }
             }
         }
     }
@@ -454,7 +629,7 @@ class TrainingScreen extends VSScreen {
         if (this.paused) {
             g.textFont(assetManager.fonts.asuki);
             g.noStroke();
-            g.fill(15, 0, 0, 140);
+            g.fill(15, 0, 0, 200);
             g.rect(0, 0, windowWidth / 3.5, windowHeight);
 
             g.textAlign(CENTER, CENTER);
@@ -468,7 +643,7 @@ class TrainingScreen extends VSScreen {
             this.pauseMenu.draw(g, windowWidth / 4, windowHeight, windowWidth / 3.6, windowHeight / 12);
             if (this.opponentMenuOn) {
                 g.noStroke();
-                g.fill(15, 0, 60, 150);
+                g.fill(15, 0, 60, 200);
                 g.rect(windowWidth / 3, 0, windowWidth * 2 / 3, windowHeight);
                 this.opponentMenu.draw(g, windowWidth * 2 / 3, windowHeight, windowWidth / 4, windowHeight / 12);
 
@@ -488,7 +663,7 @@ class TrainingScreen extends VSScreen {
             }
             if (this.displayMenuOn) {
                 g.noStroke();
-                g.fill(15, 0, 60, 150);
+                g.fill(15, 0, 60, 200);
                 g.rect(windowWidth / 3, 0, windowWidth * 2 / 3, windowHeight);
                 this.displayMenu.draw(g, windowWidth * 2 / 3, windowHeight, windowWidth / 4, windowHeight / 12);
 
@@ -508,7 +683,7 @@ class TrainingScreen extends VSScreen {
             }
             if (this.meterMenuOn) {
                 g.noStroke();
-                g.fill(15, 0, 60, 150);
+                g.fill(15, 0, 60, 200);
                 g.rect(windowWidth / 3, 0, windowWidth * 2 / 3, windowHeight);
                 this.meterMenu.draw(g, windowWidth * 2 / 3, windowHeight, windowWidth / 4, windowHeight / 12);
 
@@ -525,7 +700,7 @@ class TrainingScreen extends VSScreen {
             }
             if (this.autoAttackMenuOn) {
                 g.noStroke();
-                g.fill(15, 0, 60, 150);
+                g.fill(15, 0, 60, 200);
                 g.rect(windowWidth / 3, 0, windowWidth * 2 / 3, windowHeight);
                 this.autoAttackMenu.draw(g, windowWidth * 2 / 3, windowHeight, windowWidth / 4, windowHeight / 12);
 
@@ -619,6 +794,8 @@ class TrainingScreen extends VSScreen {
         debug.controlFrameRateMouse = false;
         debug.manualFrameAdvance = false;
 
+        this.world.destruct();
+
         for (let u = controls.length - 1; u >= 0; u--) {
             if (controls[u].computer)
                 controls.splice(u, 1);
@@ -636,5 +813,18 @@ class TrainingScreen extends VSScreen {
     loaded() {
         this.world.copyAssets();
         this.world.playMusic();
+
+        this.world.startCountdown = 0;
+        this.world.timer = 100;
+        this.player1.canMove = true;
+        this.player1.canAttack = true;
+        this.player2.canMove = true;
+        this.player2.canAttack = true;
+        this.trainingSettings.positionReset = this.world.serialize();
+        this.world.startCountdown = this.world.countdownMax;
+        this.player1.canMove = false;
+        this.player1.canAttack = false;
+        this.player2.canMove = false;
+        this.player2.canAttack = false;
     }
 }

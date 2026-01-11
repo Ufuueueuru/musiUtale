@@ -1248,7 +1248,7 @@
 		this.hitStunModifier = 3;
 		if (this.currentState.name === "hitstun" || ((this.currentState.name === "neutral" || this.currentState.name === "walk") && this.world.frameCount % 10 === 0))
 			this.risk--;
-		if (this.targetPlayer && this.targetPlayer.currentState.name === "block" && this.targetPlayer.hitStun % 3 > 0)
+		if (this.targetPlayer && this.targetPlayer.currentState.name === "block" && this.targetPlayer.hitStun % 3 >= 0)
 			this.risk += 2;
 		if (this.risk > 300 && this.targetPlayer && State.stateIs(this.targetPlayer.currentState, "block")) {
 			this.targetPlayer.actionLag--;
@@ -1807,7 +1807,7 @@ class KaSS extends Attack {
 		let sweet1 = new PriorityCircle(30, 0, 70, 0);
 		let circles = [sweet1];
 
-		let sweet = new AttackProperties().setDamage(10).setProration(-4).setCancelOptions(cancelOptions).setAngleValue(player.dir.value).setLaunch(0, 0.1).setHitStun(25).setStunFrames(36).setCommandGrab().setNoComboCounter().setZoom(38);
+		let sweet = new AttackProperties().setDamage(10).setProration(-4).setCancelOptions(cancelOptions).setAngleValue(player.dir.value).setLaunch(0, 0.1).setHitStun(25).setStunFrames(36).setCommandGrab().setZoom(38);
 		let prop = [sweet];
 
 		//sweet.setHitSound(assetManager.sounds.fanTP);
@@ -1848,7 +1848,7 @@ class KaSS extends Attack {
 			let sweet1 = new PriorityCircle(60, 0, 200, 0);
 			let circles = [sweet1];
 
-			let sweet = new AttackProperties().setDamage(70).setProration(-1).setCancelOptions(cancelOptions).setAngleValue(this.player.dir.value).setLaunch(13, 0.1).setHitStun(28).setStunFrames(15);
+			let sweet = new AttackProperties().setDamage(70).setProration(-1).setCancelOptions(cancelOptions).setAngleValue(this.player.dir.value).setLaunch(13, 0.1).setHitStun(28).setStunFrames(15).setNoComboCounter();
 			let prop = [sweet];
 
 			//sweet.setHitSound(assetManager.sounds.fanTP);
@@ -2747,8 +2747,10 @@ class KaMPS extends Attack {
 	}
 
 	static startAttack(player, attack, bufferInfo) {
-		player.startMomentumMultiply(0);
-		player.startMomentumMultiplyDash(0);
+		//player.startMomentumMultiply(0);
+		//player.startMomentumMultiplyDash(0);
+		player.dx = 0;
+		player.dy = 0;
 
 		player.invTo = ["grab"];
 		player.iFrames = 20;

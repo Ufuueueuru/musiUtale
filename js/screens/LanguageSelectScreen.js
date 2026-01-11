@@ -10,7 +10,7 @@ class LanguageSelectScreen extends Screen {
         let binaryTextSize = 5 * width / 384;
         for (let i = 0; i < 150; i++) {
             g.stroke(240, 245, 255);
-            g.strokeWeight(binaryTextSize + noise(frameCount / 2 + i * 1779) * width / 384 * 2);
+            g.strokeWeight(binaryTextSize + noise(frameCount / 8 + i * 1779) * width / 384 * 2);
             g.point((913 + i * 7879) * width / 512 % (width + binaryTextSize) - binaryTextSize, (967 + i * 6173) * height / 384 % (height + binaryTextSize) - binaryTextSize);
         }
 
@@ -30,7 +30,7 @@ class LanguageSelectScreen extends Screen {
             g.noFill();
             g.stroke(0);
             g.strokeWeight(12 * width / 512 * (30 - this.menu.transitioning));
-            g.ellipse(width / 2, height / 2, width / 3 + (30 - this.menu.transitioning) * width / 120, width / 3 + (30 - this.menu.transitioning) * width / 120);
+            g.ellipse(width / 2, height / 2, width / 3 + (30 - this.menu.transitioning) * width / 90, width / 3 + (30 - this.menu.transitioning) * width / 90);
         }
         if (this.menu.transitioning < 0) {
             g.background(0, 0, 0, -this.menu.transitioning * 9);

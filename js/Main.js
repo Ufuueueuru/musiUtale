@@ -40,7 +40,7 @@ if (!window.electronAPI) {
 			return { "autoReplay": false, "maxReplays": 10, "defaultKeyboardControls1": { "keys": [["dash", "KeyY"], ["powerDash", "KeyJ"], ["pokaLili", "KeyT"], ["pokaSuli", "KeyG"], ["lili", "KeyR"], ["suli", "KeyF"], ["nasa", "KeyH"], ["frameAdvance", "Space"], ["select", "KeyR"], ["back", "KeyT"], ["start", "Escape"]], "arrows": [["KeyD", "KeyW", "KeyA", "KeyS"]], "deadzones": [0.25] }, "defaultKeyboardControls2": { "keys": [["dash", "KeyO"], ["powerDash", "KeyK"], ["pokaLili", "KeyP"], ["pokaSuli", "Semicolon"], ["lili", "BracketLeft"], ["suli", "Quote"], ["nasa", "KeyL"], ["frameAdvance", "Space"], ["select", "Enter"], ["back", "KeyP"], ["start", "Escape"]], "arrows": [["ArrowRight", "ArrowUp", "ArrowLeft", "ArrowDown"]], "deadzones": [0.25] }, "defaultGamepadControls": { "keys": [["dash", 4], ["powerDash", 7], ["pokaLili", 3], ["pokaSuli", 1], ["lili", 2], ["suli", 0], ["nasa", 5], ["frameAdvance", 6], ["select", 0], ["back", 1], ["start", 9], ["up", 12], ["down", 13], ["left", 14], ["right", 15]], "arrows": [0], "deadzones": [0.35] }, "graphicsSettings": { "resolutionMult": 0.5, "spriteResolutionMult": 0.25, antiAliasing: false, "noSplitSheets": true, capFPS: 2 }, "currentLanguage": "tp", "promptTutorial": true, "globalVolume": 1, "version": "0.2.0" }
 		},
 		getSavesPath: () => { },
-		getAppVersion: async () => { appVersion = "0.5.1"; return appVersion; }
+		getAppVersion: async () => { appVersion = "0.5.2"; return appVersion; }
 	};
 }
 
@@ -119,11 +119,18 @@ function preload() {
 	//asuki = loadFont("resources/sitelenselikiwenasuki.ttf");
 }
 
+let noiseHelper = 0;
+
 function setup() {
 	canvas = createCanvas(windowWidth, windowHeight, (webgl ? WEBGL : undefined));//512x384
 	//g = createGraphics(512, 384);
 	//g = createGraphics(windowWidth, windowHeight);
 	g = window;
+
+	/*noise = function (num1, num2, num3) {
+		noiseHelper = (noiseHelper*3 + Math.random()) / 4;
+		return noiseHelper - noiseHelper + 4;
+	}*/
 
 	getAppVersion();
 
@@ -162,6 +169,8 @@ function setup() {
 	assetManager.addSpritesheetImp("resources/HitEffect.png", "hitEffect", "//");
 	assetManager.addSpritesheetImp("resources/HitBlockEffect.png", "hitBlockEffect", "//");
 	assetManager.addSpritesheetImp("resources/HitParryEffect.png", "hitParryEffect", "//");
+	assetManager.addSpritesheetImp("resources/ClashEffect.png", "clashEffect", "//");
+	assetManager.addSpritesheetImp("resources/ClashEffectBad.png", "clashEffectBad", "//");
 	assetManager.addSpritesheetImp("resources/CounterHitEffect.png", "counterHitEffect", "//");
 	assetManager.addSpritesheetImp("resources/PunishHitEffect.png", "punishHitEffect", "//");
 	assetManager.addSpritesheetImp("resources/PowerDashEffect.png", "powerDashEffect", "//");
@@ -169,6 +178,13 @@ function setup() {
 	assetManager.addSpritesheetImp("resources/sike_wawa_blue.png", "sikeWawaBlue", "//");
 	assetManager.addSpritesheetImp("resources/sike_wawa_red.png", "sikeWawaRed", "//");
 	assetManager.addSpritesheetImp("resources/arrowPakala.png", "arrowPakala", "//");
+	assetManager.addSpritesheetImp("resources/arrowHitHit.png", "arrowHitHit", "//");
+	assetManager.addSpritesheetImp("resources/arrowHitBlock.png", "arrowHitBlock", "//");
+	assetManager.addSpritesheetImp("resources/arrowHitParry.png", "arrowHitParry", "//");
+	assetManager.addSpritesheetImp("resources/arrowHitForceParry.png", "arrowHitForceParry", "//");
+	assetManager.addSpritesheetImp("resources/hitIndicatorHit.png", "hitIndicatorHit", "//");
+	assetManager.addSpritesheetImp("resources/hitIndicatorBlock.png", "hitIndicatorBlock", "//");
+	assetManager.addSpritesheetImp("resources/hitIndicatorParry.png", "hitIndicatorParry", "//");
 
 	assetManager.addSound("resources/music/telo nasa lon ilo.wav", "teloNasaLonIlo", {
 		loop: true,
@@ -194,12 +210,34 @@ function setup() {
 		loop: true,
 		volume: 0.4
 	});
+	assetManager.addSound("resources/music/nasin noka.wav", "nasinNoka", {
+		loop: true,
+		volume: 0.4
+	});
 
 	assetManager.addSound("resources/sfx/8bithit.wav", "8BitHit", {
 		volume: 0.3
 	}, true);
 
 	assetManager.addSound("resources/sfx/grab.wav", "grab", {
+		volume: 1
+	}, true);
+
+	assetManager.addSound("resources/sfx/whiff.wav", "whiff", {
+		volume: 0.5
+	}, true);
+
+	assetManager.addSound("resources/sfx/clash.wav", "clash", {
+		volume: 1
+	}, true);
+	assetManager.addSound("resources/sfx/clashBad.wav", "clashBad", {
+		volume: 0.3
+	}, true);
+
+	assetManager.addSound("resources/sfx/pilinPakala.wav", "pilinPakala", {
+		volume: 1
+	}, true);
+	assetManager.addSound("resources/sfx/tenpoPona.wav", "tenpoPona", {
 		volume: 1
 	}, true);
 
@@ -760,7 +798,7 @@ function drawLoadingScreen(g) {
 			loadingImages = [];
 			let g = createGraphics(30, 30);
 			let displayText = ["󱤴", "󱤬", "󱤉", "󱤰"];
-			for (let i = 0; i < text.length; i++) {
+			for (let i = 0; i < displayText.length; i++) {
 				g.textFont(assetManager.fonts.asuki);
 				g.fill(255);
 				g.noStroke();
@@ -1036,6 +1074,90 @@ function defaultSerialize(obj) {
 		}
 	}
 	return outputObject;
+}
+
+function typeofClassifier(obj) {
+	switch (typeof obj) {
+		case "object":
+			throw new Error("objects should not be classified by typeofClassifier");
+		case "string":
+			return "s";
+		case "number":
+			return "n";
+		case "boolean":
+			return "b";
+		case "undefined":
+			return "u";
+		default:
+			throw new Error("unrecognized type: " + typeof obj);
+	}
+}
+
+function deepSerializeHelper(obj, level) {
+	let str = "";
+	for (let i in obj) {
+		if (typeof obj[i] === "function")
+			continue;
+		if (typeof obj[i] === "object") {
+			str += "\t".repeat(level) + "o\n" + deepSerializeHelper(obj[i], level + 1);
+		} else {
+			let output = (obj[i] === undefined ? "" : obj[i]);
+			if (typeof output === "boolean")
+				output = obj[i] ? 1 : 0;
+			str += "\t".repeat(level) + typeofClassifier(obj[i]) + output + "\n";
+		}
+	}
+	return str;
+}
+
+function deepSerialize(obj) {
+	return deepSerializeHelper(obj, 0);
+}
+
+function deepDeserializeHelper(dest, arr) {
+	let startLevel = arr[0].match(/^\t*/g)[0].length;
+	let level = startLevel;
+	for (let i in dest) {
+		let currentStr = arr[0].replace(/\t*\n*/g, "");
+		arr.shift();
+		switch (currentStr[0]) {
+			case "o":
+				deepDeserializeHelper(dest[i], arr);
+				break;
+			case "s":
+				dest[i] = currentStr.substring(1);
+				break;
+			case "n":
+				dest[i] = Number.parseFloat(currentStr.substring(1));
+				break;
+			case "b":
+				dest[i] = (currentStr.substring(1) === "1" ? true : false);
+				break;
+			case "u":
+				dest[i] = undefined;
+				break;
+			default:
+				throw new Error("unrecognized format in type: " + currentStr[0]);
+		}
+		if (arr.length > 0) {
+			level = arr[0].match(/^\t*/g)[0].length;
+			while (level > startLevel) {
+				arr.shift();
+				if (arr.length <= 0)
+					break;
+				level = arr[0].match(/^\t*/g)[0].length;
+			}
+			if (level != startLevel)
+				return;
+		} else {
+			break;
+		}
+	}
+}
+
+function deepDeserialize(dest, obj) {
+	let str = obj.split("\n");
+	return deepDeserializeHelper(dest, str);
 }
 
 window.onerror = function (msg, url, linenumber, colno, error) {

@@ -129,7 +129,7 @@ class VSScreen extends Screen {
             g.fill(170, 40, 60);
             if (this.pausedPlayer === this.player2Controls)
                 g.fill(47, 31, 171);
-            g.text(gt("gameFinishWinScreen"), windowWidth / 2, (windowHeight - minSize * canvasSlope) / 2 + 40 * minSize / 512);//musi li awen
+            g.text(gt("gameFinishWinScreen"), windowWidth / 2, (windowHeight - minSize * canvasSlope) / 2 + 40 * minSize / 512);//musi li pini
             this.winScreenMenu.draw(g, minSize, minSize * 384 / 512, minSize * 0.5, minSize * canvasSlope * 0.1);
         }
 
@@ -280,6 +280,8 @@ class VSScreen extends Screen {
     }
 
     destruct() {
+        this.world.destruct();
+
         for (let u = controls.length - 1; u >= 0; u--) {
             if (controls[u].computer)
                 controls.splice(u, 1);

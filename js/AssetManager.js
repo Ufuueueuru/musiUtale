@@ -55,7 +55,7 @@ class AssetManager {
     }
     addShouldSpritesheet(name) {
         if (!this.shouldLoadSpritesheets[name] && !this.spritesheets[name].imageLoaded) {
-            this._shouldTotal++;
+            this._shouldTotal += 2;
             this._splitTotal++;
             this.shouldLoadSpritesheets[name] = true;
         }
@@ -85,7 +85,8 @@ class AssetManager {
         }
     }
     addShouldSound(name) {
-        if (!this.shouldLoadSounds[name] && this.sounds[name] === undefined) {
+        if (!this.shouldLoadSounds[name] && (this.sounds[name] === undefined || this.sounds[name].state() !== "unloaded")) {
+            //print("loading " + name + "...");
             this._shouldTotal++;
             this.shouldLoadSounds[name] = true;
         }
@@ -123,8 +124,10 @@ class AssetManager {
                 this.spritesheets[u].resetImage();
         }
         for (let u in this.sounds) {
-            if (!this.soundsImp[u])
+            if (!this.soundsImp[u] && this.sounds[u] !== undefined) {
+                this.sounds[u].unload();
                 this.sounds[u] = undefined;
+            }
         }
     }
 
@@ -134,41 +137,58 @@ class AssetManager {
         forceDynamicLoadingDisplay = false;
     }
 
+    createLoadFunction(map, index, onLoadFunc) {
+        return ((asset) => {
+            map[index] = asset;
+            onLoadFunc.bind(this)();
+        }).bind(this);
+    }
+
     loadAssets() {
         //let time = millis();
         //let wait = 0;
         for (let u in this.fontNames) {//Load all fonts
             if ((this.fontsImp[u] || this.shouldLoadFonts[u]) && this.fonts[u] === undefined) {
-                setTimeout(((i) => {
-                    this.fonts[i] = loadFont(this.fontNames[i], this.onLoadFont.bind(this), this.onError);
-                }).bind(this, u));
+                /*setTimeout(((i) => {
+                    loadFont(this.fontNames[i], this.createLoadFunction(this.fonts, i, this.onLoadFont), this.onError.bind(this, i));
+                    //this.fonts[i] = loadFont(this.fontNames[i], this.onLoadFont.bind(this), this.onError);
+                }).bind(this, u));*/
+                this.loadFont(u);
             }
         }
+
         for (let u in this.imageNames) {//Load all images
             if ((this.imagesImp[u] || this.shouldLoadImages[u]) && this.images[u] === undefined) {
-                setTimeout(((i) => {
-                    this.images[i] = loadImage(this.imageNames[i], this.onLoad.bind(this), this.onError.bind(this, i));
-                }).bind(this, u));
+                /*setTimeout(((i) => {
+                    loadImage(this.imageNames[i], this.createLoadFunction(this.images, i, this.onLoad), this.onError.bind(this, i));
+                    //this.images[i] = loadImage(this.imageNames[i], this.onLoad.bind(this), this.onError.bind(this, i));
+                }).bind(this, u));*/
+                this.loadImage(u);
             }
         }
+        
         let imageNames = Object.keys(this.spritesheets);//Sequential image loading
         function loadImages(i, imageNames) {
             if (i >= imageNames.length)
                 return;
 
             if (!this.spritesheets[imageNames[i]].initSprite) {
-                let current = new Spritesheet(this.spritesheets[imageNames[i]].src, this.spritesheets[imageNames[i]].jsonsrc, this.spritesheets[imageNames[i]].width, this.spritesheets[imageNames[i]].height);
-                if (!this.spritesheets[imageNames[i]].jsonParsed)
-                    current.loadJSON(this.onLoad.bind(this), this.onError);
-                this.spritesheets[imageNames[i]] = current;
+                this.spritesheets[imageNames[i]] = new Spritesheet(this.spritesheets[imageNames[i]].src, this.spritesheets[imageNames[i]].jsonsrc, this.spritesheets[imageNames[i]].width, this.spritesheets[imageNames[i]].height);
             }
-
+            //if (!this.spritesheets[imageNames[i]].jsonParsed) {
+            //    this.spritesheets[imageNames[i]].loadJSON(this.onLoad.bind(this), this.onError);
+            //}
             if ((!this.spritesheetsImp[imageNames[i]] && !this.shouldLoadSpritesheets[imageNames[i]]) || this.spritesheets[imageNames[i]].imageLoaded) {
                 loadImages(i + 1, imageNames);
                 return;
             }
+            //print(this.spritesheets[imageNames[i]]);
             //print(imageNames[i], i);
-            this.spritesheets[imageNames[i]].loadImage((() => { loadImages(i + 1, imageNames); this.onLoad.bind(this)(); }).bind(this), this.onError);
+            this.spritesheets[imageNames[i]].loadImage((() => {
+                loadImages(i + 1, imageNames);
+                this.onLoad.bind(this)();
+            }).bind(this), this.onError);
+            this.spritesheets[imageNames[i]].loadJSON(this.onLoad.bind(this), this.onError);
         }
         loadImages = loadImages.bind(this);
         loadImages(0, imageNames);
@@ -182,19 +202,22 @@ class AssetManager {
         }*/
         for (let u in this.soundNames) {//Load all sounds (This is different because we are using howler.js)
             if ((this.soundsImp[u] || this.shouldLoadSounds[u]) && this.sounds[u] === undefined) {
-                setTimeout(((j) => {
+                /*setTimeout(((j) => {
                     this.sounds[j] = new Howl(this.soundNames[j]);
 
                     this.sounds[j].once("load", this.onLoad.bind(this));
                     this.sounds[j].once("loaderror", this.onHowlError);
-                }).bind(this, u));
+                }).bind(this, u));*/
+                this.loadSound(u);
             }
         }
         if (!this._jsonsLoaded) {
             for (let u in this.jsons) {
-                setTimeout(((o) => {
-                    this.jsons[o] = loadStrings(this.jsons[o], this.onLoad.bind(this), this.onError);
-                }).bind(this, u));
+                /*setTimeout(((o) => {
+                    loadStrings(this.jsons[o], this.createLoadFunction(this.jsons, o, this.onLoad), this.onError.bind(this, o));
+                    //this.jsons[o] = loadStrings(this.jsons[o], this.onLoad.bind(this), this.onError);
+                }).bind(this, u));*/
+                this.loadJSON(u);
             }
             this._jsonsLoaded = true;
         }
@@ -208,7 +231,7 @@ class AssetManager {
         forceDynamicLoadingDisplay = true;
     }
 
-    loadSpritesheet(sheetName) {
+    /*loadSpritesheet(sheetName) {
         setTimeout(((i) => {
             let current = new Spritesheet(this.spritesheets[i].src, this.spritesheets[i].jsonsrc, this.spritesheets[i].width, this.spritesheets[i].height);
             current.loadImage(this.onLoad.bind(this), this.onError);
@@ -223,16 +246,25 @@ class AssetManager {
             current.loadJSON(this.onLoad.bind(this), this.onError);
             this.spritesheets[i] = current;
         }).bind(this, sheetName));
+    }*/
+
+    loadFont(fontName) {
+        setTimeout(((i) => {
+            loadFont(this.fontNames[i], this.createLoadFunction(this.fonts, i, this.onLoadFont), this.onError.bind(this, i));
+            //this.fonts[i] = loadFont(this.fontNames[i], this.onLoadFont.bind(this), this.onError);
+        }).bind(this, fontName));
     }
 
     loadImage(imageName) {
         setTimeout(((i) => {
-            this.images[i] = loadImage(this.imageNames[i], this.onLoad.bind(this), this.onError.bind(this, i));
+            loadImage(this.imageNames[i], this.createLoadFunction(this.images, i, this.onLoad), this.onError.bind(this, i));
+            //this.images[i] = loadImage(this.imageNames[i], this.onLoad.bind(this), this.onError.bind(this, i));
         }).bind(this, imageName));
     }
 
     loadSound(soundName) {
         setTimeout(((j) => {
+            //print("load sound: " + this.soundNames[j].src);
             this.sounds[j] = new Howl(this.soundNames[j]);
 
             this.sounds[j].once("load", this.onLoad.bind(this));
@@ -252,6 +284,7 @@ class AssetManager {
         }
         this._sheetsSplit = true;
     }
+    /** DEFUNCT */
     parseJSONs() {
         if (!this._jsonsParsed) {
             for (let i in this.spritesheets) {
@@ -264,6 +297,23 @@ class AssetManager {
             }
             this._jsonsParsed = true;
         }
+    }
+    loadJSON(jsonName) {
+        setTimeout(((o) => {
+            loadStrings(this.jsons[o], this.createJSONLoadFunction(this.jsons, o, this.onLoad), this.onError.bind(this));
+            //this.jsons[o] = loadStrings(this.jsons[o], this.onLoad.bind(this), this.onError);
+        }).bind(this, jsonName));
+    }
+    parseJSON(jsonName) {
+        this.jsons[jsonName] = JSON.parse(this.jsons[jsonName].join(""));
+        this._splitLoaded++;
+    }
+    createJSONLoadFunction(map, index, onLoadFunc) {
+        return ((asset) => {
+            map[index] = asset;
+            this.parseJSON(index);
+            onLoadFunc.bind(this)();
+        }).bind(this);
     }
 
     getFontLoadedFraction() {
@@ -291,7 +341,7 @@ class AssetManager {
     }
 
     getRealDisplayPercent() {
-        return 100 * ((this._loaded) * 9 + this._splitLoaded + this.smallLoadCurrent() * 9) / ((this._totalImp + this._shouldTotal) * 9 + this._splitTotal + this.smallLoadTotal() * 9);
+        return 100 * (this._loaded * 9 + this._splitLoaded + this.smallLoadCurrent() * 9) / ((this._totalImp + this._shouldTotal) * 9 + this._splitTotal + this.smallLoadTotal() * 9);
     }
 
     getNonImpDisplayPercent() {
@@ -321,10 +371,10 @@ class AssetManager {
             jsonsrc: jsonStr
         }
         this._total++;
+        //this._splitTotal++;
+        //print("total: " + this._splitTotal);
         if (jsonStr !== undefined) {
-            this._totalImp++;
             this._total++;
-            this._splitTotal++;
         }
         this.spritesheetsImp[name] = false;
     }
@@ -333,7 +383,7 @@ class AssetManager {
     }
     addSpritesheetImp(sheetStr, name, jsonStr = undefined, width = 0, height = 0) {
         this.addSpritesheet(sheetStr, name, jsonStr, width, height);
-        this._totalImp++;
+        this._totalImp += 2;
         this._splitTotal++;
         this.spritesheetsImp[name] = true;
     }
@@ -351,7 +401,7 @@ class AssetManager {
     addFontMod(fontsStr, name, imp = false) {
         this.addFont(currentDir + fontsStr, name, imp);
     }
-    addSound(soundStr, name, options = {}, imp = true) {
+    addSound(soundStr, name, options = {}, imp = false) {
         if (typeof soundStr === "string")
             soundStr = [soundStr];
         this.soundNames[name] = options;
@@ -361,7 +411,7 @@ class AssetManager {
         this._total++;
         this.soundsImp[name] = imp;
     }
-    addSoundMod(soundStr, name, options = {}, imp = true) {
+    addSoundMod(soundStr, name, options = {}, imp = false) {
         this.addSound(currentDir + soundStr, name, options, imp);
     }
     addJSON(jsonStr, name) {
@@ -401,11 +451,12 @@ class AssetManager {
 
     onLoad() {
         this._loaded++;
+        //print(this.getRealLoadedPercent());
 
-        if (!this._split && this.getRealLoadedPercent() >= 100) {
-            this.parseJSONs();
-            this.splitSheets();
-        }
+        //if (!this._split && this.getRealLoadedPercent() >= 100) {
+            //this.parseJSONs();
+            //this.splitSheets();
+        //}
     }
 
     onLoadFont() {

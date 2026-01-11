@@ -3,6 +3,7 @@ class HitboxEditScreen extends Screen {
         g.background(100, 110, 110);
 
         this.camera.pushMatrix(g);
+        g.translate(windowWidth/2, windowHeight/2);
         this.camera.transform(g);
 
         g.stroke(0);
@@ -114,8 +115,8 @@ class HitboxEditScreen extends Screen {
         if (currentPlayer.circles.length > 0)
             this.currentHurtboxID %= currentPlayer.circles.length;
 
-        this.camera.x = constrain(this.camera.x, -windowWidth - this.camera.zoom * 50, this.camera.zoom * 50);
-        this.camera.y = constrain(this.camera.y, -windowHeight - this.camera.zoom * 50, this.camera.zoom * 50);
+        this.camera.x = constrain(this.camera.x, -windowWidth, windowWidth);
+        this.camera.y = constrain(this.camera.y, -windowHeight, windowHeight);
 
         if (this.moving) {
             this.runPhysics();
@@ -151,14 +152,16 @@ class HitboxEditScreen extends Screen {
         this.onionSkin = true;
 
         this.camera = new Camera();
-        this.camera.x = -windowWidth / 2;
-        this.camera.y = -windowHeight / 2;
+        this.camera.x = windowWidth / 4;// -windowWidth / 2;
+        this.camera.y = windowHeight / 4;// -windowHeight / 2;
 
         this.fakeWorld.addShouldLoad();
         assetManager.loadAssetsWithScreen();
 
         mousePressedHelper = (e) => {
-            if (mouseButton === LEFT) {
+            //mouseButton = [LEFT, CENTER, RIGHT][e.button+1];
+            let mb = mouseButton[LEFT] ? LEFT : (mouseButton[RIGHT] ? RIGHT : (mouseButton[CENTER] ? CENTER : undefined));
+            if (mb === LEFT) {
                 if (this.mouseIn(65, 60, 80, 25))//EXPORT
                     this.exportHurtbox();
                 if (this.mouseIn(65, 90, 80, 25))//Circle #/#
@@ -195,11 +198,13 @@ class HitboxEditScreen extends Screen {
         };
 
         mouseDraggedHelper = (e) => {
-            if (mouseButton === CENTER || mouseButton === RIGHT) {
+            let mb = mouseButton[LEFT] ? LEFT : (mouseButton[RIGHT] ? RIGHT : (mouseButton[CENTER] ? CENTER : undefined));
+            //mouseButton = mouseButton[LEFT] ? LEFT : (mouseButton[RIGHT] ? RIGHT : (mouseButton[CENTER] ? CENTER : undefined));
+            if (mb === CENTER || mb === RIGHT) {
                 this.camera.x += (pmouseX - mouseX);
                 this.camera.y += (pmouseY - mouseY);
             }
-            if (mouseButton === LEFT && !this.mouseIn(0, 0, 200, windowHeight)) {
+            if (mb === LEFT && !this.mouseIn(0, 0, 200, windowHeight)) {
                 let hurtbox = this.players[this.currentPlayerID].hurtboxes[this.players[this.currentPlayerID].hurtboxState];
                 if (hurtbox) {
                     let frame = floor(this.players[this.currentPlayerID].hurtboxStateFrame / 4) % hurtbox.length;

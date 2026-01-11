@@ -83,6 +83,8 @@ class TutorialScreen extends Screen {
             playersManager.resetPositions();
         }*/
 
+        this.tutorial.run();
+
         for (let i in controls) {
             if (controls[i].computer)
                 continue;
@@ -102,8 +104,6 @@ class TutorialScreen extends Screen {
                 }
             }
         }
-
-        this.tutorial.run();
     }
 
     initComputerControls() {
@@ -154,6 +154,7 @@ class TutorialScreen extends Screen {
     }
 
     destruct() {
+        this.world.destruct();
         for (let u = controls.length - 1; u >= 0; u--) {
             if (controls[u].computer)
                 controls.splice(u, 1);

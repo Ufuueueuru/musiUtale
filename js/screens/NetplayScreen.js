@@ -43,6 +43,9 @@ class NetplayScreen extends Screen {
         //g.textSize(70 * width / 384);
         //g.text(gt("netplayTitle"), width / 2, height / 50);
 
+        if (this.startCountdown >= 0)
+            g.background(0);
+
         g.textSize(100 * imageWidth / 384);
         g.fill(200, 215, 205, (this.startCountdown % 60) * 6);
         g.stroke(0, 15, 0, (this.startCountdown % 60) * 6);
@@ -237,9 +240,32 @@ class NetplayScreen extends Screen {
     establishConnection() {
         this.connection = this.peer.connect(this.theirID/*, {reliable: true}*/);
         this.pickMyStage = random(0, 1) > 0.5;
+
+        this.connection.on("open", () => {
+            this.playerNumber = 0;
+            let sentData = {
+                type: "setup0"
+            };
+            this.connection.send(sentData);
+            this.menu.goTo(CharacterSelectScreen, (screen) => {
+                screen.setPlayerNumber(this.playerNumber);
+                screen.setNetplay(this.peer, this.connection);
+                screen.setControls(this.playerControls, this.fakeControls);
+                playersManager.openScreen();
+                playersManager.resetPositionsNetplay(QuickplayScreen);
+            });
+        });
+        this.connection.on("error", (err) => {
+            errorDisplayMessage = "󱤎󱤧󱥈:\n" + err.type;
+            errorDisplayFrames = 1200;
+        });
+        this.connection.on("data", (incomingData) => {
+            dataOnFunction(incomingData);
+        });
+        QuickplayScreen.setupDataOnFunction();
         
         //print(this.pickMyStage, this.selection);
-        this.connection.on("open", () => {
+        /*this.connection.on("open", () => {
             let sentData = {
                 character: this.characterSelections[0],
                 rSeed: this.rSeed
@@ -258,7 +284,7 @@ class NetplayScreen extends Screen {
             if (!this.pickMyStage)
                 this.selection = incomingData.stage;
 
-            this.startCountdown = 180;
+            this.startCountdown = 0;//180;
 
             this.breakdownEvents();
 
@@ -271,7 +297,7 @@ class NetplayScreen extends Screen {
             //if (incomingData.stage !== undefined)
             //    print(incomingData.stage + "\\INIT");
             dataOnFunction(incomingData);
-        });
+        });*/
     }
 
     setRandom(choices) {
@@ -288,6 +314,15 @@ class NetplayScreen extends Screen {
                 currentScreen.connection.send({ you: incomingData.my, my: !!currentScreen.world });
         };*/
         dataOnFunction = (incomingData) => {
+            if (currentScreen.started === undefined)
+                return;
+            else if (currentScreen.started === false) {
+                currentScreen.connection.send({ started: true });
+                if (incomingData.started)
+                    currentScreen.started = true;
+            } else if (incomingData.started) {
+                return;
+            }
             if (incomingData.wantResponse) {
                 currentScreen.connection.send({ frameCount: incomingData.frameCount, response: true });
             }
@@ -303,7 +338,7 @@ class NetplayScreen extends Screen {
                         break;
                     }
                 }
-            } else if (incomingData.needFrame) {
+            } else if (incomingData.needFrame !== undefined) {
                 let success = false;
 				let errorOutput = "0";
                 //print("n:" + incomingData.needFrame);
@@ -320,13 +355,31 @@ class NetplayScreen extends Screen {
                         }
                     }
                 }
+                if (!success) {
+                    if (currentScreen.bufferedLocalInputs?.length > 0) {
+                        let pastFrame = currentScreen.bufferedLocalInputs[0].frameCount;
+                        if (pastFrame >= incomingData.needFrame && pastFrame < incomingData.needFrame + currentScreen.bufferedLocalInputs.length) {
+                            let id = incomingData.needFrame - pastFrame;
+                            if (currentScreen.bufferedLocalInputs[id]) {
+                                currentScreen.connection.send(currentScreen.getExportsBufferedFrame(id));
+                                success = true;
+                            }
+                        }
+                    }
+                }
                 if (!success && currentScreen.paused && currentScreen.world.frameCount > currentScreen.rollbackFrames && !(currentScreen.world.startCountdown < currentScreen.world.countdownMax - 60 && currentScreen.world.startCountdown >= 0) && !currentScreen.world.winScreen) {
                     errorDisplayFrames = 240;
                     errorDisplayMessage = "󱤩󱤟󱤧󱥈" + ": " + errorOutput;//linja kulupu li pakala
                     //this.connectionOpen = false;//Not sure if this is the right thing to do or not
                 }
             } else {
-                currentScreen.dataQueue.push(incomingData);
+                if (debug.manualOnlineDelay) {
+                    setTimeout(() => {
+                        currentScreen.dataQueue.push(incomingData);
+                    }, debug.manualOnlineDelayMillis);
+                } else {
+                    currentScreen.dataQueue.push(incomingData);
+                }
             }
         }
         /*this.connection.on("data", (incomingData) => {
@@ -360,7 +413,7 @@ class NetplayScreen extends Screen {
     }
 
     initLater() {
-        this.menu = new Menu(MenuDebugScreen);
+        this.menu = new Menu(NetplayModeScreen);
         this.tempDeactivateMenu = 0;
 
         let gg = createGraphics(800, 300);
@@ -423,10 +476,34 @@ class NetplayScreen extends Screen {
             });
             this.peer.on("open", (id) => {
                 this.myID = id;
-                //this.getIDButton.text = "󱤽󱥞:\n" + this.myID;//nanpa sina
+                this.getIDButton.text = "󱤽󱥞:\n" + this.myID;//nanpa sina
             });
             this.peer.on("connection", (conn) => {
-                if (!currentScreen.connection) {
+                this.connection = conn;
+                this.connection.on("open", () => {
+                    this.menu.goTo(CharacterSelectScreen, (screen) => {
+                        screen.setPlayerNumber(this.playerNumber);
+                        screen.setNetplay(this.peer, this.connection);
+                        screen.setControls(this.playerControls, this.fakeControls);
+                        playersManager.openScreen();
+                        playersManager.resetPositionsNetplay(QuickplayScreen);
+                    });
+                });
+                this.connection.on("error", (err) => {
+                    errorDisplayMessage = "󱤎󱤧󱥈:\n" + err.type;
+                    errorDisplayFrames = 1200;
+                });
+                this.connection.on("data", (incomingData) => {
+                    dataOnFunction(incomingData);
+                });
+                QuickplayScreen.setupDataOnFunction();
+                //NetplayScreen.breakdownEvents();
+
+
+                this.peer.on("connection", (conn) => {
+                    conn.close();
+                });
+                /*if (!currentScreen.connection) {
                     //print("me: " + currentScreen.selection);
                     currentScreen.connection = conn;
                     currentScreen.connection.on("open", () => {
@@ -453,7 +530,7 @@ class NetplayScreen extends Screen {
 
                         currentScreen.rSeed = incomingData.rSeed;
 
-                        currentScreen.startCountdown = 180;
+                        currentScreen.startCountdown = 0;//180;
 
                         currentScreen.breakdownEvents();
 
@@ -467,11 +544,13 @@ class NetplayScreen extends Screen {
                         //    print(incomingData.stage + "/");
                         dataOnFunction(incomingData);
                     });
-                }
+                } else {
+                    conn.close();
+                }*/
             });
         } else {
             this.myID = this.peer.id;
-            //this.getIDButton.text = "󱤽󱥞:\n" + this.myID;//nanpa sina
+            this.getIDButton.text = "󱤽󱥞:\n" + this.myID;//nanpa sina
             //this.theirID is already set in the constructor
             //this.setIDButton.text = "󱤽󱤝:\n" + this.theirID;//nanpa kon
         }

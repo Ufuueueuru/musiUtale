@@ -65,6 +65,10 @@ class Player extends Hitcircle {
 		/** @type {number} */
 		this.collideRadius = this.mainRadius();
 
+		/** @type {number} */
+		this.blockArcWidth = this.collideRadius + 85;
+		this.blockArcHeight = this.collideRadius + 85;
+
 		/** @type {number} Changes how far the character gets moved by attacks or collisions */
 		this.weight = 1;
 
@@ -287,6 +291,9 @@ class Player extends Hitcircle {
 		/** @type {number} Multiplies how much meter you gain from actions */
 		this.sikeWawaGainMult = 1;
 
+		/** @type {number} How much proration gets subtracted on counterhit */
+		this.counterHitBuff = 6;
+
 		/** @type {number} Frames where the player does not further their animation state */
 		this.stunFrames = 0;
 
@@ -314,6 +321,14 @@ class Player extends Hitcircle {
 		this.parryCooldown = 0;
 		/** @type {number} Number of frames after starting moving where a parry cannot be performed */
 		this.maxParryCooldown = 22;
+		/** @type {number} Makes the block arc disappear when above 0 */
+		this.parryArcNegateFrames = 0;
+		/** @type {number} The line width of the block arc */
+		this.blockArcStrokeWeight = 4;
+		/** @type {number} An intermediate value to lerp the animation for when block angles get bigger/get leniency */
+		this.blockArcLeniency = 0;
+		/** @type {number} Records the current block arc angle so that way it stays static during stunframes */
+		this.blockArcDir = new Angle();
 		/** @type {number} Whether the parry cooldown should be buffered or not */
 		this.bufferCooldown = false;
 		/** @type {number} Used for knowing whether something was a parry or not */
@@ -637,6 +652,20 @@ class Player extends Hitcircle {
 		return new Angle().setFromPoint(x, y);
     }
 
+	createHitAngleParticles(attackAngle, canBlock, canParry) {
+		if (canBlock && this.canChangeState(this.states.BLOCK)) {
+			this.world.ps.createParticle("arrowHitHit", null, this.x - attackAngle.getX() * 64, this.y - attackAngle.getY() * 64, 128, 64, attackAngle, false);
+			this.world.ps.createParticle("hitIndicatorHit", null, this.x, this.y, 48, 48, Angle.RIGHT, false);
+		} else if (canParry && (this.canChangeState(this.states.BLOCK) || State.stateIsTag(this.currentState, "parry override"))) {
+			this.world.ps.createParticle("arrowHitParry", null, this.x - attackAngle.getX() * 64, this.y - attackAngle.getY() * 64, 128, 64, attackAngle, false);
+			this.world.ps.createParticle("hitIndicatorHit", null, this.x, this.y, 48, 48, Angle.RIGHT, false);
+		}
+	}
+
+	createBlockAngleParticles(attackAngle, canBlock, canParry, parried) {
+
+	}
+
 	/** */
 	tickStunFrames() {
 		this.stunFrames--;
@@ -879,6 +908,61 @@ class Player extends Hitcircle {
 		//this.drawArrow(g);
 	}
 
+	drawBlockArc(g) {
+		if (this.parryArcNegateFrames > 0)
+			return;
+
+		let width = this.blockArcWidth;//this.collideRadius;
+		let height = this.blockArcHeight;//this.collideRadius;
+
+		g.strokeWeight(4);
+		g.fill(47, 31, 171, 10);
+		g.stroke(47, 31, 171, 40);//170, 40, 60
+		if (State.stateIs(this.currentState, "block")) {
+			g.stroke(47, 31, 171, 70);
+			g.strokeWeight(this.blockArcStrokeWeight);
+		} else if (State.stateIs(this.currentState, "hitstun")) {
+			g.stroke(170, 40, 60, 70);
+			g.strokeWeight(this.blockArcStrokeWeight);
+		}
+
+		g.push();
+		g.translate(this.x, this.y);
+		g.rotate(this.dir.value);
+
+		let angle = new Angle();
+		if (this.controls.joystickPressed(0)) {
+			angle.value = this.blockArcDir.value;
+			//let leniencyInitial = this.blockLeniency + (this.blockLeniencyFrames > 0 ? this.blockLeniencyBuff : 0) + this.blockLeniencyModifier;
+			let leniency = this.blockArcLeniency;
+			angle.value += leniency;
+			if (leniency >= PI) {
+				g.ellipse(0, 0, width, height);
+			} else {
+				//g.line(0, 0, -angle.getX() * 100, -angle.getY() * 100);
+				angle.value -= 2 * leniency;
+				//g.line(0, 0, -angle.getX() * 100, -angle.getY() * 100);
+				g.arc(0, 0, width, height, PI + angle.value - this.dir.value, PI + angle.value + 2 * leniency - this.dir.value);
+			}
+		} else {//Standing
+			angle.value = this.dir.value;
+			//let leniencyInitial = this.standingBlockLeniency + (this.blockLeniencyFrames > 0 ? this.blockLeniencyBuff : 0) + this.blockLeniencyModifier;
+			let leniency = this.blockArcLeniency;
+			angle.value += leniency;
+			if (leniency >= PI) {
+				g.ellipse(0, 0, width, height);
+			} else {
+				//g.line(0, 0, angle.getX() * 100, angle.getY() * 100);
+				angle.value -= 2 * leniency;
+				//g.line(0, 0, angle.getX() * 100, angle.getY() * 100);
+				g.arc(0, 0, width, height, angle.value - this.dir.value, angle.value + 2 * leniency - this.dir.value);
+			}
+
+		}
+
+		g.pop();
+	}
+
 	/**
 	 * Used for drawing something that will go on top of the opponent (use this sparingly)
 	 * @override
@@ -1118,21 +1202,27 @@ class Player extends Hitcircle {
 			g.strokeWeight(3);
 			g.textSize(25);
 			g.textAlign(CENTER, CENTER);
-			g.text("󱤟" + this.combo + "󱤀", 256 + 128 * (i * 2 - 1), 105);
+			g.text("󱤟" + this.combo + "󱤀", 256 + 128 * (i * 2 - 1), 110);
 			g.textAlign(LEFT, BASELINE);
 		}
-		if ((this.currentState.name === "hitstun" || this.currentState.name === "block") && this.hitStun > 0) {
+		if (((this.currentState.name === "hitstun" || this.currentState.name === "block") && this.hitStun > 0) || this.currentState.name === "grabbed") {
+			let meterValue = this.hitStun;
 			g.noStroke();
 			g.fill(0, 0, 14);
 			g.rect(256 + 128 * (i * 2 - 1) - 36, 84, 72, 10, 5);
 			if (this.currentState.name === "hitstun") {
 				g.fill(130, 40, 40);//Red
-			} else {
+			} else if (this.currentState.name === "block") {
 				g.fill(40, 40, 130);//Blue
 				if (this.hitStun <= this.OOBBlockFrame)
 					g.fill(240, 240, 34);
+			} else {
+				g.fill(110, 40, 110);
+				meterValue = this.actionLag - 10;
+				if (this.canChangeState(this.states.MN))
+					g.fill(150, 90, 110);
 			}
-			g.rect(256 + 128 * (i * 2 - 1) - 36 + 2, 84 + 2, (72 - 4) * min(this.hitStun, 60) / 60, 10 - 4, 5);
+			g.rect(256 + 128 * (i * 2 - 1) - 36 + 2, 84 + 2, (72 - 4) * min(meterValue, 60) / 60, 10 - 4, 5);
 		}
 
 	}
@@ -2665,8 +2755,33 @@ class Player extends Hitcircle {
 			}
 		}
 
+		this.updateBlockAngleVisual();
+
 		this.generalLogicNoStun();
-    }
+	}
+
+	updateBlockAngleVisual() {
+		if (State.stateIs(this.currentState, "block") || State.stateIs(this.currentState, "hitstun")) {
+			this.blockArcStrokeWeight = (this.blockArcStrokeWeight * 2 + (2 + this.hitStun * 0.5)) / 3;
+		} else {
+			this.blockArcStrokeWeight = 4;
+		}
+
+		if (this.controls.joystickPressed(0)) {
+			let leniencyInitial = this.blockLeniency + (this.blockLeniencyFrames > 0 ? this.blockLeniencyBuff : 0) + this.blockLeniencyModifier;
+			this.blockArcLeniency = (this.blockArcLeniency * 2 + leniencyInitial) / 3;
+		} else {
+			let leniencyInitial = this.standingBlockLeniency + (this.blockLeniencyFrames > 0 ? this.blockLeniencyBuff : 0) + this.blockLeniencyModifier;
+			this.blockArcLeniency = (this.blockArcLeniency * 2 + leniencyInitial) / 3;
+		}
+		if (this.parryArcNegateFrames > 0)
+			this.parryArcNegateFrames--;
+		if (State.stateIs(this.currentState, "block") || State.stateIs(this.currentState, "hitstun")) {
+			if (this.controls.joystickPressed(0))
+				this.blockArcDir.value += Angle.compare(this.blockArcDir, this.controls.angle(0)) / 5;
+		} else if (this.stunFrames <= 0)
+			this.blockArcDir.value = this.controls.angle(0).value;
+	}
 
 	/** */
 	run() {
@@ -2793,15 +2908,25 @@ class Player extends Hitcircle {
 		let output = [];
 		for (let i in this.actions) {
 			let addBool = true;
-			for (let u in names) {//Don't add an action that hasn't already been added
-				if (names[u] === this.actions[i])
+			for (let u in output) {//Don't add an action that hasn't already been added
+				if (this.actions[i] === output[u]) {
 					addBool = false;
+					break;
+				}
 			}
 			if(addBool)
 				output.push(this.actions[i]);
 		}
 		for (let i in names) {
-			output.push(names[i]);
+			let addBool = true;
+			for (let u in output) {
+				if (names[i] === output[u]) {
+					addBool = false;
+					break;
+				}
+			}
+			if (addBool)
+				output.push(names[i]);
 		}
 
 		this.actions = output;
@@ -2901,38 +3026,38 @@ class Player extends Hitcircle {
 
 	setDir(players) {
 		this.dr = 0;
-		if (State.stateIsTag(this.currentState, "rotateable")) {
-			if (players.length > 1) {
-				let distance = 999999;
-				let tPlayer;//Target player; reference to the closest player
-				for (let i in players) {
-					let p = players[i];
-					if (p !== this) {
-						if (dist(this.x, this.y, p.x, p.y) < distance) {
-							distance = min(distance, dist(this.x, this.y, p.x, p.y));
-							tPlayer = p;
-						}
+		if (players.length > 1) {
+			let distance = 999999;
+			let tPlayer;//Target player; reference to the closest player
+			for (let i in players) {
+				let p = players[i];
+				if (p !== this) {
+					if (dist(this.x, this.y, p.x, p.y) < distance) {
+						distance = min(distance, dist(this.x, this.y, p.x, p.y));
+						tPlayer = p;
 					}
 				}
-				
-				if (tPlayer)
-					this.targetPlayer = tPlayer;
-
-				let targetAngle = new Angle().setFromPoint(this.targetPlayer.x - this.x, this.targetPlayer.y - this.y);
-				let dif = Angle.compare(this.dir, targetAngle);
-
-				//print(this.dir.value + dif * this.turnSpeed);
-
-				//this.dir.changeValue(this.dr);
-				let slowDown = (this.rotateSlowDownFrames > 0 ? this.rotateSlowDown : 1);
-				this.dr = constrain(dif, -PI / 2, PI / 2) * max(0, this.turnSpeed + this.turnSpeedModifier) * slowDown;
-				this.dir.changeValue(this.dr);
-				this.dir.normalize();
-				//this.dir.setValue(this.dir.value + dif * (this.turnSpeed + this.turnSpeedModifier));
-				//this.dir.setFromPoint(tPlayer.x - this.x, tPlayer.y - this.y);
-			} else if (this.controls.joystickPressed(0)) {
-				this.dir = this.controls.angle(0);
 			}
+
+			if (tPlayer)
+				this.targetPlayer = tPlayer;
+		} else if(this.controls.joystickPressed(0)) {
+			this.dir = this.controls.angle(0);
+			this.targetPlayer = null;
+		}
+		if (State.stateIsTag(this.currentState, "rotateable")) {
+			let targetAngle = new Angle().setFromPoint(this.targetPlayer.x - this.x, this.targetPlayer.y - this.y);
+			let dif = Angle.compare(this.dir, targetAngle);
+
+			//print(this.dir.value + dif * this.turnSpeed);
+
+			//this.dir.changeValue(this.dr);
+			let slowDown = (this.rotateSlowDownFrames > 0 ? this.rotateSlowDown : 1);
+			this.dr = constrain(dif, -PI / 2, PI / 2) * max(0, this.turnSpeed + this.turnSpeedModifier) * slowDown;
+			this.dir.changeValue(this.dr);
+			this.dir.normalize();
+			//this.dir.setValue(this.dir.value + dif * (this.turnSpeed + this.turnSpeedModifier));
+			//this.dir.setFromPoint(tPlayer.x - this.x, tPlayer.y - this.y);
 		}
 		this.rotateTo(this.dir);
 	}

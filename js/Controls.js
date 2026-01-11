@@ -373,11 +373,23 @@ class Joystick {
 	}
 
 	serialize() {
-		return (({
+		let obj = (({
 			keyspad,
 			buttonaxis,
 			layout,
+			x,
+			y,
 			...o
 		}) => defaultSerialize(o))(this);
+		obj.xy = flotsam.encode([this.x, this.y]);
+		return obj;
+	}
+
+	deserialize(obj) {
+		defaultCopyValues(this, obj, ["xy"]);
+
+		let xy = flotsam.decode(obj.xy);
+		this.x = xy[0];
+		this.y = xy[1];
 	}
 }

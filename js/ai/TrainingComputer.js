@@ -32,35 +32,77 @@ class TrainingComputer extends Controls {
         };
 
         this.trainingSettings.reversal = {
-            isReversal: false,
+            isReversal: true,
+            actionDir: "M",
+            actionButton: "N",
             action: "MN",
-            fromBlock: true,//Should the dummy mash out of block?
+            dir: undefined,
+            dirHold: 0,
+            fromBlock: false,//Should the dummy mash out of block?
             fromHit: false,//Should the dummy mash out of hit?
             isThreshold: false,//Should the dummy take frame advantage in account on whether to mash or not?
             advantageMode: "oob",//Either "standard", "cancel", "oob", "oobCancel"
             frameAdvantageThreshold: 4,
             count: 0,
-            hold: 5
+            hold: 0
         };
 
         this.trainingSettings.mash = [
             {
+                isMashing: true,
+                immediate: true,//Whether the mash is after the current action ends or during it
                 names: ["grabbed"],
-                isMashing: false,
+                holdDirs: [],//Positive is relative to the CPU rotation, negative is relative to the opponent (the player in most cases)
+                actions: ["SN", "MN", ""],
                 wait: 0,
-                count: 6,
                 hold: 1,
-                offset: 2,
-                actions: ["SN", "SN", "SN", "SN", "SN", "MN", "M", "M", "M", "M", "M"]
+                dirHold: 0,
+                count: 0,
+                buffered: false,
+                chosenAction: undefined,
+                chosenDir: undefined
             },
             {
-                names: ["block"],
-                isMashing: false,
+                isMashing: true,
+                immediate: true,//Whether the mash is after the current action ends or during it
+                names: ["lipuSuli", "lipuLili"],
+                holdDirs: [],//Positive is relative to the CPU rotation, negative is relative to the opponent (the player in most cases)
+                actions: ["R", "L", "N"],
                 wait: 0,
-                count: 0,
                 hold: 1,
-                offset: 0,
-                actions: ["MPS", "MN"]
+                dirHold: 0,
+                count: 0,
+                buffered: false,
+                chosenAction: undefined,
+                chosenDir: undefined
+            },
+            {
+                isMashing: false,
+                immediate: true,
+                names: ["block"],
+                holdDirs: [-2*PI, PI],
+                actions: ["RN"],
+                wait: 0,
+                hold: 1,
+                dirHold: 30,
+                count: 0,
+                buffered: false,
+                chosenAction: undefined,
+                chosenDir: undefined
+            },
+            {
+                isMashing: false,
+                immediate: true,
+                names: ["neutral"],
+                holdDirs: [],
+                actions: ["SPL"],
+                wait: 0,
+                hold: 1,
+                dirHold: 30,
+                count: 0,
+                buffered: false,
+                chosenAction: undefined,
+                chosenDir: undefined
             }
         ];
     }
@@ -79,26 +121,56 @@ class TrainingComputer extends Controls {
             this.clickAction(this.trainingSettings.reversal.action);
             this.trainingSettings.reversal.count = 0;
         }
-        if (this.trainingSettings.reversal.isReversal && this.player.currentState.name === this.trainingSettings.reversal.action && this.trainingSettings.reversal.count < this.trainingSettings.reversal.hold) {
-            this.pressAction(this.trainingSettings.reversal.action);
+        if (this.trainingSettings.reversal.isReversal && this.player.currentState.name === this.trainingSettings.reversal.action && this.trainingSettings.reversal.count < this.trainingSettings.reversal.hold + this.trainingSettings.reversal.dirHold) {
+            if (this.trainingSettings.reversal.count < this.trainingSettings.reversal.hold) {
+                this.pressAction(this.trainingSettings.reversal.action);
+            }
+            if (this.trainingSettings.reversal.dir !== undefined) {
+                this.pressDir(this.trainingSettings.reversal.dir);
+            }
             this.trainingSettings.reversal.count++;
         }
 
         //Mashing
         for (let i in this.trainingSettings.mash) {
             let mash = this.trainingSettings.mash[i];
-            if (mash.isMashing && (mash.names.includes(this.player.currentState.name) || ((mash.count + mash.offset) % (mash.wait + mash.hold) <= mash.hold && (mash.count + mash.offset) % (mash.wait + mash.hold) > 0))) {
-                mash.count++;
-                if ((mash.count + mash.offset) % (mash.wait + mash.hold) <= mash.hold) {
-                    let chosenAction = mash.actions[floor(random(0, mash.actions.length))];
-                    if ((mash.count + mash.offset) % (mash.wait + mash.hold) === 0) {
-                        this.clickAction(chosenAction);
-                    } else {
-                        this.pressAction(chosenAction);
+            let shouldBuffer = false;
+            for (let u = mash.names.length; u >= 0; u--) {
+                if (mash.isMashing && State.stateIs(this.player.currentState, mash.names[u])) {
+                    if (this.player.actionLag > 1)
+                        shouldBuffer = true;
+                    if (!mash.buffered) {
+                        //mash.chosenAction = undefined;
+                        mash.chosenAction = mash.actions[floor(random(0, mash.actions.length))];
+                        mash.chosenDir = undefined;
+                        if (mash.holdDirs.length > 0) {
+                            let rand = floor(random(0, mash.holdDirs.length));
+                            mash.chosenDir = mash.holdDirs[rand];
+                        }
                     }
+                    mash.buffered = true;
+                    mash.count = 0;
+                }
+            }
+
+            if (mash.isMashing && mash.buffered && (!shouldBuffer || mash.immediate)) {
+                mash.count++;
+                if (mash.count > mash.wait) {
+                    let chosenAction = mash.chosenAction;
+                    if (mash.count - mash.wait === 1) {
+                        if (mash.hold > 0)
+                            this.clickAction(chosenAction);
+                    } else {
+                        if (mash.count - mash.wait <= mash.hold)
+                            this.pressAction(chosenAction);
+                        if (mash.chosenDir !== undefined)
+                            this.pressDir(mash.chosenDir);
+                    }
+                    if (mash.count - mash.wait > mash.hold + mash.dirHold)
+                        mash.buffered = false;
                 }
             } else {
-                mash.count = mash.hold;
+                //mash.count = mash.hold;
             }
         }
 
@@ -142,7 +214,20 @@ class TrainingComputer extends Controls {
         }
     }
 
+    pressDir(dirName) {
+        if (dirName === "N") {
+            this.neutralJoystick(0);
+        }
+        if (typeof dirName === "number")
+            if (dirName >= 0)
+                this.pressJoystick(0, new Angle(dirName + this.player.dir.value));
+            else if (this.player.targetPlayer)
+                this.pressJoystick(0, new Angle().setFromPoint(this.player.targetPlayer.x - this.player.x, this.player.targetPlayer.y - this.player.y).changeValue(dirName));
+    }
+
     pressAction(actionName) {
+        if (actionName === "")
+            return;
         switch (actionName.substring(0, 1)) {
             case "N":
                 this.neutralJoystick(0);
@@ -182,10 +267,17 @@ class TrainingComputer extends Controls {
             this.pressButton("lili");
             return;
         }
+        if (actionName === "power dash") {
+            this.pressButton("nasa");
+            this.pressButton("dash");
+            return;
+        }
         this.pressButton(actionName);//If the cancel option is a general button rather than a specific attack
     }
 
     clickAction(actionName) {
+        if (actionName === "")
+            return;
         switch (actionName.substring(0, 1)) {
             case "N":
                 this.neutralJoystick(0);
@@ -223,6 +315,11 @@ class TrainingComputer extends Controls {
         if (actionName === "dash attack") {
             this.clickButton("dash");
             this.clickButton("lili");
+            return;
+        }
+        if (actionName === "power dash") {
+            this.clickButton("nasa");
+            this.clickButton("dash");
             return;
         }
         this.clickButton(actionName);//If the cancel option is a general button rather than a specific attack

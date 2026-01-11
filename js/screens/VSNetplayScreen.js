@@ -51,6 +51,7 @@ class VSNetplayScreen extends Screen {
         }
 
         this.paused = true;
+        this.started = false;
 
         this.leaveMenu = false;
         this.pausedControls = undefined;
@@ -64,10 +65,12 @@ class VSNetplayScreen extends Screen {
             this.bufferUnpause = 4;
         });
         let characterSelectButton = new MenuItem(128, 150, select, deselect, undefined, gt("battleCharacterSelect"), () => {
-            dataOnFunction = () => { };
+            //dataOnFunction = () => { };
             currentScreen = new CharacterSelectScreen();
-            currentScreen.setNetplay(this.peer, this.theirID);
-            currentScreen.setControls([this.pausedControls, new NetplayControls()]);
+            currentScreen.setNetplay(this.peer, this.connection);
+            currentScreen.setControls([this.myPlayer.controls, new NetplayControls()]);
+            currentScreen.setPlayerNumber(this.myPlayer === this.player1 ? 0 : 1);
+            this.connection.send({ type: "forceCharacterSelect" });
             this.destruct();
         });
         let exitButton = new MenuItem(128, 210, select, deselect, undefined, gt("battleExit"), () => {
@@ -90,6 +93,8 @@ class VSNetplayScreen extends Screen {
         this.past = [];//Game states saved in the past that have not yet received data for
         this.future = [];//Game states in the future with data but have not happened yet
 
+        this.desyncQueue = [];//This stores all of the data that the other client has sent regarding player location
+
         this.farPast = [];//This will look 4 times farther back than this.past for use in resolving packet loss
         this.farPastMultiply = 400;//4
 
@@ -104,12 +109,18 @@ class VSNetplayScreen extends Screen {
         this.data = undefined;
         
         this.rollbackFrames = 15;//15
+        this.delayFrames = 3;
+
+        this.bufferedLocalInputs = [];
+
+        this.previousFrame = -1;
 
         this.maxDistressWait = 3;
         this.distressWait = 0;
 
         this.averageRollbackFrames = [0];
         this.totalAverageRollback = 0;
+        this.bufferNonRollbackFrames = 0;
 
         this.randomChoices = [false, false, false];
 
@@ -120,6 +131,7 @@ class VSNetplayScreen extends Screen {
         this.world.savedReplay = false;
         this.replay = new Replay();
         this.replay.characters = [this.player1CharacterID, this.player2CharacterID];
+        this.replay.stage = stageID;
         this.currentReplaySaved = false;
         this.currentReplayFrame = 0;
 
@@ -143,6 +155,8 @@ class VSNetplayScreen extends Screen {
             this.netplayAutoSavedReplay = false;
 
             this.winScreenMenuOn = false;
+            this.started = false;
+            this.connection.send({ type: "game", started: false }); 
         });
         //let playerSelectWinButton = new MenuItem(128, 140, select, deselect, undefined, gt("battlePlayerSelect"), playerSelectButton.pressFunction);
         //let editControlsWinButton = new MenuItem(128, 190, select, deselect, undefined, gt("battleEditControls"), editControlsButton.pressFunction);
@@ -177,7 +191,7 @@ class VSNetplayScreen extends Screen {
     }
 
     getNextData() {
-        if (this.dataQueue.length > 0 && !this.dataQueue[0].inputs)
+        if (this.dataQueue.length > 0 && !this.dataQueue[0].inputs)//DEBUG these lengths should be 1
             this.dataQueue.splice(0, 1);
         if (this.dataQueue.length > 0) {
             this.data = this.dataQueue[0];
@@ -194,34 +208,94 @@ class VSNetplayScreen extends Screen {
     }
 
     run() {
-        while (debug.displayRollbackFrames && this.averageRollbackFrames.length > 60) {
-            this.averageRollbackFrames.splice(0, 1);
-        }
+        if (this.started) {
+            while (/*debug.displayRollbackFrames && */this.averageRollbackFrames.length > 60) {
+                this.averageRollbackFrames.splice(0, 1);
+            }
 
-        /*if (deltaTime > 100 / 6)
-            lostFrames += deltaTime * 6 / 100 - 1;
-        lostFrames = constrain(lostFrames, 0, 4);*/
-        //let ifCount = 0;
-        //lostFrames++;
-        //while (lostFrames > 1 && ifCount < 3) {
+            /*if (deltaTime > 100 / 6)
+                lostFrames += deltaTime * 6 / 100 - 1;
+            lostFrames = constrain(lostFrames, 0, 4);*/
+            //let ifCount = 0;
+            //lostFrames++;
+            //while (lostFrames > 1 && ifCount < 3) {
             //if (this.paused && ifCount > 1)
-                //break;
-        while (this.farPast[this.currentReplayFrame] && this.farPast[this.currentReplayFrame].dataReceived) {
-            this.replay.recordControls(this.farPast[this.currentReplayFrame].gameState, [this.farPast[this.currentReplayFrame].player1Inputs, this.farPast[this.currentReplayFrame].player2Inputs]);
-            this.currentReplayFrame++;
+            //break;
+
+            if (this.farPast.length > 0) {
+                while (this.farPast[this.currentReplayFrame - this.farPast[0].gameState.frameCount] && this.farPast[this.currentReplayFrame - this.farPast[0].gameState.frameCount].dataReceived) {
+                    this.replay.recordControls(this.farPast[this.currentReplayFrame - this.farPast[0].gameState.frameCount].gameState, [this.farPast[this.currentReplayFrame - this.farPast[0].gameState.frameCount].player1Inputs, this.farPast[this.currentReplayFrame - this.farPast[0].gameState.frameCount].player2Inputs]);
+                    this.currentReplayFrame++;
+                }
+            }
+
+            this.updateControls();
+            this.testShouldPause();
+            if (!this.paused && !this.winScreenMenuOn) {
+
+                let bufferFrameCount = this.world.frameCount;
+                if (this.bufferedLocalInputs.length > 0)
+                    bufferFrameCount = this.bufferedLocalInputs[this.bufferedLocalInputs.length - 1].frameCount + 1;
+
+                let currentControls = defaultSerialize(this.myPlayer.controls);//Save the current (non-delayed) controls
+                this.bufferedLocalInputs.push({ frameCount: bufferFrameCount, controls: currentControls });
+
+                if (!debug.noSendData)
+                    this.connection.send(this.getExports(currentControls, bufferFrameCount));
+
+                if (this.bufferedLocalInputs.length > this.delayFrames) {
+                    defaultDeserialize(this.myPlayer.controls, this.bufferedLocalInputs[0].controls);
+                    if (this.previousFrame < this.world.frameCount) {
+                        this.addFramePast();
+                        this.previousFrame = this.world.frameCount;
+                    }
+                    if (this.bufferedLocalInputs[0].frameCount !== this.world.frameCount) {
+                        print("Something went terribly wrong, the inputs buffered for frame " + this.bufferedLocalInputs[0].frameCount + " were used for the in-game frame " + this.world.frameCount);
+                    }
+
+                    this.world.run();
+
+                    defaultDeserialize(this.myPlayer.controls, currentControls);//Bring back the current (non-delayed) controls
+
+                    this.bufferedLocalInputs.shift();
+
+                    while (this.bufferNonRollbackFrames > 0) {
+                        this.averageRollbackFrames.push(0);
+                        this.bufferNonRollbackFrames--;
+                    }
+                }
+                this.myPlayer.controls.updateInGame();
+
+
+                this.data = undefined;
+
+                if (this.desyncQueue.length > 0) {
+                    let desyncTest = this.desyncQueue[0];
+                    let testFrame = this.farPast[desyncTest.frame - this.farPast[0].gameState.frameCount];
+                    if (testFrame !== undefined && testFrame.gameState.frameCount < currentScreen.world.frameCount - 30 && testFrame.gameState.frameCount < currentScreen.past[0].gameState.frameCount) {
+                        let p0 = testFrame.gameState.players[0];
+                        let p1 = testFrame.gameState.players[1];
+                        let test = desyncTest;
+                        let roundTo = 1000000000;
+                        //if (Math.round(p0.x * roundTo) / roundTo !== Math.round(test.x0 * roundTo) / roundTo || Math.round(p0.y * roundTo) / roundTo !== Math.round(test.y0 * roundTo) / roundTo || Math.round(p1.x * roundTo) / roundTo !== Math.round(test.x1 * roundTo) / roundTo || Math.round(p1.y * roundTo) / roundTo !== Math.round(test.y1 * roundTo) / roundTo) {
+                        if (p0.x !== test.x0 || p0.y !== test.y0 || p1.x !== test.x1 || p1.y !== test.y1 ) {
+                            noLoop();
+                            if (errorDisplayFrames <= 0) {
+                                errorDisplayFrames = 240;
+                                errorDisplayMessage = "󱤑󱤆󱤧󱤮󱤂󱤉󱥖󱥁" + "\n󱤬󱥫" + testFrame.gameState.frameCount;//linja kulupu li pakala
+                            }
+                            //console.error("DESYNC DETECTED on frame " + testFrame.gameState.frameCount + ": (" + p0.x + ", " + p0.y + ")=(" + test.x0 + ", " + test.y0 + "), (" + p1.x + ", " + p1.y + ")=(" + test.x1 + ", " + test.y1 + ")");
+                        }
+                        this.desyncQueue.shift();
+                    }
+                }
+            }
+        } else {
+            if (frameCount % 10 === 0) {
+                this.connection.send({ type: "game", started: false });
+            }
         }
 
-        this.updateControls();
-        this.testShouldPause();
-        if (!this.paused && !this.winScreenMenuOn) {
-            this.addFramePast();
-            if (!debug.noSendData)
-                this.connection.send(this.getExports());
-
-            this.world.run();
-
-            this.data = undefined;
-        }
             //lostFrames--;
         //}
 
@@ -232,17 +306,18 @@ class VSNetplayScreen extends Screen {
             this.bufferUnpause--;
 
         this.endRun = false;
+        let previousMenu = this.leaveMenu;
         for (let i in controls) {
             if (!controls[i].computer && !controls[i].netplay) {
                 if (controls[i] != this.myPlayer.controls) {
                     controls[i].update();
                 }
-                this.runControls(controls[i]);
+                this.runControls(controls[i], previousMenu);
                 if (this.endRun)
                     return;
             }
         }
-        this.runControls(this.myPlayer.controls);
+        //this.runControls(this.myPlayer.controls);
         if (this.endRun)
             return;
 
@@ -289,9 +364,9 @@ class VSNetplayScreen extends Screen {
         }*/
     }
 
-    runControls(control) {
+    runControls(control, previousMenu) {
         if (control.clickedAbsolute("start") && !this.winScreenMenuOn) {
-            this.leaveMenu = !this.leaveMenu;
+            this.leaveMenu = !previousMenu;
             this.pausedControls = control;
         }
         /*if (this.pausedControls === control && this.leaveMenu && control.clickedAbsolute("back")) {//Character select screen
@@ -334,24 +409,25 @@ class VSNetplayScreen extends Screen {
         this.getNextData();
         let receivedData = this.data;
         //let rolledBack = false;
-        /*if (receivedData?.rollbackFrames) {//Test to see if slowdowns can be fixed FLAG POSSIBLE BAD CODE HERE
+        /*if (receivedData?.rollbackFrames) {//Test to see if slowdowns can be fixed POSSIBLE BAD CODE HERE
             if (receivedData.rollbackFrames - this.totalAverageRollback < -this.rollbackFrames / 2) {
                 this.paused = true;
                 this.distressWait = 1;
             }
         }*/
         if (receivedData?.rollback) {
-            if (this.totalAverageRollback / this.averageRollbackFrames.length < 15 && receivedData.rollback - this.totalAverageRollback / this.averageRollbackFrames.length > 1) {
-                lostFrames += (receivedData.rollback - this.totalAverageRollback / this.averageRollbackFrames.length - 1) / 30;
+            if (this.totalAverageRollback / this.averageRollbackFrames.length < 15 && receivedData.rollback - this.totalAverageRollback / this.averageRollbackFrames.length > .15) {
+                lostFrames += max(0, (receivedData.rollback - this.totalAverageRollback / this.averageRollbackFrames.length - .15) / 30);//  /30
                 if (debug.displayLostFrames)
-                    print((receivedData.rollback - this.totalAverageRollback / this.averageRollbackFrames.length - 1) / 30);
+                    print("Lost: " + ((receivedData.rollback - this.totalAverageRollback / this.averageRollbackFrames.length - .15) / 30));//  /30
             }
-            if (this.future.length > 2) {
+            /*if (this.future.length > 2) {//Perhaps this should be here IDK
                 lostFrames += this.future.length / 30;
                 if (debug.displayLostFrames)
                     print(this.future.length / 30);
-            }
+            }*/
         }
+        let rollbackAdded = false;
         while (receivedData && (receivedData.frameCount !== this.world.frameCount || this.paused)) {
             //print("r: " + receivedData.frameCount + "m: " + this.frameCount);
             while (this.timeStamps.length > 100) {
@@ -369,8 +445,11 @@ class VSNetplayScreen extends Screen {
             if (receivedData.frameCount < this.world.frameCount) {
                 //rolledBack = true;
                 let rollback = this.rollbackTo(receivedData);
+                this.averageRollbackFrames.push(rollback);
+                rollbackAdded = true;
                 if (debug.displayRollbackFrames)
-                    this.averageRollbackFrames.push(rollback);
+                    print(rollback);
+                //print("rolling back: " + receivedData.frameCount);
                 receivedData = undefined;
                 this.data = undefined;
             } else if (receivedData.frameCount >= this.world.frameCount) {
@@ -379,6 +458,7 @@ class VSNetplayScreen extends Screen {
                     futureI++;
                 }
                 this.future.splice(futureI, 0, receivedData);
+                //print("future: " + futureI);
                 receivedData = undefined;
                 this.data = undefined;
             }
@@ -406,6 +486,8 @@ class VSNetplayScreen extends Screen {
                 u++;
             }
         }
+        if (!rollbackAdded)
+            this.bufferNonRollbackFrames++;
 
         //
         if (this.myPlayer) {
@@ -426,7 +508,8 @@ class VSNetplayScreen extends Screen {
                     }
                 }
             }
-                this.myPlayer.controls.update();
+            this.myPlayer.controls.update();
+
             //} else {
                 //this.myPlayer.controls.buttons.start.update();
                 //this.myPlayer.controls.buttons.select.update();
@@ -459,7 +542,7 @@ class VSNetplayScreen extends Screen {
         if (this.paused && this.distressWait === 0) {
             for (let i in this.past) {
                 if (!this.past[i].dataReceived) {
-                    this.connection.send({ needFrame: this.past[i].gameState.frameCount });
+                    this.connection.send({ type: "game", needFrame: this.past[i].gameState.frameCount });
                     this.distressWait = this.maxDistressWait;
                     this.timeStamps.push({ time: Date.now(), frameCount: this.past[i].gameState.frameCount });
                     if (debug.displayNetplayPauses)
@@ -472,73 +555,104 @@ class VSNetplayScreen extends Screen {
 
     rollbackTo(receivedData) {
         let currentFrameCount = this.world.frameCount;
-        let frame = this.past.length + receivedData.frameCount - this.world.frameCount;
         let rollbackFrames = this.world.frameCount - receivedData.frameCount;
         //print(this.past[frame]?.frameCount, frame, receivedData.frameCount, this.world.frameCount);
         //let origFrame = frame;
         //print(frame, receivedData.frameCount, this.world.frameCount, this.past[frame].dataReceived, !!this.past[frame]);
         //print("b: ", this.past[origFrame].dataReceived, receivedData.frameCount);
-        if (this.past[frame]/* && !this.past[frame].dataReceived*/) {
-            this.past[frame].dataReceived = true;
-            defaultDeserialize(this.world, this.past[frame].gameState);
-            
-            defaultDeserialize(this.theirPlayer.controls, receivedData.inputs);
-            if (this.myPlayer === this.world.players[0]) {
-                defaultDeserialize(this.myPlayer.controls, this.past[frame].player1Inputs);
-                this.past[frame].player2Inputs = defaultSerialize(this.theirPlayer.controls);
-            } else {
-                defaultDeserialize(this.myPlayer.controls, this.past[frame].player2Inputs);
-                this.past[frame].player1Inputs = defaultSerialize(this.theirPlayer.controls);
-            }
+        if (this.past.length > 0) {
+            let frame = receivedData.frameCount - this.past[0].gameState.frameCount;
+            if (this.past[frame]/* && !this.past[frame].dataReceived*/) {
+                let theirControls = defaultSerialize(this.theirPlayer.controls);
+                let myControls = defaultSerialize(this.myPlayer.controls);
 
-            this.world.rollbacking = true;
-            this.world.rollbackingFrames = currentFrameCount - this.world.frameCount;
-            this.world.run();
-            frame++;
-            while (this.world.frameCount < currentFrameCount) {
-                for (let i = this.dataQueue.length - 1; i >= 0; i--) {
-                    if (this.dataQueue[i].frameCount === this.world.frameCount) {
-                        receivedData = this.dataQueue[i];
-                        this.past[frame].dataReceived = true;
-                        if (this.theirPlayer === this.world.players[0]) {
-                            this.past[frame].player1Inputs = receivedData.inputs;
-                        } else {
-                            this.past[frame].player2Inputs = receivedData.inputs;
-                        }
-                        this.dataQueue.splice(i, 1);
-                    }
+                this.past[frame].dataReceived = true;
+                defaultDeserialize(this.world, this.past[frame].gameState);
+
+                defaultDeserialize(this.theirPlayer.controls, receivedData.inputs);
+                if (this.myPlayer === this.world.players[0]) {
+                    defaultDeserialize(this.myPlayer.controls, this.past[frame].player1Inputs);
+                    this.past[frame].player2Inputs = receivedData.inputs;// defaultSerialize(this.theirPlayer.controls);
+                } else {
+                    defaultDeserialize(this.myPlayer.controls, this.past[frame].player2Inputs);
+                    this.past[frame].player1Inputs = receivedData.inputs;// defaultSerialize(this.theirPlayer.controls);
                 }
-                this.past[frame].gameState = defaultSerialize(this.world);
-                defaultDeserialize(this.world.players[0].controls, this.past[frame].player1Inputs);
-                defaultDeserialize(this.world.players[1].controls, this.past[frame].player2Inputs);
+
                 this.world.rollbacking = true;
                 this.world.rollbackingFrames = currentFrameCount - this.world.frameCount;
                 this.world.run();
                 frame++;
+                while (this.world.frameCount < currentFrameCount) {
+                    for (let i = this.dataQueue.length - 1; i >= 0; i--) {
+                        if (this.dataQueue[i].frameCount === this.world.frameCount) {
+                            receivedData = this.dataQueue[i];
+                            this.past[frame].dataReceived = true;
+                            if (this.theirPlayer === this.world.players[0]) {
+                                this.past[frame].player1Inputs = receivedData.inputs;
+                            } else {
+                                this.past[frame].player2Inputs = receivedData.inputs;
+                            }
+                            this.dataQueue.splice(i, 1);
+                        }
+                    }
+                    this.past[frame].gameState = defaultSerialize(this.world);
+                    defaultDeserialize(this.world.players[0].controls, this.past[frame].player1Inputs);
+                    defaultDeserialize(this.world.players[1].controls, this.past[frame].player2Inputs);
+                    this.world.rollbacking = true;
+                    this.world.rollbackingFrames = currentFrameCount - this.world.frameCount;
+                    this.world.run();
+                    frame++;
+                }
+
+                defaultDeserialize(this.myPlayer.controls, myControls);
+                defaultDeserialize(this.theirPlayer.controls, theirControls);
             }
         }
         //print("a: ", this.past[origFrame].dataReceived, receivedData.frameCount);
         return rollbackFrames;
     }
 
-    getExports() {
-        let want = (frameCount % 12 === 0);
+    getExports(bufferControls, frameCnt = this.world.frameCount) {
+        let want = (frameCount % 2 === 0);
         if (want)
             this.timeStamps.push({ time: Date.now(), frameCount: this.world.frameCount });
+        let desyncTest = undefined;
+        if (this.farPast.length >= 30) {
+            desyncTest = {
+                frame: this.farPast[this.farPast.length - 30].gameState.frameCount,
+                x0: this.farPast[this.farPast.length - 30].gameState.players[0].x,
+                y0: this.farPast[this.farPast.length - 30].gameState.players[0].y,
+                x1: this.farPast[this.farPast.length - 30].gameState.players[1].x,
+                y1: this.farPast[this.farPast.length - 30].gameState.players[1].y
+            };
+        }
         return {
-            frameCount: this.world.frameCount,
-            inputs: defaultSerialize(this.myPlayer.controls),
+            type: "game",
+            frameCount: frameCnt,
+            inputs: bufferControls === undefined ? defaultSerialize(this.myPlayer.controls) : bufferControls,
             rollback: this.totalAverageRollback / this.averageRollbackFrames.length,
-            wantResponse: want
+            wantResponse: want,
+            desyncTest
         };
     }
 
     getExportsFrame(id, wasNeedFrame = true) {
         let inputs = (this.myPlayer === this.world.players[0]) ? this.farPast[id].player1Inputs : this.farPast[id].player2Inputs;
         return {
+            type: "game",
             frameCount: this.farPast[id].gameState.frameCount,
             inputs: inputs,
             rollback: this.farPast[id].rollback
+        };
+    }
+
+    getExportsBufferedFrame(id, wasNeedFrame = true) {
+        let inputs = this.bufferedLocalInputs[id];
+        return {
+            type: "game",
+            frameCount: inputs.frameCount,
+            inputs: inputs.controls/*,
+            rollback: 0*/
         };
     }
 
@@ -601,6 +715,7 @@ class VSNetplayScreen extends Screen {
         }
 
         this.connection.send({
+            type: "game", 
             randomChoices: choices
         });
     }
@@ -654,7 +769,15 @@ class VSNetplayScreen extends Screen {
 
         let canvasSlope = this.world.height / this.world.width;
         let minSize = min(windowWidth, windowHeight / canvasSlope);
+
+        //let currentWorld = defaultSerialize(this.world);//Delaying the visual display (not a good solution for delay frames)
+        //print("frame difference: " + (this.farPast[this.farPast.length - 1].gameState.frameCount - this.world.frameCount));
+        //if (this.farPast.length > 0)
+        //    defaultDeserialize(this.world, this.farPast[max(0, this.farPast.length - this.delayFrames)].gameState);
+
         this.world.draw(g, (windowWidth - minSize) / 2, (windowHeight - minSize * canvasSlope) / 2, minSize, minSize * canvasSlope);
+
+        //defaultDeserialize(this.world, currentWorld);
 
         if (this.winScreenMenuOn) {
             g.textFont(assetManager.fonts.asuki);
@@ -684,26 +807,26 @@ class VSNetplayScreen extends Screen {
             this.pauseMenu.draw(g, minSize, minSize * 384 / 512, minSize * 0.5, minSize * canvasSlope * 0.13);
         }
 
-        if (debug.displayRollbackFrames) {
-            let sum = 0;
-            this.averageRollbackFrames.forEach((a) => {
-                sum += a;
-            });
-            this.totalAverageRollback = sum;
+        //if (debug.displayRollbackFrames) {
+        let sum = 0;
+        this.averageRollbackFrames.forEach((a) => {
+            sum += a;
+        });
+        this.totalAverageRollback = sum;
 
-            sum = 0;//sum becomes the average ping
-            this.pings.forEach((a) => {
-                sum += a;
-            });
+        sum = 0;//sum becomes the average ping
+        this.pings.forEach((a) => {
+            sum += a;
+        });
             
-            g.fill(255, 0, 0, 170);
-            g.noStroke();
-            g.textSize(20);
-            g.textAlign(CENTER, CENTER);
-            g.textFont(assetManager.fonts.asuki);
-            g.text("󱥫󱥜: " + (round(this.totalAverageRollback / this.averageRollbackFrames.length * 10) / 10).toFixed(1), width / 2 - 70, 10);//tenpo sike
-            g.text(round(sum / this.pings.length) + "ms", width / 2, 10);//ping
-        }
+        g.fill(255, 0, 0, 170);
+        g.noStroke();
+        g.textSize(20);
+        g.textAlign(CENTER, CENTER);
+        g.textFont(assetManager.fonts.asuki);
+        g.text("󱥫󱥜: " + (round(this.totalAverageRollback / this.averageRollbackFrames.length * 10) / 10).toFixed(1), width / 2 - 70, 10);//tenpo sike
+        g.text(round(sum / this.pings.length) + "ms", width / 2, 10);//ping
+        //}
     }
 
     addFramePast() {
@@ -736,6 +859,7 @@ class VSNetplayScreen extends Screen {
     halfDestruct() {
         debug.noUpdateControls = false;
         debug.noSkipFrames = false;
+        this.world.destruct();
         for (let u = controls.length - 1; u >= 0; u--) {
             if (controls[u].computer)
                 controls.splice(u, 1);
@@ -759,7 +883,7 @@ class VSNetplayScreen extends Screen {
             this.player1.controls = null;
         if (this.player2.controls.computer)
             this.player2.controls = null;
-        this.connection?.close();
+        //this.connection?.close();
         errorDisplayFrames = 0;
         Howler.stop();
 

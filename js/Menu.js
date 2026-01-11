@@ -93,6 +93,8 @@ class Menu {
     moveSelect(angle) {
         if (!this.target)
             return;
+        if (this.target.negateMove)
+            return;
         let min = 99999;
         let target = undefined;
         for (let i in this.target.moves) {

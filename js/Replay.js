@@ -2,16 +2,17 @@ class Replay {
     constructor(json) {
         this.rSeed = 0;
         this.characters = [0, 0];
+        this.inputTypes = [0, 0];
         this.stage = 0;
         this.firstTo = 2;
 
-        this.inputs = {}
-;
-
         this.minFrameCount = undefined;
+        this.inputLength = 0;
         this.initialized = false;
 
         this.appVersion = appVersion;
+
+        this.inputs = {};
 
         this.jsonSRC = json;
         this.jsonData = undefined;
@@ -20,7 +21,8 @@ class Replay {
         this.onParsed = () => { };
     }
 
-    onLoad() {
+    onLoad(data) {
+        this.jsonData = data;
         try {
             this.jsonData = JSON.parse(this.jsonData.join(""));
             this.loaded = true;
@@ -29,7 +31,7 @@ class Replay {
             else
                 this.onParsed();
         } catch (e) {
-            this.onError("INCORRECT/CORRUPT FILE FORMAT");
+            this.onError("INCORRECT/CORRUPT FILE FORMAT\n" + e);
         }
     }
 
@@ -40,7 +42,7 @@ class Replay {
 
     loadJSON(onParsed = this.onParsed) {
         this.onParsed = onParsed;
-        this.jsonData = loadStrings(this.jsonSRC, this.onLoad.bind(this), this.onError.bind(this));
+        /*this.jsonData = */loadStrings(this.jsonSRC, this.onLoad.bind(this), this.onError.bind(this));
     }
 
     initLoad(parent) {
@@ -88,10 +90,17 @@ class Replay {
 
     recordCharacters(world) {
         this.characters = [];
+        this.inputTypes = [];
         for (let i = 0; i < world.players.length; i++) {
             for (let u = 0; u < characters.length; u++) {
                 if (world.players[i].name === new characters[u]().name) {
                     this.characters[i] = u;
+                    this.inputTypes[i] = {
+                        keyboard: 0,
+                        gamepad: 1
+                    }[world.players[i].controls.layout];
+                    if (world.players[i].computer)
+                        this.inputTypes[i] = 2;
                     break;
                 }
             }
@@ -135,6 +144,8 @@ class Replay {
         for (let i = 0; i < world.players.length; i++) {
             this.inputs[frameCount].push(world.players[i].controls.serialize());
         }
+
+        this.inputLength = Object.keys(this.inputs).length;
     }
 
     /**
@@ -149,13 +160,15 @@ class Replay {
         }
 
         this.inputs[frameCount] = [];
-        for (let i = 0; i < controls.length; i++) {
+        for (let i = 0; i < controlsArray.length; i++) {
             this.inputs[frameCount].push(controlsArray[i]);
         }
+
+        this.inputLength = Object.keys(this.inputs).length;
     }
 
     serialize() {
-        return (({
+        let obj = (({
             jsonSRC,
             jsonData,
             loaded,
@@ -163,6 +176,19 @@ class Replay {
             onParsed,
             ...o
         }) => defaultSerialize(o))(this);
+        for (let i in obj.inputs) {
+            for (let u in obj.inputs[i]) {
+                obj.inputs[i][u] = deepSerialize({
+                    deadzones: obj.inputs[i][u].deadzones,
+                    buttons: obj.inputs[i][u].buttons,
+                    joysticks: obj.inputs[i][u].joysticks,
+                    dashCancelHold: obj.inputs[i][u].dashCancelHold,
+                    inputAngleType: obj.inputs[i][u].inputAngleType,
+                });
+            }
+        }
+
+        return obj;
     }
 
     deserialize(obj) {
@@ -174,12 +200,35 @@ class Replay {
     deserializeHelp(obj) {
         if (obj?.inputs) {
             this.inputs = {};
-            for (let frame in obj.inputs) {
-                this.inputs[frame] = [];
-                for (let p in obj.inputs[frame]) {
-                    this.inputs[frame].push(obj.inputs[frame][p]);
+
+            //print(this.serialize());
+            for (let i = this.minFrameCount; i < this.minFrameCount + this.inputLength; i++) {
+                this.inputs[i] = [];
+                //print("frame " + i);
+                for (let u = 0; u < this.inputTypes.length; u++) {
+                    if (this.inputTypes[u] === 0) {
+                        this.inputs[i].push(new Controls("keyboard", keys, controlsManager.defaultKeyboardControls1.keys, controlsManager.defaultKeyboardControls1.arrows, controlsManager.defaultKeyboardControls1.deadzones).serialize());
+                    } else if (this.inputTypes[u] === 1) {
+                        this.inputs[i].push(new Controls("gamepad", 0, controlsManager.defaultGamepadControls.keys, controlsManager.defaultGamepadControls.arrows, controlsManager.defaultGamepadControls.deadzones).serialize());
+                    } else if (this.inputTypes[u] === 2) {
+                        this.inputs[i].push(new ComputerControls().serialize());
+                    } else {
+                        throw new Error("Error loading replay file");
+                    }
+                    //print("player: " + u);
+                    //print(this.inputs[i][u]);
+                    //print(obj.inputs[i][u]);
+                    deepDeserialize(this.inputs[i][u], obj.inputs[i][u]);
                 }
             }
+
+            //Old JSON format
+            //for (let frame in obj.inputs) {
+            //    this.inputs[frame] = [];
+            //    for (let p in obj.inputs[frame]) {
+            //        this.inputs[frame].push(obj.inputs[frame][p]);
+            //    }
+            //}
         }
     }
 

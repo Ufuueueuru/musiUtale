@@ -10,7 +10,7 @@
 	let attack = new Attack(player, circles, prop).setActiveF(5);
 */
 //Use this line to see all proration properties of each attack of a character (primitive - does not work for command grabs)
-//["DASH_ATTACK", "NL", "SL", "RL", "LL", "ML", "NS", "SS", "RS", "LS", "MS", "NPL", "SPL", "RPL", "LPL", "MPL", "NPS", "SPS", "RPS", "LPS", "MPS", "NN", "SN", "RN", "LN", "MN"].forEach((a) => {currentScreen.player1[a].createAttack(currentScreen.player1).properties.forEach((b) => print(b.nanpaLipu + ", " + a))})
+//["DASH_ATTACK", "NL", "SL", "RL", "LL", "ML", "NS", "SS", "RS", "LS", "MS", "NPL", "SPL", "RPL", "LPL", "MPL", "NPS", "SPS", "RPS", "LPS", "MPS", "NN", "SN", "RN", "LN", "MN"].forEach((a) => { currentScreen.player1[a].createAttack(currentScreen.player1).properties.forEach((b) => print(b.proration + ", " + a + ", " + currentScreen.player1.name)) })
 class Attack extends Hitcircle {
 	constructor(player, circles = [], props = []) {
 		super(player.x, player.y, circles);
@@ -87,11 +87,18 @@ class Attack extends Hitcircle {
 		this.defaultProperty = 0;
 
 		this.frameDataRef = new AttackFrameData(this);
+
+		/** @type {boolean} If the whiff sound for the attack whiffing has played or not */
+		this.whiffSoundPlayed = false;
 	}
 
 	/** */
 	run() {
 		this.logic();
+		if (this.getActiveF() === 0 && !this.hitPlayerBool && !this.whiffSoundPlayed && this.frameDataRef.getActiveF() > 0) {
+			this.player.playSound(assetManager.sounds.whiff);
+			this.whiffSoundPlayed = true;
+		}
 
 		this.duration--;
 
@@ -221,12 +228,40 @@ class Attack extends Hitcircle {
 
 				this.world.addAttack(comingAttack);
 
+				if (property.comboCounter) {
+					p.combo++;
+					p.comboProration--;
+				}
+
+				//Grab counterhit and punish hit
 				if (counterHit) {
-					p.comboProration -= 6;
-					this.player.world.ps.createParticle("counterHitEffect", p, p.x - 80, p.y - 40, 80, 40);
+					p.comboProration -= this.player.counterHitBuff;
+					this.player.world.ps.createParticle("counterHitEffect", null, p.x - 512, p.y - 60, 240, 120, Angle.RIGHT, false, 60, 0, (particle) => {
+						if (particle.currentFrame === 2) {
+							particle.dx = 2;
+						}
+						if (particle.currentFrame === 7) {
+							particle.dx = 100;
+						}
+					});
+					this.player.playSound(assetManager.sounds.pilinPakala);
 				}
 				if (punishHit) {
-					this.player.world.ps.createParticle("punishHitEffect", p, p.x - 80, p.y, 80, 40);
+					this.player.world.ps.createParticle("punishHitEffect", null, p.x, p.y + 40, 0, 0, Angle.RIGHT, false, 0, 0, (particle) => {
+						let speed = 8;
+						if (particle.currentFrame < 7) {
+							if (particle.displayWidth < 160)
+								particle.displayWidth += 2 * speed;
+							if (particle.displayHeight < 80)
+								particle.displayHeight += speed;
+						} else {
+							if (particle.displayWidth > 0)
+								particle.displayWidth -= 32;
+							if (particle.displayHeight > 0)
+								particle.displayHeight -= 16;
+						}
+					});
+					this.player.playSound(assetManager.sounds.tenpoPona);
 				}
 			}
 		} else {
@@ -311,13 +346,15 @@ class Attack extends Hitcircle {
 
 				p.lipuHeavy = property.launch >= 8;
 
+				p.blockArcDir.value = p.controls.angle(0).value;
+
 				let parried = (p.moveCount <= p.parryLeniency && p.moveCount > 0 && parryAngleDif < effectiveLeniency && p.parryCooldown <= 0);
 				if ((p.controls.joystickPressed(0) && !(angleDif < effectiveLeniency) && !parried) || (!p.controls.joystickPressed(0) && (!(standingAngleDif < standLeniency) || debug.noNeutralBlock)) || !(p.canChangeState(p.states.BLOCK) || (State.stateIsTag(p.currentState, "parry override") && parried)) || ((property.blockBreak && !property.blockBreakParriable) || (property.blockBreak && property.blockBreakParriable && !parried))) {//Standard hit
 					p.iFrames = 0;
 
 					if (!property.commandGrab && !property.noHitEffect)
 						this.player.world.ps.createParticle("hitEffect", p, px, py, 220, 220, attackAngle, true);
-					
+
 					if (p.atEdge(3)) {
 						wallPushback = property.hitPushback;
 						wallAngle = p.edgeAngle();
@@ -330,6 +367,7 @@ class Attack extends Hitcircle {
 					}
 
 					if (p.currentState.name !== "hitstun") {
+						p.createHitAngleParticles(attackAngle, !property.blockBreak, !property.blockBreak || property.blockBreakParriable);
 						if (this.world.sikeWawa.sliceOwnerIs(this.player)) {
 							this.world.sikeWawa.addMeter(7, 2.8, this.player);
 						} else {
@@ -353,6 +391,10 @@ class Attack extends Hitcircle {
 							this.player.stunFrames = max(this.player.stunFrames, 6);
 						}
 					}
+
+					p.stunFrames += property.hitOppStagger;
+					this.player.stunFrames += property.hitStagger;
+
 					let hitStunModify = property.normalizeHitStun ? this._activeF - 1 : 0;
 					let comboBreaker = 0;
 					if (p.combo > 5 && this.player.moveStaling.getStaling(this.name) >= this.player.moveStaling.maxStale - 1)
@@ -399,10 +441,32 @@ class Attack extends Hitcircle {
 							this.world.camera.options = "closeL";
 						}
 
-						this.player.world.ps.createParticle("counterHitEffect", p, px - 80, py - 40, 80, 40);
+						this.player.world.ps.createParticle("counterHitEffect", null, p.x - 512, p.y - 60, 240, 120, Angle.RIGHT, false, 60, 0, (particle) => {
+							if (particle.currentFrame === 2) {
+								particle.dx = 2;
+							}
+							if (particle.currentFrame === 7) {
+								particle.dx = 100;
+							}
+						});
+						this.player.playSound(assetManager.sounds.pilinPakala);
 					}
 					if (punishHit) {
-						this.player.world.ps.createParticle("punishHitEffect", p, px - 80, py, 80, 40);
+						this.player.world.ps.createParticle("punishHitEffect", null, p.x, p.y + 40, 0, 0, Angle.RIGHT, false, 0, 0, (particle) => {
+							let speed = 8;
+							if (particle.currentFrame < 7) {
+								if (particle.displayWidth < 160)
+									particle.displayWidth += 2 * speed;
+								if (particle.displayHeight < 80)
+									particle.displayHeight += speed;
+							} else {
+								if (particle.displayWidth > 0)
+									particle.displayWidth -= 32;
+								if (particle.displayHeight > 0)
+									particle.displayHeight -= 16;
+							}
+						});
+						this.player.playSound(assetManager.sounds.tenpoPona);
 					}
 
 					if (property.rotateOnHit) {
@@ -513,6 +577,10 @@ class Attack extends Hitcircle {
 					p.stunFrames = max(p.stunFrames, property.blockStunFrames);
 					if (this.follow || wallPushback !== 1)
 						this.player.stunFrames = max(this.player.stunFrames, property.blockStunFrames);
+					p.stunFrames += property.blockOppStagger;
+					this.player.stunFrames += property.blockStagger;
+					this.player.hitStun += property.blockStagger;
+
 					let hitStunModify = property.normalizeHitStun ? this._activeF - 1 : 0;
 					
 					p.hitStun = max(p.hitStun, property.blockStun + hitStunModify + p.hitStunModifier - (!p.controls.joystickPressed(0) ? p.neutralBlockBuff : 0));
@@ -523,10 +591,10 @@ class Attack extends Hitcircle {
 
 					property.cancelWait = property.cancelWaitBlock;
 
-					if (property.rotateOnBlock) {
+					if (property.rotateOnBlock && !parried) {
 						p.rotateVel = property.rotateVelBlock / max(1, property.blockStun);
 					}
-					if (property.rotateSlowDownOnBlock) {
+					if (property.rotateSlowDownOnBlock && !parried) {
 						if (p.rotateSlowDownFrames <= 0) {
 							p.rotateSlowDown = property.rotateSlowDown;
 						} else {
@@ -587,6 +655,8 @@ class Attack extends Hitcircle {
 						p.dx /= 2;
 						p.dy /= 2;
 						p.stunFrames += 23 - p.parryFrameBuff;
+
+						p.parryArcNegateFrames = p.hitStun + p.stunFrames;
 
 						p.parryCooldown = 0;
 
@@ -1358,6 +1428,15 @@ class AttackProperties {
 		/** @type {number} */
 		this.blockStunFrames = 12;
 
+		/** @type {number} */
+		this.hitStagger = 0;
+		/** @type {number} */
+		this.blockStagger = 0;
+		/** @type {number} */
+		this.hitOppStagger = 0;
+		/** @type {number} */
+		this.blockOppStagger = 0;
+
 		/** @type {string[]} */
 		this.cancelOptions = [];
 
@@ -1568,6 +1647,24 @@ class AttackProperties {
 		this.blockStunFrames = block;
 
 		this._setScreenShakeAuto();
+
+		return this;
+	}
+
+	/**
+	 * Causes frames where one player is in stunframes for longer (also causes shake)
+	 * 
+	 * @param {number} hit
+	 * @param {number} block
+	 * @param {number} hitOpp
+	 * @param {number} blockOpp
+	 * @returns
+	 */
+	setStaggerFrames(hit=0, block=0, hitOpp=0, blockOpp=0) {
+		this.hitStagger = hit;
+		this.blockStagger = block;
+		this.hitOppStagger = hitOpp;
+		this.blockOppStagger = blockOpp;
 
 		return this;
 	}

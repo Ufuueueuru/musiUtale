@@ -73,7 +73,8 @@ class Spritesheet {
 	}
 
 	loadImage(onLoad, onError) {
-		this.image = loadImage(this.src, ((onLoad) => {
+		loadImage(this.src, this.createImageLoadFunction(onLoad), onError);
+		/*this.image = loadImage(this.src, ((onLoad) => {
 			if (graphicsSettings.spriteResolutionMult !== 1 && this.image.width * graphicsSettings.spriteResolutionMult % 1 === 0 && this.image.height * graphicsSettings.spriteResolutionMult % 1 === 0 && !this.noResize) {
 				if (debug.noSplit)
 					this.image.resize(this.image.width * graphicsSettings.spriteResolutionMult, 0);
@@ -81,12 +82,33 @@ class Spritesheet {
 			}
 			this.imageLoaded = true;
 			onLoad();
-		}).bind(this, onLoad), onError);
+		}).bind(this, onLoad), onError);*/
 	}
 
 	loadJSON(onLoad, onError) {
-		if(this.jsonsrc !== undefined)
-			this.animationData = loadStrings(this.jsonsrc, onLoad, onError);
+		if (this.jsonsrc !== undefined) {
+			loadStrings(this.jsonsrc, this.createAnimationLoadFunction(onLoad), onError);
+			//this.animationData = loadStrings(this.jsonsrc, onLoad, onError);
+		}
+	}
+
+	createImageLoadFunction(onLoad) {
+		return ((asset) => {
+			this.image = asset;
+			this.imageLoaded = true;
+			onLoad.bind(this)();
+			this.splitImage(assetManager);
+			//print("split " + this.src);
+		}).bind(this);
+	}
+
+	createAnimationLoadFunction(onLoad) {
+		return ((asset) => {
+			this.animationData = asset;
+			this.parseJSON();
+			onLoad.bind(this)();
+			//print(assetTarget, this.image?.width);
+		}).bind(this);
 	}
 
 	parseJSON() {
@@ -130,6 +152,7 @@ class Spritesheet {
 		
 		if (debug.noSplit) {
 			assetManager._splitLoaded++;
+			//print("loaded: " + this.src + ", " + assetManager._splitLoaded);
 		} else {
 			let loaded = { amount: 0, total: total };
 			if (assetManager)
@@ -237,6 +260,8 @@ class Spritesheet {
 		if (debug.noSplit) {
 			let spriteWidth = this.width * this.resolutionMult;
 			let spriteHeight = this.height * this.resolutionMult;
+			if (!this.image)
+				print("failure image: " + this.src);
 			g.image(this.image, x, y, width, height, this.currentFrame * spriteWidth % this.image.width, Math.floor(this.currentFrame * spriteWidth / this.image.width) * spriteHeight, spriteWidth, spriteHeight);
 		} else {
 			g.image(this.images[this.currentFrame], x, y, width, height);
