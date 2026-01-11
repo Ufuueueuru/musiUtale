@@ -263,7 +263,7 @@ class CharacterSelectScreen extends Screen {
     }
 
     init() {
-        this.menu = new Menu(undefined, () => { playersManager.openScreen() }, false);
+        this.menu = new Menu(undefined, () => { playersManager.openScreen(); playersManager.resetPositions(MenuDebugScreen); playersManager.transitioning = 0; }, false);
 
         this.netplay = false;
 

@@ -124,6 +124,8 @@ class Menu {
         if (this.backScreenClass && this.transitioning === 0) {
             this.transitioning = 30;
             this.back = true;
+        } else {
+            this.backoutFunction(currentScreen);
         }
     }
 
