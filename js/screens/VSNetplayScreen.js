@@ -95,8 +95,8 @@ class VSNetplayScreen extends Screen {
 
         this.desyncQueue = [];//This stores all of the data that the other client has sent regarding player location
 
-        this.farPast = [];//This will look 4 times farther back than this.past for use in resolving packet loss
-        this.farPastMultiply = 400;//4
+        this.farPast = [];//This will look 10 times farther back than this.past for use in resolving packet loss
+        this.farPastMultiply = 10;//10
 
         this.timeStamps = [];//Timestamps used to calculate ping values
         this.pings = [0];//A list of the past ping amounts
