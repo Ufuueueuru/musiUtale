@@ -52,7 +52,7 @@
             if (debug.hitboxEditScreen) {
                 currentScreen = new HitboxEditScreen();
             } else {
-                currentScreen = new MenuDebugScreen();
+                currentScreen = new LanguageSelectScreen();
                 assetManager.resetAssets();
             }
             frameRate(60);
