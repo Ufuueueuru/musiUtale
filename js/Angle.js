@@ -10,7 +10,7 @@ class Angle {
 		/** @type {number} */
 		this.value = value;
 
-		this.normalize();
+		//this.normalize();
 	}
 
 	/**

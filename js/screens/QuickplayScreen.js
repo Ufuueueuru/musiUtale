@@ -215,11 +215,11 @@ class QuickplayScreen extends Screen {
                 }
             }
             if (data.type === "game") {
-                /*if (random(0, 100) > 98 && currentScreen.world.frameCount > 180) {
+                if (debug.manualDropFrames && random(0, 100) > debug.manualDropPercent && currentScreen.world.frameCount > 180) {
                     //fake packet loss
-                    print(data);
+                    //print(data);
                     return;
-                }*/
+                }
                 if (currentScreen.started === undefined)
                     return;
                 else if (currentScreen.started === false) {

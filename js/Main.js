@@ -212,7 +212,7 @@ function setup() {
 	});
 	assetManager.addSound("resources/music/nasin noka.wav", "nasinNoka", {
 		loop: true,
-		volume: 0.4
+		volume: 0.5
 	});
 
 	assetManager.addSound("resources/sfx/8bithit.wav", "8BitHit", {

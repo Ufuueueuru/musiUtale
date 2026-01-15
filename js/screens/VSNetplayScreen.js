@@ -270,7 +270,15 @@ class VSNetplayScreen extends Screen {
                 this.data = undefined;
 
                 if (this.desyncQueue.length > 0) {
-                    let desyncTest = this.desyncQueue[0];
+                    let desync = flotsam.decode(this.desyncQueue[0].locations);
+                    //print(desync);
+                    let desyncTest = {
+                        frame: this.desyncQueue[0].frame,
+                        x0: desync[0],
+                        y0: desync[1],
+                        x1: desync[2],
+                        y1: desync[3]
+                    }
                     let testFrame = this.farPast[desyncTest.frame - this.farPast[0].gameState.frameCount];
                     if (testFrame !== undefined && testFrame.gameState.frameCount < currentScreen.world.frameCount - 30 && testFrame.gameState.frameCount < currentScreen.past[0].gameState.frameCount) {
                         let p0 = testFrame.gameState.players[0];
@@ -279,12 +287,12 @@ class VSNetplayScreen extends Screen {
                         let roundTo = 1000000000;
                         //if (Math.round(p0.x * roundTo) / roundTo !== Math.round(test.x0 * roundTo) / roundTo || Math.round(p0.y * roundTo) / roundTo !== Math.round(test.y0 * roundTo) / roundTo || Math.round(p1.x * roundTo) / roundTo !== Math.round(test.x1 * roundTo) / roundTo || Math.round(p1.y * roundTo) / roundTo !== Math.round(test.y1 * roundTo) / roundTo) {
                         if (p0.x !== test.x0 || p0.y !== test.y0 || p1.x !== test.x1 || p1.y !== test.y1 ) {
-                            noLoop();
+                            //noLoop();
                             if (errorDisplayFrames <= 0) {
                                 errorDisplayFrames = 240;
                                 errorDisplayMessage = "󱤑󱤆󱤧󱤮󱤂󱤉󱥖󱥁" + "\n󱤬󱥫" + testFrame.gameState.frameCount;//linja kulupu li pakala
                             }
-                            //console.error("DESYNC DETECTED on frame " + testFrame.gameState.frameCount + ": (" + p0.x + ", " + p0.y + ")=(" + test.x0 + ", " + test.y0 + "), (" + p1.x + ", " + p1.y + ")=(" + test.x1 + ", " + test.y1 + ")");
+                            console.error("DESYNC DETECTED on frame " + testFrame.gameState.frameCount + ": (" + p0.x + ", " + p0.y + ")=(" + test.x0 + ", " + test.y0 + "), (" + p1.x + ", " + p1.y + ")=(" + test.x1 + ", " + test.y1 + ")");
                         }
                         this.desyncQueue.shift();
                     }
@@ -620,10 +628,11 @@ class VSNetplayScreen extends Screen {
         if (this.farPast.length >= 30) {
             desyncTest = {
                 frame: this.farPast[this.farPast.length - 30].gameState.frameCount,
-                x0: this.farPast[this.farPast.length - 30].gameState.players[0].x,
-                y0: this.farPast[this.farPast.length - 30].gameState.players[0].y,
-                x1: this.farPast[this.farPast.length - 30].gameState.players[1].x,
-                y1: this.farPast[this.farPast.length - 30].gameState.players[1].y
+                locations: flotsam.encode([
+                    this.farPast[this.farPast.length - 30].gameState.players[0].x,
+                    this.farPast[this.farPast.length - 30].gameState.players[0].y,
+                    this.farPast[this.farPast.length - 30].gameState.players[1].x,
+                    this.farPast[this.farPast.length - 30].gameState.players[1].y])
             };
         }
         return {

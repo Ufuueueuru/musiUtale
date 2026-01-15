@@ -65,9 +65,9 @@ class NetplayModeScreen extends Screen {
     initLater() {
         this.menu = new Menu(MenuDebugScreen);
 
-        this.quickplayButton = new MenuItem(50, 50, assetManager.images.buttonPressed, assetManager.images.buttonUnpressed, QuickplayScreen, gt("netplayModeQuickplay"));
+        this.quickplayButton = new MenuItem(50, 80, assetManager.images.buttonPressed, assetManager.images.buttonUnpressed, QuickplayScreen, gt("netplayModeQuickplay"));
         this.lobbyButton = new MenuItem(90, 150, assetManager.images.buttonPressed, assetManager.images.buttonUnpressed, NetplayScreen, gt("netplayModeLobby"));
-        this.backButton = new MenuItem(130, 250, assetManager.images.buttonPressed, assetManager.images.buttonUnpressed, MenuDebugScreen, gt("netplayModeBack"));
+        this.backButton = new MenuItem(130, 220, assetManager.images.buttonPressed, assetManager.images.buttonUnpressed, MenuDebugScreen, gt("netplayModeBack"));
 
         this.quickplayButton.addMoves(new MenuMove(this.lobbyButton, Angle.DOWN));
         this.lobbyButton.addMoves(new MenuMove(this.quickplayButton, Angle.UP), new MenuMove(this.backButton, Angle.DOWN));

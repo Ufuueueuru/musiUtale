@@ -3024,8 +3024,8 @@ class LipaDashAttack extends Attack {
 		let sweet1 = new PriorityCircle(0, 10, 210, 1).setVelocity(0.1, 0.02);
 		let circles = [sour1, sweet1];
 
-		let sour = new AttackProperties().setDamage(40, -10, 8).setProration(-1.5, 2).setCancelOptions(cancelOptions).setAngleValue(player.dir.value).setLaunch(10, 1, 0.5).setHitStun(25, 18).setStunFrames(15).setWallPushback(1, 1).setWallLaunchMod(10).setNormalizeHitStun().setChip(0.1).setAngleTypes("vel", "direct");
-		let sweet = new AttackProperties().setDamage(45, -11, 8).setProration(-1.5, 2).setCancelOptions(cancelOptions).setAngleValue(player.dir.value).setLaunch(10, 1, 0.5).setHitStun(26, 18).setStunFrames(15).setWallPushback(1, 1).setWallLaunchMod(10).setNormalizeHitStun().setChip(0.1).setAngleTypes("vel", "direct");
+		let sour = new AttackProperties().setDamage(40, -10, 8).setProration(-1.5, -1).setCancelOptions(cancelOptions).setAngleValue(player.dir.value).setLaunch(10, 1, 0.5).setHitStun(25, 18).setStunFrames(15).setWallPushback(1, 1).setWallLaunchMod(10).setNormalizeHitStun().setChip(0.1).setAngleTypes("vel", "direct");
+		let sweet = new AttackProperties().setDamage(45, -11, 8).setProration(-1.5, -1).setCancelOptions(cancelOptions).setAngleValue(player.dir.value).setLaunch(10, 1, 0.5).setHitStun(26, 18).setStunFrames(15).setWallPushback(1, 1).setWallLaunchMod(10).setNormalizeHitStun().setChip(0.1).setAngleTypes("vel", "direct");
 		let prop = [sour, sweet];
 
 		return new this(player, circles, prop).setClashPriority(2).setStartupF(13).setActiveF(6).setEndF(20).reflectHitboxes(player.rightHanded);

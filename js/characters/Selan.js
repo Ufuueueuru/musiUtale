@@ -2975,8 +2975,8 @@ class SelanSPS extends Attack {
 		let other1 = new PriorityCircle(80, 0, 80, 1).setVelocity(0.1, 0);
 		let circles = [sweet1, other1];
 
-		let sweet = new AttackProperties().setDamage(player.powerupGrabFrames ? 45 : 40).setProration(player.powerupGrabFrames ? -0.5 : 0).setCancelOptions(cancelOptions).setAngleValue(player.dir.value).setLaunch(14, 1, 2.7).setHitStun(40, 15).setStunFrames(13).setNormalizeHitStun().setCancelWait(6).setIgnoreWeight().setLaunchDampening(0.5);
-		let other = new AttackProperties().setDamage(player.powerupGrabFrames ? 45 : 40).setProration(player.powerupGrabFrames ? -0.5 : 0).setCancelOptions(cancelOptions).setAngleValue(player.dir.value).setLaunch(7, 1, 2.5).setHitStun(40, 15).setStunFrames(13).setNormalizeHitStun().setCancelWait(6).setIgnoreWeight().setLaunchDampening(0.5);
+		let sweet = new AttackProperties().setDamage(player.powerupGrabFrames ? 45 : 40).setProration(player.powerupGrabFrames ? -0.5 : 0).setCancelOptions(cancelOptions).setAngleValue(player.dir.value).setLaunch(14, 1, 2.7).setHitStun(40, 3).setStunFrames(13).setNormalizeHitStun().setCancelWait(6).setIgnoreWeight().setLaunchDampening(0.5);
+		let other = new AttackProperties().setDamage(player.powerupGrabFrames ? 45 : 40).setProration(player.powerupGrabFrames ? -0.5 : 0).setCancelOptions(cancelOptions).setAngleValue(player.dir.value).setLaunch(7, 1, 2.5).setHitStun(40, 3).setStunFrames(13).setNormalizeHitStun().setCancelWait(6).setIgnoreWeight().setLaunchDampening(0.5);
 		let prop = [sweet, other];
 
 		//sweet.setHitSound(assetManager.sounds.fanTP);
@@ -3022,6 +3022,8 @@ class SelanSPS extends Attack {
 				this.properties[0].setLaunch(4, 1, 1);
 				this.properties[0].setCancelOptions([]);
 				this.properties[1].setCancelOptions([]);
+				this.properties[0].setHitStun(40, 15);
+				this.properties[1].setHitStun(40, 15);
 				this.first = false;
 			}
 		}

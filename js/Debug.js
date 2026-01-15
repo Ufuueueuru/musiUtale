@@ -30,6 +30,8 @@ let debug = {
     //Netplay simulation
     manualOnlineDelay: false,
     manualOnlineDelayMillis: 100,
+    manualDropFrames: false,
+    manualDropPercent: 99,
 
     //Other
     noSplit: false,

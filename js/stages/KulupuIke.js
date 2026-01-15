@@ -33,7 +33,7 @@
 
         assetManager.addSound("resources/music/utala ike.wav", "utalaIke", {
             loop: true,
-            volume: 0.8
+            volume: 0.4
         });
     }
 }
