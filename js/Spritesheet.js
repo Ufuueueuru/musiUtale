@@ -151,6 +151,11 @@ class Spritesheet {
 		let total = this.image.height / this.height * this.image.width / this.width;
 		
 		if (debug.noSplit) {
+			if (graphicsSettings.spriteResolutionMult !== 1 && !this.noResize) {
+				this.image.resize(Math.round(this.image.width * graphicsSettings.spriteResolutionMult), 0);
+				this.resolutionMult = graphicsSettings.spriteResolutionMult;
+			}
+
 			assetManager._splitLoaded++;
 			//print("loaded: " + this.src + ", " + assetManager._splitLoaded);
 		} else {
